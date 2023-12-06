@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://cp06250qjpd7g"]
+
+[ext_resource type="PackedScene" uid="uid://c4gt8ofayu0ec" path="res://Objects/Foliage/Tree_01/tree_01.tscn" id="1_lruu7"]
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_5so6e"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
+size = Vector2(100, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lm2s7"]
+albedo_color = Color(0.301961, 0.235294, 0.101961, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_n2kky"]
+data = PackedVector3Array(50, 0, 10, -50, 0, 10, 50, 0, -10, -50, 0, 10, -50, 0, -10, 50, 0, -10)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qxryt"]
+points = PackedVector3Array(0.151205, 0.948839, -0.0250146, -0.13451, 0.504299, -0.00916637, 0.0242052, 0.028234, 0.0860814, -0.0233954, 0.520211, -0.152012, 0.0559482, -0.0671381, -0.00916637, -0.00750993, 0.567847, 0.117831, -0.070996, -0.0671381, 0.0225829, -0.102739, 0.742381, -0.104388, 0.119434, 0.742381, -0.104388, 0.0400907, 0.932927, 0.0225829, 0.0876913, 0.155231, 0.0702068, 0.151205, 0.948839, 0.0225829, -0.070996, -0.0671381, -0.00916637, -0.039253, 0.155231, 0.0860814, 0.13532, 0.726569, -0.0885131, 0.0718337, 0.932927, -0.0567639, 0.0242052, 0.536023, 0.117831, -0.13451, 0.551935, -0.00916637, 0.0718337, -0.0352148, 0.0384575, -0.13451, 0.520211, -0.0408892, -0.0233954, -0.0671381, 0.0702068, -0.039253, -0.0671381, -0.0250146, -0.0233954, 0.504299, 0.117831, 0.0876913, 0.948839, 0.0384575, 0.0400907, 0.155231, 0.101956, -0.102739, 0.742381, -0.0726385, 0.119434, 0.710657, -0.104388, 0.0242052, -0.0671381, -0.0250146, 0.0718337, 0.155231, 0.0860814, 0.119434, 0.504299, 0.00670827, 0.0400907, 0.932927, -0.0408892, 0.00834762, 0.139419, 0.101956)
+
+[node name="Terrain_0" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+mesh = SubResource("PlaneMesh_wnprt")
+surface_material_override/0 = SubResource("StandardMaterial3D_lm2s7")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("ConcavePolygonShape3D_n2kky")
+disabled = true
+
+[node name="Tree-01_1" type="Area3D" parent="."]
+transform = Transform3D(0.776035, 0, -0.630689, 0, 1, 0, 0.630689, 0, 0.776035, 0.952593, 0, 3.73434)
+script = ExtResource("2_5so6e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_1"]
+transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_qxryt")
+
+[node name="tree_01-03" parent="Tree-01_1" instance=ExtResource("1_lruu7")]
+
+[node name="Tree-01_2" type="Area3D" parent="."]
+transform = Transform3D(0.67216, 0, 0.740406, 0, 1, 0, -0.740406, 0, 0.67216, -0.501979, 0, 0.114068)
+script = ExtResource("2_5so6e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_2"]
+transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_qxryt")
+
+[node name="tree_01-03" parent="Tree-01_2" instance=ExtResource("1_lruu7")]
+
+[node name="Tree-01_3" type="Area3D" parent="."]
+transform = Transform3D(0.913588, 0, 0.406641, 0, 1, 0, -0.406641, 0, 0.913588, 4.70145, 0, 2.14458)
+script = ExtResource("2_5so6e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_3"]
+transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_qxryt")
+
+[node name="tree_01-03" parent="Tree-01_3" instance=ExtResource("1_lruu7")]
+
+[node name="Tree-01_4" type="Area3D" parent="."]
+transform = Transform3D(-0.945166, 0, 0.326591, 0, 1, 0, -0.326591, 0, -0.945166, -5.29527, 0, 2.14458)
+script = ExtResource("2_5so6e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_4"]
+transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_qxryt")
+
+[node name="tree_01-03" parent="Tree-01_4" instance=ExtResource("1_lruu7")]
+
+[editable path="Tree-01_1/tree_01-03"]
+[editable path="Tree-01_2/tree_01-03"]
+[editable path="Tree-01_3/tree_01-03"]
+[editable path="Tree-01_4/tree_01-03"]

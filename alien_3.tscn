@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1q8m4i26u6vr"]
+
+[ext_resource type="PackedScene" uid="uid://diukxh5eov8fo" path="res://Player/Alien_3.blend" id="1_p4qsu"]
+
+[node name="Alien_3" instance=ExtResource("1_p4qsu")]
