@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6amwhoeme515"]
+[gd_scene load_steps=11 format=3 uid="uid://c6amwhoeme515"]
 
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_0e5mq"]
 [ext_resource type="PackedScene" uid="uid://c4gt8ofayu0ec" path="res://Objects/Foliage/Tree_01/tree_01.tscn" id="2_xdi1u"]
+[ext_resource type="Script" path="res://Scripts/Health.gd" id="3_a2ojb"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
 size = Vector2(100, 20)
@@ -14,6 +15,16 @@ data = PackedVector3Array(50, 0, 10, -50, 0, 10, 50, 0, -10, -50, 0, 10, -50, 0,
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jnbxq"]
 points = PackedVector3Array(0.151205, 0.948839, -0.0250146, -0.13451, 0.504299, -0.00916637, 0.0242052, 0.028234, 0.0860814, -0.0233954, 0.520211, -0.152012, 0.0559482, -0.0671381, -0.00916637, -0.00750993, 0.567847, 0.117831, -0.070996, -0.0671381, 0.0225829, -0.102739, 0.742381, -0.104388, 0.119434, 0.742381, -0.104388, 0.0400907, 0.932927, 0.0225829, 0.0876913, 0.155231, 0.0702068, 0.151205, 0.948839, 0.0225829, -0.070996, -0.0671381, -0.00916637, -0.039253, 0.155231, 0.0860814, 0.13532, 0.726569, -0.0885131, 0.0718337, 0.932927, -0.0567639, 0.0242052, 0.536023, 0.117831, -0.13451, 0.551935, -0.00916637, 0.0718337, -0.0352148, 0.0384575, -0.13451, 0.520211, -0.0408892, -0.0233954, -0.0671381, 0.0702068, -0.039253, -0.0671381, -0.0250146, -0.0233954, 0.504299, 0.117831, 0.0876913, 0.948839, 0.0384575, 0.0400907, 0.155231, 0.101956, -0.102739, 0.742381, -0.0726385, 0.119434, 0.710657, -0.104388, 0.0242052, -0.0671381, -0.0250146, 0.0718337, 0.155231, 0.0860814, 0.119434, 0.504299, 0.00670827, 0.0400907, 0.932927, -0.0408892, 0.00834762, 0.139419, 0.101956)
+
+[sub_resource type="SphereMesh" id="SphereMesh_by40n"]
+radius = 1.663
+height = 4.93
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7sj6"]
+albedo_color = Color(1, 0.2, 0.356863, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6lbho"]
+points = PackedVector3Array(-0.570584, -0.442121, -1.5294, 0.167155, 0.740758, 1.57511, -0.128976, 0.742056, 1.5779, -0.130572, -2.40904, 0.320968, 1.57581, 0.444371, -0.425208, -1.2401, 1.62947, -0.128463, -1.53426, -0.7397, 0.388915, 0.391533, 2.30802, -0.426753, 1.27675, -1.55362, 0.166898, 0.753862, -0.808165, -1.37755, -0.0545503, -1.25874, 1.42615, 1.34078, 0.587055, 0.899988, 0.166865, 1.33137, -1.38616, -0.424588, -2.07197, -0.794341, 0.242453, 2.15744, 0.763207, -1.14908, 0.656698, 1.11355, -1.29865, 0.365968, -1.00562, 0.894742, -1.09512, 1.18672, -1.23424, -1.47432, -0.496599, 0.900329, -1.83638, -0.641787, 1.13163, 1.7795, -0.202882, -1.00463, -1.53523, 0.82293, -0.640855, 1.61271, -1.08032, -0.650148, 2.15795, 0.465837, 0.973184, 1.02742, -1.15549, -0.934593, -0.439846, 1.33941, -1.61004, 0.51824, -0.202306, 1.40965, -0.585255, -0.78633, 1.57487, -0.51836, 0.389435, 0.61115, -2.14613, 0.537013, -0.281015, 2.40839, -0.205304, 0.167656, 0.519844, -1.61497)
 
 [node name="Terrain_0" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
@@ -75,6 +86,19 @@ transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_jnbxq")
 
 [node name="tree_01-03" parent="Tree-01_5" instance=ExtResource("2_xdi1u")]
+
+[node name="Meat_1" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00632, 0.878878, 6.10861)
+script = ExtResource("3_a2ojb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Meat_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.62509, 0)
+mesh = SubResource("SphereMesh_by40n")
+surface_material_override/0 = SubResource("StandardMaterial3D_m7sj6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Meat_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.62509, 0)
+shape = SubResource("ConvexPolygonShape3D_6lbho")
 
 [editable path="Tree-01_1/tree_01-03"]
 [editable path="Tree-01_2/tree_01-03"]
