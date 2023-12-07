@@ -3,7 +3,8 @@ extends Camera3D
 func _process(delta):
 	shoot_ray()
 	var target = shoot_ray()
-	print(target)
+	Messenger.object_hovered.emit(target)
+#	print(target)
 
 func shoot_ray():
 	var mouse_pos = get_viewport().get_mouse_position()

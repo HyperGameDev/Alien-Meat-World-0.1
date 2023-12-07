@@ -91,7 +91,7 @@ shape = SubResource("ConvexPolygonShape3D_jnbxq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00632, 0.878878, 6.10861)
 script = ExtResource("3_a2ojb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Meat_1"]
+[node name="Meat_Object" type="MeshInstance3D" parent="Meat_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.62509, 0)
 mesh = SubResource("SphereMesh_by40n")
 surface_material_override/0 = SubResource("StandardMaterial3D_m7sj6")
