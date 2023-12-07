@@ -13,7 +13,12 @@ func _process(delta):
 func check_area(bodypart_area):
 #	bodypart_area.mesh.hide()
 #	bodypart_area.mesh
-	print("Health Sees Player")
+#	print("Health Sees Player")
 	Messenger.health_detected.emit(bodypart_area)
+	
+func object_hovered(target):
+	print(target)
+	
+	
 	
 	

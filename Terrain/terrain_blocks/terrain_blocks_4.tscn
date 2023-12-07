@@ -34,8 +34,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_i5a0o")
 [node name="Ground" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 shape = SubResource("ConcavePolygonShape3D_2nix7")
-disabled = true
 
 [node name="Tree-01_1" type="Area3D" parent="."]
 transform = Transform3D(-0.63729, 0, 0.770624, 0, 1, 0, -0.770624, 0, -0.63729, -4.09405, 0, 7.30512)

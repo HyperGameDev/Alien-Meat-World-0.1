@@ -2,6 +2,7 @@ extends Node
 
 signal body_damaged
 signal health_detected
+signal object_hovered
 
 
 # Called when the node enters the scene tree for the first time.

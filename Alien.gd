@@ -35,3 +35,6 @@ func _physics_process(delta):
 # Collision stops level movement
 		
 	move_and_slide()
+	
+func health_hovered(meat_hovered):
+	print(meat_hovered)

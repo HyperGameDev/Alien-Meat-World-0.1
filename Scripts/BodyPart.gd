@@ -8,14 +8,9 @@ class_name BodyPart
 @export var collision: CollisionShape3D
 @export var collision_area: CollisionShape3D
 
-@export var id: ids
-
 var max_health = 4
 var current_health = 4
 var stand_speed = .5
-
-
-enum ids {BODY, LEG_R, LEG_L, ARM_R, ARM_L}
 
 func _ready():
 	Messenger.body_damaged.connect(damage_detected)
@@ -23,8 +18,8 @@ func _ready():
 	
 func damage_detected(bodypart_area):
 	if bodypart_area == self:
-		print(self)
-		print("Damage Dealt")
+#		print(self)
+#		print("Damage Dealt")
 		if current_health > 0:
 			current_health -= 1
 			damage_label.text = str(current_health)
@@ -39,7 +34,7 @@ func health_collected(bodypart_area):
 	if bodypart_area == self and current_health < max_health:
 		current_health += 1
 		damage_label.text = str(current_health)
-		print("current_health collected")
+#		print("current_health collected")
 		mesh.show()
 		var tween = get_tree().create_tween();
 		tween.tween_property(player, "position", Vector3(player.position.x, 0, player.position.z), stand_speed)
