@@ -4,11 +4,10 @@ class_name Health
 
 @onready var meat_mesh = $Meat_Object
 
-var is_grabbed = false
-
 var default_material = StandardMaterial3D.new()
 var hover_material = StandardMaterial3D.new()
 var select_material = StandardMaterial3D.new()
+
 
 func _ready():
 	# Temporary Collidable Healing
@@ -47,16 +46,13 @@ func health_hovered(target):
 	if target == hovered and meat_mesh.material_override == hover_material and Input.is_action_pressed("Grab"):
 		# Change Material
 		meat_mesh.material_override = select_material
-		# Update Variable
+		# Update Variabled
 		var is_grabbed = true
 		# Inform Messesnger
 		Messenger.health_grabbed.emit(is_grabbed)
-		# Move Object
-		
 		
 		
 	# Meat is Unsdelected (When Not Hovering)	
 	if target != hovered and meat_mesh.material_override == select_material:
 		#Change Material
 		meat_mesh.material_override = default_material
-
