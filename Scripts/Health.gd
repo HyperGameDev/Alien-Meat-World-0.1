@@ -17,8 +17,8 @@ func _ready():
 	Messenger.object_hovered.connect(health_hovered)
 	
 	# Setting up meat material changes based on cursor behavior
-	default_material.set_albedo(Color(1, .2, .36))
-	hover_material.set_albedo(Color(1.6, .5, .5))
+	default_material.set_albedo(Color(.32, .75, .35))
+	hover_material.set_albedo(Color(.32, .75, .35))
 	select_material.set_albedo(Color(1, 0, .1))
 	
 func check_area(bodypart_area):
@@ -33,26 +33,34 @@ func health_hovered(target):
 	
 	# Meat is Hovered
 	if target == hovered and meat_mesh.material_override != hover_material:
+		# Show Arrow
+		meat_mesh.visible = true
 		# Change Material
 		meat_mesh.material_override = hover_material
 		
 	# Meat is NOT Hovered	
 	if target != hovered and meat_mesh.material_override == hover_material:
+		# Hide Arrow
+		meat_mesh.visible = false
 		# Change Material
 		meat_mesh.material_override = default_material
 
 
 	# Meat is Selected	
 	if target == hovered and meat_mesh.material_override == hover_material and Input.is_action_pressed("Grab"):
+		# Hide Arrow
+		meat_mesh.visible = false
 		# Change Material
 		meat_mesh.material_override = select_material
-		# Update Variabled
+		# Update Variable
 		var is_grabbed = true
 		# Inform Messesnger
 		Messenger.health_grabbed.emit(is_grabbed)
 		
 		
-	# Meat is Unsdelected (When Not Hovering)	
+	# Meat is Unselected (When Not Hovering)	
 	if target != hovered and meat_mesh.material_override == select_material:
-		#Change Material
+		# Hide Arrow
+		meat_mesh.visible = false
+		# Change Material
 		meat_mesh.material_override = default_material

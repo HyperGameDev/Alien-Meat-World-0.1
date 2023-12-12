@@ -37,6 +37,6 @@ func health_collected(bodypart_area):
 #		print("current_health collected")
 		mesh.show()
 		var tween = get_tree().create_tween();
-		tween.tween_property(player, "position", Vector3(player.position.x, 0, player.position.z), stand_speed)
+		tween.tween_property(player, "position", Vector3(player.position.x, -.03, player.position.z), stand_speed)
 		collision.set_deferred("disabled", false)
 		

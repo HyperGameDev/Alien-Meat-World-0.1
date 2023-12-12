@@ -58,8 +58,9 @@ shadow_blur = 2.599
 environment = SubResource("Environment_hole3")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.992903, -0.118927, 0.00027573, 0.107902, 0.901825, 0.418413, -0.0500094, -0.415414, 0.908257, 1.38987, 3.0966, 2.12253)
+transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, -0.147, 3.128, 6.185)
 current = true
+fov = 34.2
 script = ExtResource("2_qvpxy")
 
 [node name="Ground" type="StaticBody3D" parent="."]
@@ -77,7 +78,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.73018)
 
 [node name="Player" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.372303, 0, 0.000377893)
+transform = Transform3D(0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 0, 0, 0)
 axis_lock_linear_z = true
 script = ExtResource("3_ia6ow")
 

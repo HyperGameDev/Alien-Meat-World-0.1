@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://v5eniw2ie7u6"]
+[gd_scene load_steps=12 format=3 uid="uid://v5eniw2ie7u6"]
 
 [ext_resource type="PackedScene" uid="uid://c4gt8ofayu0ec" path="res://Objects/Foliage/Tree_01/tree_01.tscn" id="2_fbo47"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_gvs7x"]
 [ext_resource type="Script" path="res://Scripts/Health.gd" id="3_4m0tp"]
+[ext_resource type="PackedScene" uid="uid://c0kld2qowd56l" path="res://NPCs/Cows/cow_001.tscn" id="4_ucld0"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
 size = Vector2(100, 20)
@@ -16,13 +17,14 @@ data = PackedVector3Array(50, 0, 10, -50, 0, 10, 50, 0, -10, -50, 0, 10, -50, 0,
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_stmf6"]
 points = PackedVector3Array(0.151205, 0.948839, -0.0250146, -0.13451, 0.504299, -0.00916637, 0.0242052, 0.028234, 0.0860814, -0.0233954, 0.520211, -0.152012, 0.0559482, -0.0671381, -0.00916637, -0.00750993, 0.567847, 0.117831, -0.070996, -0.0671381, 0.0225829, -0.102739, 0.742381, -0.104388, 0.119434, 0.742381, -0.104388, 0.0400907, 0.932927, 0.0225829, 0.0876913, 0.155231, 0.0702068, 0.151205, 0.948839, 0.0225829, -0.070996, -0.0671381, -0.00916637, -0.039253, 0.155231, 0.0860814, 0.13532, 0.726569, -0.0885131, 0.0718337, 0.932927, -0.0567639, 0.0242052, 0.536023, 0.117831, -0.13451, 0.551935, -0.00916637, 0.0718337, -0.0352148, 0.0384575, -0.13451, 0.520211, -0.0408892, -0.0233954, -0.0671381, 0.0702068, -0.039253, -0.0671381, -0.0250146, -0.0233954, 0.504299, 0.117831, 0.0876913, 0.948839, 0.0384575, 0.0400907, 0.155231, 0.101956, -0.102739, 0.742381, -0.0726385, 0.119434, 0.710657, -0.104388, 0.0242052, -0.0671381, -0.0250146, 0.0718337, 0.155231, 0.0860814, 0.119434, 0.504299, 0.00670827, 0.0400907, 0.932927, -0.0408892, 0.00834762, 0.139419, 0.101956)
 
-[sub_resource type="SphereMesh" id="SphereMesh_4rl6i"]
+[sub_resource type="PrismMesh" id="PrismMesh_sf2fu"]
+size = Vector3(1, 1, 0.26)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x833k"]
-albedo_color = Color(1, 0.2, 0.36, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffam6"]
+albedo_color = Color(0.321569, 0.745098, 0.352941, 1)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gclwm"]
-points = PackedVector3Array(0.457871, 0.198079, 0.0157824, -0.48874, -0.0916874, -0.0451868, -0.471509, -0.137027, -0.0907015, 0.0763591, -0.333275, 0.364179, 0.136569, -0.332425, -0.346906, -0.151617, 0.471982, -0.0602459, -0.105347, 0.211936, 0.43966, -0.0450169, 0.198098, -0.456416, 0.409077, -0.151168, 0.242516, -0.271376, -0.377761, 0.181871, 0.41148, -0.075981, -0.27324, 0.198197, -0.456161, -0.044931, -0.240641, -0.331674, -0.285768, 0.227137, 0.25672, 0.363041, 0.227522, 0.423604, -0.135488, -0.37899, 0.0607022, 0.319462, -0.406747, 0.181049, -0.225691, -0.0146313, -0.0917695, 0.490229, -0.377855, 0.302793, 0.121712, 0.0462323, 0.456011, 0.198185, -0.227464, -0.0607863, -0.440348, 0.228455, 0.0607228, -0.439887, -0.0911376, -0.489246, -0.045174, 0.441865, -0.228216, -0.0449581, 0.317179, 0.241214, -0.300812, -0.0448487, 0.394737, -0.302955, -0.316348, -0.196222, 0.332551, 0.198442, -0.0304293, 0.457237, 0.0614714, -0.152246, -0.471307, 0.363089, 0.256708, 0.227079, 0.152134, -0.439489, 0.182379, -0.210725, 0.362276, 0.27223)
+[sub_resource type="SphereShape3D" id="SphereShape3D_osc03"]
+radius = 0.3
 
 [node name="Terrain_0" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
@@ -126,40 +128,106 @@ shape = SubResource("ConvexPolygonShape3D_stmf6")
 [node name="tree_01-03" parent="Tree-01_9" instance=ExtResource("2_fbo47")]
 
 [node name="Meat_1" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.95691, 3.23163, 4.51229)
+transform = Transform3D(0.744377, -0.00014954, -0.66776, 1.76931e-05, 1, -0.000204199, 0.66776, 0.000140171, 0.744377, 2.65152, 0.878878, 4.02434)
 script = ExtResource("3_4m0tp")
 
 [node name="Meat_Object" type="MeshInstance3D" parent="Meat_1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0053246)
-mesh = SubResource("SphereMesh_4rl6i")
-surface_material_override/0 = SubResource("StandardMaterial3D_x833k")
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.136646, -0.0352044, 0.00895238)
+visible = false
+mesh = SubResource("PrismMesh_sf2fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_ffam6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Meat_1"]
-shape = SubResource("ConvexPolygonShape3D_gclwm")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13544, -0.811895, 0.00328267)
+shape = SubResource("SphereShape3D_osc03")
+
+[node name="cow_001" parent="Meat_1" instance=ExtResource("4_ucld0")]
+transform = Transform3D(0.127619, 0, 0.991823, 0, 1, 0, -0.991823, 0, 0.127619, 0.146392, -0.892553, 0.0381147)
 
 [node name="Meat_2" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.971914, 1.5723, 4.51229)
+transform = Transform3D(0.248284, 0, -0.968687, 0, 1, 0, 0.968687, 0, 0.248284, 3.43605, 0.882157, 5.0241)
 script = ExtResource("3_4m0tp")
 
 [node name="Meat_Object" type="MeshInstance3D" parent="Meat_2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0053246)
-mesh = SubResource("SphereMesh_4rl6i")
-surface_material_override/0 = SubResource("StandardMaterial3D_x833k")
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.136646, -0.0352044, 0.00895238)
+visible = false
+mesh = SubResource("PrismMesh_sf2fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_ffam6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Meat_2"]
-shape = SubResource("ConvexPolygonShape3D_gclwm")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13544, -0.811895, 0.00328267)
+shape = SubResource("SphereShape3D_osc03")
+
+[node name="cow_001" parent="Meat_2" instance=ExtResource("4_ucld0")]
+transform = Transform3D(0.127619, 0, 0.991823, 0, 1, 0, -0.991823, 0, 0.127619, 0.146392, -0.892553, 0.0381147)
 
 [node name="Meat_3" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.69207, -0.256716, -0.03966)
+transform = Transform3D(0.994445, 0, -0.105257, 0, 1, 0, 0.105257, 0, 0.994445, 2.75421, 0.869877, 5.23099)
 script = ExtResource("3_4m0tp")
 
 [node name="Meat_Object" type="MeshInstance3D" parent="Meat_3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0053246)
-mesh = SubResource("SphereMesh_4rl6i")
-surface_material_override/0 = SubResource("StandardMaterial3D_x833k")
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.136646, -0.0352044, 0.00895238)
+visible = false
+mesh = SubResource("PrismMesh_sf2fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_ffam6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Meat_3"]
-shape = SubResource("ConvexPolygonShape3D_gclwm")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13544, -0.811895, 0.00328267)
+shape = SubResource("SphereShape3D_osc03")
+
+[node name="cow_001" parent="Meat_3" instance=ExtResource("4_ucld0")]
+transform = Transform3D(0.127619, 0, 0.991823, 0, 1, 0, -0.991823, 0, 0.127619, 0.146392, -0.892553, 0.0381147)
+
+[node name="Meat_4" type="Area3D" parent="."]
+transform = Transform3D(0.74395, 0, 0.668235, 0, 1, 0, -0.668235, 0, 0.74395, -1.24398, 0.878878, 4.1264)
+script = ExtResource("3_4m0tp")
+
+[node name="Meat_Object" type="MeshInstance3D" parent="Meat_4"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.136646, -0.0352044, 0.00895238)
+visible = false
+mesh = SubResource("PrismMesh_sf2fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_ffam6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Meat_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13544, -0.811895, 0.00328267)
+shape = SubResource("SphereShape3D_osc03")
+
+[node name="cow_001" parent="Meat_4" instance=ExtResource("4_ucld0")]
+transform = Transform3D(0.127619, 0, 0.991823, 0, 1, 0, -0.991823, 0, 0.127619, 0.146392, -0.892553, 0.0381147)
+
+[node name="Meat_5" type="Area3D" parent="."]
+transform = Transform3D(-0.652548, 0, 0.757747, 0, 1, 0, -0.757747, 0, -0.652548, -1.21979, 0.852754, 4.97269)
+script = ExtResource("3_4m0tp")
+
+[node name="Meat_Object" type="MeshInstance3D" parent="Meat_5"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.136646, -0.0352044, 0.00895238)
+visible = false
+mesh = SubResource("PrismMesh_sf2fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_ffam6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Meat_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13544, -0.811895, 0.00328267)
+shape = SubResource("SphereShape3D_osc03")
+
+[node name="cow_001" parent="Meat_5" instance=ExtResource("4_ucld0")]
+transform = Transform3D(0.127619, 0, 0.991823, 0, 1, 0, -0.991823, 0, 0.127619, 0.146392, -0.892553, 0.0381147)
+
+[node name="Meat_6" type="Area3D" parent="."]
+transform = Transform3D(0.510708, 0, 0.859754, 0, 1, 0, -0.859754, 0, 0.510708, -0.799394, 0.869877, 5.25266)
+script = ExtResource("3_4m0tp")
+
+[node name="Meat_Object" type="MeshInstance3D" parent="Meat_6"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.136646, -0.0352044, 0.00895238)
+visible = false
+mesh = SubResource("PrismMesh_sf2fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_ffam6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Meat_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13544, -0.811895, 0.00328267)
+shape = SubResource("SphereShape3D_osc03")
+
+[node name="cow_001" parent="Meat_6" instance=ExtResource("4_ucld0")]
+transform = Transform3D(0.127619, 0, 0.991823, 0, 1, 0, -0.991823, 0, 0.127619, 0.146392, -0.892553, 0.0381147)
 
 [editable path="Tree-01_1/tree_01-03"]
 [editable path="Tree-01_2/tree_01-03"]
@@ -170,3 +238,9 @@ shape = SubResource("ConvexPolygonShape3D_gclwm")
 [editable path="Tree-01_7/tree_01-03"]
 [editable path="Tree-01_8/tree_01-03"]
 [editable path="Tree-01_9/tree_01-03"]
+[editable path="Meat_1/cow_001"]
+[editable path="Meat_2/cow_001"]
+[editable path="Meat_3/cow_001"]
+[editable path="Meat_4/cow_001"]
+[editable path="Meat_5/cow_001"]
+[editable path="Meat_6/cow_001"]
