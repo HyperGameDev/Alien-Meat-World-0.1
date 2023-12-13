@@ -1,5 +1,11 @@
 extends Camera3D
 
+@export var cam_target: Node3D
+@export var cam_lerpspeed = .05
+@export var cam_z_offset = 5.5
+@export var cam_y_offset = 3
+
+
 var is_grabbed = false
 var target = null
 var grabbed_object = null
@@ -7,12 +13,24 @@ var grab_offset: Vector3 = Vector3(0, 0, 0)
 var ray_pos: Vector3 = Vector3(0, 0, 0)
 
 func _ready():
+	
 	Messenger.health_grabbed.connect(move_health)
 
 func _process(delta):
+	var cam_follow_pos: Vector3 = cam_target.position
+	cam_follow_pos.z += cam_z_offset
+	cam_follow_pos.y += cam_y_offset
+	
+	# Normalize
+	var cam_direction: Vector3 = cam_follow_pos - self.position
+	
+	self.position += cam_direction * cam_lerpspeed
+	self.rotation = cam_target.rotation
+	
 	shoot_ray()
 	var new_target = shoot_ray()
 	Messenger.object_hovered.emit(new_target)
+	print(target)
 
 func shoot_ray():
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -24,6 +42,8 @@ func shoot_ray():
 	ray_query.from = from
 	ray_query.to = to
 	ray_query.collide_with_areas = true
+	ray_query.collide_with_bodies = false
+	ray_query.collision_mask = 1
 
 	var raycast_result = space.intersect_ray(ray_query)
 	if raycast_result.has("position"):
@@ -32,7 +52,7 @@ func shoot_ray():
 	if raycast_result.has("collider"):
 		target = raycast_result.collider
 		return raycast_result.collider
-
+		
 func move_health(grab_state):
 	is_grabbed = grab_state
 

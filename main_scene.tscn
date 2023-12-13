@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=18 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://new_script.gd" id="1_fbb15"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="2_qvpxy"]
 [ext_resource type="Script" path="res://Alien.gd" id="3_ia6ow"]
 [ext_resource type="PackedScene" uid="uid://c2s7xptwu48an" path="res://Terrain/terrain_controller.tscn" id="3_uqnug"]
 [ext_resource type="PackedScene" uid="uid://c1q8m4i26u6vr" path="res://alien_3.tscn" id="4_huvyo"]
+[ext_resource type="Script" path="res://Cam_Target.gd" id="5_iuboh"]
 [ext_resource type="Script" path="res://Scripts/BodyPart.gd" id="10_2td36"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fr5e4"]
@@ -24,6 +25,9 @@ glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4xqnu"]
 size = Vector3(192.385, 1, 49.5471)
+
+[sub_resource type="BoxMesh" id="BoxMesh_svwv1"]
+size = Vector3(1, 1, 7.48)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_102ua"]
 radius = 2.835
@@ -57,11 +61,12 @@ shadow_blur = 2.599
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hole3")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, -0.147, 3.128, 6.185)
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("cam_target")]
+transform = Transform3D(1, 0, 0, 0, 0.986286, 0.165048, 0, -0.165048, 0.986286, -0.147, 2.558, 6.185)
 current = true
 fov = 34.2
 script = ExtResource("2_qvpxy")
+cam_target = NodePath("../Player/Cam_Target")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.375994, 0, 0)
@@ -79,14 +84,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.73018)
 [node name="Player" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 0, 0, 0)
+collision_mask = 4
 axis_lock_linear_z = true
 script = ExtResource("3_ia6ow")
+
+[node name="Cam_Target" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.967709, 0.252069, 0, -0.252069, 0.967709, 0.228, 3, 5.5)
+script = ExtResource("5_iuboh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Cam_Target"]
+visible = false
+mesh = SubResource("BoxMesh_svwv1")
 
 [node name="DetectionAreas" type="Node3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.412749, 0, -0.00510311)
 
 [node name="Area_Body" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("player", "mesh", "damage_label", "collision", "collision_area")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.358542, 1.26877, -0.0011203)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../..")
 mesh = NodePath("../../Alien/Alien_Body")
@@ -99,7 +115,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.669039, 2.20307, 1.86489)
 shape = SubResource("CapsuleShape3D_102ua")
 
 [node name="Area_LegR" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("player", "mesh", "damage_label", "collision", "collision_area")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 1.86265e-09)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../..")
 mesh = NodePath("../../Alien/Alien_LegR")
@@ -113,6 +131,8 @@ shape = SubResource("CapsuleShape3D_3kibt")
 
 [node name="Area_LegL" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("player", "mesh", "damage_label", "collision", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../..")
 mesh = NodePath("../../Alien/Alien_LegL")
@@ -126,6 +146,8 @@ shape = SubResource("CapsuleShape3D_f5maj")
 
 [node name="Area_ArmR" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("player", "mesh", "damage_label", "collision", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../..")
 mesh = NodePath("../../Alien/Alien_ArmR")
@@ -139,6 +161,8 @@ shape = SubResource("CapsuleShape3D_0yil0")
 
 [node name="Area_ArmL" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("player", "mesh", "damage_label", "collision", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../..")
 mesh = NodePath("../../Alien/Alien_ArmL")

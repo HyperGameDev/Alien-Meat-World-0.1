@@ -261,12 +261,17 @@ mesh = SubResource("PlaneMesh_wnprt")
 surface_material_override/0 = SubResource("StandardMaterial3D_rhqbw")
 
 [node name="Ground" type="StaticBody3D" parent="."]
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 shape = SubResource("ConcavePolygonShape3D_264m4")
 
 [node name="Tree-01_1" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55873, 0, 0)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("2_sqedo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_1"]
@@ -277,6 +282,8 @@ shape = SubResource("ConvexPolygonShape3D_k1hro")
 
 [node name="Tree-01_2" type="Area3D" parent="."]
 transform = Transform3D(-0.146722, 0, 0.989178, 0, 1, 0, -0.989178, 0, -0.146722, 3.66885, 0, 2.29064)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("2_sqedo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_2"]
@@ -287,6 +294,8 @@ shape = SubResource("ConvexPolygonShape3D_k1hro")
 
 [node name="Tree-01_3" type="Area3D" parent="."]
 transform = Transform3D(-0.248183, 0, -0.968713, 0, 1, 0, 0.968713, 0, -0.248183, -2.58906, 0, 3.14057)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("2_sqedo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_3"]
@@ -296,7 +305,9 @@ shape = SubResource("ConvexPolygonShape3D_k1hro")
 [node name="tree_01-03" parent="Tree-01_3" instance=ExtResource("1_10ujk")]
 
 [node name="House-01_1" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53194, 0, 5.04283)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.47763, 0, 5.04283)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("2_sqedo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="House-01_1"]
@@ -328,7 +339,9 @@ mesh = SubResource("ArrayMesh_1c555")
 surface_material_override/0 = SubResource("StandardMaterial3D_nhuvb")
 
 [node name="House-01_2" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.951354, 0, -5.65619)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98369, 0, -5.65619)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("2_sqedo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="House-01_2"]

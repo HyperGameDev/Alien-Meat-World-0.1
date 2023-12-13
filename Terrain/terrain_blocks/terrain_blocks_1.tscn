@@ -32,13 +32,17 @@ mesh = SubResource("PlaneMesh_wnprt")
 surface_material_override/0 = SubResource("StandardMaterial3D_lm2s7")
 
 [node name="Ground" type="StaticBody3D" parent="."]
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 shape = SubResource("ConcavePolygonShape3D_n2kky")
 
 [node name="Tree-01_1" type="Area3D" parent="."]
-transform = Transform3D(0.776035, 0, -0.630689, 0, 1, 0, 0.630689, 0, 0.776035, 0.952593, 0, 3.73434)
+transform = Transform3D(0.776035, 0, -0.630689, 0, 1, 0, 0.630689, 0, 0.776035, 2.5021, 0, -1.63652)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("2_5so6e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_1"]
@@ -48,7 +52,9 @@ shape = SubResource("ConvexPolygonShape3D_qxryt")
 [node name="tree_01-03" parent="Tree-01_1" instance=ExtResource("1_lruu7")]
 
 [node name="Tree-01_2" type="Area3D" parent="."]
-transform = Transform3D(0.67216, 0, 0.740406, 0, 1, 0, -0.740406, 0, 0.67216, -0.501979, 0, 0.114068)
+transform = Transform3D(0.67216, 0, 0.740406, 0, 1, 0, -0.740406, 0, 0.67216, -2.99344, 0, 0.114068)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("2_5so6e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_2"]
@@ -59,6 +65,8 @@ shape = SubResource("ConvexPolygonShape3D_qxryt")
 
 [node name="Tree-01_3" type="Area3D" parent="."]
 transform = Transform3D(0.913588, 0, 0.406641, 0, 1, 0, -0.406641, 0, 0.913588, 4.70145, 0, 2.14458)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("2_5so6e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_3"]
@@ -69,6 +77,8 @@ shape = SubResource("ConvexPolygonShape3D_qxryt")
 
 [node name="Tree-01_4" type="Area3D" parent="."]
 transform = Transform3D(-0.945166, 0, 0.326591, 0, 1, 0, -0.326591, 0, -0.945166, -5.29527, 0, 2.14458)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("2_5so6e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_4"]
@@ -79,6 +89,8 @@ shape = SubResource("ConvexPolygonShape3D_qxryt")
 
 [node name="Meat_1" type="Area3D" parent="."]
 transform = Transform3D(0.744312, 0, -0.667833, 0, 1, 0, 0.667833, 0, 0.744312, 1.82101, 0.878878, 4.02434)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("3_0id72")
 
 [node name="Meat_Object" type="MeshInstance3D" parent="Meat_1"]
@@ -96,6 +108,8 @@ transform = Transform3D(0.127619, 0, 0.991823, 0, 1, 0, -0.991823, 0, 0.127619, 
 
 [node name="Meat_2" type="Area3D" parent="."]
 transform = Transform3D(0.248284, 0, -0.968687, 0, 1, 0, 0.968687, 0, 0.248284, 2.32815, 0.878878, 4.54294)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("3_0id72")
 
 [node name="Meat_Object" type="MeshInstance3D" parent="Meat_2"]
@@ -113,6 +127,8 @@ transform = Transform3D(0.127619, 0, 0.991823, 0, 1, 0, -0.991823, 0, 0.127619, 
 
 [node name="Meat_3" type="Area3D" parent="."]
 transform = Transform3D(0.994445, 0, -0.105257, 0, 1, 0, 0.105257, 0, 0.994445, 1.80449, 0.869877, 5.23099)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("3_0id72")
 
 [node name="Meat_Object" type="MeshInstance3D" parent="Meat_3"]
@@ -130,6 +146,8 @@ transform = Transform3D(0.127619, 0, 0.991823, 0, 1, 0, -0.991823, 0, 0.127619, 
 
 [node name="Meat_4" type="Area3D" parent="."]
 transform = Transform3D(0.74395, 0, 0.668235, 0, 1, 0, -0.668235, 0, 0.74395, -2.80346, 0.878878, 4.1264)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("3_0id72")
 
 [node name="Meat_Object" type="MeshInstance3D" parent="Meat_4"]
@@ -147,6 +165,8 @@ transform = Transform3D(0.127619, 0, 0.991823, 0, 1, 0, -0.991823, 0, 0.127619, 
 
 [node name="Meat_5" type="Area3D" parent="."]
 transform = Transform3D(0.712773, 0, 0.701395, 0, 1, 0, -0.701395, 0, 0.712773, -2.13983, 0.878878, 4.41921)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("3_0id72")
 
 [node name="Meat_Object" type="MeshInstance3D" parent="Meat_5"]
@@ -164,6 +184,8 @@ transform = Transform3D(0.127619, 0, 0.991823, 0, 1, 0, -0.991823, 0, 0.127619, 
 
 [node name="Meat_6" type="Area3D" parent="."]
 transform = Transform3D(0.408171, 0, -0.912905, 0, 1, 0, 0.912905, 0, 0.408171, -2.37007, 0.869877, 5.25266)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("3_0id72")
 
 [node name="Meat_Object" type="MeshInstance3D" parent="Meat_6"]
