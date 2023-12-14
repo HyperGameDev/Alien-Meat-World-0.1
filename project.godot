@@ -62,3 +62,4 @@ Grab={
 [layer_names]
 
 3d_physics/layer_2="Ground"
+3d_physics/layer_3="Obstacle"

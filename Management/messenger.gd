@@ -7,6 +7,8 @@ signal area_damaged
 signal body_is_damaged
 signal limb_is_damaged
 
+signal amount_damaged
+
 signal object_hovered
 signal health_detected
 

@@ -9,7 +9,7 @@ var terrain_belt: Array[MeshInstance3D] = []
 const TERRAIN_VELOCITY: float = 5.0
 
 ## The number of blocks to keep rendered to the viewport
-@export var num_terrain_blocks = 6
+@export var num_terrain_blocks = 5
 
 ## Path to directory holding the terrain block scenes
 @export_dir var terrian_blocks_path = "res://Terrain/terrain_blocks"
@@ -38,6 +38,7 @@ func _progress_terrain(delta: float) -> void:
 	for block in terrain_belt:
 		block.position.z += terrain_velocity * delta
 
+# Delete first index if it passes a certain spot
 	if terrain_belt[0].position.z >= terrain_belt[0].mesh.size.y/2:
 		var last_terrain = terrain_belt[-1]
 		var first_terrain = terrain_belt.pop_front()

@@ -12,23 +12,33 @@ var max_health = 4
 var current_health = 4
 var stand_speed = .5
 
+var hurt_limb = 1
+
 var is_damaged = false
 
 func _ready():
 	Messenger.area_damaged.connect(damage_detected)
+	Messenger.amount_damaged.connect(damage_amount)
 	Messenger.health_detected.connect(health_collected)
+
+func damage_amount(damage_amount):
+	if damage_amount == Obstacle.damage_amounts.FULL:
+		hurt_limb = 100
+	if damage_amount == Obstacle.damage_amounts.LOWEST:
+		hurt_limb = 1
 	
 func damage_detected(bodypart_area):
 	if bodypart_area == self:
+		print(hurt_limb)
 #		print(self)
 #		print("Damage Dealt")
 		if current_health > 0:
-			current_health -= 1
+			current_health -= hurt_limb
 			damage_label.text = str(current_health)
 			mesh.show()
 			is_damaged = true
 			Messenger.limb_is_damaged.emit(is_damaged)
-		if current_health == 0:
+		if current_health <= 1:
 			mesh.hide()
 			await get_tree().process_frame
 #			collision.set_deferred("disable", true)
@@ -37,7 +47,7 @@ func damage_detected(bodypart_area):
 		if current_health > 0:
 			is_damaged = true
 			Messenger.body_is_damaged.emit(is_damaged)
-		if current_health == 0:
+		if current_health <= 0:
 			get_tree().reload_current_scene()
 			
 func health_collected(bodypart_area):
