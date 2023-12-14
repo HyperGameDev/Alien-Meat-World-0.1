@@ -12,11 +12,17 @@ var grabbed_object = null
 var grab_offset: Vector3 = Vector3(0, 0, 0)
 var ray_pos: Vector3 = Vector3(0, 0, 0)
 
-func _ready():
-	
+func _ready():	
 	Messenger.health_grabbed.connect(move_health)
-
-func _process(delta):
+	
+func _physics_process(_delta):
+	var input_up = Input.is_action_pressed("ui_up")
+	var input_up_end = Input.is_action_just_released("ui_up")
+	if input_up and cam_z_offset <= 6:
+		cam_z_offset += .75
+	if input_up_end and cam_z_offset >= 5.5:
+		cam_z_offset -= .75
+	
 	var cam_follow_pos: Vector3 = cam_target.position
 	cam_follow_pos.z += cam_z_offset
 	cam_follow_pos.y += cam_y_offset
@@ -26,11 +32,12 @@ func _process(delta):
 	
 	self.position += cam_direction * cam_lerpspeed
 	self.rotation = cam_target.rotation
-	
+
+func _process(_delta):
 	shoot_ray()
 	var new_target = shoot_ray()
 	Messenger.object_hovered.emit(new_target)
-	print(target)
+#	print(target)
 
 func shoot_ray():
 	var mouse_pos = get_viewport().get_mouse_position()
