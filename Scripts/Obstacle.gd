@@ -7,12 +7,12 @@ func _ready():
 	area_entered.connect(check_area)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame
-func _process(delta):
+func _process(_delta):
 	pass
 	
 func check_area(bodypart_area):
 #	bodypart_area.mesh.hide()
 #	bodypart_area.mesh
-	Messenger.body_damaged.emit(bodypart_area)
+	Messenger.area_damaged.emit(bodypart_area)
 	
 	

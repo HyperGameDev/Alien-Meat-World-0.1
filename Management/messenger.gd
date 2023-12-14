@@ -2,7 +2,10 @@ extends Node
 
 signal hover_pos
 
-signal body_damaged
+signal area_damaged
+
+signal body_is_damaged
+signal limb_is_damaged
 
 signal object_hovered
 signal health_detected
@@ -15,5 +18,5 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
