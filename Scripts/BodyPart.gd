@@ -12,10 +12,8 @@ var max_health = 4
 var current_health = 4
 var stand_speed = .5
 
-var is_damaged = false
-
 func _ready():
-	Messenger.area_damaged.connect(damage_detected)
+	Messenger.body_damaged.connect(damage_detected)
 	Messenger.health_detected.connect(health_collected)
 	
 func damage_detected(bodypart_area):
@@ -26,19 +24,11 @@ func damage_detected(bodypart_area):
 			current_health -= 1
 			damage_label.text = str(current_health)
 			mesh.show()
-			is_damaged = true
-			Messenger.limb_is_damaged.emit(is_damaged)
 		if current_health == 0:
 			mesh.hide()
-			await get_tree().process_frame
-#			collision.set_deferred("disable", true)
-			collision.disabled = true
-	if bodypart_area == %Area_Body and collision_area == %CollisionA_AlienBody:
-		if current_health > 0:
-			is_damaged = true
-			Messenger.body_is_damaged.emit(is_damaged)
-		if current_health == 0:
-			get_tree().reload_current_scene()
+#			await get_tree().process_frame
+			collision.set_deferred("disabled", true)
+#			collision.disabled = true
 			
 func health_collected(bodypart_area):
 	if bodypart_area == self and current_health < max_health:

@@ -42,6 +42,8 @@ mesh = SubResource("PlaneMesh_wnprt")
 surface_material_override/0 = SubResource("StandardMaterial3D_x7niv")
 
 [node name="Ground" type="StaticBody3D" parent="."]
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
