@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxff2edaqvwfw"]
+[gd_scene load_steps=7 format=3 uid="uid://cxff2edaqvwfw"]
 
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_d6jvk"]
 [ext_resource type="PlaneMesh" uid="uid://7d0gnku46y8v" path="res://Terrain/terrain_blocks_default.tres" id="1_hlwdv"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
-size = Vector2(100, 20)
+size = Vector2(100, 40)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdwe7"]
 albedo_color = Color(0.317647, 0.196078, 0, 1)
@@ -15,13 +16,13 @@ albedo_color = Color(0.317647, 0.196078, 0, 1)
 data = PackedVector3Array(50, 0, 10, -50, 0, 10, 50, 0, -10, -50, 0, 10, -50, 0, -10, 50, 0, -10)
 
 [node name="Terrain_0" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.9)
 visibility_range_begin = 4096.0
 mesh = SubResource("PlaneMesh_wnprt")
 surface_material_override/0 = SubResource("StandardMaterial3D_gdwe7")
 
 [node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -2, 0.0999999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -1.4, 10.2)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Ground"]
 mesh = ExtResource("1_hlwdv")
@@ -29,11 +30,11 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_rt87d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -0.2, 0.1)
 shape = SubResource("ConcavePolygonShape3D_gjw30")
 
 [node name="Ground2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 2.98023e-08, -1, 0, 1, 2.98023e-08, -0.4, -10, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, -9.9)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Ground2"]
 mesh = ExtResource("1_hlwdv")
@@ -41,5 +42,21 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_rt87d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -0.2, 0.1)
+visible = false
 shape = SubResource("ConcavePolygonShape3D_gjw30")
+
+[node name="Wall_1" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.98023e-08, -1, 0, 1, 2.98023e-08, -0.4, -1.6, 0.0999985)
+script = ExtResource("1_d6jvk")
+slowdown_amount = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.200001, 8.4)
+shape = SubResource("ConcavePolygonShape3D_gjw30")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wall_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.4)
+mesh = ExtResource("1_hlwdv")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_rt87d")

@@ -3,15 +3,21 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 6
-const fall_death_distance = -50
+const FALL_DEATH_DISTANCE = -50
+
+var terrain_slowdown = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+func _ready():
+	Messenger.amount_slowed.connect(slowdown)
+	Messenger.area_undamaged.connect(damage_undetected)
+
 
 func _physics_process(delta):
-	print(self.global_position.y)
-	if self.global_position.y <= fall_death_distance:
+#	print(self.global_position.y)
+	if self.global_position.y <= FALL_DEATH_DISTANCE:
 		var fall_death = true
 		Messenger.instant_death.emit(fall_death)
 	
@@ -33,14 +39,27 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	var input_up = Input.is_action_pressed("ui_up")
-	if input_up:
+	if input_up and terrain_slowdown == false:
 		%TerrainController.terrain_velocity = move_toward(%TerrainController.terrain_velocity, 30, 1)
-	else:
+	if input_up == false and terrain_slowdown == false:
 		%TerrainController.terrain_velocity = %TerrainController.TERRAIN_VELOCITY
 
 # Collision stops level movement
 		
 	move_and_slide()
+	
+
+func slowdown(slowdown_amount):
+	if slowdown_amount == Obstacle.slowdown_amounts.FULL:
+		terrain_slowdown = true
+		print("terrain_slowdown:", terrain_slowdown)
+		%TerrainController.terrain_velocity = 0
+		
+func damage_undetected(_bodypart_unarea):
+	print("Feet Unseen")
+	terrain_slowdown = false
+
+
 	
 func health_hovered(meat_hovered):
 	print(meat_hovered)
