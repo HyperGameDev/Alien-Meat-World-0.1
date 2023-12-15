@@ -4,6 +4,7 @@ signal hover_pos
 
 signal area_damaged
 
+signal instant_death
 signal body_is_damaged
 signal limb_is_damaged
 

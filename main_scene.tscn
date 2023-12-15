@@ -121,7 +121,7 @@ environment = SubResource("Environment_hole3")
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("cam_target")]
 transform = Transform3D(1, 0, 0, 0, 0.986286, 0.165048, 0, -0.165048, 0.986286, -0.147, 2.558, 6.185)
 current = true
-fov = 34.2
+fov = 37.3
 script = ExtResource("2_qvpxy")
 cam_target = NodePath("../Player/Cam_Target")
 
@@ -182,6 +182,7 @@ mesh = NodePath("../../Alien/Alien_LegR")
 damage_label = NodePath("../../Alien/Alien_LegR/Dmg_LegR")
 collision = NodePath("../../Collision_LegRight")
 collision_area = NodePath("CollisionA_LegRight")
+is_part = 1
 
 [node name="CollisionA_LegRight" type="CollisionShape3D" parent="Player/DetectionAreas/Area_LegR"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.354678, 0.465157, 0.185392)
@@ -197,6 +198,7 @@ mesh = NodePath("../../Alien/Alien_LegL")
 damage_label = NodePath("../../Alien/Alien_LegL/Dmg_LegL")
 collision = NodePath("../../Collision_LegLeft")
 collision_area = NodePath("CollisionA_LegLeft")
+is_part = 2
 
 [node name="CollisionA_LegLeft" type="CollisionShape3D" parent="Player/DetectionAreas/Area_LegL"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.328862, 0.441083, 0.0353434)
@@ -212,6 +214,7 @@ mesh = NodePath("../../Alien/Alien_ArmR")
 damage_label = NodePath("../../Alien/Alien_ArmR/Dmg_ArmR")
 collision = NodePath("../../Collision_ArmRight")
 collision_area = NodePath("CollisionA_ArmRight")
+is_part = 3
 
 [node name="CollisionA_ArmRight" type="CollisionShape3D" parent="Player/DetectionAreas/Area_ArmR"]
 transform = Transform3D(0.0959294, -0.0282334, -0.00065124, -0.000468328, -0.0038961, 0.099923, -0.028237, -0.0958525, -0.00386973, 0.222895, 1.25142, -0.735707)
@@ -227,6 +230,7 @@ mesh = NodePath("../../Alien/Alien_ArmL")
 damage_label = NodePath("../../Alien/Alien_ArmL/Dmg_ArmL")
 collision = NodePath("../../Collision_ArmLeft")
 collision_area = NodePath("CollisionA_ArmLeft")
+is_part = 4
 
 [node name="CollisionA_ArmLeft" type="CollisionShape3D" parent="Player/DetectionAreas/Area_ArmL"]
 transform = Transform3D(0.0981955, -0.0188975, -0.000720685, 2.24717e-12, -0.00381088, 0.0999274, -0.0189113, -0.0981243, -0.00374211, -0.684957, 1.35585, -0.666911)

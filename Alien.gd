@@ -3,12 +3,18 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 6
+const fall_death_distance = -50
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 func _physics_process(delta):
+	print(self.global_position.y)
+	if self.global_position.y <= fall_death_distance:
+		var fall_death = true
+		Messenger.instant_death.emit(fall_death)
+	
 #	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://d36bk6expsa7l"]
+
+[ext_resource type="PackedScene" uid="uid://cexyop3i5n2wc" path="res://Terrain/fall_pit_01.blend" id="1_44drc"]
+
+[node name="fall_pit_01" instance=ExtResource("1_44drc")]

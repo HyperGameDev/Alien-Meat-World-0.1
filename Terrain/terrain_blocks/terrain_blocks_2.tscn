@@ -6,9 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://ctwqhtlduw7bn" path="res://Objects/Buildings/Houses/house_01_01.blend" id="3_qieiy"]
 [ext_resource type="Script" path="res://Scripts/Health.gd" id="4_uj32j"]
 [ext_resource type="PackedScene" uid="uid://c0kld2qowd56l" path="res://NPCs/Cows/cow_001.tscn" id="5_72tvb"]
+[ext_resource type="Shape3D" uid="uid://4bdevpsvktnh" path="res://Terrain/fall_pit_01.tres" id="7_8ycgl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7niv"]
 albedo_color = Color(0.301961, 0.235294, 0.101961, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a42j5"]
+points = PackedVector3Array(-24, 0, -10, -24, 0, 10, 24, 0, -10, 24, 0, 10)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yxiax"]
+points = PackedVector3Array(-24, 0, -10, -24, 0, 10, 24, 0, -10, 24, 0, 10)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_d6rcb"]
 size = Vector2(48, 20)
@@ -18,12 +25,6 @@ albedo_color = Color(0.301961, 0.235294, 0.101961, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_csdra"]
 size = Vector2(48, 20)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a42j5"]
-points = PackedVector3Array(-24, 0, -10, -24, 0, 10, 24, 0, -10, 24, 0, 10)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yxiax"]
-points = PackedVector3Array(-24, 0, -10, -24, 0, 10, 24, 0, -10, 24, 0, 10)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gt0cs"]
 points = PackedVector3Array(0.151205, 0.948839, -0.0250146, -0.13451, 0.504299, -0.00916637, 0.0242052, 0.028234, 0.0860814, -0.0233954, 0.520211, -0.152012, 0.0559482, -0.0671381, -0.00916637, -0.00750993, 0.567847, 0.117831, -0.070996, -0.0671381, 0.0225829, -0.102739, 0.742381, -0.104388, 0.119434, 0.742381, -0.104388, 0.0400907, 0.932927, 0.0225829, 0.0876913, 0.155231, 0.0702068, 0.151205, 0.948839, 0.0225829, -0.070996, -0.0671381, -0.00916637, -0.039253, 0.155231, 0.0860814, 0.13532, 0.726569, -0.0885131, 0.0718337, 0.932927, -0.0567639, 0.0242052, 0.536023, 0.117831, -0.13451, 0.551935, -0.00916637, 0.0718337, -0.0352148, 0.0384575, -0.13451, 0.520211, -0.0408892, -0.0233954, -0.0671381, 0.0702068, -0.039253, -0.0671381, -0.0250146, -0.0233954, 0.504299, 0.117831, 0.0876913, 0.948839, 0.0384575, 0.0400907, 0.155231, 0.101956, -0.102739, 0.742381, -0.0726385, 0.119434, 0.710657, -0.104388, 0.0242052, -0.0671381, -0.0250146, 0.0718337, 0.155231, 0.0860814, 0.119434, 0.504299, 0.00670827, 0.0400907, 0.932927, -0.0408892, 0.00834762, 0.139419, 0.101956)
@@ -46,24 +47,11 @@ albedo_color = Color(0.321569, 0.745098, 0.352941, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_4ejao"]
 radius = 0.3
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_g8h2q"]
-size = Vector3(11.71, 8.02, 19.72)
-
 [node name="Terrain_0" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 visibility_range_begin = 4096.0
 mesh = ExtResource("1_o1t5b")
 surface_material_override/0 = SubResource("StandardMaterial3D_x7niv")
-
-[node name="Ground_L" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.9662, 0, 0)
-mesh = SubResource("PlaneMesh_d6rcb")
-surface_material_override/0 = SubResource("StandardMaterial3D_alwhn")
-
-[node name="Ground_R" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.634, 0, 0)
-mesh = SubResource("PlaneMesh_csdra")
-surface_material_override/0 = SubResource("StandardMaterial3D_alwhn")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 
@@ -74,6 +62,16 @@ shape = SubResource("ConvexPolygonShape3D_a42j5")
 [node name="Collision_L" type="CollisionShape3D" parent="Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.966, -0.2, 0)
 shape = SubResource("ConvexPolygonShape3D_yxiax")
+
+[node name="Ground_L" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.9662, 0, 0)
+mesh = SubResource("PlaneMesh_d6rcb")
+surface_material_override/0 = SubResource("StandardMaterial3D_alwhn")
+
+[node name="Ground_R" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.634, 0, 0)
+mesh = SubResource("PlaneMesh_csdra")
+surface_material_override/0 = SubResource("StandardMaterial3D_alwhn")
 
 [node name="Tree-01_1" type="Area3D" parent="."]
 transform = Transform3D(0.155245, 0, 0.987876, 0, 1, 0, -0.987876, 0, 0.155245, -2.59405, 0, 8.9)
@@ -167,8 +165,9 @@ script = ExtResource("2_khj8b")
 damage_amount = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hole_1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.7, 0)
-shape = SubResource("BoxShape3D_g8h2q")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.7)
+shape = ExtResource("7_8ycgl")
+disabled = true
 
 [editable path="Tree-01_1/tree_01-03"]
 [editable path="Tree-01_2/tree_01-03"]
