@@ -63,3 +63,7 @@ Grab={
 
 3d_physics/layer_2="Ground"
 3d_physics/layer_3="Obstacle"
+
+[rendering]
+
+anti_aliasing/quality/use_taa=true

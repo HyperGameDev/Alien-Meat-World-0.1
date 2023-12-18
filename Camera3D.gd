@@ -2,8 +2,11 @@ extends Camera3D
 
 @export var cam_target: Node3D
 @export var cam_lerpspeed = .05
-@export var cam_z_offset = 5.5
-@export var cam_y_offset = 3
+
+@export var cam_z_offset = 10
+const CAM_Z_OFFSET = 10
+@export var cam_y_offset = 3.7
+@export var cam_x_offset = 0
 
 
 var is_grabbed = false
@@ -18,14 +21,15 @@ func _ready():
 func _physics_process(_delta):
 	var input_up = Input.is_action_pressed("ui_up")
 	var input_up_end = Input.is_action_just_released("ui_up")
-	if input_up and cam_z_offset <= 6:
+	if input_up and cam_z_offset == CAM_Z_OFFSET:
 		cam_z_offset += .75
-	if input_up_end and cam_z_offset >= 5.5:
+	if input_up_end and cam_z_offset >= CAM_Z_OFFSET:
 		cam_z_offset -= .75
 	
 	var cam_follow_pos: Vector3 = cam_target.position
 	cam_follow_pos.z += cam_z_offset
 	cam_follow_pos.y += cam_y_offset
+	cam_follow_pos.x += cam_x_offset
 	
 	# Normalize
 	var cam_direction: Vector3 = cam_follow_pos - self.position

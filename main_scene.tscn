@@ -1,6 +1,5 @@
 [gd_scene load_steps=23 format=3 uid="uid://b3g7wl2wuuw1x"]
 
-[ext_resource type="Script" path="res://new_script.gd" id="1_fbb15"]
 [ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="2_qvpxy"]
 [ext_resource type="Script" path="res://Alien.gd" id="3_ia6ow"]
@@ -42,8 +41,31 @@ sky_material = SubResource("ProceduralSkyMaterial_fr5e4")
 [sub_resource type="Environment" id="Environment_hole3"]
 background_mode = 2
 sky = SubResource("Sky_bi31s")
-tonemap_mode = 2
+tonemap_mode = 3
+sdfgi_enabled = true
+sdfgi_bounce_feedback = 1.08
 glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.247059, 0.556863, 0.901961, 1)
+fog_light_energy = 0.93
+fog_density = 0.0014
+fog_sky_affect = 0.435
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0071
+volumetric_fog_albedo = Color(1, 0.643137, 0.678431, 1)
+volumetric_fog_emission = Color(0, 0.168627, 0.294118, 1)
+volumetric_fog_emission_energy = 9.79
+volumetric_fog_gi_inject = 1.18
+volumetric_fog_anisotropy = -0.53
+volumetric_fog_length = 138.71
+volumetric_fog_detail_spread = 1.97926
+volumetric_fog_ambient_inject = 0.9
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_se27i"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 82.79
+dof_blur_far_transition = 130.53
+dof_blur_amount = 0.31
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4xqnu"]
 size = Vector3(192.385, 1, 49.5471)
@@ -72,7 +94,6 @@ radius = 1.901
 height = 17.822
 
 [node name="Main Scene" type="Node3D"]
-script = ExtResource("1_fbb15")
 
 [node name="UI_FX" type="Control" parent="."]
 layout_mode = 3
@@ -119,9 +140,13 @@ shadow_blur = 2.599
 environment = SubResource("Environment_hole3")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("cam_target")]
-transform = Transform3D(1, 0, 0, 0, 0.986286, 0.165048, 0, -0.165048, 0.986286, -0.147, 2.558, 6.185)
+attributes = SubResource("CameraAttributesPractical_se27i")
+doppler_tracking = 2
 current = true
-fov = 37.3
+fov = 21.0
+size = 5.0
+near = 0.214
+far = 1000.0
 script = ExtResource("2_qvpxy")
 cam_target = NodePath("../Player/Cam_Target")
 
@@ -145,7 +170,7 @@ axis_lock_linear_z = true
 script = ExtResource("3_ia6ow")
 
 [node name="Cam_Target" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.967709, 0.252069, 0, -0.252069, 0.967709, 0.228, 3, 5.5)
+transform = Transform3D(1, 0, 0, 0, 0.982935, 0.183951, 0, -0.183951, 0.982935, 0.228, 3, 5.50001)
 script = ExtResource("5_iuboh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Cam_Target"]
@@ -241,6 +266,7 @@ shape = SubResource("CapsuleShape3D_v6wbe")
 [node name="Dmg_Body" type="Label3D" parent="Player/Alien/Alien_Body" index="0"]
 unique_name_in_owner = true
 transform = Transform3D(1.98652, 0, 0, 0, 1.98652, 0, 0, 0, 1.98652, -0.084, 2.502, 0.803036)
+alpha_cut = 1
 outline_modulate = Color(0, 0.219608, 0, 1)
 text = "4"
 font_size = 60
@@ -249,6 +275,7 @@ outline_size = 30
 [node name="Dmg_LegR" type="Label3D" parent="Player/Alien/Alien_LegR" index="0"]
 unique_name_in_owner = true
 transform = Transform3D(1.98651, 0, 0, 0, 1.98651, 0, 0, 0, 1.98651, 0.610204, 1, 0.741699)
+alpha_cut = 1
 outline_modulate = Color(0, 0.219608, 0, 1)
 text = "4"
 font_size = 60
@@ -257,6 +284,7 @@ outline_size = 30
 [node name="Dmg_LegL" type="Label3D" parent="Player/Alien/Alien_LegL" index="0"]
 unique_name_in_owner = true
 transform = Transform3D(1.98652, 0, 0, 0, 1.98652, 0, 0, 0, 1.98652, -0.495223, 1, 0.741701)
+alpha_cut = 1
 outline_modulate = Color(0, 0.219608, 0, 1)
 text = "4"
 font_size = 60
@@ -265,6 +293,8 @@ outline_size = 30
 [node name="Dmg_ArmL" type="Label3D" parent="Player/Alien/Alien_ArmL" index="0"]
 unique_name_in_owner = true
 transform = Transform3D(1.98652, 0, 0, 0, 1.98652, 0, 0, 0, 1.98652, -1.62494, 3.07065, -1.45536)
+double_sided = false
+alpha_cut = 1
 outline_modulate = Color(0, 0.219608, 0, 1)
 text = "4"
 font_size = 60
@@ -273,6 +303,7 @@ outline_size = 30
 [node name="Dmg_ArmR" type="Label3D" parent="Player/Alien/Alien_ArmR" index="0"]
 unique_name_in_owner = true
 transform = Transform3D(1.98651, 0, 0, 0, 1.98651, 0, 0, 0, 1.98651, 0.680735, 3.07034, -1.4554)
+alpha_cut = 1
 outline_modulate = Color(0, 0.219608, 0, 1)
 text = "4"
 font_size = 60
