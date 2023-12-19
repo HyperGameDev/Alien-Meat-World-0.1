@@ -43,13 +43,15 @@ background_mode = 2
 sky = SubResource("Sky_bi31s")
 tonemap_mode = 3
 sdfgi_enabled = true
-sdfgi_bounce_feedback = 1.08
+sdfgi_read_sky_light = false
 glow_enabled = true
 fog_enabled = true
 fog_light_color = Color(0.247059, 0.556863, 0.901961, 1)
 fog_light_energy = 0.93
 fog_density = 0.0014
 fog_sky_affect = 0.435
+fog_height = -37.92
+fog_height_density = 0.2
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0071
 volumetric_fog_albedo = Color(1, 0.643137, 0.678431, 1)
@@ -65,7 +67,9 @@ volumetric_fog_ambient_inject = 0.9
 dof_blur_far_enabled = true
 dof_blur_far_distance = 82.79
 dof_blur_far_transition = 130.53
-dof_blur_amount = 0.31
+dof_blur_near_distance = 9.32
+dof_blur_near_transition = 1140.9
+dof_blur_amount = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4xqnu"]
 size = Vector3(192.385, 1, 49.5471)
@@ -140,6 +144,7 @@ shadow_blur = 2.599
 environment = SubResource("Environment_hole3")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("cam_target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43187e-05, 0.012094, -0.000411987)
 attributes = SubResource("CameraAttributesPractical_se27i")
 doppler_tracking = 2
 current = true

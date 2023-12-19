@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1435v37qaf1h"]
+
+[ext_resource type="PackedScene" uid="uid://b0icdb3xs5r12" path="res://Objects/Rocks/rock_cliff_01.blend" id="1_svfur"]
+
+[node name="rock_cliff_02" instance=ExtResource("1_svfur")]

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvh85ky784ivq"]
+
+[ext_resource type="PackedScene" uid="uid://1m5dh6b70fej" path="res://Terrain/Cliffs/cliff_side_01.blend" id="1_n0b1k"]
+
+[node name="cliff_side_01" instance=ExtResource("1_n0b1k")]
