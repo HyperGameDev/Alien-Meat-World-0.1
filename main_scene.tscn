@@ -192,8 +192,8 @@ collision_layer = 4
 collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../..")
-mesh = NodePath("../../Alien/Alien_Body")
-damage_label = NodePath("../../Alien/Alien_Body/Dmg_Body")
+mesh = NodePath("../../Alien/Armature/Skeleton3D/Alien_Body")
+damage_label = NodePath("../../Alien/Armature/Skeleton3D/Alien_Body/Dmg_Body")
 collision = NodePath("../../Collision_AlienBody")
 collision_area = NodePath("CollisionA_AlienBody")
 
@@ -208,8 +208,8 @@ collision_layer = 4
 collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../..")
-mesh = NodePath("../../Alien/Alien_LegR")
-damage_label = NodePath("../../Alien/Alien_LegR/Dmg_LegR")
+mesh = NodePath("../../Alien/Armature/Skeleton3D/Alien_LegR")
+damage_label = NodePath("../../Alien/Armature/Skeleton3D/Alien_LegR/Dmg_LegR")
 collision = NodePath("../../Collision_LegRight")
 collision_area = NodePath("CollisionA_LegRight")
 is_part = 1
@@ -224,8 +224,8 @@ collision_layer = 4
 collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../..")
-mesh = NodePath("../../Alien/Alien_LegL")
-damage_label = NodePath("../../Alien/Alien_LegL/Dmg_LegL")
+mesh = NodePath("../../Alien/Armature/Skeleton3D/Alien_LegL")
+damage_label = NodePath("../../Alien/Armature/Skeleton3D/Alien_LegL/Dmg_LegL")
 collision = NodePath("../../Collision_LegLeft")
 collision_area = NodePath("CollisionA_LegLeft")
 is_part = 2
@@ -240,8 +240,8 @@ collision_layer = 4
 collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../..")
-mesh = NodePath("../../Alien/Alien_ArmR")
-damage_label = NodePath("../../Alien/Alien_ArmR/Dmg_ArmR")
+mesh = NodePath("../../Alien/Armature/Skeleton3D/Alien_ArmR")
+damage_label = NodePath("../../Alien/Armature/Skeleton3D/Alien_ArmR/Dmg_ArmR")
 collision = NodePath("../../Collision_ArmRight")
 collision_area = NodePath("CollisionA_ArmRight")
 is_part = 3
@@ -256,8 +256,8 @@ collision_layer = 4
 collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../..")
-mesh = NodePath("../../Alien/Alien_ArmL")
-damage_label = NodePath("../../Alien/Alien_ArmL/Dmg_ArmL")
+mesh = NodePath("../../Alien/Armature/Skeleton3D/Alien_ArmL")
+damage_label = NodePath("../../Alien/Armature/Skeleton3D/Alien_ArmL/Dmg_ArmL")
 collision = NodePath("../../Collision_ArmLeft")
 collision_area = NodePath("CollisionA_ArmLeft")
 is_part = 4
@@ -268,50 +268,55 @@ shape = SubResource("CapsuleShape3D_v6wbe")
 
 [node name="Alien" parent="Player" instance=ExtResource("4_huvyo")]
 
-[node name="Dmg_Body" type="Label3D" parent="Player/Alien/Alien_Body" index="0"]
+[node name="Dmg_ArmL" type="Label3D" parent="Player/Alien/Armature/Skeleton3D/Alien_ArmL" index="0"]
 unique_name_in_owner = true
-transform = Transform3D(1.98652, 0, 0, 0, 1.98652, 0, 0, 0, 1.98652, -0.084, 2.502, 0.803036)
-alpha_cut = 1
-outline_modulate = Color(0, 0.219608, 0, 1)
-text = "4"
-font_size = 60
-outline_size = 30
-
-[node name="Dmg_LegR" type="Label3D" parent="Player/Alien/Alien_LegR" index="0"]
-unique_name_in_owner = true
-transform = Transform3D(1.98651, 0, 0, 0, 1.98651, 0, 0, 0, 1.98651, 0.610204, 1, 0.741699)
-alpha_cut = 1
-outline_modulate = Color(0, 0.219608, 0, 1)
-text = "4"
-font_size = 60
-outline_size = 30
-
-[node name="Dmg_LegL" type="Label3D" parent="Player/Alien/Alien_LegL" index="0"]
-unique_name_in_owner = true
-transform = Transform3D(1.98652, 0, 0, 0, 1.98652, 0, 0, 0, 1.98652, -0.495223, 1, 0.741701)
-alpha_cut = 1
-outline_modulate = Color(0, 0.219608, 0, 1)
-text = "4"
-font_size = 60
-outline_size = 30
-
-[node name="Dmg_ArmL" type="Label3D" parent="Player/Alien/Alien_ArmL" index="0"]
-unique_name_in_owner = true
-transform = Transform3D(1.98652, 0, 0, 0, 1.98652, 0, 0, 0, 1.98652, -1.62494, 3.07065, -1.45536)
+transform = Transform3D(1.97934, 0, 0.17317, 0, 1.9869, 0, -0.17317, 0, 1.97934, -1.74479, 3.06826, -1.30488)
+offset = Vector2(80, -150)
 double_sided = false
 alpha_cut = 1
 outline_modulate = Color(0, 0.219608, 0, 1)
 text = "4"
-font_size = 60
+font_size = 35
 outline_size = 30
 
-[node name="Dmg_ArmR" type="Label3D" parent="Player/Alien/Alien_ArmR" index="0"]
+[node name="Dmg_ArmR" type="Label3D" parent="Player/Alien/Armature/Skeleton3D/Alien_ArmR" index="0"]
 unique_name_in_owner = true
-transform = Transform3D(1.98651, 0, 0, 0, 1.98651, 0, 0, 0, 1.98651, 0.680735, 3.07034, -1.4554)
+transform = Transform3D(1.95852, 0, 0.171348, 0, 1.966, 0, -0.171348, 0, 1.95852, 0.552544, 3.06795, -1.50591)
+offset = Vector2(-30, -150)
 alpha_cut = 1
 outline_modulate = Color(0, 0.219608, 0, 1)
 text = "4"
-font_size = 60
+font_size = 35
+outline_size = 30
+
+[node name="Dmg_Body" type="Label3D" parent="Player/Alien/Armature/Skeleton3D/Alien_Body" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(1.9966, 0, 0.17468, 0, 2.00423, 0, -0.17468, 0, 1.9966, -0.0141464, 2.50105, 0.804974)
+offset = Vector2(0, -120)
+alpha_cut = 1
+outline_modulate = Color(0, 0.219608, 0, 1)
+text = "4"
+font_size = 35
+outline_size = 30
+
+[node name="Dmg_LegL" type="Label3D" parent="Player/Alien/Armature/Skeleton3D/Alien_LegL" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(1.97393, 0, 0.172697, 0, 1.98147, 0, -0.172697, 0, 1.97393, -0.428096, 1.00287, 0.779777)
+offset = Vector2(10, -50)
+alpha_cut = 1
+outline_modulate = Color(0, 0.219608, 0, 1)
+text = "4"
+font_size = 35
+outline_size = 30
+
+[node name="Dmg_LegR" type="Label3D" parent="Player/Alien/Armature/Skeleton3D/Alien_LegR" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(1.97392, 0, 0.172696, 0, 1.98146, 0, -0.172696, 0, 1.97392, 0.670326, 1.00287, 0.683676)
+offset = Vector2(-30, -50)
+alpha_cut = 1
+outline_modulate = Color(0, 0.219608, 0, 1)
+text = "4"
+font_size = 35
 outline_size = 30
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
