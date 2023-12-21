@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccpb3fm8lr3kb"]
+[gd_scene load_steps=11 format=3 uid="uid://bgd1787acfu6q"]
 
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_d6jvk"]
 [ext_resource type="PlaneMesh" uid="uid://7d0gnku46y8v" path="res://Terrain/terrain_blocks_default.tres" id="1_hlwdv"]

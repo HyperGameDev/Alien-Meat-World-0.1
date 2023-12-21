@@ -44,6 +44,11 @@ func _physics_process(delta):
 	if input_up == false and terrain_slowdown == false:
 		%TerrainController.terrain_velocity = %TerrainController.TERRAIN_VELOCITY
 
+	if terrain_slowdown == false:
+		$Alien/AnimationPlayer.play("Run_1")
+	else:
+		$Alien/AnimationPlayer.stop(true)
+		
 # Collision stops level movement
 		
 	move_and_slide()
