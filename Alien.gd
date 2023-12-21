@@ -26,7 +26,8 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	var input_jump = Input.is_action_just_pressed("ui_accept")
+	if input_jump and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
@@ -44,9 +45,12 @@ func _physics_process(delta):
 	if input_up == false and terrain_slowdown == false:
 		%TerrainController.terrain_velocity = %TerrainController.TERRAIN_VELOCITY
 
-	if terrain_slowdown == false:
-		$Alien/AnimationPlayer.play("Walk_1")
+	if input_up == true:
+		$Alien/AnimationPlayer.play("Run_1", 1)
 	else:
+		$Alien/AnimationPlayer.play("Walk_1", 1)
+		
+	if terrain_slowdown == true:
 		$Alien/AnimationPlayer.stop(true)
 		
 # Collision stops level movement
