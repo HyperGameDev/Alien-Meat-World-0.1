@@ -3,10 +3,10 @@ extends Area3D
 class_name BodyPart
 
 @export var player: CharacterBody3D
-@export var mesh: MeshInstance3D
-@export var damage_label: Label3D
 @export var collision: CollisionShape3D
 @export var collision_area: CollisionShape3D
+
+@onready var mesh = player.get_node("Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1])
 
 @export var is_part: is_parts
 
@@ -44,7 +44,7 @@ func damage_detected(bodypart_area):
 #		print("Damage Dealt")
 		if current_health > 0 and amount_to_damage != Obstacle.damage_amounts.NONE:
 			current_health -= hurt_limb
-			damage_label.text = str(current_health)
+			player.get_node("Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
 			mesh.show()
 			is_damaged = true
 			Messenger.limb_is_damaged.emit(is_damaged)
@@ -71,7 +71,7 @@ func fall_death(fall_death):
 func health_collected(bodypart_area):
 	if bodypart_area == self and current_health < max_health:
 		current_health += 1
-		damage_label.text = str(current_health)
+		player.get_node("Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
 #		print("current_health collected")
 		mesh.show()
 		var tween = get_tree().create_tween();

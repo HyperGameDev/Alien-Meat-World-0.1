@@ -494,3 +494,49 @@ bones/15/scale = Vector3(0.999999, 1, 1)
 bones/16/position = Vector3(4.92499e-07, 0.526815, -2.25095e-07)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423054, 0.969011)
 bones/16/scale = Vector3(0.999999, 1, 1)
+
+[node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_ArmL" index="0"]
+transform = Transform3D(1.97934, 0, 0.17317, 0, 1.9869, 0, -0.17317, 0, 1.97934, -1.74479, 3.06826, -1.30488)
+offset = Vector2(80, -150)
+double_sided = false
+alpha_cut = 1
+outline_modulate = Color(0, 0.219608, 0, 1)
+text = "4"
+font_size = 35
+outline_size = 30
+
+[node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_ArmR" index="0"]
+transform = Transform3D(1.98337, 0, 0.173522, 0, 1.99094, 0, -0.173522, 0, 1.98337, 0.552544, 3.06795, -1.50591)
+offset = Vector2(-30, -150)
+alpha_cut = 1
+outline_modulate = Color(0, 0.219608, 0, 1)
+text = "4"
+font_size = 35
+outline_size = 30
+
+[node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_Body" index="0"]
+transform = Transform3D(1.9966, 0, 0.17468, 0, 2.00423, 0, -0.17468, 0, 1.9966, -0.0141464, 2.50105, 0.804974)
+offset = Vector2(0, -120)
+alpha_cut = 1
+outline_modulate = Color(0, 0.219608, 0, 1)
+text = "4"
+font_size = 35
+outline_size = 30
+
+[node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegL" index="0"]
+transform = Transform3D(1.97393, 0, 0.172697, 0, 1.98147, 0, -0.172697, 0, 1.97393, -0.428096, 1.00287, 0.779777)
+offset = Vector2(10, -50)
+alpha_cut = 1
+outline_modulate = Color(0, 0.219608, 0, 1)
+text = "4"
+font_size = 35
+outline_size = 30
+
+[node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegR" index="0"]
+transform = Transform3D(1.97392, 0, 0.172696, 0, 1.98146, 0, -0.172696, 0, 1.97392, 0.670326, 1.00287, 0.683676)
+offset = Vector2(-30, -50)
+alpha_cut = 1
+outline_modulate = Color(0, 0.219608, 0, 1)
+text = "4"
+font_size = 35
+outline_size = 30
