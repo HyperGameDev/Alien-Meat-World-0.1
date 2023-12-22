@@ -1,5 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=24 format=3 uid="uid://b3g7wl2wuuw1x"]
 
+[ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="2_qvpxy"]
 [ext_resource type="Script" path="res://Alien.gd" id="3_ia6ow"]
@@ -98,6 +99,21 @@ radius = 1.901
 height = 17.822
 
 [node name="Main Scene" type="Node3D"]
+
+[node name="Debug" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1xhrq")
+
+[node name="Label_Hide-Hp" type="Label" parent="Debug"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 30
+text = "Hide Hit Points"
 
 [node name="UI_FX" type="Control" parent="."]
 layout_mode = 3
