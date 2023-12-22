@@ -259,10 +259,7 @@ shape = SubResource("CapsuleShape3D_v6wbe")
 [node name="Alien" parent="Player" instance=ExtResource("4_huvyo")]
 transform = Transform3D(1, 0.00048692, 0.000306956, -0.000486927, 1, 2.02796e-05, -0.000306949, -2.04407e-05, 1, 0, 0, 0)
 
-[node name="Armature" parent="Player/Alien" index="6"]
-transform = Transform3D(1, 0, 0, 0, 0.963111, 0.269104, 0, -0.269104, 0.963111, 0, 0.0550657, 0)
-
-[node name="Skeleton3D" parent="Player/Alien/Armature" index="5"]
+[node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 transform = Transform3D(0.996626, 0, 0, 0, 0.996625, 0, 0, 0, 0.996626, 0, 0, 0)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
