@@ -45,10 +45,14 @@ func _physics_process(delta):
 	if input_up == false and terrain_slowdown == false:
 		%TerrainController.terrain_velocity = %TerrainController.TERRAIN_VELOCITY
 
-	if input_up == true:
-		$Alien/AnimationPlayer.play("Run_1", 1)
+	var debug_2 = $"../Debug".debug_2
+	if debug_2 == false:
+		if input_up == true:
+			$Alien/AnimationPlayer.play("Run_1", 1)
+		else:
+			$Alien/AnimationPlayer.play("Walk_1", 1)
 	else:
-		$Alien/AnimationPlayer.play("Walk_1", 1)
+		$Alien/AnimationPlayer.play("Feed_Walk_1", 1)
 		
 	if terrain_slowdown == true:
 		$Alien/AnimationPlayer.stop(true)

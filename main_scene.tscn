@@ -277,6 +277,7 @@ transform = Transform3D(1, 0.00048692, 0.000306956, -0.000486927, 1, 2.02796e-05
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 transform = Transform3D(0.996626, 0, 0, 0, 0.996625, 0, 0, 0, 0.996626, 0, 0, 0)
+bones/17/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.354678, 0.465157, 0.185392)
