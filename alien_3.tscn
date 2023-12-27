@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1q8m4i26u6vr"]
+[gd_scene load_steps=14 format=3 uid="uid://c1q8m4i26u6vr"]
 
 [ext_resource type="PackedScene" uid="uid://diukxh5eov8fo" path="res://Player/Alien_3.blend" id="1_p4qsu"]
 
@@ -591,6 +591,15 @@ _data = {
 "Walk_1": SubResource("Animation_01jtj")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hxch2"]
+albedo_color = Color(0.298039, 0.741176, 0.352941, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3tvyn"]
+albedo_color = Color(0.298039, 0.741176, 0.352941, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6msii"]
+albedo_color = Color(0.298039, 0.741176, 0.352941, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2ye2"]
 albedo_color = Color(0.682353, 0.0196078, 0, 1)
 
@@ -599,6 +608,12 @@ diffuse_mode = 3
 specular_mode = 1
 albedo_color = Color(1.1, 1.1, 1.1, 1)
 metallic_specular = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2j1cl"]
+albedo_color = Color(0.298039, 0.741176, 0.352941, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eh052"]
+albedo_color = Color(0.298039, 0.741176, 0.352941, 1)
 
 [node name="Alien_3" instance=ExtResource("1_p4qsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0731478, 0)
@@ -658,6 +673,9 @@ bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423054, 0.969011)
 bones/16/scale = Vector3(0.999999, 1, 1)
 bones/17/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 
+[node name="Alien_ArmL" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_hxch2")
+
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_ArmL" index="0"]
 transform = Transform3D(1.97934, 0, 0.17317, 0, 1.9869, 0, -0.17317, 0, 1.97934, -1.74479, 3.06826, -1.30488)
 visible = false
@@ -668,6 +686,9 @@ outline_modulate = Color(0, 0.219608, 0, 1)
 text = "4"
 font_size = 35
 outline_size = 30
+
+[node name="Alien_ArmR" parent="Armature/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_3tvyn")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_ArmR" index="0"]
 transform = Transform3D(1.98337, 0, 0.173522, 0, 1.99094, 0, -0.173522, 0, 1.98337, 0.552544, 3.06795, -1.50591)
@@ -680,6 +701,7 @@ font_size = 35
 outline_size = 30
 
 [node name="Alien_Body" parent="Armature/Skeleton3D" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6msii")
 surface_material_override/1 = SubResource("StandardMaterial3D_l2ye2")
 surface_material_override/2 = SubResource("StandardMaterial3D_ub80w")
 
@@ -693,6 +715,9 @@ text = "4"
 font_size = 35
 outline_size = 30
 
+[node name="Alien_LegL" parent="Armature/Skeleton3D" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_2j1cl")
+
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegL" index="0"]
 transform = Transform3D(1.97393, 0, 0.172697, 0, 1.98147, 0, -0.172697, 0, 1.97393, -0.428096, 1.00287, 0.779777)
 visible = false
@@ -702,6 +727,9 @@ outline_modulate = Color(0, 0.219608, 0, 1)
 text = "4"
 font_size = 35
 outline_size = 30
+
+[node name="Alien_LegR" parent="Armature/Skeleton3D" index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_eh052")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegR" index="0"]
 transform = Transform3D(1.97392, 0, 0.172696, 0, 1.98146, 0, -0.172696, 0, 1.97392, 0.670326, 1.00287, 0.683676)

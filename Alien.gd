@@ -69,7 +69,7 @@ func slowdown(slowdown_amount):
 		%TerrainController.terrain_velocity = 0
 		
 func damage_undetected(_bodypart_unarea):
-	print("Feet Unseen")
+#	print("Feet Unseen")
 	terrain_slowdown = false
 
 
