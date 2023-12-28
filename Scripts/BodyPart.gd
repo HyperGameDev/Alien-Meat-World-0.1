@@ -10,7 +10,6 @@ class_name BodyPart
 
 var dmg_timer_end = false
 
-@onready var dmg_timer : Timer = Timer.new()
 @onready var dmg_flash_timer : Timer = Timer.new()
 @onready var material_reset : Timer = Timer.new()
 
@@ -46,7 +45,7 @@ func _ready():
 	damage_material.set_albedo(Color(0.5, 0.0, 0.0))
 	
 # Damage Flash timer setup
-#	%Timer_Limb_Dmg_Flash.timeout.connect(flash_damage_end)
+	$Timer_Limb_Dmg_Flash.timeout.connect(flash_damage_end)
 
 	dmg_flash_timer.timeout.connect(flash_damage)
 	add_child(dmg_flash_timer)
@@ -79,8 +78,8 @@ func damage_detected(bodypart_area):
 	# Damaged with >0 Health
 		var flash_length = 0
 		flash_length += 4
+		$Timer_Limb_Dmg_Flash.start(flash_length)
 		dmg_timer_end = false
-#		%Timer_Limb_Dmg_Flash.start(flash_length)
 		if current_health > 0 and amount_to_damage != Obstacle.damage_amounts.NONE:
 			current_health -= hurt_limb
 			player.get_node("Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
