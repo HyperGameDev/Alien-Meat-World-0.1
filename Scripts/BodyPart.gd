@@ -8,8 +8,8 @@ class_name BodyPart
 
 @onready var mesh = player.get_node("Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1])
 
-@onready var dmg_flash_begin : Timer = Timer.new()
-@onready var dmg_flash_end : Timer = Timer.new()
+@onready var dmg_timer : Timer = Timer.new()
+@onready var material_reset : Timer = Timer.new()
 
 @export var is_part: is_parts
 
@@ -39,16 +39,16 @@ func _ready():
 	Messenger.health_detected.connect(health_collected)
 	
 # Material setup
-
 	default_material.set_albedo(Color(0.3, 0.74, .35))
 	damage_material.set_albedo(Color(0.5, 0.0, 0.0))
 	
-# Timer timeout setup
-	dmg_flash_begin.timeout.connect(_dmg_flash_end)
-	add_child(dmg_flash_begin)
-	
-	dmg_flash_end.timeout.connect(_dmg_flash_begin)
-	add_child(dmg_flash_end)
+# Damage Flash timer setup
+	var current_health_mod = current_health / 3
+	dmg_timer.timeout.connect(flash_damage)
+	material_reset.one_shot = true
+	add_child(dmg_timer)
+	add_child(material_reset)
+	dmg_timer.start(0.8)
 	
 
 func damage_amount(damage_amount):
@@ -68,10 +68,7 @@ func damage_detected(bodypart_area):
 #		print(hurt_limb)
 #		print(self) 
 #		print("Damage Dealt")
-
-		# Hit flash check
-		mesh.material_override = damage_material
-		dmg_flash_begin.start(1)
+		
 
 	# Damaged with >0 Health
 		if current_health > 0 and amount_to_damage != Obstacle.damage_amounts.NONE:
@@ -96,21 +93,16 @@ func damage_detected(bodypart_area):
 			Messenger.body_is_damaged.emit(is_damaged)
 		if current_health <= 0:
 			get_tree().reload_current_scene()
-	
-	
-func _dmg_flash_end():
-	if current_health == max_health:
-		mesh.material_override = default_material
-		dmg_flash_end.stop()
-	else:
-		mesh.material_override = default_material
-		dmg_flash_end.start(.2)
-	
-func _dmg_flash_begin():
-	if current_health < max_health:
-		mesh.material_override = damage_material
-		dmg_flash_begin.start(.2)
 
+func flash_damage():
+	var current_health_mod = current_health / 3
+	if current_health < max_health:
+#		dmg_timer.paused = true
+		mesh.material_override = damage_material
+		material_reset.start(.4)
+		await material_reset.timeout
+		mesh.material_override = default_material
+#		dmg_timer.paused = false
 
 
 func fall_death(fall_death):
