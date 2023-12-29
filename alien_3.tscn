@@ -633,16 +633,17 @@ bones/0/rotation = Quaternion(-2.98023e-08, 1.19209e-07, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/position = Vector3(-1.70466e-09, 0.241477, 1.92848e-08)
 bones/1/rotation = Quaternion(-0.14132, -0.00337756, 0.700212, 0.699801)
-bones/1/scale = Vector3(1, 1, 1)
+bones/1/scale = Vector3(1.00048, 1.00048, 1.00048)
 bones/2/position = Vector3(-7.48877e-07, 0.519572, -3.53011e-08)
 bones/2/rotation = Quaternion(-0.480293, 0.0256096, -0.151897, 0.863476)
-bones/2/scale = Vector3(1, 1, 0.999999)
+bones/2/scale = Vector3(1.00048, 1.00048, 1.00048)
 bones/3/position = Vector3(2.57276e-06, 0.796728, 1.16619e-07)
 bones/3/rotation = Quaternion(-0.125169, -0.000398247, -0.0297048, 0.991691)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/rotation = Quaternion(-3.55271e-15, 1.77636e-14, -2.01948e-28, 1)
 bones/5/position = Vector3(-5.42995e-09, 0.268125, 1.92848e-08)
 bones/5/rotation = Quaternion(-3.55271e-15, 0, -2.01948e-28, 1)
+bones/5/scale = Vector3(1.00048, 1.00048, 1.00048)
 bones/6/position = Vector3(0.00465325, 0.241477, -3.92105e-08)
 bones/6/rotation = Quaternion(-0.141073, 0.0124602, -0.65964, 0.738118)
 bones/7/position = Vector3(-4.74906e-06, 0.468296, 1.27069e-06)
@@ -688,6 +689,7 @@ font_size = 35
 outline_size = 30
 
 [node name="Alien_ArmR" parent="Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00129759, 0, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_3tvyn")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_ArmR" index="0"]
