@@ -21,7 +21,7 @@ var max_health = 4
 var current_health = 4
 var stand_speed = .5
 
-var hurt_limb = 1
+var limb_damage_amount = 1
 
 var is_damaged = false
 
@@ -59,40 +59,49 @@ func _ready():
 func damage_amount(damage_amount):
 	amount_to_damage = damage_amount
 	if damage_amount == Obstacle.damage_amounts.FULL:
-		hurt_limb = 100
+		limb_damage_amount = 100
 	if damage_amount == Obstacle.damage_amounts.LOWEST:
-		hurt_limb = 1
+		limb_damage_amount = 1
 	if damage_amount == Obstacle.damage_amounts.NONE:
-		hurt_limb = 0
+		limb_damage_amount = 0
 	
 	
 func damage_detected(bodypart_area):
 	
 	# Check what limb I am
 	if bodypart_area == self:
-#		print(hurt_limb)
+#		print(limb_damage_amount)
 #		print(self) 
 #		print("Damage Dealt")
 		
 
 	# Damaged with >0 Health
+		# Start Damage Flash
 		var flash_length = 0
 		flash_length += 4
 		$Timer_Limb_Dmg_Flash.start(flash_length)
 		dmg_timer_end = false
+		
 		if current_health > 0 and amount_to_damage != Obstacle.damage_amounts.NONE:
-			current_health -= hurt_limb
-			player.get_node("Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
-			mesh.show()
 			is_damaged = true
+			# Ensure limb is visible
+			mesh.show()
+			# Apply damage
+			current_health -= limb_damage_amount
+			# Update the Damage Label
+			player.get_node("Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
 		
 	# Damaged with <=0 Health
+			# Inform UI_FX to flash the screen
 			Messenger.limb_is_damaged.emit(is_damaged)
+			
 		if current_health <= 0:
 			mesh.hide()
+			# Syncronise collision turning off with physics process
 			await get_tree().process_frame
-#			collision.set_deferred("disable", true)
 			collision.disabled = true
+			# Alternative sync method (deprecated): collision.set_deferred("disable", true)
+			
 			
 	# Damaged the Body
 	if bodypart_area == %Area_Body and is_part == BodyPart.is_parts.BODY and amount_to_damage != Obstacle.damage_amounts.NONE:
@@ -112,7 +121,7 @@ func flash_damage():
 		
 func flash_damage_end():
 	dmg_timer_end = true
-	print("dmg_timer_end")
+#	print("dmg_timer_end")
 	
 
 
