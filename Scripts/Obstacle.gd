@@ -19,10 +19,10 @@ func _ready():
 func _process(_delta):
 	pass
 	
-func check_area(bodypart_area):
-#	bodypart_area.mesh.hide()
-#	bodypart_area.mesh
-	Messenger.area_damaged.emit(bodypart_area)
+func check_area(collided_bodypart):
+#	collided_bodypart.mesh.hide()
+#	collided_bodypart.mesh
+	Messenger.area_damaged.emit(collided_bodypart)
 	Messenger.amount_damaged.emit(damage_amount)
 	Messenger.amount_slowed.emit(slowdown_amount)
 	

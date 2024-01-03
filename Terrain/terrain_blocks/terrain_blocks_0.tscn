@@ -46,16 +46,21 @@ transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 41.6496, -7.7, 13.3291)
 shape = SubResource("ConvexPolygonShape3D_qwi2u")
 
 [node name="Tree-01_2" type="Area3D" parent="."]
-transform = Transform3D(-0.915037, 0, 0.40337, 0, 1, 0, -0.40337, 0, -0.915037, -2.00002, 0, 6.85849)
+transform = Transform3D(-0.915037, 0, 0.40337, 0, 1, 0, -0.40337, 0, -0.915037, -2.00301, 0.00303376, 6.85647)
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("2_gvs7x")
+damage_amount = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_2"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_stmf6")
 
 [node name="tree_01-03" parent="Tree-01_2" instance=ExtResource("2_fbo47")]
+
+[node name="Trunk" parent="Tree-01_2/tree_01-03" index="0"]
+transform = Transform3D(2.50379, 0, -1.19209e-07, 0, 2.50379, 0, 1.19209e-07, 0, 2.50379, 0, 0, 0)
+surface_material_override/0 = null
 
 [node name="Tree-01_3" type="Area3D" parent="."]
 transform = Transform3D(-0.821836, 0, -0.569724, 0, 1, 0, 0.569724, 0, -0.821836, 3.23874, 0, 6.85849)

@@ -36,7 +36,7 @@ func _ready():
 
 # Messenger setup
 	Messenger.area_damaged.connect(damage_detected)
-	Messenger.amount_damaged.connect(damage_amount)
+	Messenger.amount_damaged.connect(_damage_amount)
 	Messenger.instant_death.connect(fall_death)
 	Messenger.health_detected.connect(health_collected)
 	
@@ -56,7 +56,7 @@ func _ready():
 	
 	
 
-func damage_amount(damage_amount):
+func _damage_amount(damage_amount):
 	amount_to_damage = damage_amount
 	if damage_amount == Obstacle.damage_amounts.FULL:
 		limb_damage_amount = 100
@@ -66,10 +66,10 @@ func damage_amount(damage_amount):
 		limb_damage_amount = 0
 	
 	
-func damage_detected(bodypart_area):
+func damage_detected(collided_bodypart):
 	
 	# Check what limb I am
-	if bodypart_area == self:
+	if collided_bodypart == self:
 #		print(limb_damage_amount)
 #		print(self) 
 #		print("Damage Dealt")
@@ -82,8 +82,12 @@ func damage_detected(bodypart_area):
 		$Timer_Limb_Dmg_Flash.start(flash_length)
 		dmg_timer_end = false
 		
+		# This code needs work, only applies to one limb if multiple are hit
+		if current_health > 0 and amount_to_damage == Obstacle.damage_amounts.FULL:
+			current_health -= max_health
+		
 		if current_health > 0 and amount_to_damage != Obstacle.damage_amounts.NONE:
-			is_damaged = true
+#			is_damaged = true
 			# Ensure limb is visible
 			mesh.show()
 			# Apply damage
@@ -93,7 +97,8 @@ func damage_detected(bodypart_area):
 		
 	# Damaged with <=0 Health
 			# Inform UI_FX to flash the screen
-			Messenger.limb_is_damaged.emit(is_damaged)
+			Messenger.limb_is_damaged.emit()
+			# HP Bar Stuff
 			
 		if current_health <= 0:
 			mesh.hide()
@@ -103,12 +108,17 @@ func damage_detected(bodypart_area):
 			# Alternative sync method (deprecated): collision.set_deferred("disable", true)
 			
 			
-	# Damaged the Body
-	if bodypart_area == %Area_Body and is_part == BodyPart.is_parts.BODY and amount_to_damage != Obstacle.damage_amounts.NONE:
+	# Damaged the Body?
+	if collided_bodypart == %Area_Body and is_part == BodyPart.is_parts.BODY and amount_to_damage != Obstacle.damage_amounts.NONE:
+		
 		if current_health > 0:
-			is_damaged = true
-	
-			Messenger.body_is_damaged.emit(is_damaged)
+#			is_damaged = true
+
+			# Inform UI_FX to flash the screen, and HP Bar to subtract health
+			Messenger.body_is_damaged.emit()
+			Messenger.body_health.emit(current_health)
+			
+		# Restart game on Death
 		if current_health <= 0:
 			get_tree().reload_current_scene()
 
@@ -128,13 +138,13 @@ func flash_damage_end():
 func fall_death(fall_death):
 	if fall_death == true and is_part == BodyPart.is_parts.BODY:
 		current_health = 0
-		is_damaged = true
-		Messenger.body_is_damaged.emit(is_damaged)
+#		is_damaged = true
+		Messenger.body_is_damaged.emit()
 		get_tree().reload_current_scene()
 		
 			
-func health_collected(bodypart_area):
-	if bodypart_area == self and current_health < max_health:
+func health_collected(collided_bodypart):
+	if collided_bodypart == self and current_health < max_health:
 		current_health += 1
 		player.get_node("Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
 #		print("current_health collected")
@@ -142,3 +152,7 @@ func health_collected(bodypart_area):
 		var tween = get_tree().create_tween();
 		tween.tween_property(player, "position", Vector3(player.position.x, -.03, player.position.z), stand_speed)
 		collision.set_deferred("disabled", false)
+		
+		# Healed the Body?
+	if collided_bodypart == %Area_Body and is_part == BodyPart.is_parts.BODY:
+		Messenger.body_health.emit(current_health)

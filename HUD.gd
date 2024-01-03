@@ -3,12 +3,12 @@ extends Control
 
 func _ready():		Messenger.body_damaged.connect(damage_detected)
 	
-func damage_detected(bodypart_area):
+func damage_detected(collided_bodypart):
 	pass
-#	print(bodypart_area)
-#	print(bodypart_area.player)
+#	print(collided_bodypart)
+#	print(collided_bodypart.player)
 		# Assigning input integer to enum array
-#	match bodypart_area:
+#	match collided_bodypart:
 #		_:
 #			msg_type_hover_state = Msg_Meta_Hover.EAGER
 #		_:

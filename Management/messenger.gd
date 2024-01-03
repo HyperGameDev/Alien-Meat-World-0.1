@@ -9,6 +9,8 @@ signal instant_death
 signal body_is_damaged
 signal limb_is_damaged
 
+signal body_health
+
 signal amount_damaged
 signal amount_slowed
 

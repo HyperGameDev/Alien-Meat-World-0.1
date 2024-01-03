@@ -21,11 +21,11 @@ func _ready():
 	hover_material.set_albedo(Color(.32, .75, .35))
 	select_material.set_albedo(Color(1, 0, .1))
 	
-func check_area(bodypart_area):
-	# bodypart_area.mesh.hide()
-	# bodypart_area.mesh
+func check_area(collided_bodypart):
+	# collided_bodypart.mesh.hide()
+	# collided_bodypart.mesh
 	# print("Health Sees Player")
-	Messenger.health_detected.emit(bodypart_area)
+	Messenger.health_detected.emit(collided_bodypart)
 	
 	
 func health_hovered(target):

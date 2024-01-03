@@ -7,11 +7,11 @@ func _ready():
 	Messenger.limb_is_damaged.connect(limb_damage)
 
 
-func body_damage(_is_damaged):
+func body_damage():
 	%Dmg_Body_BG.visible = true
 	%Timer_FX_Flash.start()
 
-func limb_damage(_is_damaged):
+func limb_damage():
 	%Dmg_Limb_BG.visible = true
 	%Timer_FX_Flash.start()
 	pass
