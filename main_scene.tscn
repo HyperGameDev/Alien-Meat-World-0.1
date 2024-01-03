@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=25 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
@@ -97,6 +97,9 @@ height = 18.7386
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6wbe"]
 radius = 1.901
 height = 17.822
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_snuun"]
+viewport_path = NodePath("Sprite3D/SubViewport")
 
 [node name="Main Scene" type="Node3D"]
 
@@ -284,6 +287,9 @@ shape = SubResource("CapsuleShape3D_v6wbe")
 
 [node name="Alien" parent="Player" instance=ExtResource("4_huvyo")]
 transform = Transform3D(1, 0.00048692, 0.000306956, -0.000486927, 1, 2.02796e-05, -0.000306949, -2.04407e-05, 1, 0, 0, 0)
+
+[node name="Sprite3D" parent="Player/Alien" index="1"]
+texture = SubResource("ViewportTexture_snuun")
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 transform = Transform3D(0.996626, 0, 0, 0, 0.996625, 0, 0, 0, 0.996626, 0, 0, 0)
