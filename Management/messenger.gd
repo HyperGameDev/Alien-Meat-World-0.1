@@ -6,9 +6,11 @@ signal area_damaged
 signal area_undamaged
 
 signal instant_death
-signal body_is_damaged
 signal limb_is_damaged
 
+signal body_is_damaged
+
+signal body_is_healed
 signal body_health
 
 signal amount_damaged

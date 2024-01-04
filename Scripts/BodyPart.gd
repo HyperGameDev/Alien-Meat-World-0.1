@@ -76,6 +76,7 @@ func damage_detected(collided_bodypart):
 		
 
 	# Damaged with >0 Health
+	
 		# Start Damage Flash
 		var flash_length = 0
 		flash_length += 4
@@ -156,3 +157,4 @@ func health_collected(collided_bodypart):
 		# Healed the Body?
 	if collided_bodypart == %Area_Body and is_part == BodyPart.is_parts.BODY:
 		Messenger.body_health.emit(current_health, max_health)
+		Messenger.body_is_healed.emit()
