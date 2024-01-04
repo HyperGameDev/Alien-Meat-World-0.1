@@ -98,8 +98,8 @@ height = 18.7386
 radius = 1.901
 height = 17.822
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_6e2lu"]
-viewport_path = NodePath("Sprite3D/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_duwqa"]
+viewport_path = NodePath("HP_Body/SubViewport")
 
 [node name="Main Scene" type="Node3D"]
 
@@ -288,8 +288,8 @@ shape = SubResource("CapsuleShape3D_v6wbe")
 [node name="Alien" parent="Player" instance=ExtResource("4_huvyo")]
 transform = Transform3D(1, 0.00048692, 0.000306956, -0.000486927, 1, 2.02796e-05, -0.000306949, -2.04407e-05, 1, 0, 0, 0)
 
-[node name="Sprite3D" parent="Player/Alien" index="1"]
-texture = SubResource("ViewportTexture_6e2lu")
+[node name="HP_Body" parent="Player/Alien" index="1"]
+texture = SubResource("ViewportTexture_duwqa")
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 transform = Transform3D(0.996626, 0, 0, 0, 0.996625, 0, 0, 0, 0.996626, 0, 0, 0)

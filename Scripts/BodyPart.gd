@@ -116,7 +116,7 @@ func damage_detected(collided_bodypart):
 
 			# Inform UI_FX to flash the screen, and HP Bar to subtract health
 			Messenger.body_is_damaged.emit()
-			Messenger.body_health.emit(current_health)
+			Messenger.body_health.emit(current_health, max_health)
 			
 		# Restart game on Death
 		if current_health <= 0:
@@ -155,4 +155,4 @@ func health_collected(collided_bodypart):
 		
 		# Healed the Body?
 	if collided_bodypart == %Area_Body and is_part == BodyPart.is_parts.BODY:
-		Messenger.body_health.emit(current_health)
+		Messenger.body_health.emit(current_health, max_health)
