@@ -1,27 +1,62 @@
-[gd_scene load_steps=5 format=3 uid="uid://xnfvsxma16a7"]
+[gd_scene load_steps=7 format=3 uid="uid://xnfvsxma16a7"]
 
 [ext_resource type="StyleBox" uid="uid://u1e53d2tino2" path="res://UI/Health/hp_border_texture.tres" id="1_ws7qb"]
 [ext_resource type="StyleBox" uid="uid://drmt2d5rpt7m4" path="res://UI/Health/hp_gradient_texture.tres" id="2_6flir"]
 
-[sub_resource type="Animation" id="Animation_oy1f0"]
-resource_name = "hit_points_3"
+[sub_resource type="Animation" id="Animation_xc3ve"]
+resource_name = "hp_bar_hide"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.5, 4, 7.5, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ldcvy"]
+resource_name = "hp_bar_show"
+length = 0.25
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:value")
+tracks/0/path = NodePath(".:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [4.0, 3.0]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7y0pv"]
+[sub_resource type="Animation" id="Animation_tyfhm"]
+resource_name = "hp_bar_start"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jkg0u"]
 _data = {
-"hit_points_3": SubResource("Animation_oy1f0")
+"hp_bar_hide": SubResource("Animation_xc3ve"),
+"hp_bar_show": SubResource("Animation_ldcvy"),
+"hp_bar_start": SubResource("Animation_tyfhm")
 }
 
 [node name="Body_HP_Bar" type="ProgressBar"]
@@ -46,7 +81,7 @@ step = 0.001
 value = 4.0
 show_percentage = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Animation_HP-Bar" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_7y0pv")
+"": SubResource("AnimationLibrary_jkg0u")
 }

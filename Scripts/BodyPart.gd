@@ -101,7 +101,7 @@ func damage_detected(collided_bodypart):
 			Messenger.limb_is_damaged.emit()
 			# HP Bar Stuff
 			
-		if current_health <= 0:
+		if current_health <= 0 and is_part != BodyPart.is_parts.BODY:
 			mesh.hide()
 			# Syncronise collision turning off with physics process
 			await get_tree().process_frame
@@ -112,7 +112,7 @@ func damage_detected(collided_bodypart):
 	# Damaged the Body?
 	if collided_bodypart == %Area_Body and is_part == BodyPart.is_parts.BODY and amount_to_damage != Obstacle.damage_amounts.NONE:
 		
-		if current_health > 0:
+		if current_health >= 0:
 #			is_damaged = true
 
 			# Inform UI_FX to flash the screen, and HP Bar to subtract health
@@ -121,6 +121,7 @@ func damage_detected(collided_bodypart):
 			
 		# Restart game on Death
 		if current_health <= 0:
+			await get_tree().create_timer(1.55).timeout
 			get_tree().reload_current_scene()
 
 func flash_damage():
