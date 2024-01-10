@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://bgd1787acfu6q"]
+
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_d6jvk"]
+[ext_resource type="PlaneMesh" uid="uid://7d0gnku46y8v" path="res://Terrain/terrain_blocks_default.tres" id="1_hlwdv"]
+[ext_resource type="PackedScene" uid="uid://fp0s0y2akapt" path="res://Terrain/Cliffs/cliff_front_01.blend" id="3_rqv6w"]
+[ext_resource type="PackedScene" uid="uid://bdk31lg1poqol" path="res://Terrain/Cliffs/cliff_top_01.tscn" id="4_oo383"]
+[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="5_eg8d8"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
+size = Vector2(100, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdwe7"]
+albedo_color = Color(0.317647, 0.196078, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rt87d"]
+albedo_color = Color(0.184314, 0.196078, 0.239216, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gjw30"]
+data = PackedVector3Array(50, 0, 10, -50, 0, 10, 50, 0, -10, -50, 0, 10, -50, 0, -10, 50, 0, -10)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ngm2i"]
+points = PackedVector3Array(-5.99455, -71.0009, -8.31296, -6.39667, -70.7782, -8.31296, -5.80767, 7.41876, -8.32274, -3.38274, 7.41876, -8.30318, -3.34691, 7.46485, 11.6602, -5.99455, -71.0009, 91.582, -6.39667, -2.12064, -8.31296, -6.39667, -70.7782, 91.582, -6.29546, 7.45717, 11.6406, -3.34691, 7.46485, 91.6015, -6.39667, -2.12064, 91.582, -6.29546, 7.45717, 91.5722)
+
+[node name="Terrain_0" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+visibility_range_begin = 4096.0
+mesh = SubResource("PlaneMesh_wnprt")
+surface_material_override/0 = SubResource("StandardMaterial3D_gdwe7")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -1.4, 10.2)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Ground"]
+mesh = ExtResource("1_hlwdv")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_rt87d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0.1)
+shape = SubResource("ConcavePolygonShape3D_gjw30")
+
+[node name="Col_Cliff-Front" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 40.91, -7.414, 13.326)
+shape = SubResource("ConvexPolygonShape3D_ngm2i")
+
+[node name="Ground2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, -9.9)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Ground2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.145)
+mesh = ExtResource("1_hlwdv")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_rt87d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, -0.145)
+shape = SubResource("ConcavePolygonShape3D_gjw30")
+
+[node name="Wall_1" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.98023e-08, -1, 0, 1, 2.98023e-08, -0.4, -1.6, 0.0999985)
+script = ExtResource("1_d6jvk")
+slowdown_amount = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.200001, 8.4)
+shape = SubResource("ConcavePolygonShape3D_gjw30")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wall_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.4)
+mesh = ExtResource("1_hlwdv")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_rt87d")
+
+[node name="cliff_front_01" parent="." instance=ExtResource("3_rqv6w")]
+transform = Transform3D(-1, 1.19209e-07, 0, -1.19209e-07, -1, 0, 0, 0, 1, 0, -70.993, 14.102)
+
+[node name="cliff_top_01" parent="." instance=ExtResource("4_oo383")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.549835, -5.90657, 8.60849)
+
+[node name="cliff_front_02" parent="." instance=ExtResource("5_eg8d8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39, -8.83397, 31.5261)
+
+[editable path="cliff_front_02"]
