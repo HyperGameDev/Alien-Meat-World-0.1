@@ -48,8 +48,8 @@ func _physics_process(_delta):
 func _process(_delta):	
 	# Raycast 1: Grab implementation
 	grab_ray()
-	
 	var new_grab_target = grab_ray()
+	
 	# Raycast 2: Hover implementation
 	hover_ray()
 	
@@ -68,6 +68,8 @@ func shoot_ray(collide_bodies):
 	var ray_query = PhysicsRayQueryParameters3D.new()
 	ray_query.from = from
 	ray_query.to = to
+	
+	# collision areas vs bodies dependent on whether collide_ was set to true/false when this function was called
 	ray_query.collide_with_areas = !collide_bodies
 	ray_query.collide_with_bodies = collide_bodies
 	ray_query.collision_mask = 1
@@ -108,8 +110,9 @@ func hover_ray():
 # Raycast 2: Collision info
 	if raycast_result.has("collider"):
 		hover_target = raycast_result.collider
-		if hover_target == %Player:
-			print("Target is Player")
-			Messenger.player_hover.emit()
+		
+		# Emits signal with parameter "true" or "false" if the hover_target is/isn't set to %Player
+		Messenger.player_hover.emit(hover_target == %Player)
+			
 
 		return raycast_result.collider
