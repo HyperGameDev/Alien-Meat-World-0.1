@@ -2,6 +2,8 @@ extends Area3D
 
 class_name Health
 
+@export var empathy_ok = false
+
 @onready var meat_mesh = $Meat_Object
 
 var default_material = StandardMaterial3D.new()

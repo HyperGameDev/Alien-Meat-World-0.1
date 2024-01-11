@@ -8,10 +8,17 @@ signal area_undamaged
 signal instant_death
 signal limb_is_damaged
 
-signal body_is_damaged
+signal head_is_damaged
+signal head_is_healed
+signal head_health
 
-signal body_is_healed
-signal body_health
+signal empathy_is_damaged
+signal empathy_is_healed
+signal empathy_health
+
+signal limbs_is_damaged
+signal limbs_is_healed
+signal limbs_health
 
 signal amount_damaged
 signal amount_slowed

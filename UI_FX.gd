@@ -3,7 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Messenger.body_is_damaged.connect(body_damage)
+	Messenger.head_is_damaged.connect(body_damage)
 	Messenger.limb_is_damaged.connect(limb_damage)
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=26 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
@@ -98,8 +98,11 @@ height = 18.7386
 radius = 1.901
 height = 17.822
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_rwfn3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_kbj5m"]
 viewport_path = NodePath("HP_Head/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_g67s6"]
+viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [node name="Main Scene" type="Node3D"]
 
@@ -289,7 +292,14 @@ shape = SubResource("CapsuleShape3D_v6wbe")
 transform = Transform3D(1, 0.00048692, 0.000306956, -0.000486927, 1, 2.02796e-05, -0.000306949, -2.04407e-05, 1, 0, 0, 0)
 
 [node name="HP_Head" parent="Player/Alien" index="1"]
-texture = SubResource("ViewportTexture_rwfn3")
+texture = SubResource("ViewportTexture_kbj5m")
+what_is_damaged = null
+what_is_healed = null
+what_health = null
+
+[node name="HP_Empathy" parent="Player/Alien" index="2"]
+texture = SubResource("ViewportTexture_g67s6")
+health_type = &""
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 transform = Transform3D(0.996626, 0, 0, 0, 0.996625, 0, 0, 0, 0.996626, 0, 0, 0)
@@ -322,3 +332,4 @@ shape = SubResource("CapsuleShape3D_102ua")
 
 [editable path="Player/Alien"]
 [editable path="Player/Alien/HP_Head/SubViewport/Body_HP_Bar"]
+[editable path="Player/Alien/HP_Empathy/SubViewport/Body_HP_Bar"]
