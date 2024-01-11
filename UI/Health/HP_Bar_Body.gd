@@ -14,9 +14,10 @@ var true_max_body_health = 0
 func _ready():
 	texture = $SubViewport.get_texture()
 #	Messenger.body_health.connect(update_hp)
-	Messenger.body_health.connect(hp_visibility)
+	Messenger.body_health.connect(hp_action_visibility)
 	Messenger.body_is_damaged.connect(_hp_bar_damage)
 	Messenger.body_is_healed.connect(_hp_bar_heal)
+	Messenger.player_hover.connect(hp_hover_visibility)
 	
 	anim_hp_bar.play("hp_bar_start")
 
@@ -97,13 +98,19 @@ func _hp_bar_heal():
 
 	
 	
-func hp_visibility(current_body_health, max_body_health):
+func hp_action_visibility(current_body_health, max_body_health):
 	# Set "True" health to avoid outdated HP values
 	true_current_body_health = current_body_health
 	true_max_body_health = max_body_health
 	
 	# On damage or heal, show HP bar
 	if current_body_health != max_body_health or current_body_health == max_body_health:
+		anim_hp_bar.play("hp_bar_show")
+		await anim_hp_bar.animation_finished
+		anim_hp_bar.play("hp_bar_hide")
+
+func hp_hover_visibility():
+		print("hover-vis-function OK")
 		anim_hp_bar.play("hp_bar_show")
 		await anim_hp_bar.animation_finished
 		anim_hp_bar.play("hp_bar_hide")

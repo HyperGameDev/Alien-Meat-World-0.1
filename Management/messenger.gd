@@ -1,6 +1,6 @@
 extends Node
 
-signal hover_pos
+signal player_hover
 
 signal area_damaged
 signal area_undamaged
@@ -19,6 +19,7 @@ signal amount_slowed
 signal object_hovered
 signal health_detected
 
+signal hover_pos
 signal health_grabbed
 
 # Called when the node enters the scene tree for the first time.

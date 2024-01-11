@@ -593,7 +593,7 @@ _data = {
 "Walk_1": SubResource("Animation_01jtj")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_nthlx"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_8qgq1"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
 [sub_resource type="Animation" id="Animation_ijmwm"]
@@ -768,7 +768,7 @@ libraries = {
 
 [node name="HP_Head" type="Sprite3D" parent="." index="1"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.754005, 2.09309, 1.8978)
-texture = SubResource("ViewportTexture_nthlx")
+texture = SubResource("ViewportTexture_8qgq1")
 script = ExtResource("2_uf2la")
 
 [node name="Animation_Hit-Points" type="AnimationPlayer" parent="HP_Head" index="0"]

@@ -56,7 +56,7 @@ func _process(_delta):
 	# Raycaast 1: Temp Grab-specific
 	Messenger.object_hovered.emit(new_grab_target)
 #	print(grab_target)
-	print(hover_target)
+#	print(hover_target)
 
 # Raycast 1: Grab hovering
 func shoot_grab_ray():
@@ -115,4 +115,8 @@ func shoot_hover_ray():
 # Raycast 2: Collision info
 	if raycast_result.has("collider"):
 		hover_target = raycast_result.collider
+		if hover_target == %Player:
+			print("Target is Player")
+			Messenger.player_hover.emit()
+
 		return raycast_result.collider
