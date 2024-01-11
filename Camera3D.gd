@@ -45,21 +45,21 @@ func _physics_process(_delta):
 	self.position += cam_direction * cam_lerpspeed
 	self.rotation = cam_target.rotation
 
-func _process(_delta):
+func _process(_delta):	
 	# Raycast 1: Grab implementation
-	shoot_grab_ray()
+	grab_ray()
 	
-	var new_grab_target = shoot_grab_ray()
+	var new_grab_target = grab_ray()
 	# Raycast 2: Hover implementation
-	shoot_hover_ray()
+	hover_ray()
 	
 	# Raycaast 1: Temp Grab-specific
 	Messenger.object_hovered.emit(new_grab_target)
 #	print(grab_target)
 #	print(hover_target)
 
-# Raycast 1: Grab hovering
-func shoot_grab_ray():
+
+func shoot_ray(collide_bodies):
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 3000
 	var from = project_ray_origin(mouse_pos)
@@ -68,12 +68,17 @@ func shoot_grab_ray():
 	var ray_query = PhysicsRayQueryParameters3D.new()
 	ray_query.from = from
 	ray_query.to = to
-	ray_query.collide_with_areas = true
-	ray_query.collide_with_bodies = false
+	ray_query.collide_with_areas = !collide_bodies
+	ray_query.collide_with_bodies = collide_bodies
 	ray_query.collision_mask = 1
 	
-	var raycast_result = space.intersect_ray(ray_query)
-	
+	return space.intersect_ray(ray_query)
+
+
+# Raycast 1: Grab hovering
+func grab_ray():
+	var raycast_result = shoot_ray(false)
+
 	# Raycast 1: Grab position info
 	if raycast_result.has("position"):
 		grab_ray_pos = raycast_result.position
@@ -97,20 +102,8 @@ func move_health(grab_state):
 
 
 # Raycast 2: Player Hovering
-func shoot_hover_ray():
-	var mouse_pos = get_viewport().get_mouse_position()
-	var ray_length = 3000
-	var from = project_ray_origin(mouse_pos)
-	var to = from + project_ray_normal(mouse_pos) * ray_length
-	var space = get_world_3d().direct_space_state
-	var ray_query = PhysicsRayQueryParameters3D.new()
-	ray_query.from = from
-	ray_query.to = to
-	ray_query.collide_with_areas = false
-	ray_query.collide_with_bodies = true
-	ray_query.collision_mask = 1
-	
-	var raycast_result = space.intersect_ray(ray_query)
+func hover_ray():
+	var raycast_result = shoot_ray(true)
 
 # Raycast 2: Collision info
 	if raycast_result.has("collider"):
