@@ -2,6 +2,7 @@ extends Area3D
 
 class_name BodyPart
 
+@export var is_head: Area3D
 @export var player: CharacterBody3D
 @export var collision: CollisionShape3D
 @export var collision_area: CollisionShape3D
@@ -23,9 +24,9 @@ var stand_speed = .5
 
 var limb_damage_amount = 1
 
-var is_damaged = false
+#var is_damaged = false
 
-enum is_parts {BODY, LEG_R, LEG_L, ARM_R, ARM_L}
+enum is_parts {HEAD, LEG_R, LEG_L, ARM_R, ARM_L}
 
 # Materials
 var default_material = StandardMaterial3D.new()
@@ -77,7 +78,7 @@ func damage_detected(collided_bodypart):
 
 	# Damaged with >0 Health
 	
-		# Start Damage Flash
+		# Start Mesh Flash
 		var flash_length = 0
 		flash_length += 4
 		$Timer_Limb_Dmg_Flash.start(flash_length)
@@ -96,12 +97,12 @@ func damage_detected(collided_bodypart):
 			# Update the Damage Label
 			player.get_node("Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
 		
-	# Damaged with <=0 Health
-			# Inform UI_FX to flash the screen
+			# Inform Messenger of damage, e.g. so UI_FX can flash the screen
 			Messenger.limb_is_damaged.emit()
-			# HP Bar Stuff
 			
-		if current_health <= 0 and is_part != BodyPart.is_parts.BODY:
+			
+	# Damaged with <=0 Health			
+		if current_health <= 0 and is_part != BodyPart.is_parts.HEAD:
 			mesh.hide()
 			# Syncronise collision turning off with physics process
 			await get_tree().process_frame
@@ -109,8 +110,8 @@ func damage_detected(collided_bodypart):
 			# Alternative sync method (deprecated): collision.set_deferred("disable", true)
 			
 			
-	# Damaged the Body?
-	if collided_bodypart == %Area_Body and is_part == BodyPart.is_parts.BODY and amount_to_damage != Obstacle.damage_amounts.NONE:
+	# Damaged the Head?
+	if collided_bodypart == is_head and is_part == BodyPart.is_parts.HEAD and amount_to_damage != Obstacle.damage_amounts.NONE:
 		
 		if current_health >= 0:
 #			is_damaged = true
@@ -138,7 +139,7 @@ func flash_damage_end():
 
 
 func fall_death(fall_death):
-	if fall_death == true and is_part == BodyPart.is_parts.BODY:
+	if fall_death == true and is_part == BodyPart.is_parts.HEAD:
 		current_health = 0
 #		is_damaged = true
 		Messenger.head_is_damaged.emit()
@@ -155,7 +156,7 @@ func health_collected(collided_bodypart):
 		tween.tween_property(player, "position", Vector3(player.position.x, -.03, player.position.z), stand_speed)
 		collision.set_deferred("disabled", false)
 		
-		# Healed the Body?
-	if collided_bodypart == %Area_Body and is_part == BodyPart.is_parts.BODY:
+		# Healed the Head?
+	if collided_bodypart == is_head and is_part == BodyPart.is_parts.HEAD:
 		Messenger.head_health.emit(current_health, max_health)
 		Messenger.head_is_healed.emit()

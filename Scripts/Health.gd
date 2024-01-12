@@ -15,8 +15,8 @@ func _ready():
 	# Temporary Collidable Healing
 	area_entered.connect(check_area)
 	
-	# Inform Messenger that health is hovered
-	Messenger.object_hovered.connect(health_hovered)
+	# Messenger informing sscript that health is hovered
+	Messenger.object_hovered.connect(health_hovered)	
 	
 	# Setting up meat material changes based on cursor behavior
 	default_material.set_albedo(Color(.32, .75, .35))
@@ -28,6 +28,8 @@ func check_area(collided_bodypart):
 	# collided_bodypart.mesh
 	# print("Health Sees Player")
 	Messenger.health_detected.emit(collided_bodypart)
+	if empathy_ok == false:
+		Messenger.empathy_is_damaged.emit()
 	
 	
 func health_hovered(target):

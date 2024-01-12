@@ -5,9 +5,9 @@ extends Sprite3D
 @export var health_type : health_types
 enum health_types {HEAD, EMPATHY, LIMBS}
 
-@onready var hp_bar = $"SubViewport/Body_HP_Bar"
+@onready var hp_bar = $"SubViewport/HP_Bar"
 @onready var anim_hit_points = $"Animation_Hit-Points"
-@onready var anim_hp_bar = $"SubViewport/Body_HP_Bar/Animation_HP-Bar"
+@onready var anim_hp_bar = $"SubViewport/HP_Bar/Animation_HP-Bar"
 
 var true_current_head_health = 4
 var true_max_head_health = 4

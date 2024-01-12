@@ -4,7 +4,7 @@ var debug_2 = false
 
 @onready var dmg_label_ArmL = $"../Player/Alien/Armature/Skeleton3D/Alien_ArmL/Dmg_Label"
 @onready var dmg_label_ArmR = $"../Player/Alien/Armature/Skeleton3D/Alien_ArmR/Dmg_Label"
-@onready var dmg_label_Body = $"../Player/Alien/Armature/Skeleton3D/Alien_Body/Dmg_Label"
+@onready var dmg_label_Head = $"../Player/Alien/Armature/Skeleton3D/Alien_Head/Dmg_Label"
 @onready var dmg_label_LegL = $"../Player/Alien/Armature/Skeleton3D/Alien_LegL/Dmg_Label"
 @onready var dmg_label_LegR = $"../Player/Alien/Armature/Skeleton3D/Alien_LegR/Dmg_Label"
 	
@@ -18,7 +18,7 @@ func _input(event):
 		dmg_label_ArmR.visible = !dmg_label_ArmR.visible
 		dmg_label_LegL.visible = !dmg_label_LegL.visible
 		dmg_label_LegR.visible = !dmg_label_LegR.visible
-		dmg_label_Body.visible = !dmg_label_Body.visible
+		dmg_label_Head.visible = !dmg_label_Head.visible
 	if event.is_action_pressed("Debug 2"):
 		debug_2 = true
 	if event.is_action_released("Debug 2"):

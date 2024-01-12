@@ -8,9 +8,9 @@ class_name HealthBar
 @export_enum("head_is_healed","empathy_is_healed","limbs_is_healed") var what_is_healed : String
 @export_enum("head_health","empathy_health","limbs_health") var what_health : String
 
-@onready var hp_bar = $"SubViewport/Body_HP_Bar"
+@onready var hp_bar = $"SubViewport/HP_Bar"
 @onready var anim_hit_points = $"Animation_Hit-Points"
-@onready var anim_hp_bar = $"SubViewport/Body_HP_Bar/Animation_HP-Bar"
+@onready var anim_hp_bar = $"SubViewport/HP_Bar/Animation_HP-Bar"
 
 var true_current_head_health = 4
 var true_max_head_health = 4

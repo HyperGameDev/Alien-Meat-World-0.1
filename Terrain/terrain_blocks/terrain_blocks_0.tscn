@@ -51,6 +51,7 @@ collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_375mj")
 damage_amount = 1
+slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_2"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
@@ -67,6 +68,7 @@ transform = Transform3D(-0.821836, 0, -0.569724, 0, 1, 0, 0.569724, 0, -0.821836
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_375mj")
+slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_3"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
@@ -79,6 +81,7 @@ transform = Transform3D(-0.00657991, 0, -0.999978, 0, 1, 0, 0.999978, 0, -0.0065
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_375mj")
+slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_4"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
@@ -94,6 +97,7 @@ transform = Transform3D(0.99706, 0, 0.076632, 0, 1, 0, -0.076632, 0, 0.99706, -1
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_375mj")
+slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_5"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
@@ -106,6 +110,7 @@ transform = Transform3D(0.462321, 0, 0.886713, 0, 1, 0, -0.886713, 0, 0.462321, 
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_375mj")
+slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_6"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
@@ -118,6 +123,7 @@ transform = Transform3D(0.462321, 0, 0.886713, 0, 1, 0, -0.886713, 0, 0.462321, 
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_375mj")
+slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_7"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
@@ -130,6 +136,7 @@ transform = Transform3D(-0.946537, 0, 0.322596, 0, 1, 0, -0.322596, 0, -0.946537
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_375mj")
+slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_8"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
@@ -142,6 +149,7 @@ transform = Transform3D(-0.368157, 0, -0.929764, 0, 1, 0, 0.929764, 0, -0.368157
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_375mj")
+slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_9"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)

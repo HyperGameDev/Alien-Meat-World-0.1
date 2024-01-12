@@ -1,8 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://c1q8m4i26u6vr"]
+[gd_scene load_steps=29 format=3 uid="uid://c1q8m4i26u6vr"]
 
 [ext_resource type="PackedScene" uid="uid://diukxh5eov8fo" path="res://Player/Alien_3.blend" id="1_p4qsu"]
 [ext_resource type="Script" path="res://UI/Health/HealthBar.gd" id="2_obxxa"]
-[ext_resource type="PackedScene" uid="uid://xnfvsxma16a7" path="res://UI/Health/body_hp_bar.tscn" id="3_hu6l2"]
+[ext_resource type="PackedScene" uid="uid://xnfvsxma16a7" path="res://UI/Health/hp_bar.tscn" id="3_gndeq"]
 [ext_resource type="StyleBox" uid="uid://crffhalqhcwjq" path="res://UI/Health/hp_gradient_texture_empathy.tres" id="5_k8xva"]
 
 [sub_resource type="Animation" id="Animation_bx7n0"]
@@ -594,7 +594,7 @@ _data = {
 "Walk_1": SubResource("Animation_01jtj")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_jbsvl"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_utysy"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
 [sub_resource type="Animation" id="Animation_ijmwm"]
@@ -734,7 +734,7 @@ _data = {
 "heal_hp_3": SubResource("Animation_0j8jt")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_kicja"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_d7lby"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hxch2"]
@@ -749,11 +749,15 @@ albedo_color = Color(0.298039, 0.741176, 0.352941, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2ye2"]
 albedo_color = Color(0.682353, 0.0196078, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ub80w"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6oqx7"]
+albedo_color = Color(0.298039, 0.741176, 0.352941, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ns6n"]
+albedo_color = Color(0.682353, 0.0196078, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vr7x"]
 diffuse_mode = 3
 specular_mode = 1
-albedo_color = Color(1.1, 1.1, 1.1, 1)
-metallic_specular = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2j1cl"]
 albedo_color = Color(0.298039, 0.741176, 0.352941, 1)
@@ -772,7 +776,7 @@ libraries = {
 
 [node name="HP_Head" type="Sprite3D" parent="." index="1"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.754005, 2.09309, 1.8978)
-texture = SubResource("ViewportTexture_jbsvl")
+texture = SubResource("ViewportTexture_utysy")
 script = ExtResource("2_obxxa")
 what_is_damaged = "head_is_damaged"
 what_is_healed = "head_is_healed"
@@ -787,11 +791,11 @@ libraries = {
 disable_3d = true
 transparent_bg = true
 
-[node name="Body_HP_Bar" parent="HP_Head/SubViewport" index="0" instance=ExtResource("3_hu6l2")]
+[node name="HP_Bar" parent="HP_Head/SubViewport" index="0" instance=ExtResource("3_gndeq")]
 
 [node name="HP_Empathy" type="Sprite3D" parent="." index="2"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.12584, 1.71669, 1.8978)
-texture = SubResource("ViewportTexture_kicja")
+texture = SubResource("ViewportTexture_d7lby")
 script = ExtResource("2_obxxa")
 what_is_damaged = "empathy_is_damaged"
 what_is_healed = "empathy_is_healed"
@@ -806,7 +810,7 @@ libraries = {
 disable_3d = true
 transparent_bg = true
 
-[node name="Body_HP_Bar" parent="HP_Empathy/SubViewport" index="0" instance=ExtResource("3_hu6l2")]
+[node name="HP_Bar" parent="HP_Empathy/SubViewport" index="0" instance=ExtResource("3_gndeq")]
 theme_override_styles/fill = ExtResource("5_k8xva")
 
 [node name="Armature" parent="." index="3"]
@@ -891,9 +895,13 @@ outline_size = 30
 [node name="Alien_Body" parent="Armature/Skeleton3D" index="2"]
 surface_material_override/0 = SubResource("StandardMaterial3D_6msii")
 surface_material_override/1 = SubResource("StandardMaterial3D_l2ye2")
-surface_material_override/2 = SubResource("StandardMaterial3D_ub80w")
 
-[node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_Body" index="0"]
+[node name="Alien_Head" parent="Armature/Skeleton3D" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6oqx7")
+surface_material_override/1 = SubResource("StandardMaterial3D_8ns6n")
+surface_material_override/2 = SubResource("StandardMaterial3D_4vr7x")
+
+[node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_Head" index="0"]
 transform = Transform3D(1.9966, 0, 0.17468, 0, 2.00423, 0, -0.17468, 0, 1.9966, -0.0141464, 2.50105, 0.804974)
 visible = false
 offset = Vector2(0, -120)
@@ -903,7 +911,7 @@ text = "4"
 font_size = 35
 outline_size = 30
 
-[node name="Alien_LegL" parent="Armature/Skeleton3D" index="4"]
+[node name="Alien_LegL" parent="Armature/Skeleton3D" index="5"]
 surface_material_override/0 = SubResource("StandardMaterial3D_2j1cl")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegL" index="0"]
@@ -916,7 +924,7 @@ text = "4"
 font_size = 35
 outline_size = 30
 
-[node name="Alien_LegR" parent="Armature/Skeleton3D" index="5"]
+[node name="Alien_LegR" parent="Armature/Skeleton3D" index="6"]
 surface_material_override/0 = SubResource("StandardMaterial3D_eh052")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegR" index="0"]
@@ -929,5 +937,5 @@ text = "4"
 font_size = 35
 outline_size = 30
 
-[editable path="HP_Head/SubViewport/Body_HP_Bar"]
-[editable path="HP_Empathy/SubViewport/Body_HP_Bar"]
+[editable path="HP_Head/SubViewport/HP_Bar"]
+[editable path="HP_Empathy/SubViewport/HP_Bar"]
