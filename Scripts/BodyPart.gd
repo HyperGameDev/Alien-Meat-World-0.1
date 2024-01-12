@@ -18,6 +18,8 @@ var dmg_timer_end = false
 
 var amount_to_damage = null
 
+var health_grabbed = false
+
 var max_health = 4
 var current_health = 4
 var stand_speed = .5
@@ -74,9 +76,6 @@ func damage_detected(collided_bodypart):
 #		print(limb_damage_amount)
 #		print(self) 
 #		print("Damage Dealt")
-		
-
-	# Damaged with >0 Health
 	
 		# Start Mesh Flash
 		var flash_length = 0
@@ -146,7 +145,10 @@ func fall_death(fall_death):
 		get_tree().reload_current_scene()
 		
 			
-func health_collected(collided_bodypart):
+func health_collected(collided_bodypart, empathy_ok):
+	if collided_bodypart == self and empathy_ok == false:
+		Messenger.empathy_consumed.emit()
+#		print("collided with bad health")
 	if collided_bodypart == self and current_health < max_health:
 		current_health += 1
 		player.get_node("Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)

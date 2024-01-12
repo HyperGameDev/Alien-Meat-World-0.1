@@ -12,8 +12,8 @@ class_name HealthBar
 @onready var anim_hit_points = $"Animation_Hit-Points"
 @onready var anim_hp_bar = $"SubViewport/HP_Bar/Animation_HP-Bar"
 
-var true_current_head_health = 4
-var true_max_head_health = 4
+var true_current_health = 4
+var true_max_health = 4
 
 
 func _ready():
@@ -49,16 +49,16 @@ func _hp_bar_damage():
 	await get_tree().create_timer(.01).timeout
 	
 	# Play correct animation based on how many hit points are left
-	if true_max_head_health - true_current_head_health == 1:
+	if true_max_health - true_current_health == 1:
 		anim_player_copy.play("damage_hp_3")
 		
-	if true_max_head_health - true_current_head_health == 2:
+	if true_max_health - true_current_health == 2:
 		anim_player_copy.play("damage_hp_2")
 		
-	if true_max_head_health - true_current_head_health == 3:
+	if true_max_health - true_current_health == 3:
 		anim_player_copy.play("damage_hp_1")
 		
-	if true_max_head_health - true_current_head_health == 4:
+	if true_max_health - true_current_health == 4:
 		anim_player_copy.play("damage_hp_0")
 	
 	# Remove animation when finished
@@ -88,13 +88,13 @@ func _hp_bar_heal():
 	await get_tree().create_timer(.01).timeout
 	
 	# Play correct animation based on how many hit points are left
-	if true_max_head_health - true_current_head_health == 0:
+	if true_max_health - true_current_health == 0:
 		anim_player_copy.play("heal_hp_3")
 		
-	if true_max_head_health - true_current_head_health == 1:
+	if true_max_health - true_current_health == 1:
 		anim_player_copy.play("heal_hp_2")
 		
-	if true_max_head_health - true_current_head_health == 2:
+	if true_max_health - true_current_health == 2:
 		anim_player_copy.play("heal_hp_1")
 	
 	# Remove animation when finished
@@ -103,13 +103,14 @@ func _hp_bar_heal():
 
 	
 	
-func hp_action_visibility(current_head_health, max_head_health):
+func hp_action_visibility(current_health, max_health):
 	# Set "True" health to avoid outdated HP values
-	true_current_head_health = current_head_health
-	true_max_head_health = max_head_health
+	true_current_health = current_health
+	true_max_health = max_health
+	print("TRUE", " ", what_is_damaged, " ", true_current_health)
 	
 	# On damage or heal, show HP bar
-	if current_head_health != max_head_health or current_head_health == max_head_health:
+	if current_health != max_health or current_health == max_health:
 		hp_visibility(true)
 
 func hp_visibility(player_hovered):
@@ -118,5 +119,5 @@ func hp_visibility(player_hovered):
 		anim_hp_bar.play("hp_bar_show")
 		
 	# Start hiding if visible and not Hovered
-	if hp_bar.self_modulate.a == 1 and player_hovered == false and true_current_head_health > 1:
+	if hp_bar.self_modulate.a == 1 and player_hovered == false and true_current_health > 1:
 		anim_hp_bar.play("hp_bar_hide")

@@ -1,6 +1,6 @@
 extends Node
 
-#@onready var mesh = player.get_node("Alien/Armature/Skeleton3D/Alien_Heart")
+# @onready var mesh = player.get_node("Alien/Armature/Skeleton3D/Alien_Heart")
 
 var max_health = 4
 var current_health = 4
@@ -14,30 +14,31 @@ var dmg_timer_end = false
 
 
 func _ready():
-	Messenger.empathy_is_damaged.connect(damage_detected)
+	Messenger.empathy_consumed.connect(damage_detected)
 	
 func damage_detected():
-		Messenger.empathy_health.emit(current_health, max_health)
-	# Damaged with >0 Health
-	
-		# Start Mesh Flash
-		var flash_length = 0
-		flash_length += 4
-#		$Timer_Heart_Dmg_Flash.start(flash_length)
-		dmg_timer_end = false
-		
-		if current_health > 0:
-			Messenger.empathy_is_damaged.emit()
-			# Ensure limb is visible
-#			mesh.show()
-			# Apply damage
-			current_health -= empathy_damage_amount
-			# Update the Damage Label
-#			player.get_node("Alien/Armature/Skeleton3D/Alien_Heart/Dmg_Label").text = str(current_health)
+#	print("empathy damage detected")
+	Messenger.empathy_is_damaged.emit()
 
-			# Inform Messenger of damage, e.g. so UI_FX can flash the screen
+	# Start Mesh Flash
+	var flash_length = 0
+	flash_length += 4
+#	$Timer_Heart_Dmg_Flash.start(flash_length)
+	dmg_timer_end = false
+		
+	if current_health >= 0:
+		print("OG", " ", "empathy current health", " ", current_health)
+		# Inform Messenger of damage, e.g. so UI_FX can flash the screen
+		Messenger.empathy_health.emit(current_health, max_health)
+		# Ensure limb is visible
+#		mesh.show()
+		# Apply damage
+		current_health -= empathy_damage_amount
+		# Update the Damage Label
+#		player.get_node("Alien/Armature/Skeleton3D/Alien_Heart/Dmg_Label").text = str(current_health)
 
 			
-# Damaged with <=0 Health	
-		if current_health <= 0:
-#			mesh.hide()
+	# Damaged with <=0 Health	
+	if current_health <= 0:
+#		mesh.hide()
+		pass

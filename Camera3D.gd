@@ -48,15 +48,16 @@ func _physics_process(_delta):
 func _process(_delta):	
 	# Raycast 1: Grab implementation
 	grab_ray()
-	var new_grab_target = grab_ray()
+#	print(grab_target)
 	
 	# Raycast 2: Hover implementation
 	hover_ray()
 	
-	# Raycaast 1: Temp Grab-specific
-	Messenger.object_hovered.emit(new_grab_target)
-#	print(grab_target)
-#	print(hover_target)
+#	# Raycaast 1: Temp Grab-specific
+	if !grab_target: return
+	if grab_target.is_in_group("Meat"):
+#		print("Raycast: Sees Health")
+		Messenger.health_hovered.emit(grab_target)
 
 
 func shoot_ray(collide_bodies):
@@ -91,16 +92,13 @@ func grab_ray():
 		return raycast_result.collider
 
 # Raycast 1: Temp grab application
-func move_health(grab_state):
-	is_grabbed = grab_state
+func move_health():
+	if grabbed_object == null:
+		grabbed_object = grab_target  # Store the grabbed object
+		grab_offset = grabbed_object.global_transform.origin - grab_ray_pos  # Calculate grab offset
 
-	if is_grabbed:
-		if grabbed_object == null:
-			grabbed_object = grab_target  # Store the grabbed object
-			grab_offset = grabbed_object.global_transform.origin - grab_ray_pos  # Calculate grab offset
-
-		if grabbed_object != null:
-			grabbed_object.set_global_position(grab_ray_pos + grab_offset)
+	if grabbed_object != null:
+		grabbed_object.set_global_position(grab_ray_pos + grab_offset)
 
 
 # Raycast 2: Player Hovering

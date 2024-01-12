@@ -12,6 +12,8 @@ signal head_is_damaged
 signal head_is_healed
 signal head_health
 
+signal empathy_consumed
+
 signal empathy_is_damaged
 signal empathy_is_healed
 signal empathy_health
@@ -23,7 +25,7 @@ signal limbs_health
 signal amount_damaged
 signal amount_slowed
 
-signal object_hovered
+signal health_hovered
 signal health_detected
 
 signal hover_pos
