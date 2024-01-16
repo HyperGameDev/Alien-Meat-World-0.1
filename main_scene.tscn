@@ -98,10 +98,10 @@ height = 18.7386
 radius = 1.901
 height = 17.822
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_h37ec"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_1ax7o"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_wcqkm"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_vsvn5"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [node name="Main Scene" type="Node3D"]
@@ -207,7 +207,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.74317)
 
 [node name="Player" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 0, 0, 0)
 axis_lock_linear_z = true
 script = ExtResource("3_ia6ow")
 
@@ -308,16 +307,10 @@ shape = SubResource("CapsuleShape3D_v6wbe")
 transform = Transform3D(1, 0.00048692, 0.000306956, -0.000486927, 1, 2.02796e-05, -0.000306949, -2.04407e-05, 1, 0, 0, 0)
 
 [node name="HP_Head" parent="Player/Alien" index="1"]
-texture = SubResource("ViewportTexture_h37ec")
+texture = SubResource("ViewportTexture_1ax7o")
 
 [node name="HP_Empathy" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_wcqkm")
-
-[node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
-transform = Transform3D(0.996626, 0, 0, 0, 0.996625, 0, 0, 0, 0.996626, 0, 0, 0)
-
-[node name="Alien_Body" parent="Player/Alien/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 4.54747e-11, 0, -1.02546e-10, 1, 3.63798e-12, 2.23517e-08, 9.09495e-12, 1, 0, 0, 0)
+texture = SubResource("ViewportTexture_vsvn5")
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.354678, 0.465157, 0.185392)

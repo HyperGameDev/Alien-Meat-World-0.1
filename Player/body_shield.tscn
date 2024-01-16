@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1xnvbm1223wp"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_iql5n"]
+height = 1.3
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g8jc7"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_steog"]
+invert = true
+in_3d_space = true
+seamless = true
+noise = SubResource("FastNoiseLite_g8jc7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqeuc"]
+transparency = 4
+albedo_color = Color(1, 1, 1, 0.313726)
+albedo_texture = SubResource("NoiseTexture2D_steog")
+
+[node name="Body_Shield" type="MeshInstance3D"]
+transform = Transform3D(0.585, 0, 0, 0, 0.585, 0, 0, 0, 0.585, -0.0371343, 1.21643, 0.227226)
+mesh = SubResource("SphereMesh_iql5n")
+surface_material_override/0 = SubResource("StandardMaterial3D_xqeuc")
