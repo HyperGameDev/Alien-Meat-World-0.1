@@ -9,6 +9,10 @@ class_name BodyPart
 
 @onready var mesh = player.get_node("Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1])
 
+@onready var bodypart_name = name.split("_")[1]
+
+@onready var skeleton = get_tree().get_root().get_node("Main Scene/Player/Alien/Armature/Skeleton3D")
+
 var dmg_timer_end = false
 
 @onready var dmg_flash_timer : Timer = Timer.new()
@@ -25,6 +29,10 @@ var current_health = 4
 var stand_speed = .5
 
 var limb_damage_amount = 1
+
+var bone_hit
+
+
 
 #var is_damaged = false
 
@@ -67,7 +75,23 @@ func _damage_amount(damage_amount):
 		limb_damage_amount = 1
 	if damage_amount == Obstacle.damage_amounts.NONE:
 		limb_damage_amount = 0
+
+func set_bone_scale(scale):
+	skeleton.set_bone_pose_scale(bone_hit, scale)
+
+func damage_hp():
+	var shrink_to = current_health * .25
+	var shrink_from = (current_health + limb_damage_amount) * .25
+	get_tree().create_tween().tween_method(set_bone_scale, Vector3(shrink_from, shrink_from, shrink_from), Vector3(shrink_to, shrink_to, shrink_to), 2)
 	
+	
+	
+#func tween_method_set_bone_scale(tween_value, skeleton, bone_hit):
+#	skeleton.set_bone_pose_scale(bone_hit, tween_value)
+#
+#func damage_hp():
+#	get_tree().create_tween().tween_method(tween_method_set_bone_scale.bind(skeleton, bone_hit), Vector3(1, 1, 1), Vector3(2, 2, 2), 2)
+
 	
 func damage_detected(collided_bodypart):
 	
@@ -77,7 +101,10 @@ func damage_detected(collided_bodypart):
 #		print(limb_damage_amount)
 #		print(self) 
 #		print("Damage Dealt")
-	
+#		print(name)
+#		
+		bone_hit = skeleton.find_bone(bodypart_name)
+		damage_hp()
 		# Start Mesh Flash
 		var flash_length = 0
 		flash_length += 4
@@ -110,6 +137,8 @@ func damage_detected(collided_bodypart):
 			# Alternative sync method (deprecated): collision.set_deferred("disable", true)
 			
 			
+			
+			
 	# Damaged the Head?
 	if collided_bodypart == is_head and is_part == BodyPart.is_parts.HEAD and amount_to_damage != Obstacle.damage_amounts.NONE:
 		
@@ -124,6 +153,8 @@ func damage_detected(collided_bodypart):
 		if current_health <= 0:
 			await get_tree().create_timer(1.55).timeout
 			get_tree().reload_current_scene()
+			
+			
 
 func flash_damage():
 	if current_health < max_health and dmg_timer_end == false:

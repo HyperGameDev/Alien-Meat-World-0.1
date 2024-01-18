@@ -27,15 +27,15 @@ func _ready():
 	Messenger.connect(str(what_is_damaged), _hp_bar_damage)
 	Messenger.connect(str(what_is_healed), _hp_bar_heal)
 	Messenger.player_hover.connect(hp_visibility)
-	Messenger.area_damaged.connect(_bodypart_hit)
+#	Messenger.area_damaged.connect(_bodypart_hit)
 	
 	hp_bar.self_modulate.a = 0
 
-func _bodypart_hit(bodypart_name):
-	bodypart_hit = bodypart_name.name.split("_")[1]
-	skeleton = get_node("../Armature/Skeleton3D")
-	bone_hit = skeleton.find_bone(bodypart_hit)
-	skeleton.set_bone_pose_scale(bone_hit, Vector3(2, 2, 2))
+#func _bodypart_hit(bodypart_name):
+#	bodypart_hit = bodypart_name.name.split("_")[1]
+#	skeleton = get_node("../Armature/Skeleton3D")
+#	bone_hit = skeleton.find_bone(bodypart_hit)
+#	skeleton.set_bone_pose_scale(bone_hit, Vector3(2, 2, 2))
 	
 
 # Damage Animation Functions
