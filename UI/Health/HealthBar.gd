@@ -24,35 +24,44 @@ func _ready():
 	texture = $SubViewport.get_texture()
 #	Messenger.head_health.connect(update_hp)
 	Messenger.connect(str(what_health), hp_action_visibility)
-	Messenger.connect(str(what_is_damaged), _hp_bar_damage)
+#	Messenger.connect(str(what_is_damaged), _hp_bar_damage)
 	Messenger.connect(str(what_is_healed), _hp_bar_heal)
 	Messenger.player_hover.connect(hp_visibility)
 	Messenger.area_damaged.connect(_bodypart_hit)
+	Messenger.area_damaged.connect(_hp_bar_damage)
 	
 	hp_bar.self_modulate.a = 0
 
 func _bodypart_hit(bodypart_name):
+	
 	bodypart_hit = bodypart_name.name.split("_")[1]
 	skeleton = get_node("../Armature/Skeleton3D")
 	bone_hit = skeleton.find_bone(bodypart_hit)
-	skeleton.set_bone_pose_scale(bone_hit, Vector3(2, 2, 2))
 	
 
 # Damage Animation Functions
 func _damage_hp_3():
 	get_tree().create_tween().tween_property(hp_bar, "value", 3, 1.25)
+	print("damage 3", skeleton.get_bone_name(bone_hit))
+	skeleton.set_bone_pose_scale(bone_hit, Vector3(.6, .6, .6))
 	
 func _damage_hp_2():
 	get_tree().create_tween().tween_property(hp_bar, "value", 2, 1.25)
+	print("damage 2 ", skeleton.get_bone_name(bone_hit))
+	skeleton.set_bone_pose_scale(bone_hit, Vector3(.4, .4, .4))
 	
 func _damage_hp_1():
 	get_tree().create_tween().tween_property(hp_bar, "value", 1, 1.25)
+	print("damage 1", skeleton.get_bone_name(bone_hit))
+	skeleton.set_bone_pose_scale(bone_hit, Vector3(.2, .2, .2))
 	
 func _damage_hp_0():
-	get_tree().create_tween().tween_property(hp_bar, "value", 0, 1.25)	
+	get_tree().create_tween().tween_property(hp_bar, "value", 0, 1.25)
+	print("damage 0", skeleton.get_bone_name(bone_hit))
+	skeleton.set_bone_pose_scale(bone_hit, Vector3(0, 0, .0))
 	
 # Damage AnimationPlayer Controls
-func _hp_bar_damage():
+func _hp_bar_damage(something):
 	# Define & Create duplicate hit point animations
 	var anim_player_copy = anim_hit_points.duplicate()
 	add_child(anim_player_copy)

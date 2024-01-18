@@ -9,7 +9,7 @@ var debug_2 = false
 @onready var dmg_label_LegR = $"../Player/Alien/Armature/Skeleton3D/Alien_LegR/Dmg_Label"
 
 #@onready var testanimation = $"../Player/Alien/Armature/Skeleton3D/Alien_ArmL/Animation_Limb-Shrink"
-	
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass

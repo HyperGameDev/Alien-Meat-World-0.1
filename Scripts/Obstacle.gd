@@ -22,6 +22,7 @@ func _process(_delta):
 func check_area(collided_bodypart):
 #	collided_bodypart.mesh.hide()
 #	collided_bodypart.mesh
+	print("something damaged ", collided_bodypart)
 	Messenger.area_damaged.emit(collided_bodypart)
 	Messenger.amount_damaged.emit(damage_amount)
 	Messenger.amount_slowed.emit(slowdown_amount)
