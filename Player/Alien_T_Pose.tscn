@@ -3,3 +3,28 @@
 [ext_resource type="PackedScene" uid="uid://diukxh5eov8fo" path="res://Player/Alien_3.blend" id="1_li0rp"]
 
 [node name="Alien_3" instance=ExtResource("1_li0rp")]
+
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.97437, 0.224951, 0, -0.224951, 0.97437, 0, 0.07, 0)
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+show_rest_only = true
+bones/0/rotation = Quaternion(-2.60919e-08, -0.483221, -1.44011e-08, 0.875498)
+bones/1/rotation = Quaternion(-0.14132, -0.00337756, 0.700212, 0.699801)
+bones/2/rotation = Quaternion(-0.449626, -0.126658, -0.0500497, 0.882774)
+bones/3/rotation = Quaternion(-0.279049, -0.583992, -0.0395702, 0.761262)
+bones/4/rotation = Quaternion(-2.29951e-14, -0.58488, -3.48616e-08, 0.81112)
+bones/5/rotation = Quaternion(4.8217e-14, -0.287227, -1.712e-08, 0.957863)
+bones/6/rotation = Quaternion(-0.141073, 0.0124602, -0.65964, 0.738118)
+bones/7/rotation = Quaternion(-0.298447, -0.309499, -0.347168, 0.833435)
+bones/8/rotation = Quaternion(0.493731, -0.0957071, 0.57255, 0.6475)
+bones/10/rotation = Quaternion(-0.316451, 0.0599861, -0.210029, 0.923119)
+bones/11/rotation = Quaternion(-0.760895, 0.0962254, 0.209214, 0.606637)
+bones/12/rotation = Quaternion(0.400879, -0.312944, -0.148737, 0.84808)
+bones/14/rotation = Quaternion(-0.140793, 0.621627, 0.0336995, 0.769819)
+bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
+bones/16/rotation = Quaternion(0.0612082, -0.218088, 0.873617, -0.43068)
+bones/17/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+
+[node name="Alien_Body" parent="Armature/Skeleton3D" index="2"]
+visible = false

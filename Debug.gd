@@ -26,5 +26,5 @@ func _input(event):
 	if event.is_action_released("Debug 2"):
 		debug_2 = false
 	if event.is_action_pressed("Debug 3"):
-		testanimation.play("shrink_hp3")
+		testanimation.play("shrink_hp0")
 		print("Debug3")
