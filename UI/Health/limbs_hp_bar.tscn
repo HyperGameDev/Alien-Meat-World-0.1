@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://cttpnbrtmw8ot"]
+
+[ext_resource type="PackedScene" uid="uid://xnfvsxma16a7" path="res://UI/Health/hp_bar.tscn" id="1_leee1"]
+
+[sub_resource type="Animation" id="Animation_xc3ve"]
+resource_name = "hp_bar_hide"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 2.5, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ldcvy"]
+resource_name = "hp_bar_show"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jkg0u"]
+_data = {
+"hp_bar_hide": SubResource("Animation_xc3ve"),
+"hp_bar_show": SubResource("Animation_ldcvy")
+}
+
+[node name="Limbs_HP_Bar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HP_Bar" parent="." instance=ExtResource("1_leee1")]
+layout_mode = 1
+
+[node name="Animation_HP-Bar2" type="AnimationPlayer" parent="HP_Bar"]
+libraries = {
+"": SubResource("AnimationLibrary_jkg0u")
+}

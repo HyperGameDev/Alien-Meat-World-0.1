@@ -107,7 +107,7 @@ func hp_action_visibility(current_health, max_health):
 	# Set "True" health to avoid outdated HP values
 	true_current_health = current_health
 	true_max_health = max_health
-	print("TRUE", " ", what_is_damaged, " ", true_current_health)
+#	print("TRUE", " ", what_is_damaged, " ", true_current_health)
 	
 	# On damage or heal, show HP bar
 	if current_health != max_health or current_health == max_health:

@@ -27,7 +27,7 @@ func damage_detected():
 	dmg_timer_end = false
 		
 	if current_health >= 0:
-		print("OG", " ", "empathy current health", " ", current_health)
+#		print("OG", " ", "empathy current health", " ", current_health)
 		# Inform Messenger of damage, e.g. so UI_FX can flash the screen
 		Messenger.empathy_health.emit(current_health, max_health)
 		# Ensure limb is visible

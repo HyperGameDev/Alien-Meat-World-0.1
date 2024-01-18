@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c1q8m4i26u6vr"]
+[gd_scene load_steps=33 format=3 uid="uid://c1q8m4i26u6vr"]
 
 [ext_resource type="PackedScene" uid="uid://diukxh5eov8fo" path="res://Player/Alien_3.blend" id="1_p4qsu"]
 [ext_resource type="Script" path="res://UI/Health/HealthBar.gd" id="2_obxxa"]
@@ -620,7 +620,7 @@ _data = {
 "Walk_1": SubResource("Animation_01jtj")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_6mh0k"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_30t1m"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
 [sub_resource type="Animation" id="Animation_ijmwm"]
@@ -760,7 +760,7 @@ _data = {
 "heal_hp_3": SubResource("Animation_0j8jt")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_jlri0"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_vwdt4"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6msii"]
@@ -768,6 +768,74 @@ albedo_color = Color(0.298039, 0.741176, 0.352941, 1)
 metallic_specular = 0.0
 rim_tint = 1.0
 clearcoat_roughness = 1.0
+
+[sub_resource type="Animation" id="Animation_2obhx"]
+resource_name = "shrink_hp3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:blend_shapes/ArmL_3")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_0ct28"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:blend_shapes/ArmL_3")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_aco8l"]
+resource_name = "shrink_hp2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:blend_shapes/ArmL_2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_45h6o"]
+resource_name = "shrink_hp0"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:blend_shapes/ArmL_0")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fnehx"]
+_data = {
+"RESET": SubResource("Animation_0ct28"),
+"shrink_hp0": SubResource("Animation_45h6o"),
+"shrink_hp2": SubResource("Animation_aco8l"),
+"shrink_hp3": SubResource("Animation_2obhx")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2ye2"]
 albedo_color = Color(0.682353, 0.0196078, 0, 1)
@@ -806,7 +874,8 @@ libraries = {
 
 [node name="HP_Head" type="Sprite3D" parent="." index="1"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.754005, 2.09309, 1.8978)
-texture = SubResource("ViewportTexture_6mh0k")
+visible = false
+texture = SubResource("ViewportTexture_30t1m")
 script = ExtResource("2_obxxa")
 what_is_damaged = "head_is_damaged"
 what_is_healed = "head_is_healed"
@@ -825,7 +894,8 @@ transparent_bg = true
 
 [node name="HP_Empathy" type="Sprite3D" parent="." index="2"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.12584, 1.71669, 1.8978)
-texture = SubResource("ViewportTexture_jlri0")
+visible = false
+texture = SubResource("ViewportTexture_vwdt4")
 script = ExtResource("2_obxxa")
 what_is_damaged = "empathy_is_damaged"
 what_is_healed = "empathy_is_healed"
@@ -910,6 +980,11 @@ outline_modulate = Color(0, 0.219608, 0, 1)
 text = "4"
 font_size = 35
 outline_size = 30
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Armature/Skeleton3D/Alien_ArmL" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_fnehx")
+}
 
 [node name="Alien_ArmR" parent="Armature/Skeleton3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00129759, 0, 0)
