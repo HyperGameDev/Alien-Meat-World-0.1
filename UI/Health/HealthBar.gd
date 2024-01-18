@@ -15,20 +15,35 @@ class_name HealthBar
 var true_current_health = 4
 var true_max_health = 4
 
+var bodypart_hit
 
-func _ready():
+func _ready():		
 	texture = $SubViewport.get_texture()
 #	Messenger.head_health.connect(update_hp)
 	Messenger.connect(str(what_health), hp_action_visibility)
 	Messenger.connect(str(what_is_damaged), _hp_bar_damage)
 	Messenger.connect(str(what_is_healed), _hp_bar_heal)
 	Messenger.player_hover.connect(hp_visibility)
+	Messenger.area_damaged.connect(_bodypart_hit)
 	
 	hp_bar.self_modulate.a = 0
+
+func _bodypart_hit(bodypart_name):
+	bodypart_hit = bodypart_name.name.split("_")[1]
+	var skeleton = get_node("../Armature/Skeleton3D")
+	var bone_count = skeleton.get_bone_count()
+	for i in range(bone_count):
+		var bone_name = skeleton.get_bone_name(i)
+		if bone_name == bodypart_hit:
+			skeleton.set_bone_pose_scale(i, Vector3(2, 2, 2))
+			print("The scale of the bone with name", bone_name, "is successfully modified.")
+			break
+	
 
 # Damage Animation Functions
 func _damage_hp_3():
 	get_tree().create_tween().tween_property(hp_bar, "value", 3, 1.25)
+#	get_tree().create_tween().tween_property(bodypart_hit
 	
 func _damage_hp_2():
 	get_tree().create_tween().tween_property(hp_bar, "value", 2, 1.25)

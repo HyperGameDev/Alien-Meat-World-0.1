@@ -73,6 +73,7 @@ func damage_detected(collided_bodypart):
 	
 	# Check what limb I am
 	if collided_bodypart == self:
+#		print(collided_bodypart.name.split("_")[1])
 #		print(limb_damage_amount)
 #		print(self) 
 #		print("Damage Dealt")
