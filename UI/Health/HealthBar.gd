@@ -17,6 +17,9 @@ var true_max_health = 4
 
 var bodypart_hit
 
+var skeleton
+var bone_hit
+
 func _ready():		
 	texture = $SubViewport.get_texture()
 #	Messenger.head_health.connect(update_hp)
@@ -30,20 +33,14 @@ func _ready():
 
 func _bodypart_hit(bodypart_name):
 	bodypart_hit = bodypart_name.name.split("_")[1]
-	var skeleton = get_node("../Armature/Skeleton3D")
-	var bone_count = skeleton.get_bone_count()
-	for i in range(bone_count):
-		var bone_name = skeleton.get_bone_name(i)
-		if bone_name == bodypart_hit:
-			skeleton.set_bone_pose_scale(i, Vector3(2, 2, 2))
-			print("The scale of the bone with name", bone_name, "is successfully modified.")
-			break
+	skeleton = get_node("../Armature/Skeleton3D")
+	bone_hit = skeleton.find_bone(bodypart_hit)
+	skeleton.set_bone_pose_scale(bone_hit, Vector3(2, 2, 2))
 	
 
 # Damage Animation Functions
 func _damage_hp_3():
 	get_tree().create_tween().tween_property(hp_bar, "value", 3, 1.25)
-#	get_tree().create_tween().tween_property(bodypart_hit
 	
 func _damage_hp_2():
 	get_tree().create_tween().tween_property(hp_bar, "value", 2, 1.25)
@@ -64,6 +61,7 @@ func _hp_bar_damage():
 	await get_tree().create_timer(.01).timeout
 	
 	# Play correct animation based on how many hit points are left
+	# TODO: CLean this logic layout up maybe
 	if true_max_health - true_current_health == 1:
 		anim_player_copy.play("damage_hp_3")
 		
