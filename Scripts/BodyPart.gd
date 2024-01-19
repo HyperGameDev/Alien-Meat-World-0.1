@@ -9,7 +9,7 @@ class_name BodyPart
 
 @onready var mesh = player.get_node("Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1])
 
-@onready var bodypart_name = name.split("_")[1]
+@onready var bodypart_name = name.split("_")[1]	
 
 @onready var skeleton = get_tree().get_root().get_node("Main Scene/Player/Alien/Armature/Skeleton3D")
 
@@ -32,7 +32,32 @@ var limb_damage_amount = 1
 
 var bone_hit
 
+var dict_scale_limbs:Dictionary = {
+	0: Vector3(0.0, 0.0, 0.0),
+	1: Vector3(.25,.25,.25), 
+	2: Vector3(.5,.5,.5),
+	3: Vector3(.7,.8,.9),
+	4: Vector3(1.0,1.0,1.0),
+	5: Vector3(1.0,1.0,1.0)
+}
 
+var dict_position_limbs_r:Dictionary = {
+	0: Vector3(0,0,0),
+	1: Vector3(.0005,0,0), 
+	2: Vector3(.0005,0,0),
+	3: Vector3(.0005,0,0),
+	4: Vector3(0,0,0),
+	5: Vector3(0,0,0)
+}
+
+var dict_position_limbs_l:Dictionary = {
+	0: Vector3(0,0,0),
+	1: Vector3(-.0005,0,0), 
+	2: Vector3(-.0005,0,0),
+	3: Vector3(-.0005,0,0),
+	4: Vector3(0,0,0),
+	5: Vector3(0,0,0)
+}
 
 #var is_damaged = false
 
@@ -78,12 +103,24 @@ func _damage_amount(damage_amount):
 
 func set_bone_scale(scale):
 	skeleton.set_bone_pose_scale(bone_hit, scale)
+	
+func set_bone_offset(offset):
+	var bone_pos = skeleton.get_bone_pose_position(bone_hit)
+	skeleton.set_bone_pose_position(bone_hit, bone_pos + offset)
 
-func damage_hp():
+func shape_change_limbs_any():
+	get_tree().create_tween().tween_method(set_bone_scale, dict_scale_limbs[current_health+1], dict_scale_limbs[current_health], 1.25)
+	
+func shape_change_limbs_r():
+	get_tree().create_tween().tween_method(set_bone_offset, dict_position_limbs_r[current_health+1], dict_position_limbs_r[current_health], 1.25)
+	
+func shape_change_limbs_l():
+	get_tree().create_tween().tween_method(set_bone_offset, dict_position_limbs_l[current_health+1], dict_position_limbs_l[current_health], 1.25)
+	
+func shape_change_head():
 	var shrink_to = current_health * .25
 	var shrink_from = (current_health + limb_damage_amount) * .25
 	get_tree().create_tween().tween_method(set_bone_scale, Vector3(shrink_from, shrink_from, shrink_from), Vector3(shrink_to, shrink_to, shrink_to), 2)
-	
 	
 	
 #func tween_method_set_bone_scale(tween_value, skeleton, bone_hit):
@@ -104,7 +141,7 @@ func damage_detected(collided_bodypart):
 #		print(name)
 #		
 		bone_hit = skeleton.find_bone(bodypart_name)
-		damage_hp()
+	
 		# Start Mesh Flash
 		var flash_length = 0
 		flash_length += 4
@@ -118,7 +155,7 @@ func damage_detected(collided_bodypart):
 		if current_health > 0 and amount_to_damage != Obstacle.damage_amounts.NONE:
 #			is_damaged = true
 			# Ensure limb is visible
-			mesh.show()
+#			mesh.show()
 			# Apply damage
 			current_health -= limb_damage_amount
 			# Update the Damage Label
@@ -126,11 +163,15 @@ func damage_detected(collided_bodypart):
 		
 			# Inform Messenger of damage, e.g. so UI_FX can flash the screen
 			Messenger.limb_is_damaged.emit()
-			
+			shape_change_limbs_any()
+			if is_part == BodyPart.is_parts.ARM_L or is_part == BodyPart.is_parts.LEG_L:
+				shape_change_limbs_l()
+			if is_part == BodyPart.is_parts.ARM_R or is_part == BodyPart.is_parts.LEG_R:
+				shape_change_limbs_r()
 			
 	# Damaged with <=0 Health			
 		if current_health <= 0 and is_part != BodyPart.is_parts.HEAD:
-			mesh.hide()
+#			mesh.hide()
 			# Syncronise collision turning off with physics process
 			await get_tree().process_frame
 			collision.disabled = true
@@ -141,6 +182,8 @@ func damage_detected(collided_bodypart):
 			
 	# Damaged the Head?
 	if collided_bodypart == is_head and is_part == BodyPart.is_parts.HEAD and amount_to_damage != Obstacle.damage_amounts.NONE:
+		if current_health > 0:
+			shape_change_head()
 		
 		if current_health >= 0:
 #			is_damaged = true
