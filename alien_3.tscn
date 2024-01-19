@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c1q8m4i26u6vr"]
+[gd_scene load_steps=29 format=3 uid="uid://c1q8m4i26u6vr"]
 
 [ext_resource type="PackedScene" uid="uid://diukxh5eov8fo" path="res://Player/Alien_3.blend" id="1_p4qsu"]
 [ext_resource type="Script" path="res://UI/Health/HealthBar.gd" id="2_obxxa"]
@@ -612,15 +612,19 @@ tracks/18/keys = {
 "values": [Vector3(-0.226893, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_m08k7"]
+resource_name = "new_animation"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c7iwo"]
 _data = {
 "Feed_Walk_1": SubResource("Animation_bx7n0"),
 "RESET": SubResource("Animation_pll1t"),
 "Run_1": SubResource("Animation_10uyg"),
-"Walk_1": SubResource("Animation_01jtj")
+"Walk_1": SubResource("Animation_01jtj"),
+"new_animation": SubResource("Animation_m08k7")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_3t681"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_fqmtl"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
 [sub_resource type="Animation" id="Animation_ijmwm"]
@@ -760,7 +764,7 @@ _data = {
 "heal_hp_3": SubResource("Animation_0j8jt")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_afs3h"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_obetr"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6msii"]
@@ -807,7 +811,7 @@ libraries = {
 [node name="HP_Head" type="Sprite3D" parent="." index="1"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.754005, 2.09309, 1.8978)
 visible = false
-texture = SubResource("ViewportTexture_3t681")
+texture = SubResource("ViewportTexture_fqmtl")
 script = ExtResource("2_obxxa")
 what_is_damaged = "head_is_damaged"
 what_is_healed = "head_is_healed"
@@ -827,7 +831,7 @@ transparent_bg = true
 [node name="HP_Empathy" type="Sprite3D" parent="." index="2"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.12584, 1.71669, 1.8978)
 visible = false
-texture = SubResource("ViewportTexture_afs3h")
+texture = SubResource("ViewportTexture_obetr")
 script = ExtResource("2_obxxa")
 what_is_damaged = "empathy_is_damaged"
 what_is_healed = "empathy_is_healed"
@@ -856,49 +860,49 @@ transform = Transform3D(1, 0, 0, 0, 1, 5.96046e-08, 0, -5.96046e-08, 1, -0.05095
 bones/0/rotation = Quaternion(-2.98023e-08, 1.19209e-07, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/position = Vector3(-1.70466e-09, 0.241477, 1.92848e-08)
-bones/1/rotation = Quaternion(-0.14132, -0.00337756, 0.700212, 0.699801)
+bones/1/rotation = Quaternion(-3.55271e-15, 1.77636e-14, -2.01948e-28, 1)
 bones/1/scale = Vector3(1.00048, 1.00048, 1.00048)
 bones/2/position = Vector3(-7.48877e-07, 0.519572, -3.53011e-08)
-bones/2/rotation = Quaternion(-0.49041, 0.0742097, -0.109475, 0.861397)
+bones/2/rotation = Quaternion(-3.55271e-15, 0, -2.01948e-28, 1)
 bones/2/scale = Vector3(1.00048, 1.00048, 1.00048)
 bones/3/position = Vector3(2.57276e-06, 0.796728, 1.16619e-07)
-bones/3/rotation = Quaternion(0.0651234, -0.107398, -0.573876, 0.809253)
+bones/3/rotation = Quaternion(0.0198366, -0.0845138, -0.458501, 0.884444)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-3.55271e-15, 1.77636e-14, -2.01948e-28, 1)
+bones/4/rotation = Quaternion(-0.141073, 0.0124602, -0.65964, 0.738118)
 bones/5/position = Vector3(-5.42995e-09, 0.268125, 1.92848e-08)
-bones/5/rotation = Quaternion(-3.55271e-15, 0, -2.01948e-28, 1)
+bones/5/rotation = Quaternion(-0.298447, -0.309499, -0.347168, 0.833435)
 bones/5/scale = Vector3(1.00048, 1.00048, 1.00048)
 bones/6/position = Vector3(0.00465325, 0.241477, -3.92105e-08)
-bones/6/rotation = Quaternion(-0.141073, 0.0124602, -0.65964, 0.738118)
+bones/6/rotation = Quaternion(0.493731, -0.0957071, 0.57255, 0.6475)
 bones/6/scale = Vector3(1.00048, 1.00048, 1.00048)
 bones/7/position = Vector3(-4.74906e-06, 0.468296, 1.27069e-06)
-bones/7/rotation = Quaternion(0.131734, -0.478462, -0.600536, 0.626958)
-bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(-1.6042e-07, 0.759706, 1.26169e-07)
-bones/8/rotation = Quaternion(-0.385284, 0.00660168, 0.0962089, 0.917745)
-bones/8/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(-0.356274, 0.270001, -0.132524, 0.88465)
 bones/9/position = Vector3(-0.0441139, 1.03533, 0.210275)
+bones/9/rotation = Quaternion(-0.770668, 0.103033, 0.269088, 0.568371)
 bones/10/position = Vector3(2.38235e-07, 0.077027, -1.17586e-06)
-bones/10/rotation = Quaternion(-0.344181, 0.196321, -0.161145, 0.903897)
+bones/10/rotation = Quaternion(0.428231, -0.26139, -0.330844, 0.799272)
 bones/10/scale = Vector3(1, 0.999998, 1)
 bones/11/position = Vector3(-6.7018e-07, 0.501944, -1.5535e-07)
-bones/11/rotation = Quaternion(-0.767646, 0.100669, 0.247919, 0.582341)
+bones/11/rotation = Quaternion(-0.334539, -0.333554, -0.622957, 0.623498)
 bones/11/scale = Vector3(0.999999, 1, 0.999999)
 bones/12/position = Vector3(-7.61777e-07, 0.494854, -2.51674e-07)
-bones/12/rotation = Quaternion(0.420365, -0.281022, -0.267138, 0.82034)
+bones/12/rotation = Quaternion(-0.120451, -0.121535, -0.0789645, 0.982082)
 bones/12/scale = Vector3(0.999999, 1, 1)
 bones/13/position = Vector3(-0.0394606, 1.03533, 0.210275)
-bones/13/rotation = Quaternion(-0.397512, -0.396872, -0.584836, 0.585187)
+bones/13/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/14/position = Vector3(-5.32064e-08, 0.077027, -3.2584e-08)
-bones/14/rotation = Quaternion(-0.137947, 0.16009, -0.0410568, 0.976553)
+bones/14/rotation = Quaternion(0.0880012, 0.2296, 0.0118654, 0.969226)
 bones/14/scale = Vector3(1, 1, 0.999999)
 bones/15/position = Vector3(-8.19931e-07, 0.40572, 5.85299e-08)
-bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
+bones/15/rotation = Quaternion(-0.622426, -0.0410431, 0.364022, 0.691657)
 bones/15/scale = Vector3(0.999999, 1, 1)
 bones/16/position = Vector3(4.92499e-07, 0.526815, -2.25095e-07)
-bones/16/rotation = Quaternion(-0.0380506, -0.261168, 0.365704, -0.892527)
+bones/16/rotation = Quaternion(-0.14132, -0.00337756, 0.700212, 0.699801)
 bones/16/scale = Vector3(0.999999, 1, 1)
-bones/17/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/17/rotation = Quaternion(-0.449626, -0.126658, -0.0500497, 0.882774)
+bones/18/rotation = Quaternion(-0.279049, -0.583992, -0.0395702, 0.761262)
+bones/19/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 
 [node name="Alien_ArmL" parent="Armature/Skeleton3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 1.49012e-08, 0, -2.98023e-08, 0.999999, -0.00951421, -0.00403788, -0.00525001)
