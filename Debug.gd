@@ -26,7 +26,8 @@ func _input(event):
 	if event.is_action_released("Debug 2"):
 		debug_2 = false
 #	if event.is_action_pressed("Debug 3"):
-#		testanimation.play("shrink_hp3")
+#		Messenger.debug_nodes.emit()
+#		print(Debug.OFFSCREEN_POSITION)
 #	if event.is_action_pressed("Debug 4"):
 #		testanimation.play("shrink_hp2")
 #	if event.is_action_pressed("Debug 5"):

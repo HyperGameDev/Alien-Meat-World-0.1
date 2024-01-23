@@ -1,5 +1,7 @@
 extends Node
 
+signal debug_nodes
+
 signal player_hover
 
 signal area_damaged

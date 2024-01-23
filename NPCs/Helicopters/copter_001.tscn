@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxp488n77il0e"]
+
+[ext_resource type="PackedScene" uid="uid://dkj1jo3teqjc1" path="res://NPCs/Helicopters/copter_001.blend" id="1_tdohy"]
+[ext_resource type="Script" path="res://NPCs/Helicopters/copter.gd" id="2_l3hi8"]
+
+[sub_resource type="Animation" id="Animation_uf4d7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Copter_Propeller-Back:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -3.09392)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Copter_Propeller-Top:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gvcuf"]
+resource_name = "propeller_speed-01"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Copter_Propeller-Back:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -3.09392), Vector3(0, 0, 3.09447)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Copter_Propeller-Top:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s3osh"]
+_data = {
+"RESET": SubResource("Animation_uf4d7"),
+"propeller_speed-01": SubResource("Animation_gvcuf")
+}
+
+[node name="copter_001" instance=ExtResource("1_tdohy")]
+script = ExtResource("2_l3hi8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_s3osh")
+}
+
+[node name="Copter_Propeller-Back" parent="." index="2"]
+transform = Transform3D(-0.255171, 0.0121739, 0, -0.0121739, -0.255171, 0, 0, 0, 0.255462, -1.71107, 0.647635, -0.00654209)

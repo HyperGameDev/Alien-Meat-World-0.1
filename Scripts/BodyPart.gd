@@ -2,6 +2,8 @@ extends Area3D
 
 class_name BodyPart
 
+const LIMB_MORPH_SPEED = 1.25
+
 @export var is_head: Area3D
 @export var player: CharacterBody3D
 @export var collision: CollisionShape3D
@@ -43,18 +45,18 @@ var dict_scale_limbs:Dictionary = {
 
 var dict_position_limbs_r:Dictionary = {
 	0: Vector3(0,0,0),
-	1: Vector3(.0005,0,0), 
-	2: Vector3(.0005,0,0),
-	3: Vector3(.0005,0,0),
+	1: Vector3(.0006,0,0), 
+	2: Vector3(.0006,0,0),
+	3: Vector3(.0006,0,0),
 	4: Vector3(0,0,0),
 	5: Vector3(0,0,0)
 }
 
 var dict_position_limbs_l:Dictionary = {
 	0: Vector3(0,0,0),
-	1: Vector3(-.0005,0,0), 
-	2: Vector3(-.0005,0,0),
-	3: Vector3(-.0005,0,0),
+	1: Vector3(-.0006,0,0), 
+	2: Vector3(-.0006,0,0),
+	3: Vector3(-.0006,0,0),
 	4: Vector3(0,0,0),
 	5: Vector3(0,0,0)
 }
@@ -109,18 +111,18 @@ func set_bone_offset(offset):
 	skeleton.set_bone_pose_position(bone_hit, bone_pos + offset)
 
 func shape_change_limbs_any():
-	get_tree().create_tween().tween_method(set_bone_scale, dict_scale_limbs[current_health+1], dict_scale_limbs[current_health], 1.25)
+	get_tree().create_tween().tween_method(set_bone_scale, dict_scale_limbs[current_health+1], dict_scale_limbs[current_health], LIMB_MORPH_SPEED)
 	
 func shape_change_limbs_r():
-	get_tree().create_tween().tween_method(set_bone_offset, dict_position_limbs_r[current_health+1], dict_position_limbs_r[current_health], 1.25)
+	get_tree().create_tween().tween_method(set_bone_offset, dict_position_limbs_r[current_health+1], dict_position_limbs_r[current_health], LIMB_MORPH_SPEED)
 	
 func shape_change_limbs_l():
-	get_tree().create_tween().tween_method(set_bone_offset, dict_position_limbs_l[current_health+1], dict_position_limbs_l[current_health], 1.25)
+	get_tree().create_tween().tween_method(set_bone_offset, dict_position_limbs_l[current_health+1], dict_position_limbs_l[current_health], LIMB_MORPH_SPEED)
 	
 func shape_change_head():
 	var shrink_to = current_health * .25
 	var shrink_from = (current_health + limb_damage_amount) * .25
-	get_tree().create_tween().tween_method(set_bone_scale, Vector3(shrink_from, shrink_from, shrink_from), Vector3(shrink_to, shrink_to, shrink_to), 2)
+	get_tree().create_tween().tween_method(set_bone_scale, Vector3(shrink_from, shrink_from, shrink_from), Vector3(shrink_to, shrink_to, shrink_to), LIMB_MORPH_SPEED)
 	
 	
 #func tween_method_set_bone_scale(tween_value, skeleton, bone_hit):
@@ -155,7 +157,7 @@ func damage_detected(collided_bodypart):
 		if current_health > 0 and amount_to_damage != Obstacle.damage_amounts.NONE:
 #			is_damaged = true
 			# Ensure limb is visible
-#			mesh.show()
+			mesh.show()
 			# Apply damage
 			current_health -= limb_damage_amount
 			# Update the Damage Label
@@ -171,7 +173,8 @@ func damage_detected(collided_bodypart):
 			
 	# Damaged with <=0 Health			
 		if current_health <= 0 and is_part != BodyPart.is_parts.HEAD:
-#			mesh.hide()
+			await get_tree().create_timer(LIMB_MORPH_SPEED).timeout
+			mesh.hide()
 			# Syncronise collision turning off with physics process
 			await get_tree().process_frame
 			collision.disabled = true
@@ -194,7 +197,7 @@ func damage_detected(collided_bodypart):
 			
 		# Restart game on Death
 		if current_health <= 0:
-			await get_tree().create_timer(1.55).timeout
+			await get_tree().create_timer(LIMB_MORPH_SPEED + .3).timeout
 			get_tree().reload_current_scene()
 			
 			
