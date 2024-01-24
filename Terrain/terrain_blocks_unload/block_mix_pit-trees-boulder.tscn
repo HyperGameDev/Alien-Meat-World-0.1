@@ -1,12 +1,12 @@
 [gd_scene load_steps=21 format=3 uid="uid://bop8qvo6q6o0g"]
 
-[ext_resource type="PackedScene" uid="uid://c4gt8ofayu0ec" path="res://Objects/Foliage/Tree_01/tree_01.tscn" id="1_03iof"]
-[ext_resource type="PlaneMesh" uid="uid://7d0gnku46y8v" path="res://Terrain/terrain_blocks_default.tres" id="1_o1t5b"]
-[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_khj8b"]
-[ext_resource type="Script" path="res://Scripts/Health.gd" id="4_uj32j"]
-[ext_resource type="PackedScene" uid="uid://c0kld2qowd56l" path="res://NPCs/Cows/cow_001.tscn" id="5_72tvb"]
-[ext_resource type="PackedScene" uid="uid://b0icdb3xs5r12" path="res://Objects/Rocks/rock_cliff_01.blend" id="7_cduwk"]
-[ext_resource type="PackedScene" uid="uid://cvh85ky784ivq" path="res://Terrain/Cliffs/cliff_side_01.tscn" id="7_id8fp"]
+[ext_resource type="PlaneMesh" uid="uid://7d0gnku46y8v" path="res://Terrain/terrain_blocks_default.tres" id="1_vxs02"]
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_goihk"]
+[ext_resource type="PackedScene" uid="uid://c4gt8ofayu0ec" path="res://Objects/Foliage/Tree_01/tree_01.tscn" id="3_6t44g"]
+[ext_resource type="Script" path="res://Scripts/Health.gd" id="4_w1baf"]
+[ext_resource type="PackedScene" uid="uid://c0kld2qowd56l" path="res://NPCs/Cows/cow_001.tscn" id="5_uad7m"]
+[ext_resource type="PackedScene" uid="uid://cvh85ky784ivq" path="res://Terrain/Cliffs/cliff_side_01.tscn" id="6_qf0do"]
+[ext_resource type="PackedScene" uid="uid://b0icdb3xs5r12" path="res://Objects/Rocks/rock_cliff_01.blend" id="7_x31lt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7niv"]
 albedo_color = Color(0.301961, 0.235294, 0.101961, 1)
@@ -50,7 +50,7 @@ data = PackedVector3Array(0, 2.7506, 6, -0.1625, 3.2377, 6.5, 0.4253, 3.5132, 6.
 [node name="Terrain_0" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 visibility_range_begin = 4096.0
-mesh = ExtResource("1_o1t5b")
+mesh = ExtResource("1_vxs02")
 surface_material_override/0 = SubResource("StandardMaterial3D_x7niv")
 
 [node name="Ground" type="StaticBody3D" parent="."]
@@ -85,59 +85,59 @@ surface_material_override/0 = SubResource("StandardMaterial3D_alwhn")
 transform = Transform3D(0.155245, 0, 0.987876, 0, 1, 0, -0.987876, 0, 0.155245, -2.59405, 0, 8.9)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("2_khj8b")
+script = ExtResource("2_goihk")
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_1"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_gt0cs")
 
-[node name="tree_01-03" parent="Tree-01_1" instance=ExtResource("1_03iof")]
+[node name="tree_01-03" parent="Tree-01_1" instance=ExtResource("3_6t44g")]
 
 [node name="Tree-01_2" type="Area3D" parent="."]
 transform = Transform3D(-0.646257, 0, 0.76312, 0, 1, 0, -0.76312, 0, -0.646257, 3.98174, 0, 4.36162)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("2_khj8b")
+script = ExtResource("2_goihk")
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_2"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_gt0cs")
 
-[node name="tree_01-03" parent="Tree-01_2" instance=ExtResource("1_03iof")]
+[node name="tree_01-03" parent="Tree-01_2" instance=ExtResource("3_6t44g")]
 
 [node name="Tree-01_3" type="Area3D" parent="."]
 transform = Transform3D(-0.938794, 0, -0.344479, 0, 1, 0, 0.344479, 0, -0.938794, 2.66552, 0, -4.3823)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("2_khj8b")
+script = ExtResource("2_goihk")
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_3"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_gt0cs")
 
-[node name="tree_01-03" parent="Tree-01_3" instance=ExtResource("1_03iof")]
+[node name="tree_01-03" parent="Tree-01_3" instance=ExtResource("3_6t44g")]
 
 [node name="Tree-01_4" type="Area3D" parent="."]
 transform = Transform3D(-0.938794, 0, -0.344479, 0, 1, 0, 0.344479, 0, -0.938794, -3.03448, 0, -6.6823)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("2_khj8b")
+script = ExtResource("2_goihk")
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_4"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_gt0cs")
 
-[node name="tree_01-03" parent="Tree-01_4" instance=ExtResource("1_03iof")]
+[node name="tree_01-03" parent="Tree-01_4" instance=ExtResource("3_6t44g")]
 
 [node name="Meat_1" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4063, 0.87691, 6.00861)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("4_uj32j")
+script = ExtResource("4_w1baf")
 
 [node name="Meat_Object" type="MeshInstance3D" parent="Meat_1"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.136646, -0.0352044, 0.00895238)
@@ -149,24 +149,24 @@ surface_material_override/0 = SubResource("StandardMaterial3D_urh4a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13544, -0.811895, 0.00328267)
 shape = SubResource("SphereShape3D_4ejao")
 
-[node name="cow_001" parent="Meat_1" instance=ExtResource("5_72tvb")]
+[node name="cow_001" parent="Meat_1" instance=ExtResource("5_uad7m")]
 transform = Transform3D(0.127619, 0, 0.991823, 0, 1, 0, -0.991823, 0, 0.127619, 0.146392, -0.892553, 0.0381147)
 
-[node name="cliff_side_L" parent="." instance=ExtResource("7_id8fp")]
+[node name="cliff_side_L" parent="." instance=ExtResource("6_qf0do")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -4.8, -1.6436)
 
 [node name="Rock_Cliff_01" type="Area3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, -2.61517e-08, 0.954209, 0.299141, 8.34196e-08, 0.299141, -0.954209, 1.1, -4.07004, 0.429827)
-script = ExtResource("2_khj8b")
+script = ExtResource("2_goihk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rock_Cliff_01"]
 transform = Transform3D(-0.998503, -0.0497944, 0.0226289, -0.0497293, 0.998757, 0.00343021, -0.0227716, 0.00229975, -0.999738, 5.63602, 1.15935, 2.4)
 shape = SubResource("ConcavePolygonShape3D_20igb")
 
-[node name="rock_cliff_01" parent="Rock_Cliff_01" instance=ExtResource("7_cduwk")]
+[node name="rock_cliff_01" parent="Rock_Cliff_01" instance=ExtResource("7_x31lt")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.63602, 5.15935, -3.6)
 
-[node name="cliff_side_R" parent="." instance=ExtResource("7_id8fp")]
+[node name="cliff_side_R" parent="." instance=ExtResource("6_qf0do")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.1, -4.8, 1.689)
 
 [editable path="Tree-01_1/tree_01-03"]

@@ -1,11 +1,11 @@
 [gd_scene load_steps=17 format=3 uid="uid://cim7sqo5mupna"]
 
-[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_375mj"]
-[ext_resource type="PackedScene" uid="uid://c4gt8ofayu0ec" path="res://Objects/Foliage/Tree_01/tree_01.tscn" id="2_tqyia"]
-[ext_resource type="Script" path="res://Scripts/Health.gd" id="3_3khbn"]
-[ext_resource type="PackedScene" uid="uid://c0kld2qowd56l" path="res://NPCs/Cows/cow_001.tscn" id="4_vp6c2"]
-[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="5_bwbls"]
-[ext_resource type="PackedScene" uid="uid://cxp488n77il0e" path="res://NPCs/Helicopters/copter_001.tscn" id="6_4xm4b"]
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_r13va"]
+[ext_resource type="PackedScene" uid="uid://c4gt8ofayu0ec" path="res://Objects/Foliage/Tree_01/tree_01.tscn" id="2_4rpxg"]
+[ext_resource type="Script" path="res://Scripts/Health.gd" id="3_fqlxn"]
+[ext_resource type="PackedScene" uid="uid://c0kld2qowd56l" path="res://NPCs/Cows/cow_001.tscn" id="4_mbyuk"]
+[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="5_uic6a"]
+[ext_resource type="PackedScene" uid="uid://cxp488n77il0e" path="res://NPCs/Helicopters/copter_001.tscn" id="6_87bb5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
 size = Vector2(100, 20)
@@ -56,7 +56,7 @@ shape = SubResource("ConvexPolygonShape3D_qwi2u")
 transform = Transform3D(-0.915037, 0, 0.40337, 0, 1, 0, -0.40337, 0, -0.915037, -2.00301, 0.00303376, 6.85647)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("1_375mj")
+script = ExtResource("1_r13va")
 damage_amount = 1
 slowdown_amount = 2
 
@@ -64,7 +64,7 @@ slowdown_amount = 2
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_stmf6")
 
-[node name="tree_01-03" parent="Tree-01_2" instance=ExtResource("2_tqyia")]
+[node name="tree_01-03" parent="Tree-01_2" instance=ExtResource("2_4rpxg")]
 
 [node name="Trunk" parent="Tree-01_2/tree_01-03" index="0"]
 transform = Transform3D(2.50379, 0, -1.19209e-07, 0, 2.50379, 0, 1.19209e-07, 0, 2.50379, 0, 0, 0)
@@ -74,27 +74,27 @@ surface_material_override/0 = null
 transform = Transform3D(-0.821836, 0, -0.569724, 0, 1, 0, 0.569724, 0, -0.821836, 3.23874, 0, 6.85849)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("1_375mj")
+script = ExtResource("1_r13va")
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_3"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_stmf6")
 
-[node name="tree_01-03" parent="Tree-01_3" instance=ExtResource("2_tqyia")]
+[node name="tree_01-03" parent="Tree-01_3" instance=ExtResource("2_4rpxg")]
 
 [node name="Tree-01_4" type="Area3D" parent="."]
 transform = Transform3D(-0.00657991, 0, -0.999978, 0, 1, 0, 0.999978, 0, -0.00657991, 2.85802, 0, 8.34839)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("1_375mj")
+script = ExtResource("1_r13va")
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_4"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_stmf6")
 
-[node name="tree_01-03" parent="Tree-01_4" instance=ExtResource("2_tqyia")]
+[node name="tree_01-03" parent="Tree-01_4" instance=ExtResource("2_4rpxg")]
 
 [node name="Leaves" parent="Tree-01_4/tree_01-03" index="1"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
@@ -103,72 +103,72 @@ transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
 transform = Transform3D(0.99706, 0, 0.076632, 0, 1, 0, -0.076632, 0, 0.99706, -1.57931, 0, 2.10602)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("1_375mj")
+script = ExtResource("1_r13va")
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_5"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_stmf6")
 
-[node name="tree_01-03" parent="Tree-01_5" instance=ExtResource("2_tqyia")]
+[node name="tree_01-03" parent="Tree-01_5" instance=ExtResource("2_4rpxg")]
 
 [node name="Tree-01_6" type="Area3D" parent="."]
 transform = Transform3D(0.462321, 0, 0.886713, 0, 1, 0, -0.886713, 0, 0.462321, 5.28298, 0, 2.10602)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("1_375mj")
+script = ExtResource("1_r13va")
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_6"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_stmf6")
 
-[node name="tree_01-03" parent="Tree-01_6" instance=ExtResource("2_tqyia")]
+[node name="tree_01-03" parent="Tree-01_6" instance=ExtResource("2_4rpxg")]
 
 [node name="Tree-01_7" type="Area3D" parent="."]
 transform = Transform3D(0.462321, 0, 0.886713, 0, 1, 0, -0.886713, 0, 0.462321, -3.38574, 0, 0.337813)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("1_375mj")
+script = ExtResource("1_r13va")
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_7"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_stmf6")
 
-[node name="tree_01-03" parent="Tree-01_7" instance=ExtResource("2_tqyia")]
+[node name="tree_01-03" parent="Tree-01_7" instance=ExtResource("2_4rpxg")]
 
 [node name="Tree-01_8" type="Area3D" parent="."]
 transform = Transform3D(-0.946537, 0, 0.322596, 0, 1, 0, -0.322596, 0, -0.946537, -0.149844, 0, -3.28009)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("1_375mj")
+script = ExtResource("1_r13va")
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_8"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_stmf6")
 
-[node name="tree_01-03" parent="Tree-01_8" instance=ExtResource("2_tqyia")]
+[node name="tree_01-03" parent="Tree-01_8" instance=ExtResource("2_4rpxg")]
 
 [node name="Tree-01_9" type="Area3D" parent="."]
 transform = Transform3D(-0.368157, 0, -0.929764, 0, 1, 0, 0.929764, 0, -0.368157, 3.4718, 0, -1.63236)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("1_375mj")
+script = ExtResource("1_r13va")
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_9"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_stmf6")
 
-[node name="tree_01-03" parent="Tree-01_9" instance=ExtResource("2_tqyia")]
+[node name="tree_01-03" parent="Tree-01_9" instance=ExtResource("2_4rpxg")]
 
 [node name="Meat_1" type="Area3D" parent="." groups=["Meat"]]
 transform = Transform3D(0.744377, -0.00014954, -0.66776, 1.76931e-05, 1, -0.000204199, 0.66776, 0.000140171, 0.744377, 2.65152, 0.878878, 4.02434)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("3_3khbn")
+script = ExtResource("3_fqlxn")
 
 [node name="Meat_Object" type="MeshInstance3D" parent="Meat_1"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.136646, -0.0352044, 0.00895238)
@@ -180,14 +180,14 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ffam6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13544, -0.811895, 0.00328267)
 shape = SubResource("SphereShape3D_osc03")
 
-[node name="cow_001" parent="Meat_1" instance=ExtResource("4_vp6c2")]
+[node name="cow_001" parent="Meat_1" instance=ExtResource("4_mbyuk")]
 transform = Transform3D(0.127619, 0, 0.991823, 0, 1, 0, -0.991823, 0, 0.127619, 0.146392, -0.892553, 0.0381147)
 
 [node name="Meat_2" type="Area3D" parent="." groups=["Meat"]]
 transform = Transform3D(0.248284, 0, -0.968687, 0, 1, 0, 0.968687, 0, 0.248284, 3.43605, 0.882157, 5.0241)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("3_3khbn")
+script = ExtResource("3_fqlxn")
 
 [node name="Meat_Object" type="MeshInstance3D" parent="Meat_2"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.136646, -0.0352044, 0.00895238)
@@ -199,14 +199,14 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ffam6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13544, -0.811895, 0.00328267)
 shape = SubResource("SphereShape3D_osc03")
 
-[node name="cow_001" parent="Meat_2" instance=ExtResource("4_vp6c2")]
+[node name="cow_001" parent="Meat_2" instance=ExtResource("4_mbyuk")]
 transform = Transform3D(0.127619, 0, 0.991823, 0, 1, 0, -0.991823, 0, 0.127619, 0.146392, -0.892553, 0.0381147)
 
 [node name="Meat_3" type="Area3D" parent="." groups=["Meat"]]
 transform = Transform3D(0.994445, 0, -0.105257, 0, 1, 0, 0.105257, 0, 0.994445, 2.75421, 0.869877, 5.23099)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("3_3khbn")
+script = ExtResource("3_fqlxn")
 
 [node name="Meat_Object" type="MeshInstance3D" parent="Meat_3"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.136646, -0.0352044, 0.00895238)
@@ -218,14 +218,14 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ffam6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13544, -0.811895, 0.00328267)
 shape = SubResource("SphereShape3D_osc03")
 
-[node name="cow_001" parent="Meat_3" instance=ExtResource("4_vp6c2")]
+[node name="cow_001" parent="Meat_3" instance=ExtResource("4_mbyuk")]
 transform = Transform3D(0.127619, 0, 0.991823, 0, 1, 0, -0.991823, 0, 0.127619, 0.146392, -0.892553, 0.0381147)
 
 [node name="Meat_4" type="Area3D" parent="." groups=["Meat"]]
 transform = Transform3D(0.74395, 0, 0.668235, 0, 1, 0, -0.668235, 0, 0.74395, -1.24398, 0.878878, 4.1264)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("3_3khbn")
+script = ExtResource("3_fqlxn")
 
 [node name="Meat_Object" type="MeshInstance3D" parent="Meat_4"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.136646, -0.0352044, 0.00895238)
@@ -237,14 +237,14 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ffam6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13544, -0.811895, 0.00328267)
 shape = SubResource("SphereShape3D_osc03")
 
-[node name="cow_001" parent="Meat_4" instance=ExtResource("4_vp6c2")]
+[node name="cow_001" parent="Meat_4" instance=ExtResource("4_mbyuk")]
 transform = Transform3D(0.127619, 0, 0.991823, 0, 1, 0, -0.991823, 0, 0.127619, 0.146392, -0.892553, 0.0381147)
 
 [node name="Meat_5" type="Area3D" parent="." groups=["Meat"]]
 transform = Transform3D(-0.652548, 0, 0.757747, 0, 1, 0, -0.757747, 0, -0.652548, -1.21979, 0.852754, 4.97269)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("3_3khbn")
+script = ExtResource("3_fqlxn")
 
 [node name="Meat_Object" type="MeshInstance3D" parent="Meat_5"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.136646, -0.0352044, 0.00895238)
@@ -256,14 +256,14 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ffam6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13544, -0.811895, 0.00328267)
 shape = SubResource("SphereShape3D_osc03")
 
-[node name="cow_001" parent="Meat_5" instance=ExtResource("4_vp6c2")]
+[node name="cow_001" parent="Meat_5" instance=ExtResource("4_mbyuk")]
 transform = Transform3D(0.127619, 0, 0.991823, 0, 1, 0, -0.991823, 0, 0.127619, 0.146392, -0.892553, 0.0381147)
 
 [node name="Meat_6" type="Area3D" parent="." groups=["Meat"]]
 transform = Transform3D(0.510708, 0, 0.859754, 0, 1, 0, -0.859754, 0, 0.510708, -0.799394, 0.869877, 5.25266)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("3_3khbn")
+script = ExtResource("3_fqlxn")
 
 [node name="Meat_Object" type="MeshInstance3D" parent="Meat_6"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.136646, -0.0352044, 0.00895238)
@@ -275,17 +275,17 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ffam6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13544, -0.811895, 0.00328267)
 shape = SubResource("SphereShape3D_osc03")
 
-[node name="cow_001" parent="Meat_6" instance=ExtResource("4_vp6c2")]
+[node name="cow_001" parent="Meat_6" instance=ExtResource("4_mbyuk")]
 transform = Transform3D(0.127619, 0, 0.991823, 0, 1, 0, -0.991823, 0, 0.127619, 0.146392, -0.892553, 0.0381147)
 
-[node name="cliff_front_01" parent="." instance=ExtResource("5_bwbls")]
+[node name="cliff_front_01" parent="." instance=ExtResource("5_uic6a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658, -7.495, 21.33)
 
 [node name="Obstacle" type="Area3D" parent="."]
 transform = Transform3D(0.752472, 0, -0.658624, 0, 1, 0, 0.658624, 0, 0.752472, -4.6144, 1.69308, 6)
-script = ExtResource("1_375mj")
+script = ExtResource("1_r13va")
 
-[node name="copter_001" parent="Obstacle" instance=ExtResource("6_4xm4b")]
+[node name="copter_001" parent="Obstacle" instance=ExtResource("6_87bb5")]
 
 [node name="Copter_Propeller-Back" parent="Obstacle/copter_001" index="2"]
 transform = Transform3D(-0.255171, 0.0121739, 0, -0.0121739, -0.255171, 0, 0, 0, 0.255462, -1.71107, 0.647635, -0.00654209)

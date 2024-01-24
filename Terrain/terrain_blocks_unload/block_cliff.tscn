@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://bgd1787acfu6q"]
 
-[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_d6jvk"]
-[ext_resource type="PlaneMesh" uid="uid://7d0gnku46y8v" path="res://Terrain/terrain_blocks_default.tres" id="1_hlwdv"]
-[ext_resource type="PackedScene" uid="uid://fp0s0y2akapt" path="res://Terrain/Cliffs/cliff_front_01.blend" id="3_rqv6w"]
-[ext_resource type="PackedScene" uid="uid://bdk31lg1poqol" path="res://Terrain/Cliffs/cliff_top_01.tscn" id="4_oo383"]
-[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="5_eg8d8"]
+[ext_resource type="PlaneMesh" uid="uid://7d0gnku46y8v" path="res://Terrain/terrain_blocks_default.tres" id="1_slen7"]
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_ptkuk"]
+[ext_resource type="PackedScene" uid="uid://fp0s0y2akapt" path="res://Terrain/Cliffs/cliff_front_01.blend" id="3_81f3u"]
+[ext_resource type="PackedScene" uid="uid://bdk31lg1poqol" path="res://Terrain/Cliffs/cliff_top_01.tscn" id="4_fcdgq"]
+[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="5_ygqbk"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
 size = Vector2(100, 40)
@@ -31,7 +31,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gdwe7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -1.4, 10.2)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Ground"]
-mesh = ExtResource("1_hlwdv")
+mesh = ExtResource("1_slen7")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_rt87d")
 
@@ -48,7 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, -9.9)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Ground2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.145)
-mesh = ExtResource("1_hlwdv")
+mesh = ExtResource("1_slen7")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_rt87d")
 
@@ -58,7 +58,7 @@ shape = SubResource("ConcavePolygonShape3D_gjw30")
 
 [node name="Wall_1" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 2.98023e-08, -1, 0, 1, 2.98023e-08, -0.4, -1.6, 0.0999985)
-script = ExtResource("1_d6jvk")
+script = ExtResource("2_ptkuk")
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_1"]
@@ -67,17 +67,17 @@ shape = SubResource("ConcavePolygonShape3D_gjw30")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Wall_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.4)
-mesh = ExtResource("1_hlwdv")
+mesh = ExtResource("1_slen7")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_rt87d")
 
-[node name="cliff_front_01" parent="." instance=ExtResource("3_rqv6w")]
+[node name="cliff_front_01" parent="." instance=ExtResource("3_81f3u")]
 transform = Transform3D(-1, 1.19209e-07, 0, -1.19209e-07, -1, 0, 0, 0, 1, 0, -70.993, 14.102)
 
-[node name="cliff_top_01" parent="." instance=ExtResource("4_oo383")]
+[node name="cliff_top_01" parent="." instance=ExtResource("4_fcdgq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.549835, -5.90657, 8.60849)
 
-[node name="cliff_front_02" parent="." instance=ExtResource("5_eg8d8")]
+[node name="cliff_front_02" parent="." instance=ExtResource("5_ygqbk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39, -8.83397, 31.5261)
 
 [editable path="cliff_front_02"]

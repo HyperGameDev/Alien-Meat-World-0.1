@@ -1,9 +1,9 @@
 [gd_scene load_steps=37 format=3 uid="uid://ca8grfcex7nxx"]
 
-[ext_resource type="PackedScene" uid="uid://c4gt8ofayu0ec" path="res://Objects/Foliage/Tree_01/tree_01.tscn" id="1_10ujk"]
-[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_sqedo"]
-[ext_resource type="PackedScene" uid="uid://ctwqhtlduw7bn" path="res://Objects/Buildings/Houses/house_01_01.blend" id="3_8cqui"]
-[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="4_6puf1"]
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_f46w8"]
+[ext_resource type="PackedScene" uid="uid://c4gt8ofayu0ec" path="res://Objects/Foliage/Tree_01/tree_01.tscn" id="2_jji2l"]
+[ext_resource type="PackedScene" uid="uid://ctwqhtlduw7bn" path="res://Objects/Buildings/Houses/house_01_01.blend" id="3_q6dst"]
+[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="4_3ow7h"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
 size = Vector2(100, 20)
@@ -277,51 +277,51 @@ shape = SubResource("ConvexPolygonShape3D_2j5jp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55873, 0, 0)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("2_sqedo")
+script = ExtResource("1_f46w8")
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_1"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_k1hro")
 
-[node name="tree_01-03" parent="Tree-01_1" instance=ExtResource("1_10ujk")]
+[node name="tree_01-03" parent="Tree-01_1" instance=ExtResource("2_jji2l")]
 
 [node name="Tree-01_2" type="Area3D" parent="."]
 transform = Transform3D(-0.146722, 0, 0.989178, 0, 1, 0, -0.989178, 0, -0.146722, 3.66885, 0, 2.29064)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("2_sqedo")
+script = ExtResource("1_f46w8")
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_2"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_k1hro")
 
-[node name="tree_01-03" parent="Tree-01_2" instance=ExtResource("1_10ujk")]
+[node name="tree_01-03" parent="Tree-01_2" instance=ExtResource("2_jji2l")]
 
 [node name="Tree-01_3" type="Area3D" parent="."]
 transform = Transform3D(-0.248183, 0, -0.968713, 0, 1, 0, 0.968713, 0, -0.248183, -2.58906, 0, 3.14057)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("2_sqedo")
+script = ExtResource("1_f46w8")
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree-01_3"]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_k1hro")
 
-[node name="tree_01-03" parent="Tree-01_3" instance=ExtResource("1_10ujk")]
+[node name="tree_01-03" parent="Tree-01_3" instance=ExtResource("2_jji2l")]
 
 [node name="House-01_1" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.47763, 0, 5.04283)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("2_sqedo")
+script = ExtResource("1_f46w8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="House-01_1"]
 shape = SubResource("ConvexPolygonShape3D_y6ktv")
 
-[node name="house_01_01" parent="House-01_1" instance=ExtResource("3_8cqui")]
+[node name="house_01_01" parent="House-01_1" instance=ExtResource("3_q6dst")]
 
 [node name="HouseBase" parent="House-01_1/house_01_01" index="0"]
 mesh = SubResource("ArrayMesh_7ymdm")
@@ -350,12 +350,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_nhuvb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98369, 0, -5.65619)
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("2_sqedo")
+script = ExtResource("1_f46w8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="House-01_2"]
 shape = SubResource("ConvexPolygonShape3D_y6ktv")
 
-[node name="house_01_01" parent="House-01_2" instance=ExtResource("3_8cqui")]
+[node name="house_01_01" parent="House-01_2" instance=ExtResource("3_q6dst")]
 
 [node name="HouseBase" parent="House-01_2/house_01_01" index="0"]
 mesh = SubResource("ArrayMesh_7ymdm")
@@ -380,7 +380,7 @@ mesh = SubResource("ArrayMesh_ki00x")
 mesh = SubResource("ArrayMesh_1c555")
 surface_material_override/0 = SubResource("StandardMaterial3D_5msfi")
 
-[node name="cliff_front_01" parent="." instance=ExtResource("4_6puf1")]
+[node name="cliff_front_01" parent="." instance=ExtResource("4_3ow7h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.459842, -7.48956, 18.1353)
 
 [node name="Cube_001" parent="cliff_front_01" index="0"]
