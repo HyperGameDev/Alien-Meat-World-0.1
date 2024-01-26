@@ -229,6 +229,7 @@ func health_collected(collided_bodypart, empathy_ok):
 #		print("collided with bad health")
 	if collided_bodypart == self and current_health < max_health:
 		current_health += 1
+		shape_change_limbs_any()
 		player.get_node("Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
 #		print("current_health collected")
 		mesh.show()

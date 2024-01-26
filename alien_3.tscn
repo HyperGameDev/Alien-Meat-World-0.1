@@ -620,7 +620,7 @@ _data = {
 "Walk_1": SubResource("Animation_01jtj")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_hitge"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0t0lm"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
 [sub_resource type="Animation" id="Animation_ijmwm"]
@@ -760,7 +760,7 @@ _data = {
 "heal_hp_3": SubResource("Animation_0j8jt")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fa5nm"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0ullo"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6msii"]
@@ -807,7 +807,7 @@ libraries = {
 [node name="HP_Head" type="Sprite3D" parent="." index="1"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.754005, 2.09309, 1.8978)
 visible = false
-texture = SubResource("ViewportTexture_hitge")
+texture = SubResource("ViewportTexture_0t0lm")
 script = ExtResource("2_obxxa")
 what_is_damaged = "head_is_damaged"
 what_is_healed = "head_is_healed"
@@ -827,7 +827,7 @@ transparent_bg = true
 [node name="HP_Empathy" type="Sprite3D" parent="." index="2"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.12584, 1.71669, 1.8978)
 visible = false
-texture = SubResource("ViewportTexture_fa5nm")
+texture = SubResource("ViewportTexture_0ullo")
 script = ExtResource("2_obxxa")
 what_is_damaged = "empathy_is_damaged"
 what_is_healed = "empathy_is_healed"

@@ -1,7 +1,9 @@
 extends Node
 
-var spawn_interval_min = 3
-var spawn_interval_max = 5
+var spawn_interval_min = .001
+var spawn_interval_max = .002
+
+var copter_spawns = 0
 
 @onready var spawn_interval_timer : Timer = Timer.new()
 
@@ -16,7 +18,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func spawn_helicopter():
 	spawn_interval_timer.start(randi_range(spawn_interval_min,spawn_interval_max))
-	print("copter spawned ", "after ", spawn_interval_timer.wait_time, "s")
-	
-	var copter = load("res://NPCs/Helicopters/copter_001.tscn").instantiate()
-	get_tree().get_current_scene().add_child(copter)
+
+#	print(copter_spawns, " copters spawned")
+	if copter_spawns <= 5:
+		copter_spawns += 1
+		var copter = preload("res://NPCs/Helicopters/copter_001.tscn").instantiate()
+		get_tree().get_current_scene().add_child(copter)

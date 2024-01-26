@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciijtaeiegep4"]
+
+[ext_resource type="PackedScene" uid="uid://ctwqhtlduw7bn" path="res://Objects/Buildings/Houses/house_01_01.blend" id="1_81uox"]
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_n5iuc"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xm748"]
+points = PackedVector3Array(0.958294, 0.6501, 0.685001, -0.238592, 0.0163382, -0.265642, -0.932906, 5.55112e-17, 0.0947168, 0.961106, 0, 0.686451, -0.930094, 0.6501, 0.685001, 0.397656, 0.6501, -0.288699, -0.932906, 0, 0.686451, 0.961106, 5.55112e-17, 0.0947168, -0.930094, 0.6501, 0.095024, 0.958294, 0.6501, 0.095024, 0.398798, -5.55112e-17, -0.290149, -0.238592, 0.634728, -0.265642)
+
+[node name="House_01_00" instance=ExtResource("1_81uox")]
+
+[node name="Obstacle" type="Area3D" parent="." index="0"]
+script = ExtResource("2_n5iuc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle" index="0"]
+shape = SubResource("ConvexPolygonShape3D_xm748")

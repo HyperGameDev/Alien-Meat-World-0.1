@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqgyue78ie444"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
+size = Vector2(100, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdwe7"]
+transparency = 1
+albedo_color = Color(0.392157, 0.235294, 0.184314, 0)
+
+[node name="Terrain_0" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+mesh = SubResource("PlaneMesh_wnprt")
+surface_material_override/0 = SubResource("StandardMaterial3D_gdwe7")

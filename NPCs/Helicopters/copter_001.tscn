@@ -73,8 +73,16 @@ script = ExtResource("2_l3hi8")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="0"]
 avoidance_enabled = true
+radius = 4.0
+neighbor_distance = 20.0
+max_speed = 5.0
+use_3d_avoidance = true
+avoidance_layers = 2
+avoidance_mask = 32775
 
 [node name="Area_Copter" type="Area3D" parent="." index="1"]
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area_Copter" index="0"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)

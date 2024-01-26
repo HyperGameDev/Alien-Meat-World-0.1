@@ -13,9 +13,12 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	Messenger.amount_slowed.connect(slowdown)
 	Messenger.area_undamaged.connect(damage_undetected)
+	
+	set_max_slides(20)
 
 
 func _physics_process(delta):
+#	print("Is on floor: ", is_on_floor())
 #	print(self.global_position.y)
 	if self.global_position.y <= FALL_DEATH_DISTANCE:
 		var fall_death = true
@@ -58,8 +61,8 @@ func _physics_process(delta):
 		$Alien/AnimationPlayer.stop(true)
 		
 # Collision stops level movement
-		
 	move_and_slide()
+	
 	
 
 func slowdown(slowdown_amount):

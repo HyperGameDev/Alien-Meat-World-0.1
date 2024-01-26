@@ -74,6 +74,7 @@ func shoot_ray(collide_bodies):
 	ray_query.collide_with_areas = !collide_bodies
 	ray_query.collide_with_bodies = collide_bodies
 	ray_query.collision_mask = 1
+#	ray_query.collision_mask = 3
 	
 	return space.intersect_ray(ray_query)
 

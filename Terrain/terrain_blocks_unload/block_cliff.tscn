@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgd1787acfu6q"]
+[gd_scene load_steps=13 format=3 uid="uid://bgd1787acfu6q"]
 
 [ext_resource type="PlaneMesh" uid="uid://7d0gnku46y8v" path="res://Terrain/terrain_blocks_default.tres" id="1_slen7"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_ptkuk"]
@@ -20,6 +20,11 @@ data = PackedVector3Array(50, 0, 10, -50, 0, 10, 50, 0, -10, -50, 0, 10, -50, 0,
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ngm2i"]
 points = PackedVector3Array(-5.99455, -71.0009, -8.31296, -6.39667, -70.7782, -8.31296, -5.80767, 7.41876, -8.32274, -3.38274, 7.41876, -8.30318, -3.34691, 7.46485, 11.6602, -5.99455, -71.0009, 91.582, -6.39667, -2.12064, -8.31296, -6.39667, -70.7782, 91.582, -6.29546, 7.45717, 11.6406, -3.34691, 7.46485, 91.6015, -6.39667, -2.12064, 91.582, -6.29546, 7.45717, 91.5722)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5trus"]
+size = Vector3(102.93, 1, 20.535)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5p1wv"]
 
 [node name="Terrain_0" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
@@ -43,8 +48,11 @@ shape = SubResource("ConcavePolygonShape3D_gjw30")
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 40.91, -7.414, 13.326)
 shape = SubResource("ConvexPolygonShape3D_ngm2i")
 
-[node name="Ground2" type="StaticBody3D" parent="."]
+[node name="Ground2" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, -9.9)
+gravity_scale = 0.0
+sleeping = true
+freeze = true
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Ground2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.145)
@@ -55,29 +63,52 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rt87d")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, -0.145)
 shape = SubResource("ConcavePolygonShape3D_gjw30")
+disabled = true
 
-[node name="Wall_1" type="Area3D" parent="."]
+[node name="RIGIDCollisionShape3D2" type="CollisionShape3D" parent="Ground2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -0.292925, -0.145)
+shape = SubResource("BoxShape3D_5trus")
+
+[node name="Wall_Rigid" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 2.98023e-08, -1, 0, 1, 2.98023e-08, -0.4, -1.6, 0.0999985)
+gravity_scale = 0.0
+
+[node name="Wall_1" type="Area3D" parent="Wall_Rigid"]
+collision_layer = 0
+collision_mask = 32768
 script = ExtResource("2_ptkuk")
 slowdown_amount = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Rigid/Wall_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.200001, 8.4)
 shape = SubResource("ConcavePolygonShape3D_gjw30")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wall_1"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wall_Rigid/Wall_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.4)
 mesh = ExtResource("1_slen7")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_rt87d")
+
+[node name="RIGIDCollisionShape3D2" type="CollisionShape3D" parent="Wall_Rigid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.043467, -1.47783, 8.037)
+shape = SubResource("BoxShape3D_5p1wv")
+
+[node name="collisionShape3D2" type="CollisionShape3D" parent="Wall_Rigid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.200001, 8.4)
+shape = SubResource("ConcavePolygonShape3D_gjw30")
+disabled = true
 
 [node name="cliff_front_01" parent="." instance=ExtResource("3_81f3u")]
 transform = Transform3D(-1, 1.19209e-07, 0, -1.19209e-07, -1, 0, 0, 0, 1, 0, -70.993, 14.102)
+visible = false
 
 [node name="cliff_top_01" parent="." instance=ExtResource("4_fcdgq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.549835, -5.90657, 8.60849)
+visible = false
 
 [node name="cliff_front_02" parent="." instance=ExtResource("5_ygqbk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39, -8.83397, 31.5261)
+visible = false
 
+[editable path="cliff_top_01"]
 [editable path="cliff_front_02"]

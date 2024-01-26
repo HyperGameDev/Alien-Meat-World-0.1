@@ -12,8 +12,11 @@ enum slowdown_amounts {NONE, PARTIAL, FULL}
 func _ready():
 	area_entered.connect(check_area)
 	area_exited.connect(uncheck_area)
+	# Be detectable as "Obstacle"
 	set_collision_layer_value(3, true)
-	set_collision_mask_value(3, true)
+	
+	# Collide with "Player" Layer
+	set_collision_mask_value(16, true)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame
 func _process(_delta):

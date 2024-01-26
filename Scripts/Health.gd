@@ -12,6 +12,12 @@ var select_material = StandardMaterial3D.new()
 
 
 func _ready():
+	# Be detectable as "Obstacle"
+	set_collision_layer_value(3, true)
+	
+	# Collide with "Player" Layer
+	set_collision_mask_value(16, true)
+	
 	self.add_to_group("Meat")
 	# Temporary Collidable Healing
 	area_entered.connect(check_area)

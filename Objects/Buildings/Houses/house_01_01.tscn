@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ciijtaeiegep4"]
-
-[ext_resource type="PackedScene" uid="uid://ctwqhtlduw7bn" path="res://Objects/Buildings/Houses/house_01_01.blend" id="1_81uox"]
-
-[node name="house_01_01" instance=ExtResource("1_81uox")]

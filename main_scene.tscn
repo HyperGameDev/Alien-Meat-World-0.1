@@ -7,9 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://c2s7xptwu48an" path="res://Terrain/terrain_controller.tscn" id="3_uqnug"]
 [ext_resource type="PackedScene" uid="uid://c1q8m4i26u6vr" path="res://alien_3.tscn" id="4_huvyo"]
 [ext_resource type="Script" path="res://Cam_Target.gd" id="5_iuboh"]
+[ext_resource type="Script" path="res://Area_Player-Proximity.gd" id="8_0gjb7"]
 [ext_resource type="Script" path="res://Scripts/BodyPart.gd" id="10_2td36"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_war41"]
+size = Vector3(1, 0.185, 70)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1q3j"]
 albedo_color = Color(1.2, 1.2, 1.2, 1)
@@ -77,9 +79,6 @@ dof_blur_near_distance = 9.32
 dof_blur_near_transition = 1140.9
 dof_blur_amount = 1.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4xqnu"]
-size = Vector3(192.385, 1, 49.5471)
-
 [sub_resource type="BoxMesh" id="BoxMesh_svwv1"]
 size = Vector3(1, 1, 7.48)
 
@@ -106,18 +105,28 @@ height = 17.822
 [sub_resource type="SphereShape3D" id="SphereShape3D_ukq6r"]
 radius = 10.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_edu81"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_56ims"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_gdoyi"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_vy0mc"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [node name="Main Scene" type="Node3D"]
 
 [node name="POS_Furthest-Spawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.431, -130)
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="POS_Furthest-Spawn"]
+mesh = SubResource("BoxMesh_war41")
+surface_material_override/0 = SubResource("StandardMaterial3D_y1q3j")
+
+[node name="POS_Highest" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, -130)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="POS_Highest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08253, 94.9054)
 mesh = SubResource("BoxMesh_war41")
 surface_material_override/0 = SubResource("StandardMaterial3D_y1q3j")
 
@@ -221,23 +230,21 @@ far = 1000.0
 script = ExtResource("2_qvpxy")
 cam_target = NodePath("../Player/Cam_Target")
 
-[node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.375994, 0, 0)
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.15388, -6.7931)
-shape = SubResource("BoxShape3D_4xqnu")
-
 [node name="TerrainController" parent="." instance=ExtResource("3_uqnug")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.74317)
 
 [node name="Player" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
+collision_layer = 0
 axis_lock_linear_z = true
 script = ExtResource("3_ia6ow")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Player"]
+avoidance_enabled = false
+height = 2.2
+vertices = PackedVector3Array(1.644, 0, -1.69, -1.264, 0, -1.601, -1.461, 0, 1.345, 1.714, 0, 1.251)
+avoidance_layers = 32768
 
 [node name="Cam_Target" type="Node3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.982935, 0.183951, 0, -0.183951, 0.982935, 0.228, 3, 5.50001)
@@ -253,7 +260,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.414648, 0, -0.00475604)
 [node name="Area_Head" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("is_head", "player", "collision", "collision_area")]
 unique_name_in_owner = true
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.358542, 1.26877, -0.0011203)
-collision_layer = 4
+collision_layer = 32768
 collision_mask = 4
 script = ExtResource("10_2td36")
 is_head = NodePath(".")
@@ -270,7 +277,7 @@ shape = SubResource("CapsuleShape3D_102ua")
 
 [node name="Area_LegR" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 1.86265e-09)
-collision_layer = 4
+collision_layer = 32768
 collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../..")
@@ -286,7 +293,7 @@ shape = SubResource("CapsuleShape3D_3kibt")
 
 [node name="Area_LegL" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
-collision_layer = 4
+collision_layer = 32768
 collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../..")
@@ -302,7 +309,7 @@ shape = SubResource("CapsuleShape3D_f5maj")
 
 [node name="Area_ArmR" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
-collision_layer = 4
+collision_layer = 32768
 collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../..")
@@ -318,7 +325,7 @@ shape = SubResource("CapsuleShape3D_0yil0")
 
 [node name="Area_ArmL" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
-collision_layer = 4
+collision_layer = 32768
 collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../..")
@@ -334,18 +341,21 @@ shape = SubResource("CapsuleShape3D_v6wbe")
 
 [node name="Area_Player-Proximity" type="Area3D" parent="Player/DetectionAreas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_0gjb7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/DetectionAreas/Area_Player-Proximity"]
+[node name="Collision_Copter-Proximity" type="CollisionShape3D" parent="Player/DetectionAreas/Area_Player-Proximity"]
 shape = SubResource("SphereShape3D_ukq6r")
 
 [node name="Alien" parent="Player" instance=ExtResource("4_huvyo")]
 transform = Transform3D(1, 0.00048692, 0.000306956, -0.000486927, 1, 2.02796e-05, -0.000306949, -2.04407e-05, 1, 0, 0, 0)
 
 [node name="HP_Head" parent="Player/Alien" index="1"]
-texture = SubResource("ViewportTexture_edu81")
+texture = SubResource("ViewportTexture_56ims")
 
 [node name="HP_Empathy" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_gdoyi")
+texture = SubResource("ViewportTexture_vy0mc")
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 transform = Transform3D(1, -3.63798e-11, 2.91038e-11, 1.45519e-11, 0.999999, 0, 0, -2.98023e-08, 1, -0.0336967, 0.021865, -0.0172729)

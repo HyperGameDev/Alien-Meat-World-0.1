@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvxcx283w03g3"]
+
+[ext_resource type="PackedScene" uid="uid://dkj1jo3teqjc1" path="res://NPCs/Helicopters/copter_001.blend" id="1_vjkdd"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="copter_001" parent="." instance=ExtResource("1_vjkdd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.242734, 0, 0.362364)
+
+[editable path="copter_001"]
