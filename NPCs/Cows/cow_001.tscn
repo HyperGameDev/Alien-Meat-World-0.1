@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0kld2qowd56l"]
-
-[ext_resource type="PackedScene" uid="uid://dt202id03hbck" path="res://NPCs/Cows/cow_001.blend" id="1_4ows6"]
-
-[node name="cow_001" instance=ExtResource("1_4ows6")]

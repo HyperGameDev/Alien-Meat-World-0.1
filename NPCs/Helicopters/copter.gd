@@ -1,4 +1,4 @@
-extends Node3D
+extends Area3D
 
 class_name Copter
 
@@ -23,6 +23,11 @@ var is_moving = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_collision_layer_value(1, false)	
+	set_collision_layer_value(3, true)
+	
+	set_collision_mask_value(1, false)
+	
 	player.area_entered.connect(copter_stop)
 	nav_agent.velocity_computed.connect(copter_nav)
 	

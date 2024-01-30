@@ -68,12 +68,13 @@ func _physics_process(delta):
 func slowdown(slowdown_amount):
 	if slowdown_amount == Obstacle.slowdown_amounts.FULL:
 		terrain_slowdown = true
-#		print("terrain_slowdown:", terrain_slowdown)
+		print("terrain_slowdown:", terrain_slowdown)
 		%TerrainController.terrain_velocity = 0
 		
 func damage_undetected(_bodypart_unarea):
 #	print("Feet Unseen")
 	terrain_slowdown = false
+	print("terrain_slowdown:", terrain_slowdown)
 
 
 	

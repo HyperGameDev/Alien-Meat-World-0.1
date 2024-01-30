@@ -12,10 +12,13 @@ var select_material = StandardMaterial3D.new()
 
 
 func _ready():
-	# Be detectable as "Obstacle"
-	set_collision_layer_value(3, true)
+	# TODO: Cows shouldn't need to be on layer 1, but unfortunately... they do
+#	set_collision_layer_value(1, false)
 	
-	# Collide with "Player" Layer
+	set_collision_layer_value(3, true)
+	set_collision_layer_value(4, true)
+	
+	set_collision_mask_value(1, false)
 	set_collision_mask_value(16, true)
 	
 	self.add_to_group("Meat")
