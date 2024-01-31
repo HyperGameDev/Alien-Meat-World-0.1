@@ -18,7 +18,7 @@ var is_moving = true
 
 @onready var nav_agent = $NavigationAgent3D
 
-@onready var copter_area = $Area_Copter
+@onready var copter_area = self
 @onready var player = get_tree().get_current_scene().get_node("Player/DetectionAreas/Area_Player-Proximity")
 
 # Called when the node enters the scene tree for the first time.
@@ -30,6 +30,7 @@ func _ready():
 	
 	player.area_entered.connect(copter_stop)
 	nav_agent.velocity_computed.connect(copter_nav)
+	Messenger.grab_target.connect(is_grabbed)
 	
 	$AnimationPlayer.play("propeller_speed-01")
 
@@ -51,6 +52,10 @@ func _physics_process(delta):
 #	if global_position.y >= 2.3:
 #		nav_agent.use_3d_avoidance = false
 #		print("A Copter Went Too High! 3D Avoidance is ", nav_agent.use_3d_avoidance)
+
+func is_grabbed(grab_target):
+	if grab_target == self and Input.is_action_pressed("Grab"):
+		queue_free()
 		
 		
 	

@@ -25,8 +25,9 @@ func _ready():
 	# Temporary Collidable Healing
 	area_entered.connect(check_area)
 	
-	# Messenger informing script that health is hovered
-	Messenger.health_hovered.connect(health_hovered)	
+	# Messenger informing script what is hovered
+	Messenger.grab_target.connect(is_grabbed)	
+	
 	
 	# Setting up meat material changes based on cursor behavior
 	default_material.set_albedo(Color(.32, .75, .35))
@@ -40,9 +41,9 @@ func check_area(collided_bodypart):
 	Messenger.health_detected.emit(collided_bodypart, empathy_ok)
 	
 	
-func health_hovered(hover_target):
+func is_grabbed(grab_target):
 	# Meat is Hovered
-	if self == hover_target:
+	if self == grab_target:
 		# Show Arrow
 		meat_mesh.visible = true
 	else:
@@ -50,14 +51,14 @@ func health_hovered(hover_target):
 		meat_mesh.visible = false
 		
 	# Meat is Selected	
-	if Input.is_action_pressed("Grab"):
+	if self == grab_target and Input.is_action_pressed("Grab"):
 		Messenger.health_grabbed.emit()
 		# Hide Arrow
 		meat_mesh.visible = false
 
 		
 	# Meat is Unselected (When Not Hovering)	
-	if meat_mesh.material_override == select_material:
+	if meat_mesh.material_override == select_material and self == grab_target:
 		# Hide Arrow
 		meat_mesh.visible = false
 		# Change Material

@@ -1,6 +1,6 @@
 extends Camera3D
 
-# Cam Movement vars
+# Cam Movement varsf
 @export var cam_lerpspeed = .05
 @export var cam_z_offset = 10
 const CAM_Z_OFFSET = 10
@@ -48,17 +48,16 @@ func _physics_process(_delta):
 func _process(_delta):	
 	# Raycast 1: Grab implementation
 	grab_ray()
-#	print(grab_target)
-	
+	print(grab_target)
+	Messenger.grab_target.emit(grab_target)
 	# Raycast 2: Hover implementation
 	hover_ray()
 	
-#	# Raycaast 1: Temp Grab-specific
-	if !grab_target: return
-	if grab_target.is_in_group("Meat"):
-#		print("Raycast: Sees Health")
-		Messenger.health_hovered.emit(grab_target)
-
+#	#	# Raycaast 1: Temp Grab-specific
+#	if !grab_target: return
+#	if grab_target.is_in_group("Meat"):
+##		print("Raycast: Sees Health")
+#		Messenger.health_hovered.emit(grab_target)
 
 func shoot_ray(collide_bodies):
 	var mouse_pos = get_viewport().get_mouse_position()
