@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=31 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
@@ -20,10 +20,12 @@ albedo_color = Color(1.2, 1.2, 1.2, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_qcmfl"]
 size = Vector3(1, 0.185, 70)
 
-[sub_resource type="BoxMesh" id="BoxMesh_gfpys"]
+[sub_resource type="BoxMesh" id="BoxMesh_j84b1"]
 size = Vector3(60, 60, 0.15)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_60lcs"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ourdh"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nthf1"]
 points = PackedVector3Array(30, 30, 0.075, 30, 30, -0.075, -30, 30, 0.075, 30, -30, 0.075, 30, -30, -0.075, -30, 30, -0.075, -30, -30, 0.075, -30, -30, -0.075)
 
 [sub_resource type="Gradient" id="Gradient_3mo1j"]
@@ -81,10 +83,10 @@ height = 17.822
 [sub_resource type="SphereShape3D" id="SphereShape3D_ukq6r"]
 radius = 10.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_vyc4k"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_u0y3y"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2dudo"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_6bfpg"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [node name="Main Scene" type="Node3D"]
@@ -127,13 +129,14 @@ visible = false
 collision_layer = 16
 collision_mask = 0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Cursor_Zone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0703812, 9.53674e-07, 0.0418701)
-mesh = SubResource("BoxMesh_gfpys")
+[node name="Mesh_Head-Cursor" type="MeshInstance3D" parent="Cursor_Zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0703812, 9.53674e-07, 0.164234)
+mesh = SubResource("BoxMesh_j84b1")
+surface_material_override/0 = SubResource("StandardMaterial3D_ourdh")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Cursor_Zone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0703812, 9.53674e-07, 0.0418701)
-shape = SubResource("ConvexPolygonShape3D_60lcs")
+[node name="Collision_Head-Cursor" type="CollisionShape3D" parent="Cursor_Zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0703812, 9.53674e-07, 0.164234)
+shape = SubResource("ConvexPolygonShape3D_nthf1")
 
 [node name="Debug" type="Control" parent="."]
 layout_mode = 3
@@ -343,10 +346,10 @@ shape = SubResource("SphereShape3D_ukq6r")
 transform = Transform3D(1, 0.00048692, 0.000306956, -0.000486927, 1, 2.02796e-05, -0.000306949, -2.04407e-05, 1, 0, 0, 0)
 
 [node name="HP_Head" parent="Player/Alien" index="1"]
-texture = SubResource("ViewportTexture_vyc4k")
+texture = SubResource("ViewportTexture_u0y3y")
 
 [node name="HP_Empathy" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_2dudo")
+texture = SubResource("ViewportTexture_6bfpg")
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 transform = Transform3D(1, -3.63798e-11, 2.91038e-11, 1.45519e-11, 0.999999, 0, 0, -2.98023e-08, 1, -0.0336967, 0.021865, -0.0172729)

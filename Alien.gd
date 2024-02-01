@@ -9,12 +9,12 @@ const FALL_DEATH_DISTANCE = -50
 
 var terrain_slowdown = false
 
-@onready var arm_r = 7
-@onready var arm_l = 2
+#@onready var arm_r = 7
+#@onready var arm_l = 2
 @onready var head = 5
 
-@onready var arm_r_rotation = skeleton.get_bone_pose_rotation(arm_r)
-@onready var arm_l_rotation = skeleton.get_bone_pose_rotation(arm_l)
+#@onready var arm_r_rotation = skeleton.get_bone_pose_rotation(arm_r)
+#@onready var arm_l_rotation = skeleton.get_bone_pose_rotation(arm_l)
 @onready var head_rotation = skeleton.get_bone_pose_rotation(head)
 
 var look_pos
@@ -35,21 +35,21 @@ func _ready():
 	
 	
 	
-func rotate_arm_r_to_direction(dir:Vector3):
-	# Movement logic
-	var pos_2D: Vector2 = Vector2(-transform.basis.z.x, -transform.basis.z.z)
+#func rotate_arm_r_to_direction(dir:Vector3):
+#	# Movement logic
+#	var pos_2D: Vector2 = Vector2(-transform.basis.z.x, -transform.basis.z.z)
+#
+#	# Movement application
+#	skeleton.set_bone_pose_rotation(arm_r, Quaternion((atan2(dir.x, -dir.z) - .25) * 4, arm_r_rotation.y, arm_r_rotation.z, arm_r_rotation.w))
+#	print("R Arm Rotation: ", skeleton.get_bone_pose_rotation(arm_r))
 	
-	# Movement application
-	skeleton.set_bone_pose_rotation(arm_r, Quaternion((atan2(dir.x, -dir.z) - .25) * 4, arm_r_rotation.y, arm_r_rotation.z, arm_r_rotation.w))
-	
-	
-func rotate_arm_l_to_direction(dir:Vector3):
-	# Movement logic
-	var pos_2D: Vector2 = Vector2(-transform.basis.z.x, -transform.basis.z.z)
-	
-	# Movement application
-	skeleton.set_bone_pose_rotation(arm_l, Quaternion((atan2(-dir.x, -dir.z) - .25) * 4, arm_l_rotation.y, arm_l_rotation.z, arm_l_rotation.w))
-#	print(skeleton.get_bone_pose_rotation(arm_r))
+#func rotate_arm_l_to_direction(dir:Vector3):
+#	# Movement logic
+#	var pos_2D: Vector2 = Vector2(-transform.basis.z.x, -transform.basis.z.z)
+#
+#	# Movement application
+#	skeleton.set_bone_pose_rotation(arm_l, Quaternion((atan2(-dir.x, -dir.z) - .25) * 4, arm_l_rotation.y, arm_l_rotation.z, arm_l_rotation.w))
+#	print("L Arm Rotation: ", skeleton.get_bone_pose_rotation(arm_l))
 	
 	
 func rotate_head_to_direction(dir:Vector3):
@@ -57,16 +57,25 @@ func rotate_head_to_direction(dir:Vector3):
 	var pos_2D: Vector2 = Vector2(-transform.basis.z.x, -transform.basis.z.z)
 	
 	# Movement application
-	skeleton.set_bone_pose_rotation(head, Quaternion(head_rotation.x, atan2(dir.x, -dir.z) * -2, head_rotation.z, head_rotation.w))
+	skeleton.set_bone_pose_rotation(head, Quaternion(head_rotation.x, atan2(dir.x, -dir.z) * -2.3, head_rotation.z, head_rotation.w))
+	
 
+	
+#func rotate_player_to_direction(dir:Vector3):
+#	# Movement logic
+#	var pos_2D: Vector2 = Vector2(-transform.basis.z.x, -transform.basis.z.z)
+#
+#	# Movement application
+#	rotation.y = -atan2(dir.x, -dir.z)
 	
 
 
 func mouse_pos(mouse):
 	look_pos = mouse - self.global_position
-	rotate_arm_r_to_direction(look_pos)
-	rotate_arm_l_to_direction(look_pos)
+#	rotate_arm_r_to_direction(look_pos)
+#	rotate_arm_l_to_direction(look_pos)
 	rotate_head_to_direction(look_pos)
+#	rotate_player_to_direction(look_pos)
 	
 #	# Follow Cursor
 #	skeleton.set_bone_pose_rotation(arm_r, look_pos)
