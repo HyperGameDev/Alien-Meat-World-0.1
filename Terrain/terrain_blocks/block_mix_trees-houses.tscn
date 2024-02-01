@@ -65,11 +65,11 @@ metadata/_edit_lock_ = true
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 41, 0, -4.82184)
 metadata/_edit_lock_ = true
 
-[node name="Tree_01_00" parent="." instance=ExtResource("2_jji2l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.06008, 1.19209e-07, -4.18527)
-
 [node name="Tree_01_01" parent="." instance=ExtResource("2_jji2l")]
 transform = Transform3D(-0.425384, -0.00869163, 0.904971, -0.00369742, 0.999962, 0.00786597, -0.905005, 0, -0.4254, -9.70664, 1.19209e-07, -3.26615)
+
+[node name="Tree_01_04" parent="." instance=ExtResource("2_jji2l")]
+transform = Transform3D(-0.922425, -0.00644806, 0.386122, -0.00369742, 0.999962, 0.00786597, -0.386158, 0.00582811, -0.922414, 7.01145, 1.19209e-07, -3.26615)
 
 [node name="Tree_01_02" parent="." instance=ExtResource("2_jji2l")]
 transform = Transform3D(0.0247113, 0, 0.999695, 0, 1, 0, -0.999695, 0, 0.0247113, -6.66601, 1.19209e-07, 4.20895)
@@ -234,6 +234,5 @@ transform = Transform3D(-0.991694, 0, 0.128622, 0, 1, 0, -0.128622, 0, -0.991694
 transform = Transform3D(-0.991694, 0, 0.128622, 0, 1, 0, -0.128622, 0, -0.991694, -8.20179, 4.76837e-07, -6.7471)
 
 [editable path="cliff_front_01"]
-[editable path="Tree_01_00"]
 [editable path="House01_00"]
 [editable path="House01_01"]

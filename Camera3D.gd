@@ -8,7 +8,7 @@ const CAM_Z_OFFSET = 10
 @export var cam_x_offset = 0
 
 # Temporary Grab Mechanic vars
-@export var cam_target: Node3D
+@onready var cam_target = %Cam_Target
 var is_grabbed = false
 var grabbed_object = null
 var grab_offset: Vector3 = Vector3(0, 0, 0)
@@ -48,10 +48,13 @@ func _physics_process(_delta):
 func _process(_delta):	
 	# Raycast 1: Grab implementation
 	grab_ray()
-	print(grab_target)
-	Messenger.grab_target.emit(grab_target)
-	# Raycast 2: Hover implementation
+#	print(grab_target)
+	
+	# Raycast 2: Player Hover implementation
 	hover_ray()
+	
+	# Raycast 3: Cursor Position implementation
+	cursor_ray()
 	
 #	#	# Raycaast 1: Temp Grab-specific
 #	if !grab_target: return
@@ -59,7 +62,7 @@ func _process(_delta):
 ##		print("Raycast: Sees Health")
 #		Messenger.health_hovered.emit(grab_target)
 
-func shoot_ray(collide_bodies):
+func shoot_ray(mask):
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 3000
 	var from = project_ray_origin(mouse_pos)
@@ -70,28 +73,23 @@ func shoot_ray(collide_bodies):
 	ray_query.to = to
 	
 	# collision areas vs bodies dependent on whether collide_ was set to true/false when this function was called
-	ray_query.collide_with_areas = !collide_bodies
-	ray_query.collide_with_bodies = collide_bodies
+	ray_query.collide_with_areas = true
+#	ray_query.collide_with_bodies = collide_bodies
 	
-#	ray_query.collision_mask = 1
-#	ray_query.collision_mask = 3
-	ray_query.collision_mask = 4
+	# Remember: masks/layers need to be set with the bit (2^) values!
+	ray_query.collision_mask = mask
 	
 	return space.intersect_ray(ray_query)
 
 
 # Raycast 1: Grab hovering
 func grab_ray():
-	var raycast_result = shoot_ray(false)
-
-	# Raycast 1: Grab position info
-	if raycast_result.has("position"):
+	var raycast_result = shoot_ray(2 + 4 + 8)
+	if !raycast_result.is_empty():
 		grab_ray_pos = raycast_result.position
-
-	# Raycast 1: Collision info
-	if raycast_result.has("collider"):
 		grab_target = raycast_result.collider
-		return raycast_result.collider
+		Messenger.grab_target.emit(grab_target)
+#		return raycast_result.collider
 
 # Raycast 1: Temp grab application
 func move_health():
@@ -105,14 +103,19 @@ func move_health():
 
 # Raycast 2: Player Hovering
 func hover_ray():
-	var raycast_result = shoot_ray(true)
-
-# Raycast 2: Collision info
-	if raycast_result.has("collider"):
+	var raycast_result = shoot_ray(32768)
+	if !raycast_result.is_empty():
+#	print(raycast_result)
 		hover_target = raycast_result.collider
 		
 		# Emits signal with parameter "true" or "false" if the hover_target is/isn't set to %Player
 		Messenger.player_hover.emit(hover_target == %Player)
-			
+#
+#		return raycast_result.collider
 
-		return raycast_result.collider
+
+func cursor_ray():
+	var raycast_result = shoot_ray(16)
+	if !raycast_result.is_empty():
+		Messenger.mouse_pos_3d.emit(raycast_result.position)
+#	print(raycast_result)

@@ -5,7 +5,19 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 6
 const FALL_DEATH_DISTANCE = -50
 
+@onready var skeleton: Skeleton3D = get_node("Alien/Armature/Skeleton3D")
+
 var terrain_slowdown = false
+
+@onready var arm_r = 7
+@onready var arm_l = 2
+@onready var head = 5
+
+@onready var arm_r_rotation = skeleton.get_bone_pose_rotation(arm_r)
+@onready var arm_l_rotation = skeleton.get_bone_pose_rotation(arm_l)
+@onready var head_rotation = skeleton.get_bone_pose_rotation(head)
+
+var look_pos
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -13,9 +25,53 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	Messenger.amount_slowed.connect(slowdown)
 	Messenger.area_undamaged.connect(damage_undetected)
+	Messenger.mouse_pos_3d.connect(mouse_pos)
+#
+#	print("Elbow L:", arm_l_rotation.x)
+#	print("Elbow R:", arm_r_rotation.x)
+#	print("Player Layer: ", collision_layer, "; Player Mask: ", collision_mask)
 	
 	set_max_slides(20)
+	
+	
+	
+func rotate_arm_r_to_direction(dir:Vector3):
+	# Movement logic
+	var pos_2D: Vector2 = Vector2(-transform.basis.z.x, -transform.basis.z.z)
+	
+	# Movement application
+	skeleton.set_bone_pose_rotation(arm_r, Quaternion((atan2(dir.x, -dir.z) - .25) * 4, arm_r_rotation.y, arm_r_rotation.z, arm_r_rotation.w))
+	
+	
+func rotate_arm_l_to_direction(dir:Vector3):
+	# Movement logic
+	var pos_2D: Vector2 = Vector2(-transform.basis.z.x, -transform.basis.z.z)
+	
+	# Movement application
+	skeleton.set_bone_pose_rotation(arm_l, Quaternion((atan2(-dir.x, -dir.z) - .25) * 4, arm_l_rotation.y, arm_l_rotation.z, arm_l_rotation.w))
+#	print(skeleton.get_bone_pose_rotation(arm_r))
+	
+	
+func rotate_head_to_direction(dir:Vector3):
+	# Movement logic
+	var pos_2D: Vector2 = Vector2(-transform.basis.z.x, -transform.basis.z.z)
+	
+	# Movement application
+	skeleton.set_bone_pose_rotation(head, Quaternion(head_rotation.x, atan2(dir.x, -dir.z) * -2, head_rotation.z, head_rotation.w))
 
+	
+
+
+func mouse_pos(mouse):
+	look_pos = mouse - self.global_position
+	rotate_arm_r_to_direction(look_pos)
+	rotate_arm_l_to_direction(look_pos)
+	rotate_head_to_direction(look_pos)
+	
+#	# Follow Cursor
+#	skeleton.set_bone_pose_rotation(arm_r, look_pos)
+#	skeleton.set_bone_pose_rotation(arm_l, look_pos)
+	
 
 func _physics_process(delta):
 #	print("Is on floor: ", is_on_floor())
@@ -59,7 +115,7 @@ func _physics_process(delta):
 		
 	if terrain_slowdown == true:
 		$Alien/AnimationPlayer.stop(true)
-		
+
 # Collision stops level movement
 	move_and_slide()
 	
@@ -75,6 +131,7 @@ func damage_undetected(_bodypart_unarea):
 #	print("Feet Unseen")
 	terrain_slowdown = false
 	print("terrain_slowdown:", terrain_slowdown)
+
 
 
 	

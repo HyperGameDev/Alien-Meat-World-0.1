@@ -18,7 +18,7 @@ func _ready() -> void:
 	_load_terrain_scenes(terrian_blocks_path)
 	_init_blocks(num_terrain_blocks)
 	_first_blocks()
-	
+
 func _first_blocks():
 	await get_tree().create_timer(.2).timeout
 	terrian_blocks_path = "res://Terrain/terrain_blocks"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=30 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
@@ -12,10 +12,19 @@
 [ext_resource type="Script" path="res://Scripts/BodyPart.gd" id="10_2td36"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_war41"]
-size = Vector3(1, 0.185, 70)
+size = Vector3(1, 0.755, 0.855)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1q3j"]
 albedo_color = Color(1.2, 1.2, 1.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qcmfl"]
+size = Vector3(1, 0.185, 70)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gfpys"]
+size = Vector3(60, 60, 0.15)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_60lcs"]
+points = PackedVector3Array(30, 30, 0.075, 30, 30, -0.075, -30, 30, 0.075, 30, -30, 0.075, 30, -30, -0.075, -30, 30, -0.075, -30, -30, 0.075, -30, -30, -0.075)
 
 [sub_resource type="Gradient" id="Gradient_3mo1j"]
 offsets = PackedFloat32Array(0, 0.0100671, 0.345638, 0.92953)
@@ -72,13 +81,14 @@ height = 17.822
 [sub_resource type="SphereShape3D" id="SphereShape3D_ukq6r"]
 radius = 10.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_wl2da"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_vyc4k"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_44l3v"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_2dudo"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [node name="Main Scene" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.65595e-05, -0.0122666, 0.00316)
 
 [node name="POS_Furthest-Spawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.431, -130)
@@ -94,14 +104,14 @@ visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="POS_Highest"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08253, 94.9054)
-mesh = SubResource("BoxMesh_war41")
+mesh = SubResource("BoxMesh_qcmfl")
 surface_material_override/0 = SubResource("StandardMaterial3D_y1q3j")
 
-[node name="POS_Furthest-Attack-Area" type="Node3D" parent="."]
+[node name="POS_Furthest-Attacker-Area" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.431, -50)
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="POS_Furthest-Attack-Area"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="POS_Furthest-Attacker-Area"]
 mesh = SubResource("BoxMesh_war41")
 
 [node name="POS_Furthest-Player-Area" type="Node3D" parent="."]
@@ -110,6 +120,20 @@ visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="POS_Furthest-Player-Area"]
 mesh = SubResource("BoxMesh_war41")
+
+[node name="Cursor_Zone" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.431, -53)
+visible = false
+collision_layer = 16
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cursor_Zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0703812, 9.53674e-07, 0.0418701)
+mesh = SubResource("BoxMesh_gfpys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cursor_Zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0703812, 9.53674e-07, 0.0418701)
+shape = SubResource("ConvexPolygonShape3D_60lcs")
 
 [node name="Debug" type="Control" parent="."]
 layout_mode = 3
@@ -185,8 +209,8 @@ shadow_blur = 2.599
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_o1fgy")
 
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("cam_target")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43187e-05, 0.012094, -0.000411987)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0159369, 0.0120942, 0.00342083)
 attributes = SubResource("CameraAttributesPractical_se27i")
 doppler_tracking = 2
 current = true
@@ -195,7 +219,6 @@ size = 5.0
 near = 0.214
 far = 1000.0
 script = ExtResource("2_qvpxy")
-cam_target = NodePath("../Player/Cam_Target")
 
 [node name="TerrainController" parent="." instance=ExtResource("3_uqnug")]
 unique_name_in_owner = true
@@ -203,7 +226,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.74317)
 
 [node name="Player" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
-collision_layer = 0
+collision_layer = 32768
 axis_lock_linear_z = true
 script = ExtResource("3_ia6ow")
 
@@ -214,7 +237,8 @@ vertices = PackedVector3Array(1.644, 0, -1.69, -1.264, 0, -1.601, -1.461, 0, 1.3
 avoidance_layers = 32768
 
 [node name="Cam_Target" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.982935, 0.183951, 0, -0.183951, 0.982935, 0.228, 3, 5.50001)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.982935, 0.183951, 0, -0.183951, 0.982935, 0.227521, 3, 5.5)
 script = ExtResource("5_iuboh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Cam_Target"]
@@ -222,7 +246,7 @@ visible = false
 mesh = SubResource("BoxMesh_svwv1")
 
 [node name="DetectionAreas" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.414648, 0, -0.00475604)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.416132, -0.031039, 0.00222724)
 
 [node name="Area_Head" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("is_head", "player", "collision", "collision_area")]
 unique_name_in_owner = true
@@ -308,7 +332,7 @@ shape = SubResource("CapsuleShape3D_v6wbe")
 
 [node name="Area_Player-Proximity" type="Area3D" parent="Player/DetectionAreas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_layer = 0
+collision_layer = 8
 collision_mask = 2
 script = ExtResource("8_0gjb7")
 
@@ -319,10 +343,10 @@ shape = SubResource("SphereShape3D_ukq6r")
 transform = Transform3D(1, 0.00048692, 0.000306956, -0.000486927, 1, 2.02796e-05, -0.000306949, -2.04407e-05, 1, 0, 0, 0)
 
 [node name="HP_Head" parent="Player/Alien" index="1"]
-texture = SubResource("ViewportTexture_wl2da")
+texture = SubResource("ViewportTexture_vyc4k")
 
 [node name="HP_Empathy" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_44l3v")
+texture = SubResource("ViewportTexture_2dudo")
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 transform = Transform3D(1, -3.63798e-11, 2.91038e-11, 1.45519e-11, 0.999999, 0, 0, -2.98023e-08, 1, -0.0336967, 0.021865, -0.0172729)

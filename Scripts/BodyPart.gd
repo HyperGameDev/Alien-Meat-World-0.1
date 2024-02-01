@@ -71,7 +71,7 @@ var damage_material = StandardMaterial3D.new()
 
 
 func _ready():
-
+#	print("Areas' Layer: ", collision_layer, "; Areas' Mask: ", collision_mask)
 # Messenger setup
 	Messenger.area_damaged.connect(damage_detected)
 	Messenger.amount_damaged.connect(_damage_amount)
@@ -91,7 +91,6 @@ func _ready():
 	
 	material_reset.one_shot = true
 	add_child(material_reset)
-	
 	
 
 func _damage_amount(damage_amount):

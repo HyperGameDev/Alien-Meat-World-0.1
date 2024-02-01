@@ -66,7 +66,7 @@ func copter_stop(thing_in_player_perimeter):
 		# Consider moving copters_stopped calculation to the Area on the Player if this count is needed on a per-copter basis!
 		copters_stopped += 1
 		Messenger.copter_unit_stopped.emit(copters_stopped)
-		print(copters_stopped)
+#		print(copters_stopped)
 		
 func copter_nav(safe_velocity):
 	global_position += safe_velocity * get_physics_process_delta_time()
