@@ -37,3 +37,5 @@ signal copter_unit_stopped
 
 signal grab_target
 signal mouse_pos_3d
+
+signal something_grabbed
