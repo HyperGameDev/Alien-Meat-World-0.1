@@ -46,7 +46,7 @@ metadata/_edit_lock_ = true
 transform = Transform3D(-4.35681e-08, 0, -0.996723, 0, 0.996723, 0, 0.996723, 0, -4.35681e-08, -6.22963, 2.38419e-07, -5.33195)
 
 [node name="Cow-Barn_01_01" parent="." instance=ExtResource("2_jqeqo")]
-transform = Transform3D(-4.35681e-08, 0, -0.996723, 0, 0.996723, 0, 0.996723, 0, -4.35681e-08, 5.30376, 2.38419e-07, -5.33195)
+transform = Transform3D(-4.35681e-08, 0, -0.996723, 0, 0.996723, 0, 0.996723, 0, -4.35681e-08, 5.15124, -0.000934601, -5.50137)
 
 [node name="Cow-Barn_01_02" parent="." instance=ExtResource("2_jqeqo")]
 transform = Transform3D(-4.35681e-08, 0, 0.996723, 0, 0.996723, 0, -0.996723, 0, -4.35681e-08, -6.22963, 2.38419e-07, 5.87626)
