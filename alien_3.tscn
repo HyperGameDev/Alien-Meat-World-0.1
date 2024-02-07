@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c1q8m4i26u6vr"]
+[gd_scene load_steps=30 format=3 uid="uid://c1q8m4i26u6vr"]
 
 [ext_resource type="PackedScene" uid="uid://diukxh5eov8fo" path="res://Player/Alien_3.blend" id="1_p4qsu"]
 [ext_resource type="Script" path="res://UI/Health/HealthBar.gd" id="2_obxxa"]
@@ -752,7 +752,7 @@ _data = {
 "Walk_1_Grab": SubResource("Animation_7w1n6")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_hown4"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_aupwu"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
 [sub_resource type="Animation" id="Animation_ijmwm"]
@@ -892,7 +892,7 @@ _data = {
 "heal_hp_3": SubResource("Animation_0j8jt")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0re2q"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_rao1l"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6msii"]
@@ -927,6 +927,9 @@ albedo_color = Color(0.682353, 0.0196078, 0, 1)
 diffuse_mode = 3
 specular_mode = 1
 
+[sub_resource type="BoxMesh" id="BoxMesh_xcuby"]
+size = Vector3(0.195, 35.13, 1)
+
 [node name="Alien_3" instance=ExtResource("1_p4qsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0731478, 0)
 
@@ -939,7 +942,7 @@ libraries = {
 [node name="HP_Head" type="Sprite3D" parent="." index="1"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.754005, 2.09309, 1.8978)
 visible = false
-texture = SubResource("ViewportTexture_hown4")
+texture = SubResource("ViewportTexture_aupwu")
 script = ExtResource("2_obxxa")
 what_is_damaged = "head_is_damaged"
 what_is_healed = "head_is_healed"
@@ -959,7 +962,7 @@ transparent_bg = true
 [node name="HP_Empathy" type="Sprite3D" parent="." index="2"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.12584, 1.71669, 1.8978)
 visible = false
-texture = SubResource("ViewportTexture_0re2q")
+texture = SubResource("ViewportTexture_rao1l")
 script = ExtResource("2_obxxa")
 what_is_damaged = "empathy_is_damaged"
 what_is_healed = "empathy_is_healed"
@@ -1004,9 +1007,7 @@ bones/6/rotation = Quaternion(-0.0881562, -0.0823758, -0.676903, 0.726117)
 bones/6/scale = Vector3(1.00048, 1.00048, 1.00048)
 bones/7/position = Vector3(-4.74906e-06, 0.468296, 1.27069e-06)
 bones/7/rotation = Quaternion(0.0104958, 0.238896, -0.0409419, 0.970125)
-bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(0.000474975, 0.759475, 0.000474975)
-bones/8/rotation = Quaternion(-0.136525, -0.120525, -0.052525, 0.647475)
 bones/8/scale = Vector3(1, 1, 1)
 bones/10/rotation = Quaternion(-0.289795, -0.0479284, -0.24514, 0.92392)
 bones/10/scale = Vector3(1, 0.999998, 1)
@@ -1063,7 +1064,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_l2ye2")
 [node name="Body_Shield" parent="Armature/Skeleton3D/Alien_Body" index="0" instance=ExtResource("6_gq8ww")]
 
 [node name="Alien_Body_Heart" parent="Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_6msii")
 surface_material_override/1 = SubResource("StandardMaterial3D_l2ye2")
 surface_material_override/2 = SubResource("StandardMaterial3D_ogmen")
@@ -1112,6 +1113,17 @@ outline_modulate = Color(0, 0.219608, 0, 1)
 text = "4"
 font_size = 35
 outline_size = 30
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="8"]
+transform = Transform3D(-0.0123094, 1.00037, -0.00768002, -0.971474, -0.0137868, -0.238766, -0.238847, 0.00451972, 0.971541, 0.444936, 1.30508, 0.26373)
+visible = false
+bone_name = "ElbowR"
+bone_idx = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Armature/Skeleton3D/BoneAttachment3D" index="0"]
+transform = Transform3D(0.999999, 4.09782e-08, 1.49012e-07, 8.3819e-08, 0.999999, -3.91155e-08, 0, -1.86265e-09, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_xcuby")
+skeleton = NodePath("../../..")
 
 [editable path="HP_Head/SubViewport/HP_Bar"]
 [editable path="HP_Empathy/SubViewport/HP_Bar"]

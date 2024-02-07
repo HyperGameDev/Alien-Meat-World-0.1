@@ -56,7 +56,7 @@ func _physics_process(delta):
 func is_grabbed(grab_target):
 	if grab_target == self and Input.is_action_pressed("Grab"):
 		Messenger.something_grabbed.emit(self)
-		queue_free()
+#		queue_free()
 		
 		
 	
