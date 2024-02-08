@@ -24,6 +24,10 @@ var grabbed_object
 var arm_grabbing = 8
 var arm_grabbing_child = arm_grabbing + 1
 var stretch_distance = Vector3(0,12,0)
+#var grab_tween_amount = 0.0
+var grab_duration = .2
+var distance
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -118,40 +122,55 @@ func mouse_pos(mouse):
 #	# Follow Cursor
 #	skeleton.set_bone_pose_rotation(arm_r, look_pos)
 #	skeleton.set_bone_pose_rotation(arm_l, look_pos)
-	
+
+func grab_action_tween(amount):
+	if !grabbed_object == null:
+		aim_bone_at_target(arm_grabbing,grabbed_object,amount)
+		
+	else:
+		aim_bone_at_target(arm_grabbing,null,amount)
+
 func do_grab(what_is_grabbed):
+	get_tree().create_tween().tween_method(grab_action_tween,0.0,1.0,grab_duration)
 	grabbed_object = what_is_grabbed
+	print(grabbed_object)
 #	print("Pos On Grab: ", what_is_grabbed.global_position)
 	grab = true
-	aim_bone_at_target(arm_grabbing,grabbed_object)
+	Messenger
+	aim_bone_at_target(arm_grabbing,grabbed_object, 0.0)
 #	move_bone_at_target(arm_grabbing,grabbed_object)
 	
 	
-	await get_tree().create_timer(1.3).timeout
+	await get_tree().create_timer(grab_duration * 2).timeout
 	grab = false
-	aim_bone_at_target(arm_grabbing, null)
+	Messenger.something_ungrabbed.emit()
+	
+	# Retract the arm
+	get_tree().create_tween().tween_method(grab_action_tween,1.0,0.0,grab_duration)
 #	move_bone_at_target(arm_grabbing,null)
 
 
-func aim_bone_at_target(bone_index:int, target:Node3D):
+func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 	var bone_transform = skeleton.get_bone_global_pose_no_override(bone_index)
 	
 	var bone_origin = bone_transform.origin
 	if(target == null):
-		skeleton.set_bone_global_pose_override(bone_index,bone_transform,1.0,false)
+		skeleton.set_bone_global_pose_override(bone_index,bone_transform,amount,false)
 		return
 		
 	
 	var target_pos = skeleton.to_local(target.global_position)
 	var direction = (target_pos - bone_transform.origin).normalized()
+	distance = target_pos.distance_to(bone_transform.origin)
 	
 	var new_transform:Transform3D = bone_transform
 	new_transform.origin = bone_origin
 	
 	new_transform = transform_look_at(new_transform, direction)
 
-# 1.0 float could be tweened into for gradual rotation?	
-	skeleton.set_bone_global_pose_override(bone_index,new_transform,1.0,true)
+	new_transform.basis.y *= distance
+
+	skeleton.set_bone_global_pose_override(bone_index,new_transform,amount,true)
 
 
 func transform_look_at(_transform,direction):

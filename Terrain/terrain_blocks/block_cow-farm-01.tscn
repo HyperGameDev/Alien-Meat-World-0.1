@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bbustci5tcx2e"]
+[gd_scene load_steps=14 format=3 uid="uid://bbustci5tcx2e"]
 
 [ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="1_8oycn"]
 [ext_resource type="PackedScene" uid="uid://f76a6025mm6h" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow-Barn_01_00.tscn" id="2_jqeqo"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://c4gt8ofayu0ec" path="res://Objects/Foliage/Tree_01/Tree_01_00.tscn" id="4_gyxgm"]
 [ext_resource type="PackedScene" uid="uid://0sdt50wuw41u" path="res://Objects/Foliage/Tree_02/Tree_02_00.tscn" id="5_gbrhd"]
 [ext_resource type="PackedScene" uid="uid://c1mgqdi4mt5o8" path="res://Objects/Foliage/Tree_03/Tree_03_00.tscn" id="6_vjmok"]
+[ext_resource type="PackedScene" uid="uid://cjkv2h52kqtrf" path="res://Objects/Fences/fence_01_post_00.tscn" id="7_o45no"]
+[ext_resource type="PackedScene" uid="uid://ccftg3fflv1d2" path="res://Objects/Fences/fence_01_l_00.tscn" id="8_nqddl"]
+[ext_resource type="PackedScene" uid="uid://dttsur6xbonwb" path="res://Objects/Fences/fence_01_r_00.tscn" id="9_g7hn0"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
 size = Vector2(100, 20)
@@ -203,3 +206,15 @@ transform = Transform3D(-0.998241, 0, -0.059289, 0, 1, 0, 0.059289, 0, -0.998241
 
 [node name="Tree_03_06" parent="." instance=ExtResource("6_vjmok")]
 transform = Transform3D(-0.699227, 0, -0.7149, 0, 1, 0, 0.7149, 0, -0.699227, -11.3183, -0.0586574, 7.55997)
+
+[node name="Fence_01-Post_00" parent="." instance=ExtResource("7_o45no")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02936, 0, 1.69328)
+
+[node name="Fence_01-L_00" parent="." instance=ExtResource("8_nqddl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.81445, -0.000889703, 1.69398)
+
+[node name="Fence_01-R_00" parent="." instance=ExtResource("9_g7hn0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.24655, 2.98023e-08, 1.69139)
+
+[node name="Fence_01-R_01" parent="." instance=ExtResource("9_g7hn0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.70117, 0, 1.68386)

@@ -16,6 +16,8 @@ var velocity = Vector3.ZERO
 
 var is_moving = true
 
+var target
+
 @onready var nav_agent = $NavigationAgent3D
 
 @onready var copter_area = self
@@ -31,6 +33,7 @@ func _ready():
 	player.area_entered.connect(copter_stop)
 	nav_agent.velocity_computed.connect(copter_nav)
 	Messenger.grab_target.connect(is_grabbed)
+	Messenger.something_ungrabbed.connect(got_hit)
 	
 	$AnimationPlayer.play("propeller_speed-01")
 
@@ -54,10 +57,14 @@ func _physics_process(delta):
 #		print("A Copter Went Too High! 3D Avoidance is ", nav_agent.use_3d_avoidance)
 
 func is_grabbed(grab_target):
+	target = grab_target
 	if grab_target == self and Input.is_action_pressed("Grab"):
 		Messenger.something_grabbed.emit(self)
-#		queue_free()
-		
+
+func got_hit():
+	if target == self:
+		queue_free()
+	
 		
 	
 func copter_stop(thing_in_player_perimeter):

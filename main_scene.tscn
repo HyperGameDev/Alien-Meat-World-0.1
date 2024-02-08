@@ -88,10 +88,10 @@ height = 17.822
 [sub_resource type="SphereShape3D" id="SphereShape3D_ukq6r"]
 radius = 10.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_yamae"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_3tmtd"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_sdpyx"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_v1u5b"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f0bod"]
@@ -367,10 +367,10 @@ shape = SubResource("SphereShape3D_ukq6r")
 transform = Transform3D(1, 0.00048692, 0.000306956, -0.000486927, 1, 2.02796e-05, -0.000306949, -2.04407e-05, 1, 0, 0, 0)
 
 [node name="HP_Head" parent="Player/Alien" index="1"]
-texture = SubResource("ViewportTexture_yamae")
+texture = SubResource("ViewportTexture_3tmtd")
 
 [node name="HP_Empathy" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_sdpyx")
+texture = SubResource("ViewportTexture_v1u5b")
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 transform = Transform3D(1, -3.63798e-11, 2.91038e-11, 1.45519e-11, 0.999999, 0, 0, -2.98023e-08, 1, -0.0336967, 0.021865, -0.0172729)
@@ -378,9 +378,6 @@ bones/8/rotation = Quaternion(0.000474975, -0.095525, 0.000474975, 0.647475)
 
 [node name="Alien_ArmL" parent="Player/Alien/Armature/Skeleton3D" index="0"]
 transform = Transform3D(1, -1.45519e-11, 2.91038e-11, 0, 0.999999, 5.96046e-08, 0, -5.96046e-08, 0.999999, -0.00951422, -0.00403789, -0.00525001)
-
-[node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.0123094, 1.00037, -0.00768002, -0.971474, -0.0137868, -0.238766, -0.238847, 0.00451972, 0.971541, 0.444936, 1.30508, 0.26373)
 
 [node name="MeshInstance3D" parent="Player/Alien/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_f0bod")

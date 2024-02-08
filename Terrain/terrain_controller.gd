@@ -21,8 +21,8 @@ func _ready() -> void:
 
 func _first_blocks():
 	await get_tree().create_timer(.2).timeout
-#	terrian_blocks_path = "res://Terrain/terrain_blocks"
-#	print("Blocks path changed")
+	terrian_blocks_path = "res://Terrain/terrain_blocks"
+	print("Blocks path changed")
 	_load_terrain_scenes(terrian_blocks_path)
 
 func _physics_process(delta: float) -> void:

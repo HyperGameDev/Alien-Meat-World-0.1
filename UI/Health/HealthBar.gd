@@ -41,7 +41,7 @@ func _ready():
 # Damage Animation Functions
 func _damage_hp_3():
 	get_tree().create_tween().tween_property(hp_bar, "value", 3, 1.25)
-	
+
 func _damage_hp_2():
 	get_tree().create_tween().tween_property(hp_bar, "value", 2, 1.25)
 	
