@@ -89,6 +89,7 @@ func grab_ray():
 		grab_ray_pos = raycast_result.position
 		grab_target = raycast_result.collider
 		Messenger.grab_target.emit(grab_target)
+#		print("Raycast sees: ", grab_target)
 #		print("Pos: ", grab_target.position)
 #		return raycast_result.collider
 

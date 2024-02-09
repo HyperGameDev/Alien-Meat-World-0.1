@@ -5,6 +5,7 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 6
 const FALL_DEATH_DISTANCE = -50
 
+@onready var animation = get_node("Alien/AnimationTree_Alien")
 @onready var skeleton: Skeleton3D = get_node("Alien/Armature/Skeleton3D")
 
 var terrain_slowdown = false
@@ -37,7 +38,7 @@ func _ready():
 	Messenger.area_undamaged.connect(damage_undetected)
 	Messenger.mouse_pos_3d.connect(mouse_pos)
 	Messenger.something_grabbed.connect(do_grab)
-#
+
 #	print("Elbow L:", arm_l_rotation.x)
 #	print("Elbow R:", arm_r_rotation.x)
 #	print("Player Layer: ", collision_layer, "; Player Mask: ", collision_mask)
@@ -78,18 +79,18 @@ func _physics_process(delta):
 		%TerrainController.terrain_velocity = %TerrainController.TERRAIN_VELOCITY
 
 	var debug_ani_turnaround = $"../Debug".debug_2
-#	if grab == false:
 	if debug_ani_turnaround == false:
+#		if input_up == true:
+#			animation.set("parameters/walk to run/transition_request", "running")
+#		else:
+#			animation.set("parameters/walk to run/transition_request", "walking")
 		if input_up == true:
 			$Alien/AnimationPlayer.play("Run_1", 1)
 		else:
 			$Alien/AnimationPlayer.play("Walk_1", 1)
 	else:
 		$Alien/AnimationPlayer.play("Feed_Walk_1", 1)
-#	else:
-#		$Alien/AnimationPlayer.play("Walk_1_Grab", .1)
-#		await $Alien/AnimationPlayer.animation_finished
-#		grab = false
+
 		
 	if terrain_slowdown == true:
 		$Alien/AnimationPlayer.stop(true)
@@ -124,30 +125,28 @@ func mouse_pos(mouse):
 #	skeleton.set_bone_pose_rotation(arm_l, look_pos)
 
 func grab_action_tween(amount):
-	if !grabbed_object == null:
+	if grabbed_object != null:
+#		print("Object isn't Null (", grabbed_object.name, ")")
 		aim_bone_at_target(arm_grabbing,grabbed_object,amount)
 		
 	else:
+#		print("Object Null!")
 		aim_bone_at_target(arm_grabbing,null,amount)
-
+	
 func do_grab(what_is_grabbed):
-	get_tree().create_tween().tween_method(grab_action_tween,0.0,1.0,grab_duration)
-	grabbed_object = what_is_grabbed
-	print(grabbed_object)
-#	print("Pos On Grab: ", what_is_grabbed.global_position)
 	grab = true
-	Messenger
-	aim_bone_at_target(arm_grabbing,grabbed_object, 0.0)
-#	move_bone_at_target(arm_grabbing,grabbed_object)
+#	if grab == true
+	grabbed_object = what_is_grabbed
+#	print("Grab Begun on ", grabbed_object.name)
+	get_tree().create_tween().tween_method(grab_action_tween,0.0,1.0,grab_duration)
 	
-	
+#	aim_bone_at_target(arm_grabbing,grabbed_object, 0.0)
 	await get_tree().create_timer(grab_duration * 2).timeout
 	grab = false
-	Messenger.something_ungrabbed.emit()
-	
+	Messenger.something_ungrabbed.emit(what_is_grabbed)
+#	print("Grab Ending from ", grabbed_object.name)
 	# Retract the arm
 	get_tree().create_tween().tween_method(grab_action_tween,1.0,0.0,grab_duration)
-#	move_bone_at_target(arm_grabbing,null)
 
 
 func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
@@ -155,10 +154,11 @@ func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 	
 	var bone_origin = bone_transform.origin
 	if(target == null):
+#		print("Object Null, Arm is snapping back.", "(Tween amount is: ", amount, ")")
 		skeleton.set_bone_global_pose_override(bone_index,bone_transform,amount,false)
 		return
 		
-	
+#	print ("Object is ", target.name, ". Arm is moving.", "(Tween amount is: ", amount, ")")
 	var target_pos = skeleton.to_local(target.global_position)
 	var direction = (target_pos - bone_transform.origin).normalized()
 	distance = target_pos.distance_to(bone_transform.origin)
@@ -180,29 +180,21 @@ func transform_look_at(_transform,direction):
 	xform.basis = xform.basis.orthonormalized()
 #	stretch_to_target()
 	return xform
-
-#func set_bone_scale(scale):
-#	skeleton.set_bone_pose_scale(arm_grabbing_child, scale)
-#
-#func stretch_to_target():
-#	var stretch_to = stretch_distance
-#	var stretch_from: Vector3 = skeleton.get_bone_pose_scale(arm_grabbing_child)
-#	get_tree().create_tween().tween_method(set_bone_scale, Vector3(stretch_from.x, stretch_from.y, stretch_from.z), Vector3(stretch_from.x, stretch_to.y, stretch_from.z), .4)
 	
-
 
 func damage_undetected(_bodypart_unarea):
 #	print("Feet Unseen")
 	terrain_slowdown = false
-	print("terrain_slowdown:", terrain_slowdown)
+#	print("terrain_slowdown:", terrain_slowdown)
 	
 func health_hovered(meat_hovered):
-	print(meat_hovered)
+#	print(meat_hovered)
+	pass
 
 
 func slowdown(slowdown_amount):
 	if slowdown_amount == Obstacle.slowdown_amounts.FULL:
 		terrain_slowdown = true
-		print("terrain_slowdown:", terrain_slowdown)
+#		print("terrain_slowdown:", terrain_slowdown)
 		%TerrainController.terrain_velocity = 0
 		
