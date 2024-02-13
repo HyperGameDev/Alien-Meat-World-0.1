@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://ca8grfcex7nxx"]
+[gd_scene load_steps=18 format=3 uid="uid://ca8grfcex7nxx"]
 
 [ext_resource type="PackedScene" uid="uid://c4gt8ofayu0ec" path="res://Objects/Foliage/Tree_01/Tree_01_00.tscn" id="2_jji2l"]
 [ext_resource type="PackedScene" uid="uid://ciijtaeiegep4" path="res://Objects/Buildings/Houses/House_01_00.tscn" id="3_2x4i8"]
 [ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="4_3ow7h"]
 [ext_resource type="PackedScene" uid="uid://0sdt50wuw41u" path="res://Objects/Foliage/Tree_02/Tree_02_00.tscn" id="4_6pe81"]
 [ext_resource type="PackedScene" uid="uid://c1mgqdi4mt5o8" path="res://Objects/Foliage/Tree_03/Tree_03_00.tscn" id="5_emey0"]
+[ext_resource type="PackedScene" uid="uid://16vgrkdtfgmp" path="res://Objects/Buildings/Military/quonset_01_00.tscn" id="6_h5d2o"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
 size = Vector2(100, 20)
@@ -232,6 +233,9 @@ transform = Transform3D(-0.991694, 0, 0.128622, 0, 1, 0, -0.128622, 0, -0.991694
 
 [node name="Tree_03_21" parent="." instance=ExtResource("5_emey0")]
 transform = Transform3D(-0.991694, 0, 0.128622, 0, 1, 0, -0.128622, 0, -0.991694, -8.20179, 4.76837e-07, -6.7471)
+
+[node name="Quonset_01_00" parent="." instance=ExtResource("6_h5d2o")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.9292, 0, -3.25041)
 
 [editable path="cliff_front_01"]
 [editable path="House01_00"]

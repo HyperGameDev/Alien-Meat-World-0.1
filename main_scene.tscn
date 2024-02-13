@@ -88,10 +88,10 @@ height = 17.822
 [sub_resource type="SphereShape3D" id="SphereShape3D_ukq6r"]
 radius = 10.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_aqoak"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_olmvi"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_pf28o"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_l8sm3"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f0bod"]
@@ -366,13 +366,13 @@ shape = SubResource("SphereShape3D_ukq6r")
 [node name="Alien" parent="Player" instance=ExtResource("4_huvyo")]
 transform = Transform3D(1, 0.00048692, 0.000306956, -0.000486927, 1, 2.02796e-05, -0.000306949, -2.04407e-05, 1, 0, 0, 0)
 
-[node name="HP_Head" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_aqoak")
+[node name="HP_Head" parent="Player/Alien" index="3"]
+texture = SubResource("ViewportTexture_olmvi")
 
-[node name="HP_Empathy" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_pf28o")
+[node name="HP_Empathy" parent="Player/Alien" index="4"]
+texture = SubResource("ViewportTexture_l8sm3")
 
-[node name="Armature" parent="Player/Alien" index="4"]
+[node name="Armature" parent="Player/Alien" index="5"]
 transform = Transform3D(1, 0, 0, 0, 0.963674, 0.267077, 0, -0.267077, 0.963674, 0, 0.27621, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
@@ -382,7 +382,7 @@ transform = Transform3D(1, -3.63798e-11, 2.91038e-11, 1.45519e-11, 0.999999, 0, 
 transform = Transform3D(1, -1.45519e-11, 2.91038e-11, 0, 0.999999, 5.96046e-08, 0, -5.96046e-08, 0.999999, -0.00951422, -0.00403789, -0.00525001)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.121412, 0.992082, -0.0446476, -0.963849, -0.128552, -0.235435, -0.239195, 0.0144421, 0.971359, 0.445561, 1.2512, 0.268376)
+transform = Transform3D(-0.121412, 0.992082, -0.0446477, -0.963849, -0.128552, -0.235435, -0.239196, 0.0144421, 0.971358, 0.445561, 1.2512, 0.268376)
 
 [node name="MeshInstance3D" parent="Player/Alien/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_f0bod")

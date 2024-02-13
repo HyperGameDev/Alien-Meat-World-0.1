@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8y75ag2xn7qr"]
+
+[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="1_kcnkc"]
+[ext_resource type="PackedScene" uid="uid://16vgrkdtfgmp" path="res://Objects/Buildings/Military/quonset_01_00.tscn" id="2_ksqae"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
+size = Vector2(100, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdwe7"]
+albedo_color = Color(0.537255, 0.415686, 0.34902, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gjw30"]
+data = PackedVector3Array(50, 0, 10, -50, 0, 10, 50, 0, -10, -50, 0, 10, -50, 0, -10, 50, 0, -10)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qwi2u"]
+points = PackedVector3Array(-5.99455, -71.0009, -8.31296, -6.39667, -70.7782, -8.31296, -5.80767, 7.41876, -8.32274, -3.38274, 7.41876, -8.30318, -3.34691, 7.46485, 11.6602, -5.99455, -71.0009, 91.582, -6.39667, -2.12064, -8.31296, -6.39667, -70.7782, 91.582, -6.29546, 7.45717, 11.6406, -3.34691, 7.46485, 91.6015, -6.39667, -2.12064, 91.582, -6.29546, 7.45717, 91.5722)
+
+[node name="Terrain_0" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.085094, -0.0291436, -6.95128)
+mesh = SubResource("PlaneMesh_wnprt")
+surface_material_override/0 = SubResource("StandardMaterial3D_gdwe7")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.013)
+shape = SubResource("ConcavePolygonShape3D_gjw30")
+
+[node name="Col_Cliff-Front" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 41.6496, -7.7, 13.3291)
+shape = SubResource("ConvexPolygonShape3D_qwi2u")
+
+[node name="cliff_front_01" parent="." instance=ExtResource("1_kcnkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658, -7.495, 21.33)
+
+[node name="Quonset_01_00" parent="." instance=ExtResource("2_ksqae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7, 0, 3.2)
+
+[node name="Quonset_01_01" parent="." instance=ExtResource("2_ksqae")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.61792, -0.0363035, 3.2219)
