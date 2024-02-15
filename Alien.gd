@@ -85,15 +85,15 @@ func _physics_process(delta):
 #		else:
 #			animation.set("parameters/walk to run/transition_request", "walking")
 		if input_up == true:
-			$Alien/AnimationPlayer.play("Run_1", 1)
+			$Alien/Animation_Alien.play("Run_1", 1)
 		else:
-			$Alien/AnimationPlayer.play("Walk_1", 1)
+			$Alien/Animation_Alien.play("Walk_1", 1)
 	else:
-		$Alien/AnimationPlayer.play("Feed_Walk_1", 1)
+		$Alien/Animation_Alien.play("Feed_Walk_1", 1)
 
 		
 	if terrain_slowdown == true:
-		$Alien/AnimationPlayer.stop(true)
+		$Alien/Animation_Alien.stop(true)
 
 # Collision stops level movement
 	move_and_slide()

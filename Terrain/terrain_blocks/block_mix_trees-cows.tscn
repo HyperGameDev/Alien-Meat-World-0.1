@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://5kyb60mmjahr"]
+[gd_scene load_steps=11 format=3 uid="uid://5kyb60mmjahr"]
 
 [ext_resource type="PackedScene" uid="uid://c4gt8ofayu0ec" path="res://Objects/Foliage/Tree_01/Tree_01_00.tscn" id="2_2cola"]
 [ext_resource type="PackedScene" uid="uid://c0kld2qowd56l" path="res://NPCs/Cows/Cow_01_00.tscn" id="4_6cg1h"]
 [ext_resource type="PackedScene" uid="uid://0sdt50wuw41u" path="res://Objects/Foliage/Tree_02/Tree_02_00.tscn" id="5_6b3ii"]
 [ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="5_jbxsj"]
 [ext_resource type="PackedScene" uid="uid://c1mgqdi4mt5o8" path="res://Objects/Foliage/Tree_03/Tree_03_00.tscn" id="5_q6cug"]
+[ext_resource type="PackedScene" uid="uid://16vgrkdtfgmp" path="res://Objects/Buildings/Military/quonset_01_00.tscn" id="6_p1elw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
 size = Vector2(100, 20)
@@ -92,6 +93,9 @@ transform = Transform3D(0.985611, 0.00235124, -0.169015, -0.00130718, 0.999979, 
 
 [node name="Tree_03_02" parent="." instance=ExtResource("5_q6cug")]
 transform = Transform3D(0.502435, -0.00478024, 0.864602, -0.001277, 0.999979, 0.0062708, -0.864614, -0.00425476, 0.502418, 7.04957, 4.76837e-07, 7.11993)
+
+[node name="Quonset_01_00" parent="." instance=ExtResource("6_p1elw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19.8298, 0, 4.3227)
 
 [editable path="Tree_01_00"]
 [editable path="Tree_01_03"]
