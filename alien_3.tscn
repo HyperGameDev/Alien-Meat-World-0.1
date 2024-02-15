@@ -11,13 +11,11 @@
 [ext_resource type="Animation" uid="uid://dr8y3nxyk0wt3" path="res://Player/Animations/Walk_2.res" id="5_oiupf"]
 [ext_resource type="PackedScene" uid="uid://c1xnvbm1223wp" path="res://Player/body_shield.tscn" id="6_gq8ww"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wwv3t"]
-animation = &"Run_1"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1v5cn"]
+animation = &"RESET"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vdd2o"]
-animation = &"Walk_1"
-
-[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_6xowp"]
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_se77x"]
+xfade_time = 1.0
 input_0/name = "walking"
 input_0/auto_advance = false
 input_0/reset = true
@@ -25,15 +23,19 @@ input_1/name = "running"
 input_1/auto_advance = false
 input_1/reset = true
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_76rp4"]
-graph_offset = Vector2(-301.91, 17.59)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_vdd2o")
-nodes/Animation/position = Vector2(-60, 120)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_wwv3t")
-"nodes/Animation 2/position" = Vector2(-60, 240)
-nodes/Transition/node = SubResource("AnimationNodeTransition_6xowp")
-nodes/Transition/position = Vector2(140, 140)
-node_connections = [&"output", 0, &"Transition", &"Transition", 0, &"Animation", &"Transition", 1, &"Animation 2"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kf68q"]
+animation = &"Walk_2"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_y4jsq"]
+graph_offset = Vector2(0, -67.1543)
+nodes/output/position = Vector2(660, 0)
+nodes/running/node = SubResource("AnimationNodeAnimation_1v5cn")
+nodes/running/position = Vector2(240, 120)
+"nodes/walk to run/node" = SubResource("AnimationNodeTransition_se77x")
+"nodes/walk to run/position" = Vector2(440, 0)
+nodes/walking/node = SubResource("AnimationNodeAnimation_kf68q")
+nodes/walking/position = Vector2(240, 0)
+node_connections = [&"output", 0, &"walk to run", &"walk to run", 0, &"walking", &"walk to run", 1, &"running"]
 
 [sub_resource type="Animation" id="Animation_bx7n0"]
 resource_name = "Feed_Walk_1"
@@ -1238,7 +1240,7 @@ _data = {
 "Walk_2": ExtResource("5_oiupf")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_afgvo"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_s81br"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
 [sub_resource type="Animation" id="Animation_ijmwm"]
@@ -1378,7 +1380,7 @@ _data = {
 "heal_hp_3": SubResource("Animation_0j8jt")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_vfeab"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xo3j8"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6msii"]
@@ -1417,25 +1419,33 @@ specular_mode = 1
 size = Vector3(0.195, 35.13, 1)
 
 [node name="Alien_3" instance=ExtResource("1_p4qsu")]
-transform = Transform3D(1, 0, 0, 0, 0.97437, 0.224951, 0, -0.224951, 0.97437, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012109, 0)
 
 [node name="AnimationTree_Alien" type="AnimationTree" parent="." index="0"]
-tree_root = SubResource("AnimationNodeBlendTree_76rp4")
+tree_root = SubResource("AnimationNodeBlendTree_y4jsq")
 anim_player = NodePath("../Animation_Alien")
 active = true
-parameters/Transition/current_state = "walking"
-parameters/Transition/transition_request = ""
-parameters/Transition/current_index = 0
+"parameters/walk to run/current_state" = "walking"
+"parameters/walk to run/transition_request" = ""
+"parameters/walk to run/current_index" = 0
 
-[node name="Animation_Alien" type="AnimationPlayer" parent="." index="1"]
+[node name="AnimationTree_Alien2" type="AnimationTree" parent="." index="1"]
+tree_root = SubResource("AnimationNodeBlendTree_y4jsq")
+anim_player = NodePath("../Animation_Alien")
+"parameters/walk to run/current_state" = "walking"
+"parameters/walk to run/transition_request" = ""
+"parameters/walk to run/current_index" = 0
+
+[node name="Animation_Alien" type="AnimationPlayer" parent="." index="2"]
+root_node = NodePath("../Armature")
 libraries = {
 "": SubResource("AnimationLibrary_c7iwo")
 }
 
-[node name="HP_Head" type="Sprite3D" parent="." index="2"]
+[node name="HP_Head" type="Sprite3D" parent="." index="3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.754005, 2.09309, 1.8978)
 visible = false
-texture = SubResource("ViewportTexture_afgvo")
+texture = SubResource("ViewportTexture_s81br")
 script = ExtResource("2_obxxa")
 what_is_damaged = "head_is_damaged"
 what_is_healed = "head_is_healed"
@@ -1452,10 +1462,10 @@ transparent_bg = true
 
 [node name="HP_Bar" parent="HP_Head/SubViewport" index="0" instance=ExtResource("3_gndeq")]
 
-[node name="HP_Empathy" type="Sprite3D" parent="." index="3"]
+[node name="HP_Empathy" type="Sprite3D" parent="." index="4"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.12584, 1.71669, 1.8978)
 visible = false
-texture = SubResource("ViewportTexture_vfeab")
+texture = SubResource("ViewportTexture_xo3j8")
 script = ExtResource("2_obxxa")
 what_is_damaged = "empathy_is_damaged"
 what_is_healed = "empathy_is_healed"
@@ -1476,49 +1486,48 @@ transparent_bg = true
 [node name="HP_Bar" parent="HP_Empathy/SubViewport" index="0" instance=ExtResource("3_gndeq")]
 theme_override_styles/fill = ExtResource("5_k8xva")
 
-[node name="Armature" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.974369, 0.224951, 0, -0.224951, 0.974369, 0, 0, 0)
+[node name="Armature" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, -0.0339651, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, -0.075329, -0.0284092, -0.010423)
-bones/0/rotation = Quaternion(-2.98023e-08, 1.19209e-07, 3.83702e-27, 1)
+bones/0/rotation = Quaternion(-2.98023e-08, 1.19209e-07, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/position = Vector3(0.000474975, 0.241475, 0.000474975)
-bones/1/rotation = Quaternion(-0.14132, -0.00337755, 0.700212, 0.699801)
+bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
 bones/1/scale = Vector3(1.00048, 1.00048, 1.00048)
 bones/2/position = Vector3(-7.48877e-07, 0.519572, -3.53011e-08)
-bones/2/rotation = Quaternion(-0.339042, 0.699857, 0.539956, 0.322022)
+bones/2/rotation = Quaternion(0.0276023, 0.0423357, -0.042658, 0.997811)
 bones/2/scale = Vector3(1.00048, 1.00048, 1.00048)
-bones/3/rotation = Quaternion(-0.0116884, -0.067648, -0.373062, 0.925263)
+bones/3/rotation = Quaternion(-0.0205892, 0.00189199, 0.0252498, 0.999467)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-3.55271e-15, 1.77636e-14, -2.01948e-28, 1)
+bones/4/rotation = Quaternion(-3.55271e-15, 8.88178e-14, -1.21169e-27, 1)
 bones/5/position = Vector3(-5.42995e-09, 0.268125, 1.92848e-08)
+bones/5/rotation = Quaternion(-3.55271e-15, 3.55271e-15, -1.21169e-27, 1)
 bones/5/scale = Vector3(1.00048, 1.00048, 1.00048)
 bones/6/position = Vector3(0.000474975, 0.241475, 0.000474975)
-bones/6/rotation = Quaternion(-0.141073, 0.0124602, -0.65964, 0.738118)
+bones/6/rotation = Quaternion(-0.0895069, -0.0808807, -0.717954, 0.685558)
 bones/6/scale = Vector3(1.00048, 1.00048, 1.00048)
 bones/7/position = Vector3(-4.74906e-06, 0.468296, 1.27069e-06)
-bones/7/rotation = Quaternion(-0.177816, 0.13381, -0.482251, 0.847296)
+bones/7/rotation = Quaternion(0.0104958, 0.238896, -0.0409419, 0.970125)
 bones/8/position = Vector3(0.000474975, 0.759475, 0.000474975)
-bones/8/rotation = Quaternion(-0.652111, 0.165728, 0.334055, 0.660071)
+bones/8/rotation = Quaternion(-0.00231333, 0.0242911, -0.00433505, 0.999693)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(0.349657, -0.350557, -0.614595, -0.614102)
-bones/10/rotation = Quaternion(-0.260723, -0.150177, -0.275505, 0.912999)
+bones/10/rotation = Quaternion(-0.289795, -0.0479284, -0.24514, 0.92392)
 bones/10/scale = Vector3(1, 0.999998, 1)
 bones/11/position = Vector3(-6.7018e-07, 0.501944, -1.5535e-07)
-bones/11/rotation = Quaternion(-0.530571, 0.0228117, -0.308685, 0.789106)
+bones/11/rotation = Quaternion(-0.760895, 0.0962255, 0.209214, 0.606637)
 bones/11/scale = Vector3(0.999999, 1, 0.999999)
-bones/12/rotation = Quaternion(0.0359412, -0.353485, 0.754219, 0.552186)
+bones/12/rotation = Quaternion(0.416566, -0.288618, -0.240819, 0.827755)
 bones/12/scale = Vector3(0.999999, 1, 1)
-bones/13/rotation = Quaternion(0.5, 0.5, 0.5, -0.5)
 bones/14/position = Vector3(0.000474975, 0.000474975, 0.000474975)
-bones/14/rotation = Quaternion(-0.113252, -0.204691, -0.0891632, 0.968156)
+bones/14/rotation = Quaternion(-0.122028, -0.101716, -0.0764657, 0.984335)
 bones/14/scale = Vector3(1, 1, 0.999999)
 bones/15/position = Vector3(-8.19931e-07, 0.40572, 5.85299e-08)
 bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/15/scale = Vector3(0.999999, 1, 1)
 bones/16/position = Vector3(4.92499e-07, 0.526815, -2.25095e-07)
-bones/16/rotation = Quaternion(0.0756, 0.241818, -0.0919094, 0.962996)
+bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 bones/16/scale = Vector3(0.999999, 1, 1)
 bones/17/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 
@@ -1610,7 +1619,7 @@ font_size = 35
 outline_size = 30
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.786172, 0.469437, 0.403141, -0.57639, -0.792676, -0.200998, 0.225096, -0.390198, 0.893329, 0.432157, 1.31533, 0.166188)
+transform = Transform3D(-0.594489, 0.360825, -0.71927, -0.666451, -0.721948, 0.188665, -0.450984, 0.591233, 0.669341, 0.445561, 1.2512, 0.268376)
 visible = false
 bone_name = "ElbowR"
 bone_idx = 7
