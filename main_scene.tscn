@@ -88,10 +88,10 @@ height = 17.822
 [sub_resource type="SphereShape3D" id="SphereShape3D_ukq6r"]
 radius = 10.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_cxy18"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_olmvi"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_lp6tn"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_l8sm3"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f0bod"]
@@ -367,10 +367,10 @@ shape = SubResource("SphereShape3D_ukq6r")
 transform = Transform3D(1, 0.00048692, 0.000306956, -0.000486927, 1, 2.02796e-05, -0.000306949, -2.04407e-05, 1, 0, 0, 0)
 
 [node name="HP_Head" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_cxy18")
+texture = SubResource("ViewportTexture_olmvi")
 
 [node name="HP_Empathy" parent="Player/Alien" index="4"]
-texture = SubResource("ViewportTexture_lp6tn")
+texture = SubResource("ViewportTexture_l8sm3")
 
 [node name="Armature" parent="Player/Alien" index="5"]
 transform = Transform3D(1, 0, 0, 0, 0.963674, 0.267077, 0, -0.267077, 0.963674, 0, 0.27621, 0)

@@ -87,7 +87,7 @@ func _physics_process(delta):
 		if input_up == true:
 			$Alien/Animation_Alien.play("Run_1", 1)
 		else:
-			$Alien/Animation_Alien.play("Walk_2", 1)
+			$Alien/Animation_Alien.play("Walk_1", 1)
 	else:
 		$Alien/Animation_Alien.play("Feed_Walk_1", 1)
 
