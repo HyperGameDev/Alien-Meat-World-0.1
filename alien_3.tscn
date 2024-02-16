@@ -1233,7 +1233,7 @@ _data = {
 "Walk_1_Grab": SubResource("Animation_7w1n6")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_pcgk2"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_438k3"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
 [sub_resource type="Animation" id="Animation_ijmwm"]
@@ -1373,7 +1373,7 @@ _data = {
 "heal_hp_3": SubResource("Animation_0j8jt")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_eir4y"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_jy1ft"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6msii"]
@@ -1417,7 +1417,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0731478, 0)
 [node name="AnimationTree_Alien" type="AnimationTree" parent="." index="0"]
 tree_root = SubResource("AnimationNodeBlendTree_y4jsq")
 anim_player = NodePath("../Animation_Alien")
-active = true
 "parameters/walk to run/current_state" = "running"
 "parameters/walk to run/transition_request" = ""
 "parameters/walk to run/current_index" = 1
@@ -1438,7 +1437,7 @@ libraries = {
 [node name="HP_Head" type="Sprite3D" parent="." index="3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.754005, 2.09309, 1.8978)
 visible = false
-texture = SubResource("ViewportTexture_pcgk2")
+texture = SubResource("ViewportTexture_438k3")
 script = ExtResource("2_obxxa")
 what_is_damaged = "head_is_damaged"
 what_is_healed = "head_is_healed"
@@ -1458,7 +1457,7 @@ transparent_bg = true
 [node name="HP_Empathy" type="Sprite3D" parent="." index="4"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.12584, 1.71669, 1.8978)
 visible = false
-texture = SubResource("ViewportTexture_eir4y")
+texture = SubResource("ViewportTexture_jy1ft")
 script = ExtResource("2_obxxa")
 what_is_damaged = "empathy_is_damaged"
 what_is_healed = "empathy_is_healed"
@@ -1480,12 +1479,11 @@ transparent_bg = true
 theme_override_styles/fill = ExtResource("5_k8xva")
 
 [node name="Armature" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 0.939692, 0.34202, 0, -0.34202, 0.939692, 0, 0.203873, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.10493, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, -0.075329, -0.0284092, -0.010423)
 bones/0/rotation = Quaternion(-2.98023e-08, 1.19209e-07, 0, 1)
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/position = Vector3(0.000474975, 0.241475, 0.000474975)
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
 bones/1/scale = Vector3(1.00048, 1.00048, 1.00048)
@@ -1612,7 +1610,7 @@ font_size = 35
 outline_size = 30
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="8"]
-transform = Transform3D(0.196957, 0.412605, 0.889902, -0.980749, 0.0667962, 0.186093, 0.0173326, -0.908986, 0.417618, 0.432157, 1.31533, 0.166188)
+transform = Transform3D(-0.526738, 0.28877, -0.800075, -0.713651, -0.662088, 0.230873, -0.462829, 0.692251, 0.554561, 0.445561, 1.13443, 0.268376)
 visible = false
 bone_name = "ElbowR"
 bone_idx = 7
