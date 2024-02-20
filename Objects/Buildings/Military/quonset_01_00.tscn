@@ -8,15 +8,14 @@
 
 [node name="Quonset_Base" parent="." index="0"]
 transform = Transform3D(4.2046, 0, 0, 0, 0.642639, 0, 0, 0, -4.5738, -0.0105572, 0.619751, 0.0107991)
-surface_material_override/0 = SubResource("StandardMaterial3D_mrdkn")
 
 [node name="Quonset_Roof" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010849, -0.379541, 0.011097)
 
 [node name="Quonset_Door_Tall_R" parent="." index="2"]
-transform = Transform3D(4.2046, 0, 0, 0, 0.642639, 0, 0, 0, -4.5738, -0.00697231, 0.649444, 0.163469)
+transform = Transform3D(4.2046, -5.61813e-08, 0, 3.67578e-07, 0.642639, 0, 0, 0, -4.5738, 0.790906, 0.637655, 0.180961)
 surface_material_override/0 = SubResource("StandardMaterial3D_mrdkn")
 
 [node name="Quonset_Door_Tall_L" parent="." index="3"]
-transform = Transform3D(4.2046, 0, 0, 0, 0.642639, 0, 0, 0, -4.5738, -0.0576138, 0.637655, 0.180961)
+transform = Transform3D(4.2046, -5.61813e-08, 0, 3.67578e-07, 0.642639, 0, 0, 0, -4.5738, 0.469367, 0.661041, 0.172958)
 surface_material_override/0 = SubResource("StandardMaterial3D_mrdkn")
