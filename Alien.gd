@@ -80,14 +80,14 @@ func _physics_process(delta):
 
 	var debug_ani_turnaround = $"../Debug".debug_2
 	if debug_ani_turnaround == false:
-#		if input_up == true:
-#			animation.set("parameters/walk to run/transition_request", "running")
-#		else:
-#			animation.set("parameters/walk to run/transition_request", "walking")
 		if input_up == true:
-			$Alien/Animation_Alien.play("Run_1", 1)
+			animation.set("parameters/walk to run/transition_request", "running")
 		else:
-			$Alien/Animation_Alien.play("Walk_1", 1)
+			animation.set("parameters/walk to run/transition_request", "walking")
+#		if input_up == true:
+#			$Alien/Animation_Alien.play("Run_1", 1)
+#		else:
+#			$Alien/Animation_Alien.play("Walk_1", 1)
 	else:
 		$Alien/Animation_Alien.play("Feed_Walk_1", 1)
 

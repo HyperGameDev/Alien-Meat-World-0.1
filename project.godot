@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Messenger="*res://Management/messenger.gd"
 NpcSpawns="*res://NPCs/NPC Spawns.gd"
 
+[display]
+
+window/size/always_on_top=true
+
 [input]
 
 ui_left={

@@ -1,18 +1,25 @@
-[gd_scene load_steps=39 format=3 uid="uid://c1q8m4i26u6vr"]
+[gd_scene load_steps=46 format=3 uid="uid://c1q8m4i26u6vr"]
 
 [ext_resource type="PackedScene" uid="uid://diukxh5eov8fo" path="res://Player/Alien_3.blend" id="1_p4qsu"]
 [ext_resource type="Animation" uid="uid://d0dlpska7au7x" path="res://Player/Animations/Run_Blndr_1.res" id="2_2sg84"]
 [ext_resource type="Script" path="res://UI/Health/HealthBar.gd" id="2_obxxa"]
 [ext_resource type="PackedScene" uid="uid://xnfvsxma16a7" path="res://UI/Health/hp_bar.tscn" id="3_gndeq"]
+[ext_resource type="Animation" uid="uid://c5hccd1pip26h" path="res://Player/Animations/Walk_2.res" id="3_qg7ll"]
 [ext_resource type="Script" path="res://UI/Health/EmpathyHealth.gd" id="4_8fxo1"]
+[ext_resource type="Animation" uid="uid://c3jnqi2u1j8j0" path="res://Player/Animations/Run_2.res" id="4_baaoa"]
 [ext_resource type="StyleBox" uid="uid://crffhalqhcwjq" path="res://UI/Health/hp_gradient_texture_empathy.tres" id="5_k8xva"]
 [ext_resource type="PackedScene" uid="uid://c1xnvbm1223wp" path="res://Player/body_shield.tscn" id="6_gq8ww"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1v5cn"]
-animation = &"Run_1"
+animation = &"Run_2"
+
+[sub_resource type="Curve" id="Curve_sdh8j"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_se77x"]
-xfade_time = 2.0
+xfade_time = 0.5
+xfade_curve = SubResource("Curve_sdh8j")
 input_0/name = "walking"
 input_0/auto_advance = false
 input_0/reset = true
@@ -21,16 +28,17 @@ input_1/auto_advance = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kf68q"]
-animation = &"Walk_1"
+animation = &"Walk_2"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_y4jsq"]
+graph_offset = Vector2(-172.378, 86.9257)
 nodes/output/position = Vector2(660, 0)
 nodes/running/node = SubResource("AnimationNodeAnimation_1v5cn")
-nodes/running/position = Vector2(240, 120)
+nodes/running/position = Vector2(240, 160)
 "nodes/walk to run/node" = SubResource("AnimationNodeTransition_se77x")
-"nodes/walk to run/position" = Vector2(440, 0)
+"nodes/walk to run/position" = Vector2(460, 20)
 nodes/walking/node = SubResource("AnimationNodeAnimation_kf68q")
-nodes/walking/position = Vector2(240, 0)
+nodes/walking/position = Vector2(240, 40)
 node_connections = [&"output", 0, &"walk to run", &"walk to run", 0, &"walking", &"walk to run", 1, &"running"]
 
 [sub_resource type="Animation" id="Animation_bx7n0"]
@@ -1227,13 +1235,15 @@ _data = {
 "Run_1_2": SubResource("Animation_sdd5u"),
 "Run_1_Grab": SubResource("Animation_sk5rr"),
 "Run_1_Grab_Debug": SubResource("Animation_d43h1"),
+"Run_2": ExtResource("4_baaoa"),
 "Run_Blndr_1": ExtResource("2_2sg84"),
 "Swipe_R-Arm": SubResource("Animation_nm2x0"),
 "Walk_1": SubResource("Animation_01jtj"),
-"Walk_1_Grab": SubResource("Animation_7w1n6")
+"Walk_1_Grab": SubResource("Animation_7w1n6"),
+"Walk_2": ExtResource("3_qg7ll")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_u0s4s"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_vg6gn"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
 [sub_resource type="Animation" id="Animation_ijmwm"]
@@ -1373,7 +1383,7 @@ _data = {
 "heal_hp_3": SubResource("Animation_0j8jt")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_kesjt"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ql84x"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6msii"]
@@ -1411,15 +1421,176 @@ specular_mode = 1
 [sub_resource type="BoxMesh" id="BoxMesh_xcuby"]
 size = Vector3(0.195, 35.13, 1)
 
+[sub_resource type="Animation" id="Animation_vl1u3"]
+resource_name = "RunVsWalk_dope -noimp"
+length = 2.08333
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D:ElbowL")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.0276023, 0.0423358, -0.042658, 0.997811)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D:HandL")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.0205892, 0.00189199, 0.0252498, 0.999467)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D:ElbowR")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.0104958, 0.238896, -0.0409419, 0.970125)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("Armature/Skeleton3D:HandR")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -0.00231331, 0.0242911, -0.00433508, 0.999693)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("Armature/Skeleton3D:LegL")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, -0.5, 0.5, 0.5, 0.5)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = true
+tracks/7/enabled = true
+tracks/7/path = NodePath("Armature/Skeleton3D:FootL")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 0.416566, -0.288618, -0.240819, 0.827756)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/path = NodePath("Armature/Skeleton3D:LegR")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, -0.5, -0.5, -0.5, 0.5)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/path = NodePath("Armature/Skeleton3D:FootR")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 0.0914564, 0.225529, 0.0423055, 0.969011)
+
+[sub_resource type="Animation" id="Animation_p66ya"]
+resource_name = "Run_2"
+length = 0.0416667
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.21644, 0, 0, 0.976296)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D:ElbowL")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.0276023, 0.0423358, -0.042658, 0.997811)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D:HandL")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.0205892, 0.00189199, 0.0252498, 0.999467)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D:ElbowR")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.0104958, 0.238896, -0.0409419, 0.970125)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("Armature/Skeleton3D:HandR")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -0.00231331, 0.0242911, -0.00433508, 0.999693)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("Armature/Skeleton3D:LegL")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, -0.5, 0.5, 0.5, 0.5)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = true
+tracks/7/enabled = true
+tracks/7/path = NodePath("Armature/Skeleton3D:FootL")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 0.416566, -0.288618, -0.240819, 0.827756)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/path = NodePath("Armature/Skeleton3D:LegR")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, -0.5, -0.5, -0.5, 0.5)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/path = NodePath("Armature/Skeleton3D:FootR")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 0.0914564, 0.225529, 0.0423055, 0.969011)
+
+[sub_resource type="Animation" id="Animation_1d7u0"]
+resource_name = "Walk_2 -loop"
+length = 2.08333
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_djb3j"]
+_data = {
+"RunVsWalk_dope -noimp": SubResource("Animation_vl1u3"),
+"Run_2": SubResource("Animation_p66ya"),
+"Walk_2 ": SubResource("Animation_1d7u0")
+}
+
 [node name="Alien_3" instance=ExtResource("1_p4qsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0731478, 0)
 
 [node name="AnimationTree_Alien" type="AnimationTree" parent="." index="0"]
 tree_root = SubResource("AnimationNodeBlendTree_y4jsq")
 anim_player = NodePath("../Animation_Alien")
-"parameters/walk to run/current_state" = "running"
+active = true
+"parameters/walk to run/current_state" = "walking"
 "parameters/walk to run/transition_request" = ""
-"parameters/walk to run/current_index" = 1
+"parameters/walk to run/current_index" = 0
 
 [node name="AnimationTree_Alien2" type="AnimationTree" parent="." index="1"]
 tree_root = SubResource("AnimationNodeBlendTree_y4jsq")
@@ -1437,7 +1608,7 @@ libraries = {
 [node name="HP_Head" type="Sprite3D" parent="." index="3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.754005, 2.09309, 1.8978)
 visible = false
-texture = SubResource("ViewportTexture_u0s4s")
+texture = SubResource("ViewportTexture_vg6gn")
 script = ExtResource("2_obxxa")
 what_is_damaged = "head_is_damaged"
 what_is_healed = "head_is_healed"
@@ -1457,7 +1628,7 @@ transparent_bg = true
 [node name="HP_Empathy" type="Sprite3D" parent="." index="4"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.12584, 1.71669, 1.8978)
 visible = false
-texture = SubResource("ViewportTexture_kesjt")
+texture = SubResource("ViewportTexture_ql84x")
 script = ExtResource("2_obxxa")
 what_is_damaged = "empathy_is_damaged"
 what_is_healed = "empathy_is_healed"
@@ -1479,7 +1650,7 @@ transparent_bg = true
 theme_override_styles/fill = ExtResource("5_k8xva")
 
 [node name="Armature" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 0.944551, 0.328359, 0, -0.328359, 0.944551, 0, 0.0866771, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.129187, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, -0.075329, -0.0284092, -0.010423)
@@ -1610,7 +1781,7 @@ font_size = 35
 outline_size = 30
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.121412, 0.992082, -0.0446477, -0.963849, -0.128552, -0.235435, -0.239196, 0.0144421, 0.971358, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.650505, 0.331739, -0.683925, -0.603774, -0.772378, 0.199627, -0.461802, 0.542534, 0.702393, 0.445561, 1.13443, 0.268376)
 visible = false
 bone_name = "ElbowR"
 bone_idx = 7
@@ -1619,6 +1790,11 @@ bone_idx = 7
 transform = Transform3D(0.999999, 4.09782e-08, 1.49012e-07, 8.3819e-08, 0.999999, -3.91155e-08, 0, -1.86265e-09, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_xcuby")
 skeleton = NodePath("../../..")
+
+[node name="AnimationPlayer" parent="." index="6"]
+libraries = {
+"": SubResource("AnimationLibrary_djb3j")
+}
 
 [editable path="HP_Head/SubViewport/HP_Bar"]
 [editable path="HP_Empathy/SubViewport/HP_Bar"]
