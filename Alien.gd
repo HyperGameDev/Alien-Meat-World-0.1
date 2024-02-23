@@ -138,6 +138,8 @@ func do_grab(what_is_grabbed):
 #	if grab == true
 	grabbed_object = what_is_grabbed
 #	print("Grab Begun on ", grabbed_object.name)
+
+	animation.set("parameters/reach/request", 1)
 	get_tree().create_tween().tween_method(grab_action_tween,0.0,1.0,grab_duration)
 	
 #	aim_bone_at_target(arm_grabbing,grabbed_object, 0.0)
