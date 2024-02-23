@@ -88,10 +88,10 @@ height = 17.822
 [sub_resource type="SphereShape3D" id="SphereShape3D_ukq6r"]
 radius = 10.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_yh0cl"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4r18g"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_t73ry"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_hr2qa"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [node name="Main Scene" type="Node3D"]
@@ -363,17 +363,17 @@ shape = SubResource("SphereShape3D_ukq6r")
 [node name="Alien" parent="Player" instance=ExtResource("4_huvyo")]
 transform = Transform3D(1, 0.00048692, 0.000306956, -0.000486927, 1, 2.02796e-05, -0.000306949, -2.04407e-05, 1, 0, 0, 0)
 
-[node name="HP_Head" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_yh0cl")
+[node name="HP_Head" parent="Player/Alien" index="2"]
+texture = SubResource("ViewportTexture_4r18g")
 
-[node name="HP_Empathy" parent="Player/Alien" index="4"]
-texture = SubResource("ViewportTexture_t73ry")
+[node name="HP_Empathy" parent="Player/Alien" index="3"]
+texture = SubResource("ViewportTexture_hr2qa")
 
-[node name="Armature" parent="Player/Alien" index="5"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0165313, 0)
+[node name="Armature" parent="Player/Alien" index="4"]
+transform = Transform3D(1, 0, 0, 0, 0.894941, 0.446178, 0, -0.446178, 0.894941, 0, 0.0187348, 0)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.145397, 0.214883, -0.966253, -0.955629, -0.285077, 0.0804012, -0.258056, 0.934622, 0.246679, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.121412, 0.992082, -0.0446477, -0.963849, -0.128552, -0.235435, -0.239196, 0.0144421, 0.971358, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.354678, 0.486024, 0.185392)
@@ -397,7 +397,11 @@ disabled = true
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.0126971, 1.48907, 0.180266)
 shape = SubResource("CapsuleShape3D_102ua")
 
+[node name="Timer_Tweens" type="Timer" parent="."]
+unique_name_in_owner = true
+
 [connection signal="timeout" from="UI_FX/Timer_FX_Flash" to="UI_FX" method="_on_timer_fx_flash_timeout"]
+[connection signal="timeout" from="Timer_Tweens" to="Player" method="_on_timer_timeout"]
 
 [editable path="Player/Alien"]
 [editable path="Player/Alien/HP_Head/SubViewport/HP_Bar"]

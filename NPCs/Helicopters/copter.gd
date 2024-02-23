@@ -64,13 +64,13 @@ func am_i_grabbed(grab_target):
 #		print("Copter Seen (", self.name, ")")
 	if grab_target == self and Input.is_action_just_pressed("Grab"):
 		was_grabbed = true
-		print("Copter Hit (", self.name, ")")
+#		print("Copter Hit (", self.name, ")")
 		Messenger.something_grabbed.emit(self)
 
 func got_hit(what_got_hit):
 #	print(self.name, " MIGHT be hit...")
 	if what_got_hit == self:
-		print(self.name, " just got hit!")
+#		print(self.name, " just got hit!")
 		await get_tree().create_timer(attacked_duration).timeout
 		queue_free()
 	

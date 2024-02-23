@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+var timer = 0.0
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 6
@@ -138,6 +139,9 @@ func do_grab(what_is_grabbed):
 #	if grab == true
 	grabbed_object = what_is_grabbed
 #	print("Grab Begun on ", grabbed_object.name)
+	animation.set("parameters/reach/request", 1)
+	%Timer_Tweens.start(.1)
+	print("Tween Started!")
 	get_tree().create_tween().tween_method(grab_action_tween,0.0,1.0,grab_duration)
 	
 #	aim_bone_at_target(arm_grabbing,grabbed_object, 0.0)
@@ -147,6 +151,11 @@ func do_grab(what_is_grabbed):
 #	print("Grab Ending from ", grabbed_object.name)
 	# Retract the arm
 	get_tree().create_tween().tween_method(grab_action_tween,1.0,0.0,grab_duration)
+	await get_tree().create_timer(grab_duration).timeout
+	%Timer_Tweens.stop()
+	print("Tween Stopped! (", str(timer), ")")
+	await get_tree().create_timer(.2).timeout
+	timer = 0.0
 
 
 func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
@@ -198,3 +207,8 @@ func slowdown(slowdown_amount):
 #		print("terrain_slowdown:", terrain_slowdown)
 		%TerrainController.terrain_velocity = 0
 		
+
+
+func _on_timer_timeout():
+	timer += .1
+	
