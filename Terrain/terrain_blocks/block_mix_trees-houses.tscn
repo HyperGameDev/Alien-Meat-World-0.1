@@ -235,7 +235,7 @@ transform = Transform3D(-0.991694, 0, 0.128622, 0, 1, 0, -0.128622, 0, -0.991694
 transform = Transform3D(-0.991694, 0, 0.128622, 0, 1, 0, -0.128622, 0, -0.991694, -8.20179, 4.76837e-07, -6.7471)
 
 [node name="Quonset_01_00" parent="." instance=ExtResource("6_h5d2o")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.9292, 0, -3.25041)
+transform = Transform3D(0.994098, 0, 0.108485, 0, 1, 0, -0.108485, 0, 0.994098, -22.9292, 0, -3.25041)
 
 [editable path="cliff_front_01"]
 [editable path="House01_00"]

@@ -1,12 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqcl484tyjerg"]
+[gd_scene load_steps=6 format=3 uid="uid://bqcl484tyjerg"]
 
 [ext_resource type="PackedScene" uid="uid://dp4cnkxo48y1o" path="res://Objects/Buildings/Military/Quonset_01-2_00.blend" id="1_kglgg"]
 [ext_resource type="Texture2D" uid="uid://sv12te45u7e0" path="res://Objects/Buildings/Military/Textures/Tex_Quonset_01-2_Roof-1.png" id="2_nmb4s"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c88dh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ii0b"]
+albedo_texture = ExtResource("2_nmb4s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1rxir"]
+transparency = 1
+albedo_color = Color(0, 0, 0.458824, 0.815686)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q11dc"]
 albedo_texture = ExtResource("2_nmb4s")
 
 [node name="Quonset_01-2_00" instance=ExtResource("1_kglgg")]
 
-[node name="Cylinder" parent="." index="0"]
-surface_material_override/1 = SubResource("StandardMaterial3D_c88dh")
+[node name="Roof" parent="." index="0"]
+surface_material_override/1 = SubResource("StandardMaterial3D_1ii0b")
+
+[node name="Roof_faces" parent="." index="1"]
+surface_material_override/1 = SubResource("StandardMaterial3D_1rxir")
+
+[node name="Door-Short" parent="." index="3"]
+transform = Transform3D(1.62476, 0, 0, 0, 0, -1, 0, 1, 0, 0.53389, 1.66696, -0.192866)
+visible = false
+
+[node name="Roof_001" parent="." index="4"]
+surface_material_override/1 = SubResource("StandardMaterial3D_q11dc")
