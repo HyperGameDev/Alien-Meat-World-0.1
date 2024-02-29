@@ -2,6 +2,11 @@ extends Area3D
 
 class_name Obstacle
 
+signal update_hitpoints
+
+@export var health_max: int
+@onready var health_current = health_max
+
 @export var damage_amount: damage_amounts
 @export var slowdown_amount: slowdown_amounts
 
@@ -10,6 +15,7 @@ enum slowdown_amounts {NONE, PARTIAL, FULL}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	update_hitpoints.emit()
 	area_entered.connect(check_area)
 	area_exited.connect(uncheck_area)
 	

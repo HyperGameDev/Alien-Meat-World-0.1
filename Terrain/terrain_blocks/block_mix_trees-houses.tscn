@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ca8grfcex7nxx"]
+[gd_scene load_steps=11 format=3 uid="uid://ca8grfcex7nxx"]
 
 [ext_resource type="PackedScene" uid="uid://c4gt8ofayu0ec" path="res://Objects/Foliage/Tree_01/Tree_01_00.tscn" id="2_jji2l"]
 [ext_resource type="PackedScene" uid="uid://ciijtaeiegep4" path="res://Objects/Buildings/Houses/House_01_00.tscn" id="3_2x4i8"]
@@ -18,27 +18,6 @@ data = PackedVector3Array(50, 0, 10, -50, 0, 10, 50, 0, -10, -50, 0, 10, -50, 0,
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2j5jp"]
 points = PackedVector3Array(-5.99455, -71.0009, -8.31296, -6.39667, -70.7782, -8.31296, -5.80767, 7.41876, -8.32274, -3.38274, 7.41876, -8.30318, -3.34691, 7.46485, 11.6602, -5.99455, -71.0009, 91.582, -6.39667, -2.12064, -8.31296, -6.39667, -70.7782, 91.582, -6.29546, 7.45717, 11.6406, -3.34691, 7.46485, 91.6015, -6.39667, -2.12064, 91.582, -6.29546, 7.45717, 91.5722)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cm7n"]
-albedo_color = Color(0.780392, 0.607843, 0.827451, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xry6g"]
-albedo_color = Color(0.807843, 0.376471, 0.168627, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rrgmo"]
-albedo_color = Color(0.345098, 0.345098, 0.345098, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yahqu"]
-albedo_color = Color(0.509804, 0.188235, 0.141176, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhuvb"]
-albedo_color = Color(0.113725, 0.113725, 0.113725, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3elu"]
-albedo_color = Color(0.435294, 0.662745, 0.466667, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o0v7q"]
-albedo_color = Color(1, 1, 0.533333, 1)
 
 [node name="Terrain_0" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
@@ -81,38 +60,8 @@ transform = Transform3D(0.0247113, 0, 0.999695, 0, 1, 0, -0.999695, 0, 0.0247113
 [node name="House01_00" parent="." instance=ExtResource("3_2x4i8")]
 transform = Transform3D(0.928991, 0, -0.370103, 0, 1, 0, 0.370103, 0, 0.928991, 4.72747, 0, 5.85946)
 
-[node name="HouseBase" parent="House01_00" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_3cm7n")
-
-[node name="Doors" parent="House01_00" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_xry6g")
-
-[node name="DoorRoof" parent="House01_00" index="2"]
-surface_material_override/0 = SubResource("StandardMaterial3D_rrgmo")
-
-[node name="Window_Trims" parent="House01_00" index="3"]
-surface_material_override/0 = SubResource("StandardMaterial3D_yahqu")
-
-[node name="HouseRoof" parent="House01_00" index="5"]
-surface_material_override/0 = SubResource("StandardMaterial3D_nhuvb")
-
 [node name="House01_01" parent="." instance=ExtResource("3_2x4i8")]
 transform = Transform3D(0.884174, 0, 0.467158, 0, 1, 0, -0.467158, 0, 0.884174, -2.27444, 0, -7.07889)
-
-[node name="HouseBase" parent="House01_01" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_s3elu")
-
-[node name="Doors" parent="House01_01" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_o0v7q")
-
-[node name="DoorRoof" parent="House01_01" index="2"]
-surface_material_override/0 = SubResource("StandardMaterial3D_rrgmo")
-
-[node name="Window_Trims" parent="House01_01" index="3"]
-surface_material_override/0 = SubResource("StandardMaterial3D_yahqu")
-
-[node name="HouseRoof" parent="House01_01" index="5"]
-surface_material_override/0 = SubResource("StandardMaterial3D_nhuvb")
 
 [node name="Tree_02_00" parent="." instance=ExtResource("4_6pe81")]
 transform = Transform3D(-0.0100006, 0, 0.99995, 0, 1, 0, -0.99995, 0, -0.0100006, 7.89408, 5.16454e-05, 9.41025)

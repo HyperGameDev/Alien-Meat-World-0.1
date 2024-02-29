@@ -40,3 +40,5 @@ signal mouse_pos_3d
 
 signal something_grabbed
 signal something_ungrabbed
+
+signal hitpoint_update

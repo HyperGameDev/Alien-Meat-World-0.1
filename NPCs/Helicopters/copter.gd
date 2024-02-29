@@ -2,11 +2,17 @@ extends Area3D
 
 class_name Copter
 
+signal update_hitpoints
+
 static var copters_stopped = 0
+
+var health_max = 2
+var health_current = 2
+var damage_taken = 1
 
 var copter_pos: Vector3
 var copter_x_pos_min = -15
-var copter_x_pos_max = 15 	
+var copter_x_pos_max = 15
 
 var copter_spawn_z_pos = -130
 
@@ -16,17 +22,20 @@ var velocity = Vector3.ZERO
 
 var is_moving = true
 
-var target
-var was_grabbed = false
-
-@onready var attacked_duration = get_tree().get_current_scene().get_node("Player").grab_duration
 @onready var nav_agent = $NavigationAgent3D
 
 @onready var copter_area = self
 @onready var player = get_tree().get_current_scene().get_node("Player/DetectionAreas/Area_Player-Proximity")
 
+
+# Getting attacked
+var target
+var was_grabbed = false
+@onready var attacked_duration = get_tree().get_current_scene().get_node("Player").grab_duration
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	update_hitpoints.emit()
 	set_collision_layer_value(1, false)	
 	set_collision_layer_value(3, true)
 	
@@ -34,6 +43,8 @@ func _ready():
 	
 	player.area_entered.connect(copter_stop)
 	nav_agent.velocity_computed.connect(copter_nav)
+	
+	# Getting Attacked
 	Messenger.grab_target.connect(am_i_grabbed)
 	Messenger.something_ungrabbed.connect(got_hit)
 	
@@ -64,15 +75,19 @@ func am_i_grabbed(grab_target):
 #		print("Copter Seen (", self.name, ")")
 	if grab_target == self and Input.is_action_just_pressed("Grab"):
 		was_grabbed = true
-		print("Copter Hit (", self.name, ")")
+#		print("Copter Hit (", self.name, ")")
 		Messenger.something_grabbed.emit(self)
 
 func got_hit(what_got_hit):
 #	print(self.name, " MIGHT be hit...")
 	if what_got_hit == self:
-		print(self.name, " just got hit!")
-		await get_tree().create_timer(attacked_duration).timeout
-		queue_free()
+#		print(self.name, " just got hit!")
+#		await get_tree().create_timer(attacked_duration).timeout
+		health_current -= damage_taken
+		update_hitpoints.emit()
+		if health_current <= 0:
+			await get_tree().create_timer(attacked_duration).timeout
+			queue_free()
 	
 		
 	

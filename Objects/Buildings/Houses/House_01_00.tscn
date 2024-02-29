@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://ciijtaeiegep4"]
+[gd_scene load_steps=22 format=3 uid="uid://ciijtaeiegep4"]
 
+[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_mr45r"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_n5iuc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7xpf"]
@@ -219,7 +220,11 @@ points = PackedVector3Array(0.958294, 0.6501, 0.685001, -0.238592, 0.0163382, -0
 
 [node name="House_01_00" type="Area3D"]
 script = ExtResource("2_n5iuc")
+health_max = 5
 slowdown_amount = 2
+
+[node name="HitPoints" parent="." instance=ExtResource("2_mr45r")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.21017, 0)
 
 [node name="HouseBase" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_k2klb")

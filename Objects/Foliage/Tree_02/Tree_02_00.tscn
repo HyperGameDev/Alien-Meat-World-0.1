@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://0sdt50wuw41u"]
+[gd_scene load_steps=12 format=3 uid="uid://0sdt50wuw41u"]
 
+[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_87ypy"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_xs3o3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwbkj"]
@@ -90,6 +91,7 @@ points = PackedVector3Array(-6.78003e-06, 1.01238, 0.04, 0.0346342, 1.01238, 0.0
 
 [node name="Tree_02_00" type="Area3D"]
 script = ExtResource("2_xs3o3")
+health_max = 5
 slowdown_amount = 2
 
 [node name="Trunk" type="MeshInstance3D" parent="."]
@@ -111,3 +113,6 @@ avoidance_layers = 4
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_4vft3")
+
+[node name="HitPoints" parent="." instance=ExtResource("2_87ypy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.37828, 0)

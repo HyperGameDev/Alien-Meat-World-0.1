@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://cxp488n77il0e"]
+[gd_scene load_steps=18 format=3 uid="uid://cxp488n77il0e"]
 
 [ext_resource type="Script" path="res://NPCs/Helicopters/copter.gd" id="2_l3hi8"]
+[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_odnxp"]
 
 [sub_resource type="Animation" id="Animation_uf4d7"]
 length = 0.001
@@ -240,6 +241,8 @@ points = PackedVector3Array(-0.362388, -7.64132e-05, -0.030939, 0.363432, -7.641
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("2_l3hi8")
+
+[node name="HitPoints" parent="." instance=ExtResource("2_odnxp")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
