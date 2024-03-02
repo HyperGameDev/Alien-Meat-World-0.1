@@ -3,12 +3,11 @@ extends Area3D
 class_name Copter
 
 signal update_hitpoints
-var health_max = 2
-var health_current = 2
 
 static var copters_stopped = 0
 
-
+var health_max = 2
+var health_current = 2
 var damage_taken = 1
 
 var copter_pos: Vector3

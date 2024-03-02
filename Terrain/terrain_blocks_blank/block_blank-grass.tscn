@@ -1,7 +1,5 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4vxq2pgp5yt2"]
+[gd_scene load_steps=6 format=3 uid="uid://b4vxq2pgp5yt2"]
 
-[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_4emu8"]
-[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_j5s8o"]
 [ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="5_a0u1h"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
@@ -15,12 +13,6 @@ data = PackedVector3Array(50, 0, 10, -50, 0, 10, 50, 0, -10, -50, 0, 10, -50, 0,
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qwi2u"]
 points = PackedVector3Array(-5.99455, -71.0009, -8.31296, -6.39667, -70.7782, -8.31296, -5.80767, 7.41876, -8.32274, -3.38274, 7.41876, -8.30318, -3.34691, 7.46485, 11.6602, -5.99455, -71.0009, 91.582, -6.39667, -2.12064, -8.31296, -6.39667, -70.7782, 91.582, -6.29546, 7.45717, 11.6406, -3.34691, 7.46485, 91.6015, -6.39667, -2.12064, 91.582, -6.29546, 7.45717, 91.5722)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tyktd"]
-points = PackedVector3Array(1.7425, 1.23, 0.5, 1.7425, 1.23, -0.5, -1.7425, 1.23, 0.5, 1.7425, -1.23, 0.5, 1.7425, -1.23, -0.5, -1.7425, 1.23, -0.5, -1.7425, -1.23, 0.5, -1.7425, -1.23, -0.5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_uiv2v"]
-size = Vector3(3.485, 2.46, 1)
 
 [node name="Terrain_0" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
@@ -40,17 +32,3 @@ shape = SubResource("ConvexPolygonShape3D_qwi2u")
 
 [node name="cliff_front_01" parent="." instance=ExtResource("5_a0u1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658, -7.495, 21.33)
-
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.196972, 0)
-script = ExtResource("2_4emu8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("ConvexPolygonShape3D_tyktd")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
-mesh = SubResource("BoxMesh_uiv2v")
-skeleton = NodePath("../..")
-
-[node name="HitPoints" parent="Area3D/MeshInstance3D" instance=ExtResource("3_j5s8o")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.93389, 0)

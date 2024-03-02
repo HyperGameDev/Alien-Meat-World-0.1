@@ -23,6 +23,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_1rxir")
 
 [node name="Door-Short" parent="." index="3"]
 transform = Transform3D(1.62476, 0, 0, 0, 0, -1, 0, 1, 0, 0.53389, 1.66696, -0.192866)
+visible = false
 
 [node name="Roof_001" parent="." index="4"]
 surface_material_override/1 = SubResource("StandardMaterial3D_q11dc")
