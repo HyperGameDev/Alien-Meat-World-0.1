@@ -3,7 +3,6 @@ extends Area3D
 class_name Obstacle
 
 signal update_hitpoints
-
 var damage_taken = 1
 @export var health_max: int
 @onready var health_current = health_max
