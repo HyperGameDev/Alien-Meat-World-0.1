@@ -2,6 +2,8 @@ extends Node3D
 
 class_name HitPoints
 
+var health_percent_lost: float = 0.0
+
 # Getting attacked
 var target
 var was_grabbed = false
@@ -33,6 +35,22 @@ func got_hit(what_got_hit):
 #		await get_tree().create_timer(attacked_duration).timeout
 		$"..".health_current -= $"..".damage_taken
 		$"..".update_hitpoints.emit()
+		var health_current_float: float = $"..".health_current * 1.0
+		var health_max_float: float = $"..".health_max * 1.0
+		var health_lost: float = health_max_float - health_current_float
+		health_percent_lost = health_lost / health_max_float
+		print("Current: ", health_current_float, "; Lost: ", health_lost, "; %: ", health_percent_lost)
+		
+		await get_tree().create_timer(attacked_duration).timeout
+		$Animation_Degrade.play("degrade")
+		$Animation_Degrade.seek(health_percent_lost, false)
+		await get_tree().create_timer(.01).timeout
+		$Animation_Degrade.pause()
+		
+		
 		if $"..".health_current <= 0:
-			await get_tree().create_timer(attacked_duration).timeout
+#			await get_tree().create_timer(attacked_duration).timeout
 			$"..".queue_free()
+			
+#func health_percent():
+#	health_curren

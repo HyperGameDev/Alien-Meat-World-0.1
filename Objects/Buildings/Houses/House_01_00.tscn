@@ -220,7 +220,6 @@ points = PackedVector3Array(0.958294, 0.6501, 0.685001, -0.238592, 0.0163382, -0
 
 [node name="House_01_00" type="Area3D"]
 script = ExtResource("2_n5iuc")
-health_max = 5
 slowdown_amount = 2
 
 [node name="HitPoints" parent="." instance=ExtResource("2_mr45r")]

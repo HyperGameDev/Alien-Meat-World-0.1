@@ -1,7 +1,67 @@
-[gd_scene load_steps=18 format=3 uid="uid://cxp488n77il0e"]
+[gd_scene load_steps=21 format=3 uid="uid://cxp488n77il0e"]
 
 [ext_resource type="Script" path="res://NPCs/Helicopters/copter.gd" id="2_l3hi8"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_odnxp"]
+
+[sub_resource type="Animation" id="Animation_8heql"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Copter/Copter_Windows:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Copter/Copter_Propeller-Top:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_04nv7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Copter/Copter_Windows:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Copter/Copter_Propeller-Top:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yh0px"]
+_data = {
+"RESET": SubResource("Animation_04nv7"),
+"degrade": SubResource("Animation_8heql")
+}
 
 [sub_resource type="Animation" id="Animation_uf4d7"]
 length = 0.001
@@ -243,6 +303,11 @@ collision_mask = 0
 script = ExtResource("2_l3hi8")
 
 [node name="HitPoints" parent="." instance=ExtResource("2_odnxp")]
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="HitPoints"]
+libraries = {
+"": SubResource("AnimationLibrary_yh0px")
+}
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
