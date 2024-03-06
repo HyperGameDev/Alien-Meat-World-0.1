@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://crbv3c67ldmgu"]
+[gd_scene load_steps=4 format=3 uid="uid://crbv3c67ldmgu"]
 
 [ext_resource type="Script" path="res://Management/Hit-Points.gd" id="1_04y3h"]
+[ext_resource type="Material" uid="uid://dyavhue4rw6tc" path="res://particles_building-walls.tres" id="2_clrwy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xhkm2"]
+size = Vector3(0.1, 0.15, 0.1)
 
 [node name="HitPoints" type="Node3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.06613, 0)
@@ -12,3 +16,14 @@ alpha_cut = 1
 text = "0"
 font_size = 100
 outline_size = 30
+
+[node name="Particles_Building-Walls" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.999999, 0.001587, -4.65371e-05, -0.00158693, 0.999998, 0.00117694, 4.83933e-05, -0.00117684, 0.999999, -0.00341487, -0.0103374, 0.0145106)
+visible = false
+amount = 20
+lifetime = 2.0
+explosiveness = 0.9
+randomness = 1.0
+collision_base_size = 0.3
+process_material = ExtResource("2_clrwy")
+draw_pass_1 = SubResource("BoxMesh_xhkm2")

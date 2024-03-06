@@ -35,11 +35,14 @@ func got_hit(what_got_hit):
 #		await get_tree().create_timer(attacked_duration).timeout
 		$"..".health_current -= $"..".damage_taken
 		$"..".update_hitpoints.emit()
+		
+		print("Particle Effect")
+		
 		var health_current_float: float = $"..".health_current * 1.0
 		var health_max_float: float = $"..".health_max * 1.0
 		var health_lost: float = health_max_float - health_current_float
 		health_percent_lost = health_lost / health_max_float
-		print("Current: ", health_current_float, "; Lost: ", health_lost, "; %: ", health_percent_lost)
+#		print("Current: ", health_current_float, "; Lost: ", health_lost, "; %: ", health_percent_lost)
 		
 		await get_tree().create_timer(attacked_duration).timeout
 		$Animation_Degrade.play("degrade")

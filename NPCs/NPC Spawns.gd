@@ -13,7 +13,7 @@ func _ready():
 	spawn_interval_timer.timeout.connect(spawn_helicopter)
 	spawn_interval_timer.one_shot = true
 	add_child(spawn_interval_timer)
-	spawn_interval_timer.start(randi_range(spawn_interval_min,spawn_interval_max))
+#	spawn_interval_timer.start(randi_range(spawn_interval_min,spawn_interval_max))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func spawn_helicopter():
