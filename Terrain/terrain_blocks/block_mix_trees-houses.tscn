@@ -63,9 +63,11 @@ health_max = 0
 
 [node name="House01_00" parent="." instance=ExtResource("3_2x4i8")]
 transform = Transform3D(0.928991, 0, -0.370103, 0, 1, 0, 0.370103, 0, 0.928991, 4.72747, 0, 5.85946)
+health_max = 0
 
 [node name="House01_01" parent="." instance=ExtResource("3_2x4i8")]
 transform = Transform3D(0.884174, 0, 0.467158, 0, 1, 0, -0.467158, 0, 0.884174, -2.27444, 0, -7.07889)
+health_max = 0
 
 [node name="Tree_02_00" parent="." instance=ExtResource("4_6pe81")]
 transform = Transform3D(-0.0100006, 0, 0.99995, 0, 1, 0, -0.99995, 0, -0.0100006, 7.89408, 5.16454e-05, 9.41025)
