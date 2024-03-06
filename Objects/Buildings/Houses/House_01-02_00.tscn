@@ -1,74 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4qm8k4sih532"]
+[gd_scene load_steps=11 format=3 uid="uid://b4qm8k4sih532"]
 
 [ext_resource type="PackedScene" uid="uid://co0m5qw8vqnmh" path="res://Objects/Buildings/Houses/house_01_02.blend" id="1_k2nda"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_p3f0g"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_opc2y"]
+[ext_resource type="Material" uid="uid://ccv7hgg87f8g6" path="res://Objects/Buildings/Houses/House_01-02_particle-walls-01.tres" id="4_1t3xl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gckud"]
 size = Vector3(1.945, 1.255, 1.175)
-
-[sub_resource type="Animation" id="Animation_cno6t"]
-resource_name = "degrade"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Window_Glasses:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HouseRoof:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Doors:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HouseBase:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HouseFrame:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
 
 [sub_resource type="Animation" id="Animation_futq0"]
 length = 0.001
@@ -133,17 +71,84 @@ tracks/4/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_cno6t"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Window_Glasses:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HouseRoof:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Doors:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HouseBase:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HouseFrame:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t8xbt"]
 _data = {
 "RESET": SubResource("Animation_futq0"),
 "degrade": SubResource("Animation_cno6t")
 }
 
+[sub_resource type="BoxMesh" id="BoxMesh_tcjqu"]
+size = Vector3(0.1, 0.15, 0.1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c301s"]
 albedo_color = Color(1, 0.615686, 0.368627, 1)
 metallic_specular = 0.0
 
 [node name="house_01_02" instance=ExtResource("1_k2nda")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00567102, -5.96046e-08, -0.00417328)
 
 [node name="Obstacle" type="Area3D" parent="." index="0"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.21017, 0)
@@ -163,6 +168,15 @@ root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_t8xbt")
 }
+
+[node name="Particles_Walls" type="GPUParticles3D" parent="Obstacle/HitPoints" index="2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.0060598, -0.881771, 0.45001)
+amount = 20
+lifetime = 2.0
+explosiveness = 0.9
+local_coords = true
+process_material = ExtResource("4_1t3xl")
+draw_pass_1 = SubResource("BoxMesh_tcjqu")
 
 [node name="HouseBase" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00238913)

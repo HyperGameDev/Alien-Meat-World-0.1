@@ -31,7 +31,7 @@ var is_moving = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_hitpoints.emit()
-	set_collision_layer_value(1, false)	
+	set_collision_layer_value(1, false)
 	set_collision_layer_value(3, true)
 	
 	set_collision_mask_value(1, false)

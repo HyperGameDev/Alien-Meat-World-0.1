@@ -4,9 +4,10 @@ class_name Obstacle
 
 signal update_hitpoints
 
-var damage_taken = 1
 @export var health_max: int
 @onready var health_current = health_max
+var damage_taken = 1
+
 
 @export var damage_amount: damage_amounts
 @export var slowdown_amount: slowdown_amounts

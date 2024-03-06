@@ -69,8 +69,10 @@ func shoot_ray(mask):
 	var to = from + project_ray_normal(mouse_pos) * ray_length
 	var space = get_world_3d().direct_space_state
 	var ray_query = PhysicsRayQueryParameters3D.new()
+	ray_query.exclude = [$"../Player/DetectionAreas/Area_Player-Proximity"]
 	ray_query.from = from
 	ray_query.to = to
+	
 	
 	# collision areas vs bodies dependent on whether collide_ was set to true/false when this function was called
 	ray_query.collide_with_areas = true
@@ -89,7 +91,7 @@ func grab_ray():
 		grab_ray_pos = raycast_result.position
 		grab_target = raycast_result.collider
 		Messenger.grab_target.emit(grab_target)
-#		print("Raycast sees: ", grab_target)
+		print("Raycast sees: ", grab_target)
 #		print("Pos: ", grab_target.position)
 #		return raycast_result.collider
 
@@ -106,8 +108,8 @@ func move_health():
 # Raycast 2: Player Hovering
 func hover_ray():
 	var raycast_result = shoot_ray(32768)
-	if !raycast_result.is_empty():
 #	print(raycast_result)
+	if !raycast_result.is_empty():
 		hover_target = raycast_result.collider
 		
 		# Emits signal with parameter "true" or "false" if the hover_target is/isn't set to %Player

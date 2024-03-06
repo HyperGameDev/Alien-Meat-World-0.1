@@ -1,0 +1,19 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://ccv7hgg87f8g6"]
+
+[resource]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 60.0
+initial_velocity_max = 4.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -360.0
+angle_max = 360.0
+scale_min = 0.2
+scale_max = 0.8
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
