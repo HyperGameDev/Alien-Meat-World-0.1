@@ -2,7 +2,13 @@ extends Node3D
 
 class_name HitPoints
 
+const HIT_DELAY = .0000001
+
+var is_dead = false
 var health_percent_lost: float = 0.0
+
+@export var hit_particle_lifetime: float = 2.0
+
 
 # Getting attacked
 var target
@@ -10,14 +16,19 @@ var was_grabbed = false
 @onready var attacked_duration = get_tree().get_current_scene().get_node("Player").grab_duration
 
 func _ready():
-	$"..".update_hitpoints.connect(update_number)
+	$"..".update_hitpoints.connect(health_effects)
 	
 	# Getting Attacked
 	Messenger.grab_target.connect(am_i_grabbed)
 	Messenger.something_ungrabbed.connect(got_hit)
 
-func update_number():
+func health_effects():
+	# Update Health Debug
 	$Dmg_Label.text = str($"..".health_current)
+	
+	if $"..".health_current <= 0: # Is Dead
+		await get_tree().create_timer(HIT_DELAY).timeout
+		$Dmg_Label.visible = false
 	
 func am_i_grabbed(grab_target):
 	#	target = grab_target
@@ -30,7 +41,7 @@ func am_i_grabbed(grab_target):
 
 func got_hit(what_got_hit):
 	#	print($"..".name, " MIGHT be hit...")
-	if what_got_hit == $"..":
+	if what_got_hit == $".." and $"..".health_current > 0:
 #		print($"..".name, " just got hit!")
 #		await get_tree().create_timer(attacked_duration).timeout
 		$"..".health_current -= $"..".damage_taken
@@ -44,13 +55,10 @@ func got_hit(what_got_hit):
 		await get_tree().create_timer(attacked_duration).timeout
 		$Animation_Degrade.play("degrade")
 		$Animation_Degrade.seek(health_percent_lost, false)
-		await get_tree().create_timer(.01).timeout
+		await get_tree().create_timer(HIT_DELAY).timeout
 		$Animation_Degrade.pause()
 		
 		
 		if $"..".health_current <= 0:
-#			await get_tree().create_timer(attacked_duration).timeout
+			await get_tree().create_timer(hit_particle_lifetime).timeout
 			$"..".queue_free()
-			
-#func health_percent():
-#	health_curren

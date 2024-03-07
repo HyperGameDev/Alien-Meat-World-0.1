@@ -2,18 +2,22 @@
 
 [resource]
 emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
+emission_box_extents = Vector3(0.93, 0, 1)
 particle_flag_rotate_y = true
 particle_flag_disable_z = true
 direction = Vector3(0, 1, 0)
-spread = 60.0
-initial_velocity_max = 4.0
+spread = 31.52
+initial_velocity_max = 3.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
+radial_accel_max = 5.58
 angle_min = -360.0
 angle_max = 360.0
-scale_min = 0.2
-scale_max = 0.8
+scale_min = 0.01
+scale_max = 0.15
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
 collision_mode = 1
 collision_friction = 0.0
 collision_bounce = 1.0

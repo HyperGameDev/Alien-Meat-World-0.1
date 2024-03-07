@@ -31,6 +31,7 @@ var is_moving = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_hitpoints.emit()
+	update_hitpoints.connect(health_effects)
 	set_collision_layer_value(1, false)
 	set_collision_layer_value(3, true)
 	
@@ -75,6 +76,8 @@ func copter_stop(thing_in_player_perimeter):
 func copter_nav(safe_velocity):
 	global_position += safe_velocity * get_physics_process_delta_time()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func health_effects():
+	if health_current <= 0: # Is Dead
+		await get_tree().create_timer($HitPoints.HIT_DELAY).timeout
+		$CollisionShape3D.disabled = true
+		$HitPoints.is_dead = true
