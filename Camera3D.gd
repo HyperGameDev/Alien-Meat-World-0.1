@@ -57,6 +57,10 @@ func _process(_delta):
 	cursor_ray()
 	
 #	#	# Raycaast 1: Temp Grab-specific
+#	if !grab_target: return
+#	if grab_target.is_in_group("Meat"):
+##		print("Raycast: Sees Health")
+#		Messenger.health_hovered.emit(grab_target)
 
 func shoot_ray(mask):
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -96,10 +100,10 @@ func move_health():
 	if grabbed_object == null:
 		grabbed_object = grab_target  # Store the grabbed object
 		grab_offset = grabbed_object.global_transform.origin - grab_ray_pos  # Calculate grab offset
-#
+
 	if grabbed_object != null:
 		grabbed_object.set_global_position(grab_ray_pos + grab_offset)
-	
+
 
 # Raycast 2: Player Hovering
 func hover_ray():

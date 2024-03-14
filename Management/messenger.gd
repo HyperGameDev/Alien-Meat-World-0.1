@@ -27,8 +27,6 @@ signal limbs_health
 signal amount_damaged
 signal amount_slowed
 
-
-signal on_meat_hovered
 signal health_hovered
 signal health_detected
 
@@ -44,4 +42,3 @@ signal something_grabbed
 signal something_ungrabbed
 
 signal hitpoint_update
-
