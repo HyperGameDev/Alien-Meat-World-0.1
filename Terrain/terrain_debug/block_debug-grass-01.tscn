@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7q68g3d41iig"]
+[gd_scene load_steps=14 format=3 uid="uid://b7q68g3d41iig"]
 
+[ext_resource type="Script" path="res://Terrain/block_debug-grass-01.gd" id="1_fyl5g"]
 [ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="1_htb4r"]
 [ext_resource type="PackedScene" uid="uid://b4qm8k4sih532" path="res://Objects/Buildings/Houses/House_01-02_00.tscn" id="2_6rkgt"]
+[ext_resource type="PackedScene" uid="uid://c0kld2qowd56l" path="res://NPCs/Cows/Cow_01_00.tscn" id="3_0noo3"]
+[ext_resource type="Script" path="res://NPCs/Debug/meat_characterbody.gd" id="5_0co7k"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
 size = Vector2(100, 20)
@@ -15,10 +18,25 @@ data = PackedVector3Array(50, 0, 10, -50, 0, 10, 50, 0, -10, -50, 0, 10, -50, 0,
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qwi2u"]
 points = PackedVector3Array(-5.99455, -71.0009, -8.31296, -6.39667, -70.7782, -8.31296, -5.80767, 7.41876, -8.32274, -3.38274, 7.41876, -8.30318, -3.34691, 7.46485, 11.6602, -5.99455, -71.0009, 91.582, -6.39667, -2.12064, -8.31296, -6.39667, -70.7782, 91.582, -6.29546, 7.45717, 11.6406, -3.34691, 7.46485, 91.6015, -6.39667, -2.12064, 91.582, -6.29546, 7.45717, 91.5722)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s7yqk"]
+radius = 0.1
+height = 0.5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7gqvl"]
+radius = 0.1
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0t6r8"]
+albedo_color = Color(0.133333, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nmbpn"]
+albedo_color = Color(1, 0, 1, 1)
+
 [node name="Terrain_1" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 mesh = SubResource("PlaneMesh_wnprt")
 surface_material_override/0 = SubResource("StandardMaterial3D_tmqub")
+script = ExtResource("1_fyl5g")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 collision_mask = 0
@@ -36,3 +54,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658, -7.495, 21.33)
 
 [node name="house_01-02_00" parent="." instance=ExtResource("2_6rkgt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 1.8)
+
+[node name="Cow_01_00" parent="." instance=ExtResource("3_0noo3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36106, 1.19209e-07, 4.26243)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87166, 1.25802, 2.47271)
+script = ExtResource("5_0co7k")
+
+[node name="Meat_Area" type="Area3D" parent="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Meat_Area"]
+shape = SubResource("CapsuleShape3D_s7yqk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_7gqvl")
+surface_material_override/0 = SubResource("StandardMaterial3D_0t6r8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_s7yqk")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47948, 1.25802, 2.47271)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("CapsuleMesh_7gqvl")
+surface_material_override/0 = SubResource("StandardMaterial3D_nmbpn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("CapsuleShape3D_s7yqk")

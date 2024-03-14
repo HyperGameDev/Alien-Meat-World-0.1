@@ -65,10 +65,10 @@ func _physics_process(delta):
 		
 	
 func copter_stop(thing_in_player_perimeter):
-	print("Player Proximity sees: ", thing_in_player_perimeter, "; it should see: ", copter_area)
+#	print("Player Proximity sees: ", thing_in_player_perimeter, "; it should see: ", copter_area)
 	if thing_in_player_perimeter == copter_area:
 		is_moving = false
-		print(copter_area, " was actually seen!")
+#		print(copter_area, " was actually seen!")
 		
 		# Consider moving copters_stopped calculation to the Area on the Player if this count is needed on a per-copter basis!
 		copters_stopped += 1
