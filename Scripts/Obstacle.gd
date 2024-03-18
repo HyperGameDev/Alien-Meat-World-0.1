@@ -30,7 +30,6 @@ func _ready():
 
 func health_effects():
 	if health_current <= 0: # Is Dead
-		await get_tree().create_timer($HitPoints.HIT_DELAY).timeout
 		$CollisionShape3D.disabled = true
 	
 	

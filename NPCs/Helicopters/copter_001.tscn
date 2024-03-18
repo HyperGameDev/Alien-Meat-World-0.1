@@ -1,8 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://cxp488n77il0e"]
+[gd_scene load_steps=30 format=3 uid="uid://cxp488n77il0e"]
 
 [ext_resource type="Script" path="res://NPCs/Helicopters/copter.gd" id="2_l3hi8"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_odnxp"]
 [ext_resource type="PackedScene" uid="uid://dkj1jo3teqjc1" path="res://NPCs/Helicopters/copter_001.blend" id="3_rkce8"]
+[ext_resource type="Material" uid="uid://ccv7hgg87f8g6" path="res://Objects/Buildings/Houses/House_01-02_particle-walls-01.tres" id="3_vfobx"]
+[ext_resource type="Script" path="res://Objects/Buildings/Houses/Particles_destruction.gd" id="4_dkois"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bqbk1"]
 points = PackedVector3Array(-0.362388, -7.64132e-05, -0.030939, 0.363432, -7.64132e-05, -0.030939, -0.388923, -7.64132e-05, -0.0279099, -0.0196461, 0.426076, -1.33649, 0.390043, -7.64132e-05, -0.0279099, 0.0145137, 0.426076, -1.33649, -0.307793, -7.64132e-05, 0.664361, -0.307793, 0.0157632, 0.664361, -0.385034, 0.0157632, -0.0279099, -0.0911682, 0.789818, -1.12352, -0.0432072, 0.799587, -1.34255, -0.0420635, 0.633793, -1.38589, 0.390043, 0.0157632, -0.0279099, 0.308837, -7.64132e-05, 0.664361, 0.0370073, 0.633793, -1.38589, -0.0347435, 0.339669, 0.994302, -0.124489, 0.3078, 0.898302, -0.155599, 0.381213, 0.85869, -0.20356, 0.370779, 0.635934, -0.0153761, 0.968891, -1.19995, -0.0154524, 0.958363, -1.34931, 0.198504, 0.370779, 0.635934, 0.308837, 0.0157632, 0.664361, 0.0380748, 0.799587, -1.34255, 0.0861121, 0.789818, -1.12352, 0.01032, 0.968891, -1.19995, 0.119433, 0.3078, 0.898302, 0.0296874, 0.339669, 0.994302, 0.01032, 0.958363, -1.34931, -0.038556, 0.496074, 0.82304, -0.0546446, 0.386714, 0.93768, -0.0365735, 0.533633, 0.776205, -0.0334473, 0.561803, 0.724011, -0.139358, 0.489624, 0.560671, -0.0775195, 0.575556, 0.496361, -0.0295585, 0.65466, 0.316944, -0.0165199, 0.631896, 0.4684, 0.134302, 0.489624, 0.560671, 0.150543, 0.381213, 0.85869, 0.00673625, 0.631896, 0.4684, 0.0245024, 0.65466, 0.316944, 0.0723871, 0.575556, 0.496361, 0.0495123, 0.386714, 0.93768, 0.0290011, 0.496074, 0.82304, 0.0270186, 0.533633, 0.776205, 0.0238924, 0.561803, 0.724011, -0.029101, 0.57935, 0.668788, -0.0193411, 0.618997, 0.523157, 0.00955749, 0.618997, 0.523157, 0.0195462, 0.57935, 0.668788)
@@ -81,6 +83,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../copter_001:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../copter_001:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_w31cw"]
 resource_name = "degrade"
@@ -133,11 +159,34 @@ tracks/3/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_cefab"]
+resource_name = "explode"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../copter_001:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yh0px"]
 _data = {
 "RESET": SubResource("Animation_04nv7"),
-"degrade": SubResource("Animation_w31cw")
+"degrade": SubResource("Animation_w31cw"),
+"explode": SubResource("Animation_cefab")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyh5j"]
+albedo_color = Color(0.254902, 0.254902, 0.254902, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tg21u"]
+material = SubResource("StandardMaterial3D_jyh5j")
+size = Vector3(0.5, 1.4, 1)
 
 [sub_resource type="Animation" id="Animation_uf4d7"]
 length = 0.001
@@ -199,6 +248,43 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_uf4d7"),
 "propeller_speed-01": SubResource("Animation_gvcuf")
+}
+
+[sub_resource type="Animation" id="Animation_wi6fg"]
+resource_name = "falling"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("copter_001:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0), Vector3(0, 3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pdoyh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("copter_001:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jwt5m"]
+_data = {
+"RESET": SubResource("Animation_pdoyh"),
+"falling": SubResource("Animation_wi6fg")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pk0f"]
@@ -376,7 +462,7 @@ collision_mask = 0
 script = ExtResource("2_l3hi8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.00160968, -0.00326264, -0.00632894)
 shape = SubResource("ConvexPolygonShape3D_bqbk1")
 
 [node name="HitPoints" parent="." instance=ExtResource("2_odnxp")]
@@ -385,6 +471,21 @@ shape = SubResource("ConvexPolygonShape3D_bqbk1")
 libraries = {
 "": SubResource("AnimationLibrary_yh0px")
 }
+
+[node name="Particles_Explode" type="GPUParticles3D" parent="HitPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.00605984, -1.47127, 0.902473)
+emitting = false
+amount = 150
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.8
+randomness = 1.0
+collision_base_size = 1.82
+local_coords = true
+trail_lifetime = 1.35
+process_material = ExtResource("3_vfobx")
+draw_pass_1 = SubResource("BoxMesh_tg21u")
+script = ExtResource("4_dkois")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
@@ -398,6 +499,11 @@ avoidance_mask = 32775
 [node name="Animation_CopterBlades" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_s3osh")
+}
+
+[node name="Animation_CopterDeath" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jwt5m")
 }
 
 [node name="Copter" type="MeshInstance3D" parent="."]
@@ -421,15 +527,31 @@ mesh = SubResource("ArrayMesh_aqxav")
 skeleton = NodePath("")
 
 [node name="copter_001" parent="." instance=ExtResource("3_rkce8")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+
+[node name="Copter_Base_1-Unbroken" parent="copter_001" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_jyh5j")
+surface_material_override/1 = SubResource("StandardMaterial3D_jyh5j")
 
 [node name="Copter_Propeller-Top" parent="copter_001" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00278479, 0.67625, 0.183361)
 
 [node name="Copter_Base_2-Broken" parent="copter_001" index="4"]
+transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, -0.000132367, -0.000288534, -6.32942e-05)
 visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_jyh5j")
+surface_material_override/1 = SubResource("StandardMaterial3D_jyh5j")
 
 [node name="Copter_Windows_2-Broken" parent="copter_001" index="5"]
 visible = false
+
+[node name="RayCast_CopterDeath" type="RayCast3D" parent="copter_001"]
+unique_name_in_owner = true
+transform = Transform3D(-1, -8.51821e-08, -1.96658e-08, 0, 0.224951, -0.97437, 8.74228e-08, -0.97437, -0.224951, 0.000606665, 0.442976, -0.0597829)
+hit_from_inside = true
+
+[node name="RayCast_CopterDeath2" type="RayCast3D" parent="copter_001"]
+unique_name_in_owner = true
+transform = Transform3D(-1, -8.51821e-08, -1.96658e-08, 0, 0.224951, -0.97437, 8.74228e-08, -0.97437, -0.224951, 0.000606665, 0.442976, -0.0597829)
 
 [editable path="copter_001"]

@@ -2,7 +2,7 @@ extends Node3D
 
 class_name HitPoints
 
-const HIT_DELAY = .0000001
+const HIT_DELAY = 0 # Just needs to be small
 
 var is_dead = false
 var health_percent_lost: float = 0.0
@@ -17,6 +17,8 @@ var was_grabbed = false
 
 func _ready():
 	$"..".update_hitpoints.connect(health_effects)
+	if $"..".has_signal("must_explode"):
+		$"..".must_explode.connect(on_must_explode)
 	
 	# Getting Attacked
 	Messenger.grab_target.connect(am_i_grabbed)
@@ -27,7 +29,6 @@ func health_effects():
 	$Dmg_Label.text = str($"..".health_current)
 	
 	if $"..".health_current <= 0: # Is Dead
-		await get_tree().create_timer(HIT_DELAY).timeout
 		$Dmg_Label.visible = false
 	
 func am_i_grabbed(grab_target):
@@ -54,11 +55,16 @@ func got_hit(what_got_hit):
 		
 		await get_tree().create_timer(attacked_duration).timeout
 		$Animation_Degrade.play("degrade")
-		$Animation_Degrade.seek(health_percent_lost, false)
-		await get_tree().create_timer(HIT_DELAY).timeout
+		$Animation_Degrade.seek(health_percent_lost, true)
 		$Animation_Degrade.pause()
 		
 		
 		if $"..".health_current <= 0:
-			await get_tree().create_timer(hit_particle_lifetime).timeout
-			get_owner().queue_free()
+			if !$"..".has_signal("must_explode"):
+				await get_tree().create_timer(hit_particle_lifetime).timeout
+				get_owner().queue_free()
+			
+func on_must_explode():
+	$Particles_Explode.set_emitting(true)
+	await get_tree().create_timer(hit_particle_lifetime).timeout
+	get_owner().queue_free()
