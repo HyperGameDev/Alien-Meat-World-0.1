@@ -1,9 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://cxp488n77il0e"]
+[gd_scene load_steps=37 format=3 uid="uid://cxp488n77il0e"]
 
 [ext_resource type="Script" path="res://NPCs/Helicopters/copter.gd" id="2_l3hi8"]
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_nrwea"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_odnxp"]
 [ext_resource type="PackedScene" uid="uid://dkj1jo3teqjc1" path="res://NPCs/Helicopters/copter_001.blend" id="3_rkce8"]
-[ext_resource type="Material" uid="uid://ccv7hgg87f8g6" path="res://Objects/Buildings/Houses/House_01-02_particle-walls-01.tres" id="3_vfobx"]
 [ext_resource type="Script" path="res://Objects/Buildings/Houses/Particles_destruction.gd" id="4_dkois"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bqbk1"]
@@ -95,6 +95,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Particles_Windows:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_w31cw"]
 resource_name = "degrade"
@@ -146,6 +158,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Particles_Windows:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_cefab"]
 resource_name = "explode"
@@ -169,12 +193,113 @@ _data = {
 "explode": SubResource("Animation_cefab")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0ylfy"]
+emission_shape = 3
+emission_box_extents = Vector3(0.295, 0, 1)
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 23.67
+initial_velocity_max = 3.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+radial_accel_max = 5.58
+angle_min = -360.0
+angle_max = 360.0
+scale_min = 0.01
+scale_max = 0.15
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imruk"]
+albedo_color = Color(0, 0.815686, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0u81j"]
+material = SubResource("StandardMaterial3D_imruk")
+size = Vector3(0.1, 0.5, 0.3)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a5sg1"]
+emission_shape = 3
+emission_box_extents = Vector3(0.93, 0, 1)
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_max = 7.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+radial_accel_max = 5.58
+angle_min = -360.0
+angle_max = 360.0
+scale_min = 0.01
+scale_max = 0.15
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyh5j"]
 albedo_color = Color(0.254902, 0.254902, 0.254902, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_tg21u"]
+[sub_resource type="PrismMesh" id="PrismMesh_dypoa"]
 material = SubResource("StandardMaterial3D_jyh5j")
-size = Vector3(0.5, 1.4, 1)
+size = Vector3(1.85, 0.48, 0.46)
+
+[sub_resource type="Animation" id="Animation_lkysu"]
+resource_name = "degrade"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitPoints/Obstacle/HitPoints")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"sub_obstacle_destroyed"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("copter_001:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_68t6b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("copter_001:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yehtf"]
+_data = {
+"RESET": SubResource("Animation_68t6b"),
+"degrade": SubResource("Animation_lkysu")
+}
 
 [sub_resource type="Animation" id="Animation_uf4d7"]
 length = 0.001
@@ -448,6 +573,21 @@ libraries = {
 "": SubResource("AnimationLibrary_yh0px")
 }
 
+[node name="Particles_Windows" type="GPUParticles3D" parent="HitPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0059789, -0.653792, 0.902498)
+emitting = false
+amount = 150
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.8
+randomness = 1.0
+collision_base_size = 1.82
+local_coords = true
+trail_lifetime = 1.35
+process_material = SubResource("ParticleProcessMaterial_0ylfy")
+draw_pass_1 = SubResource("BoxMesh_0u81j")
+script = ExtResource("4_dkois")
+
 [node name="Particles_Explode" type="GPUParticles3D" parent="HitPoints"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0059789, -1.46663, 0.902498)
 emitting = false
@@ -459,9 +599,27 @@ randomness = 1.0
 collision_base_size = 1.82
 local_coords = true
 trail_lifetime = 1.35
-process_material = ExtResource("3_vfobx")
-draw_pass_1 = SubResource("BoxMesh_tg21u")
+process_material = SubResource("ParticleProcessMaterial_a5sg1")
+draw_pass_1 = SubResource("PrismMesh_dypoa")
 script = ExtResource("4_dkois")
+
+[node name="Obstacle" type="Area3D" parent="HitPoints"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -1.06613, 0)
+script = ExtResource("2_nrwea")
+health_max = 1
+
+[node name="HitPoints" parent="HitPoints/Obstacle" instance=ExtResource("2_odnxp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.583549, 0.378932, 0)
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="HitPoints/Obstacle/HitPoints"]
+root_node = NodePath("../../../..")
+libraries = {
+"": SubResource("AnimationLibrary_yehtf")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitPoints/Obstacle"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.00413191, -0.00326264, -0.0098983)
+shape = SubResource("ConvexPolygonShape3D_bqbk1")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
@@ -512,6 +670,9 @@ surface_material_override/1 = SubResource("StandardMaterial3D_jyh5j")
 [node name="Copter_Propeller-Top" parent="copter_001" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00278479, 0.67625, 0.183361)
 
+[node name="Copter_Windows_1-Unbroken" parent="copter_001" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_imruk")
+
 [node name="Copter_Base_2-Broken" parent="copter_001" index="4"]
 transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, -0.000132367, -0.000288534, -6.32942e-05)
 visible = false
@@ -520,6 +681,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_jyh5j")
 
 [node name="Copter_Windows_2-Broken" parent="copter_001" index="5"]
 visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_imruk")
 
 [node name="RayCast_CopterDeath" type="RayCast3D" parent="copter_001"]
 unique_name_in_owner = true

@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bop8qvo6q6o0g"]
 
 [ext_resource type="PlaneMesh" uid="uid://7d0gnku46y8v" path="res://Terrain/terrain_blocks_default.tres" id="1_svffw"]
-[ext_resource type="PackedScene" uid="uid://b4vxq2pgp5yt2" path="res://Terrain/terrain_blocks_unload/block_blank-grass.tscn" id="2_vclfh"]
+[ext_resource type="PackedScene" uid="uid://b4vxq2pgp5yt2" path="res://Terrain/terrain_blocks_blank/block_blank-grass.tscn" id="2_vclfh"]
 [ext_resource type="PackedScene" uid="uid://cvh85ky784ivq" path="res://Terrain/Cliffs/cliff_side_01.tscn" id="3_5bcvt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7niv"]

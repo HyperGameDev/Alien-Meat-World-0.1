@@ -3,7 +3,7 @@ extends Area3D
 class_name Copter
 
 signal update_hitpoints
-signal must_explode
+signal is_destroyed
 
 @onready var copter_mesh = $copter_001
 @onready var terrain = get_tree().get_current_scene().get_node("%TerrainController")
@@ -26,7 +26,6 @@ var velocity = Vector3.ZERO
 
 var is_moving = true
 var is_dying = false
-var is_dead = false
 
 @onready var nav_agent = $NavigationAgent3D
 
@@ -71,8 +70,9 @@ func _physics_process(delta):
 		copter_mesh.rotation.y += ROTATION_SPEED * delta
 	
 	if %RayCast_CopterDeath.is_colliding():
-		must_explode.emit()
+		is_destroyed.emit()
 		copter_mesh.visible = false
+		$NavigationAgent3D.avoidance_enabled = false
 		
 		
 #	if global_position.y >= 2.3:

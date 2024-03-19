@@ -2,8 +2,6 @@ extends Node3D
 
 class_name HitPoints
 
-const HIT_DELAY = 0 # Just needs to be small
-
 var is_dead = false
 var health_percent_lost: float = 0.0
 
@@ -16,13 +14,23 @@ var was_grabbed = false
 @onready var attacked_duration = get_tree().get_current_scene().get_node("Player").grab_duration
 
 func _ready():
+	if !has_node("Dmg_Label"):
+			print("ERROR: Hit-Points should be added as a SCENE, not a Node!")
+			breakpoint
+			
+	if !has_node("Animation_Degrade"):
+			print("ERROR: Add a degrade animation for the obstacle!")
+			breakpoint
+			
 	$"..".update_hitpoints.connect(health_effects)
-	if $"..".has_signal("must_explode"):
-		$"..".must_explode.connect(on_must_explode)
+	if $"..".has_signal("is_destroyed"):
+		$"..".is_destroyed.connect(on_is_destroyed)
 	
 	# Getting Attacked
 	Messenger.grab_target.connect(am_i_grabbed)
 	Messenger.something_ungrabbed.connect(got_hit)
+	
+
 
 func health_effects():
 	# Update Health Debug
@@ -40,7 +48,7 @@ func am_i_grabbed(grab_target):
 #		print("Copter Hit (", $"..".name, ")")
 		Messenger.something_grabbed.emit($"..")
 
-func got_hit(what_got_hit):
+func got_hit(what_got_hit):	
 	#	print($"..".name, " MIGHT be hit...")
 	if what_got_hit == $".." and $"..".health_current > 0:
 #		print($"..".name, " just got hit!")
@@ -58,15 +66,12 @@ func got_hit(what_got_hit):
 		$Animation_Degrade.seek(health_percent_lost, true)
 		$Animation_Degrade.pause()
 		
-		
-		if $"..".health_current <= 0:
-			if !$"..".has_signal("must_explode"):
-				await get_tree().create_timer(hit_particle_lifetime).timeout
-				get_owner().queue_free()
 
-func on_must_explode():
-	$"..".is_dying = false
-	$"..".is_dead = true
+func on_is_destroyed():
 	$Particles_Explode.set_emitting(true)
 	await get_tree().create_timer(hit_particle_lifetime).timeout
 	get_owner().queue_free()
+
+# Called by Sub Obstacle's "Animation_Degrade"
+func sub_obstacle_destroyed():
+	get_owner().is_destroyed.emit()
