@@ -86,22 +86,10 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../copter_001:rotation")
+tracks/6/path = NodePath("../copter_001:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -3.14159, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../copter_001:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -263,23 +251,11 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, -3.14159, 0), Vector3(0, 3.14159, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_pdoyh"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("copter_001:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -3.14159, 0)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jwt5m"]
 _data = {
@@ -462,7 +438,7 @@ collision_mask = 0
 script = ExtResource("2_l3hi8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.00160968, -0.00326264, -0.00632894)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.00413191, -0.00326264, -0.0098983)
 shape = SubResource("ConvexPolygonShape3D_bqbk1")
 
 [node name="HitPoints" parent="." instance=ExtResource("2_odnxp")]
@@ -473,7 +449,7 @@ libraries = {
 }
 
 [node name="Particles_Explode" type="GPUParticles3D" parent="HitPoints"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.00605984, -1.47127, 0.902473)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0059789, -1.46663, 0.902498)
 emitting = false
 amount = 150
 lifetime = 2.0
@@ -527,7 +503,7 @@ mesh = SubResource("ArrayMesh_aqxav")
 skeleton = NodePath("")
 
 [node name="copter_001" parent="." instance=ExtResource("3_rkce8")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Copter_Base_1-Unbroken" parent="copter_001" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_jyh5j")
@@ -549,9 +525,5 @@ visible = false
 unique_name_in_owner = true
 transform = Transform3D(-1, -8.51821e-08, -1.96658e-08, 0, 0.224951, -0.97437, 8.74228e-08, -0.97437, -0.224951, 0.000606665, 0.442976, -0.0597829)
 hit_from_inside = true
-
-[node name="RayCast_CopterDeath2" type="RayCast3D" parent="copter_001"]
-unique_name_in_owner = true
-transform = Transform3D(-1, -8.51821e-08, -1.96658e-08, 0, 0.224951, -0.97437, 8.74228e-08, -0.97437, -0.224951, 0.000606665, 0.442976, -0.0597829)
 
 [editable path="copter_001"]

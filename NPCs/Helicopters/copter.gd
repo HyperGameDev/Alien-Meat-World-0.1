@@ -26,6 +26,7 @@ var velocity = Vector3.ZERO
 
 var is_moving = true
 var is_dying = false
+var is_dead = false
 
 @onready var nav_agent = $NavigationAgent3D
 
@@ -64,11 +65,10 @@ func _physics_process(delta):
 		global_position += velocity * delta 
 	if is_dying:
 		var ROTATION_SPEED = 7
-		var direction = Vector3(0,-.02,0)
+		var direction = Vector3(0,-.02,terrain.terrain_velocity/50)
 		velocity = direction * speed
 		global_position += velocity * delta
 		copter_mesh.rotation.y += ROTATION_SPEED * delta
-		
 	
 	if %RayCast_CopterDeath.is_colliding():
 		must_explode.emit()

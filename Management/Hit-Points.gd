@@ -63,8 +63,10 @@ func got_hit(what_got_hit):
 			if !$"..".has_signal("must_explode"):
 				await get_tree().create_timer(hit_particle_lifetime).timeout
 				get_owner().queue_free()
-			
+
 func on_must_explode():
+	$"..".is_dying = false
+	$"..".is_dead = true
 	$Particles_Explode.set_emitting(true)
 	await get_tree().create_timer(hit_particle_lifetime).timeout
 	get_owner().queue_free()

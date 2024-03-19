@@ -5,6 +5,7 @@ class_name ParticlesDestruction
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.set_lifetime($"..".hit_particle_lifetime)
+	global_rotation = Vector3.ZERO
 	
 
 
