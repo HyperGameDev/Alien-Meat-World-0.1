@@ -3,6 +3,10 @@ extends Area3D
 class_name Copter
 
 signal update_hitpoints
+signal is_destroyed
+
+@onready var copter_mesh = $copter_001
+@onready var terrain = get_tree().get_current_scene().get_node("%TerrainController")
 
 static var copters_stopped = 0
 
@@ -21,6 +25,7 @@ var speed = 50
 var velocity = Vector3.ZERO
 
 var is_moving = true
+var is_dying = false
 
 @onready var nav_agent = $NavigationAgent3D
 
@@ -53,10 +58,22 @@ func _ready():
 
 func _physics_process(delta):
 	look_at(player.global_position)
-	if is_moving:
+	if is_moving and !is_dying:
 		var direction = (player.global_position - global_position).normalized()
 		velocity = direction * speed
 		global_position += velocity * delta 
+	if is_dying:
+		var ROTATION_SPEED = 7
+		var direction = Vector3(0,-.02,terrain.terrain_velocity/50)
+		velocity = direction * speed
+		global_position += velocity * delta
+		copter_mesh.rotation.y += ROTATION_SPEED * delta
+	
+	if %RayCast_CopterDeath.is_colliding():
+		is_destroyed.emit()
+		copter_mesh.visible = false
+		$NavigationAgent3D.avoidance_enabled = false
+		
 		
 #	if global_position.y >= 2.3:
 #		nav_agent.use_3d_avoidance = false
@@ -65,10 +82,10 @@ func _physics_process(delta):
 		
 	
 func copter_stop(thing_in_player_perimeter):
-	print("Player Proximity sees: ", thing_in_player_perimeter, "; it should see: ", copter_area)
+#	print("Player Proximity sees: ", thing_in_player_perimeter, "; it should see: ", copter_area)
 	if thing_in_player_perimeter == copter_area:
 		is_moving = false
-		print(copter_area, " was actually seen!")
+#		print(copter_area, " was actually seen!")
 		
 		# Consider moving copters_stopped calculation to the Area on the Player if this count is needed on a per-copter basis!
 		copters_stopped += 1
@@ -77,9 +94,14 @@ func copter_stop(thing_in_player_perimeter):
 		
 func copter_nav(safe_velocity):
 	global_position += safe_velocity * get_physics_process_delta_time()
+	
 
 func health_effects():
 	if health_current <= 0: # Is Dead
-		await get_tree().create_timer($HitPoints.HIT_DELAY).timeout
+		is_moving = false
+		is_dying = true
 		$CollisionShape3D.disabled = true
 		$HitPoints.is_dead = true
+#		$Animation_CopterDeath.play("falling")
+		var tween = get_tree().create_tween();
+		tween.tween_property(copter_mesh, "rotation:x", deg_to_rad(44), 1)

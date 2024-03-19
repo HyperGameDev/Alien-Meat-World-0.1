@@ -35,7 +35,7 @@ mesh = ExtResource("1_svffw")
 surface_material_override/0 = SubResource("StandardMaterial3D_x7niv")
 
 [node name="Terrain_0" parent="." instance=ExtResource("2_vclfh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.6519, 0, 0.152484)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.6858, 0, 0.342746)
 
 [node name="Terrain_1" parent="." instance=ExtResource("2_vclfh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.2897, 0, 0.152484)

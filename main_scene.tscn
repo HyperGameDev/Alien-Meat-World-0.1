@@ -90,10 +90,10 @@ radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_aebym"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4h3uf"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4ywkl"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_siri8"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [node name="Main Scene" type="Node3D"]
@@ -354,7 +354,7 @@ shape = SubResource("CapsuleShape3D_v6wbe")
 [node name="Timer_Limb_Dmg_Flash" type="Timer" parent="Player/DetectionAreas/Area_ArmL"]
 
 [node name="Area_Player-Proximity" type="Area3D" parent="Player/DetectionAreas"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00993299, 1, -0.00758123)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("8_0gjb7")
@@ -373,16 +373,16 @@ transform = Transform3D(1, 0.00048692, 0.000306956, -0.000486927, 1, 2.02796e-05
 parameters/TimeScale/scale = 1.0
 
 [node name="HP_Head" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_aebym")
+texture = SubResource("ViewportTexture_4h3uf")
 
 [node name="HP_Empathy" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_4ywkl")
+texture = SubResource("ViewportTexture_siri8")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0676115, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.013152, 0)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.534602, 0.330888, -0.778251, -0.714828, -0.668775, 0.206693, -0.451865, 0.666494, 0.593771, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.458856, 0.647779, 0.608929, -0.884, -0.259489, -0.390091, -0.0946368, -0.716944, 0.691372, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.354678, 0.486024, 0.185392)
