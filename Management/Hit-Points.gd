@@ -39,7 +39,7 @@ func health_effects():
 	if $"..".health_current <= 0: # Is Dead
 		$Dmg_Label.visible = false
 	
-func am_i_grabbed(grab_target):
+func am_i_grabbed(grab_target, grab_pos):
 	#	target = grab_target
 #	if grab_target == $"..":
 #		print("Copter Seen (", $"..".name, ")")

@@ -1,4 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0kld2qowd56l"]
+[gd_scene load_steps=11 format=3 uid="uid://dlr054p1hm7fw"]
+
+[ext_resource type="Script" path="res://Scripts/Health.gd" id="1_bits2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlwbn"]
 resource_name = "Material.002"
@@ -84,10 +86,12 @@ size = Vector3(1, 1, 0.26)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqku1"]
 albedo_color = Color(0.321569, 0.745098, 0.352941, 1)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_x60j3"]
-radius = 0.3
+[sub_resource type="BoxShape3D" id="BoxShape3D_so8sw"]
+size = Vector3(0.351204, 0.250678, 0.252458)
 
-[node name="Cow_01_00" type="Area3D"]
+[node name="Cow_01-02_00" type="RigidBody3D"]
+collision_layer = 0
+script = ExtResource("1_bits2")
 
 [node name="Cow_Body" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_b7boh")
@@ -105,8 +109,8 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_nqku1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.442257, 0, -0.896888, 0, 1, 0, 0.896888, 0, 0.442257, 0, 0, 0)
-shape = SubResource("SphereShape3D_x60j3")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.127448, 0)
+shape = SubResource("BoxShape3D_so8sw")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_layers = 2
