@@ -90,10 +90,10 @@ radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_e5piu"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4h3uf"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_6koc2"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_siri8"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [node name="Main Scene" type="Node3D"]
@@ -253,16 +253,6 @@ collision_layer = 32768
 axis_lock_linear_z = true
 script = ExtResource("3_ia6ow")
 
-[node name="Node3D" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.217686, 0)
-
-[node name="interaction" type="RayCast3D" parent="Player/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0159369, 0.0120942, 0.00342083)
-target_position = Vector3(0, 0, -10)
-
-[node name="hand" type="Marker3D" parent="Player/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0159369, 0.0120942, -7.80956)
-
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Player"]
 avoidance_enabled = false
 height = 2.2
@@ -383,16 +373,16 @@ transform = Transform3D(1, 0.00048692, 0.000306956, -0.000486927, 1, 2.02796e-05
 parameters/TimeScale/scale = 1.0
 
 [node name="HP_Head" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_e5piu")
+texture = SubResource("ViewportTexture_4h3uf")
 
 [node name="HP_Empathy" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_6koc2")
+texture = SubResource("ViewportTexture_siri8")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0903181, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.013152, 0)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.669587, 0.444184, -0.596082, -0.617439, -0.779072, 0.113035, -0.413983, 0.443518, 0.795531, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.458856, 0.647779, 0.608929, -0.884, -0.259489, -0.390091, -0.0946368, -0.716944, 0.691372, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.354678, 0.486024, 0.185392)

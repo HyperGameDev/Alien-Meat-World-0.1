@@ -1,4 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0kld2qowd56l"]
+[gd_scene load_steps=11 format=3 uid="uid://c0kld2qowd56l"]
+
+[ext_resource type="Script" path="res://Scripts/Health.gd" id="2_0wqk1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlwbn"]
 resource_name = "Material.002"
@@ -88,6 +90,7 @@ albedo_color = Color(0.321569, 0.745098, 0.352941, 1)
 radius = 0.3
 
 [node name="Cow_01_00" type="Area3D"]
+script = ExtResource("2_0wqk1")
 
 [node name="Cow_Body" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_b7boh")

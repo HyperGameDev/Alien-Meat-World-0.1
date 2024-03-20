@@ -1,9 +1,5 @@
 extends CharacterBody3D
 
-@onready var interaction = $Node3D/interaction
-@onready var hand = $Node3D/hand
-var picked_object
-var pull_power = 4
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 6

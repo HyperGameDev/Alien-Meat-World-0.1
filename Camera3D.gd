@@ -20,8 +20,6 @@ var grab_target = null
 # Raycast 2: Hover-Player var
 var hover_target = null
 
-var actually_grabbed = false
-var velocity = 0
 
 func _ready():	
 # Temp Grab setup
@@ -46,12 +44,6 @@ func _physics_process(_delta):
 	
 	self.position += cam_direction * cam_lerpspeed
 	self.rotation = cam_target.rotation
-	
-	
-#	if actually_grabbed:
-#		velocity = 50
-#	else:
-#		velocity = 0
 
 func _process(_delta):	
 	# Raycast 1: Grab implementation
@@ -84,7 +76,7 @@ func shoot_ray(mask):
 	
 	# collision areas vs bodies dependent on whether collide_ was set to true/false when this function was called
 	ray_query.collide_with_areas = true
-	ray_query.collide_with_bodies = true
+#	ray_query.collide_with_bodies = collide_bodies
 	
 	# Remember: masks/layers need to be set with the bit (2^) values!
 	ray_query.collision_mask = mask
@@ -98,24 +90,19 @@ func grab_ray():
 	if !raycast_result.is_empty():
 		grab_ray_pos = raycast_result.position
 		grab_target = raycast_result.collider
-		Messenger.grab_target.emit(grab_target, grab_ray_pos)
+		Messenger.grab_target.emit(grab_target)
 #		print("Raycast sees: ", grab_target)
 #		print("Pos: ", grab_target.position)
 #		return raycast_result.collider
 
 # Raycast 1: Temp grab application
 func move_health():
-#	actually_grabbed = true
 	if grabbed_object == null:
 		grabbed_object = grab_target  # Store the grabbed object
-		
-#		grab_offset = grabbed_object.global_transform.origin - grab_ray_pos  # Calculate grab offset
-#
-#	if grabbed_object != null:
-#		var grab_target_pos = grab_target.global_transform.origin
-#
-#		var grab_point_pos = grab_ray_pos + grab_offset
-#		grab_target.set_linear_velocity((grab_point_pos - grab_target_pos)*velocity)
+		grab_offset = grabbed_object.global_transform.origin - grab_ray_pos  # Calculate grab offset
+
+	if grabbed_object != null:
+		grabbed_object.set_global_position(grab_ray_pos + grab_offset)
 
 
 # Raycast 2: Player Hovering
