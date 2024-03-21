@@ -46,6 +46,12 @@ func _physics_process(_delta):
 	self.rotation = cam_target.rotation
 
 func _process(_delta):	
+	if Input.is_action_pressed("Grab"):
+		var raycast_result = raycast_get_cow()
+		if raycast_result.has("collider"):
+			raycast_result["collider"].add_to_group("grabbed")
+	
+	
 	# Raycast 1: Grab implementation
 	grab_ray()
 #	print(grab_target)
@@ -61,6 +67,17 @@ func _process(_delta):
 #	if grab_target.is_in_group("Meat"):
 ##		print("Raycast: Sees Health")
 #		Messenger.health_hovered.emit(grab_target)
+
+func raycast_get_cow():
+	var mouse_pos = get_viewport().get_mouse_position()
+	var ray_length = 3000
+	var from = project_ray_origin(mouse_pos)
+	var to = from + project_ray_normal(mouse_pos) * ray_length
+	var ray_query = PhysicsRayQueryParameters3D.new()
+	ray_query.from = from
+	ray_query.to = to
+	var space = get_world_3d().direct_space_state
+	return space.intersect_ray(ray_query)
 
 func shoot_ray(mask):
 	var mouse_pos = get_viewport().get_mouse_position()

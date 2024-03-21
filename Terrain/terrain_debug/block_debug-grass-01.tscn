@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7q68g3d41iig"]
+[gd_scene load_steps=9 format=3 uid="uid://b7q68g3d41iig"]
 
 [ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="1_htb4r"]
 [ext_resource type="PackedScene" uid="uid://b4qm8k4sih532" path="res://Objects/Buildings/Houses/House_01-02_00.tscn" id="2_6rkgt"]
-[ext_resource type="PackedScene" uid="uid://c0kld2qowd56l" path="res://NPCs/Cows/Cow_01_00.tscn" id="3_wbgsw"]
+[ext_resource type="PackedScene" uid="uid://bhye6lryld785" path="res://NPCs/Cows/Cow_01-02_00.tscn" id="3_6ep70"]
+[ext_resource type="PackedScene" uid="uid://ca1ymtoc0ef1u" path="res://Spawners/spawner1.tscn" id="3_a3doh"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
 size = Vector2(100, 20)
@@ -39,5 +40,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658, -7.495, 21.33)
 [node name="house_01-02_00" parent="." instance=ExtResource("2_6rkgt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 1.8)
 
-[node name="Cow_01_00" parent="." instance=ExtResource("3_wbgsw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52904, -2.38419e-07, 3.67744)
+[node name="Spawner" parent="." instance=ExtResource("3_a3doh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0157, 0.747712, 1.54795)
+
+[node name="Cow_01-02_00" parent="." instance=ExtResource("3_6ep70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35518, -1.78814e-07, 1.87755)

@@ -90,10 +90,10 @@ radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4h3uf"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_hyxkm"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_siri8"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_l8a03"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [node name="Main Scene" type="Node3D"]
@@ -373,16 +373,16 @@ transform = Transform3D(1, 0.00048692, 0.000306956, -0.000486927, 1, 2.02796e-05
 parameters/TimeScale/scale = 1.0
 
 [node name="HP_Head" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_4h3uf")
+texture = SubResource("ViewportTexture_hyxkm")
 
 [node name="HP_Empathy" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_siri8")
+texture = SubResource("ViewportTexture_l8a03")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.013152, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0, 0)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.458856, 0.647779, 0.608929, -0.884, -0.259489, -0.390091, -0.0946368, -0.716944, 0.691372, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.449964, 0.650682, 0.612458, -0.888133, -0.250028, -0.386867, -0.0985483, -0.717676, 0.690065, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.354678, 0.486024, 0.185392)
