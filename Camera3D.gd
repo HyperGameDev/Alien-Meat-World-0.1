@@ -13,6 +13,7 @@ var is_grabbed = false
 var grabbed_object = null
 var grab_offset: Vector3 = Vector3(0, 0, 0)
 var grab_ray_pos: Vector3 = Vector3(0, 0, 0)
+var is_attempting_grab = false
 
 # Raycast 1: Grab var
 var grab_target = null
@@ -22,8 +23,7 @@ var hover_target = null
 
 
 func _ready():	
-# Temp Grab setup
-	Messenger.health_grabbed.connect(move_health)
+	Messenger.grab_ending.connect(on_grab_ending)
 	
 func _physics_process(_delta):
 	# Camera Follow input control
@@ -45,13 +45,16 @@ func _physics_process(_delta):
 	self.position += cam_direction * cam_lerpspeed
 	self.rotation = cam_target.rotation
 
+func on_grab_ending():
+	is_attempting_grab = false
+
 func _process(_delta):	
 	if Input.is_action_pressed("Grab"):
 		var raycast_result = raycast_get_cow()
-		if raycast_result.has("collider"):
+		if raycast_result.has("collider") and !is_attempting_grab:
 			raycast_result["collider"].add_to_group("grabbed")
-	
-	
+			is_attempting_grab = true
+
 	# Raycast 1: Grab implementation
 	grab_ray()
 #	print(grab_target)
@@ -61,12 +64,7 @@ func _process(_delta):
 	
 	# Raycast 3: Cursor Position implementation
 	cursor_ray()
-	
-#	#	# Raycaast 1: Temp Grab-specific
-#	if !grab_target: return
-#	if grab_target.is_in_group("Meat"):
-##		print("Raycast: Sees Health")
-#		Messenger.health_hovered.emit(grab_target)
+
 
 func raycast_get_cow():
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -111,16 +109,6 @@ func grab_ray():
 #		print("Raycast sees: ", grab_target)
 #		print("Pos: ", grab_target.position)
 #		return raycast_result.collider
-
-# Raycast 1: Temp grab application
-func move_health():
-	if grabbed_object == null:
-		grabbed_object = grab_target  # Store the grabbed object
-		grab_offset = grabbed_object.global_transform.origin - grab_ray_pos  # Calculate grab offset
-
-	if grabbed_object != null:
-		grabbed_object.set_global_position(grab_ray_pos + grab_offset)
-
 
 # Raycast 2: Player Hovering
 func hover_ray():

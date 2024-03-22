@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="1_htb4r"]
 [ext_resource type="PackedScene" uid="uid://b4qm8k4sih532" path="res://Objects/Buildings/Houses/House_01-02_00.tscn" id="2_6rkgt"]
 [ext_resource type="PackedScene" uid="uid://bhye6lryld785" path="res://NPCs/Cows/Cow_01-02_00.tscn" id="3_6ep70"]
-[ext_resource type="PackedScene" uid="uid://ca1ymtoc0ef1u" path="res://Spawners/spawner1.tscn" id="3_a3doh"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
 size = Vector2(100, 20)
@@ -16,6 +15,9 @@ data = PackedVector3Array(50, 0, 10, -50, 0, 10, 50, 0, -10, -50, 0, 10, -50, 0,
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qwi2u"]
 points = PackedVector3Array(-5.99455, -71.0009, -8.31296, -6.39667, -70.7782, -8.31296, -5.80767, 7.41876, -8.32274, -3.38274, 7.41876, -8.30318, -3.34691, 7.46485, 11.6602, -5.99455, -71.0009, 91.582, -6.39667, -2.12064, -8.31296, -6.39667, -70.7782, 91.582, -6.29546, 7.45717, 11.6406, -3.34691, 7.46485, 91.6015, -6.39667, -2.12064, 91.582, -6.29546, 7.45717, 91.5722)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qvgad"]
+viewport_path = NodePath("SubViewport")
 
 [node name="Terrain_1" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
@@ -40,8 +42,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658, -7.495, 21.33)
 [node name="house_01-02_00" parent="." instance=ExtResource("2_6rkgt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 1.8)
 
-[node name="Spawner" parent="." instance=ExtResource("3_a3doh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0157, 0.747712, 1.54795)
-
 [node name="Cow_01-02_00" parent="." instance=ExtResource("3_6ep70")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35518, -1.78814e-07, 1.87755)
+
+[node name="Arrow_Hover" parent="Cow_01-02_00" index="6"]
+texture = SubResource("ViewportTexture_qvgad")
+
+[editable path="Cow_01-02_00"]

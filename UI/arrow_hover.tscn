@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d7ql52stxvfv"]
+
+[ext_resource type="Script" path="res://UI/arrow_subviewport.gd" id="1_5cfjw"]
+[ext_resource type="PackedScene" uid="uid://dehqfy3da00hl" path="res://UI/arrow.tscn" id="2_g6ua5"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_yxfeh"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Arrow_Hover" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.472464, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_yxfeh")
+script = ExtResource("1_5cfjw")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+
+[node name="Arrow" parent="SubViewport" instance=ExtResource("2_g6ua5")]

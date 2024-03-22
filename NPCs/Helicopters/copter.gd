@@ -5,6 +5,8 @@ class_name Copter
 signal update_hitpoints
 signal is_destroyed
 
+@export var indicator_color = Color(1,0,0,1)
+@onready var hover_arrow = $Arrow_Hover
 @onready var copter_mesh = $copter_001
 @onready var terrain = get_tree().get_current_scene().get_node("%TerrainController")
 
@@ -35,6 +37,10 @@ var is_dying = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if !has_node("Arrow_Hover"):
+		print("ERROR: Somewhere, a hover arrow child is missing!")
+		breakpoint
+		
 	update_hitpoints.emit()
 	update_hitpoints.connect(health_effects)
 	set_collision_layer_value(1, false)
@@ -44,6 +50,12 @@ func _ready():
 	
 	player.area_entered.connect(copter_stop)
 	nav_agent.velocity_computed.connect(copter_nav)
+	
+	
+	hover_arrow.modulate = indicator_color
+	
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
 
 	
 	$Animation_CopterBlades.play("propeller_speed-01")
@@ -105,3 +117,12 @@ func health_effects():
 #		$Animation_CopterDeath.play("falling")
 		var tween = get_tree().create_tween();
 		tween.tween_property(copter_mesh, "rotation:x", deg_to_rad(44), 1)
+		
+
+func _on_mouse_entered():
+	if !Input.is_action_pressed("Grab"):
+		hover_arrow.visible = true
+	
+func _on_mouse_exited():
+	hover_arrow.visible = false
+

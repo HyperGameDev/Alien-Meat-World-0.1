@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhye6lryld785"]
+[gd_scene load_steps=13 format=3 uid="uid://bhye6lryld785"]
 
 [ext_resource type="Script" path="res://Scripts/Health.gd" id="1_3ikk3"]
+[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="2_4osx0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlwbn"]
 resource_name = "Material.002"
@@ -89,9 +90,17 @@ albedo_color = Color(0.321569, 0.745098, 0.352941, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_aflwn"]
 size = Vector3(0.323319, 0.207799, 0.17513)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_2bxti"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Cow_01-02_00" type="RigidBody3D"]
-gravity_scale = 20.0
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 script = ExtResource("1_3ikk3")
+
+[node name="RayCast_Floor-Detect" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118563, 0)
+target_position = Vector3(0, -0.2, 0)
 
 [node name="Cow_Body" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_b7boh")
@@ -115,3 +124,7 @@ shape = SubResource("BoxShape3D_aflwn")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_layers = 2
 avoidance_mask = 6
+
+[node name="Arrow_Hover" parent="." instance=ExtResource("2_4osx0")]
+visible = false
+texture = SubResource("ViewportTexture_2bxti")
