@@ -1,6 +1,8 @@
 extends Camera3D
 
-# Cam Movement varsf
+# Cam Movement vars
+@onready var cam_target = %Cam_Target
+
 @export var cam_lerpspeed = .05
 @export var cam_z_offset = 10
 const CAM_Z_OFFSET = 10
@@ -8,7 +10,6 @@ const CAM_Z_OFFSET = 10
 @export var cam_x_offset = 0
 
 # Temporary Grab Mechanic vars
-@onready var cam_target = %Cam_Target
 var is_grabbed = false
 var grabbed_object = null
 var grab_offset: Vector3 = Vector3(0, 0, 0)
