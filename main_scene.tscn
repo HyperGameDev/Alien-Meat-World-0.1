@@ -90,10 +90,10 @@ radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_681p5"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_fv3ml"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_n8lhf"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_aiy5t"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [node name="Main Scene" type="Node3D"]
@@ -242,6 +242,7 @@ size = 5.0
 near = 0.214
 far = 1000.0
 script = ExtResource("2_qvpxy")
+cam_y_offset = 4.0
 
 [node name="TerrainController" parent="." instance=ExtResource("3_uqnug")]
 unique_name_in_owner = true
@@ -261,7 +262,7 @@ avoidance_layers = 32768
 
 [node name="Cam_Target" type="Node3D" parent="Player"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.982935, 0.183951, 0, -0.183951, 0.982935, 0.227521, 3, 5.5)
+transform = Transform3D(1, 0, 0, 0, 0.987688, 0.156434, 0, -0.156434, 0.987688, 0.227521, 3, 5.5)
 script = ExtResource("5_iuboh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Cam_Target"]
@@ -367,22 +368,22 @@ visible = false
 mesh = SubResource("SphereMesh_vojki")
 
 [node name="Alien" parent="Player" instance=ExtResource("4_huvyo")]
-transform = Transform3D(1, 0.00048692, 0.000306956, -0.000486927, 1, 2.02796e-05, -0.000306949, -2.04407e-05, 1, 0, 0, 0)
+transform = Transform3D(1, 0.000486921, 0.000306959, -0.000486927, 1, 2.02912e-05, -0.000306949, -2.04407e-05, 1, 0, 0, 0)
 
 [node name="AnimationTree_Alien" parent="Player/Alien" index="0"]
 parameters/TimeScale/scale = 1.0
 
 [node name="HP_Head" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_681p5")
+texture = SubResource("ViewportTexture_fv3ml")
 
 [node name="HP_Empathy" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_n8lhf")
+texture = SubResource("ViewportTexture_aiy5t")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0611828, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.000611267, 0)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.499266, 0.641414, 0.583336, -0.863338, -0.305969, -0.402482, -0.0796372, -0.704224, 0.706178, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.592129, 0.799756, 0.103609, -0.78693, -0.544913, -0.291157, -0.176312, -0.253813, 0.951553, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.354678, 0.486024, 0.185392)

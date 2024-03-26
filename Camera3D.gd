@@ -1,14 +1,17 @@
 extends Camera3D
 
-# Cam Movement varsf
+# Adjust these together!!
+@export var cam_z_offset: float = 13.0
+const CAM_Z_OFFSET = 13
+
+# Cam Movement vars
 @export var cam_lerpspeed = .05
-@export var cam_z_offset = 10
-const CAM_Z_OFFSET = 10
 @export var cam_y_offset = 3.7
-@export var cam_x_offset = 0
+@export var cam_x_offset = 0.0
+
+@onready var cam_target = %Cam_Target
 
 # Temporary Grab Mechanic vars
-@onready var cam_target = %Cam_Target
 var is_grabbed = false
 var grabbed_object = null
 var grab_offset: Vector3 = Vector3(0, 0, 0)
@@ -23,6 +26,10 @@ var hover_target = null
 
 
 func _ready():	
+	if !cam_z_offset == CAM_Z_OFFSET:
+		print("ERROR: Ensure Camera's Z constant and variable match!")
+		breakpoint
+		
 	Messenger.grab_ending.connect(on_grab_ending)
 	
 func _physics_process(_delta):
@@ -48,7 +55,7 @@ func _physics_process(_delta):
 func on_grab_ending():
 	is_attempting_grab = false
 
-func _process(_delta):	
+func _process(_delta):
 	if Input.is_action_pressed("Grab"):
 		var raycast_result = raycast_get_cow()
 		if raycast_result.has("collider") and !is_attempting_grab:

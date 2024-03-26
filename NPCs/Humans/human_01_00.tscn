@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dibay38r3ct56"]
+
+[ext_resource type="Script" path="res://Scripts/Health.gd" id="1_l61qx"]
+[ext_resource type="PackedScene" uid="uid://cx5m1ls6wl8q4" path="res://NPCs/Humans/human_01_00.blend" id="1_vmfqp"]
+[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="3_8ninh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ebtki"]
+radius = 0.15
+height = 0.5
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dfopo"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Human_01_00" type="RigidBody3D"]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("1_l61qx")
+
+[node name="RayCast_Floor-Detect" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118563, 0)
+target_position = Vector3(0, -0.2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.244638, 0)
+shape = SubResource("CapsuleShape3D_ebtki")
+
+[node name="human_01_00" parent="." instance=ExtResource("1_vmfqp")]
+
+[node name="Human_Auto-Armature" parent="human_01_00/Human_02_00/Skeleton3D" index="0"]
+lod_bias = 128.0
+
+[node name="Arrow_Hover" parent="." instance=ExtResource("3_8ninh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.708739, 0)
+visible = false
+texture = SubResource("ViewportTexture_dfopo")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_layers = 2
+avoidance_mask = 6
+
+[editable path="human_01_00"]

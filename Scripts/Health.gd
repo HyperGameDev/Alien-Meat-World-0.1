@@ -10,7 +10,8 @@ class_name Health
 @onready var camera : Camera3D =  get_tree().get_current_scene().get_node("Camera3D")
 @onready var collision = $CollisionShape3D
 
-@export var velocity := 100
+@export var velocity := 60
+@export var grab_distance_offset := 14.
 
 var planeToMoveOn: Plane
 var has_been_grabbed = false
@@ -36,10 +37,7 @@ func _ready():
 	
 	camera = get_viewport().get_camera_3d()
 	
-	# TODO: Cows shouldn't need to be on layer 1, but unfortunately... they do
-#	set_collision_layer_value(1, false)
-	
-	set_collision_layer_value(3, true)
+	# TODO: Cows shouldn't need to be on layer 1, but unfortunately... they dowwwwwww3, true)
 	set_collision_layer_value(4, true)
 	
 	set_collision_mask_value(1, true)
@@ -86,7 +84,7 @@ func _physics_process(delta):
 		collision.disabled = false
 		
 func _has_been_grabbed():
-	planeToMoveOn  = Plane(Vector3(0, 0, 1), self.global_position.z)
+	planeToMoveOn  = Plane(Vector3(0, 0, 1), camera.global_position.z - grab_distance_offset)
 	
 
 func check_area(collided_bodypart):

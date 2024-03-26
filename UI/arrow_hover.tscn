@@ -3,13 +3,14 @@
 [ext_resource type="Script" path="res://UI/arrow_subviewport.gd" id="1_5cfjw"]
 [ext_resource type="PackedScene" uid="uid://dehqfy3da00hl" path="res://UI/arrow.tscn" id="2_g6ua5"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_yxfeh"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_fiev1"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Arrow_Hover" type="Sprite3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.472464, 0)
 billboard = 1
-texture = SubResource("ViewportTexture_yxfeh")
+alpha_cut = 2
+texture = SubResource("ViewportTexture_fiev1")
 script = ExtResource("1_5cfjw")
 
 [node name="SubViewport" type="SubViewport" parent="."]

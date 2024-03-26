@@ -62,7 +62,7 @@ func _ready():
 
 	var copter_x_pos = randf_range(copter_x_pos_min,copter_x_pos_max)
 	var copter_x_offset = Vector3(copter_x_pos, 0, 0)
-	copter_pos = Vector3(0,2,copter_spawn_z_pos)
+	copter_pos = Vector3(0,7,copter_spawn_z_pos)
 	global_position = copter_pos + copter_x_offset
 #
 #	print("Trying to move copter ", "(", global_position.z, ") ", "to ", "Player at ", player.global_position.z)
