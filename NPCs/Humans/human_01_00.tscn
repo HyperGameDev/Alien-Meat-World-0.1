@@ -8,13 +8,15 @@
 radius = 0.15
 height = 0.5
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dfopo"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_thajf"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Human_01_00" type="RigidBody3D"]
 axis_lock_angular_x = true
+axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_l61qx")
+empathy_ok = true
 
 [node name="RayCast_Floor-Detect" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118563, 0)
@@ -32,7 +34,7 @@ lod_bias = 128.0
 [node name="Arrow_Hover" parent="." instance=ExtResource("3_8ninh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.708739, 0)
 visible = false
-texture = SubResource("ViewportTexture_dfopo")
+texture = SubResource("ViewportTexture_thajf")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_layers = 2

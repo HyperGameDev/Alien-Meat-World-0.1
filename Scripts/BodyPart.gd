@@ -24,8 +24,6 @@ var dmg_timer_end = false
 
 var amount_to_damage = null
 
-var health_grabbed = false
-
 var max_health = 4
 var current_health = 4
 var stand_speed = .5

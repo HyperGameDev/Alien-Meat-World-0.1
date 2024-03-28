@@ -97,7 +97,7 @@ func _physics_process(delta):
 
 # Collision stops level movement
 	move_and_slide()
-	
+
 	
 func rotate_head_to_direction(dir:Vector3):
 	# Movement logic

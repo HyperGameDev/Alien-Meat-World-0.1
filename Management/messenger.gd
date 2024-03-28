@@ -31,7 +31,6 @@ signal health_hovered
 signal health_detected
 
 signal hover_pos
-signal health_grabbed
 
 signal copter_unit_stopped
 
@@ -43,6 +42,14 @@ signal something_grabbed
 signal something_ungrabbed
 
 # Actual grabbing
-signal grab_ending
+signal grab_begun
+signal grab_ended
+
+signal dunk_is_at_position
+signal meat_entered_dunk
+signal meat_left_dunk
+signal meat_in_dunk
+
+signal abduction
 
 signal hitpoint_update

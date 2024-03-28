@@ -30,17 +30,19 @@ func _ready():
 		print("ERROR: Ensure Camera's Z constant and variable match!")
 		breakpoint
 		
-	Messenger.grab_ending.connect(on_grab_ending)
+	Messenger.grab_ended.connect(on_grab_ended)
 	
 func _physics_process(_delta):
-	# Camera Follow input control
+	
+	# Camera Move back If Speeding Up
 	var input_up = Input.is_action_pressed("ui_up")
 	var input_up_end = Input.is_action_just_released("ui_up")
 	if input_up and cam_z_offset == CAM_Z_OFFSET:
 		cam_z_offset += .75
 	if input_up_end and cam_z_offset >= CAM_Z_OFFSET:
 		cam_z_offset -= .75
-	
+		
+	# Camera Follow
 	var cam_follow_pos: Vector3 = cam_target.position
 	cam_follow_pos.z += cam_z_offset
 	cam_follow_pos.y += cam_y_offset
@@ -52,14 +54,14 @@ func _physics_process(_delta):
 	self.position += cam_direction * cam_lerpspeed
 	self.rotation = cam_target.rotation
 
-func on_grab_ending():
+func on_grab_ended():
 	is_attempting_grab = false
 
 func _process(_delta):
 	if Input.is_action_pressed("Grab"):
 		var raycast_result = raycast_get_cow()
 		if raycast_result.has("collider") and !is_attempting_grab:
-			raycast_result["collider"].add_to_group("grabbed")
+			raycast_result["collider"].add_to_group("Grabbed")
 			is_attempting_grab = true
 
 	# Raycast 1: Grab implementation

@@ -1267,7 +1267,7 @@ _data = {
 "Walk_2": ExtResource("3_qg7ll")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_86xw1"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_bxoj0"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
 [sub_resource type="Animation" id="Animation_ijmwm"]
@@ -1407,7 +1407,7 @@ _data = {
 "heal_hp_3": SubResource("Animation_0j8jt")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_hh4ub"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_mlxo7"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6msii"]
@@ -1629,7 +1629,7 @@ libraries = {
 [node name="HP_Head" type="Sprite3D" parent="." index="2"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.754005, 2.09309, 1.8978)
 visible = false
-texture = SubResource("ViewportTexture_86xw1")
+texture = SubResource("ViewportTexture_bxoj0")
 script = ExtResource("2_obxxa")
 what_is_damaged = "head_is_damaged"
 what_is_healed = "head_is_healed"
@@ -1649,7 +1649,7 @@ transparent_bg = true
 [node name="HP_Empathy" type="Sprite3D" parent="." index="3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.12584, 1.71669, 1.8978)
 visible = false
-texture = SubResource("ViewportTexture_hh4ub")
+texture = SubResource("ViewportTexture_mlxo7")
 script = ExtResource("2_obxxa")
 what_is_damaged = "empathy_is_damaged"
 what_is_healed = "empathy_is_healed"
@@ -1671,7 +1671,7 @@ transparent_bg = true
 theme_override_styles/fill = ExtResource("5_k8xva")
 
 [node name="Armature" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0194254, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0971649, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, -0.075329, -0.0284092, -0.010423)
@@ -1802,7 +1802,7 @@ font_size = 35
 outline_size = 30
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.463082, 0.646361, 0.607234, -0.881991, -0.26399, -0.391614, -0.0927756, -0.71658, 0.692001, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.714342, 0.495417, -0.495215, -0.591538, -0.805474, 0.0474843, -0.375178, 0.326702, 0.868025, 0.445561, 1.13443, 0.268376)
 visible = false
 bone_name = "ElbowR"
 bone_idx = 7

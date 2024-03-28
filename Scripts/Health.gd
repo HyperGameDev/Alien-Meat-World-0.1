@@ -3,19 +3,24 @@ extends RigidBody3D
 class_name Health
 
 @export var indicator_color = Color(.5,.5,1,1)
+@export var score_value = 1
 @export var empathy_ok = false
 
+# Is this necessary? When will it be useful?
 @onready var detect_floor = $"RayCast_Floor-Detect"
+
 @onready var hover_arrow = $Arrow_Hover
 @onready var camera : Camera3D =  get_tree().get_current_scene().get_node("Camera3D")
 @onready var collision = $CollisionShape3D
 
 @export var velocity := 60
-@export var grab_distance_offset := 14.
+@export var grab_distance_offset := 14.0
 
 var planeToMoveOn: Plane
 var has_been_grabbed = false
 
+var is_in_dunk = false
+var has_been_dunked = false
 
 
 var default_material = StandardMaterial3D.new()
@@ -37,16 +42,23 @@ func _ready():
 	
 	camera = get_viewport().get_camera_3d()
 	
-	# TODO: Cows shouldn't need to be on layer 1, but unfortunately... they dowwwwwww3, true)
+	# TODO: Cows shouldn't need to be on layer 1, but unfortunately... they do
+	# 3, true) 
 	set_collision_layer_value(4, true)
 	
 	set_collision_mask_value(1, true)
 	set_collision_mask_value(16, false)
 	
 	self.add_to_group("Meat")
-	# Temporary Collidable Healing
+	
+
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
+	
+	Messenger.meat_entered_dunk.connect(on_meat_entered_dunk)
+	Messenger.meat_left_dunk.connect(on_meat_left_dunk)
+	Messenger.dunk_is_at_position.connect(on_dunk_is_at_position)
+	
 	
 	
 	# Setting up meat material changes based on cursor behavior
@@ -56,35 +68,54 @@ func _ready():
 	
 func _process(delta):
 	if not Input.is_action_pressed("Grab"):
-		remove_from_group("grabbed")
+		remove_from_group("Grabbed")
 		
 	if Input.is_action_just_released("Grab"):
 		has_been_grabbed = false
-		Messenger.grab_ending.emit()
+		Messenger.grab_ended.emit()
 		self.linear_velocity = Vector3.ZERO
+		if is_in_dunk:
+			Messenger.meat_in_dunk.emit(self)			
+#			print(self.name, " released in dunk")
+			has_been_dunked = true
 		
 
 func _physics_process(delta):		
-	if is_in_group("grabbed"):
+	if is_in_group("Grabbed"):
 		if !has_been_grabbed:
 			_has_been_grabbed()
 			has_been_grabbed = true
 			
-		collision.disabled = true
+#		collision.disabled = true
 		var cursorPosition = get_viewport().get_mouse_position()
 		var rayStartPoint = camera.project_ray_origin(cursorPosition)
 		var rayDirection = camera.project_ray_normal(cursorPosition)
 		var goTo = planeToMoveOn.intersects_ray(rayStartPoint, rayDirection)
 		self.linear_velocity = (goTo - self.global_position) * velocity
-		if detect_floor.is_colliding():
-			collision.disabled = false
-		else:
-			collision.disabled = true
-	else:
-		collision.disabled = false
+#		if detect_floor.is_colliding():
+#			collision.disabled = false
+#		else:
+#			collision.disabled = true
+#	else:
+#		collision.disabled = false
 		
+func on_dunk_is_at_position(dunk_position):
+	if has_been_dunked:
+		self.global_position = dunk_position
+		collision.disabled = true
+	
 func _has_been_grabbed():
+	Messenger.grab_begun.emit()
 	planeToMoveOn  = Plane(Vector3(0, 0, 1), camera.global_position.z - grab_distance_offset)
+
+
+func on_meat_entered_dunk(dunked_body):
+	if dunked_body == self:
+		is_in_dunk = true
+		
+func on_meat_left_dunk(dunked_body):
+	if dunked_body == self:
+		is_in_dunk = false
 	
 
 func check_area(collided_bodypart):
