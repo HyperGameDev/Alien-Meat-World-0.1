@@ -45,6 +45,7 @@ signal something_ungrabbed
 signal grab_begun
 signal grab_ended
 
+signal grab_attempted
 signal dunk_is_at_position
 signal meat_entered_dunk
 signal meat_left_dunk

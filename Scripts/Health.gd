@@ -3,14 +3,18 @@ extends RigidBody3D
 class_name Health
 
 @export var indicator_color = Color(.5,.5,1,1)
-@export var score_value = 1
 @export var empathy_ok = false
+@export var abduction_offset = Vector3(0,.5,0)
+
+# If we decide on different meats having different values, use this (or another) value to add the meat to a different dunked group that canthen be calculated differently by the score dunk.
+#@export var score_value = 1
 
 # Is this necessary? When will it be useful?
 @onready var detect_floor = $"RayCast_Floor-Detect"
 
 @onready var hover_arrow = $Arrow_Hover
 @onready var camera : Camera3D =  get_tree().get_current_scene().get_node("Camera3D")
+@onready var player : CharacterBody3D =  get_tree().get_current_scene().get_node("Player")
 @onready var collision = $CollisionShape3D
 
 @export var velocity := 60
@@ -42,10 +46,10 @@ func _ready():
 	
 	camera = get_viewport().get_camera_3d()
 	
-	# TODO: Cows shouldn't need to be on layer 1, but unfortunately... they do
-	# 3, true) 
-	set_collision_layer_value(4, true)
+#	print("Meat Layer: ", collision_layer, "; Meat Mask: ", collision_mask)
 	
+	set_collision_layer_value(4, true)
+
 	set_collision_mask_value(1, true)
 	set_collision_mask_value(16, false)
 	
@@ -101,12 +105,15 @@ func _physics_process(delta):
 		
 func on_dunk_is_at_position(dunk_position):
 	if has_been_dunked:
-		self.global_position = dunk_position
+		self.global_position = dunk_position - abduction_offset
 		collision.disabled = true
+		self.add_to_group("Dunked")
 	
 func _has_been_grabbed():
 	Messenger.grab_begun.emit()
-	planeToMoveOn  = Plane(Vector3(0, 0, 1), camera.global_position.z - grab_distance_offset)
+	var plane_z_position = player.global_position.z
+	planeToMoveOn  = Plane(Vector3(0,0,1), plane_z_position)
+#	print(plane_z_position)
 
 
 func on_meat_entered_dunk(dunked_body):

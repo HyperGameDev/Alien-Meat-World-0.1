@@ -17,7 +17,7 @@ data = PackedVector3Array(50, 0, 10, -50, 0, 10, 50, 0, -10, -50, 0, 10, -50, 0,
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qwi2u"]
 points = PackedVector3Array(-5.99455, -71.0009, -8.31296, -6.39667, -70.7782, -8.31296, -5.80767, 7.41876, -8.32274, -3.38274, 7.41876, -8.30318, -3.34691, 7.46485, 11.6602, -5.99455, -71.0009, 91.582, -6.39667, -2.12064, -8.31296, -6.39667, -70.7782, 91.582, -6.29546, 7.45717, 11.6406, -3.34691, 7.46485, 91.6015, -6.39667, -2.12064, 91.582, -6.29546, 7.45717, 91.5722)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ykei6"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_thl8h"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Terrain_1" type="MeshInstance3D"]
@@ -50,7 +50,7 @@ transform = Transform3D(0.758134, 0, 0.652098, 0, 1, 0, -0.652098, 0, 0.758134, 
 transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0.00211859, -0.29305, 1.47519)
 
 [node name="Arrow_Hover" parent="house_01-02_01/Obstacle" index="2"]
-texture = SubResource("ViewportTexture_ykei6")
+texture = SubResource("ViewportTexture_thl8h")
 
 [node name="house_01-02_02" parent="." instance=ExtResource("2_6rkgt")]
 transform = Transform3D(0.758134, 0, 0.652098, 0, 1, 0, -0.652098, 0, 0.758134, -2.46692, -0.0206304, -6.62102)
@@ -68,7 +68,19 @@ transform = Transform3D(0.758134, 0, -0.652098, 0, 1, 0, 0.652098, 0, 0.758134, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36673, -2.38419e-07, 2.69114)
 
 [node name="Cow_01-03_00" parent="." instance=ExtResource("4_8hpwt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16061, -1.78814e-07, 2.05958)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12072, -2.38419e-07, 2.23647)
+
+[node name="Cow_01-03_01" parent="." instance=ExtResource("4_8hpwt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12072, -2.38419e-07, 1.38913)
+
+[node name="Cow_01-03_02" parent="." instance=ExtResource("4_8hpwt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0724677, -2.38419e-07, 2.16646)
+
+[node name="Cow_01-03_03" parent="." instance=ExtResource("4_8hpwt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12424, -2.38419e-07, 3.03265)
+
+[node name="Cow_01-03_04" parent="." instance=ExtResource("4_8hpwt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.369526, -2.38419e-07, 3.03265)
 
 [editable path="house_01-02_01"]
 [editable path="house_01-02_01/Obstacle/HitPoints"]

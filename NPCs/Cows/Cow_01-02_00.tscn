@@ -90,11 +90,14 @@ albedo_color = Color(0.321569, 0.745098, 0.352941, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_aflwn"]
 size = Vector3(0.323319, 0.207799, 0.17513)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_6am08"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_6d0ba"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Cow_01-02_00" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 0
 axis_lock_angular_x = true
+axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_3ikk3")
 
@@ -127,4 +130,4 @@ avoidance_mask = 6
 
 [node name="Arrow_Hover" parent="." instance=ExtResource("2_4osx0")]
 visible = false
-texture = SubResource("ViewportTexture_6am08")
+texture = SubResource("ViewportTexture_6d0ba")

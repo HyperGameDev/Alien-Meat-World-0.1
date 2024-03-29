@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=46 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
@@ -65,8 +65,8 @@ dof_blur_near_transition = 1140.9
 dof_blur_amount = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_5k002"]
-radius = 0.6
-height = 1.2
+radius = 0.8
+height = 1.6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fj4ut"]
 transparency = 1
@@ -81,7 +81,49 @@ roughness = 0.11
 disable_receive_shadows = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dsm6n"]
-radius = 0.6
+radius = 0.8
+
+[sub_resource type="Animation" id="Animation_sp7qj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 4.54315, 0.166246)]
+}
+
+[sub_resource type="Animation" id="Animation_51xog"]
+resource_name = "base_size"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_x5mpd"]
 resource_name = "hover_throb"
@@ -101,40 +143,44 @@ tracks/0/keys = {
 "values": [Vector3(1, 1, 1), Vector3(1.3, 1.3, 1.3)]
 }
 
-[sub_resource type="Animation" id="Animation_sp7qj"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_apk61"]
+resource_name = "descent"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(1, 1, 1)]
+"values": [Vector3(0, 5, 0.166), Vector3(0, 3, 0.166)]
 }
 
-[sub_resource type="Animation" id="Animation_51xog"]
-resource_name = "base_size"
+[sub_resource type="Animation" id="Animation_ae0b1"]
+resource_name = "ascent"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(1, 1, 1)]
+"values": [Vector3(0, 3, 0.166), Vector3(0, 5, 0.166)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8cfxk"]
 _data = {
 "RESET": SubResource("Animation_sp7qj"),
+"ascent": SubResource("Animation_ae0b1"),
 "base_size": SubResource("Animation_51xog"),
+"descent": SubResource("Animation_apk61"),
 "hover_throb": SubResource("Animation_x5mpd")
 }
 
@@ -168,10 +214,10 @@ radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_mfiqu"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_y4nhp"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_u4180"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_72u6a"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [node name="Main Scene" type="Node3D"]
@@ -320,18 +366,25 @@ size = 5.0
 near = 0.214
 far = 1000.0
 script = ExtResource("2_qvpxy")
-cam_y_offset = 4.0
+cam_y_offset = 4.6
 
 [node name="TerrainController" parent="." instance=ExtResource("3_uqnug")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.74317)
 
 [node name="ScoreDunk" type="Area3D" parent="."]
-transform = Transform3D(1.22836, 0, 0, 0, 1.22836, 0, 0, 0, 1.22836, 0, 3.57471, -0.356469)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.54315, 0.166246)
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("11_318ny")
-dunk_z_offset = -1.5
+dunk_ascent_distance = 1.5
+dunk_z_offset = -0.5
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="ScoreDunk"]
+aabb = AABB(-0.781489, -1.07957, -1, 1.4077, 1.14254, 2)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ScoreDunk"]
+unique_name_in_owner = true
 mesh = SubResource("SphereMesh_5k002")
 surface_material_override/0 = SubResource("StandardMaterial3D_fj4ut")
 
@@ -349,6 +402,12 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="ScoreDunk"]
 tree_root = SubResource("AnimationNodeBlendTree_386xn")
 anim_player = NodePath("../Animation_ScoreDunk")
+
+[node name="Label3D" type="Label3D" parent="ScoreDunk"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.955595, 0)
+alpha_cut = 2
+text = "0"
 
 [node name="Player" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
@@ -476,16 +535,16 @@ transform = Transform3D(1, 0.000486921, 0.000306959, -0.000486927, 1, 2.02912e-0
 parameters/TimeScale/scale = 1.0
 
 [node name="HP_Head" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_mfiqu")
+texture = SubResource("ViewportTexture_y4nhp")
 
 [node name="HP_Empathy" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_u4180")
+texture = SubResource("ViewportTexture_72u6a")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0636811, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.128342, 0)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.712836, 0.537686, -0.451353, -0.606577, -0.795563, 0.0102516, -0.353398, 0.280953, 0.892824, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.628254, 0.292704, -0.721513, -0.615469, -0.75455, 0.229811, -0.476922, 0.588167, 0.653885, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)
@@ -536,6 +595,8 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "0"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 
 [connection signal="timeout" from="UI_FX/Timer_FX_Flash" to="UI_FX" method="_on_timer_fx_flash_timeout"]
 
