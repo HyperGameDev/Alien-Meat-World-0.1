@@ -110,6 +110,22 @@ tracks/1/keys = {
 "values": [Vector3(0, 4.54315, 0.166246)]
 }
 
+[sub_resource type="Animation" id="Animation_ae0b1"]
+resource_name = "ascent"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3, 0.166), Vector3(0, 5, 0.166)]
+}
+
 [sub_resource type="Animation" id="Animation_51xog"]
 resource_name = "base_size"
 tracks/0/type = "value"
@@ -123,24 +139,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_x5mpd"]
-resource_name = "hover_throb"
-length = 0.5
-loop_mode = 1
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.18),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(1, 1, 1), Vector3(1.3, 1.3, 1.3)]
 }
 
 [sub_resource type="Animation" id="Animation_apk61"]
@@ -159,20 +157,22 @@ tracks/0/keys = {
 "values": [Vector3(0, 5, 0.166), Vector3(0, 3, 0.166)]
 }
 
-[sub_resource type="Animation" id="Animation_ae0b1"]
-resource_name = "ascent"
-length = 0.4
+[sub_resource type="Animation" id="Animation_x5mpd"]
+resource_name = "hover_throb"
+length = 0.5
+loop_mode = 1
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("MeshInstance3D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.18),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 3, 0.166), Vector3(0, 5, 0.166)]
+"values": [Vector3(1, 1, 1), Vector3(1.3, 1.3, 1.3)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8cfxk"]
@@ -214,10 +214,10 @@ radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_y4nhp"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_g6stu"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_72u6a"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_qqn5b"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [node name="Main Scene" type="Node3D"]
@@ -535,16 +535,16 @@ transform = Transform3D(1, 0.000486921, 0.000306959, -0.000486927, 1, 2.02912e-0
 parameters/TimeScale/scale = 1.0
 
 [node name="HP_Head" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_y4nhp")
+texture = SubResource("ViewportTexture_g6stu")
 
 [node name="HP_Empathy" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_72u6a")
+texture = SubResource("ViewportTexture_qqn5b")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.128342, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0973457, 0)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.628254, 0.292704, -0.721513, -0.615469, -0.75455, 0.229811, -0.476922, 0.588167, 0.653885, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.121412, 0.992082, -0.0446477, -0.963849, -0.128552, -0.235435, -0.239196, 0.0144421, 0.971358, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)

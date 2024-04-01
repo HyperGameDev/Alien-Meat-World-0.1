@@ -1,6 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dttsur6xbonwb"]
+[gd_scene load_steps=14 format=3 uid="uid://dttsur6xbonwb"]
 
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_lr4e7"]
+[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_24nbt"]
+[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="3_o5x6o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_suclq"]
 resource_name = "Material"
@@ -108,8 +110,12 @@ shadow_mesh = SubResource("ArrayMesh_2nevi")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mq3fa"]
 points = PackedVector3Array(0.41313, 0.201002, -0.0141767, 0.41313, 0.201002, 0.00396478, 0.41313, 0.26598, -0.0141767, 0.428838, 0.201002, -0.0232457, 0.419213, -0.0143471, -0.0140699, 0.419213, -0.0143471, 0.00407164, 0.434922, -0.0143471, 0.0131442, 0.428838, 0.201002, 0.0130338, 0.41313, 0.26598, 0.00396478, 0.428838, 0.26598, -0.0232457, 0.434922, -0.0143471, -0.0231389, 0.450634, -0.0143471, 0.00407164, 0.434922, 0.107925, 0.0131442, 0.428838, 0.26598, 0.0130338, 0.444547, 0.26598, -0.0141767, 0.450634, 0.107925, -0.0140699, 0.434922, 0.107925, -0.0231389, 0.450634, -0.0143471, -0.0140699, 0.450634, 0.107925, 0.00407164, 0.444547, 0.26598, 0.00396478)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_xchq4"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Fence_01-R_00" type="Area3D"]
 script = ExtResource("1_lr4e7")
+health_max = 1
 
 [node name="Fence_Post-L" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.212539, 0.0137611, 0)
@@ -134,3 +140,14 @@ skeleton = NodePath("")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.212539, 0.0137611, 0)
 shape = SubResource("ConvexPolygonShape3D_mq3fa")
+
+[node name="HitPoints" parent="." instance=ExtResource("2_24nbt")]
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="HitPoints"]
+
+[node name="Arrow_Hover" parent="." instance=ExtResource("3_o5x6o")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 0.495293, -0.00187755)
+visible = false
+texture = SubResource("ViewportTexture_xchq4")
+
+[editable path="HitPoints"]

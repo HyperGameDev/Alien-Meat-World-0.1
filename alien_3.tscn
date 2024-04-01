@@ -1267,7 +1267,7 @@ _data = {
 "Walk_2": ExtResource("3_qg7ll")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_hopsk"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ax6y6"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
 [sub_resource type="Animation" id="Animation_ijmwm"]
@@ -1407,7 +1407,7 @@ _data = {
 "heal_hp_3": SubResource("Animation_0j8jt")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_04jlu"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_2tht0"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6msii"]
@@ -1629,7 +1629,7 @@ libraries = {
 [node name="HP_Head" type="Sprite3D" parent="." index="2"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.754005, 2.09309, 1.8978)
 visible = false
-texture = SubResource("ViewportTexture_hopsk")
+texture = SubResource("ViewportTexture_ax6y6")
 script = ExtResource("2_obxxa")
 what_is_damaged = "head_is_damaged"
 what_is_healed = "head_is_healed"
@@ -1649,7 +1649,7 @@ transparent_bg = true
 [node name="HP_Empathy" type="Sprite3D" parent="." index="3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.12584, 1.71669, 1.8978)
 visible = false
-texture = SubResource("ViewportTexture_04jlu")
+texture = SubResource("ViewportTexture_2tht0")
 script = ExtResource("2_obxxa")
 what_is_damaged = "empathy_is_damaged"
 what_is_healed = "empathy_is_healed"
@@ -1802,7 +1802,7 @@ font_size = 35
 outline_size = 30
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.678783, 0.679983, 0.278993, -0.729191, -0.575402, -0.37169, -0.0921655, -0.455517, 0.885985, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.121412, 0.992082, -0.0446477, -0.963849, -0.128552, -0.235435, -0.239196, 0.0144421, 0.971358, 0.445561, 1.13443, 0.268376)
 visible = false
 bone_name = "ElbowR"
 bone_idx = 7

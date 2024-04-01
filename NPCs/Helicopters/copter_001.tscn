@@ -302,7 +302,7 @@ _data = {
 "degrade": SubResource("Animation_lkysu")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_u3sh8"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_kvuie"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_uf4d7"]
@@ -561,7 +561,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4uy6m")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_tt44b"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_t7nr6"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Copter_01_00" type="Area3D"]
@@ -634,7 +634,7 @@ shape = SubResource("ConvexPolygonShape3D_bqbk1")
 [node name="Arrow_Hover" parent="HitPoints/Obstacle" instance=ExtResource("6_c26j6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10422, 0)
 visible = false
-texture = SubResource("ViewportTexture_u3sh8")
+texture = SubResource("ViewportTexture_kvuie")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
@@ -707,7 +707,7 @@ hit_from_inside = true
 [node name="Arrow_Hover" parent="." instance=ExtResource("6_c26j6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10422, 0)
 visible = false
-texture = SubResource("ViewportTexture_tt44b")
+texture = SubResource("ViewportTexture_t7nr6")
 
 [editable path="HitPoints"]
 [editable path="copter_001"]

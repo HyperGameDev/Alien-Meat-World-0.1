@@ -1,6 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjkv2h52kqtrf"]
-
-[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_rms8y"]
+[gd_scene load_steps=9 format=3 uid="uid://cjkv2h52kqtrf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_suclq"]
 resource_name = "Material"
@@ -106,7 +104,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2nevi")
 
 [node name="Fence_01-Post_00" type="Area3D"]
-script = ExtResource("1_rms8y")
 
 [node name="Fence_Post-L" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00642599, 0.0137611, 0)

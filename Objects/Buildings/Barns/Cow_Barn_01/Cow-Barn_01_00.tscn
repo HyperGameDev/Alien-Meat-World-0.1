@@ -1,6 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://f76a6025mm6h"]
+[gd_scene load_steps=24 format=3 uid="uid://f76a6025mm6h"]
 
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_q5mdw"]
+[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="2_7cvjf"]
+[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_s05ob"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_al0yb"]
 resource_name = "Material.004"
@@ -243,8 +245,12 @@ points = PackedVector3Array(-3.62621, 0.0121583, -0.909474, -3.62621, 0.0121583,
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cuidt"]
 points = PackedVector3Array(-3.70187, 0.551946, -1.01257, -3.70187, 0.551946, 1.0255, -3.70187, 0.972295, 0.00437403, 3.47977, 0.972641, 0.00417459, 3.47548, 0.551946, -1.01257, 3.47977, 0.530477, -0.997403, -3.70187, 0.972295, 0.008564, 3.47977, 0.530477, 1.00595, 3.47548, 0.551946, 1.0257, 3.61368, 0.972641, 0.00417459, 3.61368, 0.530477, -0.997403, 3.47548, 0.972295, 0.008564, 3.61368, 0.530477, 1.00595)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_cjspb"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Cow-Barn_01_00" type="Area3D"]
 script = ExtResource("1_q5mdw")
+health_max = 7
 slowdown_amount = 2
 
 [node name="Cow_Barn" type="MeshInstance3D" parent="."]
@@ -281,3 +287,17 @@ shape = SubResource("ConvexPolygonShape3D_cuidt")
 height = 1.7
 vertices = PackedVector3Array(-5, 0, 2.5, 5, 0, 2.5, 5, 0, -2.5, -5, 0, -2.5)
 avoidance_layers = 4
+
+[node name="Arrow_Hover" parent="." instance=ExtResource("2_7cvjf")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 1.17543, -0.00187755)
+visible = false
+texture = SubResource("ViewportTexture_cjspb")
+
+[node name="HitPoints" parent="." instance=ExtResource("3_s05ob")]
+
+[node name="Dmg_Label" parent="HitPoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.712264, 0)
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="HitPoints"]
+
+[editable path="HitPoints"]
