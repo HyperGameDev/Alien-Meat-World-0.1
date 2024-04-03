@@ -82,5 +82,5 @@ func _input(event):
 		await get_tree().create_timer(1)
 		if Messenger.debug_hp_nonPlayer:
 			dmg_label.visible = true
-		else:
+		else: 
 			dmg_label.visible = false

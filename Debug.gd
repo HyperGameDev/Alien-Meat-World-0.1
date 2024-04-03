@@ -12,7 +12,6 @@ func _input(event):
 			dmg_label.visible = !dmg_label.visible
 	if event.is_action_pressed("Debug 2"):
 		Messenger.debug_hp_nonPlayer = !Messenger.debug_hp_nonPlayer
-		print("Debug 2 is ",Messenger.debug_hp_nonPlayer)
 #	if event.is_action_pressed("Debug 3"):
 #		Messenger.debug_nodes.emit()
 #		print(Debug.OFFSCREEN_POSITION)
