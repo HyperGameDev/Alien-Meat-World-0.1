@@ -144,7 +144,7 @@ albedo_color = Color(0.298039, 0.478431, 0.207843, 1)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0m6q0"]
 points = PackedVector3Array(0.151205, 0.948839, -0.0250146, -0.13451, 0.504299, -0.00916637, 0.0242052, 0.028234, 0.0860814, -0.0233954, 0.520211, -0.152012, 0.0559482, -0.0671381, -0.00916637, -0.00750993, 0.567847, 0.117831, -0.070996, -0.0671381, 0.0225829, -0.102739, 0.742381, -0.104388, 0.119434, 0.742381, -0.104388, 0.0400907, 0.932927, 0.0225829, 0.0876913, 0.155231, 0.0702068, 0.151205, 0.948839, 0.0225829, -0.070996, -0.0671381, -0.00916637, -0.039253, 0.155231, 0.0860814, 0.13532, 0.726569, -0.0885131, 0.0718337, 0.932927, -0.0567639, 0.0242052, 0.536023, 0.117831, -0.13451, 0.551935, -0.00916637, 0.0718337, -0.0352148, 0.0384575, -0.13451, 0.520211, -0.0408892, -0.0233954, -0.0671381, 0.0702068, -0.039253, -0.0671381, -0.0250146, -0.0233954, 0.504299, 0.117831, 0.0876913, 0.948839, 0.0384575, 0.0400907, 0.155231, 0.101956, -0.102739, 0.742381, -0.0726385, 0.119434, 0.710657, -0.104388, 0.0242052, -0.0671381, -0.0250146, 0.0718337, 0.155231, 0.0860814, 0.119434, 0.504299, 0.00670827, 0.0400907, 0.932927, -0.0408892, 0.00834762, 0.139419, 0.101956)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_evq0r"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_8c6ad"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Tree_01_00" type="Area3D"]
@@ -157,6 +157,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.0
 
 [node name="Dmg_Label" parent="HitPoints" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0274114, -0.498537, -0.263959)
+visible = false
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="HitPoints"]
 
@@ -184,6 +185,6 @@ avoidance_layers = 4
 [node name="Arrow_Hover" parent="." instance=ExtResource("4_xsui3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.89422, 0)
 visible = false
-texture = SubResource("ViewportTexture_evq0r")
+texture = SubResource("ViewportTexture_8c6ad")
 
 [editable path="HitPoints"]

@@ -5,6 +5,8 @@ class_name HitPoints
 var is_dead = false
 var health_percent_lost: float = 0.0
 
+@onready var dmg_label = $Dmg_Label
+
 @export var hit_particle_lifetime: float = 2.0
 
 
@@ -30,14 +32,13 @@ func _ready():
 	Messenger.grab_target.connect(am_i_grabbed)
 	Messenger.something_ungrabbed.connect(got_hit)
 	
-
-
+	
 func health_effects():
 	# Update Health Debug
-	$Dmg_Label.text = str($"..".health_current)
+	dmg_label.text = str($"..".health_current)
 	
 	if $"..".health_current <= 0: # Is Dead
-		$Dmg_Label.visible = false
+		dmg_label.visible = false
 	
 func am_i_grabbed(grab_target):
 	#	target = grab_target
@@ -75,3 +76,11 @@ func on_is_destroyed():
 # Called by Sub Obstacle's "Animation_Degrade"
 func sub_obstacle_destroyed():
 	get_owner().is_destroyed.emit()
+	
+func _input(event):
+	if event.is_action_pressed("Debug 2"):
+		await get_tree().create_timer(1)
+		if Messenger.debug_hp_nonPlayer:
+			dmg_label.visible = true
+		else:
+			dmg_label.visible = false

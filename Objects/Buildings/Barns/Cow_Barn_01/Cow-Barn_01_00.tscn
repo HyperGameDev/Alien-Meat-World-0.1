@@ -245,7 +245,7 @@ points = PackedVector3Array(-3.62621, 0.0121583, -0.909474, -3.62621, 0.0121583,
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cuidt"]
 points = PackedVector3Array(-3.70187, 0.551946, -1.01257, -3.70187, 0.551946, 1.0255, -3.70187, 0.972295, 0.00437403, 3.47977, 0.972641, 0.00417459, 3.47548, 0.551946, -1.01257, 3.47977, 0.530477, -0.997403, -3.70187, 0.972295, 0.008564, 3.47977, 0.530477, 1.00595, 3.47548, 0.551946, 1.0257, 3.61368, 0.972641, 0.00417459, 3.61368, 0.530477, -0.997403, 3.47548, 0.972295, 0.008564, 3.61368, 0.530477, 1.00595)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_cjspb"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_1c05d"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Cow-Barn_01_00" type="Area3D"]
@@ -291,7 +291,7 @@ avoidance_layers = 4
 [node name="Arrow_Hover" parent="." instance=ExtResource("2_7cvjf")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 1.17543, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_cjspb")
+texture = SubResource("ViewportTexture_1c05d")
 
 [node name="HitPoints" parent="." instance=ExtResource("3_s05ob")]
 

@@ -1267,7 +1267,7 @@ _data = {
 "Walk_2": ExtResource("3_qg7ll")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ax6y6"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_obmol"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
 [sub_resource type="Animation" id="Animation_ijmwm"]
@@ -1407,7 +1407,7 @@ _data = {
 "heal_hp_3": SubResource("Animation_0j8jt")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2tht0"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_je27h"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6msii"]
@@ -1629,7 +1629,7 @@ libraries = {
 [node name="HP_Head" type="Sprite3D" parent="." index="2"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.754005, 2.09309, 1.8978)
 visible = false
-texture = SubResource("ViewportTexture_ax6y6")
+texture = SubResource("ViewportTexture_obmol")
 script = ExtResource("2_obxxa")
 what_is_damaged = "head_is_damaged"
 what_is_healed = "head_is_healed"
@@ -1649,7 +1649,7 @@ transparent_bg = true
 [node name="HP_Empathy" type="Sprite3D" parent="." index="3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.12584, 1.71669, 1.8978)
 visible = false
-texture = SubResource("ViewportTexture_2tht0")
+texture = SubResource("ViewportTexture_je27h")
 script = ExtResource("2_obxxa")
 what_is_damaged = "empathy_is_damaged"
 what_is_healed = "empathy_is_healed"
@@ -1671,7 +1671,7 @@ transparent_bg = true
 theme_override_styles/fill = ExtResource("5_k8xva")
 
 [node name="Armature" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.127447, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0171537, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, -0.075329, -0.0284092, -0.010423)
@@ -1718,7 +1718,7 @@ bones/17/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 transform = Transform3D(1, 0, 0, 0, 0.999999, 2.98023e-08, 0, -2.98023e-08, 0.999999, -0.00951421, -0.00403788, -0.00525001)
 surface_material_override/0 = SubResource("StandardMaterial3D_6msii")
 
-[node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_ArmL" index="0"]
+[node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_ArmL" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.97934, 0, 0.17317, -7.45058e-09, 1.9869, 2.98023e-08, -0.17317, 0, 1.97934, -1.74479, 3.06826, -1.30488)
 visible = false
 offset = Vector2(80, -150)
@@ -1733,7 +1733,7 @@ outline_size = 30
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00129759, 0, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_6msii")
 
-[node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_ArmR" index="0"]
+[node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_ArmR" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.98337, 0, 0.173522, 0, 1.99094, 0, -0.173522, 0, 1.98337, 0.552544, 3.06795, -1.50591)
 visible = false
 offset = Vector2(-30, -150)
@@ -1765,7 +1765,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_6msii")
 surface_material_override/1 = SubResource("StandardMaterial3D_8ns6n")
 surface_material_override/2 = SubResource("StandardMaterial3D_4vr7x")
 
-[node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_Head" index="0"]
+[node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_Head" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.9966, 0, 0.17468, 0, 2.00423, 0, -0.17468, 0, 1.9966, -0.0141464, 2.50105, 0.804974)
 visible = false
 offset = Vector2(0, -120)
@@ -1778,7 +1778,7 @@ outline_size = 30
 [node name="Alien_LegL" parent="Armature/Skeleton3D" index="6"]
 surface_material_override/0 = SubResource("StandardMaterial3D_6msii")
 
-[node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegL" index="0"]
+[node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegL" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.97393, 0, 0.172697, 0, 1.98147, 0, -0.172697, 0, 1.97393, -0.428096, 1.00287, 0.779777)
 visible = false
 offset = Vector2(10, -50)
@@ -1791,7 +1791,7 @@ outline_size = 30
 [node name="Alien_LegR" parent="Armature/Skeleton3D" index="7"]
 surface_material_override/0 = SubResource("StandardMaterial3D_6msii")
 
-[node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegR" index="0"]
+[node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegR" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.97392, 0, 0.172696, 0, 1.98146, 0, -0.172696, 0, 1.97392, 0.670326, 1.00287, 0.683676)
 visible = false
 offset = Vector2(-30, -50)
@@ -1802,7 +1802,7 @@ font_size = 35
 outline_size = 30
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.121412, 0.992082, -0.0446477, -0.963849, -0.128552, -0.235435, -0.239196, 0.0144421, 0.971358, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.680614, 0.641309, -0.355595, -0.665048, -0.744226, -0.0692847, -0.308927, 0.18924, 0.932584, 0.445561, 1.13443, 0.268376)
 visible = false
 bone_name = "ElbowR"
 bone_idx = 7

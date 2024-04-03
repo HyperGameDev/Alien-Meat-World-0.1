@@ -110,7 +110,7 @@ shadow_mesh = SubResource("ArrayMesh_2nevi")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mq3fa"]
 points = PackedVector3Array(0.41313, 0.201002, -0.0141767, 0.41313, 0.201002, 0.00396478, 0.41313, 0.26598, -0.0141767, 0.428838, 0.201002, -0.0232457, 0.419213, -0.0143471, -0.0140699, 0.419213, -0.0143471, 0.00407164, 0.434922, -0.0143471, 0.0131442, 0.428838, 0.201002, 0.0130338, 0.41313, 0.26598, 0.00396478, 0.428838, 0.26598, -0.0232457, 0.434922, -0.0143471, -0.0231389, 0.450634, -0.0143471, 0.00407164, 0.434922, 0.107925, 0.0131442, 0.428838, 0.26598, 0.0130338, 0.444547, 0.26598, -0.0141767, 0.450634, 0.107925, -0.0140699, 0.434922, 0.107925, -0.0231389, 0.450634, -0.0143471, -0.0140699, 0.450634, 0.107925, 0.00407164, 0.444547, 0.26598, 0.00396478)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xchq4"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_rbm8n"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Fence_01-R_00" type="Area3D"]
@@ -148,6 +148,6 @@ shape = SubResource("ConvexPolygonShape3D_mq3fa")
 [node name="Arrow_Hover" parent="." instance=ExtResource("3_o5x6o")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 0.495293, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_xchq4")
+texture = SubResource("ViewportTexture_rbm8n")
 
 [editable path="HitPoints"]

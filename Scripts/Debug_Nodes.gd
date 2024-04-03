@@ -2,7 +2,7 @@ extends Node3D
 
 class_name Debug
 
-@export var is_hidden = true
+@export var is_hidden = true 
 
 const OFFSCREEN_POSITION = Vector3(-300,0,0)
 var current_position = Vector3(0,0,0)

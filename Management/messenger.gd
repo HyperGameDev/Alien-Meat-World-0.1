@@ -1,5 +1,8 @@
 extends Node
 
+var debug_hp_nonPlayer = true
+var debug_hp_Player = true
+
 signal debug_nodes
 
 signal player_hover

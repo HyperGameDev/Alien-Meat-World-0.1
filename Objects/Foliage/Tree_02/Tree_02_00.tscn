@@ -90,7 +90,7 @@ points = PackedVector3Array(0.188398, 0.286999, -0.485086, 0.188398, 0.289774, -
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4vft3"]
 points = PackedVector3Array(-6.78003e-06, 1.01238, 0.04, 0.0346342, 1.01238, 0.02, -0.034641, 1.01238, 0.02, -6.78003e-06, -0.00762224, 0.04, 0.0346342, -0.00762224, 0.02, 0.0346342, 1.01238, -0.02, -0.034641, 1.01238, -0.02, -0.034641, -0.00762224, 0.02, 0.0346342, -0.00762224, -0.02, -6.78003e-06, 1.01238, -0.04, -0.034641, -0.00762224, -0.02, -6.78003e-06, -0.00762224, -0.04)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_6hhrm"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_deww7"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Tree_02_00" type="Area3D"]
@@ -123,12 +123,13 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.3
 
 [node name="Dmg_Label" parent="HitPoints" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444655, -0.249648, -3.8873e-08)
+visible = false
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="HitPoints"]
 
 [node name="Arrow_Hover" parent="." instance=ExtResource("3_p17b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3212, 0)
 visible = false
-texture = SubResource("ViewportTexture_6hhrm")
+texture = SubResource("ViewportTexture_deww7")
 
 [editable path="HitPoints"]

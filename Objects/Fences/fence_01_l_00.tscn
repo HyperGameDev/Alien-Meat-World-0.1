@@ -110,7 +110,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2nevi")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_65d64"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_bs152"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Fence_01-L_00" type="Area3D"]
@@ -143,11 +143,14 @@ skeleton = NodePath("")
 
 [node name="HitPoints" parent="." instance=ExtResource("2_1rdkg")]
 
+[node name="Dmg_Label" parent="HitPoints" index="0"]
+visible = false
+
 [node name="Animation_Degrade" type="AnimationPlayer" parent="HitPoints"]
 
 [node name="Arrow_Hover" parent="." instance=ExtResource("3_jlwad")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 0.495293, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_65d64")
+texture = SubResource("ViewportTexture_bs152")
 
 [editable path="HitPoints"]

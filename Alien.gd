@@ -78,18 +78,10 @@ func _physics_process(delta):
 	if input_up == false and terrain_slowdown == false:
 		%TerrainController.terrain_velocity = %TerrainController.TERRAIN_VELOCITY
 
-	var debug_ani_turnaround = $"../Debug".debug_2
-	if debug_ani_turnaround == false:
-		if input_up == true:
-			animation.set("parameters/walk to run/transition_request", "running")
-		else:
-			animation.set("parameters/walk to run/transition_request", "walking")
-#		if input_up == true:
-#			$Alien/Animation_Alien.play("Run_1", 1)
-#		else:
-#			$Alien/Animation_Alien.play("Walk_1", 1)
+	if input_up == true:
+		animation.set("parameters/walk to run/transition_request", "running")
 	else:
-		$Alien/Animation_Alien.play("Feed_Walk_1", 1)
+		animation.set("parameters/walk to run/transition_request", "walking")
 
 		
 	if terrain_slowdown == true:
@@ -199,4 +191,3 @@ func slowdown(slowdown_amount):
 		terrain_slowdown = true
 #		print("terrain_slowdown:", terrain_slowdown)
 		%TerrainController.terrain_velocity = 0
-		

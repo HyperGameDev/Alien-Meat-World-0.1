@@ -60,7 +60,7 @@ func _physics_process(delta):
 
 
 	dunked_meats_in_group = get_tree().get_nodes_in_group("Dunked").size()
-	print(score_update)
+#	print(score_update)
 	score_update = dunked_meats_in_group
 	
 	# Dunk descent
