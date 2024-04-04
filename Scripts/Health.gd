@@ -99,6 +99,7 @@ func _physics_process(delta):
 		if detect_surface.is_colliding():
 			if !detect_surface.get_collider() == self.get_parent():
 				self.reparent(detect_surface.get_collider())
+			
 		
 func on_dunk_is_at_position(dunk_position):
 	if has_been_dunked:

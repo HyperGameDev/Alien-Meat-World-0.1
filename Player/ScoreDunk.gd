@@ -139,4 +139,5 @@ func on_body_exited(body):
 		
 func on_meat_in_dunk(dunked):
 	dunked_meat = dunked
+	animation_scoreCount.stop()
 	animation_scoreCount.play("score_up")
