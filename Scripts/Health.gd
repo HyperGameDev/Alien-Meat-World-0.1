@@ -9,8 +9,7 @@ class_name Health
 # If we decide on different meats having different values, use this (or another) value to add the meat to a different dunked group that canthen be calculated differently by the score dunk.
 #@export var score_value = 1
 
-# Is this necessary? When will it be useful?
-@onready var detect_floor = $"RayCast_Floor-Detect"
+@onready var detect_surface = $RayCast_surfaceDetect
 
 @onready var hover_arrow = $Arrow_Hover
 @onready var camera : Camera3D =  get_tree().get_current_scene().get_node("Camera3D")
@@ -37,8 +36,8 @@ func _ready():
 		print("ERROR: Somewhere, a hover arrow child is missing!")
 		breakpoint
 		
-	if !has_node("RayCast_Floor-Detect"):
-		print("ERROR: Somewhere, a floor-detect child is missing!")
+	if !has_node("RayCast_surfaceDetect"):
+		print("ERROR: Somewhere, a surface detecting child is missing!")
 		breakpoint
 		
 	hover_arrow.modulate = indicator_color
@@ -96,12 +95,10 @@ func _physics_process(delta):
 		var rayDirection = camera.project_ray_normal(cursorPosition)
 		var goTo = planeToMoveOn.intersects_ray(rayStartPoint, rayDirection)
 		self.linear_velocity = (goTo - self.global_position) * velocity
-#		if detect_floor.is_colliding():
-#			collision.disabled = false
-#		else:
-#			collision.disabled = true
-#	else:
-#		collision.disabled = false
+	else:
+		if detect_surface.is_colliding():
+			if !detect_surface.get_collider() == self.get_parent():
+				self.reparent(detect_surface.get_collider())
 		
 func on_dunk_is_at_position(dunk_position):
 	if has_been_dunked:
@@ -114,6 +111,8 @@ func _has_been_grabbed():
 	var plane_z_position = player.global_position.z
 	planeToMoveOn  = Plane(Vector3(0,0,1), plane_z_position)
 #	print(plane_z_position)
+
+	self.reparent(get_tree().get_current_scene())
 
 
 func on_meat_entered_dunk(dunked_body):

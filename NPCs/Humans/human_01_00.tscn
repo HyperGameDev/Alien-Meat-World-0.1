@@ -8,7 +8,7 @@
 radius = 0.15
 height = 0.5
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_warch"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_w16c3"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Human_01_00" type="RigidBody3D"]
@@ -20,9 +20,10 @@ axis_lock_angular_z = true
 script = ExtResource("1_l61qx")
 empathy_ok = true
 
-[node name="RayCast_Floor-Detect" type="RayCast3D" parent="."]
+[node name="RayCast_surfaceDetect" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118563, 0)
 target_position = Vector3(0, -0.2, 0)
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.244638, 0)
@@ -36,7 +37,7 @@ lod_bias = 128.0
 [node name="Arrow_Hover" parent="." instance=ExtResource("3_8ninh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.708739, 0)
 visible = false
-texture = SubResource("ViewportTexture_warch")
+texture = SubResource("ViewportTexture_w16c3")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_layers = 2

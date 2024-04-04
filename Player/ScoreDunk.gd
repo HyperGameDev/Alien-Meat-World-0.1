@@ -2,9 +2,10 @@ extends Area3D
 
 @onready var collision = %CollisionShape3D
 @onready var dunk_target = %Player
-@onready var animation = %Animation_ScoreDunk
+@onready var animation_dunkOrb = %Animation_scoreDunk
+@onready var animation_scoreCount = %Animation_scoreCount
 @onready var mesh = %MeshInstance3D
-@onready var score_count = %Label3D
+@onready var score_count = %scoreCount
 
 # Adjust these together!!
 var dunk_y_offset: float = 6.1
@@ -45,7 +46,6 @@ func _ready():
 	dunk_ascent_timer.timeout.connect(on_ascent_timer_timeout)
 	dunk_ascent_timer.one_shot = true
 	add_child(dunk_ascent_timer)
-	score_count.text = str(score_update)
 
 	
 func _physics_process(delta):
@@ -62,6 +62,12 @@ func _physics_process(delta):
 	dunked_meats_in_group = get_tree().get_nodes_in_group("Dunked").size()
 #	print(score_update)
 	score_update = dunked_meats_in_group
+	score_count.text = str("+",score_update)
+
+
+		
+	
+	
 	
 	# Dunk descent
 	if is_grabbing and dunk_y_offset == DUNK_Y_OFFSET:
@@ -94,8 +100,9 @@ func on_ascent_timer_timeout():
 	dunk_y_offset += dunk_ascent_distance
 	
 func on_screen_exited():
-	# If dunked_meat is not empty:
+	# If dunked_meat is not null
 	if !dunked_meat == null:
+		# Possible combo stuff?
 #		if dunked_meats_in_group >= 2:
 #			score_update = dunked_meats_in_group * 2
 #		if dunked_meats_in_group == 1:
@@ -123,12 +130,13 @@ func on_grab_ended():
 func on_body_entered(body):
 	if body.is_in_group("Grabbed"):
 		Messenger.meat_entered_dunk.emit(body)
-		animation.play("hover_throb")
+		animation_dunkOrb.play("hover_throb")
 
 func on_body_exited(body):
 	if body.is_in_group("Meat"):
 		Messenger.meat_left_dunk.emit(body)
-		animation.play("base_size", .2)
+		animation_dunkOrb.play("base_size", .2)
 		
 func on_meat_in_dunk(dunked):
 	dunked_meat = dunked
+	animation_scoreCount.play("score_up")

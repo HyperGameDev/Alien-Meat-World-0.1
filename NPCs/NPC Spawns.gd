@@ -16,6 +16,7 @@ func _ready():
 	spawn_interval_timer.start(randi_range(spawn_interval_min,spawn_interval_max))
 
 
+
 func spawn_helicopter():
 	spawn_interval_timer.start(randi_range(spawn_interval_min,spawn_interval_max))
 
@@ -24,3 +25,4 @@ func spawn_helicopter():
 		copter_spawns += 1
 		var copter = preload("res://NPCs/Helicopters/copter_001.tscn").instantiate()
 		get_tree().get_current_scene().add_child(copter)
+

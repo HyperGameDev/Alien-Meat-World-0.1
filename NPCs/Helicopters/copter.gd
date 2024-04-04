@@ -9,6 +9,7 @@ signal is_destroyed
 @onready var hover_arrow = $Arrow_Hover
 @onready var copter_mesh = $copter_001
 @onready var terrain = get_tree().get_current_scene().get_node("%TerrainController")
+@onready var detect_copterDeath = %RayCast_copterDeath
 
 static var copters_stopped = 0
 
@@ -81,7 +82,7 @@ func _physics_process(delta):
 		global_position += velocity * delta
 		copter_mesh.rotation.y += ROTATION_SPEED * delta
 	
-	if %RayCast_CopterDeath.is_colliding():
+	if detect_copterDeath.is_colliding():
 		is_destroyed.emit()
 		copter_mesh.visible = false
 		$NavigationAgent3D.avoidance_enabled = false
