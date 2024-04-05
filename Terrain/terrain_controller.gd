@@ -1,5 +1,7 @@
 extends Node3D
 
+var debug_counter = 0
+
 ## Holds the catalog of loaded terrian block scenes
 var TerrainBlocks: Array = []
 
@@ -12,7 +14,7 @@ const TERRAIN_VELOCITY: float = 5.0
 @export var num_terrain_blocks = 7
 
 ## Path to directory holding the terrain block scenes
-var terrian_blocks_path = "res://Terrain/terrain_military/"
+var terrian_blocks_path = "res://Terrain/terrain_blocks/"
 
 func _ready() -> void:
 	_load_terrain_scenes(terrian_blocks_path)
@@ -33,8 +35,13 @@ func _init_blocks(number_of_blocks: int) -> void:
 	for block_index in number_of_blocks:
 		var block =  TerrainBlocks.pick_random().instantiate()
 		if block_index == 0:
-			block.position.z = block.mesh.size.y/2
+			
+			# Push first block forward by half its distance (so that player is at the far edge of the first block)
+			block.position.z = block.mesh.size.y/2 
+			
 		else:
+			
+			# If not the first block, append it to the far edge of the belt.
 			_append_to_far_edge(terrain_belt[block_index-1], block)
 		add_child(block)
 		terrain_belt.append(block)
@@ -46,14 +53,21 @@ func _progress_terrain(delta: float) -> void:
 
 # Delete first index if it passes a certain spot
 	if terrain_belt[0].position.z >= terrain_belt[0].mesh.size.y/2:
+		
+		# -1 here means "the last block in the array i.e. the highest number"
 		var last_terrain = terrain_belt[-1]
+		
+		# Pop_front removes the first block from the array only, and then returns the name of that removed block.
 		var first_terrain = terrain_belt.pop_front()
-
+		first_terrain.queue_free()
+		
 		var block = TerrainBlocks.pick_random().instantiate()
 		_append_to_far_edge(last_terrain, block)
 		add_child(block)
 		terrain_belt.append(block)
-		first_terrain.queue_free()
+		debug_counter += 1
+		#if debug_counter > 4:
+			#breakpoint
 
 
 func _append_to_far_edge(target_block: MeshInstance3D, appending_block: MeshInstance3D) -> void:

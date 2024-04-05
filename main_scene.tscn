@@ -300,10 +300,10 @@ radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ffacl"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_1csg8"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_50ie3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_nkqc4"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [node name="Main Scene" type="Node3D"]
@@ -370,10 +370,36 @@ shape = SubResource("ConvexPolygonShape3D_nthf1")
 
 [node name="Debug" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_1xhrq")
+
+[node name="MarginContainer" type="MarginContainer" parent="Debug"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Debug/MarginContainer"]
+layout_mode = 2
+
+[node name="Label_showFPS" type="Label" parent="Debug/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 50
+text = "FPS: "
 
 [node name="Label_Hide-Hp" type="Label" parent="Debug"]
 visible = false
@@ -636,13 +662,13 @@ transform = Transform3D(1, 0.000486921, 0.000306959, -0.000486927, 1, 2.02912e-0
 parameters/TimeScale/scale = 1.0
 
 [node name="HP_Head" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_ffacl")
+texture = SubResource("ViewportTexture_1csg8")
 
 [node name="HP_Empathy" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_50ie3")
+texture = SubResource("ViewportTexture_nkqc4")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.00906393, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.080688, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
@@ -659,7 +685,7 @@ bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.667061, 0.686205, -0.291743, -0.688967, -0.716919, -0.110955, -0.285157, 0.126926, 0.950545, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.716957, 0.516704, -0.468989, -0.596131, -0.803046, 0.0265743, -0.362714, 0.298488, 0.883348, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)
@@ -675,7 +701,7 @@ shape = SubResource("CapsuleShape3D_v6wbe")
 disabled = true
 
 [node name="Collision_ArmRight" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(0.0959294, -0.0282334, -0.00065124, -0.000468328, -0.0038961, 0.099923, -0.028237, -0.0958525, -0.00386973, 0.321531, 1.25142, -0.735707)
+transform = Transform3D(0.0959294, -0.0282334, -0.00065124, -0.000468328, -0.0038961, 0.099923, -0.028237, -0.0958525, -0.00386973, 0.406346, 1.14241, -0.754826)
 shape = SubResource("CapsuleShape3D_0yil0")
 disabled = true
 

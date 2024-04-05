@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://f76a6025mm6h"]
+[gd_scene load_steps=23 format=3 uid="uid://f76a6025mm6h"]
 
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_q5mdw"]
 [ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="2_7cvjf"]
@@ -253,13 +253,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wwodv")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ojjfb"]
-points = PackedVector3Array(-3.62621, 0.0121583, -0.909474, -3.62621, 0.0121583, 0.918074, -3.62621, 0.543415, -0.909474, 3.5027, 0.0121583, -0.909474, -3.62621, 0.543415, 0.918074, 3.5027, 0.0121583, 0.918074, 3.5027, 0.543415, -0.909474, 3.5027, 0.543415, 0.918074)
+[sub_resource type="BoxShape3D" id="BoxShape3D_0lpsq"]
+size = Vector3(7.16211, 1, 1.80859)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cuidt"]
-points = PackedVector3Array(-3.70187, 0.551946, -1.01257, -3.70187, 0.551946, 1.0255, -3.70187, 0.972295, 0.00437403, 3.47977, 0.972641, 0.00417459, 3.47548, 0.551946, -1.01257, 3.47977, 0.530477, -0.997403, -3.70187, 0.972295, 0.008564, 3.47977, 0.530477, 1.00595, 3.47548, 0.551946, 1.0257, 3.61368, 0.972641, 0.00417459, 3.61368, 0.530477, -0.997403, 3.47548, 0.972295, 0.008564, 3.61368, 0.530477, 1.00595)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_1c05d"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_8x4s5"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Cow-Barn_01_00" type="Area3D"]
@@ -292,10 +289,8 @@ mesh = SubResource("ArrayMesh_52dkx")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_ojjfb")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_cuidt")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0818552, 0.472926, 0.00564706)
+shape = SubResource("BoxShape3D_0lpsq")
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
 height = 1.7
@@ -305,7 +300,7 @@ avoidance_layers = 4
 [node name="Arrow_Hover" parent="." instance=ExtResource("2_7cvjf")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 1.17543, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_1c05d")
+texture = SubResource("ViewportTexture_8x4s5")
 
 [node name="HitPoints" parent="." instance=ExtResource("3_s05ob")]
 

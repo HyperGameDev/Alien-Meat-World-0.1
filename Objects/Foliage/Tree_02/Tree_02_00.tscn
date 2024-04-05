@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://0sdt50wuw41u"]
+[gd_scene load_steps=17 format=3 uid="uid://0sdt50wuw41u"]
 
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_87ypy"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_xs3o3"]
@@ -88,13 +88,22 @@ shadow_mesh = SubResource("ArrayMesh_fkxge")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b2myn"]
 albedo_color = Color(0.298039, 0.478431, 0.207843, 1)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_iusph"]
-points = PackedVector3Array(0.188398, 0.286999, -0.485086, 0.188398, 0.289774, -0.485086, 0.448334, 0.34016, -0.200141, 0.455511, 0.315618, -0.173217, 0.194931, 0.267486, -0.443533, 0.164843, 0.259334, -0.450982, -0.0850631, 0.342241, -0.454662, 0.0378658, 0.909496, -0.238553, 0.15785, 0.967861, -0.136062, 0.322001, 0.506495, -0.246809, 0.448334, 0.343456, -0.200141, -0.0850631, 0.343369, -0.454662, 0.449438, 0.343456, -0.196731, 0.452475, 0.328279, -0.184974, 0.455879, 0.315618, -0.171961, 0.495813, 0.26289, 0.0428915, 0.494525, 0.26289, 0.0389427, 0.362578, 0.260375, -0.173397, 0.175149, 0.254044, -0.423161, 0.127578, 0.234011, -0.409071, 0.123806, 0.234011, -0.407904, -0.0876395, 0.342241, -0.453854, -0.0132013, 1.07652, -0.141896, -0.0792663, 0.968988, -0.179948, 0.144784, 1.07149, 0.0106726, 0.223271, 0.937161, -0.0151743, 0.455511, 0.42697, -0.0908304, -0.0876395, 0.343369, -0.453854, 0.458824, 0.419685, -0.0803301, 0.455879, 0.316398, -0.171961, 0.339851, 0.343629, 0.26259, 0.339851, 0.340941, 0.26259, 0.192999, 0.262283, 0.420903, 0.201832, 0.259161, 0.406633, 0.19622, 0.241469, 0.355119, 0.487532, 0.259594, 0.0410966, 0.209377, 0.970029, 0.109304, 0.37178, 0.230716, -0.0108665, 0.133651, 0.233231, -0.395878, 0.273878, 0.207647, -0.0302517, 0.107519, 0.223691, -0.331081, 0.118469, 0.231236, -0.391391, -0.308194, 0.205739, -0.134806, -0.305617, 0.215106, -0.160922, -0.36975, 0.239041, -0.194757, -0.413272, 0.246066, -0.176538, -0.427534, 0.262803, -0.178512, -0.00593227, 1.07973, -0.125472, -0.0892037, 0.968988, -0.176807, -0.0213904, 1.07652, -0.139293, -0.0244268, 1.07999, -0.120088, 0.130338, 1.07427, 0.00995463, 0.138804, 1.07288, 0.0142624, -0.399102, 0.424281, -0.186231, 0.0157827, 0.941064, 0.200576, 0.189319, 0.261502, 0.422069, 0.157666, 0.214499, 0.275603, 0.274246, 0.207647, -0.0289952, 0.160059, 0.207561, 0.236833, 0.0940855, 1.07496, 0.0297885, 0.0337252, 0.194552, 0.0176728, -0.0677648, 0.194032, -0.0351877, -0.169439, 0.195333, -0.0879585, -0.236976, 0.20097, -0.122421, -0.287215, 0.201056, -0.106895, -0.324112, 0.205566, -0.116498, -0.411064, 0.259421, 0.161715, -0.44198, 0.348399, 0.0576997, -0.444189, 0.371207, 0.0526738, -0.279302, 0.666672, -0.166576, -0.230811, 0.936901, -0.0122127, -0.0377686, 1.07436, -0.106895, -0.103466, 1.07444, 0.0574304, -0.101441, 1.07444, 0.0639819, -0.401771, 0.478223, -0.0152641, -0.0811986, 0.88452, 0.19896, -0.264396, 0.34493, 0.431762, -0.246177, 0.349179, 0.430326, -0.264396, 0.337819, 0.431762, -0.246637, 0.328973, 0.429159, -0.232007, 0.313103, 0.415697, -0.330461, 0.233057, 0.16369, 0.158218, 0.207561, 0.237461, -0.303593, 0.229762, 0.159113, -0.152876, 0.194032, -0.0371622, -0.220506, 0.196547, -0.0724324, -0.398918, 0.260115, 0.184421, -0.4118, 0.277546, 0.170062, -0.4429, 0.373809, 0.0691871, -0.290711, 0.779759, 0.00277492, -0.243141, 0.856509, 0.13183, -0.230535, 0.936901, -0.0111357, -0.242313, 0.856509, 0.134433, -0.106134, 0.856422, 0.204255, -0.363217, 0.424108, 0.284937, -0.363217, 0.423327, 0.284937, -0.395422, 0.286912, 0.202999, -0.363493, 0.424108, 0.284129)
+[sub_resource type="BoxShape3D" id="BoxShape3D_i3sb1"]
+size = Vector3(0.37207, 0.250977, 0.386719)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4vft3"]
-points = PackedVector3Array(-6.78003e-06, 1.01238, 0.04, 0.0346342, 1.01238, 0.02, -0.034641, 1.01238, 0.02, -6.78003e-06, -0.00762224, 0.04, 0.0346342, -0.00762224, 0.02, 0.0346342, 1.01238, -0.02, -0.034641, 1.01238, -0.02, -0.034641, -0.00762224, 0.02, 0.0346342, -0.00762224, -0.02, -6.78003e-06, 1.01238, -0.04, -0.034641, -0.00762224, -0.02, -6.78003e-06, -0.00762224, -0.04)
+[sub_resource type="BoxShape3D" id="BoxShape3D_i7iar"]
+size = Vector3(0.583984, 0.250977, 0.469727)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_deww7"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_hv4kg"]
+size = Vector3(0.773438, 0.250977, 0.582031)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2j2fx"]
+size = Vector3(0.910156, 0.141602, 0.831787)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tafbx"]
+size = Vector3(0.0693359, 1.02051, 0.0732422)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0rrqy"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Tree_02_00" type="Area3D"]
@@ -112,28 +121,41 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_b2myn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_iusph")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00183094, 0.9437, 0.00274059)
+shape = SubResource("BoxShape3D_i3sb1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00183094, 0.712593, 0.00274059)
+shape = SubResource("BoxShape3D_i7iar")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00183094, 0.46301, 0.00274059)
+shape = SubResource("BoxShape3D_hv4kg")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0108681, 0.272983, -9.2864e-05)
+shape = SubResource("BoxShape3D_2j2fx")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.501788, 0)
+shape = SubResource("BoxShape3D_tafbx")
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
 height = 1.58
 vertices = PackedVector3Array(-1, 0, 1, 1, 0, 1, 1, 0, -1, -1, 0, -1)
 avoidance_layers = 4
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_4vft3")
-
 [node name="HitPoints" parent="." instance=ExtResource("2_87ypy")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.37828, 0)
 
 [node name="Dmg_Label" parent="HitPoints" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444655, -0.249648, -3.8873e-08)
-visible = false
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="HitPoints"]
 
 [node name="Arrow_Hover" parent="." instance=ExtResource("3_p17b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3212, 0)
 visible = false
-texture = SubResource("ViewportTexture_deww7")
+texture = SubResource("ViewportTexture_0rrqy")
 
 [editable path="HitPoints"]

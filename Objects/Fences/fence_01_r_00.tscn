@@ -76,9 +76,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4pl6k")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_m8are"]
-points = PackedVector3Array(0.154714, 0.191365, 0.00418098, 0.154714, 0.191365, -0.0137332, -0.00637263, 0.191365, 0.00418098, 0.423165, 0.175841, 0.0131399, 0.423165, 0.191353, 0.00418098, -0.00637263, 0.191365, -0.0137332, 0.423165, 0.191353, -0.0137332, 0.423165, 0.175841, -0.0226921, -0.00759554, 0.0997522, 0.0030008, -0.00637263, 0.175841, 0.0131399, 0.368555, 0.172129, 0.0138747, 0.423207, 0.0817041, 0.0131399, 0.101961, 0.174444, 0.013422, 0.423207, 0.0972159, 0.00418098, -0.00637263, 0.175841, -0.0226921, -0.00759554, 0.0997522, -0.0149171, 0.423207, 0.0972159, -0.0137332, 0.423207, 0.0817041, -0.0226921, 0.240318, 0.0862008, -0.0240356, -0.00759554, 0.0842281, 0.011956, 0.118196, 0.0817041, 0.0131399, 0.0482789, 0.174444, 0.013422, 0.314832, 0.172129, 0.0138747, 0.423207, 0.0661922, 0.00418098, 0.17892, 0.0862008, -0.0240356, -0.00759554, 0.0842281, -0.023876, 0.423207, 0.0661922, -0.0137332, 0.118196, 0.0817041, -0.0226921, 0.0555742, 0.0842281, -0.023876, -0.00759554, 0.0687162, 0.0030008, 0.118196, 0.0661922, 0.00418098, -0.00759554, 0.0687162, -0.0149171, 0.118196, 0.0661922, -0.0137332)
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_2nevi"]
 _surfaces = [{
 "aabb": AABB(0.41313, -0.0143471, -0.0232457, 0.037504, 0.280327, 0.0363899),
@@ -113,11 +110,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2nevi")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mq3fa"]
-points = PackedVector3Array(0.41313, 0.201002, -0.0141767, 0.41313, 0.201002, 0.00396478, 0.41313, 0.26598, -0.0141767, 0.428838, 0.201002, -0.0232457, 0.419213, -0.0143471, -0.0140699, 0.419213, -0.0143471, 0.00407164, 0.434922, -0.0143471, 0.0131442, 0.428838, 0.201002, 0.0130338, 0.41313, 0.26598, 0.00396478, 0.428838, 0.26598, -0.0232457, 0.434922, -0.0143471, -0.0231389, 0.450634, -0.0143471, 0.00407164, 0.434922, 0.107925, 0.0131442, 0.428838, 0.26598, 0.0130338, 0.444547, 0.26598, -0.0141767, 0.450634, 0.107925, -0.0140699, 0.434922, 0.107925, -0.0231389, 0.450634, -0.0143471, -0.0140699, 0.450634, 0.107925, 0.00407164, 0.444547, 0.26598, 0.00396478)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_rbm8n"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_yo77y"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qrxvo"]
+size = Vector3(0.426758, 0.129883, 0.0537109)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4e755"]
+size = Vector3(0.0341797, 0.275391, 0.0322266)
 
 [node name="Fence_01-R_00" type="Area3D"]
 script = ExtResource("1_lr4e7")
@@ -134,18 +134,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.212539, 0.0137611, 0)
 mesh = SubResource("ArrayMesh_ef03m")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.212539, 0.0137611, 0)
-shape = SubResource("ConvexPolygonShape3D_m8are")
-
 [node name="Fence_Post-R" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.212539, 0.0137611, 0)
 mesh = SubResource("ArrayMesh_onqix")
 skeleton = NodePath("")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.212539, 0.0137611, 0)
-shape = SubResource("ConvexPolygonShape3D_mq3fa")
 
 [node name="HitPoints" parent="." instance=ExtResource("2_24nbt")]
 
@@ -154,6 +146,14 @@ shape = SubResource("ConvexPolygonShape3D_mq3fa")
 [node name="Arrow_Hover" parent="." instance=ExtResource("3_o5x6o")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 0.495293, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_rbm8n")
+texture = SubResource("ViewportTexture_yo77y")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.000980129, 0.146159, -0.00634936)
+shape = SubResource("BoxShape3D_qrxvo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionShape3D2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.218859, -0.0039952, -0.00521969)
+shape = SubResource("BoxShape3D_4e755")
 
 [editable path="HitPoints"]
