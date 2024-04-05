@@ -14,7 +14,7 @@ const TERRAIN_VELOCITY: float = 5.0
 @export var num_terrain_blocks = 7
 
 ## Path to directory holding the terrain block scenes
-var terrian_blocks_path = "res://Terrain/terrain_blocks/"
+var terrian_blocks_path = "res://Terrain/terrain_level_00/"
 
 func _ready() -> void:
 	_load_terrain_scenes(terrian_blocks_path)
