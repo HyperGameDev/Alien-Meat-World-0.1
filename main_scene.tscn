@@ -301,10 +301,10 @@ radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7ns65"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_mtgif"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_em4ei"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_oihud"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [node name="Main Scene" type="Node3D"]
@@ -480,6 +480,10 @@ near = 0.214
 far = 1000.0
 script = ExtResource("2_qvpxy")
 cam_y_offset = 4.6
+
+[node name="TerrainCollector" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33.5554)
 
 [node name="TerrainController" parent="." instance=ExtResource("3_uqnug")]
 unique_name_in_owner = true
@@ -666,13 +670,13 @@ transform = Transform3D(1, 0.000486921, 0.000306959, -0.000486927, 1, 2.02912e-0
 parameters/TimeScale/scale = 1.0
 
 [node name="HP_Head" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_7ns65")
+texture = SubResource("ViewportTexture_mtgif")
 
 [node name="HP_Empathy" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_em4ei")
+texture = SubResource("ViewportTexture_oihud")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.00682614, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.112492, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
@@ -689,7 +693,7 @@ bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.0633711, 0.19532, -0.979181, -0.979928, -0.200381, 0.0234489, -0.191537, 0.960551, 0.204, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.745407, 0.627409, -0.227348, -0.614452, -0.778257, -0.133135, -0.26034, 0.0404355, 0.965168, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)
@@ -746,8 +750,6 @@ theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("7_1vj6d")
 theme_override_font_sizes/font_size = 80
 text = "0"
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 
 [connection signal="timeout" from="UI_FX/Timer_FX_Flash" to="UI_FX" method="_on_timer_fx_flash_timeout"]
 
