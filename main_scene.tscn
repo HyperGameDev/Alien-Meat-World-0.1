@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=51 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c2s7xptwu48an" path="res://Terrain/terrain_controller.tscn" id="3_uqnug"]
 [ext_resource type="PackedScene" uid="uid://c1q8m4i26u6vr" path="res://alien_3.tscn" id="4_huvyo"]
 [ext_resource type="Script" path="res://Cam_Target.gd" id="5_iuboh"]
+[ext_resource type="PackedScene" uid="uid://62tsdyaob0l4" path="res://Terrain/terrain_controller_in_scene.tscn" id="6_ywiix"]
 [ext_resource type="FontFile" uid="uid://ckdic8pw8e5i2" path="res://UI/Fonts/Agrandir-WideBlackItalic.otf" id="7_1vj6d"]
 [ext_resource type="Script" path="res://Area_Player-Proximity.gd" id="8_0gjb7"]
 [ext_resource type="Script" path="res://Scripts/BodyPart.gd" id="10_2td36"]
@@ -300,10 +301,10 @@ radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1csg8"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_7n5m1"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_nkqc4"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_sflv1"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [node name="Main Scene" type="Node3D"]
@@ -484,6 +485,9 @@ cam_y_offset = 4.6
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.74317)
 
+[node name="TerrainController_inScene" parent="." instance=ExtResource("6_ywiix")]
+unique_name_in_owner = true
+
 [node name="ScoreDunk" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.54315, 0.166246)
 collision_layer = 0
@@ -662,13 +666,13 @@ transform = Transform3D(1, 0.000486921, 0.000306959, -0.000486927, 1, 2.02912e-0
 parameters/TimeScale/scale = 1.0
 
 [node name="HP_Head" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_1csg8")
+texture = SubResource("ViewportTexture_7n5m1")
 
 [node name="HP_Empathy" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_nkqc4")
+texture = SubResource("ViewportTexture_sflv1")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.080688, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.127227, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
@@ -685,7 +689,7 @@ bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.716957, 0.516704, -0.468989, -0.596131, -0.803046, 0.0265743, -0.362714, 0.298488, 0.883348, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.666375, 0.370327, -0.647891, -0.599063, -0.783415, 0.168363, -0.445004, 0.50008, 0.74354, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)

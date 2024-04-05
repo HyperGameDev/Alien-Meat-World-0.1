@@ -7,6 +7,7 @@ const FALL_DEATH_DISTANCE = -50
 
 @onready var animation = get_node("Alien/AnimationTree_Alien")
 @onready var skeleton: Skeleton3D = get_node("Alien/Armature/Skeleton3D")
+@onready var terrain_controller = %TerrainController_inScene
 
 var terrain_slowdown = false
 
@@ -74,9 +75,9 @@ func _physics_process(delta):
 		
 	var input_up = Input.is_action_pressed("ui_up")
 	if input_up and terrain_slowdown == false:
-		%TerrainController.terrain_velocity = move_toward(%TerrainController.terrain_velocity, 30, 1)
+		terrain_controller.terrain_velocity = move_toward(terrain_controller.terrain_velocity, 30, 1)
 	if input_up == false and terrain_slowdown == false:
-		%TerrainController.terrain_velocity = %TerrainController.TERRAIN_VELOCITY
+		terrain_controller.terrain_velocity = terrain_controller.TERRAIN_VELOCITY
 
 	if input_up == true:
 		animation.set("parameters/walk to run/transition_request", "running")
@@ -190,4 +191,4 @@ func slowdown(slowdown_amount):
 	if slowdown_amount == Obstacle.slowdown_amounts.FULL:
 		terrain_slowdown = true
 #		print("terrain_slowdown:", terrain_slowdown)
-		%TerrainController.terrain_velocity = 0
+		terrain_controller.terrain_velocity = 0

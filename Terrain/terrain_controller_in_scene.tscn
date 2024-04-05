@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://62tsdyaob0l4"]
+
+[ext_resource type="Script" path="res://Terrain/terrain_controller_inScene.gd" id="1_brkxs"]
+
+[node name="TerrainController_inScene" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.74317)
+script = ExtResource("1_brkxs")

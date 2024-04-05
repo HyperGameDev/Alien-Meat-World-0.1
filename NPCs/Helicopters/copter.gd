@@ -8,7 +8,7 @@ signal is_destroyed
 @export var indicator_color = Color(1,0,0,1)
 @onready var hover_arrow = $Arrow_Hover
 @onready var copter_mesh = $copter_001
-@onready var terrain = get_tree().get_current_scene().get_node("%TerrainController")
+@onready var terrain_controller = get_tree().get_current_scene().get_node("%TerrainController_inScene")
 @onready var detect_copterDeath = %RayCast_copterDeath
 
 static var copters_stopped = 0
@@ -77,7 +77,7 @@ func _physics_process(delta):
 		global_position += velocity * delta 
 	if is_dying:
 		var ROTATION_SPEED = 7
-		var direction = Vector3(0,-.02,terrain.terrain_velocity/50)
+		var direction = Vector3(0,-.02,terrain_controller.terrain_velocity/50)
 		velocity = direction * speed
 		global_position += velocity * delta
 		copter_mesh.rotation.y += ROTATION_SPEED * delta
