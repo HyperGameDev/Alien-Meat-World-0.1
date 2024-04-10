@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bka4q282pwrgs"]
+
+[ext_resource type="PackedScene" uid="uid://dsjb8hopky8l4" path="res://NPCs/Cars/Pickup Trucks/truckPickup_01_00.blend" id="1_dya3h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wsylj"]
+albedo_color = Color(0.490196, 0.490196, 0.490196, 1)
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80v84"]
+transparency = 1
+albedo_color = Color(0.313726, 0.25098, 0.721569, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qbegu"]
+albedo_color = Color(0.0627451, 0.0627451, 0.121569, 1)
+roughness = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4g5k"]
+albedo_color = Color(0.721569, 0.721569, 0.721569, 1)
+metallic = 0.7
+roughness = 0.2
+
+[node name="truckPickup_01_00" instance=ExtResource("1_dya3h")]
+
+[node name="Truck-Body" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_wsylj")
+surface_material_override/1 = SubResource("StandardMaterial3D_80v84")
+
+[node name="Tires" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_qbegu")
+surface_material_override/1 = SubResource("StandardMaterial3D_q4g5k")

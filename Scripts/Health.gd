@@ -83,7 +83,11 @@ func _process(delta):
 			has_been_dunked = true
 		
 
-func _physics_process(delta):		
+func _physics_process(delta):	
+	if self.global_position.y <= player.FALL_DEATH_DISTANCE:
+		print("Meat Object deleted")
+		queue_free()
+			
 	if is_in_group("Grabbed"):
 		if !has_been_grabbed:
 			_has_been_grabbed()
@@ -113,7 +117,7 @@ func _has_been_grabbed():
 	planeToMoveOn  = Plane(Vector3(0,0,1), plane_z_position)
 #	print(plane_z_position)
 
-	self.reparent(get_tree().get_current_scene())
+	#self.reparent(get_tree().get_current_scene())
 
 
 func on_meat_entered_dunk(dunked_body):

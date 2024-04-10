@@ -16,7 +16,7 @@ const TERRAIN_VELOCITY: float = 5.0
 @export var num_terrain_blocks = 7
 
 ## Path to directory holding the terrain block scenes
-var terrian_blocks_path = "res://Terrain/terrain_level_00/"
+var terrian_blocks_path = "res://Terrain/terrain_level_00_debug-01/"
 
 func _ready() -> void:
 	_load_terrain_scenes(terrian_blocks_path)
@@ -70,6 +70,8 @@ func _progress_terrain(delta: float) -> void:
 		# Pop_front removes the first block from the array only, and then returns the name of that removed block.
 		var first_terrain = get_children().pop_front()
 		first_terrain.reparent(terrain_collector)
+		first_terrain.position.z = 0.0
+		
 		
 		var block = terrain_collector.get_children().pick_random()
 		block.reparent(self)
