@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6iuctmsywsw2"]
+
+[ext_resource type="PackedScene" uid="uid://b32magsg1g1v6" path="res://Objects/Fences/fence_01_00.blend" id="1_ib42i"]
+
+[node name="Fence_01_bars-02_00" instance=ExtResource("1_ib42i")]
+
+[node name="Fence_Post-L" parent="." index="0"]
+visible = false
+
+[node name="Fence_Bars" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.213476, 0.0137611, 0)
+
+[node name="Fence_Post-R" parent="." index="2"]
+visible = false

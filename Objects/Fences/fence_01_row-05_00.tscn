@@ -1,0 +1,204 @@
+[gd_scene load_steps=11 format=3 uid="uid://b1jpfiy4cphy7"]
+
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_bvdrc"]
+[ext_resource type="PackedScene" uid="uid://bmr6y2h3rccpf" path="res://Objects/Fences/fence_01_post-02_Stamp_00.tscn" id="1_iqeuf"]
+[ext_resource type="PackedScene" uid="uid://c6iuctmsywsw2" path="res://Objects/Fences/fence_01_bars-2_Stamp_00.tscn" id="2_4bkif"]
+[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_ffe4t"]
+[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="3_emrnc"]
+
+[sub_resource type="Animation" id="Animation_5h3ff"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../fence_02_00:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../fence_02_01:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../fence_02_02:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../fence_02_03:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../fence_02_04:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vbufw"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../fence_02_00:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../fence_02_01:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../fence_02_02:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../fence_02_03:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../fence_02_04:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_txg71"]
+_data = {
+"RESET": SubResource("Animation_5h3ff"),
+"degrade": SubResource("Animation_vbufw")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6eexe"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fwt77"]
+size = Vector3(2.1, 0.3, 0.1)
+
+[node name="Fence_01_row-05_00" type="Node3D"]
+
+[node name="Obstacle" type="Area3D" parent="."]
+script = ExtResource("1_bvdrc")
+health_max = 1
+
+[node name="HitPoints" parent="Obstacle" instance=ExtResource("2_ffe4t")]
+
+[node name="Dmg_Label" parent="Obstacle/HitPoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints"]
+libraries = {
+"": SubResource("AnimationLibrary_txg71")
+}
+
+[node name="Arrow_Hover" parent="Obstacle" instance=ExtResource("3_emrnc")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 0.494403, -0.00187755)
+visible = false
+texture = SubResource("ViewportTexture_6eexe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.153522, 0)
+shape = SubResource("BoxShape3D_fwt77")
+
+[node name="Fence_01_post-02_00" parent="." instance=ExtResource("1_iqeuf")]
+
+[node name="Fence_01_bars-02_00" parent="." instance=ExtResource("2_4bkif")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
+
+[node name="Fence_01_post-02_01" parent="." instance=ExtResource("1_iqeuf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 0)
+
+[node name="Fence_01_bars-02_01" parent="." instance=ExtResource("2_4bkif")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+
+[node name="Fence_01_post-02_02" parent="." instance=ExtResource("1_iqeuf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
+
+[node name="Fence_01_bars-02_02" parent="." instance=ExtResource("2_4bkif")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)
+
+[node name="Fence_01_post-02_03" parent="." instance=ExtResource("1_iqeuf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0)
+
+[node name="Fence_01_post-02_04" parent="." instance=ExtResource("1_iqeuf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0)
+
+[node name="Fence_01_bars-02_03" parent="." instance=ExtResource("2_4bkif")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
+
+[node name="Fence_01_post-02_05" parent="." instance=ExtResource("1_iqeuf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, 0)
+
+[node name="Fence_01_bars-02_04" parent="." instance=ExtResource("2_4bkif")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[editable path="Obstacle/HitPoints"]
