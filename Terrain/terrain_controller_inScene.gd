@@ -16,18 +16,20 @@ const TERRAIN_VELOCITY: float = 5.0
 @export var num_terrain_blocks = 7
 
 ## Path to directory holding the terrain block scenes
-var terrian_blocks_path = "res://Terrain/terrain_level_00_debug-01/"
+@onready var debug_menu = %Menu
+var terrain_blocks_path : StringName
 
 func _ready() -> void:
-	_load_terrain_scenes(terrian_blocks_path)
+	terrain_blocks_path = "res://Terrain/terrain_level_00/"
+	_load_terrain_scenes(terrain_blocks_path)
 	_init_blocks(num_terrain_blocks)
 	#_first_blocks()
 
 #func _first_blocks():
 	#await get_tree().create_timer(.2).timeout
-	#terrian_blocks_path = "res://Terrain/terrain_debug/"
+	#terrain_blocks_path = "res://Terrain/terrain_debug/"
 	#print("Blocks path changed")
-	#_load_terrain_scenes(terrian_blocks_path)
+	#_load_terrain_scenes(terrain_blocks_path)
 
 func _physics_process(delta: float) -> void:
 	_progress_terrain(delta)

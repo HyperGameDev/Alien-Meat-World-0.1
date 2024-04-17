@@ -1,6 +1,7 @@
-extends Control
+extends CanvasLayer
 
 var show_fps = false
+@onready var debug_menu = %Menu
 
 #@onready var testanimation = $"../Player/Alien/Armature/Skeleton3D/Alien_ArmL/Animation_Limb-Shrink"
 	
@@ -20,8 +21,8 @@ func _input(event):
 		Messenger.debug_hp_nonPlayer = !Messenger.debug_hp_nonPlayer
 	if event.is_action_pressed("Debug 3"):
 		show_fps = !show_fps
-#	if event.is_action_pressed("Debug 4"):
-#		testanimation.play("shrink_hp2")
+	if event.is_action_pressed("Debug 4"):
+		debug_menu.visible = !debug_menu.visible
 #	if event.is_action_pressed("Debug 5"):
 #		testanimation.play("shrink_hp1")
 #	if event.is_action_pressed("Debug 6"):

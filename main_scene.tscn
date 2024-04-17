@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=52 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/BodyPart.gd" id="10_2td36"]
 [ext_resource type="Script" path="res://Player/ScoreDunk.gd" id="11_318ny"]
 [ext_resource type="Script" path="res://UI/UI.gd" id="12_gi6vt"]
+[ext_resource type="Script" path="res://UI/Debug_Menu.gd" id="14_ccfte"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_war41"]
 size = Vector3(1, 0.755, 0.855)
@@ -301,10 +302,10 @@ radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_nknbq"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_6m4r8"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0dfwr"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_py368"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [node name="Main Scene" type="Node3D"]
@@ -368,47 +369,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ourdh")
 [node name="Collision_Head-Cursor" type="CollisionShape3D" parent="Cursor_Zone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0703812, 9.53674e-07, 0.164234)
 shape = SubResource("ConvexPolygonShape3D_nthf1")
-
-[node name="Debug" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_1xhrq")
-
-[node name="MarginContainer" type="MarginContainer" parent="Debug"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -72.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_bottom = 20
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Debug/MarginContainer"]
-layout_mode = 2
-
-[node name="Label_showFPS" type="Label" parent="Debug/MarginContainer/HBoxContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 50
-text = "FPS: "
-
-[node name="Label_Hide-Hp" type="Label" parent="Debug"]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 30
-text = "Hide Hit Points"
 
 [node name="UI_FX" type="Control" parent="." node_paths=PackedStringArray("limb_damage_flash", "head_damage_flash", "empathy_damage_flash", "timer_fx_flash")]
 layout_mode = 3
@@ -670,13 +630,13 @@ transform = Transform3D(1, 0.000486921, 0.000306959, -0.000486927, 1, 2.02912e-0
 parameters/TimeScale/scale = 1.0
 
 [node name="HP_Head" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_nknbq")
+texture = SubResource("ViewportTexture_6m4r8")
 
 [node name="HP_Empathy" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_0dfwr")
+texture = SubResource("ViewportTexture_py368")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.000789703, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
@@ -693,7 +653,7 @@ bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.598046, 0.798408, 0.0764574, -0.78107, -0.558065, -0.281876, -0.182296, -0.228184, 0.956902, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.519195, 0.758061, 0.395905, -0.846292, -0.388669, -0.365632, -0.123236, -0.524634, 0.842931, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)
@@ -717,10 +677,109 @@ disabled = true
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.085939, 1.48907, 0.180266)
 shape = SubResource("CapsuleShape3D_102ua")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="Debug" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource("1_1xhrq")
+
+[node name="Information" type="Control" parent="Debug"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Debug/Information"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Debug/Information/MarginContainer"]
+layout_mode = 2
+
+[node name="Label_showFPS" type="Label" parent="Debug/Information/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 50
+text = "FPS: "
+
+[node name="Label_Hide-Hp" type="Label" parent="Debug/Information"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 30
+text = "Hide Hit Points"
+
+[node name="Menu" type="Control" parent="Debug"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_ccfte")
+
+[node name="Panel_screenCover" type="Panel" parent="Debug/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Debug/Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.0
+offset_top = -211.0
+offset_right = 147.0
+offset_bottom = 211.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel_menuBackground" type="Panel" parent="Debug/Menu/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Debug/Menu/MarginContainer"]
+layout_mode = 2
+
+[node name="Button_levelDebug_01" type="Button" parent="Debug/Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Debug Level"
+
+[node name="Button_level_00" type="Button" parent="Debug/Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Level 0"
+
+[node name="Button_levelBlank_grass" type="Button" parent="Debug/Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Blank (Grass)"
+
+[node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("12_gi6vt")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI"]
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
 offset_right = 498.0
 offset_bottom = 195.0
 size_flags_horizontal = 4
@@ -728,12 +787,12 @@ size_flags_vertical = 0
 theme_override_constants/margin_left = 55
 theme_override_constants/margin_top = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 35
 alignment = 1
 
-[node name="Score_Text" type="Label" parent="UI/MarginContainer/VBoxContainer"]
+[node name="Score_Text" type="Label" parent="HUD/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
@@ -742,7 +801,7 @@ theme_override_font_sizes/font_size = 40
 text = "Abductions"
 uppercase = true
 
-[node name="Score_Number" type="Label" parent="UI/MarginContainer/VBoxContainer"]
+[node name="Score_Number" type="Label" parent="HUD/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -752,6 +811,8 @@ theme_override_font_sizes/font_size = 80
 text = "0"
 
 [connection signal="timeout" from="UI_FX/Timer_FX_Flash" to="UI_FX" method="_on_timer_fx_flash_timeout"]
+[connection signal="pressed" from="Debug/Menu/MarginContainer/VBoxContainer/Button_levelDebug_01" to="Debug/Menu" method="_on_button_level_debug_01_pressed"]
+[connection signal="pressed" from="Debug/Menu/MarginContainer/VBoxContainer/Button_level_00" to="Debug/Menu" method="_on_button_level_00_pressed"]
 
 [editable path="Player/Alien"]
 [editable path="Player/Alien/HP_Head/SubViewport/HP_Bar"]
