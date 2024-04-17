@@ -20,7 +20,7 @@ const TERRAIN_VELOCITY: float = 5.0
 var terrain_blocks_path : StringName
 
 func _ready() -> void:
-	terrain_blocks_path = "res://Terrain/terrain_level_00/"
+	terrain_blocks_path = debug_menu.levels[1]
 	_load_terrain_scenes(terrain_blocks_path)
 	_init_blocks(num_terrain_blocks)
 	#_first_blocks()
@@ -34,7 +34,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	_progress_terrain(delta)
 #	print(terrain_velocity)
-	pass
+
 
 func _init_blocks(number_of_blocks: int) -> void:
 	for TerrainBlock in TerrainBlocks:
