@@ -2,6 +2,8 @@ extends CanvasLayer
 
 var show_fps = false
 @onready var debug_menu = %Menu
+@onready var terrain_controller = %TerrainController_inScene
+@onready var player = %Player
 
 #@onready var testanimation = $"../Player/Alien/Armature/Skeleton3D/Alien_ArmL/Animation_Limb-Shrink"
 	
@@ -23,7 +25,9 @@ func _input(event):
 		show_fps = !show_fps
 	if event.is_action_pressed("Debug 4"):
 		debug_menu.visible = !debug_menu.visible
-#	if event.is_action_pressed("Debug 5"):
-#		testanimation.play("shrink_hp1")
-#	if event.is_action_pressed("Debug 6"):
-#		testanimation.play("shrink_hp0")
+	if event.is_action_pressed("Debug 5"):
+		terrain_controller.terrain_velocity = 0
+		player.terrain_slowdown = true
+	if event.is_action_pressed("Debug 6"):
+		terrain_controller.terrain_velocity = terrain_controller.TERRAIN_VELOCITY
+		player.terrain_slowdown = false

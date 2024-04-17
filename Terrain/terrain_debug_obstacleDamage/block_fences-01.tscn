@@ -1,10 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://x4i3vegwtaco"]
+[gd_scene load_steps=16 format=3 uid="uid://cjl1y84apspcs"]
 
-[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="1_00hyt"]
-[ext_resource type="PackedScene" uid="uid://c5uqm2b0rpu35" path="res://Objects/Fences/fence_01_post-02_00.tscn" id="2_g72gr"]
-[ext_resource type="PackedScene" uid="uid://c16qfwndjrojo" path="res://Objects/Fences/fence_01_bars-2_00.tscn" id="3_8gvgx"]
-[ext_resource type="PackedScene" uid="uid://b1jpfiy4cphy7" path="res://Objects/Fences/fence_01_row-05_00.tscn" id="4_b8q84"]
-[ext_resource type="PackedScene" uid="uid://1vgo26dljhil" path="res://Objects/Fences/fence_02_row_05_00.tscn" id="5_wv6lx"]
+[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="1_yt4gf"]
+[ext_resource type="PackedScene" uid="uid://c5uqm2b0rpu35" path="res://Objects/Fences/fence_01_post-02_00.tscn" id="2_nalin"]
+[ext_resource type="PackedScene" uid="uid://c16qfwndjrojo" path="res://Objects/Fences/fence_01_bars-2_00.tscn" id="3_8x0uq"]
+[ext_resource type="PackedScene" uid="uid://b1jpfiy4cphy7" path="res://Objects/Fences/fence_01_row-05_00.tscn" id="4_vgtnf"]
+[ext_resource type="PackedScene" uid="uid://1vgo26dljhil" path="res://Objects/Fences/fence_02_row_05_00.tscn" id="5_lvjt0"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
 size = Vector2(100, 20)
@@ -18,22 +18,22 @@ data = PackedVector3Array(50, 0, 10, -50, 0, 10, 50, 0, -10, -50, 0, 10, -50, 0,
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qwi2u"]
 points = PackedVector3Array(-5.99455, -71.0009, -8.31296, -6.39667, -70.7782, -8.31296, -5.80767, 7.41876, -8.32274, -3.38274, 7.41876, -8.30318, -3.34691, 7.46485, 11.6602, -5.99455, -71.0009, 91.582, -6.39667, -2.12064, -8.31296, -6.39667, -70.7782, 91.582, -6.29546, 7.45717, 11.6406, -3.34691, 7.46485, 91.6015, -6.39667, -2.12064, 91.582, -6.29546, 7.45717, 91.5722)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_vf585"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_f0lrd"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_yx6pi"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_8mwm7"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_lbsp5"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_kcwsw"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_b0sm3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_08ji1"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_3c8bg"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_1mh5r"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_qk1pb"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_1wpbg"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Terrain_0" type="MeshInstance3D"]
@@ -52,199 +52,199 @@ shape = SubResource("ConcavePolygonShape3D_gjw30")
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 41.6496, -7.7, 13.3291)
 shape = SubResource("ConvexPolygonShape3D_qwi2u")
 
-[node name="cliff_front_01" parent="." instance=ExtResource("1_00hyt")]
+[node name="cliff_front_01" parent="." instance=ExtResource("1_yt4gf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658, -7.495, 21.33)
 
-[node name="Fence_01_post-02_00" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_00" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69328, 0, 2.39051)
 
-[node name="Fence_01_post-02_01" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_01" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29486, 0, 2.39051)
 
-[node name="Fence_01_post-02_02" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_02" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.896441, 0, 2.39051)
 
-[node name="Fence_01_post-02_03" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_03" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0917, 0, 2.39051)
 
-[node name="Fence_01_bars-02_00" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_00" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09565, 0, 2.39051)
 
-[node name="Fence_01_bars-02_01" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_01" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49407, 0, 2.39051)
 
-[node name="Fence_01_bars-02_02" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_02" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89249, 0, 2.39051)
 
-[node name="Fence_01_post-02_04" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_04" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49011, 0, 2.39051)
 
-[node name="Fence_01_post-02_05" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_05" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88853, 0, 2.39051)
 
-[node name="Fence_01_post-02_06" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_06" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28695, 0, 2.39051)
 
-[node name="Fence_01_bars-02_03" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_03" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2909, 0, 2.39051)
 
-[node name="Fence_01_bars-02_04" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_04" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68932, 0, 2.39051)
 
-[node name="Fence_01_bars-02_05" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_05" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.08774, 0, 2.39051)
 
-[node name="Fence_01_bars-02_06" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_06" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.08774, 0, 2.39051)
 
-[node name="Fence_01_bars-02_07" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_07" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.08774, 0, 1.99209)
 
-[node name="Fence_01_bars-02_08" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_08" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.08774, 0, 1.59367)
 
-[node name="Fence_01_bars-02_09" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_09" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.08774, 0, 1.19526)
 
-[node name="Fence_01_post-02_07" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_07" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28695, 0, 1.99209)
 
-[node name="Fence_01_post-02_08" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_08" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28695, 0, 1.59367)
 
-[node name="Fence_01_post-02_09" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_09" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28695, 0, 1.19525)
 
-[node name="Fence_01_post-02_10" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_10" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28695, 0, 0.796836)
 
-[node name="Fence_01_bars-02_18" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_18" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.697232, 0, 2.39051)
 
-[node name="Fence_01_bars-02_19" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_19" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.697232, 0, 1.99209)
 
-[node name="Fence_01_bars-02_20" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_20" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.697232, 0, 1.59367)
 
-[node name="Fence_01_bars-02_21" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_21" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.697232, 0, 1.19526)
 
-[node name="Fence_01_post-02_18" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_18" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.896441, 0, 1.99209)
 
-[node name="Fence_01_post-02_19" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_19" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.896441, 0, 1.59367)
 
-[node name="Fence_01_post-02_20" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_20" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.896441, 0, 1.19525)
 
-[node name="Fence_01_bars-02_10" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_10" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.08774, 0, 0.796836)
 
-[node name="Fence_01_post-02_11" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_11" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88853, 0, 0.796836)
 
-[node name="Fence_01_post-02_12" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_12" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49011, 0, 0.796836)
 
-[node name="Fence_01_bars-02_11" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_11" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2909, 0, 0.796836)
 
-[node name="Fence_01_post-02_13" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_13" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0917, 0, 0.796836)
 
-[node name="Fence_01_bars-02_12" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_12" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89249, 0, 0.796836)
 
-[node name="Fence_01_post-02_14" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_14" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69328, 0, 0.796836)
 
-[node name="Fence_01_bars-02_13" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_13" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49407, 0, 0.796836)
 
-[node name="Fence_01_post-02_15" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_15" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29486, 0, 0.796836)
 
-[node name="Fence_01_bars-02_14" parent="." instance=ExtResource("3_8gvgx")]
+[node name="Fence_01_bars-02_14" parent="." instance=ExtResource("3_8x0uq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09565, 0, 0.796836)
 
-[node name="Fence_01_post-02_16" parent="." instance=ExtResource("2_g72gr")]
+[node name="Fence_01_post-02_16" parent="." instance=ExtResource("2_nalin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.896441, 0, 0.796836)
 
-[node name="Fence_01_row-05_00" parent="." instance=ExtResource("4_b8q84")]
+[node name="Fence_01_row-05_00" parent="." instance=ExtResource("4_vgtnf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1.6)
 
-[node name="Fence_01_row-05_01" parent="." instance=ExtResource("4_b8q84")]
+[node name="Fence_01_row-05_01" parent="." instance=ExtResource("4_vgtnf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -0.4)
 
-[node name="Fence_01_row-05_02" parent="." instance=ExtResource("4_b8q84")]
+[node name="Fence_01_row-05_02" parent="." instance=ExtResource("4_vgtnf")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, 0.6)
 
-[node name="Fence_01_row-05_03" parent="." instance=ExtResource("4_b8q84")]
+[node name="Fence_01_row-05_03" parent="." instance=ExtResource("4_vgtnf")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, 0.6)
 
-[node name="Fence_01_row-05_04" parent="." instance=ExtResource("4_b8q84")]
+[node name="Fence_01_row-05_04" parent="." instance=ExtResource("4_vgtnf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2, 0, 1.6)
 
-[node name="Fence_01_row-05_08" parent="." instance=ExtResource("4_b8q84")]
+[node name="Fence_01_row-05_08" parent="." instance=ExtResource("4_vgtnf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2, 0, 1.6)
 
-[node name="Fence_01_row-05_05" parent="." instance=ExtResource("4_b8q84")]
+[node name="Fence_01_row-05_05" parent="." instance=ExtResource("4_vgtnf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2, 0, -0.4)
 
-[node name="Fence_01_row-05_09" parent="." instance=ExtResource("4_b8q84")]
+[node name="Fence_01_row-05_09" parent="." instance=ExtResource("4_vgtnf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2, 0, -0.4)
 
-[node name="Fence_01_row-05_06" parent="." instance=ExtResource("4_b8q84")]
+[node name="Fence_01_row-05_06" parent="." instance=ExtResource("4_vgtnf")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.2, 0, 0.6)
 
-[node name="Fence_01_row-05_07" parent="." instance=ExtResource("4_b8q84")]
+[node name="Fence_01_row-05_07" parent="." instance=ExtResource("4_vgtnf")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.2, 0, 0.6)
 
-[node name="Fence_01_row-05_10" parent="." instance=ExtResource("4_b8q84")]
+[node name="Fence_01_row-05_10" parent="." instance=ExtResource("4_vgtnf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1, 0, -3.8)
 
-[node name="Fence_01_row-05_11" parent="." instance=ExtResource("4_b8q84")]
+[node name="Fence_01_row-05_11" parent="." instance=ExtResource("4_vgtnf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.1, 0, -3.8)
 
-[node name="Fence_01_row-05_12" parent="." instance=ExtResource("4_b8q84")]
+[node name="Fence_01_row-05_12" parent="." instance=ExtResource("4_vgtnf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1, 0, -7.8)
 
-[node name="Fence_01_row-05_13" parent="." instance=ExtResource("4_b8q84")]
+[node name="Fence_01_row-05_13" parent="." instance=ExtResource("4_vgtnf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.1, 0, -7.8)
 
-[node name="Fence_01_row-05_14" parent="." instance=ExtResource("4_b8q84")]
+[node name="Fence_01_row-05_14" parent="." instance=ExtResource("4_vgtnf")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.1, 0, -4.8)
 
-[node name="Fence_01_row-05_15" parent="." instance=ExtResource("4_b8q84")]
+[node name="Fence_01_row-05_15" parent="." instance=ExtResource("4_vgtnf")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.1, 0, -4.8)
 
-[node name="Fence_01_row-05_16" parent="." instance=ExtResource("4_b8q84")]
+[node name="Fence_01_row-05_16" parent="." instance=ExtResource("4_vgtnf")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.1, 0, -6.8)
 
-[node name="Fence_01_row-05_17" parent="." instance=ExtResource("4_b8q84")]
+[node name="Fence_01_row-05_17" parent="." instance=ExtResource("4_vgtnf")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.1, 0, -6.8)
 
-[node name="Fence_02_row-05_00" parent="." instance=ExtResource("5_wv6lx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, -2.3)
+[node name="Fence_02_row-05_00" parent="." instance=ExtResource("5_lvjt0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75213, 0, 2.09604)
 
-[node name="Fence_02_row-05_01" parent="." instance=ExtResource("5_wv6lx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0, -2.3)
+[node name="Fence_02_row-05_01" parent="." instance=ExtResource("5_lvjt0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75213, 0, 2.09604)
 
-[node name="Fence_02_row-05_04" parent="." instance=ExtResource("5_wv6lx")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.2, 0, -4.3)
+[node name="Fence_02_row-05_04" parent="." instance=ExtResource("5_lvjt0")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.75213, 0, 0.096035)
 
-[node name="Fence_02_row-05_05" parent="." instance=ExtResource("5_wv6lx")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.2, 0, -4.3)
+[node name="Fence_02_row-05_05" parent="." instance=ExtResource("5_lvjt0")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.75213, 0, 0.096035)
 
-[node name="Fence_02_row-05_02" parent="." instance=ExtResource("5_wv6lx")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 3.2, 0, -3.3)
+[node name="Fence_02_row-05_02" parent="." instance=ExtResource("5_lvjt0")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 8.75213, 0, 1.09604)
 
-[node name="Fence_02_row-05_03" parent="." instance=ExtResource("5_wv6lx")]
-transform = Transform3D(5.76205e-08, 0, -1, 0, 1, 0, 1, 0, 5.76205e-08, -0.8, 0, -3.3)
+[node name="Fence_02_row-05_03" parent="." instance=ExtResource("5_lvjt0")]
+transform = Transform3D(5.76205e-08, 0, -1, 0, 1, 0, 1, 0, 5.76205e-08, 4.75213, 0, 1.09604)
 
-[node name="Fence_02_row-05_06" parent="." instance=ExtResource("5_wv6lx")]
+[node name="Fence_02_row-05_06" parent="." instance=ExtResource("5_lvjt0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8, 0, -2.3)
 
 [node name="fence_02_00" parent="Fence_02_row-05_06" index="0"]
@@ -263,9 +263,9 @@ default_color = Color(0.639216, 0.411765, 0.262745, 1)
 default_color = Color(0.639216, 0.411765, 0.262745, 1)
 
 [node name="Arrow_Hover" parent="Fence_02_row-05_06/Obstacle" index="1"]
-texture = SubResource("ViewportTexture_vf585")
+texture = SubResource("ViewportTexture_f0lrd")
 
-[node name="Fence_02_row-05_07" parent="." instance=ExtResource("5_wv6lx")]
+[node name="Fence_02_row-05_07" parent="." instance=ExtResource("5_lvjt0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8, 0, -2.3)
 
 [node name="fence_02_00" parent="Fence_02_row-05_07" index="0"]
@@ -284,9 +284,9 @@ default_color = Color(0.639216, 0.411765, 0.262745, 1)
 default_color = Color(0.639216, 0.411765, 0.262745, 1)
 
 [node name="Arrow_Hover" parent="Fence_02_row-05_07/Obstacle" index="1"]
-texture = SubResource("ViewportTexture_yx6pi")
+texture = SubResource("ViewportTexture_8mwm7")
 
-[node name="Fence_02_row-05_08" parent="." instance=ExtResource("5_wv6lx")]
+[node name="Fence_02_row-05_08" parent="." instance=ExtResource("5_lvjt0")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.8, 0, -4.3)
 
 [node name="fence_02_00" parent="Fence_02_row-05_08" index="0"]
@@ -305,9 +305,9 @@ default_color = Color(0.639216, 0.411765, 0.262745, 1)
 default_color = Color(0.639216, 0.411765, 0.262745, 1)
 
 [node name="Arrow_Hover" parent="Fence_02_row-05_08/Obstacle" index="1"]
-texture = SubResource("ViewportTexture_lbsp5")
+texture = SubResource("ViewportTexture_kcwsw")
 
-[node name="Fence_02_row-05_09" parent="." instance=ExtResource("5_wv6lx")]
+[node name="Fence_02_row-05_09" parent="." instance=ExtResource("5_lvjt0")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.8, 0, -4.3)
 
 [node name="fence_02_00" parent="Fence_02_row-05_09" index="0"]
@@ -326,9 +326,9 @@ default_color = Color(0.639216, 0.411765, 0.262745, 1)
 default_color = Color(0.639216, 0.411765, 0.262745, 1)
 
 [node name="Arrow_Hover" parent="Fence_02_row-05_09/Obstacle" index="1"]
-texture = SubResource("ViewportTexture_b0sm3")
+texture = SubResource("ViewportTexture_08ji1")
 
-[node name="Fence_02_row-05_10" parent="." instance=ExtResource("5_wv6lx")]
+[node name="Fence_02_row-05_10" parent="." instance=ExtResource("5_lvjt0")]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 8.8, 0, -3.3)
 
 [node name="fence_02_00" parent="Fence_02_row-05_10" index="0"]
@@ -347,9 +347,9 @@ default_color = Color(0.639216, 0.411765, 0.262745, 1)
 default_color = Color(0.639216, 0.411765, 0.262745, 1)
 
 [node name="Arrow_Hover" parent="Fence_02_row-05_10/Obstacle" index="1"]
-texture = SubResource("ViewportTexture_3c8bg")
+texture = SubResource("ViewportTexture_1mh5r")
 
-[node name="Fence_02_row-05_11" parent="." instance=ExtResource("5_wv6lx")]
+[node name="Fence_02_row-05_11" parent="." instance=ExtResource("5_lvjt0")]
 transform = Transform3D(5.76205e-08, 0, -1, 0, 1, 0, 1, 0, 5.76205e-08, 4.8, 0, -3.3)
 
 [node name="fence_02_00" parent="Fence_02_row-05_11" index="0"]
@@ -368,7 +368,7 @@ default_color = Color(0.639216, 0.411765, 0.262745, 1)
 default_color = Color(0.639216, 0.411765, 0.262745, 1)
 
 [node name="Arrow_Hover" parent="Fence_02_row-05_11/Obstacle" index="1"]
-texture = SubResource("ViewportTexture_qk1pb")
+texture = SubResource("ViewportTexture_1wpbg")
 
 [editable path="Fence_02_row-05_06"]
 [editable path="Fence_02_row-05_06/Obstacle/HitPoints"]

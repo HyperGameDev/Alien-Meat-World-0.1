@@ -20,7 +20,7 @@ const TERRAIN_VELOCITY: float = 5.0
 var terrain_blocks_path : StringName
 
 func _ready() -> void:
-	terrain_blocks_path = debug_menu.levels[1]
+	terrain_blocks_path = Globals.current_level
 	_load_terrain_scenes(terrain_blocks_path)
 	_init_blocks(num_terrain_blocks)
 	#_first_blocks()
@@ -89,4 +89,4 @@ func _load_terrain_scenes(target_path: String) -> void:
 	var dir = DirAccess.open(target_path)
 	for scene_path in dir.get_files():
 #		print("Loading terrian block scene: " + target_path + "/" + scene_path)
-		TerrainBlocks.append(load(target_path + "/" + scene_path))
+		TerrainBlocks.append(load(target_path + "/" + scene_path.trim_suffix(".remap")))

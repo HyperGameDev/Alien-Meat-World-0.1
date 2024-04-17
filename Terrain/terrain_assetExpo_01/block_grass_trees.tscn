@@ -41,7 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9738, 0, -0.173407)
 transform = Transform3D(-0.54578, 0, 0.837928, 0, 1, 0, -0.837928, 0, -0.54578, 23.3897, 0, -0.173407)
 
 [node name="Tree_01_02" parent="." instance=ExtResource("2_1qcmc")]
-transform = Transform3D(-0.974335, 0, -0.225104, 0, 1, 0, 0.225104, 0, -0.974335, -0.900054, 0, 7.24516)
+transform = Transform3D(-0.974335, 0, -0.225104, 0, 1, 0, 0.225104, 0, -0.974335, -2.72477, 0, 7.24516)
 
 [node name="Tree_01_03" parent="." instance=ExtResource("2_1qcmc")]
 transform = Transform3D(-0.974335, 0, -0.225104, 0, 1, 0, 0.225104, 0, -0.974335, 6.12748, 0, 4.26886)
