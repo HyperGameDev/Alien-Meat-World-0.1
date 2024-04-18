@@ -5,7 +5,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	label_currentLevel.text = str("Current Level: ",Globals.current_level.trim_prefix("res://Terrain/").trim_suffix("/"))
+	label_currentLevel.text = str("Current Level: ",Globals.current_level.trim_prefix("res://Terrain/terrain_").trim_suffix("/"))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -71,9 +71,13 @@ func _progress_terrain(delta: float) -> void:
 		
 		# Pop_front removes the first block from the array only, and then returns the name of that removed block.
 		var first_terrain = get_children().pop_front()
+
 		first_terrain.reparent(terrain_collector)
 		first_terrain.position.z = 0.0
 		
+		var block_instance = first_terrain.get_node_or_null("Block_Instance")
+		if is_instance_valid(block_instance):
+			print(block_instance.hello)
 		
 		var block = terrain_collector.get_children().pick_random()
 		block.reparent(self)

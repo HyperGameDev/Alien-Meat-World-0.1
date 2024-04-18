@@ -14,4 +14,3 @@ var current_level : StringName
 
 func _ready():
 	current_level = levels[1]
-	print(current_level)
