@@ -2,6 +2,7 @@ extends Node3D
 
 class_name HitPoints
 
+
 var is_dead = false
 var health_percent_lost: float = 0.0
 
@@ -24,21 +25,19 @@ func _ready():
 			print("ERROR: Add a degrade animation for the obstacle!")
 			breakpoint
 			
-	$"..".update_hitpoints.connect(health_effects)
+	$"..".update_hitpoints.connect(on_update_hitpoints)
 	if $"..".has_signal("is_destroyed"):
 		$"..".is_destroyed.connect(on_is_destroyed)
 	
 	# Getting Attacked
 	Messenger.grab_target.connect(am_i_grabbed)
-	Messenger.something_ungrabbed.connect(got_hit)
+	Messenger.something_hit.connect(on_something_hit)
 	
 	
-func health_effects():
+func on_update_hitpoints():
 	# Update Health Debug
 	dmg_label.text = str($"..".health_current)
 	
-	if $"..".health_current <= 0: # Is Dead
-		dmg_label.visible = false
 	
 func am_i_grabbed(grab_target):
 	#	target = grab_target
@@ -49,7 +48,7 @@ func am_i_grabbed(grab_target):
 #		print("Copter Hit (", $"..".name, ")")
 		Messenger.something_grabbed.emit($"..")
 
-func got_hit(what_got_hit):	
+func on_something_hit(what_got_hit):
 	#	print($"..".name, " MIGHT be hit...")
 	if what_got_hit == $".." and $"..".health_current > 0:
 #		print($"..".name, " just got hit!")
@@ -67,6 +66,10 @@ func got_hit(what_got_hit):
 		$Animation_Degrade.seek(health_percent_lost, true)
 		$Animation_Degrade.pause()
 		
+		if get_owner().has_signal("update_reset_status"):
+			get_owner().update_reset_status.emit(self)
+			
+		
 
 func on_is_destroyed():
 	$Particles_Explode.set_emitting(true)
@@ -76,6 +79,13 @@ func on_is_destroyed():
 # Called by Sub Obstacle's "Animation_Degrade"
 func sub_obstacle_destroyed():
 	get_owner().is_destroyed.emit()
+	
+	
+func reset_damage():
+	$Animation_Degrade.stop()
+	$"..".health_current = $"..".health_max
+	$"..".update_hitpoints.emit()
+	$"..".restore_collision()
 	
 func _input(event):
 	if event.is_action_pressed("Debug 2"):

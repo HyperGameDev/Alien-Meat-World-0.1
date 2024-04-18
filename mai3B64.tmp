@@ -302,10 +302,10 @@ radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_rju71"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_tud31"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5o37n"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_uijs5"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhodu"]
@@ -641,13 +641,13 @@ transform = Transform3D(1, 0.000486921, 0.000306959, -0.000486927, 1, 2.02912e-0
 parameters/TimeScale/scale = 1.0
 
 [node name="HP_Head" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_rju71")
+texture = SubResource("ViewportTexture_tud31")
 
 [node name="HP_Empathy" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_5o37n")
+texture = SubResource("ViewportTexture_uijs5")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0409123, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.00273783, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
@@ -664,7 +664,7 @@ bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.701565, 0.575823, -0.420947, -0.628251, -0.778425, -0.0177591, -0.337739, 0.25188, 0.907441, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.0173069, 0.188271, -0.982454, -0.988667, -0.152832, -0.0118713, -0.152312, 0.970648, 0.188691, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)

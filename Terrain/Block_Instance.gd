@@ -1,13 +1,17 @@
 extends Node3D
 
 class_name Block_Instance
-var hello : String = "Block Instance Variable Fetched!"
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+var objects_to_reset := []
+var objects_in_block := []
+
+var hello : String = "Block Object can call the Block Instance!"
+
+var recycling = false
+
+
 func _process(delta):
+	#print(blocks_to_reset)
 	pass
+			

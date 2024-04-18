@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://1vgo26dljhil"]
+[gd_scene load_steps=11 format=3 uid="uid://1vgo26dljhil"]
 
+[ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="1_mjd3f"]
 [ext_resource type="PackedScene" uid="uid://bbhmorae57tqj" path="res://Objects/Fences/fence_02_00.tscn" id="1_w2kly"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_b7bbn"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_2j3to"]
@@ -137,13 +138,14 @@ _data = {
 "degrade": SubResource("Animation_vbufw")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_vrnhg"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_rhf3n"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4vouc"]
 size = Vector3(2.1, 0.5, 0.1)
 
 [node name="Fence_02_row-05_00" type="Node3D"]
+script = ExtResource("1_mjd3f")
 
 [node name="fence_02_00" parent="." instance=ExtResource("1_w2kly")]
 
@@ -176,7 +178,7 @@ libraries = {
 [node name="Arrow_Hover" parent="Obstacle" instance=ExtResource("4_ny1g8")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 0.494403, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_vrnhg")
+texture = SubResource("ViewportTexture_rhf3n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.253522, 0)

@@ -22,17 +22,22 @@ func _ready():
 		print("ERROR: Somewhere, a hover arrow child is missing!")
 		breakpoint
 		
+	# Check if it is a sub-obstacle
 	if $"../..".has_signal("update_hitpoints"):
 		$"../..".update_hitpoints.connect(on_update_top_level_hitpoints)
 		if !has_node("CollisionShape3D"):
 			print("ERROR: Sub-Obstacle is missing a properly named 'CollisionShape3D'")
 			breakpoint
+			
+		# If I'm a sub-obstacle, make sure I don't collide yet
 		$CollisionShape3D.disabled = true
+		
 	if $"../..".has_signal("is_destroyed"):
 		$"../..".is_destroyed.connect(on_top_level_is_destroyed)
 		
 	update_hitpoints.emit()
-	update_hitpoints.connect(health_effects)
+	update_hitpoints.connect(on_update_hitpoints)
+
 	area_entered.connect(check_area)
 	area_exited.connect(uncheck_area)
 	
@@ -55,7 +60,7 @@ func on_top_level_is_destroyed():
 	health_current = 0
 	update_hitpoints.emit()
 
-func health_effects():
+func on_update_hitpoints():
 	if health_current <= 0: # Is Dead
 		$CollisionShape3D.disabled = true
 	
@@ -76,3 +81,6 @@ func _on_mouse_entered():
 	
 func _on_mouse_exited():
 	hover_arrow.visible = false
+
+func restore_collision():
+	$CollisionShape3D.disabled = false
