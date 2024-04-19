@@ -1,0 +1,129 @@
+[gd_scene load_steps=13 format=3 uid="uid://fp165pcolyhq"]
+
+[ext_resource type="PackedScene" uid="uid://b8su0bkqp175n" path="res://Objects/Buildings/City/building_01-02_00.blend" id="1_tbtku"]
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_7au2w"]
+[ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_nxona"]
+[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_r1ye4"]
+[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="4_2fu5x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jvan5"]
+size = Vector3(1.38574, 4.34631, 1.40173)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_t2cf2"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wdi3g"]
+size = Vector3(1.38574, 2.96271, 1.40173)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ddx0m"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7ku14"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xhn4a"]
+size = Vector3(0.679443, 3.02518, 1.40173)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_h7yk1"]
+viewport_path = NodePath("SubViewport")
+
+[node name="building_01-02_00" instance=ExtResource("1_tbtku")]
+script = ExtResource("2_nxona")
+
+[node name="Obstacle_10" type="Area3D" parent="." index="0"]
+script = ExtResource("2_7au2w")
+health_max = 5
+slowdown_amount = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle_10" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15406, 2.18353, -0.706629)
+shape = SubResource("BoxShape3D_jvan5")
+
+[node name="HitPoints" parent="Obstacle_10" index="1" instance=ExtResource("3_r1ye4")]
+
+[node name="Dmg_Label" parent="Obstacle_10/HitPoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16249, 4.19955, 0.886369)
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_10/HitPoints" index="1"]
+
+[node name="Arrow_Hover" parent="Obstacle_10" index="2" instance=ExtResource("4_2fu5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18426, 4.65794, -0.879155)
+visible = false
+texture = SubResource("ViewportTexture_t2cf2")
+
+[node name="Building_Part_10" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022357, 4.76837e-07, 0.00126934)
+
+[node name="Obstacle_01" type="Area3D" parent="." index="2"]
+script = ExtResource("2_7au2w")
+health_max = 5
+slowdown_amount = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle_01" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18118, 1.49173, 0.692548)
+shape = SubResource("BoxShape3D_wdi3g")
+
+[node name="HitPoints" parent="Obstacle_01" index="1" instance=ExtResource("3_r1ye4")]
+
+[node name="Dmg_Label" parent="Obstacle_01/HitPoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16249, 2.92987, -0.778118)
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_01/HitPoints" index="1"]
+
+[node name="Arrow_Hover" parent="Obstacle_01" index="2" instance=ExtResource("4_2fu5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18426, 3.19507, 0.827166)
+visible = false
+texture = SubResource("ViewportTexture_ddx0m")
+
+[node name="Obstacle_09" type="Area3D" parent="." index="4"]
+script = ExtResource("2_7au2w")
+health_max = 5
+slowdown_amount = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle_09" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71377, 1.49173, -0.731914)
+shape = SubResource("BoxShape3D_wdi3g")
+
+[node name="HitPoints" parent="Obstacle_09" index="1" instance=ExtResource("3_r1ye4")]
+
+[node name="Dmg_Label" parent="Obstacle_09/HitPoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.719693, 2.92987, 0.976981)
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_09/HitPoints" index="1"]
+
+[node name="Arrow_Hover" parent="Obstacle_09" index="2" instance=ExtResource("4_2fu5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.795299, 3.19507, -0.956226)
+visible = false
+texture = SubResource("ViewportTexture_7ku14")
+
+[node name="Building_Part_09" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00187683, -0.0131655, 0.0068841)
+
+[node name="Building_Part_03" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0197957, -0.00985527, -0.0198932)
+
+[node name="Obstacle_07" type="Area3D" parent="." index="8"]
+script = ExtResource("2_7au2w")
+health_max = 5
+slowdown_amount = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle_07" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76781, 1.52296, -0.731914)
+shape = SubResource("BoxShape3D_xhn4a")
+
+[node name="HitPoints" parent="Obstacle_07" index="1" instance=ExtResource("3_r1ye4")]
+
+[node name="Dmg_Label" parent="Obstacle_07/HitPoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78684, 2.92987, 0.976981)
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_07/HitPoints" index="1"]
+
+[node name="Arrow_Hover" parent="Obstacle_07" index="2" instance=ExtResource("4_2fu5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77893, 3.18981, -0.960784)
+visible = false
+texture = SubResource("ViewportTexture_h7yk1")
+
+[editable path="Obstacle_10/HitPoints"]
+[editable path="Obstacle_01/HitPoints"]
+[editable path="Obstacle_09/HitPoints"]
+[editable path="Obstacle_07/HitPoints"]

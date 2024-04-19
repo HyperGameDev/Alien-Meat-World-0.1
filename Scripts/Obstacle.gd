@@ -30,7 +30,9 @@ func _ready():
 			breakpoint
 			
 		# If I'm a sub-obstacle, make sure I don't collide yet
-		$CollisionShape3D.disabled = true
+		for collision in get_children():
+			if collision is CollisionShape3D:
+				collision.disabled = true
 		
 	if $"../..".has_signal("is_destroyed"):
 		$"../..".is_destroyed.connect(on_top_level_is_destroyed)
@@ -54,7 +56,9 @@ func _ready():
 	
 func on_update_top_level_hitpoints():
 	if $"../..".health_current <= 0:
-		$CollisionShape3D.disabled = false
+		for collision in get_children():
+			if collision is CollisionShape3D:
+				collision.disabled = false
 
 func on_top_level_is_destroyed():
 	health_current = 0
@@ -62,7 +66,9 @@ func on_top_level_is_destroyed():
 
 func on_update_hitpoints():
 	if health_current <= 0: # Is Dead
-		$CollisionShape3D.disabled = true
+		for collision in get_children():
+			if collision is CollisionShape3D:
+				collision.disabled = true
 	
 	
 func check_area(collided_bodypart):
@@ -83,4 +89,6 @@ func _on_mouse_exited():
 	hover_arrow.visible = false
 
 func restore_collision():
-	$CollisionShape3D.disabled = false
+	for collision in get_children():
+		if collision is CollisionShape3D:
+			collision.disabled = false

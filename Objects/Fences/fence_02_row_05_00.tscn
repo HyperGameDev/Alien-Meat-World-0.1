@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://1vgo26dljhil"]
+[gd_scene load_steps=15 format=3 uid="uid://1vgo26dljhil"]
 
 [ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="1_mjd3f"]
 [ext_resource type="PackedScene" uid="uid://bbhmorae57tqj" path="res://Objects/Fences/fence_02_00.tscn" id="1_w2kly"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_b7bbn"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_2j3to"]
 [ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="4_ny1g8"]
+[ext_resource type="Script" path="res://Objects/Buildings/Houses/Particles_destruction.gd" id="5_pbkve"]
 
 [sub_resource type="Animation" id="Animation_5h3ff"]
 length = 0.001
@@ -67,6 +68,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Particles_Fence:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_vbufw"]
@@ -131,6 +144,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Particles_Fence:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_txg71"]
 _data = {
@@ -138,7 +163,35 @@ _data = {
 "degrade": SubResource("Animation_vbufw")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_rhf3n"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nylnq"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1.095, 0.305, 1)
+angle_min = -360.0
+angle_max = 360.0
+direction = Vector3(0, 1, 0)
+spread = 31.52
+initial_velocity_max = 4.0
+radial_accel_min = -1.72
+radial_accel_max = 3.72
+scale_min = 0.01
+scale_max = 0.07
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yd44v"]
+metallic_specular = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_0h8yi"]
+material = SubResource("StandardMaterial3D_yd44v")
+size = Vector3(0.5, 3, 0.5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bl4x8"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4vouc"]
@@ -175,10 +228,25 @@ libraries = {
 "": SubResource("AnimationLibrary_txg71")
 }
 
+[node name="Particles_Fence" type="GPUParticles3D" parent="Obstacle/HitPoints"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00605976, -0.972315, 0.0432199)
+emitting = false
+amount = 70
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.8
+randomness = 1.0
+collision_base_size = 1.82
+local_coords = true
+trail_lifetime = 1.35
+process_material = SubResource("ParticleProcessMaterial_nylnq")
+draw_pass_1 = SubResource("BoxMesh_0h8yi")
+script = ExtResource("5_pbkve")
+
 [node name="Arrow_Hover" parent="Obstacle" instance=ExtResource("4_ny1g8")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 0.494403, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_rhf3n")
+texture = SubResource("ViewportTexture_bl4x8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.253522, 0)

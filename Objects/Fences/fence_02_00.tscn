@@ -3,15 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://djvu573a0y7lq" path="res://Objects/Fences/fence_02_00.blend" id="1_5j0lk"]
 [ext_resource type="Script" path="res://Scripts/mesh.gd" id="2_7woll"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ukfna"]
-albedo_color = Color(0.35, 0.2, 0.4, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ico34"]
 
 [node name="fence_02_00" instance=ExtResource("1_5j0lk")]
 script = ExtResource("2_7woll")
 default_color = Color(1, 1, 1, 1)
 
 [node name="Fence_Panels" parent="." index="0"]
-material_override = SubResource("StandardMaterial3D_ukfna")
+material_override = SubResource("StandardMaterial3D_ico34")
 
 [node name="Fence_Bars" parent="." index="1"]
-material_override = SubResource("StandardMaterial3D_ukfna")
+material_override = SubResource("StandardMaterial3D_ico34")
