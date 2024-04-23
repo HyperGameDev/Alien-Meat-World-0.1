@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c5eet7uealxv7"]
 
-[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="1_ee4j7"]
+[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="1_4dtux"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
 size = Vector2(100, 20)
@@ -30,5 +30,5 @@ shape = SubResource("ConcavePolygonShape3D_gjw30")
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 41.6496, -7.7, 13.3291)
 shape = SubResource("ConvexPolygonShape3D_qwi2u")
 
-[node name="cliff_front_01" parent="." instance=ExtResource("1_ee4j7")]
+[node name="cliff_front_01" parent="." instance=ExtResource("1_4dtux")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658, -7.495, 21.33)

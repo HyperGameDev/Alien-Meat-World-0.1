@@ -9,22 +9,22 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_jvan5"]
 size = Vector3(1.38574, 4.34631, 1.40173)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_t2cf2"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_bm3uh"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wdi3g"]
 size = Vector3(1.38574, 2.96271, 1.40173)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ddx0m"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_km7r3"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7ku14"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_1e5vk"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xhn4a"]
 size = Vector3(0.679443, 3.02518, 1.40173)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_h7yk1"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_cjiha"]
 viewport_path = NodePath("SubViewport")
 
 [node name="building_01-02_00" instance=ExtResource("1_tbtku")]
@@ -49,7 +49,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16249, 4.19955, 0.886369)
 [node name="Arrow_Hover" parent="Obstacle_10" index="2" instance=ExtResource("4_2fu5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18426, 4.65794, -0.879155)
 visible = false
-texture = SubResource("ViewportTexture_t2cf2")
+texture = SubResource("ViewportTexture_bm3uh")
 
 [node name="Building_Part_10" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022357, 4.76837e-07, 0.00126934)
@@ -73,7 +73,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16249, 2.92987, -0.778118)
 [node name="Arrow_Hover" parent="Obstacle_01" index="2" instance=ExtResource("4_2fu5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18426, 3.19507, 0.827166)
 visible = false
-texture = SubResource("ViewportTexture_ddx0m")
+texture = SubResource("ViewportTexture_km7r3")
 
 [node name="Obstacle_09" type="Area3D" parent="." index="4"]
 script = ExtResource("2_7au2w")
@@ -94,7 +94,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.719693, 2.92987, 0.976981)
 [node name="Arrow_Hover" parent="Obstacle_09" index="2" instance=ExtResource("4_2fu5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.795299, 3.19507, -0.956226)
 visible = false
-texture = SubResource("ViewportTexture_7ku14")
+texture = SubResource("ViewportTexture_1e5vk")
 
 [node name="Building_Part_09" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00187683, -0.0131655, 0.0068841)
@@ -121,7 +121,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78684, 2.92987, 0.976981)
 [node name="Arrow_Hover" parent="Obstacle_07" index="2" instance=ExtResource("4_2fu5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77893, 3.18981, -0.960784)
 visible = false
-texture = SubResource("ViewportTexture_h7yk1")
+texture = SubResource("ViewportTexture_cjiha")
 
 [editable path="Obstacle_10/HitPoints"]
 [editable path="Obstacle_01/HitPoints"]

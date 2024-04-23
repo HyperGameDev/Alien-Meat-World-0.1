@@ -35,4 +35,4 @@ shape = SubResource("ConvexPolygonShape3D_qwi2u")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658, -7.495, 21.33)
 
 [node name="building_01-02_00" parent="." instance=ExtResource("2_resty")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, -5.5)
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 5.4, 0, -5.5)

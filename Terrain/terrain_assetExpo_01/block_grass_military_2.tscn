@@ -1,13 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://c2eiwwvw3ics8"]
 
+[ext_resource type="Material" uid="uid://begqu7kbihq76" path="res://Terrain/texture_colors/military.tres" id="1_3mcvo"]
 [ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="1_817sd"]
 [ext_resource type="PackedScene" uid="uid://16vgrkdtfgmp" path="res://Objects/Buildings/Military/quonset_01_00.tscn" id="2_yep82"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
 size = Vector2(100, 20)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmqub"]
-albedo_color = Color(0.0156863, 0.235294, 0.101961, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gjw30"]
 data = PackedVector3Array(50, 0, 10, -50, 0, 10, 50, 0, -10, -50, 0, 10, -50, 0, -10, 50, 0, -10)
@@ -18,7 +16,7 @@ points = PackedVector3Array(-5.99455, -71.0009, -8.31296, -6.39667, -70.7782, -8
 [node name="Terrain_0" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 mesh = SubResource("PlaneMesh_wnprt")
-surface_material_override/0 = SubResource("StandardMaterial3D_tmqub")
+surface_material_override/0 = ExtResource("1_3mcvo")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 collision_mask = 0
