@@ -30,6 +30,8 @@ var default_material = StandardMaterial3D.new()
 var hover_material = StandardMaterial3D.new()
 var select_material = StandardMaterial3D.new()
 
+var spawn = false
+
 
 func _ready():
 	if !has_node("Arrow_Hover"):
@@ -46,8 +48,8 @@ func _ready():
 	camera = get_viewport().get_camera_3d()
 	
 #	print("Meat Layer: ", collision_layer, "; Meat Mask: ", collision_mask)
-	
-	set_collision_layer_value(4, true)
+
+	#set_collision_layer_value(4, true) # Allows it to be grabbed
 
 	set_collision_mask_value(1, true)
 	set_collision_mask_value(16, false)
@@ -57,6 +59,8 @@ func _ready():
 
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
+	
+	spawn_me()
 	
 	Messenger.meat_entered_dunk.connect(on_meat_entered_dunk)
 	Messenger.meat_left_dunk.connect(on_meat_left_dunk)
@@ -69,10 +73,12 @@ func _ready():
 	hover_material.set_albedo(Color(.32, .75, .35))
 	select_material.set_albedo(Color(1, 0, .1))
 	
+	
 func _process(delta):
 	if not Input.is_action_pressed("Grab"):
 		remove_from_group("Grabbed")
 		
+
 	if Input.is_action_just_released("Grab"):
 		has_been_grabbed = false
 		Messenger.grab_ended.emit()
@@ -84,6 +90,13 @@ func _process(delta):
 		
 
 func _physics_process(delta):	
+	if spawn:
+		set_collision_layer_value(4, true)
+		visible = true
+	else:
+		set_collision_layer_value(4, false)
+		visible = false
+		
 	if self.global_position.y <= player.FALL_DEATH_DISTANCE:
 		print("Meat Object deleted")
 		queue_free()
@@ -104,6 +117,15 @@ func _physics_process(delta):
 			if !detect_surface.get_collider() == self.get_parent():
 				self.reparent(detect_surface.get_collider())
 			
+			
+func spawn_me():
+	if !is_in_group("Grabbed"):
+		if !is_in_group("Dunked"):
+			var boolean = pow(-1, randi() % 2)
+			if boolean > 0:
+				spawn = true
+			else:
+				spawn = false
 		
 func on_dunk_is_at_position(dunk_position):
 	if has_been_dunked:

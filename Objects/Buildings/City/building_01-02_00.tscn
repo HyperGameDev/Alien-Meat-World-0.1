@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://fp165pcolyhq"]
+[gd_scene load_steps=51 format=3 uid="uid://fp165pcolyhq"]
 
 [ext_resource type="PackedScene" uid="uid://b8su0bkqp175n" path="res://Objects/Buildings/City/building_01-02_00.blend" id="1_tbtku"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_7au2w"]
@@ -9,121 +9,684 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_jvan5"]
 size = Vector3(1.38574, 4.34631, 1.40173)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_bm3uh"]
+[sub_resource type="Animation" id="Animation_tfm6d"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_10:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_25qde"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_10:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gcda2"]
+_data = {
+"RESET": SubResource("Animation_25qde"),
+"degrade": SubResource("Animation_tfm6d")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cb5lg"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wdi3g"]
-size = Vector3(1.38574, 2.96271, 1.40173)
+size = Vector3(1.38049, 2.96271, 1.40173)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_km7r3"]
+[sub_resource type="Animation" id="Animation_dkt4x"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_01:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_busvd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_01:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tsgjg"]
+_data = {
+"RESET": SubResource("Animation_busvd"),
+"degrade": SubResource("Animation_dkt4x")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_iatm0"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1e5vk"]
+[sub_resource type="Animation" id="Animation_uw75q"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_09:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_f0wqa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_09:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kicva"]
+_data = {
+"RESET": SubResource("Animation_f0wqa"),
+"degrade": SubResource("Animation_uw75q")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_o13dg"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q2ycx"]
+size = Vector3(1.38574, 4.78445, 1.40173)
+
+[sub_resource type="Animation" id="Animation_jm3du"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_03:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_y1og1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_03:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0icur"]
+_data = {
+"RESET": SubResource("Animation_y1og1"),
+"degrade": SubResource("Animation_jm3du")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dau3e"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Animation" id="Animation_ie0mg"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_08:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_yhjtu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_08:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ogiou"]
+_data = {
+"RESET": SubResource("Animation_yhjtu"),
+"degrade": SubResource("Animation_ie0mg")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_so0i4"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xhn4a"]
 size = Vector3(0.679443, 3.02518, 1.40173)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_cjiha"]
+[sub_resource type="Animation" id="Animation_7gc5a"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_07:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_j4chd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_07:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n6c2u"]
+_data = {
+"RESET": SubResource("Animation_j4chd"),
+"degrade": SubResource("Animation_7gc5a")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_req0a"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rkvxr"]
+size = Vector3(0.619507, 3.81525, 1.40173)
+
+[sub_resource type="Animation" id="Animation_nwprw"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_06:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_d30a4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_06:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mclp1"]
+_data = {
+"RESET": SubResource("Animation_d30a4"),
+"degrade": SubResource("Animation_nwprw")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_i1hsv"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Animation" id="Animation_xijnn"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_05:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_lf6og"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_05:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ciu0q"]
+_data = {
+"RESET": SubResource("Animation_lf6og"),
+"degrade": SubResource("Animation_xijnn")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_blcjd"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Animation" id="Animation_l2cav"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_04:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_x5hxd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_04:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ta1gt"]
+_data = {
+"RESET": SubResource("Animation_x5hxd"),
+"degrade": SubResource("Animation_l2cav")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hosrs"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Animation" id="Animation_4pgyg"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_02:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_go1yx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_02:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxsta"]
+_data = {
+"RESET": SubResource("Animation_go1yx"),
+"degrade": SubResource("Animation_4pgyg")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_d86cw"]
 viewport_path = NodePath("SubViewport")
 
 [node name="building_01-02_00" instance=ExtResource("1_tbtku")]
 script = ExtResource("2_nxona")
 
 [node name="Obstacle_10" type="Area3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16304, 2.17996, -1.1671)
 script = ExtResource("2_7au2w")
 health_max = 5
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle_10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15406, 2.18353, -0.706629)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00348306, -0.0359166, 0.462121)
 shape = SubResource("BoxShape3D_jvan5")
 
 [node name="HitPoints" parent="Obstacle_10" index="1" instance=ExtResource("3_r1ye4")]
 
 [node name="Dmg_Label" parent="Obstacle_10/HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16249, 4.19955, 0.886369)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00494647, 1.9801, -0.282382)
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_10/HitPoints" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_gcda2")
+}
 
 [node name="Arrow_Hover" parent="Obstacle_10" index="2" instance=ExtResource("4_2fu5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18426, 4.65794, -0.879155)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0267169, 2.43849, 0.289595)
 visible = false
-texture = SubResource("ViewportTexture_bm3uh")
+texture = SubResource("ViewportTexture_cb5lg")
 
 [node name="Building_Part_10" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022357, 4.76837e-07, 0.00126934)
 
 [node name="Obstacle_01" type="Area3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.19721, 1.48134, 0.762863)
 script = ExtResource("2_7au2w")
 health_max = 5
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle_01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18118, 1.49173, 0.692548)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0251124, 0.00736189, -0.0623574)
 shape = SubResource("BoxShape3D_wdi3g")
 
 [node name="HitPoints" parent="Obstacle_01" index="1" instance=ExtResource("3_r1ye4")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.418238, 0)
 
 [node name="Dmg_Label" parent="Obstacle_01/HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16249, 2.92987, -0.778118)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0839181, 2.92987, 0.158068)
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_01/HitPoints" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_tsgjg")
+}
 
 [node name="Arrow_Hover" parent="Obstacle_01" index="2" instance=ExtResource("4_2fu5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18426, 3.19507, 0.827166)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0711432, 1.7107, -0.140489)
 visible = false
-texture = SubResource("ViewportTexture_km7r3")
+texture = SubResource("ViewportTexture_iatm0")
 
 [node name="Obstacle_09" type="Area3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.637482, 1.51704, -0.690691)
 script = ExtResource("2_7au2w")
 health_max = 5
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle_09" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71377, 1.49173, -0.731914)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0516404, 0.02026, -0.0389912)
 shape = SubResource("BoxShape3D_wdi3g")
 
 [node name="HitPoints" parent="Obstacle_09" index="1" instance=ExtResource("3_r1ye4")]
 
 [node name="Dmg_Label" parent="Obstacle_09/HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.719693, 2.92987, 0.976981)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103767, 1.4584, 0.407832)
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_09/HitPoints" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_kicva")
+}
 
 [node name="Arrow_Hover" parent="Obstacle_09" index="2" instance=ExtResource("4_2fu5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.795299, 3.19507, -0.956226)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.179373, 1.7236, -0.263303)
 visible = false
-texture = SubResource("ViewportTexture_1e5vk")
+texture = SubResource("ViewportTexture_o13dg")
 
 [node name="Building_Part_09" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00187683, -0.0131655, 0.0068841)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0118523, -0.0131655, 3.86257e-05)
 
-[node name="Building_Part_03" parent="." index="6"]
+[node name="Obstacle_03" type="Area3D" parent="." index="6"]
+transform = Transform3D(0.988268, 0, 0.152727, 0, 1, 0, -0.152727, 0, 0.988268, -0.111862, 2.72785, 0.820259)
+script = ExtResource("2_7au2w")
+health_max = 5
+slowdown_amount = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle_03" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0249856, -0.326834, -0.151055)
+shape = SubResource("BoxShape3D_q2ycx")
+
+[node name="HitPoints" parent="Obstacle_03" index="1" instance=ExtResource("3_r1ye4")]
+
+[node name="Dmg_Label" parent="Obstacle_03/HitPoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.072042, 2.31223, -0.111361)
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_03/HitPoints" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_0icur")
+}
+
+[node name="Arrow_Hover" parent="Obstacle_03" index="2" instance=ExtResource("4_2fu5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0502715, 2.77062, 0.118574)
+visible = false
+texture = SubResource("ViewportTexture_dau3e")
+
+[node name="Building_Part_03" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0197957, -0.00985527, -0.0198932)
 
-[node name="Obstacle_07" type="Area3D" parent="." index="8"]
+[node name="Obstacle_08" type="Area3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.669436, 2.72785, -0.597663)
+script = ExtResource("2_7au2w")
+health_max = 5
+slowdown_amount = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle_08" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0249856, -0.326834, -0.151055)
+shape = SubResource("BoxShape3D_q2ycx")
+
+[node name="HitPoints" parent="Obstacle_08" index="1" instance=ExtResource("3_r1ye4")]
+
+[node name="Dmg_Label" parent="Obstacle_08/HitPoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.072042, 2.31223, -0.111361)
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_08/HitPoints" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_ogiou")
+}
+
+[node name="Arrow_Hover" parent="Obstacle_08" index="2" instance=ExtResource("4_2fu5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0502715, 2.77062, 0.118574)
+visible = false
+texture = SubResource("ViewportTexture_so0i4")
+
+[node name="Obstacle_07" type="Area3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74129, 1.58719, -0.913364)
 script = ExtResource("2_7au2w")
 health_max = 5
 slowdown_amount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle_07" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76781, 1.52296, -0.731914)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0177238, -0.0856802, 0.203334)
 shape = SubResource("BoxShape3D_xhn4a")
 
 [node name="HitPoints" parent="Obstacle_07" index="1" instance=ExtResource("3_r1ye4")]
 
 [node name="Dmg_Label" parent="Obstacle_07/HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78684, 2.92987, 0.976981)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0367527, 1.32123, 0.041733)
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_07/HitPoints" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_n6c2u")
+}
 
 [node name="Arrow_Hover" parent="Obstacle_07" index="2" instance=ExtResource("4_2fu5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77893, 3.18981, -0.960784)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0288436, 1.58117, -0.0255358)
 visible = false
-texture = SubResource("ViewportTexture_cjiha")
+texture = SubResource("ViewportTexture_req0a")
+
+[node name="Obstacle_06" type="Area3D" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45586, 1.58719, -0.913364)
+script = ExtResource("2_7au2w")
+health_max = 5
+slowdown_amount = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle_06" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0125246, 0.357828, 0.226717)
+shape = SubResource("BoxShape3D_rkvxr")
+
+[node name="HitPoints" parent="Obstacle_06" index="1" instance=ExtResource("3_r1ye4")]
+
+[node name="Dmg_Label" parent="Obstacle_06/HitPoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00901961, 2.27424, 0.041733)
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_06/HitPoints" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_mclp1")
+}
+
+[node name="Arrow_Hover" parent="Obstacle_06" index="2" instance=ExtResource("4_2fu5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0169287, 2.53418, -0.0255358)
+visible = false
+texture = SubResource("ViewportTexture_i1hsv")
+
+[node name="Obstacle_05" type="Area3D" parent="." index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11436, 2.54048, 0.691543)
+script = ExtResource("2_7au2w")
+health_max = 5
+slowdown_amount = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle_05" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0520029, -0.395917, 0.0199654)
+shape = SubResource("BoxShape3D_jvan5")
+
+[node name="HitPoints" parent="Obstacle_05" index="1" instance=ExtResource("3_r1ye4")]
+
+[node name="Dmg_Label" parent="Obstacle_05/HitPoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00494647, 1.9801, -0.282382)
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_05/HitPoints" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_ciu0q")
+}
+
+[node name="Arrow_Hover" parent="Obstacle_05" index="2" instance=ExtResource("4_2fu5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0267169, 2.43849, 0.289595)
+visible = false
+texture = SubResource("ViewportTexture_blcjd")
+
+[node name="Obstacle_04" type="Area3D" parent="." index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.951717, 1.64005, 0.671297)
+script = ExtResource("2_7au2w")
+health_max = 5
+slowdown_amount = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle_04" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0176661, -0.151497, 0.0329251)
+shape = SubResource("BoxShape3D_xhn4a")
+
+[node name="HitPoints" parent="Obstacle_04" index="1" instance=ExtResource("3_r1ye4")]
+
+[node name="Dmg_Label" parent="Obstacle_04/HitPoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.036695, 1.25541, 0.212142)
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_04/HitPoints" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_ta1gt")
+}
+
+[node name="Arrow_Hover" parent="Obstacle_04" index="2" instance=ExtResource("4_2fu5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0287859, 1.51535, -0.195945)
+visible = false
+texture = SubResource("ViewportTexture_hosrs")
+
+[node name="Obstacle_02" type="Area3D" parent="." index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11794, 1.58116, 0.457687)
+script = ExtResource("2_7au2w")
+health_max = 5
+slowdown_amount = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle_02" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0125246, 0.357828, 0.226717)
+shape = SubResource("BoxShape3D_rkvxr")
+
+[node name="HitPoints" parent="Obstacle_02" index="1" instance=ExtResource("3_r1ye4")]
+
+[node name="Dmg_Label" parent="Obstacle_02/HitPoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00901961, 2.27424, 0.041733)
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_02/HitPoints" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_cxsta")
+}
+
+[node name="Arrow_Hover" parent="Obstacle_02" index="2" instance=ExtResource("4_2fu5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0169287, 2.53418, -0.0255358)
+visible = false
+texture = SubResource("ViewportTexture_d86cw")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.386448, 0.948473)
+height = 5.55
+vertices = PackedVector3Array(-4, 0, 2, 4, 0, 2, 4, 0, -4, -4, 0, -4)
+avoidance_layers = 4
 
 [editable path="Obstacle_10/HitPoints"]
 [editable path="Obstacle_01/HitPoints"]
 [editable path="Obstacle_09/HitPoints"]
+[editable path="Obstacle_03/HitPoints"]
+[editable path="Obstacle_08/HitPoints"]
 [editable path="Obstacle_07/HitPoints"]
+[editable path="Obstacle_06/HitPoints"]
+[editable path="Obstacle_05/HitPoints"]
+[editable path="Obstacle_04/HitPoints"]
+[editable path="Obstacle_02/HitPoints"]

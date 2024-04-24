@@ -51,3 +51,8 @@ func _on_button_level_blank_all_pressed():
 func _on_button_level_debug_02_pressed():
 	Globals.current_level = Globals.levels[7]
 	get_tree().call_deferred("reload_current_scene")
+
+
+func _on_button_level_debug_03_pressed():
+	Globals.current_level = Globals.levels[8]
+	get_tree().call_deferred("reload_current_scene")

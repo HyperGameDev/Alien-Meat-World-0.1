@@ -9,3 +9,5 @@ func reset_block_objects():
 	for object in get_children():
 		if object is Block_Object:
 			object.reset_object()
+		if object is Health:
+			object.spawn_me()

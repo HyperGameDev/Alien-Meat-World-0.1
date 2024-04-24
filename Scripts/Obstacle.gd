@@ -54,6 +54,7 @@ func _ready():
 	
 	hover_arrow.modulate = indicator_color
 	
+	
 func on_update_top_level_hitpoints():
 	if $"../..".health_current <= 0:
 		for collision in get_children():

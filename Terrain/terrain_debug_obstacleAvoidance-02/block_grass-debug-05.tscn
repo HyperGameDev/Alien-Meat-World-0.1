@@ -1,8 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://4cntrnijr7sp"]
+[gd_scene load_steps=6 format=3 uid="uid://28bjqgqe1u2e"]
 
-[ext_resource type="Script" path="res://Terrain/Block.gd" id="1_vcxdj"]
-[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="1_xigjt"]
-[ext_resource type="PackedScene" uid="uid://fp165pcolyhq" path="res://Objects/Buildings/City/building_01-02_00.tscn" id="2_resty"]
+[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="1_ilo5s"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
 size = Vector2(100, 20)
@@ -20,7 +18,6 @@ points = PackedVector3Array(-5.99455, -71.0009, -8.31296, -6.39667, -70.7782, -8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 mesh = SubResource("PlaneMesh_wnprt")
 surface_material_override/0 = SubResource("StandardMaterial3D_tmqub")
-script = ExtResource("1_vcxdj")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 collision_mask = 0
@@ -33,8 +30,5 @@ shape = SubResource("ConcavePolygonShape3D_gjw30")
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 41.6496, -7.7, 13.3291)
 shape = SubResource("ConvexPolygonShape3D_qwi2u")
 
-[node name="cliff_front_01" parent="." instance=ExtResource("1_xigjt")]
+[node name="cliff_front_01" parent="." instance=ExtResource("1_ilo5s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658, -7.495, 21.33)
-
-[node name="building_01-02_00" parent="." instance=ExtResource("2_resty")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4.9, 0, -3)
