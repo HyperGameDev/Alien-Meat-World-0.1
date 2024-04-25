@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=58 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
@@ -59,8 +59,13 @@ fill_from = Vector2(0.487179, 0.504274)
 fill_to = Vector2(0.299145, 0.192308)
 repeat = 2
 
+[sub_resource type="FogMaterial" id="FogMaterial_2kk4o"]
+density = 0.5
+albedo = Color(0.513726, 0.713726, 0.898039, 1)
+edge_fade = 0.606286
+
 [sub_resource type="BoxMesh" id="BoxMesh_mcpq4"]
-size = Vector3(1, 200, 2.405)
+size = Vector3(60, 200, 1000)
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_se27i"]
 dof_blur_far_enabled = true
@@ -440,8 +445,18 @@ shadow_enabled = true
 shadow_opacity = 0.82
 shadow_blur = 2.599
 
+[node name="Fog_boundaryLeft" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.3841, -0.37832, -94.0702)
+size = Vector3(30, 7, 200)
+material = SubResource("FogMaterial_2kk4o")
+
+[node name="Fog_boundaryRight" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.384, -0.378, -94.07)
+size = Vector3(30, 7, 200)
+material = SubResource("FogMaterial_2kk4o")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00685525, 0.040915, -0.0110068)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.253605, 0.0409188, -502)
 visible = false
 mesh = SubResource("BoxMesh_mcpq4")
 skeleton = NodePath("../WorldEnvironment")
@@ -450,7 +465,7 @@ skeleton = NodePath("../WorldEnvironment")
 environment = ExtResource("3_o1fgy")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0159369, 0.0120942, 0.00342083)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.04125, -3.42927, 1.85991)
 attributes = SubResource("CameraAttributesPractical_se27i")
 doppler_tracking = 2
 current = true
@@ -655,7 +670,7 @@ texture = SubResource("ViewportTexture_2mynr")
 texture = SubResource("ViewportTexture_ib6e6")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0214449, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.129301, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
@@ -672,7 +687,7 @@ bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.110543, 0.227301, -0.968026, -0.967228, -0.250529, 0.0516251, -0.230674, 0.941557, 0.247427, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.635498, 0.300614, -0.711853, -0.610215, -0.760679, 0.223528, -0.474068, 0.576159, 0.666529, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)

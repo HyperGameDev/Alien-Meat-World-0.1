@@ -11,7 +11,7 @@ var terrain_belt: Array[MeshInstance3D] = []
 const TERRAIN_VELOCITY: float = 5.0
 
 ## The number of blocks to keep rendered to the viewport
-@export var num_terrain_blocks = 7
+@export var num_terrain_blocks = 8
 
 ## Path to directory holding the terrain block scenes
 var terrain_blocks_path : StringName
