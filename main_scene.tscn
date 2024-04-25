@@ -302,10 +302,10 @@ radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_no6xv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_cve5o"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_hl373"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_2nrpv"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhodu"]
@@ -640,13 +640,13 @@ transform = Transform3D(1, 0.000486921, 0.000306959, -0.000486927, 1, 2.02912e-0
 parameters/TimeScale/scale = 1.0
 
 [node name="HP_Head" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_no6xv")
+texture = SubResource("ViewportTexture_cve5o")
 
 [node name="HP_Empathy" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_hl373")
+texture = SubResource("ViewportTexture_2nrpv")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.056301, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.00186962, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
@@ -663,7 +663,7 @@ bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.457742, 0.290267, -0.840939, -0.77358, -0.596901, 0.215044, -0.439326, 0.748609, 0.497532, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.451231, 0.650275, 0.611958, -0.887552, -0.251375, -0.387328, -0.0979915, -0.717575, 0.69025, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)

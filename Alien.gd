@@ -75,7 +75,7 @@ func _physics_process(delta):
 		
 	var input_up = Input.is_action_pressed("ui_up")
 	if input_up and terrain_slowdown == false:
-		terrain_controller.terrain_velocity = move_toward(terrain_controller.terrain_velocity, 100, 1)
+		terrain_controller.terrain_velocity = move_toward(terrain_controller.terrain_velocity, 30, 1)
 	if input_up == false and terrain_slowdown == false:
 		terrain_controller.terrain_velocity = terrain_controller.TERRAIN_VELOCITY
 

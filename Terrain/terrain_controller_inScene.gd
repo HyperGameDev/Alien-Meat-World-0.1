@@ -2,8 +2,6 @@ extends Node3D
 
 @onready var terrain_collector = %TerrainCollector
 
-var debug_counter = 0
-
 ## Holds the catalog of loaded terrian block scenes
 var TerrainBlocks: Array = []
 
@@ -63,25 +61,22 @@ func _init_blocks(number_of_blocks: int) -> void:
 func _progress_terrain(delta: float) -> void:
 	for block in self.get_children():
 		block.position.z += terrain_velocity * delta
-	
+		
+	# Delete first block if it passes a certain spot
 	if get_child(0).position.z >= get_child(0).mesh.size.y/2:
 		
-		# -1 here means "the last block in the array i.e. the highest number"
+		# -1 means "the last block in the array
+		# i.e. the highest number"
 		var last_terrain = get_child(-1)
 		
-		# Pop_front removes the first block from the array only, and then returns the name of that removed block.
+		# Pop_front removes the first block from the array only,
+		# and then returns the name of that removed block.
 		var first_terrain = get_children().pop_front()
 
 		first_terrain.reparent(terrain_collector)
 		first_terrain.position.z = 0.0
 		if first_terrain.has_method("reset_block_objects"):
 			first_terrain.reset_block_objects()
-			
-		
-		#var block_instance = first_terrain.get_node_or_null("Block_Instance")
-		#if is_instance_valid(block_instance):
-			#print(block_instance.hello)
-			#pass
 		
 		var block = terrain_collector.get_children().pick_random()
 		block.reparent(self)

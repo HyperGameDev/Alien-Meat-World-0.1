@@ -10,8 +10,8 @@ signal is_destroyed
 @onready var copter_mesh = $copter_001
 @onready var terrain_controller = get_tree().get_current_scene().get_node("%TerrainController_inScene")
 @onready var detect_copterDeath = %RayCast_copterDeath
-@onready var detect_left = %RayCast_Left
-@onready var detect_right = %RayCast_Right
+#@onready var detect_left = %RayCast_Left
+#@onready var detect_right = %RayCast_Right
 
 static var copters_stopped = 0
 
