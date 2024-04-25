@@ -21,17 +21,10 @@ func _ready() -> void:
 	terrain_blocks_path = Globals.current_level
 	_load_terrain_scenes(terrain_blocks_path)
 	_init_blocks(num_terrain_blocks)
-	#_first_blocks()
-
-#func _first_blocks():
-	#await get_tree().create_timer(.2).timeout
-	#terrain_blocks_path = "res://Terrain/terrain_debug/"
-	#print("Blocks path changed")
-	#_load_terrain_scenes(terrain_blocks_path)
+	
 
 func _physics_process(delta: float) -> void:
 	_progress_terrain(delta)
-#	print(terrain_velocity)
 
 
 func _init_blocks(number_of_blocks: int) -> void:
@@ -42,20 +35,6 @@ func _init_blocks(number_of_blocks: int) -> void:
 	for i in range(num_terrain_blocks):
 		var block = terrain_collector.get_children().pick_random()
 		block.reparent(self)
-		
-	
-		
-		#if TerrainBlock == 0:
-			#
-			## Push first block forward by half its distance (so that player is at the far edge of the first block)
-			#block.position.z = block.mesh.size.y/2 
-			#
-		#else:
-			#
-			## If not the first block, append it to the far edge of the belt.
-			#_append_to_far_edge(terrain_belt[block_index-1], block)
-		#add_child(block)
-		#terrain_belt.append(block)
 
 
 func _progress_terrain(delta: float) -> void:
@@ -91,5 +70,4 @@ func _append_to_far_edge(target_block: MeshInstance3D, appending_block: MeshInst
 func _load_terrain_scenes(target_path: String) -> void:
 	var dir = DirAccess.open(target_path)
 	for scene_path in dir.get_files():
-#		print("Loading terrian block scene: " + target_path + "/" + scene_path)
 		TerrainBlocks.append(load(target_path + "/" + scene_path.trim_suffix(".remap")))
