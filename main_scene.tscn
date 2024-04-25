@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Camera3D.gd" id="2_qvpxy"]
 [ext_resource type="Script" path="res://Alien.gd" id="3_ia6ow"]
 [ext_resource type="Environment" uid="uid://ctltfiohrppec" path="res://Environment/enviro-01.tres" id="3_o1fgy"]
-[ext_resource type="PackedScene" uid="uid://c2s7xptwu48an" path="res://Terrain/terrain_controller.tscn" id="3_uqnug"]
+[ext_resource type="Script" path="res://Terrain/TerrainCollector.gd" id="4_0jb24"]
 [ext_resource type="PackedScene" uid="uid://c1q8m4i26u6vr" path="res://alien_3.tscn" id="4_huvyo"]
 [ext_resource type="Script" path="res://Cam_Target.gd" id="5_iuboh"]
 [ext_resource type="PackedScene" uid="uid://62tsdyaob0l4" path="res://Terrain/terrain_controller_in_scene.tscn" id="6_ywiix"]
@@ -454,11 +454,9 @@ cam_y_offset = 4.6
 
 [node name="TerrainCollector" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33.5554)
-
-[node name="TerrainController" parent="." instance=ExtResource("3_uqnug")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.74317)
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 47.7313)
+script = ExtResource("4_0jb24")
 
 [node name="TerrainController_inScene" parent="." instance=ExtResource("6_ywiix")]
 unique_name_in_owner = true
@@ -517,7 +515,7 @@ libraries = {
 
 [node name="Player" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.997372, -0.0724549, 0, 0.0724549, 0.997372, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.997372, -0.0724549, 0, 0.0724549, 0.997372, 0.0398254, -0.103104, 0.0176163)
 collision_layer = 32768
 axis_lock_linear_z = true
 script = ExtResource("3_ia6ow")
@@ -648,7 +646,7 @@ texture = SubResource("ViewportTexture_no6xv")
 texture = SubResource("ViewportTexture_hl373")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0196864, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.056301, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
@@ -665,7 +663,7 @@ bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.683395, 0.633256, -0.36458, -0.660468, -0.748872, -0.0627221, -0.312593, 0.197835, 0.929574, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.457742, 0.290267, -0.840939, -0.77358, -0.596901, 0.215044, -0.439326, 0.748609, 0.497532, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)
@@ -983,6 +981,9 @@ theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("7_1vj6d")
 theme_override_font_sizes/font_size = 80
 text = "0"
+
+[node name="SpawnPlace" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.226019, -2.19981, 0.376984)
 
 [connection signal="timeout" from="UI_FX/Timer_FX_Flash" to="UI_FX" method="_on_timer_fx_flash_timeout"]
 [connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_01" to="Debug/Menu" method="_on_button_level_debug_01_pressed"]

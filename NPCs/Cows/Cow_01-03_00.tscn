@@ -7,7 +7,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_j53qk"]
 size = Vector3(0.606221, 0.360459, 0.197053)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_3o050"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_2k05u"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Cow_01-03_00" type="RigidBody3D"]
@@ -31,7 +31,7 @@ metadata/_edit_group_ = true
 [node name="Arrow_Hover" parent="." instance=ExtResource("2_wnwsx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.583839, 0)
 visible = false
-texture = SubResource("ViewportTexture_3o050")
+texture = SubResource("ViewportTexture_2k05u")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_layers = 2

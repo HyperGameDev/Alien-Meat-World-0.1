@@ -13,5 +13,10 @@ var levels := [
 ]
 var current_level : StringName
 
+var meat_objects := {
+	Health.is_types.COW: load("res://NPCs/Cows/Cow_01-03_00.tscn"),
+	Health.is_types.HUMAN: load("res://NPCs/Humans/human_01_00.tscn")
+}
+
 func _ready():
 	current_level = levels[1]

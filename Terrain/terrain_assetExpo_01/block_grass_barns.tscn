@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7wnh5ebskawe"]
+[gd_scene load_steps=9 format=3 uid="uid://c7wnh5ebskawe"]
 
 [ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="1_s4e1d"]
+[ext_resource type="Script" path="res://Terrain/Block.gd" id="1_wgmxx"]
 [ext_resource type="PackedScene" uid="uid://dxjkdmi6v6583" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow-Barn_01-02_00.tscn" id="2_ah7l2"]
 [ext_resource type="PackedScene" uid="uid://caxqah3ilcvfy" path="res://NPCs/Cows/Cow_01-03_00.tscn" id="3_hkm1l"]
 
@@ -20,6 +21,7 @@ points = PackedVector3Array(-5.99455, -71.0009, -8.31296, -6.39667, -70.7782, -8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 mesh = SubResource("PlaneMesh_wnprt")
 surface_material_override/0 = SubResource("StandardMaterial3D_tmqub")
+script = ExtResource("1_wgmxx")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 collision_mask = 0

@@ -2,6 +2,8 @@ extends RigidBody3D
 
 class_name Health
 
+@export var is_type: is_types
+enum is_types {COW, HUMAN}
 @export var indicator_color = Color(.5,.5,1,1)
 @export var empathy_ok = false
 @export var abduction_offset = Vector3(0,.5,0)
@@ -21,6 +23,7 @@ class_name Health
 
 var planeToMoveOn: Plane
 var has_been_grabbed = false
+var was_ever_grabbed = false
 
 var is_in_dunk = false
 var has_been_dunked = false
@@ -31,7 +34,9 @@ var hover_material = StandardMaterial3D.new()
 var select_material = StandardMaterial3D.new()
 
 var spawn = false
+var spawned = false
 
+var fell = false
 
 func _ready():
 	if !has_node("Arrow_Hover"):
@@ -60,7 +65,6 @@ func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 	
-	spawn_me()
 	
 	Messenger.meat_entered_dunk.connect(on_meat_entered_dunk)
 	Messenger.meat_left_dunk.connect(on_meat_left_dunk)
@@ -89,7 +93,9 @@ func _process(delta):
 			has_been_dunked = true
 		
 
-func _physics_process(delta):	
+func _physics_process(delta):
+	if !spawned:
+		spawn_me()
 	if spawn:
 		set_collision_layer_value(4, true)
 		visible = true
@@ -97,9 +103,23 @@ func _physics_process(delta):
 		set_collision_layer_value(4, false)
 		visible = false
 		
-	if self.global_position.y <= player.FALL_DEATH_DISTANCE:
-		print("Meat Object deleted")
+	if was_ever_grabbed:
+		set_collision_mask_value(1, false)
+		
+	if self.global_position.y <= -50:
+		if was_ever_grabbed:
+			print("Dropped Meat Object deleted by Y")
+		else:
+			if !fell:
+				fell = true
+				print("DEFAULT Meat Object deleted by Y")
 		queue_free()
+		
+	if self.global_position.z > 2:
+		if was_ever_grabbed:
+			print("Dropped Meat Object deleted by Z")
+			queue_free()
+		
 			
 	if is_in_group("Grabbed"):
 		if !has_been_grabbed:
@@ -119,6 +139,7 @@ func _physics_process(delta):
 			
 			
 func spawn_me():
+	spawned = true
 	if !is_in_group("Grabbed"):
 		if !is_in_group("Dunked"):
 			var boolean = pow(-1, randi() % 2)
