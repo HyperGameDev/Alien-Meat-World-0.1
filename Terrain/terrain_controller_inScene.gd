@@ -14,8 +14,8 @@ const TERRAIN_VELOCITY: float = 5.0
 @export var num_terrain_blocks = 7
 
 ## Path to directory holding the terrain block scenes
-@onready var debug_menu = %Menu
 var terrain_blocks_path : StringName
+
 
 func _ready() -> void:
 	terrain_blocks_path = Globals.current_level
