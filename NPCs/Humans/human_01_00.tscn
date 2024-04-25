@@ -8,7 +8,7 @@
 radius = 0.15
 height = 0.5
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_580mi"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_cekbn"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Human_01_00" type="RigidBody3D"]
@@ -39,7 +39,7 @@ lod_bias = 128.0
 [node name="Arrow_Hover" parent="." instance=ExtResource("3_8ninh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.708739, 0)
 visible = false
-texture = SubResource("ViewportTexture_580mi")
+texture = SubResource("ViewportTexture_cekbn")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_layers = 2

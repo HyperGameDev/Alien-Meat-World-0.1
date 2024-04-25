@@ -302,10 +302,10 @@ radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_cve5o"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_2mynr"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2nrpv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ib6e6"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhodu"]
@@ -640,13 +640,13 @@ transform = Transform3D(1, 0.000486921, 0.000306959, -0.000486927, 1, 2.02912e-0
 parameters/TimeScale/scale = 1.0
 
 [node name="HP_Head" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_cve5o")
+texture = SubResource("ViewportTexture_2mynr")
 
 [node name="HP_Empathy" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_2nrpv")
+texture = SubResource("ViewportTexture_ib6e6")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.127451, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
@@ -663,7 +663,7 @@ bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.449964, 0.650682, 0.612458, -0.888133, -0.250028, -0.386867, -0.0985483, -0.717676, 0.690065, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.621481, 0.285191, -0.730334, -0.620375, -0.748746, 0.235531, -0.479433, 0.599172, 0.641948, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)
@@ -733,7 +733,6 @@ text = "Hide Hit Points"
 
 [node name="Menu" type="Control" parent="Debug"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -836,8 +835,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
 [node name="Button_level_01" type="Button" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 31
+theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Level 1"
 
 [node name="VBox_3" type="VBoxContainer" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons"]
 layout_mode = 2
@@ -986,6 +986,7 @@ text = "0"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.226019, -2.19981, 0.376984)
 
 [connection signal="timeout" from="UI_FX/Timer_FX_Flash" to="UI_FX" method="_on_timer_fx_flash_timeout"]
+[connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2/Button_level_01" to="Debug/Menu" method="_on_button_level_01_pressed"]
 [connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_01" to="Debug/Menu" method="_on_button_level_debug_01_pressed"]
 [connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_02" to="Debug/Menu" method="_on_button_level_debug_02_pressed"]
 [connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_03" to="Debug/Menu" method="_on_button_level_debug_03_pressed"]
