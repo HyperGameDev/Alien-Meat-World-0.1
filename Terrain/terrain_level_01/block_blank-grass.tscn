@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cch0huoxg2bce"]
+[gd_scene load_steps=9 format=3 uid="uid://cch0huoxg2bce"]
 
 [ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="1_or6bw"]
+[ext_resource type="PackedScene" uid="uid://dxjkdmi6v6583" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow-Barn_01-02_00.tscn" id="2_ylwqw"]
+[ext_resource type="PackedScene" uid="uid://cm61hhhqrodvc" path="res://Objects/Foliage/Tree_01/Tree_01-02_00.tscn" id="3_j7fwm"]
+[ext_resource type="PackedScene" uid="uid://cxtkvfv8udrrb" path="res://Terrain/block_boundary_01_00.tscn" id="4_1wacm"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
 size = Vector2(100, 20)
@@ -32,3 +35,26 @@ shape = SubResource("ConvexPolygonShape3D_qwi2u")
 
 [node name="cliff_front_01" parent="." instance=ExtResource("1_or6bw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658, -7.495, 21.33)
+
+[node name="Cow_Barn_02" parent="." instance=ExtResource("2_ylwqw")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.66639, 0, -2.06274)
+
+[node name="tree_01-03" parent="." instance=ExtResource("3_j7fwm")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 7)
+
+[node name="tree_01-05" parent="." instance=ExtResource("3_j7fwm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 7)
+
+[node name="tree_01-04" parent="." instance=ExtResource("3_j7fwm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 7)
+
+[node name="tree_01-06" parent="." instance=ExtResource("3_j7fwm")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 5, 0, 7)
+
+[node name="tree_01-07" parent="." instance=ExtResource("3_j7fwm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 7)
+
+[node name="tree_01-08" parent="." instance=ExtResource("3_j7fwm")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 11, 0, 7)
+
+[node name="CollisionShape3D" parent="." instance=ExtResource("4_1wacm")]

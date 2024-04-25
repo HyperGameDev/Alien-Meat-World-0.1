@@ -4,6 +4,7 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 6
 const FALL_DEATH_DISTANCE = -50
+const BOUNDARY_DISTANCE = 30
 
 @onready var animation = get_node("Alien/AnimationTree_Alien")
 @onready var skeleton: Skeleton3D = get_node("Alien/Armature/Skeleton3D")
@@ -45,12 +46,15 @@ func _ready():
 #	print("Player Layer: ", collision_layer, "; Player Mask: ", collision_mask)
 	
 	set_max_slides(20)
+
 	
 func _physics_process(delta):
 #	aim_bone_at_target(arm_grabbing, grabbed_object)
 #	print(grabbed_object)
 #	print("Is on floor: ", is_on_floor())
 #	print(self.global_position.y)
+
+	# Fall Death
 	if self.global_position.y <= FALL_DEATH_DISTANCE:
 		var fall_death = true
 		Messenger.instant_death.emit(fall_death)
@@ -90,8 +94,9 @@ func _physics_process(delta):
 
 # Collision stops level movement
 	move_and_slide()
+	position.x = clamp(position.x,-BOUNDARY_DISTANCE,BOUNDARY_DISTANCE)
 
-	
+
 func rotate_head_to_direction(dir:Vector3):
 	# Movement logic
 	var pos_2D: Vector2 = Vector2(-transform.basis.z.x, -transform.basis.z.z)

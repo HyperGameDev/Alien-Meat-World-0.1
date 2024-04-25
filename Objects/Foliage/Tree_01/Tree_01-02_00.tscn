@@ -101,7 +101,7 @@ _data = {
 "degrade": SubResource("Animation_wecdx")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_n8y7f"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_jhcl3"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lv34i"]
@@ -143,7 +143,7 @@ libraries = {
 [node name="Arrow_Hover" parent="Obstacle" index="4" instance=ExtResource("4_dufu7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.89422, 0)
 visible = false
-texture = SubResource("ViewportTexture_n8y7f")
+texture = SubResource("ViewportTexture_jhcl3")
 
 [node name="Trunk" parent="." index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_lv34i")

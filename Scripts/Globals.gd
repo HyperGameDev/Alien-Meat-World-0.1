@@ -10,7 +10,9 @@ var levels := [
 	"res://Terrain/terrain_blocks_blank/",
 	"res://Terrain/terrain_debug_obstacleDamage/",
 	"res://Terrain/terrain_debug_obstacleAvoidance/",
-	"res://Terrain/terrain_level_01/"
+	"res://Terrain/terrain_level_01/",
+	"res://Terrain/terrain_level_02/",
+	"res://Terrain/terrain_debug_terrainHeights/"
 ]
 var current_level : StringName
 

@@ -1,5 +1,7 @@
 extends Node3D
 
+# 3 METERS APART FROM EACHOTHER
+
 class_name Block_Object
 
 signal update_reset_status

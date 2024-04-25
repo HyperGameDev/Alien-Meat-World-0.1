@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=57 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
@@ -58,6 +58,9 @@ fill = 1
 fill_from = Vector2(0.487179, 0.504274)
 fill_to = Vector2(0.299145, 0.192308)
 repeat = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_mcpq4"]
+size = Vector3(1, 200, 2.405)
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_se27i"]
 dof_blur_far_enabled = true
@@ -437,6 +440,12 @@ shadow_enabled = true
 shadow_opacity = 0.82
 shadow_blur = 2.599
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00685525, 0.040915, -0.0110068)
+visible = false
+mesh = SubResource("BoxMesh_mcpq4")
+skeleton = NodePath("../WorldEnvironment")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_o1fgy")
 
@@ -646,7 +655,7 @@ texture = SubResource("ViewportTexture_2mynr")
 texture = SubResource("ViewportTexture_ib6e6")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.127451, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0214449, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
@@ -663,7 +672,7 @@ bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.621481, 0.285191, -0.730334, -0.620375, -0.748746, 0.235531, -0.479433, 0.599172, 0.641948, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.110543, 0.227301, -0.968026, -0.967228, -0.250529, 0.0516251, -0.230674, 0.941557, 0.247427, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)
@@ -733,6 +742,7 @@ text = "Hide Hit Points"
 
 [node name="Menu" type="Control" parent="Debug"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -839,6 +849,13 @@ theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Level 1"
 
+[node name="Button_level_02" type="Button" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Level 2"
+
 [node name="VBox_3" type="VBoxContainer" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons"]
 layout_mode = 2
 
@@ -874,6 +891,13 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Avoidance Debug"
+
+[node name="Button_levelDebug_04" type="Button" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Terrain Heights"
 
 [node name="VBox_4" type="VBoxContainer" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons"]
 layout_mode = 2
@@ -987,9 +1011,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.226019, -2.19981, 0.376984
 
 [connection signal="timeout" from="UI_FX/Timer_FX_Flash" to="UI_FX" method="_on_timer_fx_flash_timeout"]
 [connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2/Button_level_01" to="Debug/Menu" method="_on_button_level_01_pressed"]
+[connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2/Button_level_02" to="Debug/Menu" method="_on_button_level_02_pressed"]
 [connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_01" to="Debug/Menu" method="_on_button_level_debug_01_pressed"]
 [connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_02" to="Debug/Menu" method="_on_button_level_debug_02_pressed"]
 [connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_03" to="Debug/Menu" method="_on_button_level_debug_03_pressed"]
+[connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_04" to="Debug/Menu" method="_on_button_level_debug_04_pressed"]
 [connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4/Button_assets_01" to="Debug/Menu" method="_on_button_level_00_pressed"]
 [connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/Button_levelBlank_grass" to="Debug/Menu" method="_on_button_level_blank_grass_pressed"]
 [connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/Button_levelBlank_dirt" to="Debug/Menu" method="_on_button_level_blank_dirt_pressed"]
