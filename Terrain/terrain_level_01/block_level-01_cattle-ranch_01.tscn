@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://1v8wnaldsn2r"]
+
+[ext_resource type="PackedScene" uid="uid://7cd7bq27jnyj" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_blank-grass.tscn" id="1_ouefb"]
+[ext_resource type="PackedScene" uid="uid://dxjkdmi6v6583" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow-Barn_01-02_00.tscn" id="2_5s01b"]
+[ext_resource type="PackedScene" uid="uid://cm61hhhqrodvc" path="res://Objects/Foliage/Tree_01/Tree_01-02_00.tscn" id="3_fgw46"]
+
+[sub_resource type="Gradient" id="Gradient_u67vh"]
+offsets = PackedFloat32Array(0.31441, 0.526201, 0.79476)
+colors = PackedColorArray(0.392157, 0.235294, 0.184314, 1, 0.0265759, 0.235294, 0.104343, 0.0289256, 0.0156863, 0.235294, 0.101961, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a8o7j"]
+frequency = 0.0034
+offset = Vector3(-25.32, 0, 0)
+fractal_type = 0
+fractal_octaves = 10
+fractal_lacunarity = 1.935
+fractal_gain = 0.515
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hu5cm"]
+height = 432
+color_ramp = SubResource("Gradient_u67vh")
+noise = SubResource("FastNoiseLite_a8o7j")
+
+[node name="Terrain_0" instance=ExtResource("1_ouefb")]
+layers = 3
+
+[node name="Cow_Barn_02" parent="." index="4" instance=ExtResource("2_5s01b")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.66639, 0, -2.06274)
+
+[node name="tree_01-03" parent="." index="5" instance=ExtResource("3_fgw46")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -8.93934, 0, 3.43934)
+
+[node name="tree_01-05" parent="." index="6" instance=ExtResource("3_fgw46")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -11.0607, 0, 5.56066)
+
+[node name="tree_01-04" parent="." index="7" instance=ExtResource("3_fgw46")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 17.4393, 0, -6.56066)
+
+[node name="tree_01-06" parent="." index="8" instance=ExtResource("3_fgw46")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 19.5607, 0, -4.43934)
+
+[node name="tree_01-07" parent="." index="9" instance=ExtResource("3_fgw46")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 13.4393, 0, 0.93934)
+
+[node name="tree_01-09" parent="." index="10" instance=ExtResource("3_fgw46")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 10.439, 0, 2.939)
+
+[node name="tree_01-08" parent="." index="11" instance=ExtResource("3_fgw46")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 15.5607, 0, 3.06066)
+
+[node name="Decal" type="Decal" parent="." index="12"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -5.01114, 0, 4.15138)
+size = Vector3(10.505, 2, 12.825)
+texture_albedo = SubResource("NoiseTexture2D_hu5cm")
+emission_energy = 0.0
+cull_mask = 2
+
+[node name="tree_01-10" parent="." index="13" instance=ExtResource("3_fgw46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.2108, 4.76837e-07, 2.08124)

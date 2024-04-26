@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c51al1j3mi6rt"]
+[gd_scene load_steps=6 format=3 uid="uid://dv5rp1vt6an2k"]
 
 [ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="1_wl43l"]
 
