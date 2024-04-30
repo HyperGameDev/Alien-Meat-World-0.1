@@ -1,0 +1,113 @@
+[gd_scene load_steps=13 format=3 uid="uid://b1m0n5vlkdvio"]
+
+[ext_resource type="PackedScene" uid="uid://5lfomjbevmh" path="res://Objects/Foliage/Crops/corn-stalk_01_01_00.blend" id="1_3iau6"]
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_5ts2g"]
+[ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_ejnt6"]
+[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_m0pvr"]
+
+[sub_resource type="Animation" id="Animation_ye74q"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Corn:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Corn_Destroyed:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_eybv3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Corn:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Corn_Destroyed:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vkyih"]
+_data = {
+"RESET": SubResource("Animation_eybv3"),
+"degrade": SubResource("Animation_ye74q")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8g60g"]
+size = Vector3(3.205, 1, 3.095)
+
+[sub_resource type="Gradient" id="Gradient_sovhy"]
+offsets = PackedFloat32Array(0, 0.991701)
+colors = PackedColorArray(0.56296, 0.62, 0.1922, 1, 0.482353, 0.576471, 0.152941, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q3vqi"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l6kew"]
+color_ramp = SubResource("Gradient_sovhy")
+noise = SubResource("FastNoiseLite_q3vqi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqboh"]
+albedo_texture = SubResource("NoiseTexture2D_l6kew")
+metallic_specular = 0.55
+roughness = 0.86
+
+[node name="corn-stalk_01_01_00" instance=ExtResource("1_3iau6")]
+script = ExtResource("2_ejnt6")
+
+[node name="Obstacle" type="Area3D" parent="." index="0"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_5ts2g")
+has_arrow = false
+health_max = 1
+damage_amount = 2
+
+[node name="HitPoints" parent="Obstacle" index="0" instance=ExtResource("3_m0pvr")]
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_vkyih")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.436958, 0)
+shape = SubResource("BoxShape3D_8g60g")
+
+[node name="Corn" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_yqboh")
+
+[node name="Corn_Destroyed" parent="." index="2"]
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_yqboh")

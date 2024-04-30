@@ -7,8 +7,8 @@ var TerrainBlocks: Array = []
 
 ## The set of terrian blocks which are currently rendered to viewport
 var terrain_belt: Array[MeshInstance3D] = []
-@export var terrain_velocity: float = 5.0
-const TERRAIN_VELOCITY: float = 5.0
+@export var terrain_velocity: float = 11.0
+const TERRAIN_VELOCITY: float = 11.0
 
 ## The number of blocks to keep rendered to the viewport
 @export var num_terrain_blocks = 8
@@ -65,6 +65,7 @@ func _progress_terrain(delta: float) -> void:
 
 func _append_to_far_edge(target_block: MeshInstance3D, appending_block: MeshInstance3D) -> void:
 	appending_block.position.z = target_block.position.z - target_block.mesh.size.y/2 - appending_block.mesh.size.y/2
+	
 
 
 func _load_terrain_scenes(target_path: String) -> void:

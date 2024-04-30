@@ -4,6 +4,7 @@ class_name Obstacle
 
 signal update_hitpoints
 
+@export var has_arrow = true
 @export var indicator_color = Color(1,.5,0,1)
 @onready var hover_arrow = $Arrow_Hover
 @export var health_max: int
@@ -18,7 +19,7 @@ enum slowdown_amounts {NONE, PARTIAL, FULL}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if !has_node("Arrow_Hover"):
+	if !has_node("Arrow_Hover") and has_arrow:
 		print("ERROR: Somewhere, a hover arrow child is missing!")
 		breakpoint
 		
@@ -50,9 +51,14 @@ func _ready():
 	set_collision_layer_value(3, true)
 	
 	set_collision_mask_value(1, false)
+	
+	# If this is set, obstacled the copter collides with also impact the player's collision (namely on full slowdowns)
+	#set_collision_mask_value(2, true)
+	
 	set_collision_mask_value(16, true)
 	
-	hover_arrow.modulate = indicator_color
+	if has_arrow:
+		hover_arrow.modulate = indicator_color
 	
 	
 func on_update_top_level_hitpoints():
@@ -75,19 +81,20 @@ func on_update_hitpoints():
 func check_area(collided_bodypart):
 #	collided_bodypart.mesh.hide()
 #	collided_bodypart.mesh
-	Messenger.area_damaged.emit(collided_bodypart)
 	Messenger.amount_damaged.emit(damage_amount)
+	Messenger.area_damaged.emit(collided_bodypart)
 	Messenger.amount_slowed.emit(slowdown_amount)
 	
 func uncheck_area(bodypart_unarea):
 	Messenger.area_undamaged.emit(bodypart_unarea)
 	
 func _on_mouse_entered():
-	if !Input.is_action_pressed("Grab"):
+	if !Input.is_action_pressed("Grab") and has_arrow:
 		hover_arrow.visible = true
 	
 func _on_mouse_exited():
-	hover_arrow.visible = false
+	if has_arrow:
+		hover_arrow.visible = false
 
 func restore_collision():
 	for collision in get_children():

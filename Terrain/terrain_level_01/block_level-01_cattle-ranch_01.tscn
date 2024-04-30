@@ -22,7 +22,6 @@ color_ramp = SubResource("Gradient_u67vh")
 noise = SubResource("FastNoiseLite_a8o7j")
 
 [node name="Terrain_0" instance=ExtResource("1_ouefb")]
-layers = 3
 
 [node name="Cow_Barn_02" parent="." index="4" instance=ExtResource("2_5s01b")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.66639, 0, -2.06274)

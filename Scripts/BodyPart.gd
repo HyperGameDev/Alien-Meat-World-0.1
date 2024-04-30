@@ -71,6 +71,7 @@ var damage_material = StandardMaterial3D.new()
 func _ready():
 #	print("Areas' Layer: ", collision_layer, "; Areas' Mask: ", collision_mask)
 # Messenger setup
+	area_entered.connect(on_area_entered)
 	Messenger.area_damaged.connect(damage_detected)
 	Messenger.amount_damaged.connect(_damage_amount)
 	Messenger.instant_death.connect(fall_death)
@@ -90,15 +91,18 @@ func _ready():
 	material_reset.one_shot = true
 	add_child(material_reset)
 	
+func on_area_entered(area):
+	Messenger.something_hit.emit(area)
 
 func _damage_amount(damage_amount):
 	amount_to_damage = damage_amount
-	if damage_amount == Obstacle.damage_amounts.FULL:
+	if amount_to_damage == Obstacle.damage_amounts.FULL:
 		limb_damage_amount = 100
-	if damage_amount == Obstacle.damage_amounts.LOWEST:
+	if amount_to_damage == Obstacle.damage_amounts.LOWEST:
 		limb_damage_amount = 1
-	if damage_amount == Obstacle.damage_amounts.NONE:
+	if amount_to_damage == Obstacle.damage_amounts.NONE:
 		limb_damage_amount = 0
+		print("'Damage_Amount' damage: ", limb_damage_amount)
 
 func set_bone_scale(scale):
 	skeleton.set_bone_pose_scale(bone_hit, scale)
@@ -157,6 +161,7 @@ func damage_detected(collided_bodypart):
 			mesh.show()
 			# Apply damage
 			current_health -= limb_damage_amount
+			print("'Damage_Detected' damage: ", limb_damage_amount)
 			# Update the Damage Label
 			player.get_node("Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
 		

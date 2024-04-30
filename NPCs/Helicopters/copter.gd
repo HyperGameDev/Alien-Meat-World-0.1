@@ -47,7 +47,7 @@ func _ready():
 	update_hitpoints.emit()
 	update_hitpoints.connect(health_effects)
 	set_collision_layer_value(1, false)
-	set_collision_layer_value(3, true)
+	set_collision_layer_value(2, true)
 	
 	set_collision_mask_value(1, false)
 	

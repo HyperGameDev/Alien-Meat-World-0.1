@@ -310,10 +310,10 @@ radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2mynr"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_1ptsy"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ib6e6"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ttfgx"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhodu"]
@@ -664,13 +664,13 @@ transform = Transform3D(1, 0.000486921, 0.000306959, -0.000486927, 1, 2.02912e-0
 parameters/TimeScale/scale = 1.0
 
 [node name="HP_Head" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_2mynr")
+texture = SubResource("ViewportTexture_1ptsy")
 
 [node name="HP_Empathy" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_ib6e6")
+texture = SubResource("ViewportTexture_ttfgx")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0300482, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0850727, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
@@ -687,7 +687,7 @@ bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.470972, 0.644399, 0.603238, -0.87814, -0.2727, -0.394291, -0.0895348, -0.715084, 0.693974, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.121412, 0.992082, -0.0446477, -0.963849, -0.128552, -0.235435, -0.239196, 0.0144421, 0.971358, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)
