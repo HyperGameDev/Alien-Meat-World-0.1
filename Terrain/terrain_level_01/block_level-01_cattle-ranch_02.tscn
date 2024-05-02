@@ -1,9 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0eqg12k4spgg"]
+[gd_scene load_steps=2 format=3 uid="uid://b0eqg12k4spgg"]
 
 [ext_resource type="PackedScene" uid="uid://7cd7bq27jnyj" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_blank-grass.tscn" id="1_d3m70"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6fe23"]
-albedo_color = Color(0.0156863, 0.235294, 0.101961, 1)
-
 [node name="Terrain_0" instance=ExtResource("1_d3m70")]
-surface_material_override/0 = SubResource("StandardMaterial3D_6fe23")

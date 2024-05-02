@@ -5,6 +5,8 @@
 [ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_rcann"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_u8ygc"]
 [ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="4_dufu7"]
+[ext_resource type="Material" uid="uid://dtxlat6xfywmr" path="res://Objects/Foliage/Tree_01/Tree_01_color_trunk.tres" id="6_rt5pp"]
+[ext_resource type="Material" uid="uid://bv4yp38n2ds7c" path="res://Objects/Foliage/Tree_01/Tree_01_color_leaves.tres" id="7_kdtm5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cs12d"]
 radius = 0.55
@@ -101,14 +103,8 @@ _data = {
 "degrade": SubResource("Animation_wecdx")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_jhcl3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_cxxvi"]
 viewport_path = NodePath("SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lv34i"]
-albedo_color = Color(0.388235, 0.243137, 0.0941176, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0kgju"]
-albedo_color = Color(0.32549, 0.478431, 0.188235, 1)
 
 [node name="tree_01-03" instance=ExtResource("1_b0872")]
 script = ExtResource("2_rcann")
@@ -143,13 +139,13 @@ libraries = {
 [node name="Arrow_Hover" parent="Obstacle" index="4" instance=ExtResource("4_dufu7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.89422, 0)
 visible = false
-texture = SubResource("ViewportTexture_jhcl3")
+texture = SubResource("ViewportTexture_cxxvi")
 
 [node name="Trunk" parent="." index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_lv34i")
+surface_material_override/0 = ExtResource("6_rt5pp")
 
 [node name="Leaves" parent="." index="2"]
-surface_material_override/0 = SubResource("StandardMaterial3D_0kgju")
+surface_material_override/0 = ExtResource("7_kdtm5")
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." index="3"]
 height = 2.68

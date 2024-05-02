@@ -1,0 +1,28 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4s7xk5lb6dui"]
+
+[ext_resource type="PackedScene" uid="uid://co0m5qw8vqnmh" path="res://Objects/Buildings/Houses/house_01_02.blend" id="1_g6pfs"]
+[ext_resource type="Material" uid="uid://dhkuywvff5wq2" path="res://Objects/Buildings/Houses/House_01_color_01_walls.tres" id="2_lengp"]
+[ext_resource type="Material" uid="uid://dw658j56uxk3w" path="res://Objects/Buildings/Houses/House_01_color_01_trims.tres" id="3_o5d10"]
+[ext_resource type="Material" uid="uid://dchmjkmsflcnp" path="res://Objects/Buildings/Houses/House_01_color_01_doors.tres" id="4_rf042"]
+[ext_resource type="Material" uid="uid://bv8bo7wkgpqx6" path="res://Objects/Buildings/Houses/House_01_color_01_windows.tres" id="5_riy5i"]
+[ext_resource type="Material" uid="uid://b06vnfwmvljto" path="res://Objects/Buildings/Houses/House_01_color_01_roof.tres" id="6_pxqqv"]
+[ext_resource type="Material" uid="uid://bnyvnwpkcnpjl" path="res://Objects/Buildings/Houses/House_01_color_01_frame.tres" id="7_dbxlo"]
+
+[node name="house_01-02_mesh_only_00" instance=ExtResource("1_g6pfs")]
+
+[node name="HouseBase" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_lengp")
+
+[node name="Doors" parent="." index="1"]
+surface_material_override/0 = ExtResource("3_o5d10")
+surface_material_override/1 = ExtResource("4_rf042")
+
+[node name="Window_Glasses" parent="." index="2"]
+surface_material_override/0 = ExtResource("5_riy5i")
+surface_material_override/1 = ExtResource("3_o5d10")
+
+[node name="HouseRoof" parent="." index="3"]
+surface_material_override/0 = ExtResource("6_pxqqv")
+
+[node name="HouseFrame" parent="." index="4"]
+surface_material_override/0 = ExtResource("7_dbxlo")

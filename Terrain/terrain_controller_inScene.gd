@@ -28,6 +28,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _init_blocks(number_of_blocks: int) -> void:
+	# GETTING AN ERROR? You probably added a non-scene file into your level folder. You're welcome.
 	for TerrainBlock in TerrainBlocks:
 		var block =  TerrainBlock.instantiate()
 		terrain_collector.add_child(block)

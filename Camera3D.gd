@@ -60,17 +60,18 @@ func on_grab_ended():
 func _process(_delta):
 	if Input.is_action_pressed("Grab"):
 		var raycast_result = raycast_get_meat()
-		var meat_original = raycast_result["collider"]
-		if meat_original.has_method("spawn_me") and !is_attempting_grab and !is_in_group("Grabbed"):
+		if "collider" in raycast_result:
+			var meat_original = raycast_result["collider"]
+			if meat_original.has_method("spawn_me") and !is_attempting_grab and !is_in_group("Grabbed"):
 			
 			#disappears the object
-			meat_original.spawn = false
+				meat_original.spawn = false
 			
-			var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
-			get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
-			meat_new.spawn = true
-			meat_new.add_to_group("Grabbed")
-			is_attempting_grab = true
+				var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
+				get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
+				meat_new.spawn = true
+				meat_new.add_to_group("Grabbed")
+				is_attempting_grab = true
 
 	# Raycast 1: Grab implementation
 	grab_ray()
