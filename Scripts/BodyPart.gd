@@ -15,10 +15,14 @@ const LIMB_MORPH_SPEED = 1.25
 
 @onready var skeleton = get_tree().get_root().get_node("Main Scene/Player/Alien/Armature/Skeleton3D")
 
-var dmg_timer_end = false
+var limb_dmg_flash_end = false
 
-@onready var dmg_flash_timer : Timer = Timer.new()
-@onready var material_reset : Timer = Timer.new()
+@onready var material_damaged_timer : Timer = Timer.new()
+@onready var material_reset_timer : Timer = Timer.new()
+@onready var limb_dmg_flash_length = $"Timer_limb-dmg-flash_length"
+
+const LIMB_DMG_FLASH_ON_LENGTH = 0.4
+const LIMB_DMG_FLASH_OFF_LENGTH = 0.2
 
 @export var is_part: is_parts
 
@@ -72,7 +76,7 @@ func _ready():
 #	print("Areas' Layer: ", collision_layer, "; Areas' Mask: ", collision_mask)
 # Messenger setup
 	area_entered.connect(on_area_entered)
-	Messenger.area_damaged.connect(damage_detected)
+	Messenger.area_damaged.connect(on_area_damaged)
 	Messenger.amount_damaged.connect(_damage_amount)
 	Messenger.instant_death.connect(fall_death)
 	Messenger.health_detected.connect(health_collected)
@@ -82,17 +86,18 @@ func _ready():
 	damage_material.set_albedo(Color(0.5, 0.0, 0.0))
 	
 # Damage Flash timer setup
-	$Timer_Limb_Dmg_Flash.timeout.connect(flash_damage_end)
+	limb_dmg_flash_length.timeout.connect(on_limb_dmg_flash_end)
 
-	dmg_flash_timer.timeout.connect(flash_damage)
-	add_child(dmg_flash_timer)
-	dmg_flash_timer.start(0.4)
+	material_damaged_timer.timeout.connect(on_material_damaged_timer_end)
+	add_child(material_damaged_timer)
+	material_damaged_timer.start(LIMB_DMG_FLASH_ON_LENGTH)
 	
-	material_reset.one_shot = true
-	add_child(material_reset)
+	material_reset_timer.one_shot = true
+	add_child(material_reset_timer)
 	
 func on_area_entered(area):
-	Messenger.something_hit.emit(area)
+	var delay = false
+	Messenger.something_hit.emit(area,delay)
 
 func _damage_amount(damage_amount):
 	amount_to_damage = damage_amount
@@ -133,7 +138,7 @@ func shape_change_head():
 #	get_tree().create_tween().tween_method(tween_method_set_bone_scale.bind(skeleton, bone_hit), Vector3(1, 1, 1), Vector3(2, 2, 2), 2)
 
 	
-func damage_detected(collided_bodypart):
+func on_area_damaged(collided_bodypart):
 	
 	# Check what limb I am
 	if collided_bodypart == self:
@@ -145,11 +150,11 @@ func damage_detected(collided_bodypart):
 #		
 		bone_hit = skeleton.find_bone(bodypart_name)
 	
-		# Start Mesh Flash
-		var flash_length = 0
-		flash_length += 4
-		$Timer_Limb_Dmg_Flash.start(flash_length)
-		dmg_timer_end = false
+		# Define Mesh Flash Length
+		var limb_dmg_total_flash_length = 0
+		limb_dmg_total_flash_length += 4
+		limb_dmg_flash_length.start(limb_dmg_total_flash_length)
+		limb_dmg_flash_end = false
 		
 		# This code needs work, only applies to one limb if multiple are hit
 		if current_health > 0 and amount_to_damage == Obstacle.damage_amounts.FULL:
@@ -204,16 +209,15 @@ func damage_detected(collided_bodypart):
 			
 			
 
-func flash_damage():
-	if current_health < max_health and dmg_timer_end == false:
-		mesh.material_override = damage_material
-		material_reset.start(.2)
-		await material_reset.timeout
-		mesh.material_override = default_material
+func on_material_damaged_timer_end():
+	if current_health < max_health and limb_dmg_flash_end == false and amount_to_damage != Obstacle.damage_amounts.NONE:
+			mesh.material_override = damage_material
+			material_reset_timer.start(LIMB_DMG_FLASH_OFF_LENGTH)
+			await material_reset_timer.timeout
+			mesh.material_override = default_material
 		
-func flash_damage_end():
-	dmg_timer_end = true
-#	print("dmg_timer_end")
+func on_limb_dmg_flash_end():
+	limb_dmg_flash_end = true
 	
 
 

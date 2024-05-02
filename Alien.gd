@@ -143,7 +143,9 @@ func do_grab(what_is_grabbed):
 #	aim_bone_at_target(arm_grabbing,grabbed_object, 0.0)
 	await get_tree().create_timer(grab_duration * 2).timeout
 	grab = false
-	Messenger.something_hit.emit(what_is_grabbed)
+	var area = what_is_grabbed
+	var delay = true
+	Messenger.something_hit.emit(area,delay)
 #	print("Grab Ending from ", grabbed_object.name)
 	# Retract the arm
 	get_tree().create_tween().tween_method(grab_action_tween,1.0,0.0,grab_duration)

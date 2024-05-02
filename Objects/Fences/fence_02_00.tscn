@@ -1,16 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbhmorae57tqj"]
+[gd_scene load_steps=3 format=3 uid="uid://bbhmorae57tqj"]
 
 [ext_resource type="PackedScene" uid="uid://djvu573a0y7lq" path="res://Objects/Fences/fence_02_00.blend" id="1_5j0lk"]
-[ext_resource type="Script" path="res://Scripts/mesh.gd" id="2_7woll"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ico34"]
+[ext_resource type="Material" uid="uid://xybb20t3mgp6" path="res://Objects/Fences/fence_color_white.tres" id="3_wing8"]
 
 [node name="fence_02_00" instance=ExtResource("1_5j0lk")]
-script = ExtResource("2_7woll")
-default_color = Color(1, 1, 1, 1)
 
 [node name="Fence_Panels" parent="." index="0"]
-material_override = SubResource("StandardMaterial3D_ico34")
+surface_material_override/0 = ExtResource("3_wing8")
 
 [node name="Fence_Bars" parent="." index="1"]
-material_override = SubResource("StandardMaterial3D_ico34")
+surface_material_override/0 = ExtResource("3_wing8")

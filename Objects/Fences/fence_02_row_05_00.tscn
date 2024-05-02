@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_b7bbn"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_2j3to"]
 [ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="4_ny1g8"]
+[ext_resource type="Material" uid="uid://xybb20t3mgp6" path="res://Objects/Fences/fence_color_white.tres" id="5_p2iw1"]
 [ext_resource type="Script" path="res://Objects/Buildings/Houses/Particles_destruction.gd" id="5_pbkve"]
 
 [sub_resource type="Animation" id="Animation_5h3ff"]
@@ -184,14 +185,11 @@ sub_emitter_mode = 1
 sub_emitter_frequency = 4.0
 sub_emitter_keep_velocity = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yd44v"]
-metallic_specular = 0.0
-
 [sub_resource type="BoxMesh" id="BoxMesh_0h8yi"]
-material = SubResource("StandardMaterial3D_yd44v")
+material = ExtResource("5_p2iw1")
 size = Vector3(0.5, 3, 0.5)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_bl4x8"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ri1d3"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4vouc"]
@@ -217,6 +215,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0)
 [node name="Obstacle" type="Area3D" parent="."]
 script = ExtResource("2_b7bbn")
 health_max = 1
+damage_amount = 2
 
 [node name="HitPoints" parent="Obstacle" instance=ExtResource("3_2j3to")]
 
@@ -246,7 +245,7 @@ script = ExtResource("5_pbkve")
 [node name="Arrow_Hover" parent="Obstacle" instance=ExtResource("4_ny1g8")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 0.494403, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_bl4x8")
+texture = SubResource("ViewportTexture_ri1d3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.253522, 0)

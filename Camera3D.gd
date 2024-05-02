@@ -69,7 +69,6 @@ func _process(_delta):
 			var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
 			get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
 			meat_new.spawn = true
-			meat_new.was_ever_grabbed = true
 			meat_new.add_to_group("Grabbed")
 			is_attempting_grab = true
 

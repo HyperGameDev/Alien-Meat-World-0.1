@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1wormvhcsbl7"]
+
+[ext_resource type="PackedScene" uid="uid://b32magsg1g1v6" path="res://Objects/Fences/fence_01_00.blend" id="1_fx5u6"]
+[ext_resource type="Material" uid="uid://e42rvql60efx" path="res://Objects/Fences/fence_color_brown.tres" id="2_cuthg"]
+
+[node name="fence_01_00" instance=ExtResource("1_fx5u6")]
+
+[node name="Fence_Post-L" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_cuthg")
+
+[node name="Fence_Bars" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_cuthg")
+
+[node name="Fence_Post-R" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_cuthg")

@@ -23,7 +23,6 @@ enum is_types {COW, HUMAN}
 
 var planeToMoveOn: Plane
 var has_been_grabbed = false
-var was_ever_grabbed = false
 
 var is_in_dunk = false
 var has_been_dunked = false
@@ -79,11 +78,10 @@ func _ready():
 	
 	
 func _process(delta):
-	if not Input.is_action_pressed("Grab"):
-		remove_from_group("Grabbed")
-		
-
 	if Input.is_action_just_released("Grab"):
+		if is_in_group("Grabbed"):
+			add_to_group("Dropped")
+		remove_from_group("Grabbed")
 		has_been_grabbed = false
 		Messenger.grab_ended.emit()
 		self.linear_velocity = Vector3.ZERO
@@ -103,11 +101,11 @@ func _physics_process(delta):
 		set_collision_layer_value(4, false)
 		visible = false
 		
-	if was_ever_grabbed:
-		set_collision_mask_value(1, false)
+	#if is_in_group("Dropped"):
+		#set_collision_mask_value(1, false)
 		
 	if self.global_position.y <= -50:
-		if was_ever_grabbed:
+		if is_in_group("Dropped"):
 			print("Dropped Meat Object deleted by Y")
 		else:
 			if !fell:
@@ -115,8 +113,8 @@ func _physics_process(delta):
 				print("DEFAULT Meat Object deleted by Y")
 		queue_free()
 		
-	if self.global_position.z > 2:
-		if was_ever_grabbed:
+	if self.global_position.z > 4:
+		if is_in_group("Dropped"):
 			print("Dropped Meat Object deleted by Z")
 			queue_free()
 		
@@ -133,7 +131,7 @@ func _physics_process(delta):
 		var goTo = planeToMoveOn.intersects_ray(rayStartPoint, rayDirection)
 		self.linear_velocity = (goTo - self.global_position) * velocity
 	else:
-		if detect_surface.is_colliding():
+		if is_in_group("Dropped") and detect_surface.is_colliding():
 			if !detect_surface.get_collider() == self.get_parent():
 				self.reparent(detect_surface.get_collider())
 			
@@ -172,13 +170,13 @@ func on_meat_left_dunk(dunked_body):
 		is_in_dunk = false
 	
 
-func check_area(collided_bodypart):
+#func on_area_entered(collided_bodypart):
 	# collided_bodypart.mesh.hide()
 	# collided_bodypart.mesh
 	# print("Health Sees Player")
-	Messenger.health_detected.emit(collided_bodypart, empathy_ok)
+	#Messenger.health_detected.emit(collided_bodypart, empathy_ok)
 	
-
+ 
 func _on_mouse_entered():
 	if !Input.is_action_pressed("Grab"):
 		hover_arrow.visible = true

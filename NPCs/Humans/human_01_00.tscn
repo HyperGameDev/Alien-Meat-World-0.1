@@ -8,7 +8,7 @@
 radius = 0.15
 height = 0.5
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_cekbn"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_62jjk"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Human_01_00" type="RigidBody3D"]
@@ -23,7 +23,6 @@ empathy_ok = true
 
 [node name="RayCast_surfaceDetect" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118563, 0)
-enabled = false
 target_position = Vector3(0, -0.2, 0)
 collision_mask = 5
 
@@ -39,7 +38,7 @@ lod_bias = 128.0
 [node name="Arrow_Hover" parent="." instance=ExtResource("3_8ninh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.708739, 0)
 visible = false
-texture = SubResource("ViewportTexture_cekbn")
+texture = SubResource("ViewportTexture_62jjk")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_layers = 2

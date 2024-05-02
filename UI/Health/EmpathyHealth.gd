@@ -14,9 +14,9 @@ var dmg_timer_end = false
 
 
 func _ready():
-	Messenger.empathy_consumed.connect(damage_detected)
+	Messenger.empathy_consumed.connect(on_empathy_consumed)
 	
-func damage_detected():
+func on_empathy_consumed():
 #	print("empathy damage detected")
 	Messenger.empathy_is_damaged.emit()
 

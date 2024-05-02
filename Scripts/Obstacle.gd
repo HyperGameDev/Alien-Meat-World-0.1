@@ -41,8 +41,8 @@ func _ready():
 	update_hitpoints.emit()
 	update_hitpoints.connect(on_update_hitpoints)
 
-	area_entered.connect(check_area)
-	area_exited.connect(uncheck_area)
+	area_entered.connect(on_area_entered)
+	area_exited.connect(on_area_exited)
 	
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
@@ -78,14 +78,14 @@ func on_update_hitpoints():
 				collision.disabled = true
 	
 	
-func check_area(collided_bodypart):
+func on_area_entered(collided_bodypart):
 #	collided_bodypart.mesh.hide()
 #	collided_bodypart.mesh
 	Messenger.amount_damaged.emit(damage_amount)
 	Messenger.area_damaged.emit(collided_bodypart)
 	Messenger.amount_slowed.emit(slowdown_amount)
 	
-func uncheck_area(bodypart_unarea):
+func on_area_exited(bodypart_unarea):
 	Messenger.area_undamaged.emit(bodypart_unarea)
 	
 func _on_mouse_entered():

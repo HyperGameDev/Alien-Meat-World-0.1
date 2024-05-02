@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=57 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
@@ -134,7 +134,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 3, 0.166), Vector3(0, 5, 0.166)]
+"values": [Vector3(0, 2, 0.166), Vector3(0, 5, 0.166)]
 }
 
 [sub_resource type="Animation" id="Animation_51xog"]
@@ -165,7 +165,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 5, 0.166), Vector3(0, 3, 0.166)]
+"values": [Vector3(0, 5, 0.166), Vector3(0, 2, 0.166)]
 }
 
 [sub_resource type="Animation" id="Animation_x5mpd"]
@@ -194,8 +194,6 @@ _data = {
 "descent": SubResource("Animation_apk61"),
 "hover_throb": SubResource("Animation_x5mpd")
 }
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_386xn"]
 
 [sub_resource type="Animation" id="Animation_yd82m"]
 length = 0.001
@@ -310,10 +308,10 @@ radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1ptsy"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_3icd3"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ttfgx"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_p7riu"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhodu"]
@@ -474,7 +472,7 @@ size = 5.0
 near = 0.214
 far = 1000.0
 script = ExtResource("2_qvpxy")
-cam_y_offset = 4.6
+cam_y_offset = 4.025
 
 [node name="TerrainCollector" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -511,13 +509,6 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_8cfxk")
 }
-
-[node name="AnimationTree" type="AnimationTree" parent="ScoreDunk"]
-libraries = {
-"": SubResource("AnimationLibrary_8cfxk")
-}
-tree_root = SubResource("AnimationNodeBlendTree_386xn")
-anim_player = NodePath("../Animation_scoreDunk")
 
 [node name="scoreCount" type="Label3D" parent="ScoreDunk"]
 unique_name_in_owner = true
@@ -578,7 +569,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.669039, 2.20307, 1.86489)
 shape = SubResource("CapsuleShape3D_102ua")
 
-[node name="Timer_Limb_Dmg_Flash" type="Timer" parent="Player/DetectionAreas/Area_Head"]
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/DetectionAreas/Area_Head"]
 
 [node name="Area_LegR" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 1.86265e-09)
@@ -594,7 +585,7 @@ is_part = 1
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.354678, 0.465157, 0.185392)
 shape = SubResource("CapsuleShape3D_3kibt")
 
-[node name="Timer_Limb_Dmg_Flash" type="Timer" parent="Player/DetectionAreas/Area_LegR"]
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/DetectionAreas/Area_LegR"]
 
 [node name="Area_LegL" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
@@ -610,7 +601,7 @@ is_part = 2
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.328862, 0.441083, 0.0353434)
 shape = SubResource("CapsuleShape3D_f5maj")
 
-[node name="Timer_Limb_Dmg_Flash" type="Timer" parent="Player/DetectionAreas/Area_LegL"]
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/DetectionAreas/Area_LegL"]
 
 [node name="Area_ArmR" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
@@ -626,7 +617,7 @@ is_part = 3
 transform = Transform3D(0.0959294, -0.0282334, -0.00065124, -0.000468328, -0.0038961, 0.099923, -0.028237, -0.0958525, -0.00386973, 0.222895, 1.25142, -0.735707)
 shape = SubResource("CapsuleShape3D_0yil0")
 
-[node name="Timer_Limb_Dmg_Flash" type="Timer" parent="Player/DetectionAreas/Area_ArmR"]
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/DetectionAreas/Area_ArmR"]
 
 [node name="Area_ArmL" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
@@ -642,7 +633,7 @@ is_part = 4
 transform = Transform3D(0.0981955, -0.0188975, -0.000720685, 2.24717e-12, -0.00381088, 0.0999274, -0.0189113, -0.0981243, -0.00374211, -0.678474, 1.34599, -0.666391)
 shape = SubResource("CapsuleShape3D_v6wbe")
 
-[node name="Timer_Limb_Dmg_Flash" type="Timer" parent="Player/DetectionAreas/Area_ArmL"]
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/DetectionAreas/Area_ArmL"]
 
 [node name="Area_Player-Proximity" type="Area3D" parent="Player/DetectionAreas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00993299, 1, -0.00758123)
@@ -664,13 +655,13 @@ transform = Transform3D(1, 0.000486921, 0.000306959, -0.000486927, 1, 2.02912e-0
 parameters/TimeScale/scale = 1.0
 
 [node name="HP_Head" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_1ptsy")
+texture = SubResource("ViewportTexture_3icd3")
 
 [node name="HP_Empathy" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_ttfgx")
+texture = SubResource("ViewportTexture_p7riu")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0850727, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0482884, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
@@ -687,7 +678,7 @@ bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.121412, 0.992082, -0.0446477, -0.963849, -0.128552, -0.235435, -0.239196, 0.0144421, 0.971358, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.249213, 0.267741, -0.931219, -0.911021, -0.392211, 0.13104, -0.329991, 0.880594, 0.341498, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)

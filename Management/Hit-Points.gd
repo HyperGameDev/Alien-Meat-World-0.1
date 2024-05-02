@@ -48,7 +48,7 @@ func am_i_grabbed(grab_target):
 #		print("Copter Hit (", $"..".name, ")")
 		Messenger.something_grabbed.emit($"..")
 
-func on_something_hit(what_got_hit):
+func on_something_hit(what_got_hit,delay):
 	#	print($"..".name, " MIGHT be hit...")
 	if what_got_hit == $".." and $"..".health_current > 0:
 #		print($"..".name, " just got hit!")
@@ -60,8 +60,8 @@ func on_something_hit(what_got_hit):
 		var health_lost: float = health_max_float - health_current_float
 		health_percent_lost = health_lost / health_max_float
 #		print("Current: ", health_current_float, "; Lost: ", health_lost, "; %: ", health_percent_lost)
-		
-		await get_tree().create_timer(attacked_duration).timeout
+		if delay:
+			await get_tree().create_timer(attacked_duration).timeout
 		$Animation_Degrade.play("degrade")
 		$Animation_Degrade.seek(health_percent_lost, true)
 		$Animation_Degrade.pause()

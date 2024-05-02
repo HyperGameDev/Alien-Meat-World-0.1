@@ -37,10 +37,10 @@ visible = false
 
 [node name="Marker_boundaryRight" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7, 0, 0)
 mesh = SubResource("BoxMesh_evi1g")
 
 [node name="Marker_boundaryLeft" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.7, 0, 0)
 mesh = SubResource("BoxMesh_evi1g")
