@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://ni38vopo0rd5"]
+
+[ext_resource type="PackedScene" uid="uid://7cd7bq27jnyj" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_blank-grass.tscn" id="1_ks6lt"]
+[ext_resource type="MeshLibrary" uid="uid://b7pev3b3gpchd" path="res://Objects/Foliage/Crops/corn_stalk_01-01_griddable_00.tres" id="2_o2222"]
+[ext_resource type="PackedScene" uid="uid://bqvuhngd0g34n" path="res://Objects/Foliage/Crops/corn_3_row_00.tscn" id="3_a68fw"]
+
+[sub_resource type="Gradient" id="Gradient_526pu"]
+offsets = PackedFloat32Array(0.678161, 1)
+colors = PackedColorArray(0.278431, 0.219608, 0.176471, 1, 0.392157, 0.235294, 0.184314, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_te64b"]
+gradient = SubResource("Gradient_526pu")
+fill = 2
+fill_from = Vector2(0.513, 0.51)
+
+[node name="Terrain_0" instance=ExtResource("1_ks6lt")]
+
+[node name="GridMap" type="GridMap" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.7, 0, 0)
+mesh_library = ExtResource("2_o2222")
+cell_size = Vector3(2.045, 2, 2)
+data = {
+"cells": PackedInt32Array(15, 3, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Decal_rowBetween_00" type="Decal" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 0.162941)
+size = Vector3(1.2, 2, 19)
+texture_albedo = SubResource("GradientTexture2D_te64b")
+cull_mask = 2
+
+[node name="Corn_3_Row_00" parent="." index="6" instance=ExtResource("3_a68fw")]
+
+[node name="Decal_rowBetween_01" type="Decal" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 0.162941)
+size = Vector3(1.2, 2, 19)
+texture_albedo = SubResource("GradientTexture2D_te64b")
+cull_mask = 2
+
+[node name="Corn_3_Row_01" parent="." index="8" instance=ExtResource("3_a68fw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+
+[node name="Decal_rowBetween_02" type="Decal" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, 0.162941)
+size = Vector3(1.2, 2, 19)
+texture_albedo = SubResource("GradientTexture2D_te64b")
+cull_mask = 2
+
+[node name="Corn_3_Row_02" parent="." index="10" instance=ExtResource("3_a68fw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+
+[node name="Decal_rowBetween_03" type="Decal" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5, 0, 0.162941)
+size = Vector3(1.2, 2, 19)
+texture_albedo = SubResource("GradientTexture2D_te64b")
+cull_mask = 2
+
+[node name="Corn_3_Row_03" parent="." index="12" instance=ExtResource("3_a68fw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 0)
+
+[node name="Decal_rowBetween_04" type="Decal" parent="." index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 0, 0.162941)
+size = Vector3(1.2, 2, 19)
+texture_albedo = SubResource("GradientTexture2D_te64b")
+cull_mask = 2
+
+[node name="Corn_3_Row_04" parent="." index="14" instance=ExtResource("3_a68fw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 0)
+
+[node name="Decal_rowBetween_05" type="Decal" parent="." index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, 0, 0.162941)
+size = Vector3(1.2, 2, 19)
+texture_albedo = SubResource("GradientTexture2D_te64b")
+cull_mask = 2

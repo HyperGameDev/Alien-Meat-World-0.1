@@ -308,10 +308,10 @@ radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_wlrh7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ushi3"]
 viewport_path = NodePath("HP_Head/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_hm5wl"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_tvxh5"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhodu"]
@@ -437,12 +437,8 @@ texture = SubResource("GradientTexture2D_kjhx1")
 unique_name_in_owner = true
 wait_time = 0.1
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.973789, 0.213969, 0.0771552, -0.122917, 0.209622, 0.970026, 0.191382, -0.954084, 0.230428, -3.30014, 12.6945, 4.53443)
-visible = false
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.973789, 0.213969, 0.0771552, -0.122917, 0.209622, 0.970026, 0.191382, -0.954084, 0.230428, -3.30014, 12.6945, 4.53443)
+transform = Transform3D(0.973789, 0.213969, 0.0771552, -0.122917, 0.209622, 0.970026, 0.191382, -0.954084, 0.230428, -3.29647, 12.6656, 4.59236)
 shadow_enabled = true
 shadow_opacity = 0.82
 shadow_blur = 2.599
@@ -659,13 +655,13 @@ transform = Transform3D(1, 0.000486921, 0.000306959, -0.000486927, 1, 2.02912e-0
 parameters/TimeScale/scale = 1.0
 
 [node name="HP_Head" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_wlrh7")
+texture = SubResource("ViewportTexture_ushi3")
 
 [node name="HP_Empathy" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_hm5wl")
+texture = SubResource("ViewportTexture_tvxh5")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.129376, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.00960411, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
@@ -682,7 +678,7 @@ bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.636063, 0.301227, -0.711088, -0.609805, -0.761155, 0.22303, -0.473838, 0.57521, 0.667512, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.0871331, 0.200794, -0.976243, -0.974008, -0.224978, 0.0406601, -0.211367, 0.953953, 0.215075, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)

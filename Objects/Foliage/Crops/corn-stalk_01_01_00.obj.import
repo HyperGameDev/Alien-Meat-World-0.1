@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cgddv4ptgvyni"
+path="res://.godot/imported/corn-stalk_01_01_00.obj-173e45681e02cefd227b316b55a73f36.mesh"
+
+[deps]
+
+files=["res://.godot/imported/corn-stalk_01_01_00.obj-173e45681e02cefd227b316b55a73f36.mesh"]
+
+source_file="res://Objects/Foliage/Crops/corn-stalk_01_01_00.obj"
+dest_files=["res://.godot/imported/corn-stalk_01_01_00.obj-173e45681e02cefd227b316b55a73f36.mesh", "res://.godot/imported/corn-stalk_01_01_00.obj-173e45681e02cefd227b316b55a73f36.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
