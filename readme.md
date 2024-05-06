@@ -16,6 +16,32 @@ Make sure you have Blender integrated with your Godot Editor, otherwise the proj
 6. Search "Blender"
 7. Set the file path to the folder that contains Blender.exe
 
+## 🎮 Controls (Subject to change)
+
+Main Controls
+- A and D or Left Arrow/Right Arrow
+  - Move left and right
+- W or Up Arrow
+  - Speed up
+- Spacebar
+  - Jump
+- Left Mouse Button
+  - Abduct/Attack
+
+Debug Tools
+- 1 Key
+  - Show/Hide Alien hit points
+- 2 Key
+  - Show/Hide obstacle/NPC hitpoints
+- 3 Key
+  - Show FPS
+- 4 Key
+  - Open Level Selection
+- 5 Key
+  - Pause terrain movement
+- 6 Key
+  - Resume terrain movement     
+
 ## 🔗 Links
 
 [![Patreon](https://img.shields.io/badge/patreon-FF424D?style=for-the-badge&logo=patreon&logoColor=white)](https://www.patreon.com/HyperGameDev)
