@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b0eqg12k4spgg"]
+[gd_scene load_steps=18 format=3 uid="uid://b0eqg12k4spgg"]
 
 [ext_resource type="PackedScene" uid="uid://7cd7bq27jnyj" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_blank-grass.tscn" id="1_d3m70"]
 [ext_resource type="PackedScene" uid="uid://dxjkdmi6v6583" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow-Barn_01-02_00.tscn" id="2_7rchb"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b1jpfiy4cphy7" path="res://Objects/Fences/fence_01_row-05_00.tscn" id="8_31mdd"]
 [ext_resource type="PackedScene" uid="uid://cargusbhk5lxh" path="res://Objects/Fences/fence_01_row-05_00_meshes-only.tscn" id="9_pmbyg"]
 [ext_resource type="PackedScene" uid="uid://caxqah3ilcvfy" path="res://NPCs/Cows/Cow_01-03_00.tscn" id="10_yu8t3"]
+[ext_resource type="PackedScene" uid="uid://cbdts1xv5dfj" path="res://Objects/Buildings/Barns/Tool_Shed_01/tool_shed_01_01_00.tscn" id="13_ofxuo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sncx2"]
 render_priority = 0
@@ -327,3 +328,6 @@ size = Vector3(25, 2, 12)
 texture_albedo = SubResource("NoiseTexture2D_jp685")
 upper_fade = 0.878451
 lower_fade = 0.178381
+
+[node name="tool-shed_01-01_00" parent="." index="97" instance=ExtResource("13_ofxuo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20, 0, 8.25)

@@ -169,7 +169,7 @@ _data = {
 material = ExtResource("5_c6vw7")
 size = Vector3(0.5, 3, 0.5)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_wbf2k"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_8n3a0"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fwt77"]
@@ -211,7 +211,7 @@ script = ExtResource("5_arnmx")
 [node name="Arrow_Hover" parent="Obstacle" instance=ExtResource("3_emrnc")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 0.494403, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_wbf2k")
+texture = SubResource("ViewportTexture_8n3a0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.153522, 0)
