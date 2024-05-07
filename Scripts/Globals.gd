@@ -22,4 +22,4 @@ var meat_objects := {
 }
 
 func _ready():
-	current_level = levels[1]
+	current_level = levels[9]

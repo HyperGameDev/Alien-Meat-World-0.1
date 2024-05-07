@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b0eqg12k4spgg"]
+[gd_scene load_steps=19 format=3 uid="uid://b0eqg12k4spgg"]
 
 [ext_resource type="PackedScene" uid="uid://7cd7bq27jnyj" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_blank-grass.tscn" id="1_d3m70"]
 [ext_resource type="PackedScene" uid="uid://dxjkdmi6v6583" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow-Barn_01-02_00.tscn" id="2_7rchb"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cargusbhk5lxh" path="res://Objects/Fences/fence_01_row-05_00_meshes-only.tscn" id="9_pmbyg"]
 [ext_resource type="PackedScene" uid="uid://caxqah3ilcvfy" path="res://NPCs/Cows/Cow_01-03_00.tscn" id="10_yu8t3"]
 [ext_resource type="PackedScene" uid="uid://cbdts1xv5dfj" path="res://Objects/Buildings/Barns/Tool_Shed_01/tool_shed_01_01_00.tscn" id="13_ofxuo"]
+[ext_resource type="PackedScene" uid="uid://cdgtkxeebdtqm" path="res://Objects/Misc/hay_bale_round_01_01_00.tscn" id="14_oy2h4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sncx2"]
 render_priority = 0
@@ -40,6 +41,7 @@ color_ramp = SubResource("Gradient_nurxp")
 noise = SubResource("FastNoiseLite_2etc1")
 
 [node name="Terrain_0" instance=ExtResource("1_d3m70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -7)
 surface_material_override/0 = SubResource("ShaderMaterial_sncx2")
 
 [node name="Marker_boundaryRight" parent="." index="2"]
@@ -331,3 +333,12 @@ lower_fade = 0.178381
 
 [node name="tool-shed_01-01_00" parent="." index="97" instance=ExtResource("13_ofxuo")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20, 0, 8.25)
+
+[node name="hay-bale_round_01-01_00" parent="." index="98" instance=ExtResource("14_oy2h4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 8.25)
+
+[node name="hay-bale_round_01-01_01" parent="." index="99" instance=ExtResource("14_oy2h4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8.25)
+
+[node name="hay-bale_round_01-01_02" parent="." index="100" instance=ExtResource("14_oy2h4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, 8.25)

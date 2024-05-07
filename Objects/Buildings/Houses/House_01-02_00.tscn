@@ -515,6 +515,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.006
 emitting = false
 amount = 45
 lifetime = 2.0
+one_shot = true
 explosiveness = 1.0
 local_coords = true
 trail_lifetime = 1.35

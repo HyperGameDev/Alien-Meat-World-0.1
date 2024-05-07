@@ -6,6 +6,7 @@ signal update_hitpoints
 
 @export var has_arrow = true
 @export var indicator_color = Color(1,.5,0,1)
+
 @onready var hover_arrow = $Arrow_Hover
 @export var health_max: int
 @onready var health_current = health_max
@@ -75,7 +76,7 @@ func on_update_hitpoints():
 	if health_current <= 0: # Is Dead
 		for collision in get_children():
 			if collision is CollisionShape3D:
-				collision.disabled = true
+				collision.set_deferred("disabled", true)
 	
 	
 func on_area_entered(collided_bodypart):
