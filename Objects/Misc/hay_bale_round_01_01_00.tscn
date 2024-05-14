@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdgtkxeebdtqm"]
+[gd_scene load_steps=14 format=3 uid="uid://cdgtkxeebdtqm"]
 
 [ext_resource type="PackedScene" uid="uid://881t11t1mykx" path="res://Objects/Misc/hay-bale_round_01-01_00.blend" id="1_8nmx2"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_2e6f1"]
 [ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_xgtur"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_4p0kq"]
 [ext_resource type="Material" uid="uid://8waxn5ces0ar" path="res://Objects/Misc/hay_bale_round_01_01_material.tres" id="5_k6pej"]
+[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="6_khjlx"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_f3pqr"]
 height = 0.544995
@@ -93,6 +94,9 @@ sub_emitter_keep_velocity = true
 material = ExtResource("5_k6pej")
 size = Vector3(1.6, 0.1, 0.1)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_hp7rc"]
+viewport_path = NodePath("SubViewport")
+
 [node name="hay-bale_round_01-01_00" instance=ExtResource("1_8nmx2")]
 script = ExtResource("2_xgtur")
 
@@ -123,7 +127,10 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_0u6ac")
 draw_pass_1 = SubResource("BoxMesh_ntr2y")
 
-[node name="Arrow_Hover" type="Node3D" parent="Obstacle" index="2"]
+[node name="Arrow_Hover" parent="Obstacle" index="2" instance=ExtResource("6_khjlx")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 0.816082, -0.00187755)
+visible = false
+texture = SubResource("ViewportTexture_hp7rc")
 
 [node name="Hay_Round" parent="." index="1"]
 surface_material_override/0 = ExtResource("5_k6pej")

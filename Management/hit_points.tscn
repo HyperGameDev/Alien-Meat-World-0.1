@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://crbv3c67ldmgu"]
 
-[ext_resource type="Script" path="res://Management/Hit-Points.gd" id="1_04y3h"]
+[ext_resource type="Script" path="res://Hit-Points.gd" id="1_04y3h"]
 
 [node name="HitPoints" type="Node3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.06613, 0)
