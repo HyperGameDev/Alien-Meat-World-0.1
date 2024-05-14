@@ -290,7 +290,7 @@ size = Vector3(1.63, 0.195, 0.345)
 [sub_resource type="BoxShape3D" id="BoxShape3D_q5kmy"]
 size = Vector3(1, 0.975, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5uj6k"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_g8hhi"]
 viewport_path = NodePath("SubViewport")
 
 [node name="tool-shed_01-01_00" instance=ExtResource("1_wdo1v")]
@@ -354,7 +354,7 @@ shape = SubResource("BoxShape3D_q5kmy")
 [node name="Arrow_Hover" parent="Obstacle" index="2" instance=ExtResource("4_w774x")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 1.2444, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_5uj6k")
+texture = SubResource("ViewportTexture_g8hhi")
 
 [node name="Shed" parent="." index="1"]
 surface_material_override/0 = ExtResource("2_xypww")

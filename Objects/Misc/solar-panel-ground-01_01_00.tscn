@@ -11,81 +11,6 @@
 [ext_resource type="Material" uid="uid://b2nvak7okpag6" path="res://Objects/Misc/solar-panel_colors_01_pole-01.tres" id="9_tivbv"]
 [ext_resource type="Material" uid="uid://b73uwah1m8n4o" path="res://Objects/Misc/solar-panel_colors_01_base-01.tres" id="10_rk1qb"]
 
-[sub_resource type="Animation" id="Animation_c6e5k"]
-resource_name = "degrade"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../Base-Ground:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../Panel:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Particles_Panel:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Particles_Trim:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Particles_Trim:lifetime")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.01, 2.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Particles_Panel:lifetime")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.01, 2.0]
-}
-
 [sub_resource type="Animation" id="Animation_kyskw"]
 length = 0.001
 tracks/0/type = "value"
@@ -161,6 +86,81 @@ tracks/5/keys = {
 "values": [0.01]
 }
 
+[sub_resource type="Animation" id="Animation_c6e5k"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Base-Ground:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Particles_Panel:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Particles_Trim:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Particles_Trim:lifetime")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.01, 2.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Particles_Panel:lifetime")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.01, 2.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_okt6m"]
 _data = {
 "RESET": SubResource("Animation_kyskw"),
@@ -220,7 +220,7 @@ size = Vector3(0.1, 0.135, 0.47)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jjwog"]
 size = Vector3(0.789063, 0.65918, 0.349365)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0psgo"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_bbjxc"]
 viewport_path = NodePath("SubViewport")
 
 [node name="solar-panel_01-01_00" instance=ExtResource("1_iptqm")]
@@ -265,7 +265,7 @@ shape = SubResource("BoxShape3D_jjwog")
 [node name="Arrow_Hover" parent="Obstacle" index="2" instance=ExtResource("4_qponr")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 1.2444, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_0psgo")
+texture = SubResource("ViewportTexture_bbjxc")
 
 [node name="Panel" parent="." index="1"]
 surface_material_override/0 = ExtResource("5_q0vi5")

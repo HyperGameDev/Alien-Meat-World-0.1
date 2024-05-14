@@ -94,7 +94,7 @@ sub_emitter_keep_velocity = true
 material = ExtResource("5_k6pej")
 size = Vector3(1.6, 0.1, 0.1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_hp7rc"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_q1pxh"]
 viewport_path = NodePath("SubViewport")
 
 [node name="hay-bale_round_01-01_00" instance=ExtResource("1_8nmx2")]
@@ -130,7 +130,7 @@ draw_pass_1 = SubResource("BoxMesh_ntr2y")
 [node name="Arrow_Hover" parent="Obstacle" index="2" instance=ExtResource("6_khjlx")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 0.816082, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_hp7rc")
+texture = SubResource("ViewportTexture_q1pxh")
 
 [node name="Hay_Round" parent="." index="1"]
 surface_material_override/0 = ExtResource("5_k6pej")
