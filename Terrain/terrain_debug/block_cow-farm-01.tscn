@@ -1,15 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://bbustci5tcx2e"]
+[gd_scene load_steps=14 format=3 uid="uid://bbustci5tcx2e"]
 
 [ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="1_bq3rs"]
 [ext_resource type="PackedScene" uid="uid://f76a6025mm6h" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow-Barn_01_00.tscn" id="2_r60k4"]
 [ext_resource type="PackedScene" uid="uid://c4gt8ofayu0ec" path="res://Objects/Foliage/Tree_01/Tree_01_00.tscn" id="4_u1tfv"]
 [ext_resource type="PackedScene" uid="uid://0sdt50wuw41u" path="res://Objects/Foliage/Tree_02/Tree_02_00.tscn" id="5_1e65t"]
 [ext_resource type="PackedScene" uid="uid://c1mgqdi4mt5o8" path="res://Objects/Foliage/Tree_03/Tree_03_00.tscn" id="6_08fqy"]
-[ext_resource type="PackedScene" uid="uid://cjkv2h52kqtrf" path="res://Objects/Fences/fence_01_post_00.tscn" id="7_2bhv2"]
-[ext_resource type="PackedScene" uid="uid://ccftg3fflv1d2" path="res://Objects/Fences/fence_01_l_00.tscn" id="8_5jssi"]
 [ext_resource type="PackedScene" uid="uid://dxjkdmi6v6583" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow-Barn_01-02_00.tscn" id="9_6776g"]
-[ext_resource type="PackedScene" uid="uid://dttsur6xbonwb" path="res://Objects/Fences/fence_01_r_00.tscn" id="9_d6hmk"]
 [ext_resource type="PackedScene" uid="uid://caxqah3ilcvfy" path="res://NPCs/Cows/Cow_01-03_00.tscn" id="10_bq4fm"]
+[ext_resource type="PackedScene" uid="uid://c5uqm2b0rpu35" path="res://Objects/Fences/fence_01_post-02_00.tscn" id="10_oileb"]
+[ext_resource type="PackedScene" uid="uid://c16qfwndjrojo" path="res://Objects/Fences/fence_01_bars-2_00.tscn" id="11_2nx1l"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
 size = Vector2(100, 20)
@@ -118,18 +117,6 @@ transform = Transform3D(-0.998241, 0, -0.059289, 0, 1, 0, 0.059289, 0, -0.998241
 [node name="Tree_03_06" parent="." instance=ExtResource("6_08fqy")]
 transform = Transform3D(-0.699227, 0, -0.7149, 0, 1, 0, 0.7149, 0, -0.699227, -11.3183, -0.0586574, 7.55997)
 
-[node name="Fence_01-Post_00" parent="." instance=ExtResource("7_2bhv2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02936, 0, 1.69328)
-
-[node name="Fence_01-L_00" parent="." instance=ExtResource("8_5jssi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.81445, -0.000889703, 1.69398)
-
-[node name="Fence_01-R_00" parent="." instance=ExtResource("9_d6hmk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.24655, 2.98023e-08, 1.69139)
-
-[node name="Fence_01-R_01" parent="." instance=ExtResource("9_d6hmk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.70117, 0, 1.68386)
-
 [node name="Cow_Barn_03" parent="." instance=ExtResource("9_6776g")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.58798, 0.0427479, -3.6854)
 
@@ -189,3 +176,120 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.5757
 
 [node name="Cow_01-03_08" parent="." instance=ExtResource("10_bq4fm")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.2322, 0.110059, -4.74869)
+
+[node name="Fence_01_post-02_00" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69328, 0, 2.39051)
+
+[node name="Fence_01_post-02_01" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29486, 0, 2.39051)
+
+[node name="Fence_01_post-02_02" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.896441, 0, 2.39051)
+
+[node name="Fence_01_post-02_03" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0917, 0, 2.39051)
+
+[node name="Fence_01_bars-02_00" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09565, 0, 2.39051)
+
+[node name="Fence_01_bars-02_01" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49407, 0, 2.39051)
+
+[node name="Fence_01_bars-02_02" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89249, 0, 2.39051)
+
+[node name="Fence_01_post-02_04" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49011, 0, 2.39051)
+
+[node name="Fence_01_post-02_05" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88853, 0, 2.39051)
+
+[node name="Fence_01_post-02_06" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28695, 0, 2.39051)
+
+[node name="Fence_01_bars-02_03" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2909, 0, 2.39051)
+
+[node name="Fence_01_bars-02_04" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68932, 0, 2.39051)
+
+[node name="Fence_01_bars-02_05" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.08774, 0, 2.39051)
+
+[node name="Fence_01_bars-02_06" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.08774, 0, 2.39051)
+
+[node name="Fence_01_bars-02_07" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.08774, 0, 1.99209)
+
+[node name="Fence_01_bars-02_08" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.08774, 0, 1.59367)
+
+[node name="Fence_01_bars-02_09" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.08774, 0, 1.19526)
+
+[node name="Fence_01_post-02_07" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28695, 0, 1.99209)
+
+[node name="Fence_01_post-02_08" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28695, 0, 1.59367)
+
+[node name="Fence_01_post-02_09" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28695, 0, 1.19525)
+
+[node name="Fence_01_post-02_10" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28695, 0, 0.796836)
+
+[node name="Fence_01_bars-02_18" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.697232, 0, 2.39051)
+
+[node name="Fence_01_bars-02_19" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.697232, 0, 1.99209)
+
+[node name="Fence_01_bars-02_20" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.697232, 0, 1.59367)
+
+[node name="Fence_01_bars-02_21" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.697232, 0, 1.19526)
+
+[node name="Fence_01_post-02_18" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.896441, 0, 1.99209)
+
+[node name="Fence_01_post-02_19" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.896441, 0, 1.59367)
+
+[node name="Fence_01_post-02_20" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.896441, 0, 1.19525)
+
+[node name="Fence_01_bars-02_10" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.08774, 0, 0.796836)
+
+[node name="Fence_01_post-02_11" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88853, 0, 0.796836)
+
+[node name="Fence_01_post-02_12" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49011, 0, 0.796836)
+
+[node name="Fence_01_bars-02_11" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2909, 0, 0.796836)
+
+[node name="Fence_01_post-02_13" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0917, 0, 0.796836)
+
+[node name="Fence_01_bars-02_12" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89249, 0, 0.796836)
+
+[node name="Fence_01_post-02_14" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69328, 0, 0.796836)
+
+[node name="Fence_01_bars-02_13" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49407, 0, 0.796836)
+
+[node name="Fence_01_post-02_15" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29486, 0, 0.796836)
+
+[node name="Fence_01_bars-02_14" parent="." instance=ExtResource("11_2nx1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09565, 0, 0.796836)
+
+[node name="Fence_01_post-02_16" parent="." instance=ExtResource("10_oileb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.896441, 0, 0.796836)

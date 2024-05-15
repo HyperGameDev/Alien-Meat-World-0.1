@@ -59,10 +59,19 @@ func on_grab_ended():
 
 func _process(_delta):
 	if Input.is_action_pressed("Grab"):
-		var raycast_result = raycast_get_cow()
-		if raycast_result.has("collider") and !is_attempting_grab:
-			raycast_result["collider"].add_to_group("Grabbed")
-			is_attempting_grab = true
+		var raycast_result = raycast_get_meat()
+		if "collider" in raycast_result:
+			var meat_original = raycast_result["collider"]
+			if meat_original.has_method("spawn_me") and !is_attempting_grab and !is_in_group("Grabbed"):
+			
+			#disappears the object
+				meat_original.spawn = false
+			
+				var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
+				get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
+				meat_new.spawn = true
+				meat_new.add_to_group("Grabbed")
+				is_attempting_grab = true
 
 	# Raycast 1: Grab implementation
 	grab_ray()
@@ -75,7 +84,7 @@ func _process(_delta):
 	cursor_ray()
 
 
-func raycast_get_cow():
+func raycast_get_meat():
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 3000
 	var from = project_ray_origin(mouse_pos)

@@ -1,0 +1,281 @@
+[gd_scene load_steps=20 format=3 uid="uid://vei8bdjp232a"]
+
+[ext_resource type="PackedScene" uid="uid://6rrqu6f40y82" path="res://Objects/Misc/solar-panel_01-01_00.blend" id="1_iptqm"]
+[ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_ap7q5"]
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_mtleh"]
+[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_bshyv"]
+[ext_resource type="Material" uid="uid://cs0pim30r2erf" path="res://Objects/Misc/solar-panel_colors_01_panel-01.tres" id="4_gxkaq"]
+[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="4_qponr"]
+[ext_resource type="Material" uid="uid://bq42i1fbbivi2" path="res://Objects/Misc/solar-panel_colors_01_trim-01.tres" id="5_q0vi5"]
+[ext_resource type="Material" uid="uid://cot8tuvogbyjw" path="res://Objects/Misc/solar-panel_colors_01_electric-01.tres" id="8_t57gc"]
+[ext_resource type="Material" uid="uid://b2nvak7okpag6" path="res://Objects/Misc/solar-panel_colors_01_pole-01.tres" id="9_tivbv"]
+[ext_resource type="Material" uid="uid://b73uwah1m8n4o" path="res://Objects/Misc/solar-panel_colors_01_base-01.tres" id="10_rk1qb"]
+
+[sub_resource type="Animation" id="Animation_kyskw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Base-Ground:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Particles_Panel:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Particles_Trim:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Particles_Trim:lifetime")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.01]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Particles_Panel:lifetime")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.01]
+}
+
+[sub_resource type="Animation" id="Animation_c6e5k"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Base-Ground:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Particles_Panel:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Particles_Trim:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Particles_Trim:lifetime")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.01, 2.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Particles_Panel:lifetime")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.01, 2.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_okt6m"]
+_data = {
+"RESET": SubResource("Animation_kyskw"),
+"degrade": SubResource("Animation_c6e5k")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mljea"]
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(0.495, 0.42, 0.35)
+angle_max = 144.0
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+radial_accel_min = -0.25
+radial_accel_max = 3.75
+attractor_interaction_enabled = false
+scale_min = 0.0
+scale_max = 0.3
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_bqdfb"]
+material = ExtResource("4_gxkaq")
+size = Vector3(0.315, 0.475, 0.055)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d17g0"]
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(0.495, 0.42, 0.35)
+angle_max = 144.0
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+radial_accel_min = -0.25
+radial_accel_max = 3.75
+attractor_interaction_enabled = false
+scale_min = 0.0
+scale_max = 0.3
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_a4fgt"]
+material = ExtResource("5_q0vi5")
+size = Vector3(0.1, 0.135, 0.47)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jjwog"]
+size = Vector3(0.789063, 0.65918, 0.349365)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bbjxc"]
+viewport_path = NodePath("SubViewport")
+
+[node name="solar-panel_01-01_00" instance=ExtResource("1_iptqm")]
+script = ExtResource("2_ap7q5")
+
+[node name="Obstacle" type="Area3D" parent="." index="0"]
+script = ExtResource("2_mtleh")
+health_max = 1
+
+[node name="HitPoints" parent="Obstacle" index="0" instance=ExtResource("3_bshyv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.963026, 0)
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_okt6m")
+}
+
+[node name="Particles_Panel" type="GPUParticles3D" parent="Obstacle/HitPoints" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.582453, 0)
+emitting = false
+amount = 50
+lifetime = 0.01
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_mljea")
+draw_pass_1 = SubResource("BoxMesh_bqdfb")
+
+[node name="Particles_Trim" type="GPUParticles3D" parent="Obstacle/HitPoints" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.582453, 0)
+emitting = false
+amount = 75
+lifetime = 0.01
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_d17g0")
+draw_pass_1 = SubResource("BoxMesh_a4fgt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.314941, 0.0228271)
+shape = SubResource("BoxShape3D_jjwog")
+
+[node name="Arrow_Hover" parent="Obstacle" index="2" instance=ExtResource("4_qponr")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 1.2444, -0.00187755)
+visible = false
+texture = SubResource("ViewportTexture_bbjxc")
+
+[node name="Panel" parent="." index="1"]
+surface_material_override/0 = ExtResource("5_q0vi5")
+surface_material_override/1 = ExtResource("4_gxkaq")
+
+[node name="Base-Ground" parent="." index="2"]
+surface_material_override/0 = ExtResource("5_q0vi5")
+surface_material_override/1 = ExtResource("8_t57gc")
+surface_material_override/2 = ExtResource("9_tivbv")
+surface_material_override/3 = ExtResource("10_rk1qb")
+
+[node name="Base-Mount" parent="." index="3"]
+visible = false

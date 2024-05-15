@@ -1,0 +1,437 @@
+[gd_scene load_steps=35 format=3 uid="uid://dtatnlq6n2bef"]
+
+[ext_resource type="Script" path="res://Terrain/Block.gd" id="1_dxbfr"]
+[ext_resource type="PackedScene" uid="uid://bsctcde6ijgd6" path="res://Terrain/Block_Instance.tscn" id="2_heai8"]
+[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="2_j186x"]
+[ext_resource type="PackedScene" uid="uid://b4qm8k4sih532" path="res://Objects/Buildings/Houses/House_01-02_00.tscn" id="3_a2f1a"]
+[ext_resource type="PackedScene" uid="uid://bka4q282pwrgs" path="res://NPCs/Cars/Pickup Trucks/truck_pickup_01_00.tscn" id="6_fjjah"]
+[ext_resource type="PackedScene" uid="uid://1vgo26dljhil" path="res://Objects/Fences/fence_02_row_05_00.tscn" id="7_gct08"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
+size = Vector2(100, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmqub"]
+albedo_color = Color(0.0156863, 0.235294, 0.101961, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gjw30"]
+data = PackedVector3Array(50, 0, 10, -50, 0, 10, 50, 0, -10, -50, 0, 10, -50, 0, -10, 50, 0, -10)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qwi2u"]
+points = PackedVector3Array(-5.99455, -71.0009, -8.31296, -6.39667, -70.7782, -8.31296, -5.80767, 7.41876, -8.32274, -3.38274, 7.41876, -8.30318, -3.34691, 7.46485, 11.6602, -5.99455, -71.0009, 91.582, -6.39667, -2.12064, -8.31296, -6.39667, -70.7782, 91.582, -6.29546, 7.45717, 11.6406, -3.34691, 7.46485, 91.6015, -6.39667, -2.12064, 91.582, -6.29546, 7.45717, 91.5722)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3dqaj"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jac5p"]
+albedo_color = Color(0.772549, 0.419608, 0.627451, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fk144"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q180s"]
+albedo_color = Color(0.380392, 0.776471, 0.627451, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ro3dl"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjcs6"]
+albedo_color = Color(0.611765, 0.776471, 1, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pw1bi"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1nxqo"]
+albedo_color = Color(0.231373, 1, 0.992157, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lsgng"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0vvfv"]
+albedo_color = Color(0.192157, 0.745098, 0.121569, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4umss"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_adtx0"]
+albedo_color = Color(0.772549, 0.431373, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_c6vyg"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7mmtd"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_347ye"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vkaqv"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6hbrx"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2bqcf"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_glj3i"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_o8n5s"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oni1i"]
+albedo_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3iiar"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rykjb"]
+albedo_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_nj6up"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Terrain_1" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+mesh = SubResource("PlaneMesh_wnprt")
+surface_material_override/0 = SubResource("StandardMaterial3D_tmqub")
+script = ExtResource("1_dxbfr")
+
+[node name="Block_Instance" parent="." instance=ExtResource("2_heai8")]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00821066, -2.38419e-07, 0.0165749)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.013)
+shape = SubResource("ConcavePolygonShape3D_gjw30")
+
+[node name="Col_Cliff-Front" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 41.6496, -7.7, 13.3291)
+shape = SubResource("ConvexPolygonShape3D_qwi2u")
+
+[node name="cliff_front_01" parent="." instance=ExtResource("2_j186x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658, -7.495, 21.33)
+
+[node name="house_01-02_00" parent="." instance=ExtResource("3_a2f1a")]
+transform = Transform3D(0.707106, 0, 0.707106, 0, 1, 0, -0.707106, 0, 0.707106, -4.46503, -0.0206304, 0.56199)
+
+[node name="Arrow_Hover" parent="house_01-02_00/Obstacle" index="2"]
+texture = SubResource("ViewportTexture_3dqaj")
+
+[node name="HouseBase" parent="house_01-02_00" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_jac5p")
+
+[node name="house_01-02_01" parent="." instance=ExtResource("3_a2f1a")]
+transform = Transform3D(0.707106, 0, 0.707106, 0, 1, 0, -0.707106, 0, 0.707106, -6.44389, -0.0206304, 7.10327)
+
+[node name="Arrow_Hover" parent="house_01-02_01/Obstacle" index="2"]
+texture = SubResource("ViewportTexture_fk144")
+
+[node name="HouseBase" parent="house_01-02_01" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_q180s")
+
+[node name="house_01-02_02" parent="." instance=ExtResource("3_a2f1a")]
+transform = Transform3D(0.707106, 0, 0.707106, 0, 1, 0, -0.707106, 0, 0.707106, -2.46692, -0.0206304, -7.22102)
+
+[node name="Arrow_Hover" parent="house_01-02_02/Obstacle" index="2"]
+texture = SubResource("ViewportTexture_ro3dl")
+
+[node name="HouseBase" parent="house_01-02_02" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_mjcs6")
+
+[node name="house_01-02_03" parent="." instance=ExtResource("3_a2f1a")]
+transform = Transform3D(0.707106, 0, -0.707106, 0, 1, 0, 0.707106, 0, 0.707106, 6.12318, -0.0206308, 0.56152)
+
+[node name="Arrow_Hover" parent="house_01-02_03/Obstacle" index="2"]
+texture = SubResource("ViewportTexture_pw1bi")
+
+[node name="HouseBase" parent="house_01-02_03" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_1nxqo")
+
+[node name="house_01-02_04" parent="." instance=ExtResource("3_a2f1a")]
+transform = Transform3D(0.707106, 0, -0.707106, 0, 1, 0, 0.707106, 0, 0.707106, 7.71032, -0.0206308, 7.1028)
+
+[node name="Arrow_Hover" parent="house_01-02_04/Obstacle" index="2"]
+texture = SubResource("ViewportTexture_lsgng")
+
+[node name="HouseBase" parent="house_01-02_04" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_0vvfv")
+
+[node name="house_01-02_05" parent="." instance=ExtResource("3_a2f1a")]
+transform = Transform3D(0.707106, 0, -0.707106, 0, 1, 0, 0.707106, 0, 0.707106, 3.82131, -0.0206308, -7.22149)
+
+[node name="Arrow_Hover" parent="house_01-02_05/Obstacle" index="2"]
+texture = SubResource("ViewportTexture_4umss")
+
+[node name="HouseBase" parent="house_01-02_05" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_adtx0")
+
+[node name="truckPickup_01_00" parent="." instance=ExtResource("6_fjjah")]
+transform = Transform3D(-0.678198, 0, 0.734879, 0, 1, 0, -0.734879, 0, -0.678198, -2.42811, -2.38419e-07, 4.85436)
+
+[node name="truckPickup_01_01" parent="." instance=ExtResource("6_fjjah")]
+transform = Transform3D(0.792332, 0, 0.61009, 0, 1, 0, -0.61009, 0, 0.792332, 4.4509, -2.38419e-07, 5.21737)
+
+[node name="Fence_02_row-05_04" parent="." instance=ExtResource("7_gct08")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -5.3, 0, 2.6)
+
+[node name="fence_02_00" parent="Fence_02_row-05_04" index="0"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_01" parent="Fence_02_row-05_04" index="1"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_02" parent="Fence_02_row-05_04" index="2"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_03" parent="Fence_02_row-05_04" index="3"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_04" parent="Fence_02_row-05_04" index="4"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="Arrow_Hover" parent="Fence_02_row-05_04/Obstacle" index="1"]
+texture = SubResource("ViewportTexture_c6vyg")
+
+[node name="Fence_02_row-05_05" parent="." instance=ExtResource("7_gct08")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -3.9, 0, 4)
+
+[node name="fence_02_00" parent="Fence_02_row-05_05" index="0"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_01" parent="Fence_02_row-05_05" index="1"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_02" parent="Fence_02_row-05_05" index="2"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_03" parent="Fence_02_row-05_05" index="3"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_04" parent="Fence_02_row-05_05" index="4"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="Arrow_Hover" parent="Fence_02_row-05_05/Obstacle" index="1"]
+texture = SubResource("ViewportTexture_7mmtd")
+
+[node name="Fence_02_row-05_08" parent="." instance=ExtResource("7_gct08")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -2.5, 0, 4)
+
+[node name="fence_02_00" parent="Fence_02_row-05_08" index="0"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_01" parent="Fence_02_row-05_08" index="1"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_02" parent="Fence_02_row-05_08" index="2"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_03" parent="Fence_02_row-05_08" index="3"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_04" parent="Fence_02_row-05_08" index="4"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="Arrow_Hover" parent="Fence_02_row-05_08/Obstacle" index="1"]
+transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, -0.00277257, 0.494403, -0.00187778)
+texture = SubResource("ViewportTexture_347ye")
+
+[node name="Fence_02_row-05_09" parent="." instance=ExtResource("7_gct08")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1.1, 0, 2.6)
+
+[node name="fence_02_00" parent="Fence_02_row-05_09" index="0"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_01" parent="Fence_02_row-05_09" index="1"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_02" parent="Fence_02_row-05_09" index="2"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_03" parent="Fence_02_row-05_09" index="3"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_04" parent="Fence_02_row-05_09" index="4"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="Arrow_Hover" parent="Fence_02_row-05_09/Obstacle" index="1"]
+texture = SubResource("ViewportTexture_vkaqv")
+
+[node name="Fence_02_row-05_06" parent="." instance=ExtResource("7_gct08")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -1.1, 0, 1.2)
+
+[node name="fence_02_00" parent="Fence_02_row-05_06" index="0"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_01" parent="Fence_02_row-05_06" index="1"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_02" parent="Fence_02_row-05_06" index="2"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_03" parent="Fence_02_row-05_06" index="3"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_04" parent="Fence_02_row-05_06" index="4"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="Arrow_Hover" parent="Fence_02_row-05_06/Obstacle" index="1"]
+texture = SubResource("ViewportTexture_6hbrx")
+
+[node name="Fence_02_row-05_07" parent="." instance=ExtResource("7_gct08")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -2.5, 0, -0.2)
+
+[node name="fence_02_00" parent="Fence_02_row-05_07" index="0"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_01" parent="Fence_02_row-05_07" index="1"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_02" parent="Fence_02_row-05_07" index="2"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_03" parent="Fence_02_row-05_07" index="3"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="fence_02_04" parent="Fence_02_row-05_07" index="4"]
+default_color = Color(0.639216, 0.411765, 0.262745, 1)
+
+[node name="Arrow_Hover" parent="Fence_02_row-05_07/Obstacle" index="1"]
+texture = SubResource("ViewportTexture_2bqcf")
+
+[node name="Fence_02_row-05_00" parent="." instance=ExtResource("7_gct08")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 5.7, 0, 6.3)
+
+[node name="fence_02_00" parent="Fence_02_row-05_00" index="0"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="fence_02_01" parent="Fence_02_row-05_00" index="1"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="fence_02_02" parent="Fence_02_row-05_00" index="2"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="fence_02_03" parent="Fence_02_row-05_00" index="3"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="fence_02_04" parent="Fence_02_row-05_00" index="4"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="Arrow_Hover" parent="Fence_02_row-05_00/Obstacle" index="1"]
+texture = SubResource("ViewportTexture_glj3i")
+
+[node name="Fence_02_row-05_03" parent="." instance=ExtResource("7_gct08")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 8.5, 0, 9.1)
+
+[node name="fence_02_00" parent="Fence_02_row-05_03" index="0"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="fence_02_01" parent="Fence_02_row-05_03" index="1"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="fence_02_02" parent="Fence_02_row-05_03" index="2"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="fence_02_03" parent="Fence_02_row-05_03" index="3"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="fence_02_04" parent="Fence_02_row-05_03" index="4"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="Arrow_Hover" parent="Fence_02_row-05_03/Obstacle" index="1"]
+texture = SubResource("ViewportTexture_o8n5s")
+
+[node name="Fence_02_row-05_01" parent="." instance=ExtResource("7_gct08")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 5.7, 0, 7.7)
+
+[node name="fence_02_00" parent="Fence_02_row-05_01" index="0"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="fence_02_01" parent="Fence_02_row-05_01" index="1"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="fence_02_02" parent="Fence_02_row-05_01" index="2"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="fence_02_03" parent="Fence_02_row-05_01" index="3"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="Fence_Panels" parent="Fence_02_row-05_01/fence_02_03" index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_oni1i")
+
+[node name="Fence_Bars" parent="Fence_02_row-05_01/fence_02_03" index="1"]
+visible = false
+material_override = SubResource("StandardMaterial3D_oni1i")
+
+[node name="fence_02_04" parent="Fence_02_row-05_01" index="4"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="Arrow_Hover" parent="Fence_02_row-05_01/Obstacle" index="1"]
+texture = SubResource("ViewportTexture_3iiar")
+
+[node name="Fence_02_row-05_02" parent="." instance=ExtResource("7_gct08")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 7.1, 0, 9.1)
+
+[node name="fence_02_00" parent="Fence_02_row-05_02" index="0"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="fence_02_01" parent="Fence_02_row-05_02" index="1"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="fence_02_02" parent="Fence_02_row-05_02" index="2"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="fence_02_03" parent="Fence_02_row-05_02" index="3"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="fence_02_04" parent="Fence_02_row-05_02" index="4"]
+default_color = Color(0.772549, 0.776471, 0.627451, 1)
+
+[node name="Fence_Panels" parent="Fence_02_row-05_02/fence_02_04" index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_rykjb")
+
+[node name="Fence_Bars" parent="Fence_02_row-05_02/fence_02_04" index="1"]
+visible = false
+material_override = SubResource("StandardMaterial3D_rykjb")
+
+[node name="Arrow_Hover" parent="Fence_02_row-05_02/Obstacle" index="1"]
+texture = SubResource("ViewportTexture_nj6up")
+
+[editable path="house_01-02_00"]
+[editable path="house_01-02_00/Obstacle/HitPoints"]
+[editable path="house_01-02_01"]
+[editable path="house_01-02_01/Obstacle/HitPoints"]
+[editable path="house_01-02_02"]
+[editable path="house_01-02_02/Obstacle/HitPoints"]
+[editable path="house_01-02_03"]
+[editable path="house_01-02_03/Obstacle/HitPoints"]
+[editable path="house_01-02_04"]
+[editable path="house_01-02_04/Obstacle/HitPoints"]
+[editable path="house_01-02_05"]
+[editable path="house_01-02_05/Obstacle/HitPoints"]
+[editable path="Fence_02_row-05_04"]
+[editable path="Fence_02_row-05_04/Obstacle/HitPoints"]
+[editable path="Fence_02_row-05_05"]
+[editable path="Fence_02_row-05_05/Obstacle/HitPoints"]
+[editable path="Fence_02_row-05_08"]
+[editable path="Fence_02_row-05_08/Obstacle/HitPoints"]
+[editable path="Fence_02_row-05_09"]
+[editable path="Fence_02_row-05_09/Obstacle/HitPoints"]
+[editable path="Fence_02_row-05_06"]
+[editable path="Fence_02_row-05_06/Obstacle/HitPoints"]
+[editable path="Fence_02_row-05_07"]
+[editable path="Fence_02_row-05_07/Obstacle/HitPoints"]
+[editable path="Fence_02_row-05_00"]
+[editable path="Fence_02_row-05_00/Obstacle/HitPoints"]
+[editable path="Fence_02_row-05_03"]
+[editable path="Fence_02_row-05_03/Obstacle/HitPoints"]
+[editable path="Fence_02_row-05_01"]
+[editable path="Fence_02_row-05_01/fence_02_03"]
+[editable path="Fence_02_row-05_01/Obstacle/HitPoints"]
+[editable path="Fence_02_row-05_02"]
+[editable path="Fence_02_row-05_02/fence_02_04"]
+[editable path="Fence_02_row-05_02/Obstacle/HitPoints"]

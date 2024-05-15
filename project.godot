@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Messenger="*res://Management/messenger.gd"
 NpcSpawns="*res://NPCs/NPC Spawns.gd"
+Globals="*res://Scripts/Globals.gd"
 
 [display]
 
@@ -96,6 +97,7 @@ Grab={
 
 [layer_names]
 
+3d_render/layer_2="Ground"
 3d_physics/layer_1="Ground"
 3d_physics/layer_2="NPC"
 3d_physics/layer_3="Obstacle"
@@ -109,4 +111,4 @@ avoidance/layer_16="Player"
 
 [rendering]
 
-anti_aliasing/quality/use_taa=true
+anti_aliasing/quality/screen_space_aa=1

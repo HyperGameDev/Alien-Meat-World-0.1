@@ -42,7 +42,7 @@ signal mouse_pos_3d
 
 # Should be refactored/named to be hitting not grabbing
 signal something_grabbed
-signal something_ungrabbed
+signal something_hit
 
 # Actual grabbing
 signal grab_begun

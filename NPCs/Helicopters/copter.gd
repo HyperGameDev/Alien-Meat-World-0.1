@@ -10,6 +10,8 @@ signal is_destroyed
 @onready var copter_mesh = $copter_001
 @onready var terrain_controller = get_tree().get_current_scene().get_node("%TerrainController_inScene")
 @onready var detect_copterDeath = %RayCast_copterDeath
+#@onready var detect_left = %RayCast_Left
+#@onready var detect_right = %RayCast_Right
 
 static var copters_stopped = 0
 
@@ -45,7 +47,7 @@ func _ready():
 	update_hitpoints.emit()
 	update_hitpoints.connect(health_effects)
 	set_collision_layer_value(1, false)
-	set_collision_layer_value(3, true)
+	set_collision_layer_value(2, true)
 	
 	set_collision_mask_value(1, false)
 	
@@ -86,6 +88,12 @@ func _physics_process(delta):
 		is_destroyed.emit()
 		copter_mesh.visible = false
 		$NavigationAgent3D.avoidance_enabled = false
+		
+	# Part of an attempt at custom pathfinding. Should look into PhysicsDirectSpaceState3D class or something. Will need to interpolate movement	
+	#if detect_left.is_colliding():
+		#var left = detect_left.get_target_position()
+		#global_position += left * -1 
+		#print(left)
 		
 		
 #	if global_position.y >= 2.3:

@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://q0ul63mbple2"]
+
+[sub_resource type="Shader" id="Shader_ayxaf"]
+code = "shader_type spatial;
+uniform vec3 grass: source_color = vec3(0.016,0.235,0.102);
+uniform vec3 dirt: source_color = vec3(0.392,0.235,0.184);
+uniform float lerp_value: hint_range(0,1);
+uniform sampler2D noise_mask;
+const vec3 shoes = vec3(1,1,1);
+uniform vec2 uv_scale = vec2(1,1);
+
+void fragment() {
+	float mask_value = texture(noise_mask, UV*uv_scale).r;
+	ALBEDO = mix(grass,dirt,mask_value);
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uuk4g"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ipoi4"]
+seamless = true
+seamless_blend_skirt = 0.963
+noise = SubResource("FastNoiseLite_uuk4g")
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_ayxaf")
+shader_parameter/grass = Color(0.016, 0.235, 0.102, 1)
+shader_parameter/dirt = Color(0.392, 0.235, 0.184, 1)
+shader_parameter/lerp_value = 0.352
+shader_parameter/uv_scale = Vector2(1.59, -0.355)
+shader_parameter/noise_mask = SubResource("NoiseTexture2D_ipoi4")

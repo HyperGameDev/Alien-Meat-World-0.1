@@ -1,0 +1,23 @@
+[gd_resource type="NoiseTexture2D" load_steps=3 format=3 uid="uid://c5mfihwdq6rne"]
+
+[sub_resource type="Gradient" id="Gradient_gvoji"]
+colors = PackedColorArray(0.560955, 0.560955, 0.560955, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gjaih"]
+noise_type = 2
+seed = 315
+frequency = 0.0094
+offset = Vector3(-237.43, -97.93, 0)
+cellular_jitter = 0.0
+cellular_return_type = 0
+domain_warp_frequency = 0.455
+domain_warp_fractal_type = 2
+
+[resource]
+width = 317
+height = 397
+invert = true
+seamless = true
+seamless_blend_skirt = 0.0
+color_ramp = SubResource("Gradient_gvoji")
+noise = SubResource("FastNoiseLite_gjaih")

@@ -1,0 +1,242 @@
+[gd_scene load_steps=15 format=3 uid="uid://b1jpfiy4cphy7"]
+
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_bvdrc"]
+[ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="1_jnpgo"]
+[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_ffe4t"]
+[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="3_emrnc"]
+[ext_resource type="Material" uid="uid://dntqen3sdrept" path="res://Objects/Fences/fence_particle_row05.tres" id="4_ttvyi"]
+[ext_resource type="Script" path="res://Objects/Buildings/Houses/Particles_destruction.gd" id="5_arnmx"]
+[ext_resource type="Material" uid="uid://e42rvql60efx" path="res://Objects/Fences/fence_color_brown.tres" id="5_c6vw7"]
+[ext_resource type="PackedScene" uid="uid://b1wormvhcsbl7" path="res://Objects/Fences/fence_01_00.tscn" id="7_qqhx4"]
+
+[sub_resource type="Animation" id="Animation_5h3ff"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../fence_01_00:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../fence_01_01:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../fence_01_02:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../fence_01_06:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../fence_01_03:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Particles_Fence:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vbufw"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../fence_01_00:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../fence_01_01:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../fence_01_02:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../fence_01_06:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../fence_01_03:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Particles_Fence:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_txg71"]
+_data = {
+"RESET": SubResource("Animation_5h3ff"),
+"degrade": SubResource("Animation_vbufw")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_w43lh"]
+material = ExtResource("5_c6vw7")
+size = Vector3(0.5, 3, 0.5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5oevq"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fwt77"]
+size = Vector3(2.1, 0.3, 0.1)
+
+[node name="Fence_01_row-05_00" type="Node3D"]
+script = ExtResource("1_jnpgo")
+
+[node name="Obstacle" type="Area3D" parent="."]
+script = ExtResource("1_bvdrc")
+health_max = 1
+damage_amount = 2
+
+[node name="HitPoints" parent="Obstacle" instance=ExtResource("2_ffe4t")]
+
+[node name="Dmg_Label" parent="Obstacle/HitPoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints"]
+libraries = {
+"": SubResource("AnimationLibrary_txg71")
+}
+
+[node name="Particles_Fence" type="GPUParticles3D" parent="Obstacle/HitPoints"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00605976, -0.972315, 0.0432199)
+emitting = false
+amount = 70
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.8
+randomness = 1.0
+collision_base_size = 1.82
+local_coords = true
+trail_lifetime = 1.35
+process_material = ExtResource("4_ttvyi")
+draw_pass_1 = SubResource("BoxMesh_w43lh")
+script = ExtResource("5_arnmx")
+
+[node name="Arrow_Hover" parent="Obstacle" instance=ExtResource("3_emrnc")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 0.494403, -0.00187755)
+visible = false
+texture = SubResource("ViewportTexture_5oevq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.153522, 0)
+shape = SubResource("BoxShape3D_fwt77")
+
+[node name="fence_01_00" parent="." instance=ExtResource("7_qqhx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0)
+
+[node name="fence_01_01" parent="." instance=ExtResource("7_qqhx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37, 0, 0)
+
+[node name="Fence_Post-R" parent="fence_01_01" index="2"]
+visible = false
+
+[node name="fence_01_02" parent="." instance=ExtResource("7_qqhx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37, 0, 0)
+
+[node name="Fence_Post-L" parent="fence_01_02" index="0"]
+visible = false
+
+[node name="fence_01_06" parent="." instance=ExtResource("7_qqhx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
+
+[node name="fence_01_03" parent="." instance=ExtResource("7_qqhx4")]
+
+[editable path="Obstacle/HitPoints"]
+[editable path="fence_01_01"]
+[editable path="fence_01_02"]

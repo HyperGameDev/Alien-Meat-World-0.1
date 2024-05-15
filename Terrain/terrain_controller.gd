@@ -51,23 +51,22 @@ func _progress_terrain(delta: float) -> void:
 	for block in terrain_belt:
 		block.position.z += terrain_velocity * delta
 
-# Delete first index if it passes a certain spot
+	# Delete first block if it passes a certain spot
 	if terrain_belt[0].position.z >= terrain_belt[0].mesh.size.y/2:
 		
-		# -1 here means "the last block in the array i.e. the highest number"
+		# -1 means "the last block in the array
+		# i.e. the highest number"
 		var last_terrain = terrain_belt[-1]
 		
-		# Pop_front removes the first block from the array only, and then returns the name of that removed block.
+		# Pop_front removes the first block from the array only,
+		# and then returns the name of that removed block.
 		var first_terrain = terrain_belt.pop_front()
-		first_terrain.queue_free()
 		
+		first_terrain.queue_free()
 		var block = TerrainBlocks.pick_random().instantiate()
 		_append_to_far_edge(last_terrain, block)
 		add_child(block)
 		terrain_belt.append(block)
-		debug_counter += 1
-		#if debug_counter > 4:
-			#breakpoint
 
 
 func _append_to_far_edge(target_block: MeshInstance3D, appending_block: MeshInstance3D) -> void:

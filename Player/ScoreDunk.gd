@@ -8,8 +8,8 @@ extends Area3D
 @onready var score_count = %scoreCount
 
 # Adjust these together!!
-var dunk_y_offset: float = 6.1
-const DUNK_Y_OFFSET = 6.1
+var dunk_y_offset: float = 5.6
+const DUNK_Y_OFFSET = 5.6
 
 @export var dunk_ascent_distance: float = 1.6
 
@@ -28,8 +28,9 @@ var dunked_meats_in_group
 const DUNK_ASCENT_TIMER_DURATION = 2.0
 var dunk_ascent_timer_duration = 2.0
 
-@export var dunk_2d_pos = Vector2(580,150)
-const DUNK_MAX_OPACITY_DISTANCE := 200.0
+# Semi-transparent dunk if cursor is closer/further
+#@export var dunk_2d_pos = Vector2(580,150)
+#const DUNK_MAX_OPACITY_DISTANCE := 200.0
 
 
 # Called when the node enters the scene tree for the first time.
