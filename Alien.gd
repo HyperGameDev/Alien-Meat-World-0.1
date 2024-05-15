@@ -1,9 +1,9 @@
 extends CharacterBody3D
 
-
-const SPEED = 5.0
-const JUMP_VELOCITY = 6
-const FALL_DEATH_DISTANCE = -50
+@export_group("Alien Properties")
+@export var SPEED: float = 5.0
+@export var JUMP_VELOCITY: int = 6
+@export var FALL_DEATH_DISTANCE: int = -50
 
 @onready var animation = get_node("Alien/AnimationTree_Alien")
 @onready var skeleton: Skeleton3D = get_node("Alien/Armature/Skeleton3D")
