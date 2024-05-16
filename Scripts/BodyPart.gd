@@ -96,8 +96,8 @@ func _ready():
 	add_child(material_reset_timer)
 	
 func on_area_entered(area):
-	var delay = false
-	Messenger.something_hit.emit(area,delay)
+	var is_delayed = false
+	Messenger.something_hit.emit(area,is_delayed)
 
 func _damage_amount(damage_amount):
 	amount_to_damage = damage_amount

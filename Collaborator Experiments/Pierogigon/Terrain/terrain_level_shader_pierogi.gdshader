@@ -17,7 +17,8 @@ void fragment() {
 
 	float mask_value_red = texture(mask_texture, UV).r;
 	float mask_value_blue = texture(mask_texture, UV).b;
-	float noise_value = texture(noise_texture, UV * noise_size + random_offset).r;
+	//float noise_value = texture(noise_texture, UV * noise_size + random_offset).r;
+	float noise_value = texture(noise_texture, UV * noise_size).r;
 
 	//greyscale values have r==g==b, so it doesnt matter which i pick. i did "r" to get a float.
 	

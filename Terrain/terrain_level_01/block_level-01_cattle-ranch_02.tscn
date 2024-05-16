@@ -1,11 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://b0eqg12k4spgg"]
+[gd_scene load_steps=23 format=3 uid="uid://b0eqg12k4spgg"]
 
 [ext_resource type="PackedScene" uid="uid://7cd7bq27jnyj" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_blank-grass.tscn" id="1_d3m70"]
 [ext_resource type="Shader" path="res://Collaborator Experiments/Pierogigon/Terrain/terrain_level_shader_pierogi.gdshader" id="2_1v4qd"]
 [ext_resource type="PackedScene" uid="uid://dxjkdmi6v6583" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow-Barn_01-02_00.tscn" id="2_7rchb"]
 [ext_resource type="Texture2D" uid="uid://i5qu2o412kbf" path="res://Collaborator Experiments/Pierogigon/Terrain/pierogi_gradient.tres" id="3_45yog"]
 [ext_resource type="PackedScene" uid="uid://c4gt8ofayu0ec" path="res://Objects/Foliage/Tree_01/Tree_01_00.tscn" id="3_abf1h"]
-[ext_resource type="Texture2D" uid="uid://bub0u2elifuue" path="res://Terrain/terrain_textures/block_level-01_dirt-top-layer_2.tres" id="4_j5elu"]
 [ext_resource type="PackedScene" uid="uid://0sdt50wuw41u" path="res://Objects/Foliage/Tree_02/Tree_02_00.tscn" id="4_vmcl1"]
 [ext_resource type="PackedScene" uid="uid://c1mgqdi4mt5o8" path="res://Objects/Foliage/Tree_03/Tree_03_00.tscn" id="5_kh0mm"]
 [ext_resource type="Texture2D" uid="uid://clo0uqc62th85" path="res://Terrain/terrain_level_01_textures/block_level-01_cattle-ranch_02_invert.png" id="5_vn3ll"]
@@ -14,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b1jpfiy4cphy7" path="res://Objects/Fences/fence_01_row-05_00.tscn" id="8_31mdd"]
 [ext_resource type="PackedScene" uid="uid://cargusbhk5lxh" path="res://Objects/Fences/fence_01_row-05_00_meshes-only.tscn" id="9_pmbyg"]
 [ext_resource type="PackedScene" uid="uid://caxqah3ilcvfy" path="res://NPCs/Cows/Cow_01-03_00.tscn" id="10_yu8t3"]
-[ext_resource type="Gradient" uid="uid://cxdgvshb67wfv" path="res://Terrain/terrain_textures/block_level-01_dirt-top-layer.tres" id="13_bwmo4"]
+[ext_resource type="Gradient" uid="uid://xtqbfuc7j53y" path="res://Terrain/terrain_textures/block_level-01_dirt-top-layer.tres" id="13_bwmo4"]
 [ext_resource type="PackedScene" uid="uid://cbdts1xv5dfj" path="res://Objects/Buildings/Barns/Tool_Shed_01/tool_shed_01_01_00.tscn" id="13_ofxuo"]
 [ext_resource type="PackedScene" uid="uid://cdgtkxeebdtqm" path="res://Objects/Misc/hay_bale_round_01_01_00.tscn" id="14_oy2h4"]
 [ext_resource type="PackedScene" uid="uid://d21gtemvo26ou" path="res://Objects/Misc/electric_pole_01_01_00.tscn" id="15_bmwah"]
@@ -36,10 +35,10 @@ shader_parameter/albedo_b = Color(0.0156863, 0.235294, 0.101961, 1)
 shader_parameter/noise_size = 1.5
 shader_parameter/noise_strength = 1.0
 shader_parameter/dirtiness = 0.93
+shader_parameter/blue_value_ratio = 2.0
 shader_parameter/mask_texture = ExtResource("5_vn3ll")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_54elw")
 shader_parameter/gradient_texture_1 = ExtResource("3_45yog")
-shader_parameter/gradient_texture_2 = ExtResource("4_j5elu")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2etc1"]
 noise_type = 5
@@ -56,11 +55,7 @@ color_ramp = ExtResource("13_bwmo4")
 noise = SubResource("FastNoiseLite_2etc1")
 
 [node name="Terrain_0" instance=ExtResource("1_d3m70")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -7)
 surface_material_override/0 = SubResource("ShaderMaterial_sncx2")
-
-[node name="Marker_boundaryRight" parent="." index="2"]
-visible = false
 
 [node name="Cow_Barn_02" parent="." index="4" instance=ExtResource("2_7rchb")]
 transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 23.3309, -0.0110502, 0.740104)
@@ -84,10 +79,10 @@ transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -5, 0, 8
 transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -5, 0, 8)
 
 [node name="Tree_02_03" parent="." index="11" instance=ExtResource("4_vmcl1")]
-transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -0.540764, 0, 8.44777)
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -4.04076, 0, -4.05223)
 
 [node name="Tree_03_00" parent="." index="12" instance=ExtResource("5_kh0mm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 
 [node name="Tree_01_06" parent="." index="13" instance=ExtResource("3_abf1h")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -15.1537, 0, 7.07129)

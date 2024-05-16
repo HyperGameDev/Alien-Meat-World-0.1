@@ -46,9 +46,9 @@ func am_i_hit(grab_target):
 	if grab_target == $".." and Input.is_action_just_pressed("Grab"):
 		was_hit = true
 #		print("Copter Hit (", $"..".name, ")")
-		Messenger.something_hit.emit($"..")
+		Messenger.something_attacked.emit($"..")
 
-func on_something_hit(what_got_hit,delay):
+func on_something_hit(what_got_hit,is_delayed):
 	#	print($"..".name, " MIGHT be hit...")
 	if what_got_hit == $".." and $"..".health_current > 0:
 #		print($"..".name, " just got hit!")
@@ -60,7 +60,7 @@ func on_something_hit(what_got_hit,delay):
 		var health_lost: float = health_max_float - health_current_float
 		health_percent_lost = health_lost / health_max_float
 #		print("Current: ", health_current_float, "; Lost: ", health_lost, "; %: ", health_percent_lost)
-		if delay:
+		if is_delayed:
 			await get_tree().create_timer(attacked_duration).timeout
 		$Animation_Degrade.play("degrade")
 		$Animation_Degrade.seek(health_percent_lost, true)
@@ -81,6 +81,9 @@ func sub_obstacle_destroyed():
 	get_owner().is_destroyed.emit()
 	
 	
+func reset_particle_fx():
+	pass
+
 func reset_damage():
 	$Animation_Degrade.stop()
 	$Animation_Degrade.seek(0.0, true)
