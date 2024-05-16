@@ -107,7 +107,7 @@ func _damage_amount(damage_amount):
 		limb_damage_amount = 1
 	if amount_to_damage == Obstacle.damage_amounts.NONE:
 		limb_damage_amount = 0
-		print("'Damage_Amount' damage: ", limb_damage_amount)
+		#print("'Damage_Amount' damage: ", limb_damage_amount)
 
 func set_bone_scale(scale):
 	skeleton.set_bone_pose_scale(bone_hit, scale)

@@ -56,7 +56,7 @@ func _progress_terrain(delta: float) -> void:
 		first_terrain.reparent(terrain_collector)
 		first_terrain.position.z = 0.0
 		if first_terrain.has_method("reset_block_objects"):
-			first_terrain.reset_block_objects()
+			first_terrain.reset_block_objects(first_terrain)
 		
 		var block = terrain_collector.get_children().pick_random()
 		block.reparent(self)

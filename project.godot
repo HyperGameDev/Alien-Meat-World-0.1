@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Messenger="*res://Management/messenger.gd"
-NpcSpawns="*res://NPCs/NPC Spawns.gd"
 Globals="*res://Scripts/Globals.gd"
 
 [display]

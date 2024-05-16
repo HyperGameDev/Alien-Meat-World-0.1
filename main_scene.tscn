@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=53 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/BodyPart.gd" id="10_2td36"]
 [ext_resource type="Script" path="res://Player/ScoreDunk.gd" id="11_318ny"]
 [ext_resource type="Script" path="res://UI/UI.gd" id="12_gi6vt"]
-[ext_resource type="Script" path="res://UI/Debug_Menu.gd" id="14_ccfte"]
+[ext_resource type="PackedScene" uid="uid://cjvyodfle2c7n" path="res://UI/Menus/menu.tscn" id="14_eaktg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_war41"]
 size = Vector3(1, 0.755, 0.855)
@@ -313,17 +313,6 @@ viewport_path = NodePath("HP_Head/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_82jui"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhodu"]
-bg_color = Color(0.0745098, 0, 0.231373, 0.454902)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhm7m"]
-bg_color = Color(0, 0.0901961, 0.054902, 0.878431)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0uo1"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m22gf"]
-bg_color = Color(0.509804, 0.647059, 0.901961, 1)
 
 [node name="Main Scene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.65595e-05, -0.0122666, 0.00316)
@@ -661,7 +650,7 @@ texture = SubResource("ViewportTexture_s2cav")
 texture = SubResource("ViewportTexture_82jui")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.00741991, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0586976, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
@@ -678,7 +667,7 @@ bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.121412, 0.992082, -0.0446477, -0.963849, -0.128552, -0.235435, -0.239196, 0.0144421, 0.971358, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.497023, 0.641697, 0.584939, -0.86456, -0.303323, -0.401861, -0.0804085, -0.70511, 0.705206, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)
@@ -746,237 +735,9 @@ offset_bottom = 23.0
 theme_override_font_sizes/font_size = 30
 text = "Hide Hit Points"
 
-[node name="Menu" type="Control" parent="Debug"]
+[node name="Menu" parent="Debug" instance=ExtResource("14_eaktg")]
 unique_name_in_owner = true
 visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("14_ccfte")
-
-[node name="Panel_screenCover" type="Panel" parent="Debug/Menu"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_mhodu")
-
-[node name="MarginContainer" type="MarginContainer" parent="Debug/Menu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -600.0
-offset_top = -206.0
-offset_right = 600.0
-offset_bottom = 214.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_bottom = 30
-
-[node name="Panel_menuBackground" type="Panel" parent="Debug/Menu/MarginContainer"]
-custom_minimum_size = Vector2(1200, 0)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jhm7m")
-
-[node name="VBox_levelMenu" type="VBoxContainer" parent="Debug/Menu/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label_currentLevel" type="Label" parent="Debug/Menu/MarginContainer/VBox_levelMenu"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Current Level: "
-horizontal_alignment = 1
-vertical_alignment = 2
-
-[node name="Divider" type="Panel" parent="Debug/Menu/MarginContainer/VBox_levelMenu"]
-custom_minimum_size = Vector2(0, 5)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
-
-[node name="HBox_levelButtons" type="HBoxContainer" parent="Debug/Menu/MarginContainer/VBox_levelMenu"]
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 15
-alignment = 1
-
-[node name="VBox_1" type="VBoxContainer" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_1"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Cinematics / Menus"
-horizontal_alignment = 1
-
-[node name="Divider" type="Panel" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_1"]
-custom_minimum_size = Vector2(0, 5)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
-
-[node name="Button_cine_01" type="Button" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_1"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 31
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-
-[node name="VBox_2" type="VBoxContainer" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Actual Levels"
-horizontal_alignment = 1
-
-[node name="Divider" type="Panel" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
-custom_minimum_size = Vector2(0, 5)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
-
-[node name="Button_level_01" type="Button" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Level 1"
-
-[node name="Button_level_02" type="Button" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Level 2"
-
-[node name="VBox_3" type="VBoxContainer" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Debug Levels"
-horizontal_alignment = 1
-
-[node name="Divider" type="Panel" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
-custom_minimum_size = Vector2(0, 5)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
-
-[node name="Button_levelDebug_01" type="Button" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Replenish Debug"
-
-[node name="Button_levelDebug_02" type="Button" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Damage Debug"
-
-[node name="Button_levelDebug_03" type="Button" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Avoidance Debug"
-
-[node name="Button_levelDebug_04" type="Button" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Terrain Heights"
-
-[node name="VBox_4" type="VBoxContainer" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Asset Showcases"
-horizontal_alignment = 1
-
-[node name="Divider" type="Panel" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
-custom_minimum_size = Vector2(0, 5)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
-
-[node name="Button_assets_01" type="Button" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 31
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Asset Expo 1"
-
-[node name="VBox_5" type="VBoxContainer" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Blank Terrains"
-horizontal_alignment = 1
-
-[node name="Divider" type="Panel" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
-custom_minimum_size = Vector2(0, 5)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
-
-[node name="Button_levelBlank_grass" type="Button" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Blank (Grass)"
-
-[node name="Button_levelBlank_dirt" type="Button" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 31
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Blank (Dirt)"
-
-[node name="Button_levelBlank_concrete" type="Button" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Blank (Concrete)"
-
-[node name="Button_levelBlank_military" type="Button" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Blank (Military)"
-
-[node name="Button_levelBlank_all" type="Button" parent="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 31
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Blank (All)"
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("12_gi6vt")
@@ -1016,18 +777,6 @@ text = "0"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.226019, -2.19981, 0.376984)
 
 [connection signal="timeout" from="UI_FX/Timer_FX_Flash" to="UI_FX" method="_on_timer_fx_flash_timeout"]
-[connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2/Button_level_01" to="Debug/Menu" method="_on_button_level_01_pressed"]
-[connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2/Button_level_02" to="Debug/Menu" method="_on_button_level_02_pressed"]
-[connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_01" to="Debug/Menu" method="_on_button_level_debug_01_pressed"]
-[connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_02" to="Debug/Menu" method="_on_button_level_debug_02_pressed"]
-[connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_03" to="Debug/Menu" method="_on_button_level_debug_03_pressed"]
-[connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_04" to="Debug/Menu" method="_on_button_level_debug_04_pressed"]
-[connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4/Button_assets_01" to="Debug/Menu" method="_on_button_level_00_pressed"]
-[connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/Button_levelBlank_grass" to="Debug/Menu" method="_on_button_level_blank_grass_pressed"]
-[connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/Button_levelBlank_dirt" to="Debug/Menu" method="_on_button_level_blank_dirt_pressed"]
-[connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/Button_levelBlank_concrete" to="Debug/Menu" method="_on_button_level_blank_concrete_pressed"]
-[connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/Button_levelBlank_military" to="Debug/Menu" method="_on_button_level_blank_military_pressed"]
-[connection signal="pressed" from="Debug/Menu/MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/Button_levelBlank_all" to="Debug/Menu" method="_on_button_level_blank_all_pressed"]
 
 [editable path="Player/Alien"]
 [editable path="Player/Alien/HP_Head/SubViewport/HP_Bar"]

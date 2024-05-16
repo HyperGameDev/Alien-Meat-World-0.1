@@ -1,0 +1,257 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjvyodfle2c7n"]
+
+[ext_resource type="Script" path="res://UI/Debug_Menu.gd" id="1_kutj0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhodu"]
+bg_color = Color(0.0745098, 0, 0.231373, 0.454902)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhm7m"]
+bg_color = Color(0, 0.0901961, 0.054902, 0.878431)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0uo1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m22gf"]
+bg_color = Color(0.509804, 0.647059, 0.901961, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kutj0")
+
+[node name="Panel_screenCover" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhodu")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -206.0
+offset_right = 600.0
+offset_bottom = 214.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_bottom = 30
+
+[node name="Panel_menuBackground" type="Panel" parent="MarginContainer"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jhm7m")
+
+[node name="VBox_levelMenu" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label_currentLevel" type="Label" parent="MarginContainer/VBox_levelMenu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Current Level: "
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Divider" type="Panel" parent="MarginContainer/VBox_levelMenu"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
+
+[node name="HBox_levelButtons" type="HBoxContainer" parent="MarginContainer/VBox_levelMenu"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="VBox_1" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_1"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Cinematics / Menus"
+horizontal_alignment = 1
+
+[node name="Divider" type="Panel" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_1"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
+
+[node name="Button_cine_01" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+
+[node name="VBox_2" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Actual Levels"
+horizontal_alignment = 1
+
+[node name="Divider" type="Panel" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
+
+[node name="Button_level_01" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Level 1"
+
+[node name="Button_level_02" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Level 2"
+
+[node name="VBox_3" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Debug Levels"
+horizontal_alignment = 1
+
+[node name="Divider" type="Panel" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
+
+[node name="Button_levelDebug_01" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Replenish Debug"
+
+[node name="Button_levelDebug_02" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Damage Debug"
+
+[node name="Button_levelDebug_03" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Avoidance Debug"
+
+[node name="Button_levelDebug_04" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Terrain Heights"
+
+[node name="VBox_4" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Asset Showcases"
+horizontal_alignment = 1
+
+[node name="Divider" type="Panel" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
+
+[node name="Button_assets_01" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Asset Expo 1"
+
+[node name="VBox_5" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Blank Terrains"
+horizontal_alignment = 1
+
+[node name="Divider" type="Panel" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
+
+[node name="Button_levelBlank_grass" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Blank (Grass)"
+
+[node name="Button_levelBlank_dirt" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Blank (Dirt)"
+
+[node name="Button_levelBlank_concrete" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Blank (Concrete)"
+
+[node name="Button_levelBlank_military" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Blank (Military)"
+
+[node name="Button_levelBlank_all" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Blank (All)"
+
+[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2/Button_level_01" to="." method="_on_button_level_01_pressed"]
+[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2/Button_level_02" to="." method="_on_button_level_02_pressed"]
+[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_01" to="." method="_on_button_level_debug_01_pressed"]
+[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_02" to="." method="_on_button_level_debug_02_pressed"]
+[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_03" to="." method="_on_button_level_debug_03_pressed"]
+[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_04" to="." method="_on_button_level_debug_04_pressed"]
+[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4/Button_assets_01" to="." method="_on_button_level_00_pressed"]
+[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/Button_levelBlank_grass" to="." method="_on_button_level_blank_grass_pressed"]
+[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/Button_levelBlank_dirt" to="." method="_on_button_level_blank_dirt_pressed"]
+[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/Button_levelBlank_concrete" to="." method="_on_button_level_blank_concrete_pressed"]
+[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/Button_levelBlank_military" to="." method="_on_button_level_blank_military_pressed"]
+[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/Button_levelBlank_all" to="." method="_on_button_level_blank_all_pressed"]
