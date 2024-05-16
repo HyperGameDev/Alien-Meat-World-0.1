@@ -1,8 +1,8 @@
 [gd_resource type="GradientTexture2D" load_steps=2 format=3 uid="uid://i5qu2o412kbf"]
 
 [sub_resource type="Gradient" id="Gradient_gruo7"]
-offsets = PackedFloat32Array(0.574899, 0.809717, 0.886957, 0.918033)
-colors = PackedColorArray(0.392157, 0.235294, 0.184314, 1, 0.298718, 0.373852, 0.165637, 1, 0.176471, 0.227451, 0.12549, 1, 0.0156863, 0.235294, 0.101961, 1)
+offsets = PackedFloat32Array(0.211268, 0.507042, 0.809717, 0.886957, 0.918033)
+colors = PackedColorArray(0.243137, 0.180392, 0.141176, 1, 0.392157, 0.235294, 0.184314, 1, 0.298718, 0.373852, 0.165637, 1, 0.176471, 0.227451, 0.12549, 1, 0.0156863, 0.235294, 0.101961, 1)
 
 [resource]
 gradient = SubResource("Gradient_gruo7")
