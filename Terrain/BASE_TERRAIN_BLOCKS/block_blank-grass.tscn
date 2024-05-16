@@ -20,6 +20,7 @@ layers = 2
 mesh = ExtResource("1_akd2u")
 surface_material_override/0 = ExtResource("2_dauq6")
 script = ExtResource("1_nq0yf")
+metadata/_edit_lock_ = true
 
 [node name="Ground" type="StaticBody3D" parent="."]
 collision_mask = 0

@@ -39,7 +39,7 @@ func _ready():
 	Messenger.amount_slowed.connect(slowdown)
 	Messenger.area_undamaged.connect(damage_undetected)
 	Messenger.mouse_pos_3d.connect(mouse_pos)
-	Messenger.something_hit.connect(do_grab)
+	Messenger.something_attacked.connect(do_grab)
 
 #	print("Elbow L:", arm_l_rotation.x)
 #	print("Elbow R:", arm_r_rotation.x)
@@ -144,8 +144,8 @@ func do_grab(what_is_hit):
 	await get_tree().create_timer(grab_duration * 2).timeout
 	grab = false
 	var area = what_is_hit
-	var delay = true
-	Messenger.something_hit.emit(area,delay)
+	var is_delayed = true
+	Messenger.something_hit.emit(area,is_delayed)
 #	print("Grab Ending from ", hit_object.name)
 	# Retract the arm
 	get_tree().create_tween().tween_method(grab_action_tween,1.0,0.0,grab_duration)
