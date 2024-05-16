@@ -1,0 +1,6 @@
+[gd_resource type="GradientTexture2D" load_steps=2 format=3 uid="uid://bub0u2elifuue"]
+
+[ext_resource type="Gradient" uid="uid://cxdgvshb67wfv" path="res://Terrain/terrain_textures/block_level-01_dirt-top-layer.tres" id="1_i34mv"]
+
+[resource]
+gradient = ExtResource("1_i34mv")

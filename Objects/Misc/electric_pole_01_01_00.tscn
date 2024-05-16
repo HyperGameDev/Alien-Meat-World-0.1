@@ -239,7 +239,7 @@ tracks/18/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
@@ -715,7 +715,7 @@ size = Vector3(0.3, 4.8, 0.3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_nc8gp"]
 size = Vector3(1.2, 1.275, 0.375)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_umnyu"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_u4ol6"]
 viewport_path = NodePath("SubViewport")
 
 [node name="electric-pole_01-01_00" instance=ExtResource("1_3pxwc")]
@@ -787,6 +787,7 @@ draw_pass_1 = SubResource("PrismMesh_878sw")
 
 [node name="Particles_3dmg_wood" type="GPUParticles3D" parent="Obstacle/HitPoints" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, -4.425, -0.15)
+emitting = false
 amount = 90
 lifetime = 2.0
 one_shot = true
@@ -825,7 +826,7 @@ shape = SubResource("BoxShape3D_nc8gp")
 [node name="Arrow_Hover" parent="Obstacle" index="3" instance=ExtResource("4_ml46b")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 5.0694, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_umnyu")
+texture = SubResource("ViewportTexture_u4ol6")
 
 [node name="Pole" parent="." index="1"]
 transform = Transform3D(-0.145767, 0, 0, 0, -2.13513, 0, 0, 0, -0.145767, -0.000683129, -0.024667, 0.00188772)

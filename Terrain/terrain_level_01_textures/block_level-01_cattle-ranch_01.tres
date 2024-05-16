@@ -1,12 +1,9 @@
-[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://dgqrgw1r3lpbc"]
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://dgqrgw1r3lpbc"]
 
 [ext_resource type="Shader" path="res://Collaborator Experiments/Pierogigon/Terrain/terrain_level_shader_pierogi.gdshader" id="1_s7tcd"]
 [ext_resource type="Texture2D" uid="uid://i5qu2o412kbf" path="res://Collaborator Experiments/Pierogigon/Terrain/pierogi_gradient.tres" id="2_51oy5"]
-[ext_resource type="Gradient" uid="uid://cxdgvshb67wfv" path="res://Terrain/terrain_textures/block_level-01_dirt-top-layer.tres" id="3_brmpg"]
+[ext_resource type="Texture2D" uid="uid://bub0u2elifuue" path="res://Terrain/terrain_textures/block_level-01_dirt-top-layer_2.tres" id="3_818a0"]
 [ext_resource type="Texture2D" uid="uid://df5awqr17c3em" path="res://Terrain/terrain_level_01_textures/block_level-01_cattle-ranch_01_invert.png" id="3_tt4ja"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_gqw76"]
-gradient = ExtResource("3_brmpg")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1m2p4"]
 
@@ -29,4 +26,4 @@ shader_parameter/dirtiness = 0.933
 shader_parameter/mask_texture = ExtResource("3_tt4ja")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_52qic")
 shader_parameter/gradient_texture_1 = ExtResource("2_51oy5")
-shader_parameter/gradient_texture_2 = SubResource("GradientTexture2D_gqw76")
+shader_parameter/gradient_texture_2 = ExtResource("3_818a0")

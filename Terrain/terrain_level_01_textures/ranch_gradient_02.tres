@@ -1,7 +1,7 @@
 [gd_resource type="GradientTexture2D" load_steps=2 format=3 uid="uid://dqdv1a5pk57fl"]
 
 [sub_resource type="Gradient" id="Gradient_gruo7"]
-offsets = PackedFloat32Array(0.574899, 0.809717, 0.886957, 0.918033)
+offsets = PackedFloat32Array(0.208738, 0.800971, 0.898058, 0.946602)
 colors = PackedColorArray(0.392157, 0.235294, 0.184314, 1, 0.298718, 0.373852, 0.165637, 1, 0.176471, 0.227451, 0.12549, 1, 0.0156863, 0.235294, 0.101961, 1)
 
 [resource]

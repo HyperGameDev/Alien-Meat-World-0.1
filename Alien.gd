@@ -23,7 +23,7 @@ var terrain_slowdown = false
 var look_pos
 
 var grab = false
-var grabbed_object
+var hit_object
 var arm_grabbing = 8
 var arm_grabbing_child = arm_grabbing + 1
 var stretch_distance = Vector3(0,12,0)
@@ -39,7 +39,7 @@ func _ready():
 	Messenger.amount_slowed.connect(slowdown)
 	Messenger.area_undamaged.connect(damage_undetected)
 	Messenger.mouse_pos_3d.connect(mouse_pos)
-	Messenger.something_grabbed.connect(do_grab)
+	Messenger.something_hit.connect(do_grab)
 
 #	print("Elbow L:", arm_l_rotation.x)
 #	print("Elbow R:", arm_r_rotation.x)
@@ -49,8 +49,8 @@ func _ready():
 
 	
 func _physics_process(delta):
-#	aim_bone_at_target(arm_grabbing, grabbed_object)
-#	print(grabbed_object)
+#	aim_bone_at_target(arm_grabbing, hit_object)
+#	print(hit_object)
 #	print("Is on floor: ", is_on_floor())
 #	print(self.global_position.y)
 
@@ -123,30 +123,30 @@ func mouse_pos(mouse):
 #	skeleton.set_bone_pose_rotation(arm_l, look_pos)
 
 func grab_action_tween(amount):
-	if grabbed_object != null:
-#		print("Object isn't Null (", grabbed_object.name, ")")
-		aim_bone_at_target(arm_grabbing,grabbed_object,amount)
+	if hit_object != null:
+#		print("Object isn't Null (", hit_object.name, ")")
+		aim_bone_at_target(arm_grabbing,hit_object,amount)
 		
 	else:
 #		print("Object Null!")
 		aim_bone_at_target(arm_grabbing,null,amount)
 	
-func do_grab(what_is_grabbed):
+func do_grab(what_is_hit):
 	grab = true
 #	if grab == true
-	grabbed_object = what_is_grabbed
-#	print("Grab Begun on ", grabbed_object.name)
+	hit_object = what_is_hit
+#	print("Grab Begun on ", hit_object.name)
 
 	animation.set("parameters/reach/request", 1)
 	get_tree().create_tween().tween_method(grab_action_tween,0.0,1.0,grab_duration)
 	
-#	aim_bone_at_target(arm_grabbing,grabbed_object, 0.0)
+#	aim_bone_at_target(arm_grabbing,hit_object, 0.0)
 	await get_tree().create_timer(grab_duration * 2).timeout
 	grab = false
-	var area = what_is_grabbed
+	var area = what_is_hit
 	var delay = true
 	Messenger.something_hit.emit(area,delay)
-#	print("Grab Ending from ", grabbed_object.name)
+#	print("Grab Ending from ", hit_object.name)
 	# Retract the arm
 	get_tree().create_tween().tween_method(grab_action_tween,1.0,0.0,grab_duration)
 

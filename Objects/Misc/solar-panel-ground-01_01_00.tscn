@@ -220,7 +220,7 @@ size = Vector3(0.1, 0.135, 0.47)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jjwog"]
 size = Vector3(0.789063, 0.65918, 0.349365)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_jtmni"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0m8fv"]
 viewport_path = NodePath("SubViewport")
 
 [node name="solar-panel_01-01_00" instance=ExtResource("1_iptqm")]
@@ -265,7 +265,7 @@ shape = SubResource("BoxShape3D_jjwog")
 [node name="Arrow_Hover" parent="Obstacle" index="2" instance=ExtResource("4_qponr")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 1.2444, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_jtmni")
+texture = SubResource("ViewportTexture_0m8fv")
 
 [node name="Panel" parent="." index="1"]
 surface_material_override/0 = ExtResource("5_q0vi5")
