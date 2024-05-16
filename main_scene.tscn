@@ -465,7 +465,6 @@ cam_y_offset = 4.025
 
 [node name="TerrainCollector" type="Node3D" parent="."]
 unique_name_in_owner = true
-process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 47.7313)
 script = ExtResource("4_0jb24")
 
@@ -650,7 +649,7 @@ texture = SubResource("ViewportTexture_s2cav")
 texture = SubResource("ViewportTexture_82jui")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0586976, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.129534, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
@@ -667,7 +666,7 @@ bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.497023, 0.641697, 0.584939, -0.86456, -0.303323, -0.401861, -0.0804085, -0.70511, 0.705206, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.638198, 0.304433, -0.707803, -0.608516, -0.76291, 0.22054, -0.472623, 0.571183, 0.671817, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)

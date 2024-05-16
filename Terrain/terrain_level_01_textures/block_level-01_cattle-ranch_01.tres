@@ -1,7 +1,9 @@
+
 [gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://c0aatxfj22wvi"]
 
 [ext_resource type="Shader" path="res://Collaborator Experiments/Pierogigon/Terrain/terrain_level_shader_pierogi.gdshader" id="1_s7tcd"]
 [ext_resource type="Texture2D" uid="uid://i5qu2o412kbf" path="res://Collaborator Experiments/Pierogigon/Terrain/pierogi_gradient.tres" id="2_51oy5"]
+
 [ext_resource type="Texture2D" uid="uid://df5awqr17c3em" path="res://Terrain/terrain_level_01_textures/block_level-01_cattle-ranch_01_invert.png" id="3_tt4ja"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1m2p4"]
@@ -26,3 +28,4 @@ shader_parameter/blue_value_ratio = 2.0
 shader_parameter/mask_texture = ExtResource("3_tt4ja")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_52qic")
 shader_parameter/gradient_texture_1 = ExtResource("2_51oy5")
+

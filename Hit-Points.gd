@@ -13,7 +13,7 @@ var health_percent_lost: float = 0.0
 
 # Getting attacked
 var target
-var was_grabbed = false
+var was_hit = false
 @onready var attacked_duration = get_tree().get_current_scene().get_node("Player").grab_duration
 
 func _ready():
@@ -30,7 +30,7 @@ func _ready():
 		$"..".is_destroyed.connect(on_is_destroyed)
 	
 	# Getting Attacked
-	Messenger.grab_target.connect(am_i_grabbed)
+	Messenger.grab_target.connect(am_i_hit)
 	Messenger.something_hit.connect(on_something_hit)
 	
 	
@@ -39,14 +39,14 @@ func on_update_hitpoints():
 	dmg_label.text = str($"..".health_current)
 	
 	
-func am_i_grabbed(grab_target):
+func am_i_hit(grab_target):
 	#	target = grab_target
 #	if grab_target == $"..":
 #		print("Copter Seen (", $"..".name, ")")
 	if grab_target == $".." and Input.is_action_just_pressed("Grab"):
-		was_grabbed = true
+		was_hit = true
 #		print("Copter Hit (", $"..".name, ")")
-		Messenger.something_grabbed.emit($"..")
+		Messenger.something_hit.emit($"..")
 
 func on_something_hit(what_got_hit,delay):
 	#	print($"..".name, " MIGHT be hit...")
@@ -83,6 +83,7 @@ func sub_obstacle_destroyed():
 	
 func reset_damage():
 	$Animation_Degrade.stop()
+	$Animation_Degrade.seek(0.0, true)
 	$"..".health_current = $"..".health_max
 	$"..".update_hitpoints.emit()
 	$"..".restore_collision()

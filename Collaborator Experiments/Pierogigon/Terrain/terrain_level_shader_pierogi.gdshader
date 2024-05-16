@@ -2,7 +2,7 @@ shader_type spatial;
 
 uniform sampler2D mask_texture;
 uniform sampler2D noise_texture;
-uniform vec2 random_offset;
+//uniform vec2 random_offset;
 uniform sampler2D gradient_texture_1: source_color;
 uniform vec4 albedo_a:source_color = vec4(1.0f);
 uniform vec4 albedo_b:source_color = vec4(1.0f);
@@ -14,9 +14,11 @@ uniform float blue_value_ratio: hint_range(0.0, 3.0) = 2.0;
 
 
 void fragment() {
+
 	float mask_value_red = texture(mask_texture, UV).r;
 	float mask_value_blue = texture(mask_texture, UV).b;
 	float noise_value = texture(noise_texture, UV * noise_size + random_offset).r;
+
 	//greyscale values have r==g==b, so it doesnt matter which i pick. i did "r" to get a float.
 	
 	float mask_noise_combo = noise_value * (mask_value_red + blue_value_ratio * mask_value_blue) / 2.0 * noise_strength;
