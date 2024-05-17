@@ -715,7 +715,7 @@ size = Vector3(0.3, 4.8, 0.3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_nc8gp"]
 size = Vector3(1.2, 1.275, 0.375)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_aa15a"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_j1byl"]
 viewport_path = NodePath("SubViewport")
 
 [node name="electric-pole_01-01_00" instance=ExtResource("1_3pxwc")]
@@ -826,7 +826,7 @@ shape = SubResource("BoxShape3D_nc8gp")
 [node name="Arrow_Hover" parent="Obstacle" index="3" instance=ExtResource("4_ml46b")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 5.0694, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_aa15a")
+texture = SubResource("ViewportTexture_j1byl")
 
 [node name="Pole" parent="." index="1"]
 transform = Transform3D(-0.145767, 0, 0, 0, -2.13513, 0, 0, 0, -0.145767, -0.000683129, -0.024667, 0.00188772)

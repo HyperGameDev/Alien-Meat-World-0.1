@@ -172,6 +172,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [false, true, false]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset_particle_fx"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_cefab"]
 resource_name = "explode"
@@ -222,33 +236,6 @@ albedo_color = Color(0, 0.815686, 1, 1)
 material = SubResource("StandardMaterial3D_imruk")
 size = Vector3(0.1, 0.5, 0.3)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a5sg1"]
-particle_flag_rotate_y = true
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(0.93, 0, 1)
-angle_min = -360.0
-angle_max = 360.0
-direction = Vector3(0, 1, 0)
-spread = 20.0
-initial_velocity_max = 7.0
-radial_accel_max = 5.58
-scale_min = 0.01
-scale_max = 0.15
-collision_mode = 1
-collision_friction = 0.0
-collision_bounce = 1.0
-sub_emitter_mode = 1
-sub_emitter_frequency = 4.0
-sub_emitter_keep_velocity = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyh5j"]
-albedo_color = Color(0.254902, 0.254902, 0.254902, 1)
-
-[sub_resource type="PrismMesh" id="PrismMesh_dypoa"]
-material = SubResource("StandardMaterial3D_jyh5j")
-size = Vector3(1.85, 0.48, 0.46)
-
 [sub_resource type="Animation" id="Animation_68t6b"]
 length = 0.001
 tracks/0/type = "value"
@@ -292,6 +279,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitPoints/Obstacle/HitPoints")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset_particle_fx"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yehtf"]
 _data = {
@@ -299,7 +300,34 @@ _data = {
 "degrade": SubResource("Animation_lkysu")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_jbdim"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a5sg1"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(0.93, 0, 1)
+angle_min = -360.0
+angle_max = 360.0
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_max = 7.0
+radial_accel_max = 5.58
+scale_min = 0.01
+scale_max = 0.15
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyh5j"]
+albedo_color = Color(0.254902, 0.254902, 0.254902, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_dypoa"]
+material = SubResource("StandardMaterial3D_jyh5j")
+size = Vector3(1.85, 0.48, 0.46)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5ofwq"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_uf4d7"]
@@ -568,7 +596,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4uy6m")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0p8cw"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_8g55h"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Copter_01_00" type="Area3D"]
@@ -605,21 +633,6 @@ process_material = SubResource("ParticleProcessMaterial_0ylfy")
 draw_pass_1 = SubResource("BoxMesh_0u81j")
 script = ExtResource("4_dkois")
 
-[node name="Particles_Explode" type="GPUParticles3D" parent="HitPoints"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0059789, -1.46663, 0.902498)
-emitting = false
-amount = 200
-lifetime = 2.0
-one_shot = true
-explosiveness = 0.8
-randomness = 1.0
-collision_base_size = 1.82
-local_coords = true
-trail_lifetime = 1.35
-process_material = SubResource("ParticleProcessMaterial_a5sg1")
-draw_pass_1 = SubResource("PrismMesh_dypoa")
-script = ExtResource("4_dkois")
-
 [node name="Obstacle" type="Area3D" parent="HitPoints"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -1.06613, 0)
 script = ExtResource("2_nrwea")
@@ -634,6 +647,21 @@ libraries = {
 "": SubResource("AnimationLibrary_yehtf")
 }
 
+[node name="Particles_Explode" type="GPUParticles3D" parent="HitPoints/Obstacle/HitPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.589528, -0.779432, 0.902498)
+emitting = false
+amount = 200
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.8
+randomness = 1.0
+collision_base_size = 1.82
+local_coords = true
+trail_lifetime = 1.35
+process_material = SubResource("ParticleProcessMaterial_a5sg1")
+draw_pass_1 = SubResource("PrismMesh_dypoa")
+script = ExtResource("4_dkois")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitPoints/Obstacle"]
 transform = Transform3D(-1, 4.46499e-09, 8.64067e-08, 8.52435e-08, 0.221889, 0.975072, -1.4819e-08, 0.975072, -0.221889, 0.00413191, 0.510933, 0.235844)
 shape = SubResource("CapsuleShape3D_ut4c5")
@@ -641,7 +669,7 @@ shape = SubResource("CapsuleShape3D_ut4c5")
 [node name="Arrow_Hover" parent="HitPoints/Obstacle" instance=ExtResource("6_c26j6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10422, 0)
 visible = false
-texture = SubResource("ViewportTexture_jbdim")
+texture = SubResource("ViewportTexture_5ofwq")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
@@ -714,7 +742,7 @@ hit_from_inside = true
 [node name="Arrow_Hover" parent="." instance=ExtResource("6_c26j6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10422, 0)
 visible = false
-texture = SubResource("ViewportTexture_0p8cw")
+texture = SubResource("ViewportTexture_8g55h")
 
 [editable path="HitPoints"]
 [editable path="HitPoints/Obstacle/HitPoints"]

@@ -29,6 +29,7 @@ func _ready():
 		#print("ERROR: Add a 'reset particle fx' method call track to an Obstacle's Hitpoints' Animation Degrade player!")
 		#breakpoint
 			
+# If owner is a flying NPC, then it will be confirmed by the presence of "is_destroyed". Probably should refactor that to be more readable.
 	$"..".update_hitpoints.connect(on_update_hitpoints)
 	if $"..".has_signal("is_destroyed"):
 		$"..".is_destroyed.connect(on_is_destroyed)
@@ -79,7 +80,7 @@ func on_something_hit(what_got_hit,is_delayed):
 		
 
 func on_is_destroyed():
-	$Particles_Explode.set_emitting(true)
+	$Obstacle/HitPoints/Particles_Explode.set_emitting(true)
 	await get_tree().create_timer(hit_particle_lifetime).timeout
 	get_owner().queue_free()
 

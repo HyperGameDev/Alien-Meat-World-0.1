@@ -151,7 +151,7 @@ size = Vector3(0.123047, 1.01367, 0.171631)
 [sub_resource type="BoxShape3D" id="BoxShape3D_x18c7"]
 size = Vector3(0.386963, 0.549805, 0.402344)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2xorr"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_i50gu"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Tree_01_00" type="Area3D"]
@@ -195,6 +195,6 @@ avoidance_layers = 4
 [node name="Arrow_Hover" parent="." instance=ExtResource("4_xsui3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.89422, 0)
 visible = false
-texture = SubResource("ViewportTexture_2xorr")
+texture = SubResource("ViewportTexture_i50gu")
 
 [editable path="HitPoints"]
