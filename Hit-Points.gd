@@ -24,6 +24,10 @@ func _ready():
 	if !has_node("Animation_Degrade"):
 			print("ERROR: Add a degrade animation for the obstacle!")
 			breakpoint
+	
+	#if !$Animation_Degrade.get_animation("degrade").find_track(get_path(), Animation.TYPE_METHOD):
+		#print("ERROR: Add a 'reset particle fx' method call track to an Obstacle's Hitpoints' Animation Degrade player!")
+		#breakpoint
 			
 	$"..".update_hitpoints.connect(on_update_hitpoints)
 	if $"..".has_signal("is_destroyed"):
@@ -49,9 +53,9 @@ func am_i_hit(grab_target):
 		Messenger.something_attacked.emit($"..")
 
 func on_something_hit(what_got_hit,is_delayed):
-	#	print($"..".name, " MIGHT be hit...")
+	#print($"..".name, " MIGHT be hit...")
 	if what_got_hit == $".." and $"..".health_current > 0:
-#		print($"..".name, " just got hit!")
+		#print($"..".name, " just got hit!")
 #		await get_tree().create_timer(attacked_duration).timeout
 		$"..".health_current -= $"..".damage_taken
 		$"..".update_hitpoints.emit()
@@ -62,6 +66,9 @@ func on_something_hit(what_got_hit,is_delayed):
 #		print("Current: ", health_current_float, "; Lost: ", health_lost, "; %: ", health_percent_lost)
 		if is_delayed:
 			await get_tree().create_timer(attacked_duration).timeout
+		#if has_node("AnimationPlayer"):
+			#print("contrived example")
+			#$AnimationPlayer.play("new_aniwmation")
 		$Animation_Degrade.play("degrade")
 		$Animation_Degrade.seek(health_percent_lost, true)
 		$Animation_Degrade.pause()
@@ -82,10 +89,12 @@ func sub_obstacle_destroyed():
 	
 	
 func reset_particle_fx():
-	pass
+	for node in get_children():
+		if node is GPUParticles3D:
+			node.restart()
 
 func reset_damage():
-	$Animation_Degrade.stop()
+	#$Animation_Degrade.stop()
 	$Animation_Degrade.seek(0.0, true)
 	$"..".health_current = $"..".health_max
 	$"..".update_hitpoints.emit()

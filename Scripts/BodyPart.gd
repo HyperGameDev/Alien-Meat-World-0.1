@@ -166,7 +166,7 @@ func on_area_damaged(collided_bodypart):
 			mesh.show()
 			# Apply damage
 			current_health -= limb_damage_amount
-			print("'Damage_Detected' damage: ", limb_damage_amount)
+			#print("'Damage_Detected' damage: ", limb_damage_amount)
 			# Update the Damage Label
 			player.get_node("Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
 		

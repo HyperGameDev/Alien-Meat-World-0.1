@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://vei8bdjp232a"]
+[gd_scene load_steps=21 format=3 uid="uid://vei8bdjp232a"]
 
 [ext_resource type="PackedScene" uid="uid://6rrqu6f40y82" path="res://Objects/Misc/solar-panel_01-01_00.blend" id="1_iptqm"]
 [ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_ap7q5"]
@@ -61,30 +61,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Particles_Trim:lifetime")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.01]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Particles_Panel:lifetime")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.01]
-}
 
 [sub_resource type="Animation" id="Animation_c6e5k"]
 resource_name = "degrade"
@@ -136,29 +112,19 @@ tracks/3/keys = {
 "update": 1,
 "values": [false, true]
 }
-tracks/4/type = "value"
+tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Particles_Trim:lifetime")
+tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.01, 2.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Particles_Panel:lifetime")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.01, 2.0]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset_particle_fx"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_okt6m"]
@@ -217,10 +183,12 @@ sub_emitter_keep_velocity = true
 material = ExtResource("5_q0vi5")
 size = Vector3(0.1, 0.135, 0.47)
 
+[sub_resource type="SphereMesh" id="SphereMesh_cih1b"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_jjwog"]
 size = Vector3(0.789063, 0.65918, 0.349365)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7ucfd"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_pxymm"]
 viewport_path = NodePath("SubViewport")
 
 [node name="solar-panel_01-01_00" instance=ExtResource("1_iptqm")]
@@ -242,7 +210,7 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.582453, 0)
 emitting = false
 amount = 50
-lifetime = 0.01
+lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_mljea")
@@ -252,11 +220,16 @@ draw_pass_1 = SubResource("BoxMesh_bqdfb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.582453, 0)
 emitting = false
 amount = 75
-lifetime = 0.01
+lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_d17g0")
 draw_pass_1 = SubResource("BoxMesh_a4fgt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle/HitPoints" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.54909e-08, 0, 0.634742)
+visible = false
+mesh = SubResource("SphereMesh_cih1b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.314941, 0.0228271)
@@ -265,7 +238,7 @@ shape = SubResource("BoxShape3D_jjwog")
 [node name="Arrow_Hover" parent="Obstacle" index="2" instance=ExtResource("4_qponr")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 1.2444, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_7ucfd")
+texture = SubResource("ViewportTexture_pxymm")
 
 [node name="Panel" parent="." index="1"]
 surface_material_override/0 = ExtResource("5_q0vi5")
