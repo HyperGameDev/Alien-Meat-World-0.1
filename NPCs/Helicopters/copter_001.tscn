@@ -172,20 +172,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [false, true, false]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"reset_particle_fx"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_cefab"]
 resource_name = "explode"
@@ -279,20 +265,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, false]
 }
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HitPoints/Obstacle/HitPoints")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"reset_particle_fx"
-}]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yehtf"]
 _data = {
@@ -327,7 +299,7 @@ albedo_color = Color(0.254902, 0.254902, 0.254902, 1)
 material = SubResource("StandardMaterial3D_jyh5j")
 size = Vector3(1.85, 0.48, 0.46)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5ofwq"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_41wad"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_uf4d7"]
@@ -608,7 +580,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4uy6m")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_8g55h"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_n1rw3"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Copter_01_00" type="Area3D"]
@@ -681,7 +653,7 @@ shape = SubResource("CapsuleShape3D_ut4c5")
 [node name="Arrow_Hover" parent="HitPoints/Obstacle" instance=ExtResource("6_c26j6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10422, 0)
 visible = false
-texture = SubResource("ViewportTexture_5ofwq")
+texture = SubResource("ViewportTexture_41wad")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
@@ -754,7 +726,7 @@ hit_from_inside = true
 [node name="Arrow_Hover" parent="." instance=ExtResource("6_c26j6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10422, 0)
 visible = false
-texture = SubResource("ViewportTexture_8g55h")
+texture = SubResource("ViewportTexture_n1rw3")
 
 [editable path="HitPoints"]
 [editable path="HitPoints/Obstacle/HitPoints"]

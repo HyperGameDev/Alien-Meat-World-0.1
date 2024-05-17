@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://tacuaqmua1np"]
+
+[ext_resource type="Script" path="res://Objects/emit_particles.gd" id="1_n6x6v"]
+[ext_resource type="Material" uid="uid://dgfqqtkrxhwxk" path="res://Objects/Foliage/Crops/corn_stalk_color_01.tres" id="1_okxxs"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ii0vf"]
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(1.705, 0.415, 2.03)
+angle_min = -360.0
+angle_max = 360.0
+direction = Vector3(0, 1, 0)
+spread = 43.637
+initial_velocity_max = 3.0
+radial_accel_max = 5.58
+scale_min = 0.01
+scale_max = 0.2
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_6uh4g"]
+material = ExtResource("1_okxxs")
+size = Vector3(1.6, 0.1, 0.1)
+
+[node name="Particles_Corn-Stalk_01" type="Node3D"]
+script = ExtResource("1_n6x6v")
+
+[node name="Particles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27566, 0)
+emitting = false
+amount = 200
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ii0vf")
+draw_pass_1 = SubResource("BoxMesh_6uh4g")

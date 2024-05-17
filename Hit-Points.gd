@@ -24,10 +24,7 @@ func _ready():
 	if !has_node("Animation_Degrade"):
 			print("ERROR: Add a degrade animation for the obstacle!")
 			breakpoint
-	
-	#if !$Animation_Degrade.get_animation("degrade").find_track(get_path(), Animation.TYPE_METHOD):
-		#print("ERROR: Add a 'reset particle fx' method call track to an Obstacle's Hitpoints' Animation Degrade player!")
-		#breakpoint
+
 			
 # If owner is a flying NPC, then it will be confirmed by the presence of "is_destroyed". Probably should refactor that to be more readable.
 	$"..".update_hitpoints.connect(on_update_hitpoints)
@@ -88,13 +85,13 @@ func on_is_destroyed():
 func sub_obstacle_destroyed():
 	get_owner().is_destroyed.emit()
 	
-	
 func reset_particle_fx():
+	pass
+
+func reset_damage():
 	for node in get_children():
 		if node is GPUParticles3D:
 			node.restart()
-
-func reset_damage():
 	#$Animation_Degrade.stop()
 	$Animation_Degrade.seek(0.0, true)
 	$"..".health_current = $"..".health_max

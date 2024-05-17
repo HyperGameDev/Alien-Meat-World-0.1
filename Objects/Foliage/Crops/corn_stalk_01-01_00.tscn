@@ -4,6 +4,8 @@
 [ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_ale81"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="3_usqfn"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="4_imp72"]
+[ext_resource type="Material" uid="uid://dgfqqtkrxhwxk" path="res://Objects/Foliage/Crops/corn_stalk_color_01.tres" id="5_5qywa"]
+[ext_resource type="PackedScene" uid="uid://tacuaqmua1np" path="res://Objects/Foliage/Crops/particles_corn_stalk_01.tscn" id="5_chket"]
 
 [sub_resource type="Animation" id="Animation_eybv3"]
 length = 0.001
@@ -26,6 +28,18 @@ tracks/1/path = NodePath("../../Corn_Destroyed:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Particles_Corn:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -58,6 +72,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Particles_Corn:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vkyih"]
 _data = {
@@ -65,23 +91,31 @@ _data = {
 "degrade": SubResource("Animation_ye74q")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ii0vf"]
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(1.705, 0.415, 2.03)
+angle_min = -360.0
+angle_max = 360.0
+direction = Vector3(0, 1, 0)
+spread = 43.637
+initial_velocity_max = 3.0
+radial_accel_max = 5.58
+scale_min = 0.01
+scale_max = 0.2
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_6uh4g"]
+material = ExtResource("5_5qywa")
+size = Vector3(1.6, 0.1, 0.1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_8g60g"]
 size = Vector3(3.205, 1, 3.095)
-
-[sub_resource type="Gradient" id="Gradient_sovhy"]
-offsets = PackedFloat32Array(0, 0.991701)
-colors = PackedColorArray(0.56296, 0.62, 0.1922, 1, 0.482353, 0.576471, 0.152941, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_q3vqi"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l6kew"]
-color_ramp = SubResource("Gradient_sovhy")
-noise = SubResource("FastNoiseLite_q3vqi")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqboh"]
-albedo_texture = SubResource("NoiseTexture2D_l6kew")
-metallic_specular = 0.55
-roughness = 0.86
 
 [node name="corn-stalk_01_01_00" instance=ExtResource("1_klnrh")]
 script = ExtResource("2_ale81")
@@ -95,11 +129,22 @@ health_max = 1
 damage_amount = 2
 
 [node name="HitPoints" parent="Obstacle" index="0" instance=ExtResource("4_imp72")]
+particles_path = ExtResource("5_chket")
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_vkyih")
 }
+
+[node name="Particles_Corn" type="GPUParticles3D" parent="Obstacle/HitPoints" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27566, 0)
+emitting = false
+amount = 200
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ii0vf")
+draw_pass_1 = SubResource("BoxMesh_6uh4g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.436958, 0)
@@ -110,8 +155,8 @@ shape = SubResource("BoxShape3D_8g60g")
 [node name="Corn" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00762749, -2.38419e-07, -0.023829)
 lod_bias = 0.001
-surface_material_override/0 = SubResource("StandardMaterial3D_yqboh")
+surface_material_override/0 = ExtResource("5_5qywa")
 
 [node name="Corn_Destroyed" parent="." index="2"]
 visible = false
-surface_material_override/0 = SubResource("StandardMaterial3D_yqboh")
+surface_material_override/0 = ExtResource("5_5qywa")
