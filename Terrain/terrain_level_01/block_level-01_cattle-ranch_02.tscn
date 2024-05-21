@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b0eqg12k4spgg"]
+[gd_scene load_steps=23 format=3 uid="uid://b0eqg12k4spgg"]
 
 [ext_resource type="PackedScene" uid="uid://7cd7bq27jnyj" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_blank-grass.tscn" id="1_d3m70"]
 [ext_resource type="Shader" path="res://Collaborator Experiments/Pierogigon/Terrain/terrain_level_shader_pierogi.gdshader" id="2_1v4qd"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cbdts1xv5dfj" path="res://Objects/Buildings/Barns/Tool_Shed_01/tool_shed_01_01_00.tscn" id="13_ofxuo"]
 [ext_resource type="PackedScene" uid="uid://cdgtkxeebdtqm" path="res://Objects/Misc/hay_bale_round_01_01_00.tscn" id="14_oy2h4"]
 [ext_resource type="PackedScene" uid="uid://d21gtemvo26ou" path="res://Objects/Misc/electric_pole_01_01_00.tscn" id="15_bmwah"]
+[ext_resource type="PackedScene" uid="uid://bkwsnbugupr16" path="res://Objects/Misc/windmill-water_01_01_00.tscn" id="19_8p57f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sncx2"]
 render_priority = 0
@@ -347,10 +348,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8.25)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, 8.25)
 
 [node name="electric-pole_01-01_00" parent="." index="101" instance=ExtResource("15_bmwah")]
-transform = Transform3D(1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, 1, 53, 0, -9)
+transform = Transform3D(0.75, 0, 5.51353e-08, 0, 0.75, 0, -5.51353e-08, 0, 0.75, 28, 0, -9)
 
 [node name="electric-pole_01-01_01" parent="." index="102" instance=ExtResource("15_bmwah")]
-transform = Transform3D(1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, 1, 30.5, 0, -9)
+transform = Transform3D(0.75, 0, 5.51353e-08, 0, 0.75, 0, -5.51353e-08, 0, 0.75, 5.5, 0, -9)
 
 [node name="electric-pole_01-01_02" parent="." index="103" instance=ExtResource("15_bmwah")]
-transform = Transform3D(1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, 1, 5.5, 0, -9)
+transform = Transform3D(0.75, 0, 5.51353e-08, 0, 0.75, 0, -5.51353e-08, 0, 0.75, -19.5, 0, -9)
+
+[node name="windmill-water_01-01_00" parent="." index="104" instance=ExtResource("19_8p57f")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 17.5, 0, -8)

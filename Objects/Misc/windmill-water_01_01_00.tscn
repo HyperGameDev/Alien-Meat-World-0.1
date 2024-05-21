@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkwsnbugupr16"]
+
+[ext_resource type="PackedScene" uid="uid://dckc3lq0xqqkq" path="res://Objects/Misc/windmill-water_01-01_00.blend" id="1_ecvae"]
+[ext_resource type="Script" path="res://Objects/Misc/windmill-water_01_01.gd" id="2_fb4cd"]
+
+[sub_resource type="Animation" id="Animation_y1sgo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wheel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tail:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.313356, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gaip0"]
+resource_name = "wheel_spin_x"
+length = 16.0
+loop_mode = 1
+step = 0.0001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wheel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8, 8.0007, 16),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.28319), Vector3(0, 0, 0), Vector3(0, 0, 6.28319)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tail:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.7, 4, 5.9, 7.2, 9.5483, 11.9455, 12.8975),
+"transitions": PackedFloat32Array(0.482968, 3.03143, 0.68302, 1, 0.615572, 1, 1, 0.5, 0.329877),
+"update": 0,
+"values": [Vector3(0, 0.158249, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0.313356, 0), Vector3(0, 0.313356, 0), Vector3(0, 0.158249, 0), Vector3(0, 0.158249, 0), Vector3(0, 0.261939, 0), Vector3(0, 0.158249, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l00sd"]
+_data = {
+"RESET": SubResource("Animation_y1sgo"),
+"wheel_spin": SubResource("Animation_gaip0")
+}
+
+[node name="windmill-water_01-01_00" instance=ExtResource("1_ecvae")]
+script = ExtResource("2_fb4cd")
+
+[node name="Tail" parent="." index="1"]
+transform = Transform3D(0.951304, 0, 0.308253, 0, 1, 0, -0.308253, 0, 0.951304, -0.00588178, 4.89258, 0.0622454)
+
+[node name="Animation_Wheel-Spin" type="AnimationPlayer" parent="." index="3"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_l00sd")
+}

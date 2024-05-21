@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://1v8wnaldsn2r"]
+[gd_scene load_steps=26 format=3 uid="uid://1v8wnaldsn2r"]
 
 [ext_resource type="PackedScene" uid="uid://7cd7bq27jnyj" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_blank-grass.tscn" id="1_ouefb"]
 [ext_resource type="PackedScene" uid="uid://dxjkdmi6v6583" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow-Barn_01-02_00.tscn" id="2_5s01b"]
@@ -17,28 +17,31 @@
 [ext_resource type="PackedScene" uid="uid://1dchn2b5totj" path="res://Objects/Misc/solar-panel-mount-01_01_00.tscn" id="16_c38ua"]
 [ext_resource type="PackedScene" uid="uid://d21gtemvo26ou" path="res://Objects/Misc/electric_pole_01_01_00.tscn" id="17_7n88w"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_q6o1c"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_2yvp7"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_yc0k5"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0rjxj"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1xnxi"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_cx6ke"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_medad"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_fi374"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7pxet"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_6aoux"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_la7db"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_5elyp"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_kqkrt"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_vni0n"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_hl736"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_wfqc8"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_i8axa"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Terrain_0" instance=ExtResource("1_ouefb")]
@@ -478,7 +481,7 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -6.57782, 1.3, -3.5435)
 
 [node name="Arrow_Hover" parent="solar-panel_01-01_08/Obstacle" index="2"]
-texture = SubResource("ViewportTexture_q6o1c")
+texture = SubResource("ViewportTexture_2yvp7")
 
 [node name="Panel" parent="solar-panel_01-01_08" index="1"]
 transform = Transform3D(0, 0, -1, 0.5, 0.866025, 0, 0.866025, -0.5, 0, 0.00078392, 0.354425, 0.035675)
@@ -487,7 +490,7 @@ transform = Transform3D(0, 0, -1, 0.5, 0.866025, 0, 0.866025, -0.5, 0, 0.0007839
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -7.21421, 1.3, -2.90711)
 
 [node name="Arrow_Hover" parent="solar-panel_01-01_09/Obstacle" index="2"]
-texture = SubResource("ViewportTexture_yc0k5")
+texture = SubResource("ViewportTexture_0rjxj")
 
 [node name="Panel" parent="solar-panel_01-01_09" index="1"]
 transform = Transform3D(0, 0, -1, 0.5, 0.866025, 0, 0.866025, -0.5, 0, 0.00078392, 0.354425, 0.035675)
@@ -496,7 +499,7 @@ transform = Transform3D(0, 0, -1, 0.5, 0.866025, 0, 0.866025, -0.5, 0, 0.0007839
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -7.85061, 1.3, -2.27071)
 
 [node name="Arrow_Hover" parent="solar-panel_01-01_10/Obstacle" index="2"]
-texture = SubResource("ViewportTexture_1xnxi")
+texture = SubResource("ViewportTexture_cx6ke")
 
 [node name="Panel" parent="solar-panel_01-01_10" index="1"]
 transform = Transform3D(0, 0, -1, 0.5, 0.866025, 0, 0.866025, -0.5, 0, 0.00078392, 0.354425, 0.035675)
@@ -508,7 +511,7 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76837e-07, 0.314941, 0.0228262)
 
 [node name="Arrow_Hover" parent="solar-panel_01-01_11/Obstacle" index="2"]
-texture = SubResource("ViewportTexture_medad")
+texture = SubResource("ViewportTexture_fi374")
 
 [node name="Panel" parent="solar-panel_01-01_11" index="1"]
 transform = Transform3D(0, 0, -1, 0.5, 0.866025, 0, 0.866025, -0.5, 0, 0.00078392, 0.354425, 0.035675)
@@ -517,7 +520,7 @@ transform = Transform3D(0, 0, -1, 0.5, 0.866025, 0, 0.866025, -0.5, 0, 0.0007839
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -9.1234, 1.3, -0.997918)
 
 [node name="Arrow_Hover" parent="solar-panel_01-01_12/Obstacle" index="2"]
-texture = SubResource("ViewportTexture_7pxet")
+texture = SubResource("ViewportTexture_6aoux")
 
 [node name="Panel" parent="solar-panel_01-01_12" index="1"]
 transform = Transform3D(0, 0, -1, 0.5, 0.866025, 0, 0.866025, -0.5, 0, 0.00078392, 0.354425, 0.035675)
@@ -526,7 +529,7 @@ transform = Transform3D(0, 0, -1, 0.5, 0.866025, 0, 0.866025, -0.5, 0, 0.0007839
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -5.94142, 1.3, -4.1799)
 
 [node name="Arrow_Hover" parent="solar-panel_01-01_13/Obstacle" index="2"]
-texture = SubResource("ViewportTexture_la7db")
+texture = SubResource("ViewportTexture_5elyp")
 
 [node name="Panel" parent="solar-panel_01-01_13" index="1"]
 transform = Transform3D(0, 0, -1, 0.5, 0.866025, 0, 0.866025, -0.5, 0, 0.00078392, 0.354425, 0.035675)
@@ -535,7 +538,7 @@ transform = Transform3D(0, 0, -1, 0.5, 0.866025, 0, 0.866025, -0.5, 0, 0.0007839
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -5.30503, 1.3, -4.81629)
 
 [node name="Arrow_Hover" parent="solar-panel_01-01_14/Obstacle" index="2"]
-texture = SubResource("ViewportTexture_kqkrt")
+texture = SubResource("ViewportTexture_vni0n")
 
 [node name="Panel" parent="solar-panel_01-01_14" index="1"]
 transform = Transform3D(0, 0, -1, 0.5, 0.866025, 0, 0.866025, -0.5, 0, 0.00078392, 0.354425, 0.035675)
@@ -544,16 +547,19 @@ transform = Transform3D(0, 0, -1, 0.5, 0.866025, 0, 0.866025, -0.5, 0, 0.0007839
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4.66863, 1.3, -5.45269)
 
 [node name="Arrow_Hover" parent="solar-panel_01-01_15/Obstacle" index="2"]
-texture = SubResource("ViewportTexture_hl736")
+texture = SubResource("ViewportTexture_wfqc8")
 
 [node name="Panel" parent="solar-panel_01-01_15" index="1"]
 transform = Transform3D(0, 0, -1, 0.5, 0.866025, 0, 0.866025, -0.5, 0, 0.00078392, 0.354425, 0.035675)
 
 [node name="electric-pole_01-01_00" parent="." index="155" instance=ExtResource("17_7n88w")]
-transform = Transform3D(1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, 1, 11.8, 0, -9)
+transform = Transform3D(0.75, 0, 5.51372e-08, 0, 0.75, 0, -5.51372e-08, 0, 0.75, 11.8, 0, -9)
+
+[node name="Arrow_Hover" parent="electric-pole_01-01_00/Obstacle" index="3"]
+texture = SubResource("ViewportTexture_i8axa")
 
 [node name="electric-pole_01-01_01" parent="." index="156" instance=ExtResource("17_7n88w")]
-transform = Transform3D(1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, 1, -10.7, 0, -9)
+transform = Transform3D(0.75, 0, 5.51353e-08, 0, 0.75, 0, -5.51353e-08, 0, 0.75, -10.7, 0, -9)
 
 [editable path="solar-panel_01-01_08"]
 [editable path="solar-panel_01-01_09"]
@@ -563,3 +569,5 @@ transform = Transform3D(1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, 1, -10.7, 0
 [editable path="solar-panel_01-01_13"]
 [editable path="solar-panel_01-01_14"]
 [editable path="solar-panel_01-01_15"]
+[editable path="electric-pole_01-01_00"]
+[editable path="electric-pole_01-01_00/Obstacle/HitPoints"]
