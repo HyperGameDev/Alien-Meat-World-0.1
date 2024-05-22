@@ -7,6 +7,9 @@ class_name Block
 @onready var marker_left = %Marker_boundaryLeft
 @onready var ground = $Ground
 
+@export var is_type: is_types
+enum is_types {SAFE,OBSTACLE,POINTS}
+
 func _ready():
 	if has_node("Ground"):
 		ground.set_collision_layer_value(1, true)

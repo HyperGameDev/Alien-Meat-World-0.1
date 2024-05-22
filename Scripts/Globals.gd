@@ -10,11 +10,13 @@ var levels := [
 	"res://Terrain/terrain_blocks_blank/",
 	"res://Terrain/terrain_debug_obstacleDamage/",
 	"res://Terrain/terrain_debug_obstacleAvoidance/",
-	"res://Terrain/terrain_level_01/",
+	"res://Terrain/terrain_level_01/terrain_level_01_safes",
 	"res://Terrain/terrain_level_02/",
 	"res://Terrain/terrain_debug_terrainHeights/"
 ]
-var current_level : StringName
+var current_safe_chunks : StringName
+var current_obstacle_chunks : StringName
+var current_points_chunks : StringName
 
 var meat_objects := {
 	Health.is_types.COW: load("res://NPCs/Cows/Cow_01-03_00.tscn"),
@@ -22,4 +24,6 @@ var meat_objects := {
 }
 
 func _ready():
-	current_level = levels[9]
+	current_safe_chunks = levels[9]
+	current_obstacle_chunks = "res://Terrain/terrain_level_01/terrain_level_01_obstacles/"
+	current_points_chunks = "res://Terrain/terrain_level_01/terrain_level_01_points/"
