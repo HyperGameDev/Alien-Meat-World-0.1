@@ -18,16 +18,21 @@ const TERRAIN_VELOCITY: float = 11.0
 @export var num_terrain_chunks = 9
 
 ## Paths to directories holding the terrain chunks scenes
-var safe_chunks_path : StringName
-var obstacle_chunks_path : StringName
-var points_chunks_path : StringName
+var chunks_path_safes : StringName
+var chunks_path_obstacles : StringName
+var chunks_path_points : StringName
+
+## Likelihood that certain chunks will spawn
+@export var chunk_likelihood_safes = .3
+@export var chunk_likelihood_obstacles = .2
+@export var chunk_likelihood_points = .5
 
 
 func _ready() -> void:
-	safe_chunks_path = Globals.current_safe_chunks
-	obstacle_chunks_path = Globals.current_obstacle_chunks
-	points_chunks_path = Globals.current_points_chunks
-	_load_terrain_scenes(safe_chunks_path,obstacle_chunks_path,points_chunks_path)
+	chunks_path_safes = Globals.current_safe_chunks
+	chunks_path_obstacles = Globals.current_obstacle_chunks
+	chunks_path_points = Globals.current_points_chunks
+	_load_terrain_scenes(chunks_path_safes,chunks_path_obstacles,chunks_path_points)
 	_init_chunks(num_terrain_chunks)
 	
 
@@ -56,28 +61,56 @@ func _init_chunks(num_terrain_chunks: int) -> void: ## Adds files to the correct
 
 
 func _progress_terrain(delta: float) -> void:
-	for block in self.get_children():
-		block.position.z += terrain_velocity * delta
+	
+	# Advance chunks towards the player
+	for chunk in self.get_children():
+		chunk.position.z += terrain_velocity * delta
 		
-	# Remove first block if it passes a certain spot
+	# If the first chunk passes a certain spot
 	if get_child(0).position.z >= get_child(0).mesh.size.y *2:
 		
-		# -1 means "the last block in the array
-		# i.e. the highest number"
+		# Assign the last chunk in the array (-1) to this var
 		var last_terrain = get_child(-1)
 		
-		# Pop_front removes the first block from the array only,
-		# and then returns the name of that removed block.
+		# Assign the first chunk to this var, and remove the chunk
 		var first_terrain = get_children().pop_front()
 
-		first_terrain.reparent(collector_safes)
-		first_terrain.position.z = 0.0
-		if first_terrain.has_method("reset_block_objects"):
-			first_terrain.reset_block_objects(first_terrain)
+		if first_terrain.is_type == 0:
+			# Reparent the removed chunk to the collector(s)
+			first_terrain.reparent(collector_safes)
+			# Move removed chunk to the collectors' position
+			first_terrain.position.z = 0.0
+			# Make sure chunk has reset potential (temporary logic)
+			if first_terrain.has_method("reset_block_objects"):
+			# Run the reset function to check if objects need resetting.
+				first_terrain.reset_block_objects()
+			
+		if first_terrain.is_type == 1:
+			first_terrain.reparent(collector_obstacles)
+			first_terrain.position.z = 0.0
+			if first_terrain.has_method("reset_block_objects"):
+				first_terrain.reset_block_objects()
+				
+		if first_terrain.is_type == 2:
+			first_terrain.reparent(collector_points)
+			first_terrain.position.z = 0.0
+			if first_terrain.has_method("reset_block_objects"):
+				first_terrain.reset_block_objects()
+			
+		var rng = randf()
+		var chunk_add = collector_safes.get_children().pick_random()
 		
-		var block = collector_safes.get_children().pick_random()
-		block.reparent(self)
-		_append_to_far_edge(last_terrain, block)
+		if rng >= .75:
+			if collector_obstacles.get_children().size() > 0 :
+				chunk_add = collector_obstacles.get_children().pick_random()
+		elif rng > .5:
+			if collector_points.get_children().size() > 0:
+				chunk_add = collector_points.get_children().pick_random()
+		
+		# Choose a chunk to add in to the level
+		chunk_add.reparent(self) 
+		# Add the new chunk to the end of the level
+		_append_to_far_edge(last_terrain, chunk_add)
 
 
 
@@ -86,17 +119,17 @@ func _append_to_far_edge(target_block: MeshInstance3D, appending_block: MeshInst
 	
 
 
-func _load_terrain_scenes(safe_chunks_path: String, obstacle_chunks_path: String, points_chunks_path: String) -> void:
+func _load_terrain_scenes(chunks_path_safes: String, chunks_path_obstacles: String, chunks_path_points: String) -> void:
 	
-	var dir_safes = DirAccess.open(safe_chunks_path)
+	var dir_safes = DirAccess.open(chunks_path_safes)
 	for safes_path in dir_safes.get_files():
 		# Adds files as nodes to the Terrain Controller
-		Chunks_Safes.append(load(safe_chunks_path + "/" + safes_path.trim_suffix(".remap")))
+		Chunks_Safes.append(load(chunks_path_safes + "/" + safes_path.trim_suffix(".remap")))
 		
-	var dir_obstacles = DirAccess.open(obstacle_chunks_path)
+	var dir_obstacles = DirAccess.open(chunks_path_obstacles)
 	for obstacles_path in dir_obstacles.get_files():
-		Chunks_Obstacles.append(load(obstacle_chunks_path + "/" + obstacles_path.trim_suffix(".remap")))
+		Chunks_Obstacles.append(load(chunks_path_obstacles + "/" + obstacles_path.trim_suffix(".remap")))
 		
-	var dir_points = DirAccess.open(points_chunks_path)
+	var dir_points = DirAccess.open(chunks_path_points)
 	for points_path in dir_points.get_files():
-		Chunks_Points.append(load(points_chunks_path + "/" + points_path.trim_suffix(".remap")))
+		Chunks_Points.append(load(chunks_path_points + "/" + points_path.trim_suffix(".remap")))

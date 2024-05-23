@@ -123,7 +123,7 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -12.3149, 0, 8.05493)
 
 [node name="Tree_02_12" parent="." index="42" instance=ExtResource("3_6qeds")]
-transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -4.81488, 0.75, 0.554933)
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -4.81488, 0, 0.554933)
 
 [node name="Tree_02_06" parent="." index="43" instance=ExtResource("3_6qeds")]
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -15.8149, 0, 4.55493)

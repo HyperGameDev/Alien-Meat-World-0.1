@@ -18,7 +18,7 @@ func _ready():
 		marker_left.visible = false
 
 
-func reset_block_objects(block):
+func reset_block_objects():
 	for object in get_children():
 			if object is Block_Object:
 				if object.needs_reset:
