@@ -100,10 +100,10 @@ func _progress_terrain(delta: float) -> void:
 		var rng = randf()
 		var chunk_add = collector_safes.get_children().pick_random()
 		
-		if rng >= .75:
+		if rng >= .99:
 			if collector_obstacles.get_children().size() > 0 :
 				chunk_add = collector_obstacles.get_children().pick_random()
-		elif rng > .5:
+		elif rng > .7:
 			if collector_points.get_children().size() > 0:
 				chunk_add = collector_points.get_children().pick_random()
 		
