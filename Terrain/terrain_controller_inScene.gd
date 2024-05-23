@@ -27,6 +27,45 @@ var chunks_path_points : StringName
 @export var chunk_likelihood_obstacles = .2
 @export var chunk_likelihood_points = .5
 
+## Level Chunk Setup
+var chunks_list_current = []
+@onready var chunk_to_add = collector_safes.get_children().pick_random()
+
+## Level Chunks Playlists
+@onready var chunks_list_various_01 = [
+	collector_safes,
+	collector_safes,
+	collector_obstacles,
+	collector_safes,
+	collector_points,
+	collector_points,
+	collector_obstacles,
+	collector_safes,
+	collector_points
+	]
+@onready var chunks_list_various_02 = [
+	collector_safes,
+	collector_safes,
+	collector_points,
+	collector_points,
+	collector_safes,
+	collector_obstacles,
+	collector_safes,
+	collector_points,
+	collector_obstacles
+	]
+@onready var chunks_list_safes = [
+	collector_safes,
+	collector_safes,
+	collector_safes,
+	collector_safes,
+	collector_safes,
+	collector_safes,
+	collector_safes,
+	collector_safes,
+	collector_safes
+	]
+
 
 func _ready() -> void:
 	chunks_path_safes = Globals.current_safe_chunks
@@ -59,6 +98,12 @@ func _init_chunks(num_terrain_chunks: int) -> void: ## Adds files to the correct
 		var chunk = collector_safes.get_children().pick_random()
 		chunk.reparent(self)
 
+func chunk_chosen_to_add():
+	if chunks_list_current.size() == 0:
+		chunks_list_current = [chunks_list_various_01, chunks_list_various_02].pick_random().duplicate()
+	
+	chunk_to_add = chunks_list_current.pop_front()
+	print("Popped chunk: ", chunk_to_add)
 
 func _progress_terrain(delta: float) -> void:
 	
@@ -100,12 +145,22 @@ func _progress_terrain(delta: float) -> void:
 		var rng = randf()
 		var chunk_add = collector_safes.get_children().pick_random()
 		
-		if rng >= .99:
-			if collector_obstacles.get_children().size() > 0 :
-				chunk_add = collector_obstacles.get_children().pick_random()
-		elif rng > .7:
-			if collector_points.get_children().size() > 0:
-				chunk_add = collector_points.get_children().pick_random()
+		chunk_chosen_to_add()
+		print("Chunk chosen called, but NOT empty")
+		if chunks_list_current.size() == 0:
+			chunk_chosen_to_add()
+			print("Chunk chosen called, and is EMPTY")
+		
+		if collector_obstacles.get_children().size() > 0 and collector_points.get_children().size() > 0:
+			
+			chunk_add = chunks_list_current[0].get_children().pick_random()
+		
+		#if rng >= .75:
+			#if collector_obstacles.get_children().size() > 0 :
+				#chunk_add = collector_obstacles.get_children().pick_random()
+		#elif rng > .5: 
+			#if collector_points.get_children().size() > 0:
+				#chunk_add = collector_points.get_children().pick_random()
 		
 		# Choose a chunk to add in to the level
 		chunk_add.reparent(self) 
