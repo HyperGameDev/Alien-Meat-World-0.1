@@ -256,7 +256,7 @@ shadow_mesh = SubResource("ArrayMesh_wwodv")
 [sub_resource type="BoxShape3D" id="BoxShape3D_0lpsq"]
 size = Vector3(7.16211, 1, 1.80859)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_jegpr"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_m71yv"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Cow-Barn_01_00" type="Area3D"]
@@ -292,15 +292,10 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0818552, 0.472926, 0.00564706)
 shape = SubResource("BoxShape3D_0lpsq")
 
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
-height = 1.7
-vertices = PackedVector3Array(-5, 0, 2.5, 5, 0, 2.5, 5, 0, -2.5, -5, 0, -2.5)
-avoidance_layers = 4
-
 [node name="Arrow_Hover" parent="." instance=ExtResource("2_7cvjf")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 1.17543, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_jegpr")
+texture = SubResource("ViewportTexture_m71yv")
 
 [node name="HitPoints" parent="." instance=ExtResource("3_s05ob")]
 

@@ -103,7 +103,7 @@ size = Vector3(0.910156, 0.141602, 0.831787)
 [sub_resource type="BoxShape3D" id="BoxShape3D_tafbx"]
 size = Vector3(0.0693359, 1.02051, 0.0732422)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0rrqy"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_3wtks"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Tree_02_00" type="Area3D"]
@@ -140,11 +140,6 @@ shape = SubResource("BoxShape3D_2j2fx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.501788, 0)
 shape = SubResource("BoxShape3D_tafbx")
 
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
-height = 1.58
-vertices = PackedVector3Array(-1, 0, 1, 1, 0, 1, 1, 0, -1, -1, 0, -1)
-avoidance_layers = 4
-
 [node name="HitPoints" parent="." instance=ExtResource("2_87ypy")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.37828, 0)
 
@@ -156,6 +151,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444655, -0.249648, -3.8873
 [node name="Arrow_Hover" parent="." instance=ExtResource("3_p17b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3212, 0)
 visible = false
-texture = SubResource("ViewportTexture_0rrqy")
+texture = SubResource("ViewportTexture_3wtks")
 
 [editable path="HitPoints"]

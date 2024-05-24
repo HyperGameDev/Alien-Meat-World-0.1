@@ -103,7 +103,7 @@ _data = {
 "degrade": SubResource("Animation_wecdx")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_cxxvi"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_sbta1"]
 viewport_path = NodePath("SubViewport")
 
 [node name="tree_01-03" instance=ExtResource("1_b0872")]
@@ -139,17 +139,12 @@ libraries = {
 [node name="Arrow_Hover" parent="Obstacle" index="4" instance=ExtResource("4_dufu7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.89422, 0)
 visible = false
-texture = SubResource("ViewportTexture_cxxvi")
+texture = SubResource("ViewportTexture_sbta1")
 
 [node name="Trunk" parent="." index="1"]
 surface_material_override/0 = ExtResource("6_rt5pp")
 
 [node name="Leaves" parent="." index="2"]
 surface_material_override/0 = ExtResource("7_kdtm5")
-
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." index="3"]
-height = 2.68
-vertices = PackedVector3Array(-1.21, 0, 1.22, 1.355, 0, 1.162, 1.242, 0, -1.294, -1.16, 0, -1.238)
-avoidance_layers = 4
 
 [editable path="Obstacle/HitPoints"]

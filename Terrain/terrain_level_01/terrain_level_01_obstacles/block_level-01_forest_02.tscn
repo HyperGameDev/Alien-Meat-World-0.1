@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://42d0k42w1eb0"]
+[gd_scene load_steps=5 format=3 uid="uid://ejxdxlrj4jsy"]
 
 [ext_resource type="PackedScene" uid="uid://7cd7bq27jnyj" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_blank-grass.tscn" id="1_tw3rg"]
 [ext_resource type="PackedScene" uid="uid://c4gt8ofayu0ec" path="res://Objects/Foliage/Tree_01/Tree_01_00.tscn" id="2_3mywt"]
