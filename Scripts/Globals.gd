@@ -27,3 +27,7 @@ func _ready():
 	current_safe_chunks = levels[9]
 	current_obstacle_chunks = "res://Terrain/terrain_level_01/terrain_level_01_obstacles/"
 	current_points_chunks = "res://Terrain/terrain_level_01/terrain_level_01_points/"
+	
+	#current_safe_chunks = "res://Terrain/temp_level1_safes/"
+	#current_points_chunks = "res://Terrain/temp_level1_points/"
+	#current_obstacle_chunks = "res://Terrain/temp_level1_obstacles/"

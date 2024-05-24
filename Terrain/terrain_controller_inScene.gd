@@ -150,12 +150,6 @@ func _progress_terrain(delta: float) -> void:
 		var chunk_add = collector_safes.get_children().pick_random()
 		
 		chunk_chosen_to_add()
-		#print("Chunk chosen called, but NOT empty")
-		#if chunks_list_current.size() == 0:
-			#chunk_add chunk_to_add = collector_safes
-			
-			#chunk_chosen_to_add()
-			#print("Chunk chosen called, and is EMPTY")
 		
 		if collector_obstacles.get_children().size() > 0 and collector_points.get_children().size() > 0:
 			
