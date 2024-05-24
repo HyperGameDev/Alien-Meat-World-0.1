@@ -30,6 +30,7 @@ var chunks_path_points : StringName
 ## Level Chunk Setup
 var chunks_list_current = []
 @onready var chunk_to_add = collector_safes.get_children().pick_random()
+var chunk_wait = false
 
 ## Level Chunks Playlists
 @onready var chunks_list_various_01 = [
@@ -100,10 +101,10 @@ func _init_chunks(num_terrain_chunks: int) -> void: ## Adds files to the correct
 
 func chunk_chosen_to_add():
 	if chunks_list_current.size() == 0:
-		chunks_list_current = [chunks_list_various_01, chunks_list_various_02].pick_random().duplicate()
+		chunks_list_current = [chunks_list_various_01].pick_random().duplicate()
 	
 	chunk_to_add = chunks_list_current.pop_front()
-	print("Popped chunk: ", chunk_to_add)
+	#print("Popped chunk: ", chunk_to_add)
 
 func _progress_terrain(delta: float) -> void:
 	
@@ -121,6 +122,7 @@ func _progress_terrain(delta: float) -> void:
 		var first_terrain = get_children().pop_front()
 
 		if first_terrain.is_type == 0:
+			#print("Returned a SAFE chunk")
 			# Reparent the removed chunk to the collector(s)
 			first_terrain.reparent(collector_safes)
 			# Move removed chunk to the collectors' position
@@ -131,12 +133,14 @@ func _progress_terrain(delta: float) -> void:
 				first_terrain.reset_block_objects()
 			
 		if first_terrain.is_type == 1:
+			#print("Returned an OBSTACLE chunk")
 			first_terrain.reparent(collector_obstacles)
 			first_terrain.position.z = 0.0
 			if first_terrain.has_method("reset_block_objects"):
 				first_terrain.reset_block_objects()
 				
 		if first_terrain.is_type == 2:
+			#print("Returned a POINTS chunk")
 			first_terrain.reparent(collector_points)
 			first_terrain.position.z = 0.0
 			if first_terrain.has_method("reset_block_objects"):
@@ -146,14 +150,23 @@ func _progress_terrain(delta: float) -> void:
 		var chunk_add = collector_safes.get_children().pick_random()
 		
 		chunk_chosen_to_add()
-		print("Chunk chosen called, but NOT empty")
-		if chunks_list_current.size() == 0:
-			chunk_chosen_to_add()
-			print("Chunk chosen called, and is EMPTY")
+		#print("Chunk chosen called, but NOT empty")
+		#if chunks_list_current.size() == 0:
+			#chunk_add chunk_to_add = collector_safes
+			
+			#chunk_chosen_to_add()
+			#print("Chunk chosen called, and is EMPTY")
 		
 		if collector_obstacles.get_children().size() > 0 and collector_points.get_children().size() > 0:
 			
-			chunk_add = chunks_list_current[0].get_children().pick_random()
+			chunk_add = chunk_to_add.get_children().pick_random()
+			match chunk_add.is_type:
+				0: 
+					print("SAFE")
+				1:
+					print("OBSTACLE")
+				2:
+					print("POINTS")
 		
 		#if rng >= .75:
 			#if collector_obstacles.get_children().size() > 0 :

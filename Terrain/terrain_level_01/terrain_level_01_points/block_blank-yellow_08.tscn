@@ -32,6 +32,7 @@ layers = 2
 mesh = ExtResource("1_n077l")
 surface_material_override/0 = SubResource("StandardMaterial3D_ulgph")
 script = ExtResource("3_404ia")
+is_type = 2
 metadata/_edit_lock_ = true
 
 [node name="Ground" type="StaticBody3D" parent="."]
