@@ -1,6 +1,6 @@
 extends Node
 
-var current_level = 0
+@export var current_level = 0
 
 var level_chunks_safe := [
 	"res://Terrain/terrain_level_00/terrain_level_00_safes/",
@@ -27,7 +27,7 @@ var meat_objects := {
 
 func _ready():
 	Messenger.level_update.connect(on_level_update)
-	on_level_update(0)
+	on_level_update(current_level)
 
 func on_level_update(level):
 	current_level = level
