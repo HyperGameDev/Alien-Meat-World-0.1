@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=54 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
@@ -313,6 +313,9 @@ viewport_path = NodePath("HP_Head/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_82jui"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s8eah"]
+size = Vector3(137.258, 1, 6.5647)
 
 [node name="Main Scene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.65595e-05, -0.0122666, 0.00316)
@@ -660,10 +663,10 @@ texture = SubResource("ViewportTexture_s2cav")
 texture = SubResource("ViewportTexture_82jui")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.116137, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0517092, 0)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.699572, 0.45332, -0.553227, -0.591873, -0.801389, 0.0917746, -0.401554, 0.391455, 0.82854, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.26674, 0.271619, -0.925221, -0.901935, -0.409821, 0.139715, -0.341062, 0.871339, 0.354128, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)
@@ -771,6 +774,12 @@ text = "0"
 
 [node name="SpawnPlace" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.226019, -2.19981, 0.376984)
+
+[node name="Debug_Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.63274, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Debug_Ground"]
+shape = SubResource("BoxShape3D_s8eah")
 
 [connection signal="timeout" from="UI_FX/Timer_FX_Flash" to="UI_FX" method="_on_timer_fx_flash_timeout"]
 

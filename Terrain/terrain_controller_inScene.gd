@@ -100,6 +100,21 @@ func _init_chunks(num_terrain_chunks: int) -> void: ## Adds files to the correct
 	for i in range(num_terrain_chunks):
 		var chunk = collector_safes.get_children().pick_random()
 		chunk.reparent(self)
+		
+		
+func chunks_update():
+	for LevelChunk in Chunks_Safes:
+		var chunk =  LevelChunk.instantiate()
+		collector_safes.add_child(chunk)
+	
+	for LevelChunk in Chunks_Obstacles:
+		var chunk =  LevelChunk.instantiate()
+		collector_obstacles.add_child(chunk)
+			
+	for LevelChunk in Chunks_Points:
+		var chunk =  LevelChunk.instantiate()
+		collector_points.add_child(chunk)
+
 
 func chunk_chosen_to_add():
 	if chunks_list_current.size() == 0:
@@ -156,13 +171,13 @@ func _progress_terrain(delta: float) -> void:
 		if collector_obstacles.get_children().size() > 0 and collector_points.get_children().size() > 0:
 			
 			chunk_add = chunk_to_add.get_children().pick_random()
-			match chunk_add.is_type:
-				0: 
-					print("SAFE")
-				1:
-					print("OBSTACLE")
-				2:
-					print("POINTS")
+			#match chunk_add.is_type:
+				#0: 
+					#print("SAFE")
+				#1:
+					#print("OBSTACLE")
+				#2:
+					#print("POINTS")
 		
 		#if rng >= .75:
 			#if collector_obstacles.get_children().size() > 0 :
@@ -205,3 +220,4 @@ func on_level_update(level):
 	chunks_path_points = Globals.current_points_chunks
 	
 	_load_terrain_scenes(chunks_path_safes,chunks_path_obstacles,chunks_path_points)
+	chunks_update()
