@@ -36,13 +36,25 @@ var chunk_wait = false
 @onready var chunks_list_various_01 = [
 	collector_safes,
 	collector_safes,
+	collector_points,
 	collector_obstacles,
+	collector_safes,
+	collector_points,
+	collector_safes,
+	collector_points,
+	collector_safes,
+	collector_safes,
+	collector_points,
+	collector_safes,
 	collector_safes,
 	collector_points,
 	collector_points,
 	collector_obstacles,
+	collector_points,
 	collector_safes,
-	collector_points
+	collector_points,
+	collector_safes,
+	collector_safes
 	]
 @onready var chunks_list_various_02 = [
 	collector_safes,
@@ -53,7 +65,19 @@ var chunk_wait = false
 	collector_obstacles,
 	collector_safes,
 	collector_points,
-	collector_obstacles
+	collector_points,
+	collector_safes,
+	collector_safes,
+	collector_safes,
+	collector_points,
+	collector_safes,
+	collector_obstacles,
+	collector_points,
+	collector_safes,
+	collector_safes,
+	collector_safes,
+	collector_points,
+	collector_safes,
 	]
 @onready var chunks_list_safes = [
 	collector_safes,
