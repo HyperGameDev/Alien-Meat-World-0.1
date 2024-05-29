@@ -5,6 +5,9 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	%Button_levelDebug_01.pressed.connect(on_levelDebug_01)
+	%Button_level_01.pressed.connect(on_level_01)
+	
 	label_currentLevel.text = str("Current Level: ",Globals.current_safe_chunks.trim_prefix("res://Terrain/terrain_").trim_suffix("/"))
 
 
@@ -13,61 +16,8 @@ func _process(delta):
 	pass
 
 
-func _on_button_level_debug_01_pressed():
-	Globals.current_safe_chunks = Globals.levels[0]
-	get_tree().call_deferred("reload_current_scene")
+func on_levelDebug_01():
+	Messenger.level_update.emit(0)
 
-
-func _on_button_level_00_pressed():
-	Globals.current_safe_chunks = Globals.levels[1]
-	get_tree().call_deferred("reload_current_scene")
-	
-
-func _on_button_level_blank_grass_pressed():
-	Globals.current_safe_chunks = Globals.levels[2]
-	get_tree().call_deferred("reload_current_scene")
-
-
-func _on_button_level_blank_dirt_pressed():
-	Globals.current_safe_chunks = Globals.levels[3]
-	get_tree().call_deferred("reload_current_scene")
-	
-
-func _on_button_level_blank_concrete_pressed():
-	Globals.current_safe_chunks = Globals.levels[4]
-	get_tree().call_deferred("reload_current_scene")
-
-
-func _on_button_level_blank_military_pressed():
-	Globals.current_safe_chunks = Globals.levels[5]
-	get_tree().call_deferred("reload_current_scene")
-
-
-func _on_button_level_blank_all_pressed():
-	Globals.current_safe_chunks = Globals.levels[6]
-	get_tree().call_deferred("reload_current_scene")
-
-
-func _on_button_level_debug_02_pressed():
-	Globals.current_safe_chunks = Globals.levels[7]
-	get_tree().call_deferred("reload_current_scene")
-
-
-func _on_button_level_debug_03_pressed():
-	Globals.current_safe_chunks = Globals.levels[8]
-	get_tree().call_deferred("reload_current_scene")
-
-
-func _on_button_level_01_pressed():
-	Globals.current_safe_chunks = Globals.levels[9]
-	get_tree().call_deferred("reload_current_scene")
-
-
-func _on_button_level_02_pressed():
-	Globals.current_safe_chunks = Globals.levels[10]
-	get_tree().call_deferred("reload_current_scene")
-
-
-func _on_button_level_debug_04_pressed():
-	Globals.current_safe_chunks = Globals.levels[11]
-	get_tree().call_deferred("reload_current_scene")
+func on_level_01():
+	Messenger.level_update.emit(1)

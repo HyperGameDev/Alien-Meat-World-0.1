@@ -78,6 +78,7 @@ theme_override_constants/separation = 15
 alignment = 1
 
 [node name="VBox_1" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_1"]
@@ -114,6 +115,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
 
 [node name="Button_level_01" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
@@ -121,6 +123,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Level 1"
 
 [node name="Button_level_02" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
@@ -143,13 +146,15 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
 
 [node name="Button_levelDebug_01" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Replenish Debug"
+text = "Blank Level"
 
 [node name="Button_levelDebug_02" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
@@ -157,6 +162,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Damage Debug"
 
 [node name="Button_levelDebug_03" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 22
@@ -164,6 +170,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Avoidance Debug"
 
 [node name="Button_levelDebug_04" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
@@ -171,6 +178,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Terrain Heights"
 
 [node name="VBox_4" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
@@ -193,6 +201,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Asset Expo 1"
 
 [node name="VBox_5" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
@@ -242,16 +251,3 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 31
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Blank (All)"
-
-[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2/Button_level_01" to="." method="_on_button_level_01_pressed"]
-[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2/Button_level_02" to="." method="_on_button_level_02_pressed"]
-[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_01" to="." method="_on_button_level_debug_01_pressed"]
-[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_02" to="." method="_on_button_level_debug_02_pressed"]
-[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_03" to="." method="_on_button_level_debug_03_pressed"]
-[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3/Button_levelDebug_04" to="." method="_on_button_level_debug_04_pressed"]
-[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4/Button_assets_01" to="." method="_on_button_level_00_pressed"]
-[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/Button_levelBlank_grass" to="." method="_on_button_level_blank_grass_pressed"]
-[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/Button_levelBlank_dirt" to="." method="_on_button_level_blank_dirt_pressed"]
-[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/Button_levelBlank_concrete" to="." method="_on_button_level_blank_concrete_pressed"]
-[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/Button_levelBlank_military" to="." method="_on_button_level_blank_military_pressed"]
-[connection signal="pressed" from="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/Button_levelBlank_all" to="." method="_on_button_level_blank_all_pressed"]

@@ -1,19 +1,21 @@
 extends Node
 
-var levels := [
-	"res://Terrain/terrain_debug_obstacleReplenish",
-	"res://Terrain/terrain_assetExpo_01/",
-	"res://Terrain/terrain_blocks_blank_grass/",
-	"res://Terrain/terrain_blocks_blank_dirt/",
-	"res://Terrain/terrain_blocks_blank_concrete/",
-	"res://Terrain/terrain_blocks_blank_military/",
-	"res://Terrain/terrain_blocks_blank/",
-	"res://Terrain/terrain_debug_obstacleDamage/",
-	"res://Terrain/terrain_debug_obstacleAvoidance/",
-	"res://Terrain/terrain_level_01/terrain_level_01_safes",
-	"res://Terrain/terrain_level_02/",
-	"res://Terrain/terrain_debug_terrainHeights/"
+var current_level = 0
+
+var level_chunks_safe := [
+	"res://Terrain/terrain_level_00/terrain_level_00_safes/",
+	"res://Terrain/terrain_level_01/terrain_level_01_safes/"
+	
 ]
+var level_chunks_points := [
+	"res://Terrain/terrain_level_00/terrain_level_00_points/",
+	"res://Terrain/terrain_level_01/terrain_level_01_points/"
+]
+var level_chunks_obstacles := [
+	"res://Terrain/terrain_level_00/terrain_level_00_obstacles/",
+	"res://Terrain/terrain_level_01/terrain_level_01_obstacles/"
+]
+
 var current_safe_chunks : StringName
 var current_obstacle_chunks : StringName
 var current_points_chunks : StringName
@@ -24,10 +26,12 @@ var meat_objects := {
 }
 
 func _ready():
-	current_safe_chunks = levels[9]
-	current_obstacle_chunks = "res://Terrain/terrain_level_01/terrain_level_01_obstacles/"
-	current_points_chunks = "res://Terrain/terrain_level_01/terrain_level_01_points/"
-	
-	#current_safe_chunks = "res://Terrain/temp_level1_safes/"
-	#current_points_chunks = "res://Terrain/temp_level1_points/"
-	#current_obstacle_chunks = "res://Terrain/temp_level1_obstacles/"
+	Messenger.level_update.connect(on_level_update)
+	on_level_update(0)
+
+func on_level_update(level):
+	current_level = level
+	print("Globals tried updating paths")
+	current_safe_chunks = level_chunks_safe[level]
+	current_points_chunks = level_chunks_points[level]
+	current_obstacle_chunks = level_chunks_obstacles[level]

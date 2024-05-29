@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://xxxgs2e0pm7b"]
 
-[ext_resource type="PlaneMesh" uid="uid://bnal7rn3xabyx" path="res://Terrain/terrain_blocks_default-2.tres" id="1_70ha0"]
-[ext_resource type="Script" path="res://Terrain/Block.gd" id="2_uah8r"]
-[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="3_opvx5"]
+[ext_resource type="PlaneMesh" uid="uid://bnal7rn3xabyx" path="res://Terrain/terrain_blocks_default-2.tres" id="1_1aj50"]
+[ext_resource type="Script" path="res://Terrain/Block.gd" id="2_w0oxh"]
+[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="3_jg0ke"]
 
 [sub_resource type="Gradient" id="Gradient_lsfa5"]
 offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
@@ -29,9 +29,9 @@ size = Vector3(3.725, 11.06, 19.375)
 [node name="Terrain_0" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 layers = 2
-mesh = ExtResource("1_70ha0")
+mesh = ExtResource("1_1aj50")
 surface_material_override/0 = SubResource("StandardMaterial3D_ulgph")
-script = ExtResource("2_uah8r")
+script = ExtResource("2_w0oxh")
 is_type = 2
 metadata/_edit_lock_ = true
 
@@ -45,7 +45,7 @@ shape = SubResource("ConcavePolygonShape3D_gjw30")
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 41.6496, -7.7, 13.3291)
 shape = SubResource("ConvexPolygonShape3D_qwi2u")
 
-[node name="cliff_front_01" parent="." instance=ExtResource("3_opvx5")]
+[node name="cliff_front_01" parent="." instance=ExtResource("3_jg0ke")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658, -7.495, 21.33)
 visible = false
 

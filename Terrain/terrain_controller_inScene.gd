@@ -69,6 +69,8 @@ var chunk_wait = false
 
 
 func _ready() -> void:
+	Messenger.level_update.connect(on_level_update)
+	
 	chunks_path_safes = Globals.current_safe_chunks
 	chunks_path_obstacles = Globals.current_obstacle_chunks
 	chunks_path_points = Globals.current_points_chunks
@@ -195,3 +197,11 @@ func _load_terrain_scenes(chunks_path_safes: String, chunks_path_obstacles: Stri
 	var dir_points = DirAccess.open(chunks_path_points)
 	for points_path in dir_points.get_files():
 		Chunks_Points.append(load(chunks_path_points + "/" + points_path.trim_suffix(".remap")))
+		
+func on_level_update(level):
+	print("controller tried updating paths")
+	chunks_path_safes = Globals.current_safe_chunks
+	chunks_path_obstacles = Globals.current_obstacle_chunks
+	chunks_path_points = Globals.current_points_chunks
+	
+	_load_terrain_scenes(chunks_path_safes,chunks_path_obstacles,chunks_path_points)
