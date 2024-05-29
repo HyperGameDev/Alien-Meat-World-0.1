@@ -51,7 +51,6 @@ func _ready():
 	set_collision_mask_value(1, false)
 	
 	player.area_entered.connect(copter_stop)
-	nav_agent.velocity_computed.connect(copter_nav)
 	
 	
 	hover_arrow.modulate = indicator_color
