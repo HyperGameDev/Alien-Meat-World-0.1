@@ -264,9 +264,3 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.773046)
 shape = SubResource("ConvexPolygonShape3D_xm748")
-
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
-height = 1.7
-vertices = PackedVector3Array(-2, 0, 1.5, 2, 0, 1.5, 2, 0, -1.5, -2, 0, -1.5)
-avoidance_layers = 4
-use_3d_avoidance = true

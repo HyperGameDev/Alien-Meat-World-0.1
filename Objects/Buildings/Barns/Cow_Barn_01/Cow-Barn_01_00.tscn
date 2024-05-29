@@ -256,7 +256,7 @@ shadow_mesh = SubResource("ArrayMesh_wwodv")
 [sub_resource type="BoxShape3D" id="BoxShape3D_0lpsq"]
 size = Vector3(7.16211, 1, 1.80859)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_6787i"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_lmshf"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Cow-Barn_01_00" type="Area3D"]
@@ -295,7 +295,7 @@ shape = SubResource("BoxShape3D_0lpsq")
 [node name="Arrow_Hover" parent="." instance=ExtResource("2_7cvjf")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 1.17543, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_6787i")
+texture = SubResource("ViewportTexture_lmshf")
 
 [node name="HitPoints" parent="." instance=ExtResource("3_s05ob")]
 

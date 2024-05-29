@@ -9,21 +9,6 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_jvan5"]
 size = Vector3(1.38574, 4.34631, 1.40173)
 
-[sub_resource type="Animation" id="Animation_tfm6d"]
-resource_name = "degrade"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../Building_Part_10:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="Animation" id="Animation_25qde"]
 length = 0.001
 tracks/0/type = "value"
@@ -39,24 +24,12 @@ tracks/0/keys = {
 "values": [true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gcda2"]
-_data = {
-"RESET": SubResource("Animation_25qde"),
-"degrade": SubResource("Animation_tfm6d")
-}
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_cb5lg"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wdi3g"]
-size = Vector3(1.38049, 2.96271, 1.40173)
-
-[sub_resource type="Animation" id="Animation_dkt4x"]
+[sub_resource type="Animation" id="Animation_tfm6d"]
 resource_name = "degrade"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../Building_Part_01:visible")
+tracks/0/path = NodePath("../../Building_Part_10:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -65,6 +38,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, false]
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gcda2"]
+_data = {
+"RESET": SubResource("Animation_25qde"),
+"degrade": SubResource("Animation_tfm6d")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dalxt"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wdi3g"]
+size = Vector3(1.38049, 2.96271, 1.40173)
 
 [sub_resource type="Animation" id="Animation_busvd"]
 length = 0.001
@@ -81,21 +66,12 @@ tracks/0/keys = {
 "values": [true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_tsgjg"]
-_data = {
-"RESET": SubResource("Animation_busvd"),
-"degrade": SubResource("Animation_dkt4x")
-}
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_iatm0"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="Animation" id="Animation_uw75q"]
+[sub_resource type="Animation" id="Animation_dkt4x"]
 resource_name = "degrade"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../Building_Part_09:visible")
+tracks/0/path = NodePath("../../Building_Part_01:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -104,6 +80,15 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, false]
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tsgjg"]
+_data = {
+"RESET": SubResource("Animation_busvd"),
+"degrade": SubResource("Animation_dkt4x")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jrjle"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_f0wqa"]
 length = 0.001
@@ -120,24 +105,12 @@ tracks/0/keys = {
 "values": [true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kicva"]
-_data = {
-"RESET": SubResource("Animation_f0wqa"),
-"degrade": SubResource("Animation_uw75q")
-}
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_o13dg"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_q2ycx"]
-size = Vector3(1.38574, 4.78445, 1.40173)
-
-[sub_resource type="Animation" id="Animation_jm3du"]
+[sub_resource type="Animation" id="Animation_uw75q"]
 resource_name = "degrade"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../Building_Part_03:visible")
+tracks/0/path = NodePath("../../Building_Part_09:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -146,6 +119,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, false]
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kicva"]
+_data = {
+"RESET": SubResource("Animation_f0wqa"),
+"degrade": SubResource("Animation_uw75q")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_obxyv"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q2ycx"]
+size = Vector3(1.38574, 4.78445, 1.40173)
 
 [sub_resource type="Animation" id="Animation_y1og1"]
 length = 0.001
@@ -162,21 +147,12 @@ tracks/0/keys = {
 "values": [true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0icur"]
-_data = {
-"RESET": SubResource("Animation_y1og1"),
-"degrade": SubResource("Animation_jm3du")
-}
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_dau3e"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="Animation" id="Animation_ie0mg"]
+[sub_resource type="Animation" id="Animation_jm3du"]
 resource_name = "degrade"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../Building_Part_08:visible")
+tracks/0/path = NodePath("../../Building_Part_03:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -185,6 +161,15 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, false]
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0icur"]
+_data = {
+"RESET": SubResource("Animation_y1og1"),
+"degrade": SubResource("Animation_jm3du")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gprmc"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_yhjtu"]
 length = 0.001
@@ -201,24 +186,12 @@ tracks/0/keys = {
 "values": [true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ogiou"]
-_data = {
-"RESET": SubResource("Animation_yhjtu"),
-"degrade": SubResource("Animation_ie0mg")
-}
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_so0i4"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xhn4a"]
-size = Vector3(0.679443, 3.02518, 1.40173)
-
-[sub_resource type="Animation" id="Animation_7gc5a"]
+[sub_resource type="Animation" id="Animation_ie0mg"]
 resource_name = "degrade"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../Building_Part_07:visible")
+tracks/0/path = NodePath("../../Building_Part_08:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -227,6 +200,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, false]
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ogiou"]
+_data = {
+"RESET": SubResource("Animation_yhjtu"),
+"degrade": SubResource("Animation_ie0mg")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8pe1h"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xhn4a"]
+size = Vector3(0.679443, 3.02518, 1.40173)
 
 [sub_resource type="Animation" id="Animation_j4chd"]
 length = 0.001
@@ -243,24 +228,12 @@ tracks/0/keys = {
 "values": [true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_n6c2u"]
-_data = {
-"RESET": SubResource("Animation_j4chd"),
-"degrade": SubResource("Animation_7gc5a")
-}
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_req0a"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rkvxr"]
-size = Vector3(0.619507, 3.81525, 1.40173)
-
-[sub_resource type="Animation" id="Animation_nwprw"]
+[sub_resource type="Animation" id="Animation_7gc5a"]
 resource_name = "degrade"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../Building_Part_06:visible")
+tracks/0/path = NodePath("../../Building_Part_07:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -269,6 +242,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, false]
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n6c2u"]
+_data = {
+"RESET": SubResource("Animation_j4chd"),
+"degrade": SubResource("Animation_7gc5a")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_o8rc2"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rkvxr"]
+size = Vector3(0.619507, 3.81525, 1.40173)
 
 [sub_resource type="Animation" id="Animation_d30a4"]
 length = 0.001
@@ -285,21 +270,12 @@ tracks/0/keys = {
 "values": [true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_mclp1"]
-_data = {
-"RESET": SubResource("Animation_d30a4"),
-"degrade": SubResource("Animation_nwprw")
-}
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_i1hsv"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="Animation" id="Animation_xijnn"]
+[sub_resource type="Animation" id="Animation_nwprw"]
 resource_name = "degrade"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../Building_Part_05:visible")
+tracks/0/path = NodePath("../../Building_Part_06:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -308,6 +284,15 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, false]
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mclp1"]
+_data = {
+"RESET": SubResource("Animation_d30a4"),
+"degrade": SubResource("Animation_nwprw")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0uibq"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_lf6og"]
 length = 0.001
@@ -324,21 +309,12 @@ tracks/0/keys = {
 "values": [true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ciu0q"]
-_data = {
-"RESET": SubResource("Animation_lf6og"),
-"degrade": SubResource("Animation_xijnn")
-}
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_blcjd"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="Animation" id="Animation_l2cav"]
+[sub_resource type="Animation" id="Animation_xijnn"]
 resource_name = "degrade"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../Building_Part_04:visible")
+tracks/0/path = NodePath("../../Building_Part_05:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -347,6 +323,15 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, false]
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ciu0q"]
+_data = {
+"RESET": SubResource("Animation_lf6og"),
+"degrade": SubResource("Animation_xijnn")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_o1igq"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_x5hxd"]
 length = 0.001
@@ -363,21 +348,12 @@ tracks/0/keys = {
 "values": [true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ta1gt"]
-_data = {
-"RESET": SubResource("Animation_x5hxd"),
-"degrade": SubResource("Animation_l2cav")
-}
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_hosrs"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="Animation" id="Animation_4pgyg"]
+[sub_resource type="Animation" id="Animation_l2cav"]
 resource_name = "degrade"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../Building_Part_02:visible")
+tracks/0/path = NodePath("../../Building_Part_04:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -386,6 +362,15 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, false]
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ta1gt"]
+_data = {
+"RESET": SubResource("Animation_x5hxd"),
+"degrade": SubResource("Animation_l2cav")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_q4n3q"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_go1yx"]
 length = 0.001
@@ -402,13 +387,28 @@ tracks/0/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_4pgyg"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Building_Part_02:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cxsta"]
 _data = {
 "RESET": SubResource("Animation_go1yx"),
 "degrade": SubResource("Animation_4pgyg")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_d86cw"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_cbi5d"]
 viewport_path = NodePath("SubViewport")
 
 [node name="building_01-02_00" instance=ExtResource("1_tbtku")]
@@ -437,7 +437,7 @@ libraries = {
 [node name="Arrow_Hover" parent="Obstacle_10" index="2" instance=ExtResource("4_2fu5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0267169, 2.43849, 0.289595)
 visible = false
-texture = SubResource("ViewportTexture_cb5lg")
+texture = SubResource("ViewportTexture_dalxt")
 
 [node name="Building_Part_10" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022357, 4.76837e-07, 0.00126934)
@@ -466,7 +466,7 @@ libraries = {
 [node name="Arrow_Hover" parent="Obstacle_01" index="2" instance=ExtResource("4_2fu5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0711432, 1.7107, -0.140489)
 visible = false
-texture = SubResource("ViewportTexture_iatm0")
+texture = SubResource("ViewportTexture_jrjle")
 
 [node name="Obstacle_09" type="Area3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.637482, 1.51704, -0.690691)
@@ -491,7 +491,7 @@ libraries = {
 [node name="Arrow_Hover" parent="Obstacle_09" index="2" instance=ExtResource("4_2fu5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.179373, 1.7236, -0.263303)
 visible = false
-texture = SubResource("ViewportTexture_o13dg")
+texture = SubResource("ViewportTexture_obxyv")
 
 [node name="Building_Part_09" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0118523, -0.0131655, 3.86257e-05)
@@ -519,7 +519,7 @@ libraries = {
 [node name="Arrow_Hover" parent="Obstacle_03" index="2" instance=ExtResource("4_2fu5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0502715, 2.77062, 0.118574)
 visible = false
-texture = SubResource("ViewportTexture_dau3e")
+texture = SubResource("ViewportTexture_gprmc")
 
 [node name="Building_Part_03" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0197957, -0.00985527, -0.0198932)
@@ -547,7 +547,7 @@ libraries = {
 [node name="Arrow_Hover" parent="Obstacle_08" index="2" instance=ExtResource("4_2fu5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0502715, 2.77062, 0.118574)
 visible = false
-texture = SubResource("ViewportTexture_so0i4")
+texture = SubResource("ViewportTexture_8pe1h")
 
 [node name="Obstacle_07" type="Area3D" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74129, 1.58719, -0.913364)
@@ -572,7 +572,7 @@ libraries = {
 [node name="Arrow_Hover" parent="Obstacle_07" index="2" instance=ExtResource("4_2fu5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0288436, 1.58117, -0.0255358)
 visible = false
-texture = SubResource("ViewportTexture_req0a")
+texture = SubResource("ViewportTexture_o8rc2")
 
 [node name="Obstacle_06" type="Area3D" parent="." index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45586, 1.58719, -0.913364)
@@ -597,7 +597,7 @@ libraries = {
 [node name="Arrow_Hover" parent="Obstacle_06" index="2" instance=ExtResource("4_2fu5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0169287, 2.53418, -0.0255358)
 visible = false
-texture = SubResource("ViewportTexture_i1hsv")
+texture = SubResource("ViewportTexture_0uibq")
 
 [node name="Obstacle_05" type="Area3D" parent="." index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11436, 2.54048, 0.691543)
@@ -622,7 +622,7 @@ libraries = {
 [node name="Arrow_Hover" parent="Obstacle_05" index="2" instance=ExtResource("4_2fu5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0267169, 2.43849, 0.289595)
 visible = false
-texture = SubResource("ViewportTexture_blcjd")
+texture = SubResource("ViewportTexture_o1igq")
 
 [node name="Obstacle_04" type="Area3D" parent="." index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.951717, 1.64005, 0.671297)
@@ -647,7 +647,7 @@ libraries = {
 [node name="Arrow_Hover" parent="Obstacle_04" index="2" instance=ExtResource("4_2fu5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0287859, 1.51535, -0.195945)
 visible = false
-texture = SubResource("ViewportTexture_hosrs")
+texture = SubResource("ViewportTexture_q4n3q")
 
 [node name="Obstacle_02" type="Area3D" parent="." index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11794, 1.58116, 0.457687)
@@ -672,13 +672,7 @@ libraries = {
 [node name="Arrow_Hover" parent="Obstacle_02" index="2" instance=ExtResource("4_2fu5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0169287, 2.53418, -0.0255358)
 visible = false
-texture = SubResource("ViewportTexture_d86cw")
-
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." index="20"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.386448, 0.948473)
-height = 5.55
-vertices = PackedVector3Array(-4, 0, 2, 4, 0, 2, 4, 0, -4, -4, 0, -4)
-avoidance_layers = 4
+texture = SubResource("ViewportTexture_cbi5d")
 
 [editable path="Obstacle_10/HitPoints"]
 [editable path="Obstacle_01/HitPoints"]

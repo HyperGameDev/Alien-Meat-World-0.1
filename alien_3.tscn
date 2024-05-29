@@ -1806,7 +1806,7 @@ font_size = 35
 outline_size = 30
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.546401, 0.287528, -0.787232, -0.695182, -0.680384, 0.234008, -0.468112, 0.674808, 0.571372, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.121412, 0.992082, -0.0446477, -0.963849, -0.128552, -0.235435, -0.239196, 0.0144421, 0.971358, 0.445561, 1.13443, 0.268376)
 visible = false
 bone_name = "ElbowR"
 bone_idx = 7

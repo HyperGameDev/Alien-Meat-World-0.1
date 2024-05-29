@@ -32,7 +32,6 @@ var velocity = Vector3.ZERO
 var is_moving = true
 var is_dying = false
 
-@onready var nav_agent = $NavigationAgent3D
 
 @onready var copter_area = self
 @onready var player = get_tree().get_current_scene().get_node("Player/DetectionAreas/Area_Player-Proximity")
@@ -87,7 +86,7 @@ func _physics_process(delta):
 	if detect_copterDeath.is_colliding():
 		is_destroyed.emit()
 		copter_mesh.visible = false
-		$NavigationAgent3D.avoidance_enabled = false
+	
 		
 	# Part of an attempt at custom pathfinding. Should look into PhysicsDirectSpaceState3D class or something. Will need to interpolate movement	
 	#if detect_left.is_colliding():
