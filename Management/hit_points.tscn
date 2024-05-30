@@ -5,11 +5,3 @@
 [node name="HitPoints" type="Node3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.06613, 0)
 script = ExtResource("1_04y3h")
-
-[node name="Dmg_Label" type="Label3D" parent="."]
-visible = false
-billboard = 2
-alpha_cut = 1
-text = "0"
-font_size = 100
-outline_size = 30

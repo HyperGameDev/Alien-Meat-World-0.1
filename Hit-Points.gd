@@ -2,11 +2,9 @@ extends Node3D
 
 class_name HitPoints
 
-
+@export var hitpoints_debug = false
 var is_dead = false
 var health_percent_lost: float = 0.0
-
-@onready var dmg_label = $Dmg_Label
 
 @export var hit_particle_lifetime: float = 2.0
 
@@ -16,11 +14,7 @@ var target
 var was_hit = false
 @onready var attacked_duration = get_tree().get_current_scene().get_node("Player").grab_duration
 
-func _ready():
-	if !has_node("Dmg_Label"):
-			print("ERROR: Hit-Points should be added as a SCENE, not a Node!")
-			breakpoint
-			
+func _ready():			
 	if !has_node("Animation_Degrade"):
 			print("ERROR: Add a degrade animation for the obstacle!")
 			breakpoint
@@ -37,8 +31,9 @@ func _ready():
 	
 	
 func on_update_hitpoints():
-	# Update Health Debug
-	dmg_label.text = str($"..".health_current)
+	# If Debug is true, Update Health Debug
+	if hitpoints_debug:
+		$Dmg_Label.text = str($"..".health_current)
 	
 	
 func am_i_hit(grab_target):
@@ -97,11 +92,3 @@ func reset_damage():
 	$"..".health_current = $"..".health_max
 	$"..".update_hitpoints.emit()
 	$"..".restore_collision()
-	
-func _input(event):
-	if event.is_action_pressed("Debug 2"):
-		await get_tree().create_timer(1)
-		if Messenger.debug_hp_nonPlayer:
-			dmg_label.visible = true
-		else: 
-			dmg_label.visible = false

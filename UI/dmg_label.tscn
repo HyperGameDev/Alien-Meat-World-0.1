@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cqadyumhku6nu"]
+
+[node name="Dmg_Label" type="Label3D"]
+billboard = 2
+alpha_cut = 1
+text = "0"
+font_size = 100
+outline_size = 30

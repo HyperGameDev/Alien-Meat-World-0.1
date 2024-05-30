@@ -183,12 +183,12 @@ health_max = 1
 [node name="HitPoints" parent="Obstacle" index="0" instance=ExtResource("3_bshyv")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.963026, 0)
 
-[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="1"]
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="0"]
 libraries = {
 "": SubResource("AnimationLibrary_okt6m")
 }
 
-[node name="Particles_Panel" type="GPUParticles3D" parent="Obstacle/HitPoints" index="2"]
+[node name="Particles_Panel" type="GPUParticles3D" parent="Obstacle/HitPoints" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.582453, 0)
 emitting = false
 amount = 50
@@ -198,7 +198,7 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_mljea")
 draw_pass_1 = SubResource("BoxMesh_bqdfb")
 
-[node name="Particles_Trim" type="GPUParticles3D" parent="Obstacle/HitPoints" index="3"]
+[node name="Particles_Trim" type="GPUParticles3D" parent="Obstacle/HitPoints" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.582453, 0)
 emitting = false
 amount = 75
@@ -208,7 +208,7 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_d17g0")
 draw_pass_1 = SubResource("BoxMesh_a4fgt")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle/HitPoints" index="4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle/HitPoints" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.54909e-08, 0, 0.634742)
 visible = false
 mesh = SubResource("SphereMesh_cih1b")

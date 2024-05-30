@@ -20,7 +20,7 @@ func _input(event):
 		for dmg_label in get_tree().get_nodes_in_group("Dmg_Labels_Player"):
 			dmg_label.visible = !dmg_label.visible
 	if event.is_action_pressed("Debug 2"):
-		Messenger.debug_hp_nonPlayer = !Messenger.debug_hp_nonPlayer
+		pass
 	if event.is_action_pressed("Debug 3"):
 		show_fps = !show_fps
 	if event.is_action_pressed("Debug 4"):
