@@ -587,9 +587,6 @@ shape = SubResource("CapsuleShape3D_ut4c5")
 
 [node name="HitPoints" parent="." instance=ExtResource("2_odnxp")]
 
-[node name="Dmg_Label" parent="HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.530516, -0.650422, -4.63792e-08)
-
 [node name="Animation_Degrade" type="AnimationPlayer" parent="HitPoints"]
 libraries = {
 "": SubResource("AnimationLibrary_yh0px")

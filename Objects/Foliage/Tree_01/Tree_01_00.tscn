@@ -158,9 +158,6 @@ slowdown_amount = 2
 [node name="HitPoints" parent="." instance=ExtResource("2_vovkr")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.04508, 0)
 
-[node name="Dmg_Label" parent="HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0274114, -0.498537, -0.263959)
-
 [node name="Animation_Degrade" type="AnimationPlayer" parent="HitPoints"]
 
 [node name="Trunk" type="MeshInstance3D" parent="."]

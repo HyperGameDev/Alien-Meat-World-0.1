@@ -118,9 +118,6 @@ shape = SubResource("SphereShape3D_5lcwx")
 [node name="HitPoints" parent="." instance=ExtResource("2_87ypy")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.37828, 0)
 
-[node name="Dmg_Label" parent="HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444655, -0.249648, -3.8873e-08)
-
 [node name="Animation_Degrade" type="AnimationPlayer" parent="HitPoints"]
 
 [editable path="HitPoints"]
