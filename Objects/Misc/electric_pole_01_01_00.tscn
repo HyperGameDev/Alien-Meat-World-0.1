@@ -725,12 +725,12 @@ slowdown_amount = 2
 [node name="HitPoints" parent="Obstacle" index="0" instance=ExtResource("3_52mf5")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 5.11613, 0)
 
-[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="1"]
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="0"]
 libraries = {
 "": SubResource("AnimationLibrary_0xylb")
 }
 
-[node name="Particles_1dmg_wood" type="GPUParticles3D" parent="Obstacle/HitPoints" index="2"]
+[node name="Particles_1dmg_wood" type="GPUParticles3D" parent="Obstacle/HitPoints" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.425, 0)
 emitting = false
 amount = 70
@@ -740,7 +740,7 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_if6tj")
 draw_pass_1 = SubResource("BoxMesh_5j1w5")
 
-[node name="Particles_1dmg_sparks" type="GPUParticles3D" parent="Obstacle/HitPoints" index="3"]
+[node name="Particles_1dmg_sparks" type="GPUParticles3D" parent="Obstacle/HitPoints" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.075, -2.4, -0.375)
 emitting = false
 amount = 200
@@ -750,7 +750,7 @@ visibility_aabb = AABB(-4, -4.175, -4, 8, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_hcaqe")
 draw_pass_1 = SubResource("PrismMesh_878sw")
 
-[node name="Particles_2dmg_wood" type="GPUParticles3D" parent="Obstacle/HitPoints" index="4"]
+[node name="Particles_2dmg_wood" type="GPUParticles3D" parent="Obstacle/HitPoints" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.825, -3.15, 7.21238e-08)
 emitting = false
 amount = 70
@@ -760,7 +760,7 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_4507k")
 draw_pass_1 = SubResource("BoxMesh_5j1w5")
 
-[node name="Particles_2dmg_sparks" type="GPUParticles3D" parent="Obstacle/HitPoints" index="5"]
+[node name="Particles_2dmg_sparks" type="GPUParticles3D" parent="Obstacle/HitPoints" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.225, -4.575, -0.225)
 emitting = false
 amount = 200
@@ -770,7 +770,7 @@ visibility_aabb = AABB(-4, -3.5, -4, 8, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_4p0pn")
 draw_pass_1 = SubResource("PrismMesh_878sw")
 
-[node name="Particles_2dmg_sparks2" type="GPUParticles3D" parent="Obstacle/HitPoints" index="6"]
+[node name="Particles_2dmg_sparks2" type="GPUParticles3D" parent="Obstacle/HitPoints" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15686, -3.0981, -0.00402697)
 emitting = false
 amount = 70
@@ -781,7 +781,7 @@ visibility_aabb = AABB(-4.58142, -3.5, -4, 8, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_rqbbr")
 draw_pass_1 = SubResource("PrismMesh_878sw")
 
-[node name="Particles_3dmg_wood" type="GPUParticles3D" parent="Obstacle/HitPoints" index="7"]
+[node name="Particles_3dmg_wood" type="GPUParticles3D" parent="Obstacle/HitPoints" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, -4.425, -0.15)
 emitting = false
 amount = 90
@@ -791,7 +791,7 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_if6tj")
 draw_pass_1 = SubResource("BoxMesh_5j1w5")
 
-[node name="Particles_3dmg_transformer" type="GPUParticles3D" parent="Obstacle/HitPoints" index="8"]
+[node name="Particles_3dmg_transformer" type="GPUParticles3D" parent="Obstacle/HitPoints" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, -4.425, -0.15)
 emitting = false
 amount = 50
@@ -801,7 +801,7 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_if6tj")
 draw_pass_1 = SubResource("BoxMesh_jfw5a")
 
-[node name="Particles_2dmg_wood2" type="GPUParticles3D" parent="Obstacle/HitPoints" index="9"]
+[node name="Particles_2dmg_wood2" type="GPUParticles3D" parent="Obstacle/HitPoints" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.825, -3.6, 7.21238e-08)
 emitting = false
 amount = 200
