@@ -1,28 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://cargusbhk5lxh"]
 
-[ext_resource type="PackedScene" uid="uid://b1wormvhcsbl7" path="res://Objects/Fences/fence_01_00.tscn" id="8_1s2ed"]
+[ext_resource type="PackedScene" uid="uid://bxdv8kxpo4qaa" path="res://Objects/Fences/fence_01-02_00.blend" id="1_vrp86"]
 
 [node name="Fence_01_row-05_meshes_00" type="Node3D"]
 
-[node name="fence_01_00" parent="." instance=ExtResource("8_1s2ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0)
-
-[node name="fence_01_01" parent="." instance=ExtResource("8_1s2ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37, 0, 0)
-
-[node name="Fence_Post-R" parent="fence_01_01" index="2"]
-visible = false
-
-[node name="fence_01_02" parent="." instance=ExtResource("8_1s2ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37, 0, 0)
-
-[node name="Fence_Post-L" parent="fence_01_02" index="0"]
-visible = false
-
-[node name="fence_01_06" parent="." instance=ExtResource("8_1s2ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
-
-[node name="fence_01_03" parent="." instance=ExtResource("8_1s2ed")]
-
-[editable path="fence_01_01"]
-[editable path="fence_01_02"]
+[node name="fence_01-02_00" parent="." instance=ExtResource("1_vrp86")]
