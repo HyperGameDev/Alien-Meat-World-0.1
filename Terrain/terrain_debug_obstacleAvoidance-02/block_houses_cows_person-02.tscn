@@ -89,17 +89,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658, -7.495, 21.33)
 [node name="house_01-02_00" parent="." instance=ExtResource("4_ua30p")]
 transform = Transform3D(0.707106, 0, 0.707106, 0, 1, 0, -0.707106, 0, 0.707106, -4.46503, -0.0206304, 0.56199)
 
-[node name="Arrow_Hover" parent="house_01-02_00/Obstacle" index="2"]
-texture = SubResource("ViewportTexture_afva1")
-
 [node name="HouseBase" parent="house_01-02_00" index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_jac5p")
 
 [node name="house_01-02_01" parent="." instance=ExtResource("4_ua30p")]
 transform = Transform3D(0.707106, 0, 0.707106, 0, 1, 0, -0.707106, 0, 0.707106, -6.44389, -0.0206304, 7.10327)
-
-[node name="Arrow_Hover" parent="house_01-02_01/Obstacle" index="2"]
-texture = SubResource("ViewportTexture_vyxud")
 
 [node name="HouseBase" parent="house_01-02_01" index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_q180s")
@@ -107,17 +101,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_q180s")
 [node name="house_01-02_02" parent="." instance=ExtResource("4_ua30p")]
 transform = Transform3D(0.707106, 0, 0.707106, 0, 1, 0, -0.707106, 0, 0.707106, -2.46692, -0.0206304, -7.22102)
 
-[node name="Arrow_Hover" parent="house_01-02_02/Obstacle" index="2"]
-texture = SubResource("ViewportTexture_vc57v")
-
 [node name="HouseBase" parent="house_01-02_02" index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_mjcs6")
 
 [node name="house_01-02_03" parent="." instance=ExtResource("4_ua30p")]
 transform = Transform3D(0.707106, 0, -0.707106, 0, 1, 0, 0.707106, 0, 0.707106, 6.12318, -0.0206308, 0.56152)
-
-[node name="Arrow_Hover" parent="house_01-02_03/Obstacle" index="2"]
-texture = SubResource("ViewportTexture_dpbq3")
 
 [node name="HouseBase" parent="house_01-02_03" index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_1nxqo")
@@ -125,17 +113,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_1nxqo")
 [node name="house_01-02_04" parent="." instance=ExtResource("4_ua30p")]
 transform = Transform3D(0.707106, 0, -0.707106, 0, 1, 0, 0.707106, 0, 0.707106, 7.71032, -0.0206308, 7.1028)
 
-[node name="Arrow_Hover" parent="house_01-02_04/Obstacle" index="2"]
-texture = SubResource("ViewportTexture_2bp1j")
-
 [node name="HouseBase" parent="house_01-02_04" index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_0vvfv")
 
 [node name="house_01-02_05" parent="." instance=ExtResource("4_ua30p")]
 transform = Transform3D(0.707106, 0, -0.707106, 0, 1, 0, 0.707106, 0, 0.707106, 3.82131, -0.0206308, -7.22149)
-
-[node name="Arrow_Hover" parent="house_01-02_05/Obstacle" index="2"]
-texture = SubResource("ViewportTexture_h5m84")
 
 [node name="HouseBase" parent="house_01-02_05" index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_adtx0")

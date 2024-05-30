@@ -121,9 +121,6 @@ default_color = Color(0.639216, 0.411765, 0.262745, 1)
 [node name="fence_02_04" parent="Fence_02_row-05_04" index="4"]
 default_color = Color(0.639216, 0.411765, 0.262745, 1)
 
-[node name="Arrow_Hover" parent="Fence_02_row-05_04/Obstacle" index="1"]
-texture = SubResource("ViewportTexture_rt85k")
-
 [node name="Fence_02_row-05_05" parent="." instance=ExtResource("8_dilal")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -3.9, 0, 4)
 
@@ -141,9 +138,6 @@ default_color = Color(0.639216, 0.411765, 0.262745, 1)
 
 [node name="fence_02_04" parent="Fence_02_row-05_05" index="4"]
 default_color = Color(0.639216, 0.411765, 0.262745, 1)
-
-[node name="Arrow_Hover" parent="Fence_02_row-05_05/Obstacle" index="1"]
-texture = SubResource("ViewportTexture_703es")
 
 [node name="Fence_02_row-05_08" parent="." instance=ExtResource("8_dilal")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -2.5, 0, 4)
@@ -163,10 +157,6 @@ default_color = Color(0.639216, 0.411765, 0.262745, 1)
 [node name="fence_02_04" parent="Fence_02_row-05_08" index="4"]
 default_color = Color(0.639216, 0.411765, 0.262745, 1)
 
-[node name="Arrow_Hover" parent="Fence_02_row-05_08/Obstacle" index="1"]
-transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, -0.00277257, 0.494403, -0.00187778)
-texture = SubResource("ViewportTexture_vexv3")
-
 [node name="Fence_02_row-05_09" parent="." instance=ExtResource("8_dilal")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1.1, 0, 2.6)
 
@@ -184,9 +174,6 @@ default_color = Color(0.639216, 0.411765, 0.262745, 1)
 
 [node name="fence_02_04" parent="Fence_02_row-05_09" index="4"]
 default_color = Color(0.639216, 0.411765, 0.262745, 1)
-
-[node name="Arrow_Hover" parent="Fence_02_row-05_09/Obstacle" index="1"]
-texture = SubResource("ViewportTexture_8ipgm")
 
 [node name="Fence_02_row-05_06" parent="." instance=ExtResource("8_dilal")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -1.1, 0, 1.2)
@@ -206,9 +193,6 @@ default_color = Color(0.639216, 0.411765, 0.262745, 1)
 [node name="fence_02_04" parent="Fence_02_row-05_06" index="4"]
 default_color = Color(0.639216, 0.411765, 0.262745, 1)
 
-[node name="Arrow_Hover" parent="Fence_02_row-05_06/Obstacle" index="1"]
-texture = SubResource("ViewportTexture_imuwy")
-
 [node name="Fence_02_row-05_07" parent="." instance=ExtResource("8_dilal")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -2.5, 0, -0.2)
 
@@ -226,9 +210,6 @@ default_color = Color(0.639216, 0.411765, 0.262745, 1)
 
 [node name="fence_02_04" parent="Fence_02_row-05_07" index="4"]
 default_color = Color(0.639216, 0.411765, 0.262745, 1)
-
-[node name="Arrow_Hover" parent="Fence_02_row-05_07/Obstacle" index="1"]
-texture = SubResource("ViewportTexture_5c0pq")
 
 [node name="Fence_02_row-05_00" parent="." instance=ExtResource("8_dilal")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 5.7, 0, 6.3)
@@ -248,9 +229,6 @@ default_color = Color(0.772549, 0.776471, 0.627451, 1)
 [node name="fence_02_04" parent="Fence_02_row-05_00" index="4"]
 default_color = Color(0.772549, 0.776471, 0.627451, 1)
 
-[node name="Arrow_Hover" parent="Fence_02_row-05_00/Obstacle" index="1"]
-texture = SubResource("ViewportTexture_pw8le")
-
 [node name="Fence_02_row-05_03" parent="." instance=ExtResource("8_dilal")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 8.5, 0, 9.1)
 
@@ -268,9 +246,6 @@ default_color = Color(0.772549, 0.776471, 0.627451, 1)
 
 [node name="fence_02_04" parent="Fence_02_row-05_03" index="4"]
 default_color = Color(0.772549, 0.776471, 0.627451, 1)
-
-[node name="Arrow_Hover" parent="Fence_02_row-05_03/Obstacle" index="1"]
-texture = SubResource("ViewportTexture_s3eyn")
 
 [node name="Fence_02_row-05_01" parent="." instance=ExtResource("8_dilal")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 5.7, 0, 7.7)
@@ -298,9 +273,6 @@ material_override = SubResource("StandardMaterial3D_uc7po")
 [node name="fence_02_04" parent="Fence_02_row-05_01" index="4"]
 default_color = Color(0.772549, 0.776471, 0.627451, 1)
 
-[node name="Arrow_Hover" parent="Fence_02_row-05_01/Obstacle" index="1"]
-texture = SubResource("ViewportTexture_kkc44")
-
 [node name="Fence_02_row-05_02" parent="." instance=ExtResource("8_dilal")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 7.1, 0, 9.1)
 
@@ -326,9 +298,6 @@ material_override = SubResource("StandardMaterial3D_85aw5")
 [node name="Fence_Bars" parent="Fence_02_row-05_02/fence_02_04" index="1"]
 visible = false
 material_override = SubResource("StandardMaterial3D_85aw5")
-
-[node name="Arrow_Hover" parent="Fence_02_row-05_02/Obstacle" index="1"]
-texture = SubResource("ViewportTexture_61bvs")
 
 [node name="tree_01-03" parent="." instance=ExtResource("9_620fw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -3.3)
