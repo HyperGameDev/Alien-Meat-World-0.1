@@ -1,10 +1,9 @@
-[gd_scene load_steps=51 format=3 uid="uid://fp165pcolyhq"]
+[gd_scene load_steps=40 format=3 uid="uid://fp165pcolyhq"]
 
 [ext_resource type="PackedScene" uid="uid://b8su0bkqp175n" path="res://Objects/Buildings/City/building_01-02_00.blend" id="1_tbtku"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_7au2w"]
 [ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_nxona"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_r1ye4"]
-[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="4_2fu5x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jvan5"]
 size = Vector3(1.38574, 4.34631, 1.40173)
@@ -45,9 +44,6 @@ _data = {
 "degrade": SubResource("Animation_tfm6d")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dalxt"]
-viewport_path = NodePath("SubViewport")
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_wdi3g"]
 size = Vector3(1.38049, 2.96271, 1.40173)
 
@@ -87,9 +83,6 @@ _data = {
 "degrade": SubResource("Animation_dkt4x")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_jrjle"]
-viewport_path = NodePath("SubViewport")
-
 [sub_resource type="Animation" id="Animation_f0wqa"]
 length = 0.001
 tracks/0/type = "value"
@@ -125,9 +118,6 @@ _data = {
 "RESET": SubResource("Animation_f0wqa"),
 "degrade": SubResource("Animation_uw75q")
 }
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_obxyv"]
-viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q2ycx"]
 size = Vector3(1.38574, 4.78445, 1.40173)
@@ -168,9 +158,6 @@ _data = {
 "degrade": SubResource("Animation_jm3du")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_gprmc"]
-viewport_path = NodePath("SubViewport")
-
 [sub_resource type="Animation" id="Animation_yhjtu"]
 length = 0.001
 tracks/0/type = "value"
@@ -206,9 +193,6 @@ _data = {
 "RESET": SubResource("Animation_yhjtu"),
 "degrade": SubResource("Animation_ie0mg")
 }
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_8pe1h"]
-viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xhn4a"]
 size = Vector3(0.679443, 3.02518, 1.40173)
@@ -249,9 +233,6 @@ _data = {
 "degrade": SubResource("Animation_7gc5a")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_o8rc2"]
-viewport_path = NodePath("SubViewport")
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_rkvxr"]
 size = Vector3(0.619507, 3.81525, 1.40173)
 
@@ -291,9 +272,6 @@ _data = {
 "degrade": SubResource("Animation_nwprw")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0uibq"]
-viewport_path = NodePath("SubViewport")
-
 [sub_resource type="Animation" id="Animation_lf6og"]
 length = 0.001
 tracks/0/type = "value"
@@ -329,9 +307,6 @@ _data = {
 "RESET": SubResource("Animation_lf6og"),
 "degrade": SubResource("Animation_xijnn")
 }
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_o1igq"]
-viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_x5hxd"]
 length = 0.001
@@ -369,9 +344,6 @@ _data = {
 "degrade": SubResource("Animation_l2cav")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_q4n3q"]
-viewport_path = NodePath("SubViewport")
-
 [sub_resource type="Animation" id="Animation_go1yx"]
 length = 0.001
 tracks/0/type = "value"
@@ -408,9 +380,6 @@ _data = {
 "degrade": SubResource("Animation_4pgyg")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_cbi5d"]
-viewport_path = NodePath("SubViewport")
-
 [node name="building_01-02_00" instance=ExtResource("1_tbtku")]
 script = ExtResource("2_nxona")
 
@@ -433,11 +402,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00494647, 1.9801, -0.282382
 libraries = {
 "": SubResource("AnimationLibrary_gcda2")
 }
-
-[node name="Arrow_Hover" parent="Obstacle_10" index="2" instance=ExtResource("4_2fu5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0267169, 2.43849, 0.289595)
-visible = false
-texture = SubResource("ViewportTexture_dalxt")
 
 [node name="Building_Part_10" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022357, 4.76837e-07, 0.00126934)
@@ -463,11 +427,6 @@ libraries = {
 "": SubResource("AnimationLibrary_tsgjg")
 }
 
-[node name="Arrow_Hover" parent="Obstacle_01" index="2" instance=ExtResource("4_2fu5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0711432, 1.7107, -0.140489)
-visible = false
-texture = SubResource("ViewportTexture_jrjle")
-
 [node name="Obstacle_09" type="Area3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.637482, 1.51704, -0.690691)
 script = ExtResource("2_7au2w")
@@ -487,11 +446,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103767, 1.4584, 0.407832)
 libraries = {
 "": SubResource("AnimationLibrary_kicva")
 }
-
-[node name="Arrow_Hover" parent="Obstacle_09" index="2" instance=ExtResource("4_2fu5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.179373, 1.7236, -0.263303)
-visible = false
-texture = SubResource("ViewportTexture_obxyv")
 
 [node name="Building_Part_09" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0118523, -0.0131655, 3.86257e-05)
@@ -516,11 +470,6 @@ libraries = {
 "": SubResource("AnimationLibrary_0icur")
 }
 
-[node name="Arrow_Hover" parent="Obstacle_03" index="2" instance=ExtResource("4_2fu5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0502715, 2.77062, 0.118574)
-visible = false
-texture = SubResource("ViewportTexture_gprmc")
-
 [node name="Building_Part_03" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0197957, -0.00985527, -0.0198932)
 
@@ -544,11 +493,6 @@ libraries = {
 "": SubResource("AnimationLibrary_ogiou")
 }
 
-[node name="Arrow_Hover" parent="Obstacle_08" index="2" instance=ExtResource("4_2fu5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0502715, 2.77062, 0.118574)
-visible = false
-texture = SubResource("ViewportTexture_8pe1h")
-
 [node name="Obstacle_07" type="Area3D" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74129, 1.58719, -0.913364)
 script = ExtResource("2_7au2w")
@@ -568,11 +512,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0367527, 1.32123, 0.041733
 libraries = {
 "": SubResource("AnimationLibrary_n6c2u")
 }
-
-[node name="Arrow_Hover" parent="Obstacle_07" index="2" instance=ExtResource("4_2fu5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0288436, 1.58117, -0.0255358)
-visible = false
-texture = SubResource("ViewportTexture_o8rc2")
 
 [node name="Obstacle_06" type="Area3D" parent="." index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45586, 1.58719, -0.913364)
@@ -594,11 +533,6 @@ libraries = {
 "": SubResource("AnimationLibrary_mclp1")
 }
 
-[node name="Arrow_Hover" parent="Obstacle_06" index="2" instance=ExtResource("4_2fu5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0169287, 2.53418, -0.0255358)
-visible = false
-texture = SubResource("ViewportTexture_0uibq")
-
 [node name="Obstacle_05" type="Area3D" parent="." index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11436, 2.54048, 0.691543)
 script = ExtResource("2_7au2w")
@@ -618,11 +552,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00494647, 1.9801, -0.282382
 libraries = {
 "": SubResource("AnimationLibrary_ciu0q")
 }
-
-[node name="Arrow_Hover" parent="Obstacle_05" index="2" instance=ExtResource("4_2fu5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0267169, 2.43849, 0.289595)
-visible = false
-texture = SubResource("ViewportTexture_o1igq")
 
 [node name="Obstacle_04" type="Area3D" parent="." index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.951717, 1.64005, 0.671297)
@@ -644,11 +573,6 @@ libraries = {
 "": SubResource("AnimationLibrary_ta1gt")
 }
 
-[node name="Arrow_Hover" parent="Obstacle_04" index="2" instance=ExtResource("4_2fu5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0287859, 1.51535, -0.195945)
-visible = false
-texture = SubResource("ViewportTexture_q4n3q")
-
 [node name="Obstacle_02" type="Area3D" parent="." index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11794, 1.58116, 0.457687)
 script = ExtResource("2_7au2w")
@@ -668,11 +592,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00901961, 2.27424, 0.041733
 libraries = {
 "": SubResource("AnimationLibrary_cxsta")
 }
-
-[node name="Arrow_Hover" parent="Obstacle_02" index="2" instance=ExtResource("4_2fu5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0169287, 2.53418, -0.0255358)
-visible = false
-texture = SubResource("ViewportTexture_cbi5d")
 
 [editable path="Obstacle_10/HitPoints"]
 [editable path="Obstacle_01/HitPoints"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://1dchn2b5totj"]
+[gd_scene load_steps=17 format=3 uid="uid://1dchn2b5totj"]
 
 [ext_resource type="PackedScene" uid="uid://6rrqu6f40y82" path="res://Objects/Misc/solar-panel_01-01_00.blend" id="1_d1iuo"]
 [ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_di6rq"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="4_hc1tk"]
 [ext_resource type="Material" uid="uid://cs0pim30r2erf" path="res://Objects/Misc/solar-panel_colors_01_panel-01.tres" id="5_x4qmy"]
 [ext_resource type="Material" uid="uid://bq42i1fbbivi2" path="res://Objects/Misc/solar-panel_colors_01_trim-01.tres" id="6_wvjis"]
-[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="7_1c7fk"]
 [ext_resource type="Material" uid="uid://cot8tuvogbyjw" path="res://Objects/Misc/solar-panel_colors_01_electric-01.tres" id="8_l36jm"]
 [ext_resource type="Material" uid="uid://b2nvak7okpag6" path="res://Objects/Misc/solar-panel_colors_01_pole-01.tres" id="9_k38jp"]
 
@@ -174,9 +173,6 @@ size = Vector3(0.1, 0.135, 0.47)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jjwog"]
 size = Vector3(0.789063, 0.65918, 0.349365)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_odvmn"]
-viewport_path = NodePath("SubViewport")
-
 [node name="solar-panel_01-01_00" instance=ExtResource("1_d1iuo")]
 script = ExtResource("2_di6rq")
 
@@ -215,11 +211,6 @@ draw_pass_1 = SubResource("BoxMesh_a4fgt")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.314941, 0.0228271)
 shape = SubResource("BoxShape3D_jjwog")
-
-[node name="Arrow_Hover" parent="Obstacle" index="2" instance=ExtResource("7_1c7fk")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 1.2444, -0.00187755)
-visible = false
-texture = SubResource("ViewportTexture_odvmn")
 
 [node name="Panel" parent="." index="1"]
 surface_material_override/0 = ExtResource("6_wvjis")

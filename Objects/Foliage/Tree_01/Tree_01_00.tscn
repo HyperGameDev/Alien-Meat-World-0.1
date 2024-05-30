@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://c4gt8ofayu0ec"]
+[gd_scene load_steps=15 format=3 uid="uid://c4gt8ofayu0ec"]
 
 [ext_resource type="Texture2D" uid="uid://rk2eaimhqlde" path="res://Objects/Foliage/Tree_01/textures/tree_01_texture-02.png" id="2_hk10s"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_vovkr"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="3_uxxby"]
-[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="4_xsui3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ltcok"]
 resource_name = "Trunk Wood"
@@ -151,9 +150,6 @@ size = Vector3(0.123047, 1.01367, 0.171631)
 [sub_resource type="BoxShape3D" id="BoxShape3D_x18c7"]
 size = Vector3(0.386963, 0.549805, 0.402344)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_8kkjy"]
-viewport_path = NodePath("SubViewport")
-
 [node name="Tree_01_00" type="Area3D"]
 script = ExtResource("3_uxxby")
 health_max = 10
@@ -186,10 +182,5 @@ shape = SubResource("BoxShape3D_frhlk")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0.0595718, 1.89693, -0.0574735)
 shape = SubResource("BoxShape3D_x18c7")
-
-[node name="Arrow_Hover" parent="." instance=ExtResource("4_xsui3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.89422, 0)
-visible = false
-texture = SubResource("ViewportTexture_8kkjy")
 
 [editable path="HitPoints"]

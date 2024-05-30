@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgbshq4jqtvwm"]
+[gd_scene load_steps=7 format=3 uid="uid://cgbshq4jqtvwm"]
 
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_4rqhw"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_xv3j6"]
-[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="3_g7ogr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8r3lq"]
 size = Vector3(0.426758, 0.129883, 0.0537109)
@@ -45,9 +44,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4pl6k")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_yyojd"]
-viewport_path = NodePath("SubViewport")
-
 [node name="Fence_01-Bars_00" type="Area3D"]
 script = ExtResource("1_4rqhw")
 health_max = 1
@@ -64,10 +60,5 @@ skeleton = NodePath("")
 [node name="HitPoints" parent="." instance=ExtResource("2_xv3j6")]
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="HitPoints"]
-
-[node name="Arrow_Hover" parent="." instance=ExtResource("3_g7ogr")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 0.495293, -0.00187755)
-visible = false
-texture = SubResource("ViewportTexture_yyojd")
 
 [editable path="HitPoints"]

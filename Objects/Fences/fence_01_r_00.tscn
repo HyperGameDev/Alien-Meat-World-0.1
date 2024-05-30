@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://dttsur6xbonwb"]
+[gd_scene load_steps=12 format=3 uid="uid://dttsur6xbonwb"]
 
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_lr4e7"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_24nbt"]
-[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="3_o5x6o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_suclq"]
 resource_name = "Material"
@@ -110,9 +109,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2nevi")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0hrl2"]
-viewport_path = NodePath("SubViewport")
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_qrxvo"]
 size = Vector3(0.426758, 0.129883, 0.0537109)
 
@@ -142,11 +138,6 @@ skeleton = NodePath("")
 [node name="HitPoints" parent="." instance=ExtResource("2_24nbt")]
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="HitPoints"]
-
-[node name="Arrow_Hover" parent="." instance=ExtResource("3_o5x6o")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 0.495293, -0.00187755)
-visible = false
-texture = SubResource("ViewportTexture_0hrl2")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.000980129, 0.146159, -0.00634936)

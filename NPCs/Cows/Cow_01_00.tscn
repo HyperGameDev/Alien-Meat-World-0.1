@@ -111,7 +111,3 @@ surface_material_override/0 = SubResource("StandardMaterial3D_nqku1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.442257, 0, -0.896888, 0, 1, 0, 0.896888, 0, 0.442257, 0, 0, 0)
 shape = SubResource("SphereShape3D_x60j3")
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-avoidance_layers = 2
-avoidance_mask = 6
