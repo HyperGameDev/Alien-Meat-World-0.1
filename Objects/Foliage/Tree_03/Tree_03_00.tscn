@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1mgqdi4mt5o8"]
+[gd_scene load_steps=12 format=3 uid="uid://c1mgqdi4mt5o8"]
 
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_147v6"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_xl6rt"]
-[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="3_njav3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfbt1"]
 resource_name = "Material.002"
@@ -94,9 +93,6 @@ radius = 0.263105
 [sub_resource type="BoxShape3D" id="BoxShape3D_nd4j2"]
 size = Vector3(0.0400391, 0.50293, 0.0458984)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_gtx1s"]
-viewport_path = NodePath("SubViewport")
-
 [node name="Tree_03_00" type="Area3D"]
 script = ExtResource("2_xl6rt")
 health_max = 2
@@ -125,10 +121,5 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.136284, -0.122153, 0.147495)
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="HitPoints"]
-
-[node name="Arrow_Hover" parent="." instance=ExtResource("3_njav3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.853857, 0)
-visible = false
-texture = SubResource("ViewportTexture_gtx1s")
 
 [editable path="HitPoints"]

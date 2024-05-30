@@ -13,7 +13,6 @@ enum is_types {COW, HUMAN}
 
 @onready var detect_surface = $RayCast_surfaceDetect
 
-@onready var hover_arrow = $Arrow_Hover
 @onready var camera : Camera3D =  get_tree().get_current_scene().get_node("Camera3D")
 @onready var player : CharacterBody3D =  get_tree().get_current_scene().get_node("Player")
 @onready var collision = $CollisionShape3D
@@ -38,15 +37,9 @@ var spawned = false
 var fell = false
 
 func _ready():
-	if !has_node("Arrow_Hover"):
-		print("ERROR: Somewhere, a hover arrow child is missing!")
-		breakpoint
-		
 	if !has_node("RayCast_surfaceDetect"):
 		print("ERROR: Somewhere, a surface detecting child is missing!")
 		breakpoint
-		
-	hover_arrow.modulate = indicator_color
 
 	
 	camera = get_viewport().get_camera_3d()
@@ -177,9 +170,8 @@ func on_meat_left_dunk(dunked_body):
 	#Messenger.health_detected.emit(collided_bodypart, empathy_ok)
 	
  
-func _on_mouse_entered():
-	if !Input.is_action_pressed("Grab"):
-		hover_arrow.visible = true
+func _on_mouse_entered(): ## For hover arrow indicator
+	pass
 	
-func _on_mouse_exited():
-	hover_arrow.visible = false
+func _on_mouse_exited(): ## For hover arrow indicator
+	pass

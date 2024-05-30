@@ -1,10 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://d21gtemvo26ou"]
+[gd_scene load_steps=25 format=3 uid="uid://d21gtemvo26ou"]
 
 [ext_resource type="PackedScene" uid="uid://bgirxbm05am1d" path="res://Objects/Misc/electric-pole_01-01_00.blend" id="1_3pxwc"]
 [ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_ben8i"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_igt23"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_52mf5"]
-[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="4_ml46b"]
 [ext_resource type="Material" uid="uid://bvjincjm2xc5p" path="res://Objects/Misc/electric-pole_colors_01_bracket-01.tres" id="7_1rhiw"]
 [ext_resource type="Material" uid="uid://biphhk5owmy" path="res://Objects/Misc/electric-pole_colors_01_wood-01.tres" id="8_pfjkk"]
 [ext_resource type="Material" uid="uid://dbrp5nlfxd1y" path="res://Objects/Misc/electric-pole_colors_01_conduit-01.tres" id="9_4juvm"]
@@ -715,9 +714,6 @@ size = Vector3(0.3, 4.8, 0.3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_nc8gp"]
 size = Vector3(1.2, 1.275, 0.375)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_sxacf"]
-viewport_path = NodePath("SubViewport")
-
 [node name="electric-pole_01-01_00" instance=ExtResource("1_3pxwc")]
 script = ExtResource("2_ben8i")
 
@@ -822,11 +818,6 @@ shape = SubResource("BoxShape3D_mq1wh")
 [node name="CollisionShape3D_transformer" type="CollisionShape3D" parent="Obstacle" index="2"]
 transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.031066, 3.6057, 0.2625)
 shape = SubResource("BoxShape3D_nc8gp")
-
-[node name="Arrow_Hover" parent="Obstacle" index="3" instance=ExtResource("4_ml46b")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 5.0694, -0.00187755)
-visible = false
-texture = SubResource("ViewportTexture_sxacf")
 
 [node name="Pole" parent="." index="1"]
 transform = Transform3D(-0.145767, 0, 0, 0, -2.13513, 0, 0, 0, -0.145767, -0.000683129, -0.024667, 0.00188772)

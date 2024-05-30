@@ -1,7 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://f76a6025mm6h"]
+[gd_scene load_steps=21 format=3 uid="uid://f76a6025mm6h"]
 
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_q5mdw"]
-[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="2_7cvjf"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_s05ob"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_al0yb"]
@@ -256,9 +255,6 @@ shadow_mesh = SubResource("ArrayMesh_wwodv")
 [sub_resource type="BoxShape3D" id="BoxShape3D_0lpsq"]
 size = Vector3(7.16211, 1, 1.80859)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_lmshf"]
-viewport_path = NodePath("SubViewport")
-
 [node name="Cow-Barn_01_00" type="Area3D"]
 script = ExtResource("1_q5mdw")
 health_max = 7
@@ -291,11 +287,6 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0818552, 0.472926, 0.00564706)
 shape = SubResource("BoxShape3D_0lpsq")
-
-[node name="Arrow_Hover" parent="." instance=ExtResource("2_7cvjf")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 1.17543, -0.00187755)
-visible = false
-texture = SubResource("ViewportTexture_lmshf")
 
 [node name="HitPoints" parent="." instance=ExtResource("3_s05ob")]
 

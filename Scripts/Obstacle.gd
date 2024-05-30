@@ -7,7 +7,6 @@ signal update_hitpoints
 @export var has_arrow = true
 @export var indicator_color = Color(1,.5,0,1)
 
-@onready var hover_arrow = $Arrow_Hover
 @export var health_max: int
 @onready var health_current = health_max
 var damage_taken = 1
@@ -20,9 +19,6 @@ enum slowdown_amounts {NONE, PARTIAL, FULL}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if !has_node("Arrow_Hover") and has_arrow:
-		print("ERROR: Somewhere, a hover arrow child is missing!")
-		breakpoint
 		
 	# Check if it is a sub-obstacle
 	if $"../..".has_signal("update_hitpoints"):
@@ -64,10 +60,6 @@ func _ready():
 	
 	
 	
-	if has_arrow:
-		hover_arrow.modulate = indicator_color
-	
-	
 func on_update_top_level_hitpoints():
 	if $"../..".health_current <= 0:
 		for collision in get_children():
@@ -95,13 +87,11 @@ func on_area_entered(collided_bodypart):
 func on_area_exited(bodypart_unarea):
 	Messenger.area_undamaged.emit(bodypart_unarea)
 	
-func _on_mouse_entered():
-	if !Input.is_action_pressed("Grab") and has_arrow:
-		hover_arrow.visible = true
+func _on_mouse_entered(): ## For hover arrow indicator
+	pass
 	
-func _on_mouse_exited():
-	if has_arrow:
-		hover_arrow.visible = false
+func _on_mouse_exited(): ## For hover arrow indicator
+	pass
 
 func restore_collision():
 	for collision in get_children():

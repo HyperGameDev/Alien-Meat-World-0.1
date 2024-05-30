@@ -1,14 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://caxqah3ilcvfy"]
+[gd_scene load_steps=4 format=3 uid="uid://caxqah3ilcvfy"]
 
 [ext_resource type="Script" path="res://Scripts/Health.gd" id="1_olhai"]
-[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="2_wnwsx"]
 [ext_resource type="PackedScene" uid="uid://dt202id03hbck" path="res://NPCs/Cows/cow_001.blend" id="3_8d8jr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j53qk"]
 size = Vector3(0.606221, 0.360459, 0.197053)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_ymbaw"]
-viewport_path = NodePath("SubViewport")
 
 [node name="Cow_01-03_00" type="RigidBody3D"]
 collision_layer = 0
@@ -26,11 +22,6 @@ shape = SubResource("BoxShape3D_j53qk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118563, 0)
 target_position = Vector3(0, -0.2, 0)
 metadata/_edit_group_ = true
-
-[node name="Arrow_Hover" parent="." instance=ExtResource("2_wnwsx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.583839, 0)
-visible = false
-texture = SubResource("ViewportTexture_ymbaw")
 
 [node name="cow_001" parent="." instance=ExtResource("3_8d8jr")]
 

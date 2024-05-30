@@ -148,8 +148,6 @@ draw_pass_1 = SubResource("BoxMesh_6uh4g")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.436958, 0)
 shape = SubResource("BoxShape3D_8g60g")
 
-[node name="Arrow_Hover" type="Node3D" parent="Obstacle" index="2"]
-
 [node name="Corn" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00762749, -2.38419e-07, -0.023829)
 lod_bias = 0.001

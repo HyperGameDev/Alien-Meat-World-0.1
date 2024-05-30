@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cbdts1xv5dfj"]
+[gd_scene load_steps=16 format=3 uid="uid://cbdts1xv5dfj"]
 
 [ext_resource type="PackedScene" uid="uid://dloju0hewbpg7" path="res://Objects/Buildings/Barns/Tool_Shed_01/tool-shed_01-01_00.blend" id="1_wdo1v"]
 [ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_33vtt"]
@@ -6,7 +6,6 @@
 [ext_resource type="Material" uid="uid://cxu65rtd12o75" path="res://Objects/Buildings/Barns/Barn_color_01_walls.tres" id="2_xypww"]
 [ext_resource type="Material" uid="uid://b2fn5t1qp7laq" path="res://Objects/Buildings/Barns/Barn_colors_01_trim-roof.tres" id="3_3i1oi"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_nek23"]
-[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="4_w774x"]
 
 [sub_resource type="Animation" id="Animation_hjvky"]
 length = 0.001
@@ -290,9 +289,6 @@ size = Vector3(1.63, 0.195, 0.345)
 [sub_resource type="BoxShape3D" id="BoxShape3D_q5kmy"]
 size = Vector3(1, 0.975, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_g8hhi"]
-viewport_path = NodePath("SubViewport")
-
 [node name="tool-shed_01-01_00" instance=ExtResource("1_wdo1v")]
 script = ExtResource("2_33vtt")
 
@@ -350,11 +346,6 @@ draw_pass_1 = SubResource("BoxMesh_58fmk")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4375, 0)
 shape = SubResource("BoxShape3D_q5kmy")
-
-[node name="Arrow_Hover" parent="Obstacle" index="2" instance=ExtResource("4_w774x")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 1.2444, -0.00187755)
-visible = false
-texture = SubResource("ViewportTexture_g8hhi")
 
 [node name="Shed" parent="." index="1"]
 surface_material_override/0 = ExtResource("2_xypww")

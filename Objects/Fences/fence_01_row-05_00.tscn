@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://b1jpfiy4cphy7"]
+[gd_scene load_steps=13 format=3 uid="uid://b1jpfiy4cphy7"]
 
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_bvdrc"]
 [ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="1_jnpgo"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_ffe4t"]
-[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="3_emrnc"]
 [ext_resource type="Material" uid="uid://dntqen3sdrept" path="res://Objects/Fences/fence_particle_row05.tres" id="4_ttvyi"]
 [ext_resource type="Script" path="res://Objects/Buildings/Houses/Particles_destruction.gd" id="5_arnmx"]
 [ext_resource type="Material" uid="uid://e42rvql60efx" path="res://Objects/Fences/fence_color_brown.tres" id="5_c6vw7"]
@@ -49,9 +48,6 @@ _data = {
 material = ExtResource("5_c6vw7")
 size = Vector3(0.5, 3, 0.5)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_n3xlj"]
-viewport_path = NodePath("SubViewport")
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_fwt77"]
 size = Vector3(2.2, 0.3, 0.1)
 
@@ -87,11 +83,6 @@ trail_lifetime = 1.35
 process_material = ExtResource("4_ttvyi")
 draw_pass_1 = SubResource("BoxMesh_w43lh")
 script = ExtResource("5_arnmx")
-
-[node name="Arrow_Hover" parent="Obstacle" instance=ExtResource("3_emrnc")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 0.494403, -0.00187755)
-visible = false
-texture = SubResource("ViewportTexture_n3xlj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.153522, 0)

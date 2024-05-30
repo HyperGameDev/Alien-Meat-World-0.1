@@ -1,11 +1,10 @@
-[gd_scene load_steps=40 format=3 uid="uid://cxp488n77il0e"]
+[gd_scene load_steps=37 format=3 uid="uid://cxp488n77il0e"]
 
 [ext_resource type="Script" path="res://NPCs/Helicopters/copter.gd" id="2_l3hi8"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_nrwea"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_odnxp"]
 [ext_resource type="PackedScene" uid="uid://dkj1jo3teqjc1" path="res://NPCs/Helicopters/copter_001.blend" id="3_rkce8"]
 [ext_resource type="Script" path="res://Objects/Buildings/Houses/Particles_destruction.gd" id="4_dkois"]
-[ext_resource type="PackedScene" uid="uid://d7ql52stxvfv" path="res://UI/arrow_hover.tscn" id="6_c26j6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ut4c5"]
 radius = 0.344305
@@ -299,9 +298,6 @@ albedo_color = Color(0.254902, 0.254902, 0.254902, 1)
 material = SubResource("StandardMaterial3D_jyh5j")
 size = Vector3(1.85, 0.48, 0.46)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_svv2p"]
-viewport_path = NodePath("SubViewport")
-
 [sub_resource type="Animation" id="Animation_uf4d7"]
 length = 0.001
 tracks/0/type = "value"
@@ -580,9 +576,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4uy6m")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_mnrrb"]
-viewport_path = NodePath("SubViewport")
-
 [node name="Copter_01_00" type="Area3D"]
 collision_layer = 2
 collision_mask = 0
@@ -650,11 +643,6 @@ script = ExtResource("4_dkois")
 transform = Transform3D(-1, 4.46499e-09, 8.64067e-08, 8.52435e-08, 0.221889, 0.975072, -1.4819e-08, 0.975072, -0.221889, 0.00413191, 0.510933, 0.235844)
 shape = SubResource("CapsuleShape3D_ut4c5")
 
-[node name="Arrow_Hover" parent="HitPoints/Obstacle" instance=ExtResource("6_c26j6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10422, 0)
-visible = false
-texture = SubResource("ViewportTexture_svv2p")
-
 [node name="Animation_CopterBlades" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_s3osh")
@@ -712,11 +700,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_imruk")
 unique_name_in_owner = true
 transform = Transform3D(-1, -8.51821e-08, -1.96658e-08, 0, 0.224951, -0.97437, 8.74228e-08, -0.97437, -0.224951, 0.000606665, 0.442976, -0.0597829)
 hit_from_inside = true
-
-[node name="Arrow_Hover" parent="." instance=ExtResource("6_c26j6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10422, 0)
-visible = false
-texture = SubResource("ViewportTexture_mnrrb")
 
 [editable path="HitPoints"]
 [editable path="HitPoints/Obstacle/HitPoints"]
