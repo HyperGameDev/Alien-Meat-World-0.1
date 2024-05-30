@@ -299,7 +299,7 @@ albedo_color = Color(0.254902, 0.254902, 0.254902, 1)
 material = SubResource("StandardMaterial3D_jyh5j")
 size = Vector3(1.85, 0.48, 0.46)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ya5ro"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_svv2p"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_uf4d7"]
@@ -580,7 +580,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4uy6m")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ka4k0"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_mnrrb"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Copter_01_00" type="Area3D"]
@@ -653,7 +653,7 @@ shape = SubResource("CapsuleShape3D_ut4c5")
 [node name="Arrow_Hover" parent="HitPoints/Obstacle" instance=ExtResource("6_c26j6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10422, 0)
 visible = false
-texture = SubResource("ViewportTexture_ya5ro")
+texture = SubResource("ViewportTexture_svv2p")
 
 [node name="Animation_CopterBlades" type="AnimationPlayer" parent="."]
 libraries = {
@@ -716,7 +716,7 @@ hit_from_inside = true
 [node name="Arrow_Hover" parent="." instance=ExtResource("6_c26j6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10422, 0)
 visible = false
-texture = SubResource("ViewportTexture_ka4k0")
+texture = SubResource("ViewportTexture_mnrrb")
 
 [editable path="HitPoints"]
 [editable path="HitPoints/Obstacle/HitPoints"]

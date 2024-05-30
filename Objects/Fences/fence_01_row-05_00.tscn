@@ -7,77 +7,17 @@
 [ext_resource type="Material" uid="uid://dntqen3sdrept" path="res://Objects/Fences/fence_particle_row05.tres" id="4_ttvyi"]
 [ext_resource type="Script" path="res://Objects/Buildings/Houses/Particles_destruction.gd" id="5_arnmx"]
 [ext_resource type="Material" uid="uid://e42rvql60efx" path="res://Objects/Fences/fence_color_brown.tres" id="5_c6vw7"]
-[ext_resource type="PackedScene" uid="uid://b1wormvhcsbl7" path="res://Objects/Fences/fence_01_00.tscn" id="7_qqhx4"]
+[ext_resource type="PackedScene" uid="uid://bxdv8kxpo4qaa" path="res://Objects/Fences/fence_01-02_00.blend" id="8_ihmfs"]
 
 [sub_resource type="Animation" id="Animation_5h3ff"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../fence_01_00:visible")
+tracks/0/path = NodePath("Particles_Fence:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../fence_01_01:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../fence_01_02:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../../fence_01_06:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../../fence_01_03:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Particles_Fence:emitting")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -89,70 +29,10 @@ resource_name = "degrade"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../fence_01_00:visible")
+tracks/0/path = NodePath("Particles_Fence:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../fence_01_01:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../fence_01_02:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../../fence_01_06:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../../fence_01_03:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Particles_Fence:emitting")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -169,11 +49,11 @@ _data = {
 material = ExtResource("5_c6vw7")
 size = Vector3(0.5, 3, 0.5)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5oevq"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_n3xlj"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fwt77"]
-size = Vector3(2.1, 0.3, 0.1)
+size = Vector3(2.2, 0.3, 0.1)
 
 [node name="Fence_01_row-05_00" type="Node3D"]
 script = ExtResource("1_jnpgo")
@@ -211,32 +91,12 @@ script = ExtResource("5_arnmx")
 [node name="Arrow_Hover" parent="Obstacle" instance=ExtResource("3_emrnc")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00277281, 0.494403, -0.00187755)
 visible = false
-texture = SubResource("ViewportTexture_5oevq")
+texture = SubResource("ViewportTexture_n3xlj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.153522, 0)
 shape = SubResource("BoxShape3D_fwt77")
 
-[node name="fence_01_00" parent="." instance=ExtResource("7_qqhx4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0)
-
-[node name="fence_01_01" parent="." instance=ExtResource("7_qqhx4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37, 0, 0)
-
-[node name="Fence_Post-R" parent="fence_01_01" index="2"]
-visible = false
-
-[node name="fence_01_02" parent="." instance=ExtResource("7_qqhx4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37, 0, 0)
-
-[node name="Fence_Post-L" parent="fence_01_02" index="0"]
-visible = false
-
-[node name="fence_01_06" parent="." instance=ExtResource("7_qqhx4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
-
-[node name="fence_01_03" parent="." instance=ExtResource("7_qqhx4")]
+[node name="fence_01-02_00" parent="." instance=ExtResource("8_ihmfs")]
 
 [editable path="Obstacle/HitPoints"]
-[editable path="fence_01_01"]
-[editable path="fence_01_02"]

@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://b1m0n5vlkdvio"]
+[gd_scene load_steps=12 format=3 uid="uid://b1m0n5vlkdvio"]
 
 [ext_resource type="PackedScene" uid="uid://5lfomjbevmh" path="res://Objects/Foliage/Crops/corn-stalk_01_01_00.blend" id="1_klnrh"]
 [ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_ale81"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="3_usqfn"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="4_imp72"]
 [ext_resource type="Material" uid="uid://dgfqqtkrxhwxk" path="res://Objects/Foliage/Crops/corn_stalk_color_01.tres" id="5_5qywa"]
-[ext_resource type="PackedScene" uid="uid://tacuaqmua1np" path="res://Objects/Foliage/Crops/particles_corn_stalk_01.tscn" id="5_chket"]
 
 [sub_resource type="Animation" id="Animation_eybv3"]
 length = 0.001
@@ -129,7 +128,6 @@ health_max = 1
 damage_amount = 2
 
 [node name="HitPoints" parent="Obstacle" index="0" instance=ExtResource("4_imp72")]
-particles_path = ExtResource("5_chket")
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="1"]
 libraries = {

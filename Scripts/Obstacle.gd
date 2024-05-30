@@ -49,14 +49,20 @@ func _ready():
 	mouse_exited.connect(_on_mouse_exited)
 	
 	set_collision_layer_value(1, false)
+	set_collision_layer_value(2, false)
 	set_collision_layer_value(3, true)
+	set_collision_layer_value(4, false)
 	
 	set_collision_mask_value(1, false)
+	set_collision_mask_value(2, false)
+	set_collision_mask_value(3, false)
+	set_collision_mask_value(4, false)
+	set_collision_mask_value(16, true)
 	
 	# If this is set, obstacled the copter collides with also impact the player's collision (namely on full slowdowns)
 	#set_collision_mask_value(2, true)
 	
-	set_collision_mask_value(16, true)
+	
 	
 	if has_arrow:
 		hover_arrow.modulate = indicator_color
