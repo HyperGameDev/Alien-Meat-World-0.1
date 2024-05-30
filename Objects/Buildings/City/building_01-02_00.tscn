@@ -395,9 +395,6 @@ shape = SubResource("BoxShape3D_jvan5")
 
 [node name="HitPoints" parent="Obstacle_10" index="1" instance=ExtResource("3_r1ye4")]
 
-[node name="Dmg_Label" parent="Obstacle_10/HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00494647, 1.9801, -0.282382)
-
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_10/HitPoints" index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_gcda2")
@@ -419,9 +416,6 @@ shape = SubResource("BoxShape3D_wdi3g")
 [node name="HitPoints" parent="Obstacle_01" index="1" instance=ExtResource("3_r1ye4")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.418238, 0)
 
-[node name="Dmg_Label" parent="Obstacle_01/HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0839181, 2.92987, 0.158068)
-
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_01/HitPoints" index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_tsgjg")
@@ -438,9 +432,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0516404, 0.02026, -0.03899
 shape = SubResource("BoxShape3D_wdi3g")
 
 [node name="HitPoints" parent="Obstacle_09" index="1" instance=ExtResource("3_r1ye4")]
-
-[node name="Dmg_Label" parent="Obstacle_09/HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103767, 1.4584, 0.407832)
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_09/HitPoints" index="1"]
 libraries = {
@@ -462,9 +453,6 @@ shape = SubResource("BoxShape3D_q2ycx")
 
 [node name="HitPoints" parent="Obstacle_03" index="1" instance=ExtResource("3_r1ye4")]
 
-[node name="Dmg_Label" parent="Obstacle_03/HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.072042, 2.31223, -0.111361)
-
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_03/HitPoints" index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_0icur")
@@ -485,9 +473,6 @@ shape = SubResource("BoxShape3D_q2ycx")
 
 [node name="HitPoints" parent="Obstacle_08" index="1" instance=ExtResource("3_r1ye4")]
 
-[node name="Dmg_Label" parent="Obstacle_08/HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.072042, 2.31223, -0.111361)
-
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_08/HitPoints" index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_ogiou")
@@ -504,9 +489,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0177238, -0.0856802, 0.2033
 shape = SubResource("BoxShape3D_xhn4a")
 
 [node name="HitPoints" parent="Obstacle_07" index="1" instance=ExtResource("3_r1ye4")]
-
-[node name="Dmg_Label" parent="Obstacle_07/HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0367527, 1.32123, 0.041733)
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_07/HitPoints" index="1"]
 libraries = {
@@ -525,9 +507,6 @@ shape = SubResource("BoxShape3D_rkvxr")
 
 [node name="HitPoints" parent="Obstacle_06" index="1" instance=ExtResource("3_r1ye4")]
 
-[node name="Dmg_Label" parent="Obstacle_06/HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00901961, 2.27424, 0.041733)
-
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_06/HitPoints" index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_mclp1")
@@ -544,9 +523,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0520029, -0.395917, 0.0199
 shape = SubResource("BoxShape3D_jvan5")
 
 [node name="HitPoints" parent="Obstacle_05" index="1" instance=ExtResource("3_r1ye4")]
-
-[node name="Dmg_Label" parent="Obstacle_05/HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00494647, 1.9801, -0.282382)
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_05/HitPoints" index="1"]
 libraries = {
@@ -565,8 +541,6 @@ shape = SubResource("BoxShape3D_xhn4a")
 
 [node name="HitPoints" parent="Obstacle_04" index="1" instance=ExtResource("3_r1ye4")]
 
-[node name="Dmg_Label" parent="Obstacle_04/HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.036695, 1.25541, 0.212142)
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_04/HitPoints" index="1"]
 libraries = {
@@ -585,8 +559,6 @@ shape = SubResource("BoxShape3D_rkvxr")
 
 [node name="HitPoints" parent="Obstacle_02" index="1" instance=ExtResource("3_r1ye4")]
 
-[node name="Dmg_Label" parent="Obstacle_02/HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00901961, 2.27424, 0.041733)
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle_02/HitPoints" index="1"]
 libraries = {

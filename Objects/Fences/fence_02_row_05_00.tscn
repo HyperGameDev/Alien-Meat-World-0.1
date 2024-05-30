@@ -215,9 +215,6 @@ damage_amount = 2
 
 [node name="HitPoints" parent="Obstacle" instance=ExtResource("3_2j3to")]
 
-[node name="Dmg_Label" parent="Obstacle/HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
-
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints"]
 libraries = {
 "": SubResource("AnimationLibrary_txg71")

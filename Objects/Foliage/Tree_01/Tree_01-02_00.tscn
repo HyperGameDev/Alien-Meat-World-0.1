@@ -124,9 +124,6 @@ shape = SubResource("BoxShape3D_euwf5")
 
 [node name="HitPoints" parent="Obstacle" index="3" instance=ExtResource("3_u8ygc")]
 
-[node name="Dmg_Label" parent="Obstacle/HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80539, 0)
-
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_wvsb3")

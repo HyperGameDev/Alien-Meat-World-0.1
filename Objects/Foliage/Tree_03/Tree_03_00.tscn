@@ -117,8 +117,6 @@ shape = SubResource("BoxShape3D_nd4j2")
 [node name="HitPoints" parent="." instance=ExtResource("2_147v6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.884847, 0)
 
-[node name="Dmg_Label" parent="HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.136284, -0.122153, 0.147495)
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="HitPoints"]
 

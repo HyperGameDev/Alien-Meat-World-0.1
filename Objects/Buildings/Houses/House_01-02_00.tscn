@@ -437,9 +437,6 @@ shape = SubResource("BoxShape3D_t6wch")
 [node name="HitPoints" parent="Obstacle" index="1" instance=ExtResource("3_opc2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="Dmg_Label" parent="Obstacle/HitPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0458009, 0.89605, -0.468091)
-
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="1"]
 root_node = NodePath("../../..")
 libraries = {
