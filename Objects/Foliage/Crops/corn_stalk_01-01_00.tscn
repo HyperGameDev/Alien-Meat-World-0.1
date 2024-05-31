@@ -129,12 +129,12 @@ damage_amount = 2
 
 [node name="HitPoints" parent="Obstacle" index="0" instance=ExtResource("4_imp72")]
 
-[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="1"]
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="0"]
 libraries = {
 "": SubResource("AnimationLibrary_vkyih")
 }
 
-[node name="Particles_Corn" type="GPUParticles3D" parent="Obstacle/HitPoints" index="2"]
+[node name="Particles_Corn" type="GPUParticles3D" parent="Obstacle/HitPoints" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27566, 0)
 emitting = false
 amount = 200

@@ -1,0 +1,411 @@
+[gd_scene load_steps=20 format=3 uid="uid://ce4fmb5061j0k"]
+
+[ext_resource type="PackedScene" uid="uid://b316ko6n53gtt" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow_Barn_01.blend" id="1_txtvb"]
+[ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_0o3hw"]
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_7g1xf"]
+[ext_resource type="Material" uid="uid://cxu65rtd12o75" path="res://Objects/Buildings/Barns/Barn_color_01_walls.tres" id="2_j30v3"]
+[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_hylns"]
+[ext_resource type="Material" uid="uid://i08yeq2pr0e0" path="res://Objects/Buildings/Barns/Barn_colors_01_gates.tres" id="3_wnss4"]
+[ext_resource type="Material" uid="uid://b2fn5t1qp7laq" path="res://Objects/Buildings/Barns/Barn_colors_01_trim-roof.tres" id="4_65dux"]
+[ext_resource type="Material" uid="uid://bvh7twuuqmgij" path="res://Objects/Buildings/Barns/Barn_colors_01_lt-brwn.tres" id="4_iw4f4"]
+[ext_resource type="Material" uid="uid://dm2xmli38jgry" path="res://Objects/Buildings/Barns/Barn_colors_01_trim-02.tres" id="5_51bpe"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ik16r"]
+points = PackedVector3Array(-3.61779, -0.00413442, -0.899377, -3.61779, 0.591922, -0.899377, 3.46972, -0.00413442, -0.899377, -3.61779, -0.00413442, 0.899377, -3.61779, 0.995425, -0.000176072, 3.46972, 0.591922, -0.899377, 3.46972, -0.00413442, 0.899377, -3.61779, 0.591922, 0.899377, 3.46972, 0.995425, -0.000176072, 3.46972, 0.591922, 0.899377)
+
+[sub_resource type="Animation" id="Animation_e3yse"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Cow_Barn:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Cow_Barn/Cow_Barn_Foundation:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Cow_Barn/Cow_Barn_Gate:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Cow_Barn/Cow_Barn_Rafters:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../Cow_Barn/Cow_Barn_Roof:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Cow_Barn/Cow_Barn_Roof/Cow_Barn_Roof-Trim:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../Cow_Barn/Cow_Barn_Roof-Frame:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Particles_Roof:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Particles_Rafter:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Particles_Walls:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8ju0o"]
+resource_name = "degrade"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Cow_Barn:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Cow_Barn/Cow_Barn_Foundation:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Cow_Barn/Cow_Barn_Gate:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Cow_Barn/Cow_Barn_Rafters:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.55),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../Cow_Barn/Cow_Barn_Roof:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Cow_Barn/Cow_Barn_Roof/Cow_Barn_Roof-Trim:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../Cow_Barn/Cow_Barn_Roof-Frame:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Particles_Roof:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Particles_Rafter:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.55),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Particles_Walls:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dsauw"]
+_data = {
+"RESET": SubResource("Animation_e3yse"),
+"degrade": SubResource("Animation_8ju0o")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qefbv"]
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(3.605, 0.22, 1.135)
+angle_max = 144.0
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+radial_accel_min = -0.25
+radial_accel_max = 3.75
+attractor_interaction_enabled = false
+scale_min = 0.0
+scale_max = 0.3
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_2lqo5"]
+material = ExtResource("4_65dux")
+size = Vector3(1.51, 0.555, 0.355)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w4t8n"]
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(3.8, 0.22, 1.135)
+angle_max = 144.0
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+radial_accel_min = -0.25
+radial_accel_max = 3.75
+attractor_interaction_enabled = false
+scale_min = 0.0
+scale_max = 0.3
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_cpbdr"]
+material = ExtResource("4_iw4f4")
+size = Vector3(1, 0.125, 0.21)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ob14x"]
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(3.525, 0.61, 1.28)
+angle_max = 144.0
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+radial_accel_min = -0.25
+radial_accel_max = 3.75
+attractor_interaction_enabled = false
+scale_min = 0.0
+scale_max = 0.3
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_f7nl8"]
+material = ExtResource("2_j30v3")
+size = Vector3(1, 0.125, 0.21)
+
+[node name="Cow_Barn_01-02_00" instance=ExtResource("1_txtvb")]
+script = ExtResource("2_0o3hw")
+
+[node name="Cow_Barn" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_j30v3")
+surface_material_override/1 = ExtResource("2_j30v3")
+
+[node name="Cow_Barn_Gate" parent="Cow_Barn" index="1"]
+surface_material_override/0 = ExtResource("3_wnss4")
+
+[node name="Cow_Barn_Rafters" parent="Cow_Barn" index="2"]
+surface_material_override/0 = ExtResource("4_iw4f4")
+
+[node name="Cow_Barn_Roof" parent="Cow_Barn" index="3"]
+surface_material_override/0 = ExtResource("4_65dux")
+
+[node name="Cow_Barn_Roof-Trim" parent="Cow_Barn/Cow_Barn_Roof" index="0"]
+surface_material_override/0 = ExtResource("5_51bpe")
+
+[node name="Cow_Barn_Roof-Frame" parent="Cow_Barn" index="4"]
+surface_material_override/0 = ExtResource("2_j30v3")
+
+[node name="Obstacle" type="Area3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00141501, -0.0173249, 0.0400524)
+script = ExtResource("2_7g1xf")
+health_max = 7
+slowdown_amount = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0069766, -0.0212297, -0.0348843)
+shape = SubResource("ConvexPolygonShape3D_ik16r")
+
+[node name="HitPoints" parent="Obstacle" index="1" instance=ExtResource("3_hylns")]
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_dsauw")
+}
+
+[node name="Particles_Roof" type="GPUParticles3D" parent="Obstacle/HitPoints" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.121068, 0)
+emitting = false
+amount = 150
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_qefbv")
+draw_pass_1 = SubResource("PrismMesh_2lqo5")
+
+[node name="Particles_Rafter" type="GPUParticles3D" parent="Obstacle/HitPoints" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.487136, 0)
+emitting = false
+amount = 150
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_w4t8n")
+draw_pass_1 = SubResource("BoxMesh_cpbdr")
+
+[node name="Particles_Walls" type="GPUParticles3D" parent="Obstacle/HitPoints" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.700879, 0)
+emitting = false
+amount = 300
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ob14x")
+draw_pass_1 = SubResource("BoxMesh_f7nl8")

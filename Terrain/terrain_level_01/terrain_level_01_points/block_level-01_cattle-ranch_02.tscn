@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://i5qu2o412kbf" path="res://Collaborator Experiments/Pierogigon/Terrain/pierogi_gradient.tres" id="3_4ekw6"]
 [ext_resource type="Texture2D" uid="uid://clo0uqc62th85" path="res://Terrain/terrain_level_01_textures/block_level-01_cattle-ranch_02_invert.png" id="4_mygr8"]
 [ext_resource type="Texture2D" uid="uid://crjgw5oqy85yr" path="res://Terrain/terrain_level_01_textures/block_level-01_noise_01.tres" id="5_ab3m2"]
-[ext_resource type="PackedScene" uid="uid://dxjkdmi6v6583" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow-Barn_01-02_00.tscn" id="6_cda2p"]
+[ext_resource type="PackedScene" uid="uid://dxjkdmi6v6583" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow-Barn_02_00.tscn" id="6_cda2p"]
 [ext_resource type="PackedScene" uid="uid://0sdt50wuw41u" path="res://Objects/Foliage/Tree_02/Tree_02_00.tscn" id="8_fpsis"]
 [ext_resource type="PackedScene" uid="uid://c1mgqdi4mt5o8" path="res://Objects/Foliage/Tree_03/Tree_03_00.tscn" id="9_lux6y"]
 [ext_resource type="PackedScene" uid="uid://bqvuhngd0g34n" path="res://Objects/Foliage/Crops/corn_3_row_00.tscn" id="10_aj5w6"]

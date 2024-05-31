@@ -4,7 +4,7 @@
 [ext_resource type="Shader" path="res://Collaborator Experiments/Pierogigon/Terrain/terrain_level_shader_pierogi.gdshader" id="2_foq0c"]
 [ext_resource type="Texture2D" uid="uid://bp1f3knfmyhy3" path="res://Collaborator Experiments/Pierogigon/Terrain/block_level-01_cattle-ranch_01_pierogi.png" id="3_6oft2"]
 [ext_resource type="Texture2D" uid="uid://i5qu2o412kbf" path="res://Collaborator Experiments/Pierogigon/Terrain/pierogi_gradient.tres" id="3_um805"]
-[ext_resource type="PackedScene" uid="uid://dxjkdmi6v6583" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow-Barn_01-02_00.tscn" id="4_e3aeb"]
+[ext_resource type="PackedScene" uid="uid://dxjkdmi6v6583" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow-Barn_02_00.tscn" id="4_e3aeb"]
 [ext_resource type="PackedScene" uid="uid://cm61hhhqrodvc" path="res://Objects/Foliage/Tree_01/Tree_01-02_00.tscn" id="5_7cmxo"]
 [ext_resource type="PackedScene" uid="uid://b1jpfiy4cphy7" path="res://Objects/Fences/fence_01_row-05_00.tscn" id="6_x6x5b"]
 [ext_resource type="PackedScene" uid="uid://bka4q282pwrgs" path="res://NPCs/Cars/Pickup Trucks/truck_pickup_01_00.tscn" id="7_6inws"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://caxqah3ilcvfy" path="res://NPCs/Cows/Cow_01-03_00.tscn" id="10_84cvs"]
 [ext_resource type="PackedScene" uid="uid://b4s7xk5lb6dui" path="res://Objects/Buildings/Houses/House_01-02_mesh-only_00.tscn" id="11_3n4cq"]
 [ext_resource type="PackedScene" uid="uid://c4oqx7gllpfj7" path="res://Objects/Foliage/Tree_01/Tree_01-02_mesh-only_00.tscn" id="12_c7key"]
+
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_irtk0"]
 frequency = 0.045

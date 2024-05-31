@@ -1,0 +1,652 @@
+[gd_scene load_steps=26 format=3 uid="uid://dxjkdmi6v6583"]
+
+[ext_resource type="PackedScene" uid="uid://ct5lsbo132j0s" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow_Barn_02.blend" id="1_fbxrc"]
+[ext_resource type="Material" uid="uid://cxu65rtd12o75" path="res://Objects/Buildings/Barns/Barn_color_01_walls.tres" id="2_qc6iq"]
+[ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_x8ipw"]
+[ext_resource type="Material" uid="uid://dm2xmli38jgry" path="res://Objects/Buildings/Barns/Barn_colors_01_trim-02.tres" id="3_pqefq"]
+[ext_resource type="Material" uid="uid://b2fn5t1qp7laq" path="res://Objects/Buildings/Barns/Barn_colors_01_trim-roof.tres" id="3_q21gu"]
+[ext_resource type="Material" uid="uid://bvh7twuuqmgij" path="res://Objects/Buildings/Barns/Barn_colors_01_lt-brwn.tres" id="3_teopx"]
+[ext_resource type="Material" uid="uid://i08yeq2pr0e0" path="res://Objects/Buildings/Barns/Barn_colors_01_gates.tres" id="5_fbq4s"]
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="7_yyjhw"]
+[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="8_2vjpc"]
+
+[sub_resource type="Animation" id="Animation_tnatl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CollisionShape3D walls:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CollisionShape3D_roof:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionShape3D_gates:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Barn_Gate:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../Barn_Roof:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Barn_Rafters:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../Barn_Door-Front:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../Barn_Door-Back:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../../Barn_Foundatin:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../../Barn_Walls-And-Floor:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Particles_Doors:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Particles_Walls:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Particles_Rafter:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Particles_Roof:emitting")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Particles_Gates:emitting")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Particles_Filler-Hit:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_igq13"]
+resource_name = "degrade"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CollisionShape3D walls:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.78),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CollisionShape3D_roof:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionShape3D_gates:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Barn_Gate:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../Barn_Roof:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Barn_Rafters:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.57),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../Barn_Door-Front:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../Barn_Door-Back:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../../Barn_Foundatin:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../../Barn_Walls-And-Floor:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.78),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Particles_Doors:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Particles_Walls:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.78),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Particles_Rafter:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.57),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Particles_Roof:emitting")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Particles_Gates:emitting")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Particles_Filler-Hit:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.18),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k7oyb"]
+_data = {
+"RESET": SubResource("Animation_tnatl"),
+"degrade": SubResource("Animation_igq13")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u5mus"]
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(3.8, 0.515, 1.485)
+angle_max = 144.0
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+radial_accel_min = -0.25
+radial_accel_max = 3.75
+attractor_interaction_enabled = false
+scale_min = 0.0
+scale_max = 0.3
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_2xsmn"]
+material = ExtResource("3_q21gu")
+size = Vector3(1.665, 0.655, 0.525)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1nhxq"]
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(3.8, 0.22, 1.135)
+angle_max = 144.0
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+radial_accel_min = -0.25
+radial_accel_max = 3.75
+attractor_interaction_enabled = false
+scale_min = 0.0
+scale_max = 0.3
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_jxtyg"]
+material = ExtResource("3_teopx")
+size = Vector3(1, 0.125, 0.21)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tfsuq"]
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(3.525, 0.97, 1.52)
+angle_max = 144.0
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+radial_accel_min = -0.25
+radial_accel_max = 3.75
+attractor_interaction_enabled = false
+scale_min = 0.0
+scale_max = 0.3
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_dkv1u"]
+material = ExtResource("2_qc6iq")
+size = Vector3(1.03, 0.175, 0.21)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4yjdv"]
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(3.255, 0.61, 1.3)
+angle_max = 144.0
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+radial_accel_min = -0.25
+radial_accel_max = 3.75
+attractor_interaction_enabled = false
+scale_min = 0.0
+scale_max = 0.3
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_oppxn"]
+size = Vector3(1.035, 0.095, 0.145)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_axeqi"]
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(0.47, 0.79, 0.995)
+angle_min = -360.0
+angle_max = 360.0
+direction = Vector3(0, 1, 0)
+spread = 43.637
+initial_velocity_max = 3.0
+radial_accel_max = 5.58
+scale_min = 0.01
+scale_max = 0.2
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_l0r37"]
+material = ExtResource("2_qc6iq")
+size = Vector3(1.63, 0.195, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qg6ee"]
+size = Vector3(6.73621, 1.29663, 2.25977)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_allir"]
+points = PackedVector3Array(1.3375, -0.37, 3.735, 0, 0.37, 3.735, -1.3375, -0.37, 3.735, 1.3375, -0.37, -3.735, 0, 0.37, -3.735, -1.3375, -0.37, -3.735)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bgdg7"]
+size = Vector3(5.16323, 0.760712, 1.2249)
+
+[node name="Cow_Barn_02" instance=ExtResource("1_fbxrc")]
+script = ExtResource("2_x8ipw")
+
+[node name="Barn_Walls-And-Floor" parent="." index="0"]
+lod_bias = 128.0
+surface_material_override/2 = ExtResource("2_qc6iq")
+
+[node name="Barn_Foundatin" parent="." index="1"]
+lod_bias = 128.0
+
+[node name="Barn_Door-Back" parent="." index="2"]
+lod_bias = 128.0
+
+[node name="Barn_Door-Front" parent="." index="3"]
+lod_bias = 128.0
+
+[node name="Barn_Rafters" parent="." index="4"]
+lod_bias = 128.0
+surface_material_override/0 = ExtResource("3_teopx")
+
+[node name="Barn_Roof" parent="." index="5"]
+lod_bias = 128.0
+surface_material_override/0 = ExtResource("3_pqefq")
+surface_material_override/1 = ExtResource("3_q21gu")
+
+[node name="Barn_Gate" parent="." index="6"]
+lod_bias = 128.0
+surface_material_override/0 = ExtResource("5_fbq4s")
+
+[node name="Obstacle" type="Area3D" parent="." index="7"]
+script = ExtResource("7_yyjhw")
+health_max = 6
+slowdown_amount = 2
+
+[node name="HitPoints" parent="Obstacle" index="0" instance=ExtResource("8_2vjpc")]
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_k7oyb")
+}
+
+[node name="Particles_Roof" type="GPUParticles3D" parent="Obstacle/HitPoints" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39589, 0)
+emitting = false
+amount = 250
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_u5mus")
+draw_pass_1 = SubResource("PrismMesh_2xsmn")
+
+[node name="Particles_Rafter" type="GPUParticles3D" parent="Obstacle/HitPoints" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0912143, 0)
+emitting = false
+amount = 250
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1nhxq")
+draw_pass_1 = SubResource("BoxMesh_jxtyg")
+
+[node name="Particles_Walls" type="GPUParticles3D" parent="Obstacle/HitPoints" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12552e-08, -0.524129, -0.128744)
+emitting = false
+amount = 500
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_tfsuq")
+draw_pass_1 = SubResource("BoxMesh_dkv1u")
+
+[node name="Particles_Filler-Hit" type="GPUParticles3D" parent="Obstacle/HitPoints" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12552e-08, -0.524129, -0.128744)
+emitting = false
+amount = 500
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_tfsuq")
+draw_pass_1 = SubResource("BoxMesh_dkv1u")
+
+[node name="Particles_Gates" type="GPUParticles3D" parent="Obstacle/HitPoints" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.384504, -0.590358, -0.0116834)
+emitting = false
+amount = 300
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_4yjdv")
+draw_pass_1 = SubResource("BoxMesh_oppxn")
+
+[node name="Particles_Doors" type="GPUParticles3D" parent="Obstacle/HitPoints" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.46048, -0.675, -3.02525e-07)
+emitting = false
+amount = 120
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_axeqi")
+draw_pass_1 = SubResource("BoxMesh_l0r37")
+
+[node name="CollisionShape3D walls" type="CollisionShape3D" parent="Obstacle" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022644, 0.53064, 0)
+shape = SubResource("BoxShape3D_qg6ee")
+
+[node name="CollisionShape3D_roof" type="CollisionShape3D" parent="Obstacle" index="2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.47178, 0.0203943)
+shape = SubResource("ConvexPolygonShape3D_allir")
+
+[node name="CollisionShape3D_gates" type="CollisionShape3D" parent="Obstacle" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.413891, 0.24263, -0.491279)
+shape = SubResource("BoxShape3D_bgdg7")
