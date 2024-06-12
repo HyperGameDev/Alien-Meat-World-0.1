@@ -124,7 +124,7 @@ shape = SubResource("BoxShape3D_euwf5")
 
 [node name="HitPoints" parent="Obstacle" index="3" instance=ExtResource("3_u8ygc")]
 
-[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="1"]
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="0"]
 libraries = {
 "": SubResource("AnimationLibrary_wvsb3")
 }

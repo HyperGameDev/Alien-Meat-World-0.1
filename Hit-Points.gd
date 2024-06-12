@@ -26,7 +26,7 @@ func _ready():
 		$"..".is_destroyed.connect(on_is_destroyed)
 	
 	# Getting Attacked
-	Messenger.grab_target.connect(am_i_hit)
+	Messenger.attack_target.connect(am_i_hit)
 	Messenger.something_hit.connect(on_something_hit)
 	
 	
@@ -36,11 +36,12 @@ func on_update_hitpoints():
 		$Dmg_Label.text = str($"..".health_current)
 	
 	
-func am_i_hit(grab_target):
-	#	target = grab_target
-#	if grab_target == $"..":
+func am_i_hit(attack_target):
+	#	target = attack_target
+#	if attack_target == $"..":
 #		print("Copter Seen (", $"..".name, ")")
-	if grab_target == $".." and Input.is_action_just_pressed("Grab"):
+	#Messenger.something_attackable_hovered.emit()
+	if attack_target == $".." and Input.is_action_just_pressed("Grab"):
 		was_hit = true
 #		print("Copter Hit (", $"..".name, ")")
 		Messenger.something_attacked.emit($"..")

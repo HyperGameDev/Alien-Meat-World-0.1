@@ -450,9 +450,6 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 [node name="electric-pole_01-01_00" parent="." index="146" instance=ExtResource("16_4s5ub")]
 transform = Transform3D(0.75, 0, 5.51372e-08, 0, 0.75, 0, -5.51372e-08, 0, 0.75, 11.8, 0, -9)
 
-[node name="CollisionShape3D_transformer" parent="electric-pole_01-01_00/Obstacle" index="2"]
-transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.031066, 3.6057, 0.2625)
-
 [node name="Transformer" parent="electric-pole_01-01_00" index="3"]
 transform = Transform3D(-0.0275849, 0, 0.0200323, 0, -0.0340914, 0, -0.0200323, 0, -0.0275849, -0.000549041, 2.68171, 0.0646185)
 
@@ -464,6 +461,72 @@ transform = Transform3D(0.75, 0, 5.51353e-08, 0, 0.75, 0, -5.51353e-08, 0, 0.75,
 
 [node name="Cow_Barn_01-02_00" parent="." index="148" instance=ExtResource("15_ufqnp")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 6.70154, 0, 5.49483)
+
+[node name="Cow_01-03_12" parent="." index="149" instance=ExtResource("9_214j6")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -7.03446, 0.0995563, -3.21587)
+
+[node name="Cow_01-03_13" parent="." index="150" instance=ExtResource("9_214j6")]
+transform = Transform3D(-0.707106, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707106, -6.50414, 0.0995563, -3.74618)
+
+[node name="Cow_01-03_14" parent="." index="151" instance=ExtResource("9_214j6")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.56482, 0.0995563, -2.68546)
+
+[node name="Cow_01-03_15" parent="." index="152" instance=ExtResource("9_214j6")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -8.09515, 0.0995563, -2.15514)
+
+[node name="Cow_01-03_16" parent="." index="153" instance=ExtResource("9_214j6")]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -8.62548, 0.0995563, -1.62484)
+
+[node name="Cow_01-03_17" parent="." index="154" instance=ExtResource("9_214j6")]
+transform = Transform3D(-0.573576, 0, 0.819151, 0, 1, 0, -0.819151, 0, -0.573576, -9.1558, 0.0995563, -1.09452)
+
+[node name="Cow_01-03_18" parent="." index="155" instance=ExtResource("9_214j6")]
+transform = Transform3D(-0.776662, 0, 0.629917, 0, 1, 0, -0.629917, 0, -0.776662, -5.10388, 0.0995563, -5.27662)
+
+[node name="Cow_01-03_19" parent="." index="156" instance=ExtResource("9_214j6")]
+transform = Transform3D(-0.663991, 0, -0.74774, 0, 1, 0, 0.74774, 0, -0.663991, -6.88574, 0.0995563, -5.32091)
+
+[node name="Cow_01-03_25" parent="." index="157" instance=ExtResource("9_214j6")]
+transform = Transform3D(-0.754162, 0, -0.656691, 0, 1, 0, 0.656691, 0, -0.754162, -7.22572, 0.0995563, -5.62279)
+
+[node name="Cow_01-03_20" parent="." index="158" instance=ExtResource("9_214j6")]
+transform = Transform3D(-0.708032, 0, 0.706181, 0, 1, 0, -0.706181, 0, -0.708032, -5.42548, 0.0995563, -4.91732)
+
+[node name="Cow_01-03_21" parent="." index="159" instance=ExtResource("9_214j6")]
+transform = Transform3D(-0.902126, 0, 0.431472, 0, 1, 0, -0.431472, 0, -0.902126, -5.79063, 0.0995563, -4.57609)
+
+[node name="Cow_01-03_22" parent="." index="160" instance=ExtResource("9_214j6")]
+transform = Transform3D(-0.771791, 0, -0.635876, 0, 1, 0, 0.635876, 0, -0.771791, -8.66838, 0.0995563, -2.97784)
+
+[node name="Cow_01-03_26" parent="." index="161" instance=ExtResource("9_214j6")]
+transform = Transform3D(0.690327, 0, 0.723498, 0, 1, 0, -0.723498, 0, 0.690327, -9.41027, 0.0995563, -2.23701)
+
+[node name="Cow_01-03_23" parent="." index="162" instance=ExtResource("9_214j6")]
+transform = Transform3D(-0.748204, 0, -0.663469, 0, 1, 0, 0.663469, 0, -0.748204, -8.71457, 0.0995563, -3.48456)
+
+[node name="Cow_01-03_27" parent="." index="163" instance=ExtResource("9_214j6")]
+transform = Transform3D(0.664187, 0, 0.747566, 0, 1, 0, -0.747566, 0, 0.664187, -9.6429, 0.0995563, -2.54905)
+
+[node name="Cow_01-03_28" parent="." index="164" instance=ExtResource("9_214j6")]
+transform = Transform3D(0.705626, 0, 0.708586, 0, 1, 0, -0.708586, 0, 0.705626, -9.82034, 0.0995563, -2.92313)
+
+[node name="Cow_01-03_24" parent="." index="165" instance=ExtResource("9_214j6")]
+transform = Transform3D(-0.77641, 0, -0.630229, 0, 1, 0, 0.630229, 0, -0.77641, -9.06659, 0.0995563, -3.66502)
+
+[node name="Cow_01-03_29" parent="." index="166" instance=ExtResource("9_214j6")]
+transform = Transform3D(0.738067, 0, 0.674728, 0, 1, 0, -0.674728, 0, 0.738067, -8.1365, 0.0995563, -4.61166)
+
+[node name="Cow_01-03_30" parent="." index="167" instance=ExtResource("9_214j6")]
+transform = Transform3D(0.738067, 0, 0.674728, 0, 1, 0, -0.674728, 0, 0.738067, -7.92802, 0.0995563, -4.16922)
+
+[node name="Cow_01-03_31" parent="." index="168" instance=ExtResource("9_214j6")]
+transform = Transform3D(0.738067, 0, 0.674728, 0, 1, 0, -0.674728, 0, 0.738067, -7.52427, 0.0995562, -4.11342)
+
+[node name="Cow_01-03_32" parent="." index="169" instance=ExtResource("9_214j6")]
+transform = Transform3D(-0.60628, 0, -0.795252, 0, 1, 0, 0.795252, 0, -0.60628, -6.6978, 0.0995562, -4.92932)
+
+[node name="Cow_01-03_33" parent="." index="170" instance=ExtResource("9_214j6")]
+transform = Transform3D(-0.573576, 0, 0.819151, 0, 1, 0, -0.819151, 0, -0.573576, -6.12068, 0.0995563, -4.27029)
 
 [editable path="electric-pole_01-01_00"]
 [editable path="electric-pole_01-01_00/Obstacle/HitPoints"]

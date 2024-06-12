@@ -48,6 +48,7 @@ func _ready():
 
 	#set_collision_layer_value(4, true) # Allows it to be grabbed
 
+	# Cow Layer Properties are in PHYSICS PROCESS!!
 	set_collision_mask_value(1, true)
 	set_collision_mask_value(16, false)
 	

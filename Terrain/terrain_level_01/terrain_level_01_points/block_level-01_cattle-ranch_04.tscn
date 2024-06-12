@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d2haud7vjnc2o"]
+[gd_scene load_steps=22 format=3 uid="uid://d2haud7vjnc2o"]
 
 [ext_resource type="PlaneMesh" uid="uid://bnal7rn3xabyx" path="res://Terrain/terrain_blocks_default-2.tres" id="1_eujgq"]
 [ext_resource type="Shader" path="res://Collaborator Experiments/Pierogigon/Terrain/terrain_level_shader_pierogi.gdshader" id="2_qnxin"]
@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://cbdts1xv5dfj" path="res://Objects/Buildings/Barns/Tool_Shed_01/tool_shed_01_01_00.tscn" id="11_nei54"]
 [ext_resource type="PackedScene" uid="uid://bqvuhngd0g34n" path="res://Objects/Foliage/Crops/corn_3_row_00.tscn" id="12_1xlh1"]
 [ext_resource type="PackedScene" uid="uid://b1m0n5vlkdvio" path="res://Objects/Foliage/Crops/corn_stalk_01-01_00.tscn" id="13_gydbd"]
+[ext_resource type="PackedScene" uid="uid://bbxpau83xwv2m" path="res://Objects/Foliage/Crops/corn_stalk_01-01_00_mesh-only.tscn" id="14_an0js"]
+[ext_resource type="PackedScene" uid="uid://bka4q282pwrgs" path="res://NPCs/Cars/Pickup Trucks/truck_pickup_01_00.tscn" id="15_qwrwo"]
+[ext_resource type="PackedScene" uid="uid://cdgtkxeebdtqm" path="res://Objects/Misc/hay_bale_round_01_01_00.tscn" id="16_rmsem"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3t8as"]
 render_priority = 0
@@ -35,6 +38,10 @@ points = PackedVector3Array(-5.99455, -71.0009, -8.31296, -6.39667, -70.7782, -8
 
 [sub_resource type="BoxMesh" id="BoxMesh_evi1g"]
 size = Vector3(3.725, 11.06, 19.375)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vlxc8"]
+albedo_color = Color(0.219608, 0.372549, 0.564706, 1)
+roughness = 0.4
 
 [node name="Terrain_0" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
@@ -61,18 +68,20 @@ visible = false
 [node name="Marker_boundaryRight" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7, 0, 0)
+visible = false
 mesh = SubResource("BoxMesh_evi1g")
 
 [node name="Marker_boundaryLeft" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.7, 0, 0)
+visible = false
 mesh = SubResource("BoxMesh_evi1g")
 
 [node name="Cow_Barn_02" parent="." instance=ExtResource("8_hkjf7")]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 6, 0, -5)
+transform = Transform3D(0.707106, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707106, 6, 0, -5)
 
 [node name="Cow_Barn_04" parent="." instance=ExtResource("8_hkjf7")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -6, 0, -5)
+transform = Transform3D(0.707106, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707106, -6, 0, -5)
 
 [node name="Fence_01_row-05_59" parent="." instance=ExtResource("9_eb327")]
 transform = Transform3D(2.52328e-07, 0, 1, 0, 1, 0, -1, 0, 2.52328e-07, -11.8499, 0, 0.652576)
@@ -132,13 +141,40 @@ transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, -4.309
 transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, -2.13956, 0, 6.01724)
 
 [node name="Fence_01_row-05_48" parent="." instance=ExtResource("9_eb327")]
-transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, -0.000820637, 0, 6.01724)
+transform = Transform3D(-1.64905e-07, 0, -1, 0, 1, 0, 1, 0, -1.64905e-07, -1.08956, 0, 4.96724)
+
+[node name="Fence_01_row-05_54" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1.64905e-07, 0, -1, 0, 1, 0, 1, 0, -1.64905e-07, 1.08544, 0, 4.96724)
+
+[node name="Fence_01_row-05_55" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1.64905e-07, 0, -1, 0, 1, 0, 1, 0, -1.64905e-07, -1.08956, 0, 2.86724)
+
+[node name="Fence_01_row-05_74" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1.64905e-07, 0, -1, 0, 1, 0, 1, 0, -1.64905e-07, -5.43956, 0, 2.86724)
+
+[node name="Fence_01_row-05_75" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1.64905e-07, 0, -1, 0, 1, 0, 1, 0, -1.64905e-07, 5.36044, 0, 4.96724)
+
+[node name="Fence_01_row-05_56" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1.64905e-07, 0, -1, 0, 1, 0, 1, 0, -1.64905e-07, 1.08544, 0, 2.86724)
 
 [node name="Fence_01_row-05_49" parent="." instance=ExtResource("9_eb327")]
 transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 2.14067, 0, 6.01722)
 
 [node name="Fence_01_row-05_50" parent="." instance=ExtResource("9_eb327")]
 transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 4.31044, 0, 6.01724)
+
+[node name="Fence_01_row-05_57" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, -4.30933, 0, 1.81722)
+
+[node name="Fence_01_row-05_58" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, -2.13956, 0, 1.81724)
+
+[node name="Fence_01_row-05_71" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 2.14067, 0, 1.81722)
+
+[node name="Fence_01_row-05_72" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 4.31044, 0, 1.81724)
 
 [node name="Fence_01_row-05_51" parent="." instance=ExtResource("9_eb327")]
 transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 6.44918, 0, 6.01724)
@@ -183,7 +219,7 @@ transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 8.5906
 transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 10.7604, 0, -8.23276)
 
 [node name="windmill-water_01-01_01" parent="." instance=ExtResource("10_castt")]
-transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 8.4908, 0, 4.68566)
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 9.2408, 0, 3.93566)
 
 [node name="tool-shed_01-01_00" parent="." instance=ExtResource("11_nei54")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.75, 0, 2.5)
@@ -194,17 +230,8 @@ transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 9.75, 0,
 [node name="Corn_3_Row_00" parent="." instance=ExtResource("12_1xlh1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 0)
 
-[node name="corn-stalk_01_01_00" parent="." instance=ExtResource("13_gydbd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.75, 0, 7)
-
-[node name="corn-stalk_01_01_01" parent="." instance=ExtResource("13_gydbd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.25, 0, 7)
-
 [node name="corn-stalk_01_01_02" parent="." instance=ExtResource("13_gydbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 7)
-
-[node name="corn-stalk_01_01_03" parent="." instance=ExtResource("13_gydbd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.75, 0, 0.5)
 
 [node name="corn-stalk_01_01_04" parent="." instance=ExtResource("13_gydbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.25, 0, 0.5)
@@ -212,11 +239,218 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.25, 0, 0.5)
 [node name="corn-stalk_01_01_05" parent="." instance=ExtResource("13_gydbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 0.5)
 
-[node name="corn-stalk_01_01_06" parent="." instance=ExtResource("13_gydbd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.75, 0, -6.75)
-
 [node name="corn-stalk_01_01_07" parent="." instance=ExtResource("13_gydbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.25, 0, -6.75)
 
-[node name="corn-stalk_01_01_08" parent="." instance=ExtResource("13_gydbd")]
+[node name="corn-stalk_01_01_87" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.525, 0, 0.525)
+
+[node name="corn-stalk_01_01_89" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.525, 0, -6.725)
+
+[node name="Corn_3_Row_05" parent="." instance=ExtResource("12_1xlh1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.025, 0, 0)
+
+[node name="corn-stalk_01_01_75" parent="." instance=ExtResource("14_an0js")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.85, 0, 7)
+
+[node name="corn-stalk_01_01_79" parent="." instance=ExtResource("14_an0js")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.85, 0, 0.625)
+
+[node name="corn-stalk_01_01_09" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.75, 0, 7)
+
+[node name="corn-stalk_01_01_10" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.25, 0, 7)
+
+[node name="corn-stalk_01_01_12" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.75, 0, 0.5)
+
+[node name="corn-stalk_01_01_15" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.75, 0, -6.75)
+
+[node name="corn-stalk_01_01_17" parent="." instance=ExtResource("13_gydbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, -6.75)
+
+[node name="corn-stalk_01_01_90" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.525, 0, 7.025)
+
+[node name="corn-stalk_01_01_96" parent="." instance=ExtResource("14_an0js")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.15, 0, 7)
+
+[node name="corn-stalk_01_01_100" parent="." instance=ExtResource("14_an0js")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.15, 0, 0.625)
+
+[node name="corn-stalk_01_01_103" parent="." instance=ExtResource("14_an0js")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.85, 0, -6.65)
+
+[node name="corn-stalk_01_01_104" parent="." instance=ExtResource("14_an0js")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.15, 0, -6.65)
+
+[node name="Corn_3_Row_02" parent="." instance=ExtResource("12_1xlh1")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -25.6421, 0, 0.208835)
+
+[node name="corn-stalk_01_01_18" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -22.3921, 0, -6.79116)
+
+[node name="corn-stalk_01_01_20" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -25.6421, 0, -6.79116)
+
+[node name="corn-stalk_01_01_21" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -22.3921, 0, -0.291164)
+
+[node name="corn-stalk_01_01_22" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -28.8921, 0, -0.291165)
+
+[node name="corn-stalk_01_01_23" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -25.6421, 0, -0.291165)
+
+[node name="corn-stalk_01_01_26" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -25.6421, 0, 6.95884)
+
+[node name="Corn_3_Row_07" parent="." instance=ExtResource("12_1xlh1")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -35.5921, 0, 0.208834)
+
+[node name="Corn_3_Row_08" parent="." instance=ExtResource("12_1xlh1")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -15.6421, 0, 0.208834)
+
+[node name="Decal_rowBottom" parent="Corn_3_Row_08" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.575, 0, -0.8)
+size = Vector3(8.25, 2, 22.1)
+
+[node name="corn-stalk_01_01_114" parent="." instance=ExtResource("14_an0js")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -35.4171, 0, -0.416166)
+
+[node name="corn-stalk_01_01_118" parent="." instance=ExtResource("14_an0js")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -35.4171, 0, 6.93384)
+
+[node name="corn-stalk_01_01_119" parent="." instance=ExtResource("14_an0js")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -38.7171, 0, 6.93384)
+
+[node name="corn-stalk_01_01_28" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -28.8921, 0, -6.79116)
+
+[node name="corn-stalk_01_01_33" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -22.3921, 0, 6.95884)
+
+[node name="corn-stalk_01_01_19" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -15.6421, 0, -6.79116)
+
+[node name="corn-stalk_01_01_24" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -18.8921, 0, -6.79116)
+
+[node name="corn-stalk_01_01_25" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -15.6421, 0, -0.291164)
+
+[node name="corn-stalk_01_01_27" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -18.8921, 0, -0.291165)
+
+[node name="corn-stalk_01_01_29" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -18.8921, 0, 6.95884)
+
+[node name="corn-stalk_01_01_35" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -15.6421, 0, 6.95884)
+
+[node name="Corn_3_Row_09" parent="." instance=ExtResource("12_1xlh1")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.0079, 0, 0.208834)
+
+[node name="Decal_rowBottom" parent="Corn_3_Row_09" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.575, 0, -0.8)
+size = Vector3(8.25, 2, 22.1)
+
+[node name="corn-stalk_01_01_30" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.0079, 0, -6.79116)
+
+[node name="corn-stalk_01_01_31" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 15.7579, 0, -6.79116)
+
+[node name="corn-stalk_01_01_32" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.0079, 0, -0.291164)
+
+[node name="corn-stalk_01_01_36" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 15.7579, 0, -0.291165)
+
+[node name="corn-stalk_01_01_37" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 15.7579, 0, 6.95884)
+
+[node name="corn-stalk_01_01_38" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.0079, 0, 6.95884)
+
+[node name="corn-stalk_01_01_34" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -28.8921, 0, 6.95884)
+
+[node name="corn-stalk_01_01_120" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -32.0921, 0, -6.74117)
+
+[node name="corn-stalk_01_01_122" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -32.0921, 0, -0.316165)
+
+[node name="corn-stalk_01_01_124" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -32.0921, 0, 7.00884)
+
+[node name="corn-stalk_01_01_125" parent="." instance=ExtResource("14_an0js")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -35.4171, 0, -6.71617)
+
+[node name="corn-stalk_01_01_126" parent="." instance=ExtResource("14_an0js")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -38.7171, 0, -6.71617)
+
+[node name="corn-stalk_01_01_130" parent="." instance=ExtResource("14_an0js")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -38.7171, 0, -0.416166)
+
+[node name="truckPickup_01_00" parent="." instance=ExtResource("15_qwrwo")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.75, 0, 6.475)
+
+[node name="Truck-Body" parent="truckPickup_01_00" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_vlxc8")
+
+[node name="truckPickup_01_01" parent="." instance=ExtResource("15_qwrwo")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 12.3, 0, -0.275)
+
+[node name="hay-bale_round_01-01_00" parent="." instance=ExtResource("16_rmsem")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -1.5, 0, 2.5)
+
+[node name="hay-bale_round_01-01_04" parent="." instance=ExtResource("16_rmsem")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 1.725, 0, 2.5)
+
+[node name="hay-bale_round_01-01_05" parent="." instance=ExtResource("16_rmsem")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 2.475, 0, 2.5)
+
+[node name="hay-bale_round_01-01_06" parent="." instance=ExtResource("16_rmsem")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 1.65, 0, 5.5)
+
+[node name="hay-bale_round_01-01_07" parent="." instance=ExtResource("16_rmsem")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 2.475, 0, 5.5)
+
+[node name="hay-bale_round_01-01_08" parent="." instance=ExtResource("16_rmsem")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 3.375, 0, 5.5)
+
+[node name="hay-bale_round_01-01_01" parent="." instance=ExtResource("16_rmsem")]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, -1.5, 0, 3.475)
+
+[node name="hay-bale_round_01-01_02" parent="." instance=ExtResource("16_rmsem")]
+transform = Transform3D(0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, -1.5, 0, 4.45)
+
+[node name="hay-bale_round_01-01_10" parent="." instance=ExtResource("16_rmsem")]
+transform = Transform3D(-0.0871558, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871558, -1.5, 0, -7.55)
+
+[node name="hay-bale_round_01-01_14" parent="." instance=ExtResource("16_rmsem")]
+transform = Transform3D(-0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, -0.766044, -2.175, 0, -6.8)
+
+[node name="hay-bale_round_01-01_11" parent="." instance=ExtResource("16_rmsem")]
+transform = Transform3D(0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, 0, 0, -7.55)
+
+[node name="hay-bale_round_01-01_12" parent="." instance=ExtResource("16_rmsem")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 0.75, 0, -7.55)
+
+[node name="hay-bale_round_01-01_13" parent="." instance=ExtResource("16_rmsem")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 2.475, 0, -7.55)
+
+[node name="hay-bale_round_01-01_03" parent="." instance=ExtResource("16_rmsem")]
+transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, -1.425, 0, 5.275)
+
+[node name="hay-bale_round_01-01_09" parent="." instance=ExtResource("16_rmsem")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -2.175, 0, 5.575)
+
+[editable path="Corn_3_Row_08"]
+[editable path="Corn_3_Row_09"]
+[editable path="truckPickup_01_00"]

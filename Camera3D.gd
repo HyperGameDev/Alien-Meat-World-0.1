@@ -15,11 +15,11 @@ const CAM_Z_OFFSET = 13
 var is_grabbed = false
 var grabbed_object = null
 var grab_offset: Vector3 = Vector3(0, 0, 0)
-var grab_ray_pos: Vector3 = Vector3(0, 0, 0)
+var attack_ray_pos: Vector3 = Vector3(0, 0, 0)
 var is_attempting_grab = false
 
 # Raycast 1: Grab var
-var grab_target = null
+var attack_target = null
 
 # Raycast 2: Hover-Player var
 var hover_target = null
@@ -59,43 +59,34 @@ func on_grab_ended():
 
 func _process(_delta):
 	if Input.is_action_pressed("Grab"):
-		var raycast_result = raycast_get_meat()
-		if "collider" in raycast_result:
-			var meat_original = raycast_result["collider"]
-			if meat_original.has_method("spawn_me") and !is_attempting_grab and !is_in_group("Grabbed"):
-			
-			#disappears the object
-				meat_original.spawn = false
-			
-				var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
-				get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
-				meat_new.spawn = true
-				meat_new.add_to_group("Grabbed")
-				is_attempting_grab = true
+		var raycast_result = attack_ray()
+		if !raycast_result == null:
+			if raycast_result.is_in_group("Meat"):
+				var meat_original = raycast_result
+				if meat_original.has_method("spawn_me") and !is_attempting_grab and !is_in_group("Grabbed"):
+				
+				#disappears the object
+					meat_original.spawn = false
+				
+					var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
+					get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
+					meat_new.spawn = true
+					meat_new.add_to_group("Grabbed")
+					is_attempting_grab = true
 
 	# Raycast 1: Grab implementation
-	grab_ray()
-#	print(grab_target)
+	attack_ray()
+#	print(attack_target)
 	
 	# Raycast 2: Player Hover implementation
-	hover_ray()
+	player_hover_ray()
 	
 	# Raycast 3: Cursor Position implementation
 	cursor_ray()
+	
+	
 
-
-func raycast_get_meat():
-	var mouse_pos = get_viewport().get_mouse_position()
-	var ray_length = 3000
-	var from = project_ray_origin(mouse_pos)
-	var to = from + project_ray_normal(mouse_pos) * ray_length
-	var ray_query = PhysicsRayQueryParameters3D.new()
-	ray_query.from = from
-	ray_query.to = to
-	var space = get_world_3d().direct_space_state
-	return space.intersect_ray(ray_query)
-
-func shoot_ray(mask):
+func hover_ray(mask): ## Raycast that receives a target via argument
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 3000
 	var from = project_ray_origin(mouse_pos)
@@ -117,20 +108,21 @@ func shoot_ray(mask):
 	return space.intersect_ray(ray_query)
 
 
-# Raycast 1: Grab hovering
-func grab_ray():
-	var raycast_result = shoot_ray(2 + 4 + 8)
-	if !raycast_result.is_empty():
-		grab_ray_pos = raycast_result.position
-		grab_target = raycast_result.collider
-		Messenger.grab_target.emit(grab_target)
-#		print("Raycast sees: ", grab_target)
-#		print("Pos: ", grab_target.position)
-#		return raycast_result.collider
 
-# Raycast 2: Player Hovering
-func hover_ray():
-	var raycast_result = shoot_ray(32768)
+func attack_ray(): ## Detects obstacles, NPC's and Meat/Health; emits attack_target to hitpoints, and returns attack_target to Meat/Health within this script
+	var raycast_result = hover_ray(2 + 4 + 8)
+	if !raycast_result.is_empty():
+		attack_ray_pos = raycast_result.position
+		attack_target = raycast_result.collider
+		Messenger.attack_target.emit(attack_target)
+#		print("Raycast sees: ", attack_target)
+#		print("Pos: ", attack_target.position)
+#		return raycast_result.collider
+		return attack_target
+
+
+func player_hover_ray(): ## Player Hover detection
+	var raycast_result = hover_ray(32768)
 #	print(raycast_result)
 	if !raycast_result.is_empty():
 		hover_target = raycast_result.collider
@@ -141,8 +133,8 @@ func hover_ray():
 #		return raycast_result.collider
 
 
-func cursor_ray():
-	var raycast_result = shoot_ray(16)
+func cursor_ray(): ## This should be what the player head follows
+	var raycast_result = hover_ray(16)
 	if !raycast_result.is_empty():
 		Messenger.mouse_pos_3d.emit(raycast_result.position)
 #	print(raycast_result)

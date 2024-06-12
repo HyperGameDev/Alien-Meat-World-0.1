@@ -108,12 +108,12 @@ shape = SubResource("CylinderShape3D_f3pqr")
 
 [node name="HitPoints" parent="Obstacle" index="1" instance=ExtResource("3_4p0kq")]
 
-[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="1"]
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="0"]
 libraries = {
 "": SubResource("AnimationLibrary_25tvv")
 }
 
-[node name="Particles_Hay" type="GPUParticles3D" parent="Obstacle/HitPoints" index="2"]
+[node name="Particles_Hay" type="GPUParticles3D" parent="Obstacle/HitPoints" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.675, 0)
 emitting = false
 amount = 150

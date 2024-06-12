@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbxpau83xwv2m"]
+
+[ext_resource type="PackedScene" uid="uid://5lfomjbevmh" path="res://Objects/Foliage/Crops/corn-stalk_01_01_00.blend" id="1_6g4o8"]
+[ext_resource type="Material" uid="uid://dgfqqtkrxhwxk" path="res://Objects/Foliage/Crops/corn_stalk_color_01.tres" id="5_quuyc"]
+
+[node name="corn-stalk_01_01_00" instance=ExtResource("1_6g4o8")]
+
+[node name="Corn" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00762749, -2.38419e-07, -0.023829)
+lod_bias = 0.001
+surface_material_override/0 = ExtResource("5_quuyc")
+
+[node name="Corn_Destroyed" parent="." index="1"]
+visible = false
+surface_material_override/0 = ExtResource("5_quuyc")
