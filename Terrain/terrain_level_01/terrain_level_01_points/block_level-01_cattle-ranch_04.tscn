@@ -1,0 +1,222 @@
+[gd_scene load_steps=18 format=3 uid="uid://d2haud7vjnc2o"]
+
+[ext_resource type="PlaneMesh" uid="uid://bnal7rn3xabyx" path="res://Terrain/terrain_blocks_default-2.tres" id="1_eujgq"]
+[ext_resource type="Shader" path="res://Collaborator Experiments/Pierogigon/Terrain/terrain_level_shader_pierogi.gdshader" id="2_qnxin"]
+[ext_resource type="Texture2D" uid="uid://fookdwy6s8g0" path="res://Terrain/terrain_level_01_textures/ranch_gradient_04.tres" id="3_0apwu"]
+[ext_resource type="Script" path="res://Terrain/Block.gd" id="3_b0st4"]
+[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="4_l3k1k"]
+[ext_resource type="Texture2D" uid="uid://cxjngp8wmbgah" path="res://Terrain/terrain_level_01_textures/block_level-01_cattle-ranch_04.png" id="4_pturb"]
+[ext_resource type="Texture2D" uid="uid://crjgw5oqy85yr" path="res://Terrain/terrain_level_01_textures/block_level-01_noise_01.tres" id="5_5r1ne"]
+[ext_resource type="PackedScene" uid="uid://dxjkdmi6v6583" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow-Barn_02_00.tscn" id="8_hkjf7"]
+[ext_resource type="PackedScene" uid="uid://b1jpfiy4cphy7" path="res://Objects/Fences/fence_01_row-05_00.tscn" id="9_eb327"]
+[ext_resource type="PackedScene" uid="uid://bkwsnbugupr16" path="res://Objects/Misc/windmill-water_01_01_00.tscn" id="10_castt"]
+[ext_resource type="PackedScene" uid="uid://cbdts1xv5dfj" path="res://Objects/Buildings/Barns/Tool_Shed_01/tool_shed_01_01_00.tscn" id="11_nei54"]
+[ext_resource type="PackedScene" uid="uid://bqvuhngd0g34n" path="res://Objects/Foliage/Crops/corn_3_row_00.tscn" id="12_1xlh1"]
+[ext_resource type="PackedScene" uid="uid://b1m0n5vlkdvio" path="res://Objects/Foliage/Crops/corn_stalk_01-01_00.tscn" id="13_gydbd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3t8as"]
+render_priority = 0
+shader = ExtResource("2_qnxin")
+shader_parameter/albedo_a = Color(0.392157, 0.235294, 0.184314, 1)
+shader_parameter/albedo_b = Color(0.0156863, 0.235294, 0.101961, 1)
+shader_parameter/noise_size = 2.2
+shader_parameter/noise_strength = 1.0
+shader_parameter/dirtiness = 0.933
+shader_parameter/blue_value_ratio = 1.066
+shader_parameter/mask_texture = ExtResource("4_pturb")
+shader_parameter/noise_texture = ExtResource("5_5r1ne")
+shader_parameter/gradient_texture_1 = ExtResource("3_0apwu")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gjw30"]
+data = PackedVector3Array(50, 0, 10, -50, 0, 10, 50, 0, -10, -50, 0, 10, -50, 0, -10, 50, 0, -10)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qwi2u"]
+points = PackedVector3Array(-5.99455, -71.0009, -8.31296, -6.39667, -70.7782, -8.31296, -5.80767, 7.41876, -8.32274, -3.38274, 7.41876, -8.30318, -3.34691, 7.46485, 11.6602, -5.99455, -71.0009, 91.582, -6.39667, -2.12064, -8.31296, -6.39667, -70.7782, 91.582, -6.29546, 7.45717, 11.6406, -3.34691, 7.46485, 91.6015, -6.39667, -2.12064, 91.582, -6.29546, 7.45717, 91.5722)
+
+[sub_resource type="BoxMesh" id="BoxMesh_evi1g"]
+size = Vector3(3.725, 11.06, 19.375)
+
+[node name="Terrain_0" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+layers = 2
+mesh = ExtResource("1_eujgq")
+surface_material_override/0 = SubResource("ShaderMaterial_3t8as")
+script = ExtResource("3_b0st4")
+metadata/_edit_lock_ = true
+
+[node name="Ground" type="StaticBody3D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("ConcavePolygonShape3D_gjw30")
+
+[node name="Col_Cliff-Front" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 41.6496, -7.7, 13.3291)
+shape = SubResource("ConvexPolygonShape3D_qwi2u")
+
+[node name="cliff_front_01" parent="." instance=ExtResource("4_l3k1k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658, -7.495, 21.33)
+visible = false
+
+[node name="Marker_boundaryRight" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7, 0, 0)
+mesh = SubResource("BoxMesh_evi1g")
+
+[node name="Marker_boundaryLeft" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.7, 0, 0)
+mesh = SubResource("BoxMesh_evi1g")
+
+[node name="Cow_Barn_02" parent="." instance=ExtResource("8_hkjf7")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 6, 0, -5)
+
+[node name="Cow_Barn_04" parent="." instance=ExtResource("8_hkjf7")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -6, 0, -5)
+
+[node name="Fence_01_row-05_59" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(2.52328e-07, 0, 1, 0, 1, 0, -1, 0, 2.52328e-07, -11.8499, 0, 0.652576)
+
+[node name="Fence_01_row-05_60" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(2.52328e-07, 0, 1, 0, 1, 0, -1, 0, 2.52328e-07, -11.8499, 0, 2.79131)
+
+[node name="Fence_01_row-05_61" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(2.52328e-07, 0, 1, 0, 1, 0, -1, 0, 2.52328e-07, -11.8499, 0, 4.93281)
+
+[node name="Fence_01_row-05_62" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(2.52328e-07, 0, 1, 0, 1, 0, -1, 0, 2.52328e-07, -11.8499, 0, -5.79742)
+
+[node name="Fence_01_row-05_92" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(2.52328e-07, 0, 1, 0, 1, 0, -1, 0, 2.52328e-07, -11.8499, 0, -7.07242)
+
+[node name="Fence_01_row-05_63" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(2.52328e-07, 0, 1, 0, 1, 0, -1, 0, 2.52328e-07, -11.8499, 0, -3.65869)
+
+[node name="Fence_01_row-05_64" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(2.52328e-07, 0, 1, 0, 1, 0, -1, 0, 2.52328e-07, -11.8499, 0, -1.51719)
+
+[node name="Fence_01_row-05_65" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(2.52328e-07, 0, 1, 0, 1, 0, -1, 0, 2.52328e-07, 11.8501, 0, 0.652576)
+
+[node name="Fence_01_row-05_66" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(2.52328e-07, 0, 1, 0, 1, 0, -1, 0, 2.52328e-07, 11.8501, 0, 2.79131)
+
+[node name="Fence_01_row-05_67" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(2.52328e-07, 0, 1, 0, 1, 0, -1, 0, 2.52328e-07, 11.8501, 0, 4.93281)
+
+[node name="Fence_01_row-05_68" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(2.52328e-07, 0, 1, 0, 1, 0, -1, 0, 2.52328e-07, 11.8501, 0, -5.79742)
+
+[node name="Fence_01_row-05_93" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(2.52328e-07, 0, 1, 0, 1, 0, -1, 0, 2.52328e-07, 11.8501, 0, -7.07242)
+
+[node name="Fence_01_row-05_69" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(2.52328e-07, 0, 1, 0, 1, 0, -1, 0, 2.52328e-07, 11.8501, 0, -3.65869)
+
+[node name="Fence_01_row-05_70" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(2.52328e-07, 0, 1, 0, 1, 0, -1, 0, 2.52328e-07, 11.8501, 0, -1.51719)
+
+[node name="Fence_01_row-05_43" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, -10.7593, 0, 6.01722)
+
+[node name="Fence_01_row-05_44" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, -8.58956, 0, 6.01724)
+
+[node name="Fence_01_row-05_45" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, -6.45082, 0, 6.01724)
+
+[node name="Fence_01_row-05_46" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, -4.30933, 0, 6.01722)
+
+[node name="Fence_01_row-05_47" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, -2.13956, 0, 6.01724)
+
+[node name="Fence_01_row-05_48" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, -0.000820637, 0, 6.01724)
+
+[node name="Fence_01_row-05_49" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 2.14067, 0, 6.01722)
+
+[node name="Fence_01_row-05_50" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 4.31044, 0, 6.01724)
+
+[node name="Fence_01_row-05_51" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 6.44918, 0, 6.01724)
+
+[node name="Fence_01_row-05_52" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 8.59067, 0, 6.01722)
+
+[node name="Fence_01_row-05_53" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 10.7604, 0, 6.01724)
+
+[node name="Fence_01_row-05_76" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, -10.7593, 0, -8.23278)
+
+[node name="Fence_01_row-05_77" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, -8.58956, 0, -8.23276)
+
+[node name="Fence_01_row-05_78" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, -6.45082, 0, -8.23276)
+
+[node name="Fence_01_row-05_79" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, -4.30933, 0, -8.23278)
+
+[node name="Fence_01_row-05_80" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, -2.13956, 0, -8.23276)
+
+[node name="Fence_01_row-05_81" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, -0.000820637, 0, -8.23276)
+
+[node name="Fence_01_row-05_82" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 2.14067, 0, -8.23278)
+
+[node name="Fence_01_row-05_83" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 4.31044, 0, -8.23276)
+
+[node name="Fence_01_row-05_84" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 6.44918, 0, -8.23276)
+
+[node name="Fence_01_row-05_85" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 8.59067, 0, -8.23278)
+
+[node name="Fence_01_row-05_86" parent="." instance=ExtResource("9_eb327")]
+transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 10.7604, 0, -8.23276)
+
+[node name="windmill-water_01-01_01" parent="." instance=ExtResource("10_castt")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 8.4908, 0, 4.68566)
+
+[node name="tool-shed_01-01_00" parent="." instance=ExtResource("11_nei54")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.75, 0, 2.5)
+
+[node name="tool-shed_01-01_01" parent="." instance=ExtResource("11_nei54")]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 9.75, 0, -2)
+
+[node name="Corn_3_Row_00" parent="." instance=ExtResource("12_1xlh1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 0)
+
+[node name="corn-stalk_01_01_00" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.75, 0, 7)
+
+[node name="corn-stalk_01_01_01" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.25, 0, 7)
+
+[node name="corn-stalk_01_01_02" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 7)
+
+[node name="corn-stalk_01_01_03" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.75, 0, 0.5)
+
+[node name="corn-stalk_01_01_04" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.25, 0, 0.5)
+
+[node name="corn-stalk_01_01_05" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 0.5)
+
+[node name="corn-stalk_01_01_06" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.75, 0, -6.75)
+
+[node name="corn-stalk_01_01_07" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.25, 0, -6.75)
+
+[node name="corn-stalk_01_01_08" parent="." instance=ExtResource("13_gydbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, -6.75)

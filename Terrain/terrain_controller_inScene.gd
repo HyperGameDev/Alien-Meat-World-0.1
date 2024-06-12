@@ -142,7 +142,7 @@ func chunks_update():
 
 func chunk_chosen_to_add():
 	if chunks_list_current.size() == 0:
-		chunks_list_current = [chunks_list_various_01].pick_random().duplicate()
+		chunks_list_current = [chunks_list_various_01,chunks_list_various_02].pick_random().duplicate()
 	
 	chunk_to_add = chunks_list_current.pop_front()
 	#print("Popped chunk: ", chunk_to_add)

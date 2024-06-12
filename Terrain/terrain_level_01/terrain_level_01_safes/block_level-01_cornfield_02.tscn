@@ -283,7 +283,31 @@ cull_mask = 2
 [node name="Corn_3_Row_04" parent="." index="88" instance=ExtResource("3_bkhhh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 0)
 
-[node name="Decal_rowBetween_05" type="Decal" parent="." index="89"]
+[node name="corn-stalk_01_01_85" parent="." index="89" instance=ExtResource("2_7bynx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5, 0, 8)
+
+[node name="corn-stalk_01_01_86" parent="." index="90" instance=ExtResource("2_7bynx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5, 0, 4)
+
+[node name="corn-stalk_01_01_87" parent="." index="91" instance=ExtResource("2_7bynx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5, 0, 0)
+
+[node name="corn-stalk_01_01_88" parent="." index="92" instance=ExtResource("2_7bynx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5, 0, -4)
+
+[node name="corn-stalk_01_01_89" parent="." index="93" instance=ExtResource("2_7bynx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5, 0, -8)
+
+[node name="Decal_rowBetween_06" type="Decal" parent="." index="94"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5, 0, 0.162941)
+size = Vector3(1.2, 2, 19)
+texture_albedo = SubResource("GradientTexture2D_te64b")
+cull_mask = 2
+
+[node name="Corn_3_Row_05" parent="." index="95" instance=ExtResource("3_bkhhh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 0)
+
+[node name="Decal_rowBetween_05" type="Decal" parent="." index="96"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, 0, 0.162941)
 size = Vector3(1.2, 2, 19)
 texture_albedo = SubResource("GradientTexture2D_te64b")

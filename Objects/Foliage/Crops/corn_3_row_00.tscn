@@ -1,6 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqvuhngd0g34n"]
-
-[ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="1_ieyc0"]
+[gd_scene load_steps=6 format=3 uid="uid://bqvuhngd0g34n"]
 
 [sub_resource type="Gradient" id="Gradient_oqged"]
 offsets = PackedFloat32Array(0.812261, 0.992337)
@@ -24,7 +22,6 @@ color_ramp = SubResource("Gradient_3t5qw")
 noise = SubResource("FastNoiseLite_t6unm")
 
 [node name="Corn_3_Row_00" type="Node3D"]
-script = ExtResource("1_ieyc0")
 
 [node name="Decal_rowBottom" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8)

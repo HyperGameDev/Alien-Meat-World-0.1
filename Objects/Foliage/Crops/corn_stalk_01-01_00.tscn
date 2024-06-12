@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://b1m0n5vlkdvio"]
 
-[ext_resource type="PackedScene" uid="uid://5lfomjbevmh" path="res://Objects/Foliage/Crops/corn-stalk_01_01_00.blend" id="1_klnrh"]
-[ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_ale81"]
-[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="3_usqfn"]
-[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="4_imp72"]
-[ext_resource type="Material" uid="uid://dgfqqtkrxhwxk" path="res://Objects/Foliage/Crops/corn_stalk_color_01.tres" id="5_5qywa"]
+[ext_resource type="PackedScene" uid="uid://5lfomjbevmh" path="res://Objects/Foliage/Crops/corn-stalk_01_01_00.blend" id="1_6g4o8"]
+[ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_5mkyf"]
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="3_w6ou6"]
+[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="4_p0x0b"]
+[ext_resource type="Material" uid="uid://dgfqqtkrxhwxk" path="res://Objects/Foliage/Crops/corn_stalk_color_01.tres" id="5_quuyc"]
 
 [sub_resource type="Animation" id="Animation_eybv3"]
 length = 0.001
@@ -110,24 +110,24 @@ sub_emitter_frequency = 4.0
 sub_emitter_keep_velocity = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_6uh4g"]
-material = ExtResource("5_5qywa")
+material = ExtResource("5_quuyc")
 size = Vector3(1.6, 0.1, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8g60g"]
 size = Vector3(3.205, 1, 3.095)
 
-[node name="corn-stalk_01_01_00" instance=ExtResource("1_klnrh")]
-script = ExtResource("2_ale81")
+[node name="corn-stalk_01_01_00" instance=ExtResource("1_6g4o8")]
+script = ExtResource("2_5mkyf")
 
 [node name="Obstacle" type="Area3D" parent="." index="0"]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("3_usqfn")
+script = ExtResource("3_w6ou6")
 has_arrow = false
 health_max = 1
 damage_amount = 2
 
-[node name="HitPoints" parent="Obstacle" index="0" instance=ExtResource("4_imp72")]
+[node name="HitPoints" parent="Obstacle" index="0" instance=ExtResource("4_p0x0b")]
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="0"]
 libraries = {
@@ -151,8 +151,8 @@ shape = SubResource("BoxShape3D_8g60g")
 [node name="Corn" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00762749, -2.38419e-07, -0.023829)
 lod_bias = 0.001
-surface_material_override/0 = ExtResource("5_5qywa")
+surface_material_override/0 = ExtResource("5_quuyc")
 
 [node name="Corn_Destroyed" parent="." index="2"]
 visible = false
-surface_material_override/0 = ExtResource("5_5qywa")
+surface_material_override/0 = ExtResource("5_quuyc")

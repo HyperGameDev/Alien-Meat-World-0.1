@@ -22,6 +22,8 @@ Globals="*res://Scripts/Globals.gd"
 
 [display]
 
+window/size/viewport_width=1109
+window/size/viewport_height=624
 window/size/always_on_top=true
 
 [input]
