@@ -37,13 +37,8 @@ func on_update_hitpoints():
 	
 	
 func am_i_hit(attack_target):
-	#	target = attack_target
-#	if attack_target == $"..":
-#		print("Copter Seen (", $"..".name, ")")
-	#Messenger.something_attackable_hovered.emit()
-	if attack_target == $".." and Input.is_action_just_pressed("Grab"):
+	if attack_target == $".." and Input.is_action_just_pressed("Grab"):	
 		was_hit = true
-#		print("Copter Hit (", $"..".name, ")")
 		Messenger.something_attacked.emit($"..")
 
 func on_something_hit(what_got_hit,is_delayed):

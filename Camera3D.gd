@@ -58,8 +58,8 @@ func on_grab_ended():
 	is_attempting_grab = false
 
 func _process(_delta):
-	if Input.is_action_pressed("Grab"):
-		var raycast_result = attack_ray()
+	var raycast_result = attack_ray() ## Shoots the ray
+	if Input.is_action_pressed("Grab"): 
 		if !raycast_result == null:
 			if raycast_result.is_in_group("Meat"):
 				var meat_original = raycast_result
@@ -74,10 +74,6 @@ func _process(_delta):
 					meat_new.add_to_group("Grabbed")
 					is_attempting_grab = true
 
-	# Raycast 1: Grab implementation
-	attack_ray()
-#	print(attack_target)
-	
 	# Raycast 2: Player Hover implementation
 	player_hover_ray()
 	
