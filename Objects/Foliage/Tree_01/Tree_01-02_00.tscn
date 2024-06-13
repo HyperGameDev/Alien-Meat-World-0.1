@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cm61hhhqrodvc"]
+[gd_scene load_steps=13 format=3 uid="uid://cm61hhhqrodvc"]
 
 [ext_resource type="PackedScene" uid="uid://dv6nalp3qfi6w" path="res://Objects/Foliage/Tree_01/tree_01-03.blend" id="1_b0872"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_adq36"]
 [ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_rcann"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_u8ygc"]
-[ext_resource type="PackedScene" uid="uid://cqadyumhku6nu" path="res://UI/dmg_label.tscn" id="5_8troo"]
 [ext_resource type="Material" uid="uid://dtxlat6xfywmr" path="res://Objects/Foliage/Tree_01/Tree_01_color_trunk.tres" id="6_rt5pp"]
 [ext_resource type="Material" uid="uid://bv4yp38n2ds7c" path="res://Objects/Foliage/Tree_01/Tree_01_color_leaves.tres" id="7_kdtm5"]
 
@@ -124,15 +123,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0787137, 1.81229, 0.0333735
 shape = SubResource("BoxShape3D_euwf5")
 
 [node name="HitPoints" parent="Obstacle" index="3" instance=ExtResource("3_u8ygc")]
-hitpoints_debug = true
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="0"]
 libraries = {
 "": SubResource("AnimationLibrary_wvsb3")
 }
-
-[node name="Dmg_Label" parent="Obstacle/HitPoints" index="1" instance=ExtResource("5_8troo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91399, 0)
 
 [node name="Trunk" parent="." index="1"]
 surface_material_override/0 = ExtResource("6_rt5pp")

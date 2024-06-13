@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5g8y5bkmlflf"]
+[gd_scene load_steps=11 format=3 uid="uid://c5g8y5bkmlflf"]
 
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_0d8fm"]
 [ext_resource type="PackedScene" uid="uid://b5ik6pkh82jy6" path="res://Objects/Foliage/Tree_02/tree_02.blend" id="1_3wleb"]
 [ext_resource type="Material" uid="uid://cr0b5smwaweaq" path="res://Objects/Foliage/Tree_02/Tree_02_color_01_leaves.tres" id="2_775i0"]
 [ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_lkjov"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_0abis"]
-[ext_resource type="PackedScene" uid="uid://cqadyumhku6nu" path="res://UI/dmg_label.tscn" id="6_clupe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sso46"]
 size = Vector3(0.453369, 0.980042, 0.283044)
@@ -142,13 +141,10 @@ shape = SubResource("BoxShape3D_pjrvm")
 
 [node name="HitPoints" parent="Obstacle" index="2" instance=ExtResource("3_0abis")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.37828, 0)
-hitpoints_debug = true
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="0"]
 libraries = {
 "": SubResource("AnimationLibrary_dfldu")
 }
-
-[node name="Dmg_Label" parent="Obstacle/HitPoints" index="1" instance=ExtResource("6_clupe")]
 
 [editable path="Obstacle/HitPoints"]
