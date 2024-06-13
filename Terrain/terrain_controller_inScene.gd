@@ -17,6 +17,11 @@ const TERRAIN_VELOCITY: float = 11.0
 ## The number of chunks to keep rendered to the viewport
 @export var num_terrain_chunks = 9
 
+## Number of starting chunks
+@export var starting_chunks_max = 7
+var starting_chunks_current = 0
+var starting_chunks_over = false
+
 ## Paths to directories holding the terrain chunks scenes
 var chunks_path_safes : StringName
 var chunks_path_obstacles : StringName
@@ -33,7 +38,13 @@ var chunks_list_current = []
 var chunk_wait = false
 
 ## Level Chunks Playlists
-@onready var chunks_list_various_01 = [
+var chunks_list_01 = []
+var chunks_list_02 = []
+var chunks_list_03 = []
+var chunks_list_04 = []
+var chunks_list_05 = []
+
+@onready var chunks_list_01_level01 = [
 	collector_safes,
 	collector_safes,
 	collector_points,
@@ -56,7 +67,7 @@ var chunk_wait = false
 	collector_safes,
 	collector_safes
 	]
-@onready var chunks_list_various_02 = [
+@onready var chunks_list_02_level01 = [
 	collector_safes,
 	collector_safes,
 	collector_points,
@@ -98,6 +109,14 @@ func _ready() -> void:
 	chunks_path_safes = Globals.current_safe_chunks
 	chunks_path_obstacles = Globals.current_obstacle_chunks
 	chunks_path_points = Globals.current_points_chunks
+	
+	# Establishes all starting "lists" as safe chunks
+	chunks_list_01 = chunks_list_safes
+	chunks_list_02 = chunks_list_safes
+	chunks_list_03 = chunks_list_safes
+	chunks_list_04 = chunks_list_safes
+	chunks_list_05 = chunks_list_safes
+
 	_load_terrain_scenes(chunks_path_safes,chunks_path_obstacles,chunks_path_points)
 	_init_chunks(num_terrain_chunks)
 	
@@ -139,10 +158,16 @@ func chunks_update():
 		var chunk =  LevelChunk.instantiate()
 		collector_points.add_child(chunk)
 
+func chunks_for_level():
+	# Updating lists-of-chunks-to-choose with level-relevant cunks, when starting ones are over.
+	if starting_chunks_over:
+		if Globals.current_level <= 1:
+			chunks_list_01 = chunks_list_01_level01
+			chunks_list_02 = chunks_list_02_level01
 
-func chunk_chosen_to_add():
+func chunk_chosen_to_add():			
 	if chunks_list_current.size() == 0:
-		chunks_list_current = [chunks_list_various_01,chunks_list_various_02].pick_random().duplicate()
+		chunks_list_current = [chunks_list_01,chunks_list_02].pick_random().duplicate()
 	
 	chunk_to_add = chunks_list_current.pop_front()
 	#print("Popped chunk: ", chunk_to_add)
@@ -162,7 +187,15 @@ func _progress_terrain(delta: float) -> void:
 		# Assign the first chunk to this var, and remove the chunk
 		var first_terrain = get_children().pop_front()
 
-		if first_terrain.is_type == 0:
+		if first_terrain.is_type == Block.is_types.SAFE:
+			# If starting chunks are not done, increase chunk count
+			if !starting_chunks_over and !starting_chunks_current == starting_chunks_max:
+				starting_chunks_current += 1
+			# If starting chunks are done, stop counting and update the level 
+			else:
+				starting_chunks_over = true
+				chunks_for_level()
+				
 			#print("Returned a SAFE chunk")
 			# Reparent the removed chunk to the collector(s)
 			first_terrain.reparent(collector_safes)
@@ -173,14 +206,14 @@ func _progress_terrain(delta: float) -> void:
 			# Run the reset function to check if objects need resetting.
 				first_terrain.reset_block_objects()
 			
-		if first_terrain.is_type == 1:
+		if first_terrain.is_type == Block.is_types.OBSTACLE:
 			#print("Returned an OBSTACLE chunk")
 			first_terrain.reparent(collector_obstacles)
 			first_terrain.position.z = 0.0
 			if first_terrain.has_method("reset_block_objects"):
 				first_terrain.reset_block_objects()
 				
-		if first_terrain.is_type == 2:
+		if first_terrain.is_type == Block.is_types.POINTS:
 			#print("Returned a POINTS chunk")
 			first_terrain.reparent(collector_points)
 			first_terrain.position.z = 0.0
