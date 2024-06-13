@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d2haud7vjnc2o"]
+[gd_scene load_steps=25 format=3 uid="uid://d2haud7vjnc2o"]
 
 [ext_resource type="PlaneMesh" uid="uid://bnal7rn3xabyx" path="res://Terrain/terrain_blocks_default-2.tres" id="1_eujgq"]
 [ext_resource type="Shader" path="res://Collaborator Experiments/Pierogigon/Terrain/terrain_level_shader_pierogi.gdshader" id="2_qnxin"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://Terrain/Block.gd" id="3_b0st4"]
 [ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="4_l3k1k"]
 [ext_resource type="Texture2D" uid="uid://cxjngp8wmbgah" path="res://Terrain/terrain_level_01_textures/block_level-01_cattle-ranch_04.png" id="4_pturb"]
-[ext_resource type="Texture2D" uid="uid://crjgw5oqy85yr" path="res://Terrain/terrain_level_01_textures/block_level-01_noise_01.tres" id="5_5r1ne"]
 [ext_resource type="PackedScene" uid="uid://dxjkdmi6v6583" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow-Barn_02_00.tscn" id="8_hkjf7"]
 [ext_resource type="PackedScene" uid="uid://b1jpfiy4cphy7" path="res://Objects/Fences/fence_01_row-05_00.tscn" id="9_eb327"]
 [ext_resource type="PackedScene" uid="uid://bkwsnbugupr16" path="res://Objects/Misc/windmill-water_01_01_00.tscn" id="10_castt"]
@@ -15,19 +14,34 @@
 [ext_resource type="PackedScene" uid="uid://b1m0n5vlkdvio" path="res://Objects/Foliage/Crops/corn_stalk_01-01_00.tscn" id="13_gydbd"]
 [ext_resource type="PackedScene" uid="uid://bbxpau83xwv2m" path="res://Objects/Foliage/Crops/corn_stalk_01-01_00_mesh-only.tscn" id="14_an0js"]
 [ext_resource type="PackedScene" uid="uid://bka4q282pwrgs" path="res://NPCs/Cars/Pickup Trucks/truck_pickup_01_00.tscn" id="15_qwrwo"]
+[ext_resource type="PackedScene" uid="uid://caxqah3ilcvfy" path="res://NPCs/Cows/Cow_01-03_00.tscn" id="16_dqyyn"]
 [ext_resource type="PackedScene" uid="uid://cdgtkxeebdtqm" path="res://Objects/Misc/hay_bale_round_01_01_00.tscn" id="16_rmsem"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3t8as"]
+[sub_resource type="Gradient" id="Gradient_yvek7"]
+colors = PackedColorArray(0.147672, 0.147672, 0.147672, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fxgfo"]
+frequency = 0.0186
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tb1pa"]
+width = 957
+height = 100
+generate_mipmaps = false
+seamless = true
+color_ramp = SubResource("Gradient_yvek7")
+noise = SubResource("FastNoiseLite_fxgfo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_38ls7"]
 render_priority = 0
 shader = ExtResource("2_qnxin")
 shader_parameter/albedo_a = Color(0.392157, 0.235294, 0.184314, 1)
 shader_parameter/albedo_b = Color(0.0156863, 0.235294, 0.101961, 1)
-shader_parameter/noise_size = 2.2
-shader_parameter/noise_strength = 1.0
-shader_parameter/dirtiness = 0.933
-shader_parameter/blue_value_ratio = 1.066
+shader_parameter/noise_size = 1.0
+shader_parameter/noise_strength = 0.95
+shader_parameter/dirtiness = 0.934
+shader_parameter/blue_value_ratio = 0.89
 shader_parameter/mask_texture = ExtResource("4_pturb")
-shader_parameter/noise_texture = ExtResource("5_5r1ne")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_tb1pa")
 shader_parameter/gradient_texture_1 = ExtResource("3_0apwu")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gjw30"]
@@ -47,7 +61,7 @@ roughness = 0.4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 layers = 2
 mesh = ExtResource("1_eujgq")
-surface_material_override/0 = SubResource("ShaderMaterial_3t8as")
+surface_material_override/0 = SubResource("ShaderMaterial_38ls7")
 script = ExtResource("3_b0st4")
 metadata/_edit_lock_ = true
 
@@ -79,9 +93,6 @@ mesh = SubResource("BoxMesh_evi1g")
 
 [node name="Cow_Barn_02" parent="." instance=ExtResource("8_hkjf7")]
 transform = Transform3D(0.707106, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707106, 6, 0, -5)
-
-[node name="Cow_Barn_04" parent="." instance=ExtResource("8_hkjf7")]
-transform = Transform3D(0.707106, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707106, -6, 0, -5)
 
 [node name="Fence_01_row-05_59" parent="." instance=ExtResource("9_eb327")]
 transform = Transform3D(2.52328e-07, 0, 1, 0, 1, 0, -1, 0, 2.52328e-07, -11.8499, 0, 0.652576)
@@ -450,6 +461,72 @@ transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 
 
 [node name="hay-bale_round_01-01_09" parent="." instance=ExtResource("16_rmsem")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -2.175, 0, 5.575)
+
+[node name="Cow_01-03_07" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 6.31554, 0.0995563, -3.65075)
+
+[node name="Cow_01-03_08" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 6.84587, 0.0995563, -3.12042)
+
+[node name="Cow_01-03_25" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 7.19942, 0.0995563, -2.76686)
+
+[node name="Cow_01-03_26" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, 7.41155, 0.0995563, -2.55473)
+
+[node name="Cow_01-03_13" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 7.27013, 0.0995563, -3.82752)
+
+[node name="Cow_01-03_14" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 7.76511, 0.0995563, -4.46392)
+
+[node name="Cow_01-03_15" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(-0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, -0.766044, 7.56005, 0.0995563, -4.10329)
+
+[node name="Cow_01-03_16" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(-0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, -0.573576, 6.49939, 0.0995563, -5.16395)
+
+[node name="Cow_01-03_17" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(-0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, -0.766044, 6.28725, 0.0995563, -4.8104)
+
+[node name="Cow_01-03_18" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(-0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, -0.766044, 6.59131, 0.0995563, -5.68014)
+
+[node name="Cow_01-03_19" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(-0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, -0.573576, 5.74278, 0.0995563, -6.52867)
+
+[node name="Cow_01-03_20" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(-0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, -0.819152, 5.41044, 0.0995563, -6.19633)
+
+[node name="Cow_01-03_21" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(-0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, -0.642788, 5.17002, 0.0995563, -5.95591)
+
+[node name="Cow_01-03_22" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(-0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, -0.766044, 4.39221, 0.0995563, -6.73373)
+
+[node name="Cow_01-03_23" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(-0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, -0.573576, 4.66091, 0.0995563, -7.00243)
+
+[node name="Cow_01-03_24" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(-0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, -0.766044, 4.77404, 0.0995563, -7.45498)
+
+[node name="Cow_01-03_09" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 5.78521, 0.0995563, -4.18108)
+
+[node name="Cow_01-03_10" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 5.25488, 0.0995563, -4.71141)
+
+[node name="Cow_01-03_11" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 4.72455, 0.0995563, -5.24174)
+
+[node name="Cow_01-03_12" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(0.819151, 0, 0.573576, 0, 1, 0, -0.573576, 0, 0.819151, 4.19422, 0.0995563, -5.77207)
+
+[node name="Cow_01-03_27" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(0.939692, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939692, 3.83359, 0.0995563, -6.13269)
+
+[node name="Cow_01-03_28" parent="." instance=ExtResource("16_dqyyn")]
+transform = Transform3D(0.422618, 0, 0.906307, 0, 1, 0, -0.906307, 0, 0.422618, 3.40933, 0.0995563, -6.55696)
 
 [editable path="Corn_3_Row_08"]
 [editable path="Corn_3_Row_09"]

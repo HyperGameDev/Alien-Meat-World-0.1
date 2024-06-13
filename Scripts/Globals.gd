@@ -1,6 +1,6 @@
 extends Node
 
-@export var current_level = 0
+@export var current_level = 1
 
 var level_chunks_safe := [
 	"res://Terrain/terrain_level_00/terrain_level_00_safes/",
