@@ -3,9 +3,14 @@
 [ext_resource type="Shader" path="res://Objects/object-highlight-by-thotee_01.gdshader" id="1_gy2qo"]
 
 [sub_resource type="Gradient" id="Gradient_qhe5r"]
+offsets = PackedFloat32Array(0.0839416, 0.5, 0.934307)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_1ajxi"]
 gradient = SubResource("Gradient_qhe5r")
+fill_from = Vector2(0.504274, 0.777778)
+fill_to = Vector2(0.0897436, 0.568376)
+repeat = 1
 
 [resource]
 render_priority = 1
