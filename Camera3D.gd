@@ -13,7 +13,6 @@ const CAM_Z_OFFSET = 13
 
 # Temporary Grab Mechanic vars
 var is_grabbed = false
-var grabbed_object = null
 var grab_offset: Vector3 = Vector3(0, 0, 0)
 var attack_ray_pos: Vector3 = Vector3(0, 0, 0)
 var is_attempting_grab = false
@@ -60,11 +59,12 @@ func on_grab_ended():
 func _process(_delta):
 	var raycast_result = attack_ray() ## Shoots the ray
 	if Input.is_action_pressed("Grab"): 
+		get_tree().get_root().get_node("Arrow_Hover_Autoloaded/Arrow_Hover_front").force_hide_arrow()
+		get_tree().get_root().get_node("Arrow_Hover_Autoloaded/Arrow_Hover_back").force_hide_arrow()
 		if !raycast_result == null:
 			if raycast_result.is_in_group("Meat"):
 				var meat_original = raycast_result
 				if meat_original.has_method("spawn_me") and !is_attempting_grab and !is_in_group("Grabbed"):
-				
 				#disappears the object
 					meat_original.spawn = false
 				
@@ -74,15 +74,18 @@ func _process(_delta):
 					meat_new.add_to_group("Grabbed")
 					is_attempting_grab = true
 
-	# Raycast 2: Player Hover implementation
+	# Detects all things
+	general_ray()
+
+	# Player Hover implementation
 	player_hover_ray()
 	
-	# Raycast 3: Cursor Position implementation
+	# Cursor Position implementation
 	cursor_ray()
 	
 	
 
-func hover_ray(mask): ## Raycast that receives a target via argument
+func hover_ray(mask,has_mask): ## Raycast that receives a target via argument
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 3000
 	var from = project_ray_origin(mouse_pos)
@@ -99,14 +102,17 @@ func hover_ray(mask): ## Raycast that receives a target via argument
 #	ray_query.collide_with_bodies = collide_bodies
 	
 	# Remember: masks/layers need to be set with the bit (2^) values!
-	ray_query.collision_mask = mask
+	if has_mask:
+		ray_query.collision_mask = mask
 	
 	return space.intersect_ray(ray_query)
 
-
+func general_ray():
+	var general_ray_result = hover_ray(0,false)
+	Messenger.anything_seen.emit(general_ray_result)
 
 func attack_ray(): ## Detects obstacles, NPC's and Meat/Health; emits attack_target to hitpoints, and returns attack_target to Meat/Health within this script
-	var raycast_result = hover_ray(2 + 4 + 8)
+	var raycast_result = hover_ray(2 + 4 + 8,true)
 	if !raycast_result.is_empty():
 		attack_ray_pos = raycast_result.position
 		attack_target = raycast_result.collider
@@ -118,7 +124,7 @@ func attack_ray(): ## Detects obstacles, NPC's and Meat/Health; emits attack_tar
 
 
 func player_hover_ray(): ## Player Hover detection
-	var raycast_result = hover_ray(32768)
+	var raycast_result = hover_ray(32768,true)
 #	print(raycast_result)
 	if !raycast_result.is_empty():
 		hover_target = raycast_result.collider
@@ -130,7 +136,7 @@ func player_hover_ray(): ## Player Hover detection
 
 
 func cursor_ray(): ## This should be what the player head follows
-	var raycast_result = hover_ray(16)
+	var raycast_result = hover_ray(16,true)
 	if !raycast_result.is_empty():
 		Messenger.mouse_pos_3d.emit(raycast_result.position)
 #	print(raycast_result)

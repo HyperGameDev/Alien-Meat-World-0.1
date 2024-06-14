@@ -841,4 +841,7 @@ surface_material_override/3 = ExtResource("11_5ftaw")
 transform = Transform3D(-0.0275849, 0, 0.0200323, 0, -0.0340914, 0, -0.0200323, 0, -0.0275849, 0.202645, 2.24919, -0.0266542)
 surface_material_override/0 = ExtResource("10_sg2f5")
 
+[node name="Marker3D" type="Marker3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.16797, 0)
+
 [editable path="Obstacle/HitPoints"]

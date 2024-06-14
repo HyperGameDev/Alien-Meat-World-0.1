@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://1v8wnaldsn2r"]
+[gd_scene load_steps=17 format=3 uid="uid://1v8wnaldsn2r"]
 
 [ext_resource type="PackedScene" uid="uid://7cd7bq27jnyj" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_blank-grass.tscn" id="1_c6wno"]
 [ext_resource type="Material" uid="uid://c0aatxfj22wvi" path="res://Terrain/terrain_level_01_textures/block_level-01_cattle-ranch_01.tres" id="2_it4jp"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c5g8y5bkmlflf" path="res://Objects/Foliage/Tree_02/Tree_02-02_00.tscn" id="15_t2q0d"]
 [ext_resource type="PackedScene" uid="uid://ce4fmb5061j0k" path="res://Objects/Buildings/Barns/Cow_Barn_01/cow_barn_01_02_00.tscn" id="15_ufqnp"]
 [ext_resource type="PackedScene" uid="uid://d21gtemvo26ou" path="res://Objects/Misc/electric_pole_01_01_00.tscn" id="16_4s5ub"]
+[ext_resource type="PackedScene" uid="uid://bw3rfvleuqpka" path="res://Objects/Foliage/Tree_03/Tree_03-02_00.tscn" id="16_7wvjh"]
 
 [node name="Terrain_0" instance=ExtResource("1_c6wno")]
 transform = Transform3D(1, 0, 8.72665e-05, 0, 1, 0, -8.72665e-05, 0, 1, 0, 0, -7)
@@ -411,9 +412,6 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 [node name="electric-pole_01-01_00" parent="." index="133" instance=ExtResource("16_4s5ub")]
 transform = Transform3D(0.75, 0, 5.51372e-08, 0, 0.75, 0, -5.51372e-08, 0, 0.75, 11.8, 0, -9)
 
-[node name="CollisionShape3D_transformer" parent="electric-pole_01-01_00/Obstacle" index="2"]
-transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.031066, 3.6057, 0.2625)
-
 [node name="Transformer" parent="electric-pole_01-01_00" index="3"]
 transform = Transform3D(-0.0275849, 0, 0.0200323, 0, -0.0340914, 0, -0.0200323, 0, -0.0275849, -0.000549041, 2.68171, 0.0646185)
 
@@ -593,6 +591,30 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 
 [node name="Tree_02-02_05" parent="." index="169" instance=ExtResource("15_t2q0d")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -25.3995, 0, -5.90222)
+
+[node name="Tree_03-02_00" parent="." index="170" instance=ExtResource("16_7wvjh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5005, 0, 6.19839)
+
+[node name="Tree_03-02_06" parent="." index="171" instance=ExtResource("16_7wvjh")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -20.9997, 0, -3.10183)
+
+[node name="Tree_03-02_01" parent="." index="172" instance=ExtResource("16_7wvjh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.899971, 0, 0.400079)
+
+[node name="Tree_03-02_02" parent="." index="173" instance=ExtResource("16_7wvjh")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 5.19925, 0, 8.70045)
+
+[node name="Tree_03-02_07" parent="." index="174" instance=ExtResource("16_7wvjh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -8.00082, 0, 9.3993)
+
+[node name="Tree_03-02_04" parent="." index="175" instance=ExtResource("16_7wvjh")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 20.1992, 0, 9.00176)
+
+[node name="Tree_03-02_05" parent="." index="176" instance=ExtResource("16_7wvjh")]
+transform = Transform3D(2.44981e-08, 0, -1, 0, 1, 0, 1, 0, 2.44981e-08, 23.4999, 0, 1.70205)
+
+[node name="Tree_03-02_03" parent="." index="177" instance=ExtResource("16_7wvjh")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 17.3999, 0, 1.60152)
 
 [editable path="electric-pole_01-01_00"]
 [editable path="electric-pole_01-01_00/Obstacle/HitPoints"]

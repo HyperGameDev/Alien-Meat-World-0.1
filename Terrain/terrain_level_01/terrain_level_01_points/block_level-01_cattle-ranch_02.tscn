@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://clo0uqc62th85" path="res://Terrain/terrain_level_01_textures/block_level-01_cattle-ranch_02_invert.png" id="4_mygr8"]
 [ext_resource type="Texture2D" uid="uid://crjgw5oqy85yr" path="res://Terrain/terrain_level_01_textures/block_level-01_noise_01.tres" id="5_ab3m2"]
 [ext_resource type="PackedScene" uid="uid://dxjkdmi6v6583" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow-Barn_02_00.tscn" id="6_cda2p"]
-[ext_resource type="PackedScene" uid="uid://c1mgqdi4mt5o8" path="res://Objects/Foliage/Tree_03/Tree_03_00.tscn" id="9_lux6y"]
 [ext_resource type="PackedScene" uid="uid://bqvuhngd0g34n" path="res://Objects/Foliage/Crops/corn_3_row_00.tscn" id="10_aj5w6"]
 [ext_resource type="PackedScene" uid="uid://b1m0n5vlkdvio" path="res://Objects/Foliage/Crops/corn_stalk_01-01_00.tscn" id="11_5s2ay"]
 [ext_resource type="PackedScene" uid="uid://b1jpfiy4cphy7" path="res://Objects/Fences/fence_01_row-05_00.tscn" id="12_xw2kg"]
@@ -17,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cdgtkxeebdtqm" path="res://Objects/Misc/hay_bale_round_01_01_00.tscn" id="17_d1bx3"]
 [ext_resource type="PackedScene" uid="uid://d21gtemvo26ou" path="res://Objects/Misc/electric_pole_01_01_00.tscn" id="18_ygoww"]
 [ext_resource type="PackedScene" uid="uid://bnclggbwq748d" path="res://Objects/Foliage/Tree_02/Tree_02-02_00_mesh-only.tscn" id="19_5yba7"]
+[ext_resource type="PackedScene" uid="uid://bw3rfvleuqpka" path="res://Objects/Foliage/Tree_03/Tree_03-02_00.tscn" id="19_aiwil"]
 [ext_resource type="PackedScene" uid="uid://c5g8y5bkmlflf" path="res://Objects/Foliage/Tree_02/Tree_02-02_00.tscn" id="19_l82ey"]
 [ext_resource type="PackedScene" uid="uid://bkwsnbugupr16" path="res://Objects/Misc/windmill-water_01_01_00.tscn" id="19_xb4i2"]
 
@@ -54,277 +54,232 @@ is_type = 2
 [node name="Cow_Barn_02" parent="." index="4" instance=ExtResource("6_cda2p")]
 transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 23.3309, -0.0110502, 0.740104)
 
-[node name="Tree_03_00" parent="." index="5" instance=ExtResource("9_lux6y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68646, 0, 0)
-
-[node name="Tree_03_05" parent="." index="6" instance=ExtResource("9_lux6y")]
-transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -16.4086, 0, 2.44847)
-
-[node name="Tree_03_07" parent="." index="7" instance=ExtResource("9_lux6y")]
-transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 0.0700855, 0, 8.00218)
-
-[node name="Tree_03_10" parent="." index="8" instance=ExtResource("9_lux6y")]
-transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 21.9888, 0, 8.70364)
-
-[node name="Tree_03_06" parent="." index="9" instance=ExtResource("9_lux6y")]
-transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -9.65864, 0, -0.801535)
-
-[node name="Tree_03_11" parent="." index="10" instance=ExtResource("9_lux6y")]
-transform = Transform3D(-0.344971, 0, 0.938614, 0, 1, 0, -0.938614, 0, -0.344971, -19.4659, 0, -1.63895)
-
-[node name="Tree_03_12" parent="." index="11" instance=ExtResource("9_lux6y")]
-transform = Transform3D(-0.954865, 0, -0.297042, 0, 1, 0, 0.297042, 0, -0.954865, -26.6423, 0, 5.75451)
-
-[node name="Tree_03_13" parent="." index="12" instance=ExtResource("9_lux6y")]
-transform = Transform3D(-0.0799902, 0, -0.996796, 0, 1, 0, 0.996796, 0, -0.0799902, -25.0275, 0, 0.788508)
-
-[node name="Tree_03_01" parent="." index="13" instance=ExtResource("9_lux6y")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -3.75, 0, -7.33013)
-
-[node name="Tree_03_03" parent="." index="14" instance=ExtResource("9_lux6y")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -17.22, 0, -3.69074)
-
-[node name="Tree_03_04" parent="." index="15" instance=ExtResource("9_lux6y")]
-transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -22.0497, 0, 4.67442)
-
-[node name="Tree_03_14" parent="." index="16" instance=ExtResource("9_lux6y")]
-transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -23.4497, 0, 7.97442)
-
-[node name="Tree_03_02" parent="." index="17" instance=ExtResource("9_lux6y")]
-transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 0.452331, 0, 2.53109)
-
-[node name="Tree_03_08" parent="." index="18" instance=ExtResource("9_lux6y")]
-transform = Transform3D(-0.944296, 0, -0.329098, 0, 1, 0, 0.329098, 0, -0.944296, -4.8852, 0, 4.75404)
-
-[node name="Tree_03_09" parent="." index="19" instance=ExtResource("9_lux6y")]
-transform = Transform3D(-0.944296, 0, -0.329098, 0, 1, 0, 0.329098, 0, -0.944296, -6.79142, 0, 2.48351)
-
-[node name="Corn_3_Row_00" parent="." index="20" instance=ExtResource("10_aj5w6")]
+[node name="Corn_3_Row_00" parent="." index="5" instance=ExtResource("10_aj5w6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 0)
 
-[node name="corn-stalk_01_01_00" parent="." index="21" instance=ExtResource("11_5s2ay")]
+[node name="corn-stalk_01_01_00" parent="." index="6" instance=ExtResource("11_5s2ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 0, 7)
 
-[node name="corn-stalk_01_01_01" parent="." index="22" instance=ExtResource("11_5s2ay")]
+[node name="corn-stalk_01_01_01" parent="." index="7" instance=ExtResource("11_5s2ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 0, 7)
 
-[node name="corn-stalk_01_01_02" parent="." index="23" instance=ExtResource("11_5s2ay")]
+[node name="corn-stalk_01_01_02" parent="." index="8" instance=ExtResource("11_5s2ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 7)
 
-[node name="corn-stalk_01_01_03" parent="." index="24" instance=ExtResource("11_5s2ay")]
+[node name="corn-stalk_01_01_03" parent="." index="9" instance=ExtResource("11_5s2ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 0, 0.5)
 
-[node name="corn-stalk_01_01_04" parent="." index="25" instance=ExtResource("11_5s2ay")]
+[node name="corn-stalk_01_01_04" parent="." index="10" instance=ExtResource("11_5s2ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 0, 0.5)
 
-[node name="corn-stalk_01_01_05" parent="." index="26" instance=ExtResource("11_5s2ay")]
+[node name="corn-stalk_01_01_05" parent="." index="11" instance=ExtResource("11_5s2ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 0.5)
 
-[node name="corn-stalk_01_01_06" parent="." index="27" instance=ExtResource("11_5s2ay")]
+[node name="corn-stalk_01_01_06" parent="." index="12" instance=ExtResource("11_5s2ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 0, -6.75)
 
-[node name="corn-stalk_01_01_07" parent="." index="28" instance=ExtResource("11_5s2ay")]
+[node name="corn-stalk_01_01_07" parent="." index="13" instance=ExtResource("11_5s2ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 0, -6.75)
 
-[node name="corn-stalk_01_01_08" parent="." index="29" instance=ExtResource("11_5s2ay")]
+[node name="corn-stalk_01_01_08" parent="." index="14" instance=ExtResource("11_5s2ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -6.75)
 
-[node name="Fence_01_row-05_14" parent="." index="30" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_14" parent="." index="15" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 14.6512, 0, 5.171)
 
-[node name="Fence_01_row-05_15" parent="." index="31" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_15" parent="." index="16" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 14.6512, 0, 3.171)
 
-[node name="Fence_01_row-05_16" parent="." index="32" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_16" parent="." index="17" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 14.6512, 0, 1.171)
 
-[node name="Fence_01_row-05_17" parent="." index="33" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_17" parent="." index="18" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 14.6512, 0, -0.828995)
 
-[node name="Fence_01_row-05_18" parent="." index="34" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_18" parent="." index="19" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 14.6512, 0, -2.82899)
 
-[node name="Fence_01_row-05_19" parent="." index="35" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_19" parent="." index="20" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 14.6512, 0, -4.82899)
 
-[node name="Fence_01_row-05_06" parent="." index="36" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_06" parent="." index="21" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6436, 0, 6.15915)
 
-[node name="Fence_01_row-05_10" parent="." index="37" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_10" parent="." index="22" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6436, 0, 6.15915)
 
-[node name="Fence_01_row-05_11" parent="." index="38" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_11" parent="." index="23" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.6436, 0, 6.15915)
 
-[node name="Fence_01_row-05_29" parent="." index="39" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_29" parent="." index="24" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6436, 0, 6.15915)
 
-[node name="Fence_01_row-05_07" parent="." index="40" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_07" parent="." index="25" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6436, 0, 6.15915)
 
-[node name="Fence_01_row-05_08" parent="." index="41" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_08" parent="." index="26" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6436, 0, 6.15915)
 
-[node name="Fence_01_row-05_09" parent="." index="42" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_09" parent="." index="27" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6436, 0, 6.15915)
 
-[node name="Fence_01_row-05_12" parent="." index="43" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_12" parent="." index="28" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6436, 0, 6.15915)
 
-[node name="Fence_01_row-05_21" parent="." index="44" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_21" parent="." index="29" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6436, 0, -5.84085)
 
-[node name="Fence_01_row-05_26" parent="." index="45" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_26" parent="." index="30" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6436, 0, -5.84085)
 
-[node name="Fence_01_row-05_27" parent="." index="46" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_27" parent="." index="31" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.6436, 0, -5.84085)
 
-[node name="Fence_01_row-05_28" parent="." index="47" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_28" parent="." index="32" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6436, 0, -5.84085)
 
-[node name="Fence_01_row-05_22" parent="." index="48" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_22" parent="." index="33" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6436, 0, -5.84085)
 
-[node name="Fence_01_row-05_25" parent="." index="49" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_25" parent="." index="34" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6436, 0, -5.84085)
 
-[node name="Fence_01_row-05_23" parent="." index="50" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_23" parent="." index="35" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6436, 0, -5.84085)
 
-[node name="Fence_01_row-05_24" parent="." index="51" instance=ExtResource("12_xw2kg")]
+[node name="Fence_01_row-05_24" parent="." index="36" instance=ExtResource("12_xw2kg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6436, 0, -5.84085)
 
-[node name="Fence_01_row-05_meshes_00" parent="." index="52" instance=ExtResource("13_oonpj")]
+[node name="Fence_01_row-05_meshes_00" parent="." index="37" instance=ExtResource("13_oonpj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6742, 0, -5.8407)
 
-[node name="Fence_01_row-05_meshes_01" parent="." index="53" instance=ExtResource("13_oonpj")]
+[node name="Fence_01_row-05_meshes_01" parent="." index="38" instance=ExtResource("13_oonpj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.6742, 0, -5.8407)
 
-[node name="Fence_01_row-05_meshes_02" parent="." index="54" instance=ExtResource("13_oonpj")]
+[node name="Fence_01_row-05_meshes_02" parent="." index="39" instance=ExtResource("13_oonpj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.6742, 0, -5.8407)
 
-[node name="Fence_01_row-05_meshes_03" parent="." index="55" instance=ExtResource("13_oonpj")]
+[node name="Fence_01_row-05_meshes_03" parent="." index="40" instance=ExtResource("13_oonpj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.6742, 0, -5.8407)
 
-[node name="Fence_01_row-05_meshes_12" parent="." index="56" instance=ExtResource("13_oonpj")]
+[node name="Fence_01_row-05_meshes_12" parent="." index="41" instance=ExtResource("13_oonpj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6742, 0, 6.1593)
 
-[node name="Fence_01_row-05_meshes_13" parent="." index="57" instance=ExtResource("13_oonpj")]
+[node name="Fence_01_row-05_meshes_13" parent="." index="42" instance=ExtResource("13_oonpj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.6742, 0, 6.1593)
 
-[node name="Fence_01_row-05_meshes_14" parent="." index="58" instance=ExtResource("13_oonpj")]
+[node name="Fence_01_row-05_meshes_14" parent="." index="43" instance=ExtResource("13_oonpj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.6742, 0, 6.1593)
 
-[node name="Fence_01_row-05_meshes_15" parent="." index="59" instance=ExtResource("13_oonpj")]
+[node name="Fence_01_row-05_meshes_15" parent="." index="44" instance=ExtResource("13_oonpj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.6742, 0, 6.1593)
 
-[node name="Fence_01_row-05_meshes_05" parent="." index="60" instance=ExtResource("13_oonpj")]
+[node name="Fence_01_row-05_meshes_05" parent="." index="45" instance=ExtResource("13_oonpj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 38.6742, 0, -4.8407)
 
-[node name="Fence_01_row-05_meshes_06" parent="." index="61" instance=ExtResource("13_oonpj")]
+[node name="Fence_01_row-05_meshes_06" parent="." index="46" instance=ExtResource("13_oonpj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 38.6742, 0, -2.8407)
 
-[node name="Fence_01_row-05_meshes_07" parent="." index="62" instance=ExtResource("13_oonpj")]
+[node name="Fence_01_row-05_meshes_07" parent="." index="47" instance=ExtResource("13_oonpj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 38.6742, 0, -0.840704)
 
-[node name="Fence_01_row-05_meshes_08" parent="." index="63" instance=ExtResource("13_oonpj")]
+[node name="Fence_01_row-05_meshes_08" parent="." index="48" instance=ExtResource("13_oonpj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 38.6742, 0, 1.1593)
 
-[node name="Fence_01_row-05_meshes_09" parent="." index="64" instance=ExtResource("13_oonpj")]
+[node name="Fence_01_row-05_meshes_09" parent="." index="49" instance=ExtResource("13_oonpj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 38.6742, 0, 3.1593)
 
-[node name="Fence_01_row-05_meshes_10" parent="." index="65" instance=ExtResource("13_oonpj")]
+[node name="Fence_01_row-05_meshes_10" parent="." index="50" instance=ExtResource("13_oonpj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 38.6742, 0, 5.1593)
 
-[node name="Cow_01-03_00" parent="." index="66" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_00" parent="." index="51" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 18, 0, 2)
 
-[node name="Cow_01-03_01" parent="." index="67" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_01" parent="." index="52" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 20, 0, -0.5)
 
-[node name="Cow_01-03_02" parent="." index="68" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_02" parent="." index="53" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 17.5, 0, -3)
 
-[node name="Cow_01-03_03" parent="." index="69" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_03" parent="." index="54" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 17.5, 0, 4.5)
 
-[node name="Cow_01-03_07" parent="." index="70" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_07" parent="." index="55" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 22.5949, 0.0995563, 2)
 
-[node name="Cow_01-03_08" parent="." index="71" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_08" parent="." index="56" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, 22.5949, 0.0995563, 2.75)
 
-[node name="Cow_01-03_25" parent="." index="72" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_25" parent="." index="57" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 22.5949, 0.0995563, 3.25)
 
-[node name="Cow_01-03_26" parent="." index="73" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_26" parent="." index="58" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 22.5949, 0.0995563, 3.55)
 
-[node name="Cow_01-03_13" parent="." index="74" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_13" parent="." index="59" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(4.56956e-08, 0, 1, 0, 1, 0, -1, 0, 4.56956e-08, 23.3949, 0.0995563, 2.55)
 
-[node name="Cow_01-03_14" parent="." index="75" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_14" parent="." index="60" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(4.56956e-08, 0, 1, 0, 1, 0, -1, 0, 4.56956e-08, 24.1949, 0.0995563, 2.45)
 
-[node name="Cow_01-03_15" parent="." index="76" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_15" parent="." index="61" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(-0.0871557, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871557, 23.7949, 0.0995563, 2.56)
 
-[node name="Cow_01-03_16" parent="." index="77" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_16" parent="." index="62" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, 23.7949, 0.0995563, 1.06)
 
-[node name="Cow_01-03_17" parent="." index="78" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_17" parent="." index="63" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(-0.0871557, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871557, 23.3949, 0.0995563, 1.16)
 
-[node name="Cow_01-03_18" parent="." index="79" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_18" parent="." index="64" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(-0.0871557, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871557, 24.2249, 0.0995563, 0.76)
 
-[node name="Cow_01-03_19" parent="." index="80" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_19" parent="." index="65" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, 24.2249, 0.0995563, -0.44)
 
-[node name="Cow_01-03_20" parent="." index="81" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_20" parent="." index="66" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(-0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, -0.173648, 23.7549, 0.0995563, -0.44)
 
-[node name="Cow_01-03_21" parent="." index="82" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_21" parent="." index="67" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(0.0871558, 0, 0.996195, 0, 1, 0, -0.996195, 0, 0.0871558, 23.4149, 0.0995563, -0.44)
 
-[node name="Cow_01-03_22" parent="." index="83" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_22" parent="." index="68" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(-0.0871557, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871557, 23.4149, 0.0995563, -1.54)
 
-[node name="Cow_01-03_23" parent="." index="84" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_23" parent="." index="69" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, 23.7949, 0.0995563, -1.54)
 
-[node name="Cow_01-03_24" parent="." index="85" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_24" parent="." index="70" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(-0.0871557, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871557, 24.1949, 0.0995563, -1.78)
 
-[node name="Cow_01-03_09" parent="." index="86" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_09" parent="." index="71" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 22.5949, 0.0995563, 1.25)
 
-[node name="Cow_01-03_10" parent="." index="87" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_10" parent="." index="72" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 22.5949, 0.0995563, 0.5)
 
-[node name="Cow_01-03_11" parent="." index="88" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_11" parent="." index="73" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 22.5949, 0.0995563, -0.25)
 
-[node name="Cow_01-03_12" parent="." index="89" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_12" parent="." index="74" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(0.984807, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984807, 22.5949, 0.0995563, -1)
 
-[node name="Cow_01-03_27" parent="." index="90" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_27" parent="." index="75" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(0.906307, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906307, 22.5949, 0.0995563, -1.51)
 
-[node name="Cow_01-03_28" parent="." index="91" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_28" parent="." index="76" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(0.939692, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939692, 22.5949, 0.0995563, -2.11)
 
-[node name="Cow_01-03_04" parent="." index="92" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_04" parent="." index="77" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 17.5, 0, -0.5)
 
-[node name="Cow_01-03_05" parent="." index="93" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_05" parent="." index="78" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 17.5, 0, 0.5)
 
-[node name="Cow_01-03_06" parent="." index="94" instance=ExtResource("14_hjqq6")]
+[node name="Cow_01-03_06" parent="." index="79" instance=ExtResource("14_hjqq6")]
 transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 19, 0, 5.5)
 
-[node name="Decal" type="Decal" parent="." index="95"]
+[node name="Decal" type="Decal" parent="." index="80"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.155, 0, 0)
 visible = false
 sorting_offset = -1.0
@@ -333,149 +288,203 @@ texture_albedo = SubResource("NoiseTexture2D_jp685")
 upper_fade = 0.878451
 lower_fade = 0.178381
 
-[node name="tool-shed_01-01_00" parent="." index="96" instance=ExtResource("16_y82d2")]
+[node name="tool-shed_01-01_00" parent="." index="81" instance=ExtResource("16_y82d2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20, 0, 8.25)
 
-[node name="hay-bale_round_01-01_00" parent="." index="97" instance=ExtResource("17_d1bx3")]
+[node name="hay-bale_round_01-01_00" parent="." index="82" instance=ExtResource("17_d1bx3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 8.25)
 
-[node name="hay-bale_round_01-01_01" parent="." index="98" instance=ExtResource("17_d1bx3")]
+[node name="hay-bale_round_01-01_01" parent="." index="83" instance=ExtResource("17_d1bx3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8.25)
 
-[node name="hay-bale_round_01-01_02" parent="." index="99" instance=ExtResource("17_d1bx3")]
+[node name="hay-bale_round_01-01_02" parent="." index="84" instance=ExtResource("17_d1bx3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, 8.25)
 
-[node name="electric-pole_01-01_00" parent="." index="100" instance=ExtResource("18_ygoww")]
+[node name="electric-pole_01-01_00" parent="." index="85" instance=ExtResource("18_ygoww")]
 transform = Transform3D(0.75, 0, 5.51353e-08, 0, 0.75, 0, -5.51353e-08, 0, 0.75, 28, 0, -9)
 
-[node name="electric-pole_01-01_01" parent="." index="101" instance=ExtResource("18_ygoww")]
+[node name="electric-pole_01-01_01" parent="." index="86" instance=ExtResource("18_ygoww")]
 transform = Transform3D(0.75, 0, 5.51353e-08, 0, 0.75, 0, -5.51353e-08, 0, 0.75, 5.5, 0, -9)
 
-[node name="electric-pole_01-01_02" parent="." index="102" instance=ExtResource("18_ygoww")]
+[node name="electric-pole_01-01_02" parent="." index="87" instance=ExtResource("18_ygoww")]
 transform = Transform3D(0.75, 0, 5.51353e-08, 0, 0.75, 0, -5.51353e-08, 0, 0.75, -19.5, 0, -9)
 
-[node name="windmill-water_01-01_00" parent="." index="103" instance=ExtResource("19_xb4i2")]
+[node name="windmill-water_01-01_00" parent="." index="88" instance=ExtResource("19_xb4i2")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 17.5, 0, -8)
 
-[node name="Tree_02-02_00" parent="." index="104" instance=ExtResource("19_l82ey")]
+[node name="Tree_02-02_00" parent="." index="89" instance=ExtResource("19_l82ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0, 7)
 
-[node name="Tree_02-02_01" parent="." index="105" instance=ExtResource("19_l82ey")]
+[node name="Tree_02-02_01" parent="." index="90" instance=ExtResource("19_l82ey")]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -10, 0, 4.4)
 
-[node name="Tree_02-02_02" parent="." index="106" instance=ExtResource("19_l82ey")]
+[node name="Tree_02-02_02" parent="." index="91" instance=ExtResource("19_l82ey")]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -7.1, 0, 8.1)
 
-[node name="Tree_02-02_03" parent="." index="107" instance=ExtResource("19_l82ey")]
+[node name="Tree_02-02_03" parent="." index="92" instance=ExtResource("19_l82ey")]
 transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -6.2, 0, -3.4)
 
-[node name="Tree_02-02_04" parent="." index="108" instance=ExtResource("19_l82ey")]
+[node name="Tree_02-02_04" parent="." index="93" instance=ExtResource("19_l82ey")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -12.8, 0, -6.2)
 
-[node name="Tree_02-02_05" parent="." index="109" instance=ExtResource("19_l82ey")]
+[node name="Tree_02-02_05" parent="." index="94" instance=ExtResource("19_l82ey")]
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -12.8, 0, 1.5)
 
-[node name="Tree_02-02_06" parent="." index="110" instance=ExtResource("19_l82ey")]
+[node name="Tree_02-02_06" parent="." index="95" instance=ExtResource("19_l82ey")]
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -0.699999, 0, -6.8)
 
-[node name="Tree_02-02_07" parent="." index="111" instance=ExtResource("19_l82ey")]
+[node name="Tree_02-02_07" parent="." index="96" instance=ExtResource("19_l82ey")]
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -19.1, 0, 2.1)
 
-[node name="Tree_02-02_08" parent="." index="112" instance=ExtResource("19_l82ey")]
+[node name="Tree_02-02_08" parent="." index="97" instance=ExtResource("19_l82ey")]
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -13.3, 0, 8.7)
 
-[node name="Tree_02-02_09" parent="." index="113" instance=ExtResource("19_l82ey")]
+[node name="Tree_02-02_09" parent="." index="98" instance=ExtResource("19_l82ey")]
 transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, -26.7, 0, -6.9)
 
-[node name="Tree_02-02_13" parent="." index="114" instance=ExtResource("19_l82ey")]
+[node name="Tree_02-02_13" parent="." index="99" instance=ExtResource("19_l82ey")]
 transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, -29.9, 0, 0.7)
 
-[node name="Tree_02-02_10" parent="." index="115" instance=ExtResource("19_l82ey")]
+[node name="Tree_02-02_10" parent="." index="100" instance=ExtResource("19_l82ey")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -26.4, 0, 2.8)
 
-[node name="Tree_02-02_11" parent="." index="116" instance=ExtResource("19_l82ey")]
+[node name="Tree_02-02_11" parent="." index="101" instance=ExtResource("19_l82ey")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -18.1, 0, 7.8)
 
-[node name="Tree_02-02_12" parent="." index="117" instance=ExtResource("19_l82ey")]
+[node name="Tree_02-02_12" parent="." index="102" instance=ExtResource("19_l82ey")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -22.9, 0, -3.4)
 
-[node name="Tree_02-02_14" parent="." index="118" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_14" parent="." index="103" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.7, 0, 7.3)
 
-[node name="Tree_02-02_15" parent="." index="119" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_15" parent="." index="104" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.9, 0, 2)
 
-[node name="Tree_02-02_16" parent="." index="120" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_16" parent="." index="105" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.2, 0, 0.7)
 
-[node name="Tree_02-02_17" parent="." index="121" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_17" parent="." index="106" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.9, 0, 4.3)
 
-[node name="Tree_02-02_19" parent="." index="122" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_19" parent="." index="107" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.8, 0, -6.9)
 
-[node name="Tree_02-02_20" parent="." index="123" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_20" parent="." index="108" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.7, 0, -3.9)
 
-[node name="Tree_02-02_21" parent="." index="124" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_21" parent="." index="109" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.8, 0, 7.9)
 
-[node name="Tree_02-02_22" parent="." index="125" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_22" parent="." index="110" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.7, 0, 1.3)
 
-[node name="Tree_02-02_23" parent="." index="126" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_23" parent="." index="111" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.7, 0, -6.6)
 
-[node name="Tree_02-02_24" parent="." index="127" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_24" parent="." index="112" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.2, 0, -1)
 
-[node name="Tree_02-02_25" parent="." index="128" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_25" parent="." index="113" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.7, 0, 2.4)
 
-[node name="Tree_02-02_26" parent="." index="129" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_26" parent="." index="114" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.8, 0, 5.1)
 
-[node name="Tree_02-02_27" parent="." index="130" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_27" parent="." index="115" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.1, 0, 6.7)
 
-[node name="Tree_02-02_28" parent="." index="131" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_28" parent="." index="116" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0, 6.7)
 
-[node name="Tree_02-02_29" parent="." index="132" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_29" parent="." index="117" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.4, 0, 2.7)
 
-[node name="Tree_02-02_30" parent="." index="133" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_30" parent="." index="118" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.4, 0, -4.1)
 
-[node name="Tree_02-02_31" parent="." index="134" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_31" parent="." index="119" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.3, 0, -7.2)
 
-[node name="Tree_02-02_32" parent="." index="135" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_32" parent="." index="120" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.6, 0, 8.2)
 
-[node name="Tree_02-02_33" parent="." index="136" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_33" parent="." index="121" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.9, 0, 2.9)
 
-[node name="Tree_02-02_34" parent="." index="137" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_34" parent="." index="122" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.9, 0, -4.76837e-07)
 
-[node name="Tree_02-02_35" parent="." index="138" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_35" parent="." index="123" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.7, 0, 8.7)
 
-[node name="Tree_02-02_36" parent="." index="139" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_36" parent="." index="124" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.4, 0, 7.5)
 
-[node name="Tree_02-02_37" parent="." index="140" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_37" parent="." index="125" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.8, 0, -4.5)
 
-[node name="Tree_02-02_38" parent="." index="141" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_38" parent="." index="126" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.4, 0, 8.2)
 
-[node name="Tree_02-02_39" parent="." index="142" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_39" parent="." index="127" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.3, 0, 2.9)
 
-[node name="Tree_02-02_40" parent="." index="143" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_40" parent="." index="128" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.1, 0, -4.76837e-07)
 
-[node name="Tree_02-02_18" parent="." index="144" instance=ExtResource("19_5yba7")]
+[node name="Tree_02-02_18" parent="." index="129" instance=ExtResource("19_5yba7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.7, 0, -2.3)
+
+[node name="Tree_03-02_00" parent="." index="130" instance=ExtResource("19_aiwil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 9)
+
+[node name="Tree_03-02_01" parent="." index="131" instance=ExtResource("19_aiwil")]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -4.9, 0, 8.5)
+
+[node name="Tree_03-02_04" parent="." index="132" instance=ExtResource("19_aiwil")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -9.6, 0, 7.5)
+
+[node name="Tree_03-02_02" parent="." index="133" instance=ExtResource("19_aiwil")]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -6.4, 0, 4.2)
+
+[node name="Tree_03-02_05" parent="." index="134" instance=ExtResource("19_aiwil")]
+transform = Transform3D(-0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, -10.2, 0, -1.2)
+
+[node name="Tree_03-02_06" parent="." index="135" instance=ExtResource("19_aiwil")]
+transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, -13, 0, 4.7)
+
+[node name="Tree_03-02_07" parent="." index="136" instance=ExtResource("19_aiwil")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -9.8, 0, -7.7)
+
+[node name="Tree_03-02_08" parent="." index="137" instance=ExtResource("19_aiwil")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -3.5, 0, -4.1)
+
+[node name="Tree_03-02_09" parent="." index="138" instance=ExtResource("19_aiwil")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -1, 0, 3.8)
+
+[node name="Tree_03-02_10" parent="." index="139" instance=ExtResource("19_aiwil")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -1, 0, 8.1)
+
+[node name="Tree_03-02_11" parent="." index="140" instance=ExtResource("19_aiwil")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -18, 0, -1.2)
+
+[node name="Tree_03-02_17" parent="." index="141" instance=ExtResource("19_aiwil")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -15.5, 0, -4.2)
+
+[node name="Tree_03-02_12" parent="." index="142" instance=ExtResource("19_aiwil")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -21.9, 0, 6)
+
+[node name="Tree_03-02_13" parent="." index="143" instance=ExtResource("19_aiwil")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -15.9, 0, 3)
+
+[node name="Tree_03-02_14" parent="." index="144" instance=ExtResource("19_aiwil")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -24.9, 0, -0.0999999)
+
+[node name="Tree_03-02_15" parent="." index="145" instance=ExtResource("19_aiwil")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -27.1, 0, 8.2)
+
+[node name="Tree_03-02_16" parent="." index="146" instance=ExtResource("19_aiwil")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -23.9, 0, 9.4)
+
+[node name="Tree_03-02_03" parent="." index="147" instance=ExtResource("19_aiwil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0, 1.4)

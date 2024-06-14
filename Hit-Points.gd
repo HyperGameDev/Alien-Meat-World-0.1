@@ -8,7 +8,6 @@ var health_percent_lost: float = 0.0
 
 @export var hit_particle_lifetime: float = 2.0
 
-
 # Getting attacked
 var target
 var was_hit = false
@@ -24,9 +23,10 @@ func _ready():
 	$"..".update_hitpoints.connect(on_update_hitpoints)
 	if $"..".has_signal("is_destroyed"):
 		$"..".is_destroyed.connect(on_is_destroyed)
+
 	
 	# Getting Attacked
-	Messenger.attack_target.connect(am_i_hit)
+	Messenger.attack_target.connect(am_i_hovered)
 	Messenger.something_hit.connect(on_something_hit)
 	
 	
@@ -35,8 +35,10 @@ func on_update_hitpoints():
 	if hitpoints_debug:
 		$Dmg_Label.text = str($"..".health_current)
 	
-	
-func am_i_hit(attack_target):
+func am_i_hovered(attack_target):
+	if attack_target == $"..":
+		if get_owner().has_node("Marker3D"):
+			Messenger.something_hovered.emit(attack_target)
 	if attack_target == $".." and Input.is_action_just_pressed("Grab"):	
 		was_hit = true
 		Messenger.something_attacked.emit($"..")

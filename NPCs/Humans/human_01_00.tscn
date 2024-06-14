@@ -31,4 +31,7 @@ shape = SubResource("CapsuleShape3D_ebtki")
 [node name="Human_Auto-Armature" parent="human_01_00/Human_02_00/Skeleton3D" index="0"]
 lod_bias = 128.0
 
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.847803, 0)
+
 [editable path="human_01_00"]

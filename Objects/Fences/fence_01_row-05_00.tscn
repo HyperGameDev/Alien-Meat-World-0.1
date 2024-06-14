@@ -111,4 +111,7 @@ shape = SubResource("BoxShape3D_fwt77")
 
 [node name="fence_01-02_00" parent="." instance=ExtResource("8_ihmfs")]
 
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63, 0)
+
 [editable path="Obstacle/HitPoints"]

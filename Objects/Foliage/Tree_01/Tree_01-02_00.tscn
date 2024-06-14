@@ -105,7 +105,10 @@ _data = {
 [node name="tree_01-03" instance=ExtResource("1_b0872")]
 script = ExtResource("2_rcann")
 
-[node name="Obstacle" type="Area3D" parent="." index="0"]
+[node name="Marker3D" type="Marker3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0213075, 2.881, -0.0518704)
+
+[node name="Obstacle" type="Area3D" parent="." index="1"]
 script = ExtResource("2_adq36")
 health_max = 8
 slowdown_amount = 2
@@ -129,10 +132,10 @@ libraries = {
 "": SubResource("AnimationLibrary_wvsb3")
 }
 
-[node name="Trunk" parent="." index="1"]
+[node name="Trunk" parent="." index="2"]
 surface_material_override/0 = ExtResource("6_rt5pp")
 
-[node name="Leaves" parent="." index="2"]
+[node name="Leaves" parent="." index="3"]
 surface_material_override/0 = ExtResource("7_kdtm5")
 
 [editable path="Obstacle/HitPoints"]

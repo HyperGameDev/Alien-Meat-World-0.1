@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Messenger="*res://Management/messenger.gd"
 Globals="*res://Scripts/Globals.gd"
+Arrow_Hover_Autoloaded="*res://UI/arrow_hover2.tscn"
 
 [display]
 
@@ -98,7 +99,9 @@ Grab={
 
 [layer_names]
 
+3d_render/layer_1="Main Stuff"
 3d_render/layer_2="Ground"
+3d_render/layer_3="Arrow"
 3d_physics/layer_1="Ground"
 3d_physics/layer_2="NPC"
 3d_physics/layer_3="Obstacle"

@@ -28,4 +28,7 @@ metadata/_edit_group_ = true
 [node name="Cow" parent="cow_001" index="0"]
 lod_bias = 8.316
 
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.69, 0)
+
 [editable path="cow_001"]

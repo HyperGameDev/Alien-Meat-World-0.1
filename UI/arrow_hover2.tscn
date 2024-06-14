@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://d7ql52stxvfv"]
+[gd_scene load_steps=8 format=3 uid="uid://cywp671prq4xd"]
 
-[ext_resource type="Script" path="res://UI/arrow_subviewport.gd" id="1_5cfjw"]
-[ext_resource type="PackedScene" uid="uid://dehqfy3da00hl" path="res://UI/arrow.tscn" id="2_g6ua5"]
+[ext_resource type="Script" path="res://UI/arrow_subviewport.gd" id="1_ylots"]
+[ext_resource type="PackedScene" uid="uid://dehqfy3da00hl" path="res://UI/arrow.tscn" id="2_ndmsv"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_n02lk"]
-viewport_path = NodePath("SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_hjcmt"]
+viewport_path = NodePath("Arrow_Hover_front/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rejnn"]
+viewport_path = NodePath("Arrow_Hover_back/SubViewport")
 
 [sub_resource type="Animation" id="Animation_mm4a0"]
 resource_name = "bounce"
@@ -69,21 +72,38 @@ _data = {
 "bounce": SubResource("Animation_mm4a0")
 }
 
-[node name="Arrow_Hover" type="Sprite3D"]
+[node name="Arrow_Hover2" type="Node3D"]
+
+[node name="Arrow_Hover_front" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225994, 0)
 layers = 4
 cast_shadow = 0
-offset = Vector2(0, 33.7442)
 billboard = 1
+no_depth_test = true
 alpha_cut = 2
-texture = SubResource("ViewportTexture_n02lk")
-script = ExtResource("1_5cfjw")
+texture = SubResource("ViewportTexture_hjcmt")
+script = ExtResource("1_ylots")
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="Arrow_Hover_front"]
 disable_3d = true
 transparent_bg = true
 
-[node name="Arrow" parent="SubViewport" instance=ExtResource("2_g6ua5")]
+[node name="Arrow" parent="Arrow_Hover_front/SubViewport" instance=ExtResource("2_ndmsv")]
+
+[node name="Arrow_Hover_back" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225994, 0)
+layers = 4
+cast_shadow = 0
+billboard = 1
+alpha_cut = 2
+texture = SubResource("ViewportTexture_rejnn")
+script = ExtResource("1_ylots")
+
+[node name="SubViewport" type="SubViewport" parent="Arrow_Hover_back"]
+disable_3d = true
+transparent_bg = true
+
+[node name="Arrow" parent="Arrow_Hover_back/SubViewport" instance=ExtResource("2_ndmsv")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

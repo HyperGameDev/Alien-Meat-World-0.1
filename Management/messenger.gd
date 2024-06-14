@@ -36,12 +36,15 @@ signal hover_pos
 
 signal copter_unit_stopped
 
+# Raycast results
 signal attack_target
 signal mouse_pos_3d
+signal anything_seen
 
-# Should be refactored/named to be hitting not grabbing
+# Obstacle reports
 signal something_hit
 signal something_attacked
+signal something_hovered
 
 # Actual grabbing
 signal grab_begun

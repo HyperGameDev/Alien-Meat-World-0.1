@@ -58,6 +58,8 @@ func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 	
+	Messenger.attack_target.connect(am_i_hovered)
+	
 	
 	Messenger.meat_entered_dunk.connect(on_meat_entered_dunk)
 	Messenger.meat_left_dunk.connect(on_meat_left_dunk)
@@ -70,6 +72,11 @@ func _ready():
 	hover_material.set_albedo(Color(.32, .75, .35))
 	select_material.set_albedo(Color(1, 0, .1))
 	
+	
+func am_i_hovered(target):
+	if target == self:
+		if has_node("Marker3D"):
+			Messenger.something_hovered.emit(self)
 	
 func _process(delta):
 	if Input.is_action_just_released("Grab"):

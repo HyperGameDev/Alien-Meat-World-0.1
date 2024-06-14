@@ -1,0 +1,209 @@
+[gd_scene load_steps=13 format=3 uid="uid://bw3rfvleuqpka"]
+
+[ext_resource type="PackedScene" uid="uid://dj6fr6gycssqh" path="res://Objects/Foliage/Tree_03/tree_03.blend" id="1_x7o04"]
+[ext_resource type="Material" uid="uid://bmm2ixe20e0vy" path="res://Objects/Foliage/Tree_03/Tree_03_color_01_leaves.tres" id="2_1k21m"]
+[ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_bobpm"]
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="3_07v5k"]
+[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="4_p25k8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gfj2f"]
+radius = 0.263105
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7b62u"]
+size = Vector3(0.0400391, 0.50293, 0.0458984)
+
+[sub_resource type="Animation" id="Animation_uj7sf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Trunk:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Leaves:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CollisionShape3D2:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Particles_Hay:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ste45"]
+resource_name = "degrade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Trunk:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Leaves:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CollisionShape3D2:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Particles_Hay:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vdn0m"]
+_data = {
+"RESET": SubResource("Animation_uj7sf"),
+"degrade": SubResource("Animation_ste45")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6asnp"]
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(0.44, 0.415, 0.5)
+angle_min = -360.0
+angle_max = 360.0
+direction = Vector3(0, 1, 0)
+spread = 43.637
+initial_velocity_max = 3.0
+radial_accel_max = 5.58
+scale_min = 0.01
+scale_max = 0.2
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+sub_emitter_keep_velocity = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_8an0a"]
+material = ExtResource("2_1k21m")
+size = Vector3(0.61, 0.12, 0.1)
+
+[node name="Tree_03-02_00" instance=ExtResource("1_x7o04")]
+script = ExtResource("2_bobpm")
+
+[node name="Leaves" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_1k21m")
+
+[node name="Obstacle" type="Area3D" parent="." index="2"]
+script = ExtResource("3_07v5k")
+health_max = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.98702e-06, 0.336627, -0.0012068)
+shape = SubResource("SphereShape3D_gfj2f")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Obstacle" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.249308, 0)
+shape = SubResource("BoxShape3D_7b62u")
+
+[node name="HitPoints" parent="Obstacle" index="2" instance=ExtResource("4_p25k8")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.884847, 0)
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_vdn0m")
+}
+
+[node name="Particles_Hay" type="GPUParticles3D" parent="Obstacle/HitPoints" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.498037, 0)
+emitting = false
+amount = 150
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_6asnp")
+draw_pass_1 = SubResource("BoxMesh_8an0a")
+
+[node name="Marker3D" type="Marker3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.900633, -0.00175181)
+
+[editable path="Obstacle/HitPoints"]
