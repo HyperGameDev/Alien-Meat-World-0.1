@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://c1mgqdi4mt5o8"]
+[gd_scene load_steps=18 format=3 uid="uid://c1mgqdi4mt5o8"]
 
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_147v6"]
 [ext_resource type="Material" uid="uid://bmm2ixe20e0vy" path="res://Objects/Foliage/Tree_03/Tree_03_color_01_leaves.tres" id="2_hf537"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_xl6rt"]
+[ext_resource type="PackedScene" uid="uid://cl7k5mq2d6tu4" path="res://Debug/Debug Objects/important_arrow_mesh_debug.tscn" id="4_71ghy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfbt1"]
 resource_name = "Material.002"
@@ -246,12 +247,6 @@ sub_emitter_keep_velocity = true
 material = ExtResource("2_hf537")
 size = Vector3(0.61, 0.12, 0.1)
 
-[sub_resource type="PrismMesh" id="PrismMesh_tyjxs"]
-size = Vector3(1, 2.965, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awbra"]
-albedo_color = Color(2, 1, 1, 1)
-
 [node name="Tree_03_00" type="Area3D"]
 script = ExtResource("2_xl6rt")
 health_max = 1
@@ -291,9 +286,6 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_i3xkv")
 draw_pass_1 = SubResource("BoxMesh_wmwql")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -0.00574565, 2.26935, 0)
-mesh = SubResource("PrismMesh_tyjxs")
-surface_material_override/0 = SubResource("StandardMaterial3D_awbra")
+[node name="Debug_Arrow_00" parent="." instance=ExtResource("4_71ghy")]
 
 [editable path="HitPoints"]

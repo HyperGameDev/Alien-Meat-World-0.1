@@ -1,14 +1,14 @@
 [gd_scene load_steps=19 format=3 uid="uid://vei8bdjp232a"]
 
-[ext_resource type="PackedScene" uid="uid://6rrqu6f40y82" path="res://Objects/Misc/solar-panel_01-01_00.blend" id="1_iptqm"]
-[ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_ap7q5"]
-[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_mtleh"]
-[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_bshyv"]
-[ext_resource type="Material" uid="uid://cs0pim30r2erf" path="res://Objects/Misc/solar-panel_colors_01_panel-01.tres" id="4_gxkaq"]
-[ext_resource type="Material" uid="uid://bq42i1fbbivi2" path="res://Objects/Misc/solar-panel_colors_01_trim-01.tres" id="5_q0vi5"]
-[ext_resource type="Material" uid="uid://cot8tuvogbyjw" path="res://Objects/Misc/solar-panel_colors_01_electric-01.tres" id="8_t57gc"]
-[ext_resource type="Material" uid="uid://b2nvak7okpag6" path="res://Objects/Misc/solar-panel_colors_01_pole-01.tres" id="9_tivbv"]
-[ext_resource type="Material" uid="uid://b73uwah1m8n4o" path="res://Objects/Misc/solar-panel_colors_01_base-01.tres" id="10_rk1qb"]
+[ext_resource type="PackedScene" uid="uid://6rrqu6f40y82" path="res://Objects/Misc/solar-panel_01-01_00.blend" id="1_6pyf4"]
+[ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_y85q6"]
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="3_1xjkk"]
+[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="4_mrw5g"]
+[ext_resource type="Material" uid="uid://cs0pim30r2erf" path="res://Objects/Misc/solar-panel_colors_01_panel-01.tres" id="5_nu5ka"]
+[ext_resource type="Material" uid="uid://bq42i1fbbivi2" path="res://Objects/Misc/solar-panel_colors_01_trim-01.tres" id="6_sx07q"]
+[ext_resource type="Material" uid="uid://cot8tuvogbyjw" path="res://Objects/Misc/solar-panel_colors_01_electric-01.tres" id="7_oya87"]
+[ext_resource type="Material" uid="uid://b2nvak7okpag6" path="res://Objects/Misc/solar-panel_colors_01_pole-01.tres" id="8_ku40r"]
+[ext_resource type="Material" uid="uid://b73uwah1m8n4o" path="res://Objects/Misc/solar-panel_colors_01_base-01.tres" id="9_24vst"]
 
 [sub_resource type="Animation" id="Animation_kyskw"]
 length = 0.001
@@ -140,7 +140,7 @@ sub_emitter_frequency = 4.0
 sub_emitter_keep_velocity = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_bqdfb"]
-material = ExtResource("4_gxkaq")
+material = ExtResource("5_nu5ka")
 size = Vector3(0.315, 0.475, 0.055)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d17g0"]
@@ -165,7 +165,7 @@ sub_emitter_frequency = 4.0
 sub_emitter_keep_velocity = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_a4fgt"]
-material = ExtResource("5_q0vi5")
+material = ExtResource("6_sx07q")
 size = Vector3(0.1, 0.135, 0.47)
 
 [sub_resource type="SphereMesh" id="SphereMesh_cih1b"]
@@ -173,14 +173,14 @@ size = Vector3(0.1, 0.135, 0.47)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jjwog"]
 size = Vector3(0.789063, 0.65918, 0.349365)
 
-[node name="solar-panel_01-01_00" instance=ExtResource("1_iptqm")]
-script = ExtResource("2_ap7q5")
+[node name="solar-panel_01-01_00" instance=ExtResource("1_6pyf4")]
+script = ExtResource("2_y85q6")
 
 [node name="Obstacle" type="Area3D" parent="." index="0"]
-script = ExtResource("2_mtleh")
+script = ExtResource("3_1xjkk")
 health_max = 1
 
-[node name="HitPoints" parent="Obstacle" index="0" instance=ExtResource("3_bshyv")]
+[node name="HitPoints" parent="Obstacle" index="0" instance=ExtResource("4_mrw5g")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.963026, 0)
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="0"]
@@ -218,14 +218,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.314941, 0.0228271)
 shape = SubResource("BoxShape3D_jjwog")
 
 [node name="Panel" parent="." index="1"]
-surface_material_override/0 = ExtResource("5_q0vi5")
-surface_material_override/1 = ExtResource("4_gxkaq")
+surface_material_override/0 = ExtResource("6_sx07q")
+surface_material_override/1 = ExtResource("5_nu5ka")
 
 [node name="Base-Ground" parent="." index="2"]
-surface_material_override/0 = ExtResource("5_q0vi5")
-surface_material_override/1 = ExtResource("8_t57gc")
-surface_material_override/2 = ExtResource("9_tivbv")
-surface_material_override/3 = ExtResource("10_rk1qb")
+surface_material_override/0 = ExtResource("6_sx07q")
+surface_material_override/1 = ExtResource("7_oya87")
+surface_material_override/2 = ExtResource("8_ku40r")
+surface_material_override/3 = ExtResource("9_24vst")
 
 [node name="Base-Mount" parent="." index="3"]
 visible = false
+
+[node name="Marker3D" type="Marker3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01907, 0)

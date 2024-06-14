@@ -361,3 +361,6 @@ surface_material_override/1 = ExtResource("3_3i1oi")
 
 [node name="Roof" parent="." index="5"]
 surface_material_override/0 = ExtResource("3_3i1oi")
+
+[node name="Marker3D" type="Marker3D" parent="." index="6"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.21613, 0)

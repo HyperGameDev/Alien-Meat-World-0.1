@@ -650,3 +650,6 @@ shape = SubResource("ConvexPolygonShape3D_allir")
 [node name="CollisionShape3D_gates" type="CollisionShape3D" parent="Obstacle" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.413891, 0.24263, -0.491279)
 shape = SubResource("BoxShape3D_bgdg7")
+
+[node name="Marker3D" type="Marker3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.91901, 0)

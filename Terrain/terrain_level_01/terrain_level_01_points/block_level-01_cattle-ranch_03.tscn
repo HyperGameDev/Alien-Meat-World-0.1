@@ -13,7 +13,7 @@
 [ext_resource type="Gradient" uid="uid://xtqbfuc7j53y" path="res://Terrain/terrain_textures/block_level-01_dirt-top-layer.tres" id="14_kmunf"]
 [ext_resource type="PackedScene" uid="uid://ce4fmb5061j0k" path="res://Objects/Buildings/Barns/Cow_Barn_01/cow_barn_01_02_00.tscn" id="15_5u1ck"]
 [ext_resource type="PackedScene" uid="uid://cbdts1xv5dfj" path="res://Objects/Buildings/Barns/Tool_Shed_01/tool_shed_01_01_00.tscn" id="15_ku7vt"]
-[ext_resource type="PackedScene" uid="uid://c38gh10m7j0yh" path="res://Objects/Misc/solar-panel-ground-01-02_00.tscn" id="16_1y164"]
+[ext_resource type="PackedScene" uid="uid://c38gh10m7j0yh" path="res://Objects/Misc/solar-panel-ground-02_00.tscn" id="16_1y164"]
 [ext_resource type="PackedScene" uid="uid://bka4q282pwrgs" path="res://NPCs/Cars/Pickup Trucks/truck_pickup_01_00.tscn" id="16_dx25n"]
 [ext_resource type="PackedScene" uid="uid://cdgtkxeebdtqm" path="res://Objects/Misc/hay_bale_round_01_01_00.tscn" id="16_oaihm"]
 [ext_resource type="PackedScene" uid="uid://c4oqx7gllpfj7" path="res://Objects/Foliage/Tree_01/Tree_01-02_mesh-only_00.tscn" id="17_wbd1p"]

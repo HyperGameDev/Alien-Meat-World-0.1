@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://f76a6025mm6h"]
+[gd_scene load_steps=22 format=3 uid="uid://f76a6025mm6h"]
 
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_q5mdw"]
+[ext_resource type="PackedScene" uid="uid://cl7k5mq2d6tu4" path="res://Debug/Debug Objects/important_arrow_mesh_debug.tscn" id="3_ngs7w"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="3_s05ob"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_al0yb"]
@@ -291,5 +292,8 @@ shape = SubResource("BoxShape3D_0lpsq")
 [node name="HitPoints" parent="." instance=ExtResource("3_s05ob")]
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="HitPoints"]
+
+[node name="Debug_Arrow_00" parent="." instance=ExtResource("3_ngs7w")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0.0407651, 2.62102, -0.415437)
 
 [editable path="HitPoints"]

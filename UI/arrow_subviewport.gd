@@ -5,7 +5,7 @@ extends Sprite3D
 var arrow_position = Vector3(0,0,0)
 var arrow_target = null
 
-func _ready():		
+func _ready():
 	texture = $SubViewport.get_texture()
 	Messenger.something_hovered.connect(show_arrow)
 	Messenger.anything_seen.connect(hide_arrow)

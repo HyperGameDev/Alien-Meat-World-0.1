@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4gt8ofayu0ec"]
+[gd_scene load_steps=16 format=3 uid="uid://c4gt8ofayu0ec"]
 
 [ext_resource type="Texture2D" uid="uid://rk2eaimhqlde" path="res://Objects/Foliage/Tree_01/textures/tree_01_texture-02.png" id="2_hk10s"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_vovkr"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="3_uxxby"]
+[ext_resource type="PackedScene" uid="uid://cl7k5mq2d6tu4" path="res://Debug/Debug Objects/important_arrow_mesh_debug.tscn" id="4_2xwq8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ltcok"]
 resource_name = "Trunk Wood"
@@ -179,5 +180,8 @@ shape = SubResource("BoxShape3D_frhlk")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(2.50379, 0, 0, 0, 2.50379, 0, 0, 0, 2.50379, 0.0595718, 1.89693, -0.0574735)
 shape = SubResource("BoxShape3D_x18c7")
+
+[node name="Debug_Arrow_00" parent="." instance=ExtResource("4_2xwq8")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -0.0582812, 4.28604, -0.0418968)
 
 [editable path="HitPoints"]

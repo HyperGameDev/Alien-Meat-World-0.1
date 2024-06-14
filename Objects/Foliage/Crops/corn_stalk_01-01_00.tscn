@@ -156,3 +156,6 @@ surface_material_override/0 = ExtResource("5_quuyc")
 [node name="Corn_Destroyed" parent="." index="2"]
 visible = false
 surface_material_override/0 = ExtResource("5_quuyc")
+
+[node name="Marker3D" type="Marker3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85393, 0)

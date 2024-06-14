@@ -59,8 +59,8 @@ func on_grab_ended():
 func _process(_delta):
 	var raycast_result = attack_ray() ## Shoots the ray
 	if Input.is_action_pressed("Grab"): 
-		get_tree().get_root().get_node("Arrow_Hover_Autoloaded/Arrow_Hover_front").force_hide_arrow()
-		get_tree().get_root().get_node("Arrow_Hover_Autoloaded/Arrow_Hover_back").force_hide_arrow()
+		get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
+		get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_back").force_hide_arrow()
 		if !raycast_result == null:
 			if raycast_result.is_in_group("Meat"):
 				var meat_original = raycast_result

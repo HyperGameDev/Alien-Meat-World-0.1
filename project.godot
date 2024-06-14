@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 Messenger="*res://Management/messenger.gd"
 Globals="*res://Scripts/Globals.gd"
-Arrow_Hover_Autoloaded="*res://UI/arrow_hover2.tscn"
+Hover_Interactables_Autoloaded="*res://UI/hover_interactables.tscn"
 
 [display]
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://0sdt50wuw41u"]
+[gd_scene load_steps=13 format=3 uid="uid://0sdt50wuw41u"]
 
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_87ypy"]
 [ext_resource type="Material" uid="uid://cr0b5smwaweaq" path="res://Objects/Foliage/Tree_02/Tree_02_color_01_leaves.tres" id="2_ja0nd"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_xs3o3"]
+[ext_resource type="PackedScene" uid="uid://cl7k5mq2d6tu4" path="res://Debug/Debug Objects/important_arrow_mesh_debug.tscn" id="4_mdg8y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwbkj"]
 resource_name = "Material.002"
@@ -117,5 +118,8 @@ shape = SubResource("SphereShape3D_5lcwx")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.37828, 0)
 
 [node name="Animation_Degrade" type="AnimationPlayer" parent="HitPoints"]
+
+[node name="Debug_Arrow_00" parent="." instance=ExtResource("4_mdg8y")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -0.00574565, 2.7719, 0)
 
 [editable path="HitPoints"]

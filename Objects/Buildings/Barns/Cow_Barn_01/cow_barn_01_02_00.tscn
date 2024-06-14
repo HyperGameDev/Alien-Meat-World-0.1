@@ -409,3 +409,6 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_ob14x")
 draw_pass_1 = SubResource("BoxMesh_f7nl8")
+
+[node name="Marker3D" type="Marker3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7844, 0)

@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c4oqx7gllpfj7" path="res://Objects/Foliage/Tree_01/Tree_01-02_mesh-only_00.tscn" id="11_oskf4"]
 [ext_resource type="PackedScene" uid="uid://cbdts1xv5dfj" path="res://Objects/Buildings/Barns/Tool_Shed_01/tool_shed_01_01_00.tscn" id="12_ya5rx"]
 [ext_resource type="PackedScene" uid="uid://cdgtkxeebdtqm" path="res://Objects/Misc/hay_bale_round_01_01_00.tscn" id="13_olfls"]
-[ext_resource type="PackedScene" uid="uid://vei8bdjp232a" path="res://Objects/Misc/solar-panel-ground-01-01_00.tscn" id="14_sw31y"]
+[ext_resource type="PackedScene" uid="uid://vei8bdjp232a" path="res://Objects/Misc/solar-panel-ground-01_00.tscn" id="14_sw31y"]
 [ext_resource type="PackedScene" uid="uid://c5g8y5bkmlflf" path="res://Objects/Foliage/Tree_02/Tree_02-02_00.tscn" id="15_t2q0d"]
 [ext_resource type="PackedScene" uid="uid://ce4fmb5061j0k" path="res://Objects/Buildings/Barns/Cow_Barn_01/cow_barn_01_02_00.tscn" id="15_ufqnp"]
 [ext_resource type="PackedScene" uid="uid://d21gtemvo26ou" path="res://Objects/Misc/electric_pole_01_01_00.tscn" id="16_4s5ub"]

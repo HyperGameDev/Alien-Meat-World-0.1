@@ -125,3 +125,6 @@ draw_pass_1 = SubResource("BoxMesh_ntr2y")
 
 [node name="Hay_Round" parent="." index="1"]
 surface_material_override/0 = ExtResource("5_k6pej")
+
+[node name="Marker3D" type="Marker3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.97752, 0)

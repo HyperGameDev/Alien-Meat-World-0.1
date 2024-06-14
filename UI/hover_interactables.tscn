@@ -1,13 +1,41 @@
-[gd_scene load_steps=8 format=3 uid="uid://cywp671prq4xd"]
+[gd_scene load_steps=9 format=3 uid="uid://cywp671prq4xd"]
 
+[ext_resource type="Script" path="res://UI/hover_interactables.gd" id="1_4y25w"]
 [ext_resource type="Script" path="res://UI/arrow_subviewport.gd" id="1_ylots"]
 [ext_resource type="PackedScene" uid="uid://dehqfy3da00hl" path="res://UI/arrow.tscn" id="2_ndmsv"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_hjcmt"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_y727v"]
 viewport_path = NodePath("Arrow_Hover_front/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_rejnn"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4fgq7"]
 viewport_path = NodePath("Arrow_Hover_back/SubViewport")
+
+[sub_resource type="Animation" id="Animation_0otxf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Arrow_Hover_front:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Arrow_Hover_back:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_mm4a0"]
 resource_name = "bounce"
@@ -39,40 +67,14 @@ tracks/1/keys = {
 "values": [Vector2(0, 0), Vector2(0, 57), Vector2(0, -27)]
 }
 
-[sub_resource type="Animation" id="Animation_0otxf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Arrow_Hover_front:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Arrow_Hover_back:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j6wmd"]
 _data = {
 "RESET": SubResource("Animation_0otxf"),
 "bounce": SubResource("Animation_mm4a0")
 }
 
-[node name="Arrow_Hover2" type="Node3D"]
+[node name="Hover_Interactables" type="Node3D"]
+script = ExtResource("1_4y25w")
 
 [node name="Arrow_Hover_front" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225994, 0)
@@ -81,7 +83,7 @@ cast_shadow = 0
 billboard = 1
 no_depth_test = true
 alpha_cut = 2
-texture = SubResource("ViewportTexture_hjcmt")
+texture = SubResource("ViewportTexture_y727v")
 script = ExtResource("1_ylots")
 
 [node name="SubViewport" type="SubViewport" parent="Arrow_Hover_front"]
@@ -96,7 +98,7 @@ layers = 4
 cast_shadow = 0
 billboard = 1
 alpha_cut = 2
-texture = SubResource("ViewportTexture_rejnn")
+texture = SubResource("ViewportTexture_4fgq7")
 script = ExtResource("1_ylots")
 
 [node name="SubViewport" type="SubViewport" parent="Arrow_Hover_back"]

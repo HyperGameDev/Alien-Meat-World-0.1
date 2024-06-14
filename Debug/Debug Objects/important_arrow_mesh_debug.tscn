@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl7k5mq2d6tu4"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_tyjxs"]
+size = Vector3(1, 2.965, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awbra"]
+albedo_color = Color(1.792, 0.067, 0.192, 1)
+
+[node name="Debug_Arrow_00" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -0.00574565, 2.26935, 0)
+mesh = SubResource("PrismMesh_tyjxs")
+surface_material_override/0 = SubResource("StandardMaterial3D_awbra")
