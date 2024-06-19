@@ -32,7 +32,7 @@ func hover_fx_begin(target):
 						node.get_owner().hover_fx_begin()
 					node.material_overlay = material_hilite
 				
-				# This doesn't work; don't know why yet; see cow_barn_01_02_00.tscn
+			# Checks children for meshes
 			for subnode in node.get_children():
 				if subnode is MeshInstance3D:
 					Globals.obstacles_hilited.append(subnode)
