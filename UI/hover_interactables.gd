@@ -14,13 +14,14 @@ func hover_fx_begin(target):
 	if !target.is_in_group("Meat"):
 		for node in target.get_owner().get_children():
 			if node is MeshInstance3D:
-				if node.get_owner().has_method("hover_fx_begin"):
-					node.get_owner().hover_fx_begin()
-				node.material_overlay = material_hilite
+				if node.material_overlay == null:
+					if node.get_owner().has_method("hover_fx_begin"):
+						node.get_owner().hover_fx_begin()
+					node.material_overlay = material_hilite
 				
 				# This doesn't work; don't know why yet; see cow_barn_01_02_00.tscn
-				for subnode in node.get_children():
-					if subnode is MeshInstance3D:
-						
-						node.material_overlay = material_hilite
+			for subnode in node.get_children():
+				if subnode is MeshInstance3D:
+					if subnode.material_overlay == null:
+						subnode.material_overlay = material_hilite
 		

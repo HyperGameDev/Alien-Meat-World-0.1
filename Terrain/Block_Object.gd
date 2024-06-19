@@ -29,18 +29,20 @@ func hover_fx_begin():
 	
 func hover_fx_end(target):
 	if has_node("Obstacle"):
+			
 		if !target.is_empty():
 			if $Obstacle != target["collider"]:
 				for node in get_children():
 					if node is MeshInstance3D:
-						node.material_overlay = null
-						# This doesn't work; don't know why yet; see cow_barn_01_02_00.tscn
-						for subnode in node.get_children():
-							if subnode is MeshInstance3D:
-					
-								node.material_overlay = null
+						if node.material_overlay != null:
+							node.material_overlay = null
+							# This doesn't work; don't know why yet; see cow_barn_01_02_00.tscn
+					for subnode in node.get_children():
+						if subnode is MeshInstance3D:
+							if subnode.material_overlay != null:
+								subnode.material_overlay = null
 	pass
 		
-	
-	
-	
+
+
+
