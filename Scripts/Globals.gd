@@ -1,5 +1,7 @@
 extends Node
 
+var obstacles_hilited := []
+
 @export var current_level = 1
 
 var level_chunks_safe := [

@@ -10,9 +10,8 @@ var hilited = false
 var needs_reset = false
 var damaged_parts := []
 
-func _ready():
-	update_reset_status.connect(on_update_reset_status)
-	Messenger.anything_seen.connect(hover_fx_end)
+func _ready():	update_reset_status.connect(on_update_reset_status)
+	#Messenger.anything_seen.connect(hover_fx_end)
 	
 func on_update_reset_status(damaged_part):
 	needs_reset = true
