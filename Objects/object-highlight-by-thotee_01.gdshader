@@ -31,4 +31,5 @@ void fragment() {
     ALBEDO = albedo_color * albedo_tex;
     EMISSION = highlight_color.rgb * highlight_mask * emission_power * highlight;
     SPECULAR = 0.5;
+	ALPHA = highlight_mask;
 }

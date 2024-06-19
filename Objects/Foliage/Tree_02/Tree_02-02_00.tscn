@@ -126,6 +126,8 @@ script = ExtResource("2_lkjov")
 [node name="Leaves" parent="." index="1"]
 surface_material_override/0 = ExtResource("2_775i0")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Leaves" index="0"]
+
 [node name="Obstacle" type="Area3D" parent="." index="2"]
 script = ExtResource("1_0d8fm")
 health_max = 2

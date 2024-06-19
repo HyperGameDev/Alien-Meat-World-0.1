@@ -39,6 +39,7 @@ func hover_fx_end(target):
 							if subnode is MeshInstance3D:
 					
 								node.material_overlay = null
+	pass
 		
 	
 	
