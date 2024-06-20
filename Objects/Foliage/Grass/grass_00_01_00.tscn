@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://qjw6qt5ydbww"]
+
+[ext_resource type="PackedScene" uid="uid://3xpcvdtoyp55" path="res://Objects/Foliage/Grass/grass_00-01_00.blend" id="1_1sbmo"]
+[ext_resource type="Material" uid="uid://bury7ae2qnyxe" path="res://Terrain/texture_colors/grass_2side.tres" id="2_3dupv"]
+
+[node name="grass_00-01_00" instance=ExtResource("1_1sbmo")]
+
+[node name="Grass" parent="." index="0"]
+cast_shadow = 0
+surface_material_override/0 = ExtResource("2_3dupv")

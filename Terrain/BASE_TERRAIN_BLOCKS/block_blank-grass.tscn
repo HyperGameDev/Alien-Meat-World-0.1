@@ -22,6 +22,9 @@ surface_material_override/0 = ExtResource("2_dauq6")
 script = ExtResource("1_nq0yf")
 metadata/_edit_lock_ = true
 
+[node name="Ground_Grass" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_akd2u")
+
 [node name="Ground" type="StaticBody3D" parent="."]
 collision_mask = 0
 

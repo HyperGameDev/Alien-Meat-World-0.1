@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cvbtgm33srfd6"]
+[gd_scene load_steps=27 format=3 uid="uid://cvbtgm33srfd6"]
 
 [ext_resource type="PackedScene" uid="uid://7cd7bq27jnyj" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_blank-grass.tscn" id="1_vk10d"]
 [ext_resource type="Shader" path="res://Collaborator Experiments/Pierogigon/Terrain/terrain_level_shader_pierogi.gdshader" id="2_wsyns"]
@@ -51,6 +51,44 @@ noise = SubResource("FastNoiseLite_2etc1")
 albedo_color = Color(0.0784314, 0.054902, 0.301961, 1)
 metallic = 0.42
 roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrgvh"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_color = Color(0.0461151, 0.39416, 0.123388, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dlcot"]
+_surfaces = [{
+"aabb": AABB(-0.866025, -0.189323, -1, 1.73205, 3.91677, 1.5),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 1, 0, 3, 0, 0, 0, 2, 0, 1, 0, 1, 0, 2, 0, 3, 0, 2, 0, 0, 0, 3, 0),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 127, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 127, 255, 255, 170, 170, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mt6wf"]
+resource_name = "grass_01-01_00_Cone"
+_surfaces = [{
+"aabb": AABB(-0.866025, -0.189323, -1, 1.73205, 3.91677, 1.5),
+"attribute_data": PackedByteArray(255, 191, 142, 130, 255, 63, 142, 130, 255, 63, 142, 130, 52, 117, 183, 222, 52, 245, 183, 222, 52, 117, 183, 222, 202, 10, 183, 222, 202, 138, 183, 222, 202, 10, 183, 222, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray(1, 0, 5, 0, 10, 0, 0, 0, 7, 0, 4, 0, 3, 0, 6, 0, 9, 0, 8, 0, 2, 0, 11, 0),
+"material": SubResource("StandardMaterial3D_jrgvh"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray(255, 127, 0, 0, 0, 0, 255, 191, 255, 127, 0, 0, 0, 0, 60, 224, 255, 127, 0, 0, 0, 0, 60, 224, 255, 255, 0, 0, 255, 255, 43, 133, 255, 255, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 255, 255, 60, 224, 0, 0, 0, 0, 255, 255, 43, 133, 0, 0, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 255, 255, 60, 224, 255, 127, 255, 255, 170, 170, 43, 133, 255, 127, 255, 255, 170, 170, 60, 224, 255, 127, 255, 255, 170, 170, 60, 224, 0, 0, 255, 127, 32, 182, 66, 81, 65, 209, 221, 201, 255, 255, 255, 127, 0, 0, 255, 127, 32, 182, 66, 81, 255, 255, 255, 127, 0, 0, 255, 127, 65, 209, 221, 201, 255, 255, 255, 127, 32, 182, 66, 81, 65, 209, 221, 201)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_dlcot")
 
 [node name="Terrain_0" instance=ExtResource("1_vk10d")]
 surface_material_override/0 = SubResource("ShaderMaterial_sncx2")
@@ -742,5 +780,11 @@ transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -5.92201, 
 
 [node name="Cow_01-03_65" parent="." index="229" instance=ExtResource("13_hq45j")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -5.66097, 0, -4.16601)
+
+[node name="Grass" parent="grass_01-01_00" index="0"]
+transform = Transform3D(0.0329273, 0, 0, 0, 0.0329273, 0, 0, 0, 0.0329273, 0, 0, 0)
+lod_bias = 0.001
+mesh = SubResource("ArrayMesh_mt6wf")
+skeleton = NodePath("")
 
 [editable path="truckPickup_01_00"]
