@@ -148,3 +148,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1297, -2.38419e-07, 3.6242
 
 [node name="Tree_03-02_14" parent="." index="50" instance=ExtResource("4_qk177")]
 transform = Transform3D(-0.0960369, 0, 0.995378, 0, 1, 0, -0.995378, 0, -0.0960369, 20.836, -2.38419e-07, 3.69188)
+
+[editable path="grass_01-01_00"]

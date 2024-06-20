@@ -27,6 +27,13 @@ window/size/viewport_width=1109
 window/size/viewport_height=624
 window/size/always_on_top=true
 
+[file_customization]
+
+folder_colors={
+"res://Terrain/BASE_TERRAIN_BLOCKS/": "gray",
+"res://Terrain/terrain_level_01/": "green"
+}
+
 [input]
 
 ui_left={

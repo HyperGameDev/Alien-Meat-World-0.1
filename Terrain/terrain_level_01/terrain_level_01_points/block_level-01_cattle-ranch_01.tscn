@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://1v8wnaldsn2r"]
+[gd_scene load_steps=17 format=3 uid="uid://1v8wnaldsn2r"]
 
 [ext_resource type="PackedScene" uid="uid://7cd7bq27jnyj" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_blank-grass.tscn" id="1_c6wno"]
 [ext_resource type="Material" uid="uid://c0aatxfj22wvi" path="res://Terrain/terrain_level_01_textures/block_level-01_cattle-ranch_01.tres" id="2_it4jp"]
@@ -16,44 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://ce4fmb5061j0k" path="res://Objects/Buildings/Barns/Cow_Barn_01/cow_barn_01_02_00.tscn" id="15_ufqnp"]
 [ext_resource type="PackedScene" uid="uid://d21gtemvo26ou" path="res://Objects/Misc/electric_pole_01_01_00.tscn" id="16_4s5ub"]
 [ext_resource type="PackedScene" uid="uid://bw3rfvleuqpka" path="res://Objects/Foliage/Tree_03/Tree_03-02_00.tscn" id="16_7wvjh"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrgvh"]
-resource_name = "Material.001"
-cull_mode = 2
-albedo_color = Color(0.0461151, 0.39416, 0.123388, 1)
-roughness = 0.5
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_dlcot"]
-_surfaces = [{
-"aabb": AABB(-0.866025, -0.189323, -1, 1.73205, 3.91677, 1.5),
-"format": 34896613377,
-"index_count": 12,
-"index_data": PackedByteArray(0, 0, 1, 0, 3, 0, 0, 0, 2, 0, 1, 0, 1, 0, 2, 0, 3, 0, 2, 0, 0, 0, 3, 0),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray(255, 127, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 127, 255, 255, 170, 170, 0, 0)
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_mt6wf"]
-resource_name = "grass_01-01_00_Cone"
-_surfaces = [{
-"aabb": AABB(-0.866025, -0.189323, -1, 1.73205, 3.91677, 1.5),
-"attribute_data": PackedByteArray(255, 191, 142, 130, 255, 63, 142, 130, 255, 63, 142, 130, 52, 117, 183, 222, 52, 245, 183, 222, 52, 117, 183, 222, 202, 10, 183, 222, 202, 138, 183, 222, 202, 10, 183, 222, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191),
-"format": 34896613399,
-"index_count": 12,
-"index_data": PackedByteArray(1, 0, 5, 0, 10, 0, 0, 0, 7, 0, 4, 0, 3, 0, 6, 0, 9, 0, 8, 0, 2, 0, 11, 0),
-"material": SubResource("StandardMaterial3D_jrgvh"),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 12,
-"vertex_data": PackedByteArray(255, 127, 0, 0, 0, 0, 255, 191, 255, 127, 0, 0, 0, 0, 60, 224, 255, 127, 0, 0, 0, 0, 60, 224, 255, 255, 0, 0, 255, 255, 43, 133, 255, 255, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 255, 255, 60, 224, 0, 0, 0, 0, 255, 255, 43, 133, 0, 0, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 255, 255, 60, 224, 255, 127, 255, 255, 170, 170, 43, 133, 255, 127, 255, 255, 170, 170, 60, 224, 255, 127, 255, 255, 170, 170, 60, 224, 0, 0, 255, 127, 32, 182, 66, 81, 65, 209, 221, 201, 255, 255, 255, 127, 0, 0, 255, 127, 32, 182, 66, 81, 255, 255, 255, 127, 0, 0, 255, 127, 65, 209, 221, 201, 255, 255, 255, 127, 32, 182, 66, 81, 65, 209, 221, 201)
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_dlcot")
 
 [node name="Terrain_0" instance=ExtResource("1_c6wno")]
 transform = Transform3D(1, 0, 8.72665e-05, 0, 1, 0, -8.72665e-05, 0, 1, 0, 0, -7)
@@ -657,11 +619,6 @@ transform = Transform3D(2.44981e-08, 0, -1, 0, 1, 0, 1, 0, 2.44981e-08, 23.4999,
 [node name="Tree_03-02_03" parent="." index="177" instance=ExtResource("16_7wvjh")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 17.3999, 0, 1.60152)
 
-[node name="Grass" parent="grass_01-01_00" index="0"]
-transform = Transform3D(0.0329273, 0, 0, 0, 0.0329273, 0, 0, 0, 0.0329273, 0, 0, 0)
-lod_bias = 0.001
-mesh = SubResource("ArrayMesh_mt6wf")
-skeleton = NodePath("")
-
 [editable path="electric-pole_01-01_00"]
 [editable path="electric-pole_01-01_00/Obstacle/HitPoints"]
+[editable path="grass_01-01_00"]
