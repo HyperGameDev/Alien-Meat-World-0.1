@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjrknjfhngp6q"]
+
+[ext_resource type="Material" uid="uid://b4qkd57e65e5m" path="res://Objects/Foliage/Grass/grass_hider.tres" id="1_27sod"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ffaw2"]
+size = Vector3(2, 1, 12.245)
+
+[node name="Grass_Hider" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.481, -0.4, 2.618)
+material_override = ExtResource("1_27sod")
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("BoxMesh_ffaw2")

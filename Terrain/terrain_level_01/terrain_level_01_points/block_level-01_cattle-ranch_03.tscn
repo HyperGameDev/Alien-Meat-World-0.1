@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cvbtgm33srfd6"]
+[gd_scene load_steps=31 format=3 uid="uid://cvbtgm33srfd6"]
 
 [ext_resource type="PackedScene" uid="uid://7cd7bq27jnyj" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_blank-grass.tscn" id="1_vk10d"]
 [ext_resource type="Shader" path="res://Collaborator Experiments/Pierogigon/Terrain/terrain_level_shader_pierogi.gdshader" id="2_wsyns"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c4oqx7gllpfj7" path="res://Objects/Foliage/Tree_01/Tree_01-02_mesh-only_00.tscn" id="17_wbd1p"]
 [ext_resource type="PackedScene" uid="uid://d21gtemvo26ou" path="res://Objects/Misc/electric_pole_01_01_00.tscn" id="17_xvgbo"]
 [ext_resource type="PackedScene" uid="uid://bkwsnbugupr16" path="res://Objects/Misc/windmill-water_01_01_00.tscn" id="18_28sth"]
+[ext_resource type="PackedScene" uid="uid://cjrknjfhngp6q" path="res://Objects/Foliage/Grass/grass_hider.tscn" id="20_pg0q7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sncx2"]
 render_priority = 0
@@ -51,6 +52,24 @@ noise = SubResource("FastNoiseLite_2etc1")
 albedo_color = Color(0.0784314, 0.054902, 0.301961, 1)
 metallic = 0.42
 roughness = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_u30gi"]
+size = Vector3(8.079, 1, 15.71)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sq5o3"]
+size = Vector3(5.89, 1, 8.28)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wswo1"]
+size = Vector3(3.08, 1, 5.325)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ophr"]
+size = Vector3(13.32, 1, 7.315)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pjo51"]
+size = Vector3(10.92, 1, 15.33)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gl4hf"]
+size = Vector3(11.16, 1, 4.71)
 
 [node name="Terrain_0" instance=ExtResource("1_vk10d")]
 surface_material_override/0 = SubResource("ShaderMaterial_sncx2")
@@ -465,6 +484,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.275, 0, 7)
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -13.2, 0, 4.23038)
 
 [node name="Truck-Body" parent="truckPickup_01_00" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0442991, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_co2cf")
 
 [node name="tree_01-03_mesh-only_00" parent="." index="138" instance=ExtResource("17_wbd1p")]
@@ -742,6 +762,36 @@ transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -5.92201, 
 
 [node name="Cow_01-03_65" parent="." index="229" instance=ExtResource("13_hq45j")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -5.66097, 0, -4.16601)
+
+[node name="Grass_Hider" parent="." index="230" instance=ExtResource("20_pg0q7")]
+transform = Transform3D(0.86558, 0, -0.500771, 0, 1, 0, 0.500771, 0, 0.86558, -11.1271, -0.44726, -0.268192)
+layers = 8
+mesh = SubResource("BoxMesh_u30gi")
+
+[node name="Grass_Hider2" parent="." index="231" instance=ExtResource("20_pg0q7")]
+transform = Transform3D(0.86558, 0, -0.500771, 0, 1, 0, 0.500771, 0, 0.86558, -5.44296, -0.44726, 1.43269)
+layers = 8
+mesh = SubResource("BoxMesh_sq5o3")
+
+[node name="Grass_Hider3" parent="." index="232" instance=ExtResource("20_pg0q7")]
+transform = Transform3D(0.86558, 0, -0.500771, 0, 1, 0, 0.500771, 0, 0.86558, -9.68055, -0.44726, 5.18846)
+layers = 8
+mesh = SubResource("BoxMesh_wswo1")
+
+[node name="Grass_Hider4" parent="." index="233" instance=ExtResource("20_pg0q7")]
+transform = Transform3D(0.86558, 0, -0.500771, 0, 1, 0, 0.500771, 0, 0.86558, -20.7021, -0.44726, 4.55391)
+layers = 8
+mesh = SubResource("BoxMesh_7ophr")
+
+[node name="Grass_Hider5" parent="." index="234" instance=ExtResource("20_pg0q7")]
+transform = Transform3D(0.86558, 0, -0.500771, 0, 1, 0, 0.500771, 0, 0.86558, -29.7619, -0.44726, -0.687513)
+layers = 8
+mesh = SubResource("BoxMesh_pjo51")
+
+[node name="Grass_Hider6" parent="." index="235" instance=ExtResource("20_pg0q7")]
+transform = Transform3D(0.949819, 0, -0.312799, 0, 1, 0, 0.312799, 0, 0.949819, -19.3257, -0.44726, -3.32175)
+layers = 8
+mesh = SubResource("BoxMesh_gl4hf")
 
 [editable path="truckPickup_01_00"]
 [editable path="grass_01-01_00"]

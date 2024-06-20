@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b4qkd57e65e5m"]
+
+[ext_resource type="Shader" path="res://Objects/Foliage/Grass/grass_hider.gdshader" id="1_8r1f0"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_8r1f0")

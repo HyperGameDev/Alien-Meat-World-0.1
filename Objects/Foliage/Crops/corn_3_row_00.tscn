@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqvuhngd0g34n"]
+[gd_scene load_steps=8 format=3 uid="uid://bqvuhngd0g34n"]
+
+[ext_resource type="PackedScene" uid="uid://cjrknjfhngp6q" path="res://Objects/Foliage/Grass/grass_hider.tscn" id="1_inkwk"]
 
 [sub_resource type="Gradient" id="Gradient_oqged"]
 offsets = PackedFloat32Array(0.812261, 0.992337)
@@ -21,6 +23,9 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0.384314, 0, 1, 1, 1, 1, 1)
 color_ramp = SubResource("Gradient_3t5qw")
 noise = SubResource("FastNoiseLite_t6unm")
 
+[sub_resource type="BoxMesh" id="BoxMesh_hc318"]
+size = Vector3(10.975, 1, 20.07)
+
 [node name="Corn_3_Row_00" type="Node3D"]
 
 [node name="Decal_rowBottom" type="Decal" parent="."]
@@ -29,3 +34,7 @@ size = Vector3(11.4, 2, 22.1)
 texture_albedo = SubResource("GradientTexture2D_sw2fr")
 texture_normal = SubResource("NoiseTexture2D_phn8b")
 cull_mask = 2
+
+[node name="Grass_Hider2" parent="." instance=ExtResource("1_inkwk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0190001, -0.153038, 0.0182799)
+mesh = SubResource("BoxMesh_hc318")
