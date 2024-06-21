@@ -1,18 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dmn5h1fku4mbh"]
 
 [ext_resource type="PackedScene" uid="uid://jyp0c7gm2xux" path="res://Objects/Foliage/Grass/grass_plane_01-01_00.blend" id="1_jdc6n"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dfqug"]
-render_priority = -1
-transparency = 1
-shading_mode = 0
-albedo_color = Color(0.0156863, 0.239216, 0.101961, 0.803922)
-disable_receive_shadows = true
-billboard_keep_scale = true
+[ext_resource type="Material" uid="uid://crmflpnv33rml" path="res://Objects/Foliage/Grass/grass_hidable.tres" id="2_cv7pc"]
 
 [node name="grass_plane_01-01_00" instance=ExtResource("1_jdc6n")]
 
 [node name="Grass2" parent="." index="0"]
 layers = 8
 cast_shadow = 0
-surface_material_override/0 = SubResource("StandardMaterial3D_dfqug")
+surface_material_override/0 = ExtResource("2_cv7pc")

@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c4oqx7gllpfj7" path="res://Objects/Foliage/Tree_01/Tree_01-02_mesh-only_00.tscn" id="17_wbd1p"]
 [ext_resource type="PackedScene" uid="uid://d21gtemvo26ou" path="res://Objects/Misc/electric_pole_01_01_00.tscn" id="17_xvgbo"]
 [ext_resource type="PackedScene" uid="uid://bkwsnbugupr16" path="res://Objects/Misc/windmill-water_01_01_00.tscn" id="18_28sth"]
-[ext_resource type="PackedScene" uid="uid://cjrknjfhngp6q" path="res://Objects/Foliage/Grass/grass_hider.tscn" id="20_pg0q7"]
+[ext_resource type="PackedScene" path="res://Objects/Foliage/Grass/grass_hider.tscn" id="20_pg0q7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sncx2"]
 render_priority = 0
@@ -794,4 +794,3 @@ layers = 8
 mesh = SubResource("BoxMesh_gl4hf")
 
 [editable path="truckPickup_01_00"]
-[editable path="grass_01-01_00"]

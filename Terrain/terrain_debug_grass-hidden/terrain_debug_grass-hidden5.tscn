@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://crf6hg4wmi84l"]
+
+[ext_resource type="PackedScene" uid="uid://7cd7bq27jnyj" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_blank-grass.tscn" id="1_hajjh"]
+
+[node name="Terrain_1" instance=ExtResource("1_hajjh")]
+
+[node name="grass_plane_01-01_00" parent="." index="4"]
+visible = false

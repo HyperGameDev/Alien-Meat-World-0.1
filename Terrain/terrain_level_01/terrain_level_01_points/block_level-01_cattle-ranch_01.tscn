@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://7cd7bq27jnyj" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_blank-grass.tscn" id="1_c6wno"]
 [ext_resource type="Material" uid="uid://c0aatxfj22wvi" path="res://Terrain/terrain_level_01_textures/block_level-01_cattle-ranch_01.tres" id="2_it4jp"]
-[ext_resource type="PackedScene" uid="uid://cjrknjfhngp6q" path="res://Objects/Foliage/Grass/grass_hider.tscn" id="3_pc2nc"]
+[ext_resource type="PackedScene" path="res://Objects/Foliage/Grass/grass_hider.tscn" id="3_pc2nc"]
 [ext_resource type="PackedScene" uid="uid://dxjkdmi6v6583" path="res://Objects/Buildings/Barns/Cow_Barn_01/Cow-Barn_02_00.tscn" id="3_xeq6j"]
 [ext_resource type="PackedScene" uid="uid://cm61hhhqrodvc" path="res://Objects/Foliage/Tree_01/Tree_01-02_00.tscn" id="4_iut0s"]
 [ext_resource type="PackedScene" uid="uid://b1jpfiy4cphy7" path="res://Objects/Fences/fence_01_row-05_00.tscn" id="5_3kxsn"]
@@ -643,4 +643,3 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 
 [editable path="electric-pole_01-01_00"]
 [editable path="electric-pole_01-01_00/Obstacle/HitPoints"]
-[editable path="grass_01-01_00"]
