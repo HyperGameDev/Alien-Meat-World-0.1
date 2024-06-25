@@ -27,9 +27,15 @@ skins/use_named_skins=true
 animation/import=true
 animation/fps=30
 animation/trimming=false
-animation/remove_immutable_tracks=true
+animation/remove_immutable_tracks=false
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Bipeds/Biped_Human_grp/cs_grp": {
+"import/skip_import": true
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
 blender/nodes/visible=0
