@@ -24,12 +24,17 @@ var attack_target = null
 var hover_target = null
 
 
+var score_minimum_met = false
+
+
 func _ready():	
 	if !cam_z_offset == CAM_Z_OFFSET:
 		print("ERROR: Ensure Camera's Z constant and variable match!")
 		breakpoint
 		
 	Messenger.grab_ended.connect(on_grab_ended)
+	Messenger.score_minimum_met.connect(on_score_minimum_met)
+	Messenger.powerup_chosen.connect(on_powerup_chosen)
 	
 func _physics_process(_delta):
 	
@@ -57,23 +62,27 @@ func on_grab_ended():
 	is_attempting_grab = false
 
 func _process(_delta):
-	var raycast_result = attack_ray() ## Shoots the ray
-	if Input.is_action_pressed("Grab"): 
-		get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
-		get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_back").force_hide_arrow()
-		if !raycast_result == null:
-			if raycast_result.is_in_group("Meat"):
-				var meat_original = raycast_result
-				if meat_original.has_method("spawn_me") and !is_attempting_grab and !is_in_group("Grabbed"):
-				#disappears the object
-					meat_original.spawn = false
-				
-					var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
-					get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
-					meat_new.spawn = true
-					meat_new.add_to_group("Grabbed")
-					is_attempting_grab = true
-
+	if !score_minimum_met:
+		var raycast_result = attack_ray() ## Shoots the ray
+		if Input.is_action_pressed("Grab"): 
+			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
+			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_back").force_hide_arrow()
+			if !raycast_result == null:
+				if raycast_result.is_in_group("Meat"):
+					var meat_original = raycast_result
+					if meat_original.has_method("spawn_me") and !is_attempting_grab and !is_in_group("Grabbed"):
+					#disappears the object
+						meat_original.spawn = false
+					
+						var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
+						get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
+						meat_new.spawn = true
+						meat_new.add_to_group("Grabbed")
+						is_attempting_grab = true
+	else:
+		powerup_ray()
+		
+		
 	# Detects all things
 	general_ray()
 
@@ -122,6 +131,19 @@ func attack_ray(): ## Detects obstacles, NPC's and Meat/Health; emits attack_tar
 #		return raycast_result.collider
 		return attack_target
 
+func powerup_ray():
+	var raycast_result = hover_ray(32,true)
+	if !raycast_result.is_empty():
+		if Input.is_action_just_pressed("Grab"):
+			if raycast_result["collider"].is_type == PowerUp_Orb.is_types.Orb_1:
+				Messenger.powerup_chosen.emit(1)
+				print("Left orb chosen")
+			if raycast_result["collider"].is_type == PowerUp_Orb.is_types.Orb_2:
+				Messenger.powerup_chosen.emit(2)
+				print("Middle orb chosen")
+			if raycast_result["collider"].is_type == PowerUp_Orb.is_types.Orb_3:
+				Messenger.powerup_chosen.emit(3)
+				print("Right orb chosen")
 
 func player_hover_ray(): ## Player Hover detection
 	var raycast_result = hover_ray(32768,true)
@@ -140,3 +162,9 @@ func cursor_ray(): ## This should be what the player head follows
 	if !raycast_result.is_empty():
 		Messenger.mouse_pos_3d.emit(raycast_result.position)
 #	print(raycast_result)
+
+func on_score_minimum_met():
+	score_minimum_met = true
+
+func on_powerup_chosen(orb):
+	score_minimum_met = false

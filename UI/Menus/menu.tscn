@@ -6,7 +6,7 @@
 bg_color = Color(0.0745098, 0, 0.231373, 0.454902)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhm7m"]
-bg_color = Color(0, 0.0901961, 0.054902, 0.878431)
+bg_color = Color(0, 0.0901961, 0.054902, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0uo1"]
 
@@ -201,14 +201,13 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Asset Expo 1"
 
 [node name="VBox_5" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Blank Terrains"
+text = "Cheat Tools"
 horizontal_alignment = 1
 
 [node name="Divider" type="Panel" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
@@ -216,15 +215,17 @@ custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
 
-[node name="Button_levelBlank_grass" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
+[node name="Button_addPoint" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Blank (Grass)"
+text = "Add Point"
 
 [node name="Button_levelBlank_dirt" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 31
@@ -232,6 +233,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Blank (Dirt)"
 
 [node name="Button_levelBlank_concrete" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 23
@@ -239,6 +241,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Blank (Concrete)"
 
 [node name="Button_levelBlank_military" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
@@ -246,6 +249,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Blank (Military)"
 
 [node name="Button_levelBlank_all" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 31

@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=64 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://62tsdyaob0l4" path="res://Terrain/terrain_controller_in_scene.tscn" id="6_ywiix"]
 [ext_resource type="FontFile" uid="uid://ckdic8pw8e5i2" path="res://UI/Fonts/Agrandir-WideBlackItalic.otf" id="7_1vj6d"]
 [ext_resource type="Script" path="res://Area_Player-Proximity.gd" id="8_0gjb7"]
+[ext_resource type="Script" path="res://Player/PowerUp_Menu.gd" id="8_i4g5f"]
+[ext_resource type="Script" path="res://Player/PowerUp_Orb.gd" id="9_l1n0p"]
 [ext_resource type="Script" path="res://Scripts/BodyPart.gd" id="10_2td36"]
 [ext_resource type="Script" path="res://Player/ScoreDunk.gd" id="11_318ny"]
 [ext_resource type="Script" path="res://UI/UI.gd" id="12_gi6vt"]
@@ -75,7 +77,7 @@ dof_blur_near_distance = 9.32
 dof_blur_near_transition = 1140.9
 dof_blur_amount = 1.0
 
-[sub_resource type="SphereMesh" id="SphereMesh_5k002"]
+[sub_resource type="SphereMesh" id="SphereMesh_y8ywy"]
 radius = 0.8
 height = 1.6
 
@@ -92,7 +94,7 @@ roughness = 0.11
 disable_receive_shadows = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dsm6n"]
-radius = 0.8
+radius = 0.4
 
 [sub_resource type="Animation" id="Animation_sp7qj"]
 length = 0.001
@@ -280,6 +282,62 @@ _data = {
 "score_up": SubResource("Animation_gvfe1")
 }
 
+[sub_resource type="SphereMesh" id="SphereMesh_5k002"]
+radius = 0.4
+height = 0.8
+
+[sub_resource type="Animation" id="Animation_vwck6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PowerUp_Menu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hme6r"]
+resource_name = "ascent"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PowerUp_Menu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector3(0, -1.725, 0), Vector3(0, 1.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m7hwf"]
+resource_name = "desent"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PowerUp_Menu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 1.5, 0), Vector3(0, -1.725, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p0e84"]
+_data = {
+"RESET": SubResource("Animation_vwck6"),
+"ascent": SubResource("Animation_hme6r"),
+"descent": SubResource("Animation_m7hwf")
+}
+
 [sub_resource type="BoxMesh" id="BoxMesh_svwv1"]
 size = Vector3(1, 1, 7.48)
 
@@ -313,6 +371,178 @@ viewport_path = NodePath("HP_Head/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_82jui"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
+
+[sub_resource type="Animation" id="Animation_bkghh"]
+resource_name = "score_minimum_met"
+length = 4.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Score_Number_Minimum:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.55, 0.9, 1.1, 1.45, 1.65, 2, 2.35, 2.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 1, 1, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 1, 1, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Score_Number_Divider:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.55, 0.9, 1.1, 1.45, 1.65, 2, 2.35, 2.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 1, 1, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 1, 1, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%Score_Number:theme_override_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.55, 0.9, 1.1, 1.45, 1.65, 2, 2.35, 2.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 1, 1, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 1, 1, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%Score_Number:theme_override_font_sizes/font_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.55, 0.9, 1.1, 1.45, 1.65, 2, 2.35, 2.55),
+"transitions": PackedFloat32Array(0.4, 1, 1, 0.4, 1, 1, 0.4, 1, 1, 1),
+"update": 0,
+"values": [80, 120, 120, 80, 120, 120, 80, 120, 120, 80]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%Score_Number_Divider:theme_override_font_sizes/font_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.55, 0.9, 1.1, 1.45, 1.65, 2, 2.35, 2.55),
+"transitions": PackedFloat32Array(0.4, 1, 1, 0.4, 1, 1, 0.4, 1, 1, 1),
+"update": 0,
+"values": [80, 120, 120, 80, 120, 120, 80, 120, 120, 80]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%Score_Number_Minimum:theme_override_font_sizes/font_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.55, 0.9, 1.1, 1.45, 1.65, 2, 2.35, 2.55),
+"transitions": PackedFloat32Array(0.4, 1, 1, 0.4, 1, 1, 0.4, 1, 1, 1),
+"update": 0,
+"values": [60, 90, 90, 60, 90, 90, 60, 90, 90, 60]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.55),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"score_minimum_met_animation_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ghinw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Score_Number_Minimum:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Score_Number_Divider:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%Score_Number:theme_override_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%Score_Number:theme_override_font_sizes/font_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [80]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%Score_Number_Divider:theme_override_font_sizes/font_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [80]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%Score_Number_Minimum:theme_override_font_sizes/font_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [60]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_us6tq"]
+_data = {
+"RESET": SubResource("Animation_ghinw"),
+"score_minimum_met": SubResource("Animation_bkghh")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s8eah"]
 size = Vector3(137.258, 1, 6.5647)
@@ -500,7 +730,7 @@ aabb = AABB(-0.781489, -1.07957, -1, 1.4077, 1.14254, 2)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ScoreDunk"]
 unique_name_in_owner = true
-mesh = SubResource("SphereMesh_5k002")
+mesh = SubResource("SphereMesh_y8ywy")
 surface_material_override/0 = SubResource("StandardMaterial3D_fj4ut")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ScoreDunk"]
@@ -530,6 +760,63 @@ outline_size = 20
 unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_vv7br")
+}
+
+[node name="PowerUp_Menu" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+visible = false
+script = ExtResource("8_i4g5f")
+
+[node name="PowerUp_Orb_1" type="Area3D" parent="PowerUp_Menu"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3.79315, 0.166246)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("9_l1n0p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_1"]
+mesh = SubResource("SphereMesh_5k002")
+surface_material_override/0 = SubResource("StandardMaterial3D_fj4ut")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PowerUp_Menu/PowerUp_Orb_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271964, 0, -0.00519168)
+shape = SubResource("SphereShape3D_dsm6n")
+
+[node name="PowerUp_Orb_2" type="Area3D" parent="PowerUp_Menu"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.54315, 0.166246)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("9_l1n0p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_2"]
+mesh = SubResource("SphereMesh_5k002")
+surface_material_override/0 = SubResource("StandardMaterial3D_fj4ut")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PowerUp_Menu/PowerUp_Orb_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271964, 0, -0.00519168)
+shape = SubResource("SphereShape3D_dsm6n")
+
+[node name="PowerUp_Orb_3" type="Area3D" parent="PowerUp_Menu"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3.79315, 0.166246)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("9_l1n0p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_3"]
+mesh = SubResource("SphereMesh_5k002")
+surface_material_override/0 = SubResource("StandardMaterial3D_fj4ut")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PowerUp_Menu/PowerUp_Orb_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271964, 0, -0.00519168)
+shape = SubResource("SphereShape3D_dsm6n")
+
+[node name="Animation_PowerUp_Menu" type="AnimationPlayer" parent="PowerUp_Menu"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_p0e84")
 }
 
 [node name="Player" type="CharacterBody3D" parent="."]
@@ -659,7 +946,7 @@ texture = SubResource("ViewportTexture_s2cav")
 texture = SubResource("ViewportTexture_82jui")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0839058, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.097247, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
@@ -676,7 +963,7 @@ bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.527278, 0.642509, 0.556885, -0.847182, -0.341315, -0.408347, -0.0722583, -0.686765, 0.723942, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.701965, 0.501465, -0.506693, -0.604669, -0.795483, 0.050426, -0.377598, 0.341615, 0.861208, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)
@@ -773,14 +1060,49 @@ theme_override_font_sizes/font_size = 40
 text = "Abductions"
 uppercase = true
 
-[node name="Score_Number" type="Label" parent="HUD/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Score_Number" type="Label" parent="HUD/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("7_1vj6d")
 theme_override_font_sizes/font_size = 80
 text = "0"
+
+[node name="Score_Number_Divider" type="Label" parent="HUD/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("7_1vj6d")
+theme_override_font_sizes/font_size = 80
+text = "/"
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="Score_Number_Minimum" type="Label" parent="HUD/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("7_1vj6d")
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="Animation_HUD-Score" type="AnimationPlayer" parent="HUD"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_us6tq")
+}
 
 [node name="SpawnPlace" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.226019, -2.19981, 0.376984)

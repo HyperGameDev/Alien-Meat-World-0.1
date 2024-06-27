@@ -146,12 +146,9 @@ func _init_chunks(num_terrain_chunks: int) -> void: ## Adds files to the correct
 		
 		
 func chunks_update():
-	print("LevelChunks updated")
 	for LevelChunk in Chunks_Safes:
 		var chunk =  LevelChunk.instantiate()
 		collector_safes.add_child(chunk)
-		for chunks in collector_safes.get_children():
-			print(chunk.is_level)
 	
 	for LevelChunk in Chunks_Obstacles:
 		var chunk =  LevelChunk.instantiate()

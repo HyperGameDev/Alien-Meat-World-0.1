@@ -6,6 +6,8 @@ const JUMP_VELOCITY = 6
 const FALL_DEATH_DISTANCE = -50
 const BOUNDARY_DISTANCE = 30
 
+@export var controls_locked = false
+
 @onready var animation = get_node("Alien/AnimationTree_Alien")
 @onready var skeleton: Skeleton3D = get_node("Alien/Armature/Skeleton3D")
 @onready var terrain_controller = %TerrainController_inScene
@@ -62,31 +64,31 @@ func _physics_process(delta):
 #	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+	if !controls_locked:
+		# Handle Jump.
+		var input_jump = Input.is_action_just_pressed("ui_accept")
+		if input_jump and is_on_floor():
+			velocity.y = JUMP_VELOCITY
 
-	# Handle Jump.
-	var input_jump = Input.is_action_just_pressed("ui_accept")
-	if input_jump and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_x = Input.get_axis("ui_left", "ui_right")
-	var direction_x = (transform.basis * Vector3(input_x, 0, 0)).normalized()
-	if direction_x:
-		velocity.x = direction_x.x * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		var input_x = Input.get_axis("ui_left", "ui_right")
+		var direction_x = (transform.basis * Vector3(input_x, 0, 0)).normalized()
+		if direction_x:
+			velocity.x = direction_x.x * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 		
-	var input_up = Input.is_action_pressed("ui_up")
-	if input_up and terrain_slowdown == false:
-		terrain_controller.terrain_velocity = move_toward(terrain_controller.terrain_velocity, 30, 1)
-	if input_up == false and terrain_slowdown == false:
-		terrain_controller.terrain_velocity = terrain_controller.TERRAIN_VELOCITY
+		var input_up = Input.is_action_pressed("ui_up")
+		if input_up and terrain_slowdown == false:
+			terrain_controller.terrain_velocity = move_toward(terrain_controller.terrain_velocity, 30, 1)
+		if input_up == false and terrain_slowdown == false:
+			terrain_controller.terrain_velocity = terrain_controller.TERRAIN_VELOCITY
 
-	if input_up == true:
-		animation.set("parameters/walk to run/transition_request", "running")
-	else:
-		animation.set("parameters/walk to run/transition_request", "walking")
+		if input_up == true:
+			animation.set("parameters/walk to run/transition_request", "running")
+		else:
+			animation.set("parameters/walk to run/transition_request", "walking")
 
 		
 	if terrain_slowdown == true:

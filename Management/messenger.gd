@@ -6,6 +6,9 @@ signal game_over
 
 signal debug_nodes
 
+signal score_minimum_met
+signal powerup_chosen
+
 signal player_hover
 
 signal area_damaged
