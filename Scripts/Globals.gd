@@ -2,7 +2,7 @@ extends Node
 
 var obstacles_hilited := []
 
-@export var current_level = 1
+@export var level_current = 1
 
 var level_chunks_safe := [
 	"res://Terrain/terrain_level_00/terrain_level_00_safes/",
@@ -28,12 +28,18 @@ var meat_objects := {
 }
 
 func _ready():
+	Messenger.game_over.connect(on_game_over)
 	Messenger.level_update.connect(on_level_update)
-	on_level_update(current_level)
+	on_level_update(level_current)
 
 func on_level_update(level):
-	current_level = level
+	level_current = level
 	print("Globals tried updating paths")
 	current_safe_chunks = level_chunks_safe[level]
 	current_points_chunks = level_chunks_points[level]
 	current_obstacle_chunks = level_chunks_obstacles[level]
+	
+func on_game_over():
+	obstacles_hilited = [] ## Empties out the last hilighted obstacle array
+	get_tree().reload_current_scene()
+	

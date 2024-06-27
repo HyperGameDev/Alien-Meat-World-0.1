@@ -146,9 +146,12 @@ func _init_chunks(num_terrain_chunks: int) -> void: ## Adds files to the correct
 		
 		
 func chunks_update():
+	print("LevelChunks updated")
 	for LevelChunk in Chunks_Safes:
 		var chunk =  LevelChunk.instantiate()
 		collector_safes.add_child(chunk)
+		for chunks in collector_safes.get_children():
+			print(chunk.is_level)
 	
 	for LevelChunk in Chunks_Obstacles:
 		var chunk =  LevelChunk.instantiate()
@@ -161,7 +164,7 @@ func chunks_update():
 func chunks_for_level():
 	# Updating lists-of-chunks-to-choose with level-relevant cunks, when starting ones are over.
 	if starting_chunks_over:
-		if Globals.current_level <= 1:
+		if Globals.level_current <= 1:
 			chunks_list_01 = chunks_list_01_level01
 			chunks_list_02 = chunks_list_02_level01
 
@@ -186,6 +189,10 @@ func _progress_terrain(delta: float) -> void:
 		
 		# Assign the first chunk to this var, and remove the chunk
 		var first_terrain = get_children().pop_front()
+		
+		if !first_terrain.is_level == Globals.level_current:
+			first_terrain.queue_free()
+			
 
 		if first_terrain.is_type == Block.is_types.SAFE:
 			# If starting chunks are not done, increase chunk count
@@ -259,7 +266,7 @@ func _load_terrain_scenes(chunks_path_safes: String, chunks_path_obstacles: Stri
 	
 	var dir_safes = DirAccess.open(chunks_path_safes)
 	for safes_path in dir_safes.get_files():
-		# Adds files as nodes to the Terrain Controller
+		# Adds files as nodes to the Terrain Collector (I think)
 		Chunks_Safes.append(load(chunks_path_safes + "/" + safes_path.trim_suffix(".remap")))
 		
 	var dir_obstacles = DirAccess.open(chunks_path_obstacles)
@@ -271,10 +278,15 @@ func _load_terrain_scenes(chunks_path_safes: String, chunks_path_obstacles: Stri
 		Chunks_Points.append(load(chunks_path_points + "/" + points_path.trim_suffix(".remap")))
 		
 func on_level_update(level):
-	print("controller tried updating paths")
+	print("Controller tried updating paths")
 	chunks_path_safes = Globals.current_safe_chunks
 	chunks_path_obstacles = Globals.current_obstacle_chunks
 	chunks_path_points = Globals.current_points_chunks
 	
-	_load_terrain_scenes(chunks_path_safes,chunks_path_obstacles,chunks_path_points)
+	Chunks_Safes.clear()
+	Chunks_Obstacles.clear()
+	Chunks_Points.clear()
+	
+	_load_terrain_scenes(Globals.current_safe_chunks,Globals.current_obstacle_chunks,Globals.current_points_chunks)
 	chunks_update()
+	

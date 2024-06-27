@@ -1,7 +1,10 @@
 extends Node3D
 
+class_name Collector
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	#set_physics_process(false)
-	pass
+	Messenger.level_update.connect(on_level_update)
+	
+func on_level_update(level):
+	for chunk in get_children():
+		chunk.queue_free()

@@ -183,9 +183,10 @@ func on_area_damaged(collided_bodypart):
 			await get_tree().create_timer(LIMB_MORPH_SPEED).timeout
 			mesh.hide()
 			# Syncronise collision turning off with physics process
-			await get_tree().process_frame
-			collision.disabled = true
-			# Alternative sync method (deprecated): collision.set_deferred("disable", true)
+			collision.set_deferred("disabled", true)
+		#Alternative sync method (causes crash due to null instance get_tree due to reloaded scene on death): 
+			#await get_tree().process_frame
+			#collision.disabled = true
 			
 			
 			
@@ -205,7 +206,7 @@ func on_area_damaged(collided_bodypart):
 		# Restart game on Death
 		if current_health <= 0:
 			await get_tree().create_timer(LIMB_MORPH_SPEED + .3).timeout
-			get_tree().reload_current_scene()
+			Messenger.game_over.emit()
 			
 			
 
@@ -226,7 +227,7 @@ func fall_death(fall_death):
 		current_health = 0
 #		is_damaged = true
 		Messenger.head_is_damaged.emit()
-		get_tree().reload_current_scene()
+		Messenger.game_over.emit()
 		
 			
 func health_collected(collided_bodypart, empathy_ok):

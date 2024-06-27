@@ -57,7 +57,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jhm7m")
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label_currentLevel" type="Label" parent="MarginContainer/VBox_levelMenu"]
+[node name="Label_levelCurrent" type="Label" parent="MarginContainer/VBox_levelMenu"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2

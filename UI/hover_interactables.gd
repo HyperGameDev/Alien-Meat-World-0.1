@@ -4,7 +4,7 @@ extends Node3D
 var hovered_current = null
 var hovered_old = null
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	Messenger.something_hovered.connect(hover_fx_begin)
 	Messenger.anything_seen.connect(hover_fx_end)
