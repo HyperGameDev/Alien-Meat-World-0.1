@@ -6,7 +6,8 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Messenger.level_update.connect(on_level_update)
-	%Button_addPoint.pressed.connect(on_addPoint)
+	%Button_scoreClear.pressed.connect(on_scoreClear)
+	%Button_scoreUp.pressed.connect(on_scoreUp)
 	%Button_levelDebug_01.pressed.connect(on_levelDebug_01)
 	%Button_level_01.pressed.connect(on_level_01)
 	
@@ -17,8 +18,12 @@ func _ready():
 func _process(delta):
 	pass
 
-func on_addPoint():
+func on_scoreUp():
 	Messenger.abduction.emit(1)
+	
+func on_scoreClear():
+	Globals.score = 0
+	Messenger.abduction.emit(0)
 
 func on_level_update(level):
 	label_levelCurrent.text = str("Current Level: ",level)

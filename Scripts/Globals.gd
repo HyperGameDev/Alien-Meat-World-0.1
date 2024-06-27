@@ -1,6 +1,7 @@
 extends Node
 
 var obstacles_hilited := []
+var score = 0
 
 @export var level_current = 0
 
@@ -28,6 +29,8 @@ var meat_objects := {
 }
 
 func _ready():
+	
+	Messenger.abduction.connect(on_abduction)
 	Messenger.game_over.connect(on_game_over)
 	Messenger.level_update.connect(on_level_update)
 	on_level_update(level_current)
@@ -42,4 +45,7 @@ func on_level_update(level):
 func on_game_over():
 	obstacles_hilited = [] ## Empties out the last hilighted obstacle array
 	get_tree().reload_current_scene()
+	
+func on_abduction(score_value):
+	score += score_value
 	

@@ -8,6 +8,7 @@ signal debug_nodes
 
 signal score_minimum_met
 signal powerup_chosen
+signal powerup_hovered
 
 signal player_hover
 

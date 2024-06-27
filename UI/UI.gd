@@ -42,7 +42,7 @@ func score_minimum_met_animation_finished():
 	Messenger.score_minimum_met.emit()
 
 func on_abduction(score_value):
-	score += score_value
+	score = Globals.score
 	
 func on_level_update(level):
 	match level:
