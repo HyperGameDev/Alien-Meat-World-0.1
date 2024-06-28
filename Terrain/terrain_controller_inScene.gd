@@ -1,5 +1,9 @@
 extends Node3D
 
+var chunk_add_ok = false
+
+var score_minimum_met = false
+
 @onready var collector_safes = %Collector_Safes
 @onready var collector_obstacles = %Collector_Obstacles
 @onready var collector_points = %Collector_Points
@@ -104,6 +108,7 @@ var chunks_list_05 = []
 
 
 func _ready() -> void:
+	Messenger.score_minimum_met.connect(on_score_minimum_met)
 	Messenger.level_update.connect(on_level_update)
 	
 	chunks_path_safes = Globals.current_safe_chunks
@@ -119,6 +124,9 @@ func _ready() -> void:
 
 	_load_terrain_scenes(chunks_path_safes,chunks_path_obstacles,chunks_path_points)
 	_init_chunks(num_terrain_chunks)
+	
+func on_score_minimum_met():
+	score_minimum_met = true
 	
 
 func _physics_process(delta: float) -> void:
@@ -186,44 +194,53 @@ func _progress_terrain(delta: float) -> void:
 		
 		# Assign the first chunk to this var, and remove the chunk
 		var first_terrain = get_children().pop_front()
+		#print("1st popped: ",first_terrain,"; chunk_to_add: ",chunk_to_add)
+		print_rich("[font size=15][color=red][b]First popped: [/b][/color]",first_terrain,"; \n \t[i]pos:[/i] ",first_terrain.position,"; \n \t[i]level:[/i] ",first_terrain.is_level,"; \n \t[i]parent:[/i] ",first_terrain.get_parent(),"\n")
+		
 		
 		if !first_terrain.is_level == Globals.level_current:
+			#(func():await get_tree().process_frame;first_terrain.queue_free.call_deferred()).call_deferred()
+			#first_terrain.queue_free.call_deferred()
+			
 			first_terrain.queue_free()
+		else:
+			
+			
 			
 
-		if first_terrain.is_type == Block.is_types.SAFE:
-			# If starting chunks are not done, increase chunk count
-			if !starting_chunks_over and !starting_chunks_current == starting_chunks_max:
-				starting_chunks_current += 1
-			# If starting chunks are done, stop counting and update the level 
-			else:
-				starting_chunks_over = true
-				chunks_for_level()
+			if first_terrain.is_type == Block.is_types.SAFE:
+				# If starting chunks are not done, increase chunk count
+				if !starting_chunks_over and !starting_chunks_current == starting_chunks_max:
+					starting_chunks_current += 1
+				# If starting chunks are done, stop counting and update the level 
+				else:
+					starting_chunks_over = true
+					chunks_for_level()
+					
+				#print("Returned a SAFE chunk")
+				# Reparent the removed chunk to the collector(s)
+				first_terrain.reparent(collector_safes)
+				# Move removed chunk to the collectors' position
+				first_terrain.position.z = 0.0
+				# Make sure chunk has reset potential (temporary logic)
+				if first_terrain.has_method("reset_block_objects"):
+				# Run the reset function to check if objects need resetting.
+					first_terrain.reset_block_objects()
 				
-			#print("Returned a SAFE chunk")
-			# Reparent the removed chunk to the collector(s)
-			first_terrain.reparent(collector_safes)
-			# Move removed chunk to the collectors' position
-			first_terrain.position.z = 0.0
-			# Make sure chunk has reset potential (temporary logic)
-			if first_terrain.has_method("reset_block_objects"):
-			# Run the reset function to check if objects need resetting.
-				first_terrain.reset_block_objects()
-			
-		if first_terrain.is_type == Block.is_types.OBSTACLE:
-			#print("Returned an OBSTACLE chunk")
-			first_terrain.reparent(collector_obstacles)
-			first_terrain.position.z = 0.0
-			if first_terrain.has_method("reset_block_objects"):
-				first_terrain.reset_block_objects()
+			if first_terrain.is_type == Block.is_types.OBSTACLE:
+				#print("Returned an OBSTACLE chunk")
+				first_terrain.reparent(collector_obstacles)
+				first_terrain.position.z = 0.0
+				if first_terrain.has_method("reset_block_objects"):
+					first_terrain.reset_block_objects()
+					
+			if first_terrain.is_type == Block.is_types.POINTS:
+				#print("Returned a POINTS chunk")
+				first_terrain.reparent(collector_points)
+				first_terrain.position.z = 0.0
+				if first_terrain.has_method("reset_block_objects"):
+					first_terrain.reset_block_objects()
 				
-		if first_terrain.is_type == Block.is_types.POINTS:
-			#print("Returned a POINTS chunk")
-			first_terrain.reparent(collector_points)
-			first_terrain.position.z = 0.0
-			if first_terrain.has_method("reset_block_objects"):
-				first_terrain.reset_block_objects()
-			
 		var rng = randf()
 		var chunk_add = collector_safes.get_children().pick_random()
 		
@@ -249,6 +266,7 @@ func _progress_terrain(delta: float) -> void:
 		
 		# Choose a chunk to add in to the level
 		chunk_add.reparent(self) 
+		print_rich("[font size=15][color=green][b]Last added: [/b][/color]",chunk_add,"; \n \t[i]pos:[/i] ",chunk_add.position,"; \n \t[i]level:[/i] ",chunk_add.is_level,"; \n \t[i]parent:[/i] ",chunk_add.get_parent(),"\n")
 		# Add the new chunk to the end of the level
 		_append_to_far_edge(last_terrain, chunk_add)
 
@@ -256,6 +274,9 @@ func _progress_terrain(delta: float) -> void:
 
 func _append_to_far_edge(target_block: MeshInstance3D, appending_block: MeshInstance3D) -> void:
 	appending_block.position.z = target_block.position.z - target_block.mesh.size.y/2 - appending_block.mesh.size.y/2
+	
+	#print("Last added: ",target_block, " at ",target_block.position.z,"; chunk_to_add: ",chunk_to_add)
+	
 	
 
 

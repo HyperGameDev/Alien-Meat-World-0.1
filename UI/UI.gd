@@ -12,7 +12,6 @@ var score_minimum_met = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	animation_score.animation_finished.connect(on_animation_score_finished)
 	Messenger.level_update.connect(on_level_update)
 	Messenger.abduction.connect(on_abduction)
 	on_level_update(Globals.level_current)
@@ -24,7 +23,6 @@ func _process(delta):
 		on_score_minimum_met()
 		
 func on_powerup_chosen(orb):
-	Messenger.level_update.emit(Globals.level_current + 1)
 	score_minimum_met = false
 	terrain_controller.terrain_velocity = terrain_controller.TERRAIN_VELOCITY
 	player.terrain_slowdown = false
@@ -32,6 +30,7 @@ func on_powerup_chosen(orb):
 		
 func on_score_minimum_met():
 	score_minimum_met = true
+	Messenger.level_update.emit(Globals.level_current + 1)
 	animation_score.play("score_minimum_met")
 	terrain_controller.terrain_velocity = 0
 	player.terrain_slowdown = true
@@ -51,6 +50,3 @@ func on_level_update(level):
 		1:
 			score_minimum = 10
 	label_scoreMinimum.text = str(score_minimum)
-	
-func on_animation_score_finished():
-	print("Animation finished")

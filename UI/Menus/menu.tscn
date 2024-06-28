@@ -232,26 +232,26 @@ theme_override_font_sizes/font_size = 31
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Clear Score"
 
-[node name="Button_levelBlank_concrete" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Blank (Concrete)"
-
-[node name="Button_levelBlank_military" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
-visible = false
+[node name="Button_powerup1" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Blank (Military)"
+text = "Choose Orb 1"
 
-[node name="Button_levelBlank_all" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
-visible = false
+[node name="Button_powerup2" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 31
+theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Blank (All)"
+text = "Choose Orb 2"
+
+[node name="Button_powerup3" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Choose Orb 3"
