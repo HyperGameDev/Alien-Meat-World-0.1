@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dht4ndr42yqlu"]
+
+[ext_resource type="PackedScene" uid="uid://7cd7bq27jnyj" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_blank-grass.tscn" id="1_yk6ai"]
+[ext_resource type="Material" uid="uid://c0aatxfj22wvi" path="res://Terrain/terrain_level_01_textures/block_level-01_cattle-ranch_01.tres" id="2_g3dik"]
+
+[node name="Terrain_0" instance=ExtResource("1_yk6ai")]
+transform = Transform3D(1, 0, 8.72665e-05, 0, 1, 0, -8.72665e-05, 0, 1, 0, 0, -7)
+surface_material_override/0 = ExtResource("2_g3dik")
+is_type = 2

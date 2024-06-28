@@ -49,4 +49,28 @@ func on_level_update(level):
 			score_minimum = 1
 		1:
 			score_minimum = 10
+		2:
+			score_minimum = 20
+		3:
+			score_minimum = 30
+		4:
+			score_minimum = 40
+		5:
+			score_minimum = 50
+		6:
+			score_minimum = 60
+		7:
+			score_minimum = 70
+		8:
+			score_minimum = 80
+		9:
+			score_minimum = 90
+		10:
+			score_minimum = 100
+		11:
+			score_minimum = 110
+		12:
+			score_minimum = 120
+
+			
 	label_scoreMinimum.text = str(score_minimum)

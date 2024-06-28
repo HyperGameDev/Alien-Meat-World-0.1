@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpn4p66ga6a1u"]
+
+[ext_resource type="PackedScene" uid="uid://7cd7bq27jnyj" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_blank-grass.tscn" id="1_k234v"]
+
+[node name="Terrain_0" instance=ExtResource("1_k234v")]

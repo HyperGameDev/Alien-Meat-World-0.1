@@ -31,7 +31,18 @@ window/size/always_on_top=true
 
 folder_colors={
 "res://Terrain/BASE_TERRAIN_BLOCKS/": "gray",
-"res://Terrain/terrain_level_01/": "green"
+"res://Terrain/terrain_level_01/": "green",
+"res://Terrain/terrain_level_02/": "purple",
+"res://Terrain/terrain_level_03/": "purple",
+"res://Terrain/terrain_level_04/": "purple",
+"res://Terrain/terrain_level_05/": "purple",
+"res://Terrain/terrain_level_06/": "purple",
+"res://Terrain/terrain_level_07/": "purple",
+"res://Terrain/terrain_level_08/": "purple",
+"res://Terrain/terrain_level_09/": "purple",
+"res://Terrain/terrain_level_10/": "purple",
+"res://Terrain/terrain_level_11/": "purple",
+"res://Terrain/terrain_level_12/": "purple"
 }
 
 [input]

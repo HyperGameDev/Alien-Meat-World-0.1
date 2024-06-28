@@ -47,8 +47,9 @@ var chunks_list_02 = []
 var chunks_list_03 = []
 var chunks_list_04 = []
 var chunks_list_05 = []
+var chunks_list_06 = []
 
-@onready var chunks_list_01_level01 = [
+@onready var chunks_list_01_level1 = [
 	collector_safes,
 	collector_safes,
 	collector_points,
@@ -71,7 +72,7 @@ var chunks_list_05 = []
 	collector_safes,
 	collector_safes
 	]
-@onready var chunks_list_02_level01 = [
+@onready var chunks_list_02_level1 = [
 	collector_safes,
 	collector_safes,
 	collector_points,
@@ -121,6 +122,7 @@ func _ready() -> void:
 	chunks_list_03 = chunks_list_safes
 	chunks_list_04 = chunks_list_safes
 	chunks_list_05 = chunks_list_safes
+	chunks_list_06 = chunks_list_safes
 
 	_load_terrain_scenes(chunks_path_safes,chunks_path_obstacles,chunks_path_points)
 	_init_chunks(num_terrain_chunks)
@@ -167,11 +169,15 @@ func chunks_update():
 		collector_points.add_child(chunk)
 
 func chunks_for_level():
-	# Updating lists-of-chunks-to-choose with level-relevant cunks, when starting ones are over.
+	# Updating lists-of-chunks-to-choose with level-relevant chunks, when starting ones are over.
 	if starting_chunks_over:
 		if Globals.level_current <= 1:
-			chunks_list_01 = chunks_list_01_level01
-			chunks_list_02 = chunks_list_02_level01
+			chunks_list_01 = chunks_list_01_level1
+			chunks_list_02 = chunks_list_02_level1
+			chunks_list_03 = chunks_list_safes
+			chunks_list_04 = chunks_list_safes
+			chunks_list_05 = chunks_list_safes
+			chunks_list_06 = chunks_list_safes
 
 func chunk_chosen_to_add():			
 	if chunks_list_current.size() == 0:
@@ -195,7 +201,7 @@ func _progress_terrain(delta: float) -> void:
 		# Assign the first chunk to this var, and remove the chunk
 		var first_terrain = get_children().pop_front()
 		#print("1st popped: ",first_terrain,"; chunk_to_add: ",chunk_to_add)
-		print_rich("[font size=15][color=red][b]First popped: [/b][/color]",first_terrain,"; \n \t[i]pos:[/i] ",first_terrain.position,"; \n \t[i]level:[/i] ",first_terrain.is_level,"; \n \t[i]parent:[/i] ",first_terrain.get_parent(),"\n")
+		#print_rich("[font size=15][color=red][b]First popped: [/b][/color]",first_terrain,"; \n \t[i]pos:[/i] ",first_terrain.position,"; \n \t[i]level:[/i] ",first_terrain.is_level,"; \n \t[i]parent:[/i] ",first_terrain.get_parent(),"\n")
 		
 		
 		if !first_terrain.is_level == Globals.level_current:
@@ -266,7 +272,7 @@ func _progress_terrain(delta: float) -> void:
 		
 		# Choose a chunk to add in to the level
 		chunk_add.reparent(self) 
-		print_rich("[font size=15][color=green][b]Last added: [/b][/color]",chunk_add,"; \n \t[i]pos:[/i] ",chunk_add.position,"; \n \t[i]level:[/i] ",chunk_add.is_level,"; \n \t[i]parent:[/i] ",chunk_add.get_parent(),"\n")
+		#print_rich("[font size=15][color=green][b]Last added: [/b][/color]",chunk_add,"; \n \t[i]pos:[/i] ",chunk_add.position,"; \n \t[i]level:[/i] ",chunk_add.is_level,"; \n \t[i]parent:[/i] ",chunk_add.get_parent(),"\n")
 		# Add the new chunk to the end of the level
 		_append_to_far_edge(last_terrain, chunk_add)
 
@@ -296,6 +302,99 @@ func _load_terrain_scenes(chunks_path_safes: String, chunks_path_obstacles: Stri
 		Chunks_Points.append(load(chunks_path_points + "/" + points_path.trim_suffix(".remap")))
 		
 func on_level_update(level):
+	match level:
+		0:
+			chunks_list_01 = chunks_list_01_level1
+			chunks_list_02 = chunks_list_02_level1
+			chunks_list_03 = chunks_list_safes
+			chunks_list_04 = chunks_list_safes
+			chunks_list_05 = chunks_list_safes
+			chunks_list_06 = chunks_list_safes
+		1:
+			chunks_list_01 = chunks_list_01_level1
+			chunks_list_02 = chunks_list_02_level1
+			chunks_list_03 = chunks_list_safes
+			chunks_list_04 = chunks_list_safes
+			chunks_list_05 = chunks_list_safes
+			chunks_list_06 = chunks_list_safes
+		2:
+			chunks_list_01 = chunks_list_01_level1
+			chunks_list_02 = chunks_list_02_level1
+			chunks_list_03 = chunks_list_safes
+			chunks_list_04 = chunks_list_safes
+			chunks_list_05 = chunks_list_safes
+			chunks_list_06 = chunks_list_safes
+		3:
+			chunks_list_01 = chunks_list_01_level1
+			chunks_list_02 = chunks_list_02_level1
+			chunks_list_03 = chunks_list_safes
+			chunks_list_04 = chunks_list_safes
+			chunks_list_05 = chunks_list_safes
+			chunks_list_06 = chunks_list_safes
+		4:
+			chunks_list_01 = chunks_list_01_level1
+			chunks_list_02 = chunks_list_02_level1
+			chunks_list_03 = chunks_list_safes
+			chunks_list_04 = chunks_list_safes
+			chunks_list_05 = chunks_list_safes
+			chunks_list_06 = chunks_list_safes
+		5:
+			chunks_list_01 = chunks_list_01_level1
+			chunks_list_02 = chunks_list_02_level1
+			chunks_list_03 = chunks_list_safes
+			chunks_list_04 = chunks_list_safes
+			chunks_list_05 = chunks_list_safes
+			chunks_list_06 = chunks_list_safes
+		6:
+			chunks_list_01 = chunks_list_01_level1
+			chunks_list_02 = chunks_list_02_level1
+			chunks_list_03 = chunks_list_safes
+			chunks_list_04 = chunks_list_safes
+			chunks_list_05 = chunks_list_safes
+			chunks_list_06 = chunks_list_safes
+		7:
+			chunks_list_01 = chunks_list_01_level1
+			chunks_list_02 = chunks_list_02_level1
+			chunks_list_03 = chunks_list_safes
+			chunks_list_04 = chunks_list_safes
+			chunks_list_05 = chunks_list_safes
+			chunks_list_06 = chunks_list_safes
+		8:
+			chunks_list_01 = chunks_list_01_level1
+			chunks_list_02 = chunks_list_02_level1
+			chunks_list_03 = chunks_list_safes
+			chunks_list_04 = chunks_list_safes
+			chunks_list_05 = chunks_list_safes
+			chunks_list_06 = chunks_list_safes
+		9:
+			chunks_list_01 = chunks_list_01_level1
+			chunks_list_02 = chunks_list_02_level1
+			chunks_list_03 = chunks_list_safes
+			chunks_list_04 = chunks_list_safes
+			chunks_list_05 = chunks_list_safes
+			chunks_list_06 = chunks_list_safes
+		10:
+			chunks_list_01 = chunks_list_01_level1
+			chunks_list_02 = chunks_list_02_level1
+			chunks_list_03 = chunks_list_safes
+			chunks_list_04 = chunks_list_safes
+			chunks_list_05 = chunks_list_safes
+			chunks_list_06 = chunks_list_safes
+		11:
+			chunks_list_01 = chunks_list_01_level1
+			chunks_list_02 = chunks_list_02_level1
+			chunks_list_03 = chunks_list_safes
+			chunks_list_04 = chunks_list_safes
+			chunks_list_05 = chunks_list_safes
+			chunks_list_06 = chunks_list_safes
+		12:
+			chunks_list_01 = chunks_list_01_level1
+			chunks_list_02 = chunks_list_02_level1
+			chunks_list_03 = chunks_list_safes
+			chunks_list_04 = chunks_list_safes
+			chunks_list_05 = chunks_list_safes
+			chunks_list_06 = chunks_list_safes
+	
 	print("Controller tried updating paths")
 	chunks_path_safes = Globals.current_safe_chunks
 	chunks_path_obstacles = Globals.current_obstacle_chunks
