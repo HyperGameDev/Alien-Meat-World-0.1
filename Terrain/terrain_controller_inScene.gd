@@ -1,30 +1,30 @@
 extends Node3D
 
-var chunk_add_ok = false
+var chunk_add_ok : bool = false
 
-var score_minimum_met = false
+var score_minimum_met : bool = false
 
-@onready var collector_safes = %Collector_Safes
-@onready var collector_obstacles = %Collector_Obstacles
-@onready var collector_points = %Collector_Points
+@onready var collector_safes := %Collector_Safes
+@onready var collector_obstacles := %Collector_Obstacles
+@onready var collector_points := %Collector_Points
 
 ## Holds the catalog of loaded terrian block scenes
-var Chunks_Safes: Array = []
-var Chunks_Obstacles: Array = []
-var Chunks_Points: Array = []
+var Chunks_Safes : Array = []
+var Chunks_Obstacles : Array = []
+var Chunks_Points : Array = []
 
 ## The set of terrian chunks which are currently rendered to viewport
-var terrain_belt: Array[MeshInstance3D] = []
-@export var terrain_velocity: float = 11.0
-const TERRAIN_VELOCITY: float = 11.0
+var terrain_belt : Array[MeshInstance3D] = []
+@export var terrain_velocity : float = 11.0
+const TERRAIN_VELOCITY : float = 11.0
 
 ## The number of chunks to keep rendered to the viewport
-@export var num_terrain_chunks = 9
+@export var num_terrain_chunks : int = 9
 
 ## Number of starting chunks
-@export var starting_chunks_max = 7
-var starting_chunks_current = 0
-var starting_chunks_over = false
+@export var starting_chunks_max : int = 7
+var starting_chunks_current : int = 0
+var starting_chunks_over : bool = false
 
 ## Paths to directories holding the terrain chunks scenes
 var chunks_path_safes : StringName
@@ -32,24 +32,24 @@ var chunks_path_obstacles : StringName
 var chunks_path_points : StringName
 
 ## Likelihood that certain chunks will spawn
-@export var chunk_likelihood_safes = .3
-@export var chunk_likelihood_obstacles = .2
-@export var chunk_likelihood_points = .5
+@export var chunk_likelihood_safes : float = .3
+@export var chunk_likelihood_obstacles : float = .2
+@export var chunk_likelihood_points : float = .5
 
 ## Level Chunk Setup
-var chunks_list_current = []
+var chunks_list_current : Array = []
 @onready var chunk_to_add = collector_safes.get_children().pick_random()
-var chunk_wait = false
+var chunk_wait : bool = false
 
 ## Level Chunks Playlists
-var chunks_list_01 = []
-var chunks_list_02 = []
-var chunks_list_03 = []
-var chunks_list_04 = []
-var chunks_list_05 = []
-var chunks_list_06 = []
+var chunks_list_01 : Array = []
+var chunks_list_02 : Array = []
+var chunks_list_03 : Array = []
+var chunks_list_04 : Array = []
+var chunks_list_05 : Array = []
+var chunks_list_06 : Array = []
 
-@onready var chunks_list_01_level1 = [
+@onready var chunks_list_01_level1 : Array = [
 	collector_safes,
 	collector_safes,
 	collector_points,
@@ -72,7 +72,7 @@ var chunks_list_06 = []
 	collector_safes,
 	collector_safes
 	]
-@onready var chunks_list_02_level1 = [
+@onready var chunks_list_02_level1 : Array = [
 	collector_safes,
 	collector_safes,
 	collector_points,
@@ -95,7 +95,7 @@ var chunks_list_06 = []
 	collector_points,
 	collector_safes,
 	]
-@onready var chunks_list_safes = [
+@onready var chunks_list_safes : Array = [
 	collector_safes,
 	collector_safes,
 	collector_safes,

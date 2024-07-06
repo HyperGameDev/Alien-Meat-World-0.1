@@ -3110,16 +3110,6 @@ libraries = {
 }
 
 [node name="Alien_quadruped" parent="." instance=ExtResource("4_xyqpj")]
-visible = false
-
-[node name="Head-Body" parent="Alien_quadruped" index="0"]
-visible = false
-
-[node name="Body-Quadruped" parent="Alien_quadruped" index="1"]
-visible = false
-
-[node name="Head-Quadruped" parent="Alien_quadruped" index="2"]
-visible = false
 
 [editable path="Alien_head-body"]
 [editable path="Alien_biped_human"]
