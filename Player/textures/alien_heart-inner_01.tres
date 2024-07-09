@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dibqoi0skl53w"]
+
+[resource]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 0.505882, 0.8, 1)
+heightmap_scale = 1.472
+heightmap_deep_parallax = true
+heightmap_min_layers = 1
+heightmap_max_layers = 32
+refraction_scale = -0.28

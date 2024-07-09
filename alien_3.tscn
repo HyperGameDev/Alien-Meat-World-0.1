@@ -11,6 +11,11 @@
 [ext_resource type="Animation" uid="uid://6vd48e8d4d1w" path="res://Player/Animations/Reach.res" id="5_s4vjh"]
 [ext_resource type="Animation" uid="uid://d3o7gqh2ct2rd" path="res://Player/Animations/Reach_2.res" id="6_d45f7"]
 [ext_resource type="PackedScene" uid="uid://c1xnvbm1223wp" path="res://Player/body_shield.tscn" id="6_gq8ww"]
+[ext_resource type="Material" uid="uid://ceyvghpuqtg0c" path="res://Player/textures/alien_skin_01.tres" id="11_cui7w"]
+[ext_resource type="Material" uid="uid://dibqoi0skl53w" path="res://Player/textures/alien_heart-inner_01.tres" id="13_sarqy"]
+[ext_resource type="Material" uid="uid://d1dtjsbfwmi1a" path="res://Player/textures/alien_heart-outer_01.tres" id="14_h5uap"]
+[ext_resource type="Material" uid="uid://c7geoa58ckfal" path="res://Player/textures/alien_mouth_01.tres" id="15_ml75u"]
+[ext_resource type="Material" uid="uid://ctrq3rqbk526b" path="res://Player/textures/alien_teeth_01.tres" id="16_luf2d"]
 
 [sub_resource type="Animation" id="Animation_bx7n0"]
 resource_name = "Feed_Walk_1"
@@ -1218,7 +1223,7 @@ _data = {
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_8iwoq"]
 
-[sub_resource type="Curve" id="Curve_ckbes"]
+[sub_resource type="Curve" id="Curve_wu7uv"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
 point_count = 2
 
@@ -1226,7 +1231,7 @@ point_count = 2
 filter_enabled = true
 filters = [".", "Skeleton3D:ElbowR", "Skeleton3D:HandR"]
 fadeout_time = 1.0
-fadeout_curve = SubResource("Curve_ckbes")
+fadeout_curve = SubResource("Curve_wu7uv")
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_di8pp"]
 animation = &"Reach_2"
@@ -1234,13 +1239,13 @@ animation = &"Reach_2"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1v5cn"]
 animation = &"Run_2"
 
-[sub_resource type="Curve" id="Curve_sdh8j"]
+[sub_resource type="Curve" id="Curve_eway4"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_se77x"]
 xfade_time = 0.5
-xfade_curve = SubResource("Curve_sdh8j")
+xfade_curve = SubResource("Curve_eway4")
 input_0/name = "walking"
 input_0/auto_advance = false
 input_0/reset = true
@@ -1251,7 +1256,8 @@ input_1/reset = true
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kf68q"]
 animation = &"Walk_2"
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_y4jsq"]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_epmww"]
+graph_offset = Vector2(-247.918, -60.2735)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_8iwoq")
 nodes/TimeScale/position = Vector2(260, 160)
 nodes/output/position = Vector2(840, -20)
@@ -1410,37 +1416,8 @@ _data = {
 [sub_resource type="ViewportTexture" id="ViewportTexture_0aghr"]
 viewport_path = NodePath("HP_Empathy/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6msii"]
-albedo_color = Color(0.298039, 0.741176, 0.352941, 1)
-metallic_specular = 0.0
-rim_tint = 1.0
-clearcoat_roughness = 1.0
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2ye2"]
 albedo_color = Color(0.682353, 0.0196078, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogmen"]
-shading_mode = 0
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0.505882, 0.8, 1)
-heightmap_scale = 1.472
-heightmap_deep_parallax = true
-heightmap_min_layers = 1
-heightmap_max_layers = 32
-refraction_scale = -0.28
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0n7j0"]
-shading_mode = 0
-diffuse_mode = 3
-specular_mode = 1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ns6n"]
-albedo_color = Color(0.682353, 0.0196078, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vr7x"]
-diffuse_mode = 3
-specular_mode = 1
 
 [sub_resource type="BoxMesh" id="BoxMesh_xcuby"]
 size = Vector3(0.195, 35.13, 1)
@@ -1613,7 +1590,7 @@ root_node = NodePath("../Armature")
 libraries = {
 "": SubResource("AnimationLibrary_c7iwo")
 }
-tree_root = SubResource("AnimationNodeBlendTree_y4jsq")
+tree_root = SubResource("AnimationNodeBlendTree_epmww")
 anim_player = NodePath("../Animation_Alien")
 parameters/TimeScale/scale = 1.3
 parameters/reach/active = false
@@ -1674,7 +1651,7 @@ transparent_bg = true
 theme_override_styles/fill = ExtResource("5_k8xva")
 
 [node name="Armature" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0681202, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.122996, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, -0.075329, -0.0284092, -0.010423)
@@ -1720,7 +1697,7 @@ bones/16/scale = Vector3(0.999999, 1, 1)
 
 [node name="Alien_ArmL" parent="Armature/Skeleton3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 2.98023e-08, 0, -2.98023e-08, 0.999999, -0.00951421, -0.00403788, -0.00525001)
-surface_material_override/0 = SubResource("StandardMaterial3D_6msii")
+surface_material_override/0 = ExtResource("11_cui7w")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_ArmL" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.97934, 0, 0.17317, -7.45058e-09, 1.9869, 2.98023e-08, -0.17317, 0, 1.97934, -1.74479, 3.06826, -1.30488)
@@ -1735,7 +1712,7 @@ outline_size = 30
 
 [node name="Alien_ArmR" parent="Armature/Skeleton3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00129759, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_6msii")
+surface_material_override/0 = ExtResource("11_cui7w")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_ArmR" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.98337, 0, 0.173522, 0, 1.99094, 0, -0.173522, 0, 1.98337, 0.552544, 3.06795, -1.50591)
@@ -1749,25 +1726,25 @@ outline_size = 30
 
 [node name="Alien_Body" parent="Armature/Skeleton3D" index="2"]
 visible = false
-surface_material_override/0 = SubResource("StandardMaterial3D_6msii")
+surface_material_override/0 = ExtResource("11_cui7w")
 surface_material_override/1 = SubResource("StandardMaterial3D_l2ye2")
 
 [node name="Body_Shield" parent="Armature/Skeleton3D/Alien_Body" index="0" instance=ExtResource("6_gq8ww")]
 
 [node name="Alien_Body_Heart" parent="Armature/Skeleton3D" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_6msii")
+surface_material_override/0 = ExtResource("11_cui7w")
 surface_material_override/1 = SubResource("StandardMaterial3D_l2ye2")
-surface_material_override/2 = SubResource("StandardMaterial3D_ogmen")
-surface_material_override/3 = SubResource("StandardMaterial3D_0n7j0")
+surface_material_override/2 = ExtResource("13_sarqy")
+surface_material_override/3 = ExtResource("14_h5uap")
 
 [node name="Body_Shield" parent="Armature/Skeleton3D/Alien_Body_Heart" index="0" instance=ExtResource("6_gq8ww")]
 visible = false
 
 [node name="Alien_Head" parent="Armature/Skeleton3D" index="5"]
-surface_material_override/0 = SubResource("StandardMaterial3D_6msii")
-surface_material_override/1 = SubResource("StandardMaterial3D_8ns6n")
-surface_material_override/2 = SubResource("StandardMaterial3D_4vr7x")
+surface_material_override/0 = ExtResource("11_cui7w")
+surface_material_override/1 = ExtResource("15_ml75u")
+surface_material_override/2 = ExtResource("16_luf2d")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_Head" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.9966, 0, 0.17468, 0, 2.00423, 0, -0.17468, 0, 1.9966, -0.0141464, 2.50105, 0.804974)
@@ -1780,7 +1757,7 @@ font_size = 35
 outline_size = 30
 
 [node name="Alien_LegL" parent="Armature/Skeleton3D" index="6"]
-surface_material_override/0 = SubResource("StandardMaterial3D_6msii")
+surface_material_override/0 = ExtResource("11_cui7w")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegL" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.97393, 0, 0.172697, 0, 1.98147, 0, -0.172697, 0, 1.97393, -0.428096, 1.00287, 0.779777)
@@ -1793,7 +1770,7 @@ font_size = 35
 outline_size = 30
 
 [node name="Alien_LegR" parent="Armature/Skeleton3D" index="7"]
-surface_material_override/0 = SubResource("StandardMaterial3D_6msii")
+surface_material_override/0 = ExtResource("11_cui7w")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegR" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.97392, 0, 0.172696, 0, 1.98146, 0, -0.172696, 0, 1.97392, 0.670326, 1.00287, 0.683676)
@@ -1806,7 +1783,7 @@ font_size = 35
 outline_size = 30
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.537981, 0.332653, -0.775163, -0.71216, -0.671847, 0.205939, -0.452067, 0.662514, 0.598056, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.601708, 0.283058, -0.74752, -0.640068, -0.731056, 0.238392, -0.47877, 0.621608, 0.62076, 0.445561, 1.13443, 0.268376)
 visible = false
 bone_name = "ElbowR"
 bone_idx = 7
