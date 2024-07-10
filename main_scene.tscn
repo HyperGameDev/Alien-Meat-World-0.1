@@ -925,24 +925,10 @@ texture = SubResource("ViewportTexture_s2cav")
 texture = SubResource("ViewportTexture_82jui")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.10531, 0)
-
-[node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
-bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
-bones/2/rotation = Quaternion(0.0276023, 0.0423357, -0.042658, 0.997811)
-bones/3/rotation = Quaternion(-0.0205892, 0.00189199, 0.0252498, 0.999467)
-bones/6/rotation = Quaternion(-0.0895069, -0.0808807, -0.717954, 0.685558)
-bones/7/rotation = Quaternion(0.0104958, 0.238896, -0.0409419, 0.970125)
-bones/8/rotation = Quaternion(-0.00231333, 0.0242911, -0.00433505, 0.999693)
-bones/10/rotation = Quaternion(-0.289795, -0.0479284, -0.24514, 0.92392)
-bones/11/rotation = Quaternion(-0.760895, 0.0962255, 0.209214, 0.606637)
-bones/12/rotation = Quaternion(0.416566, -0.288618, -0.240819, 0.827755)
-bones/14/rotation = Quaternion(-0.122028, -0.101716, -0.0764657, 0.984335)
-bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
-bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0893996, 0)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.121412, 0.992082, -0.0446477, -0.963849, -0.128552, -0.235435, -0.239196, 0.0144421, 0.971358, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.71595, 0.505583, -0.482454, -0.593392, -0.804643, 0.0373625, -0.369136, 0.312884, 0.875673, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)

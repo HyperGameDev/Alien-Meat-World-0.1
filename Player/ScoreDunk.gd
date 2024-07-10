@@ -1,39 +1,37 @@
 extends Area3D
 
-@onready var collision = %CollisionShape3D
-@onready var dunk_target = %Player
-@onready var animation_dunkOrb = %Animation_scoreDunk
+@onready var dunk_target: CharacterBody3D = %Player
+
+
+@onready var mesh: MeshInstance3D = %MeshInstance3D
+@onready var collision: CollisionShape3D = %CollisionShape3D
+@onready var score_count: Label3D = %scoreCount
+
 @onready var animation_scoreCount = %Animation_scoreCount
-@onready var mesh = %MeshInstance3D
-@onready var score_count = %scoreCount
+@onready var animation_dunkOrb = %Animation_scoreDunk
 
 # Adjust these together!!
 var dunk_y_offset: float = 5.6
-const DUNK_Y_OFFSET = 5.6
+const DUNK_Y_OFFSET: float = 5.6
 
 @export var dunk_ascent_distance: float = 1.6
 
 # Cam Movement vars
-@export var dunk_lerpspeed = .05
-@export var dunk_z_offset = 0.0
-@export var dunk_x_offset = 0.0
+@export var dunk_lerpspeed: float = .05
+@export var dunk_z_offset: float = 0.0
+@export var dunk_x_offset: float = 0.0
 
-var is_grabbing = false
-var something_in_dunk = false
-var dunked_meat
-var score_update = 0
-var dunked_meats_in_group
+var is_grabbing: bool = false
+var something_in_dunk: bool = false
+var dunked_meat: Object = null
+var score_update: int = 0
+var dunked_meats_in_group: int = 0
 
-@onready var dunk_ascent_timer : Timer = Timer.new()
-const DUNK_ASCENT_TIMER_DURATION = 2.0
-var dunk_ascent_timer_duration = 2.0
-
-# Semi-transparent dunk if cursor is closer/further
-#@export var dunk_2d_pos = Vector2(580,150)
-#const DUNK_MAX_OPACITY_DISTANCE := 200.0
+@onready var dunk_ascent_timer: Timer = Timer.new()
+const DUNK_ASCENT_TIMER_DURATION: float = 2.0
+var dunk_ascent_timer_duration: float = 2.0
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	set_collision_mask_value(4, true)
 	
@@ -101,24 +99,16 @@ func on_ascent_timer_timeout():
 	dunk_y_offset += dunk_ascent_distance
 	
 func on_screen_exited():
-	# If dunked_meat is not null
 	if !dunked_meat == null:
-		# Possible combo stuff?
-#		if dunked_meats_in_group >= 2:
-#			score_update = dunked_meats_in_group * 2
-#		if dunked_meats_in_group == 1:
-#			score_update = dunked_meats_in_group
-		
 		Messenger.abduction.emit(score_update)
 		score_update = 0
 
 		for meat in get_tree().get_nodes_in_group("Dunked"):
 			meat.queue_free()
-#		score = 0
-		
-		# Check dunked meat variables here? Eg:
-		if !dunked_meat.empathy_ok:
-			pass
+			
+		# Does this do anything useful? I added it because it makes sense, but it seems to work without it...
+		dunked_meat = null
+			
 
 func on_grab_begun():
 	is_grabbing = true
@@ -139,6 +129,9 @@ func on_body_exited(body):
 		animation_dunkOrb.play("base_size", .2)
 		
 func on_meat_in_dunk(dunked):
+	# Check dunked meat variables here? Eg:
+	if !dunked.empathy_ok:
+		pass
 	dunked_meat = dunked
 	animation_scoreCount.stop()
 	animation_scoreCount.play("score_up")

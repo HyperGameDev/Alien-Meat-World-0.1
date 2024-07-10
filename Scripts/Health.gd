@@ -4,37 +4,39 @@ class_name Health
 
 @export var is_type: is_types
 enum is_types {COW, HUMAN}
-@export var indicator_color = Color(.5,.5,1,1)
-@export var empathy_ok = false
-@export var abduction_offset = Vector3(0,.5,0)
 
-# If we decide on different meats having different values, use this (or another) value to add the meat to a different dunked group that canthen be calculated differently by the score dunk.
+@export var indicator_color: Color = Color(.5,.5,1,1)
+
+@export var empathy_ok: bool = false
+@export var abduction_offset: Vector3 = Vector3(0,.5,0)
+
+# If we decide on different meats having different values, use this (or another) value to add the meat to a different dunked group that can then be calculated differently by the score dunk.
 #@export var score_value = 1
 
-@onready var detect_surface = $RayCast_surfaceDetect
+@onready var detect_surface: RayCast3D = $RayCast_surfaceDetect
 
-@onready var camera : Camera3D =  get_tree().get_current_scene().get_node("Camera3D")
-@onready var player : CharacterBody3D =  get_tree().get_current_scene().get_node("Player")
+@onready var camera: Camera3D =  get_tree().get_current_scene().get_node("Camera3D")
+@onready var player: CharacterBody3D =  get_tree().get_current_scene().get_node("Player")
 @onready var collision = $CollisionShape3D
 
-@export var velocity := 60
-@export var grab_distance_offset := 14.0
+@export var velocity: int = 60
+@export var grab_distance_offset: float = 14.0
 
 var planeToMoveOn: Plane
-var has_been_grabbed = false
+var has_been_grabbed: bool = false
 
-var is_in_dunk = false
-var has_been_dunked = false
+var is_in_dunk: bool = false
+var has_been_dunked: bool = false
 
 
-var default_material = StandardMaterial3D.new()
-var hover_material = StandardMaterial3D.new()
-var select_material = StandardMaterial3D.new()
+var default_material := StandardMaterial3D.new()
+var hover_material := StandardMaterial3D.new()
+var select_material := StandardMaterial3D.new()
 
-var spawn = false
-var spawned = false
+var spawn: bool = false
+var spawned: bool = false
 
-var fell = false
+var fell: bool = false
 
 func _ready():
 	if !has_node("RayCast_surfaceDetect"):
@@ -82,14 +84,13 @@ func _process(delta):
 	if Input.is_action_just_released("Grab"):
 		if is_in_group("Grabbed"):
 			add_to_group("Dropped")
-		remove_from_group("Grabbed")
+			remove_from_group("Grabbed")
 		has_been_grabbed = false
 		Messenger.grab_ended.emit()
 		self.linear_velocity = Vector3.ZERO
-		if is_in_dunk:
-			Messenger.meat_in_dunk.emit(self)			
-#			print(self.name, " released in dunk")
-			has_been_dunked = true
+	if is_in_dunk:
+		Messenger.meat_in_dunk.emit(self)
+		has_been_dunked = true
 		
 
 func _physics_process(delta):
