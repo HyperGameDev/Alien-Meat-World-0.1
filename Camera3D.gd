@@ -5,9 +5,9 @@ extends Camera3D
 const CAM_Z_OFFSET = 13
 
 # Cam Movement vars
-@export var cam_lerpspeed = .05
-@export var cam_y_offset = 3.7
-@export var cam_x_offset = 0.0
+@export var cam_lerpspeed: float = .05
+@export var cam_y_offset: float = 3.7
+@export var cam_x_offset: float = 0.0
 
 @onready var cam_target = %Cam_Target
 
@@ -120,7 +120,7 @@ func general_ray():
 	var general_ray_result = hover_ray(0,false)
 	Messenger.anything_seen.emit(general_ray_result)
 
-func attack_ray(): ## Detects obstacles, NPC's and Meat/Health; emits attack_target to hitpoints, and returns attack_target to Meat/Health within this script
+func attack_ray(): ## Detects obstacles, NPC's and Meat/Abductee; emits attack_target to hitpoints, and returns attack_target to Meat/Abductee within this script
 	var raycast_result = hover_ray(2 + 4 + 8,true)
 	if !raycast_result.is_empty():
 		attack_ray_pos = raycast_result.position

@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-class_name Health
+class_name Abductee
 
 @export var is_type: is_types
 enum is_types {COW, HUMAN}
@@ -175,8 +175,8 @@ func on_meat_left_dunk(dunked_body):
 #func on_area_entered(collided_bodypart):
 	# collided_bodypart.mesh.hide()
 	# collided_bodypart.mesh
-	# print("Health Sees Player")
-	#Messenger.health_detected.emit(collided_bodypart, empathy_ok)
+	# print("Abductee Sees Player")
+	#Messenger.abductee_detected.emit(collided_bodypart, empathy_ok)
 	
  
 func _on_mouse_entered(): ## For hover arrow indicator

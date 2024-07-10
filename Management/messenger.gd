@@ -36,7 +36,7 @@ signal amount_damaged
 signal amount_slowed
 
 signal health_hovered
-signal health_detected
+signal abductee_detected
 
 signal hover_pos
 

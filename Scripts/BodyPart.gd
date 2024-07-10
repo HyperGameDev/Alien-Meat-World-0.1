@@ -79,7 +79,7 @@ func _ready():
 	Messenger.area_damaged.connect(on_area_damaged)
 	Messenger.amount_damaged.connect(_damage_amount)
 	Messenger.instant_death.connect(fall_death)
-	Messenger.health_detected.connect(health_collected)
+	Messenger.abductee_detected.connect(on_abductee_detected)
 	
 # Material setup
 	default_material.set_albedo(Color(0.3, 0.74, .35))
@@ -230,10 +230,10 @@ func fall_death(fall_death):
 		Messenger.game_over.emit()
 		
 			
-func health_collected(collided_bodypart, empathy_ok):
+func on_abductee_detected(collided_bodypart, empathy_ok):
 	if collided_bodypart == self and empathy_ok == false:
 		Messenger.empathy_consumed.emit()
-#		print("collided with bad health")
+#		print("collided with bad Abductee")
 	if collided_bodypart == self and current_health < max_health:
 		current_health += 1
 		shape_change_limbs_any()

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_r13va"]
 [ext_resource type="PackedScene" uid="uid://c4gt8ofayu0ec" path="res://Objects/Foliage/Tree_01/Tree_01_00.tscn" id="2_4rpxg"]
-[ext_resource type="Script" path="res://Scripts/Health.gd" id="3_fqlxn"]
+[ext_resource type="Script" path="res://Scripts/Abductee.gd" id="3_fqlxn"]
 [ext_resource type="PackedScene" uid="uid://c0kld2qowd56l" path="res://NPCs/Cows/Cow_01_00.tscn" id="4_mbyuk"]
 [ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="5_uic6a"]
 [ext_resource type="PackedScene" uid="uid://cxp488n77il0e" path="res://NPCs/Helicopters/copter_001.tscn" id="6_87bb5"]

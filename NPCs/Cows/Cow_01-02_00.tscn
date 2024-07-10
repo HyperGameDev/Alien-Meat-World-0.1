@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bhye6lryld785"]
 
-[ext_resource type="Script" path="res://Scripts/Health.gd" id="1_3ikk3"]
+[ext_resource type="Script" path="res://Scripts/Abductee.gd" id="1_3ikk3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlwbn"]
 resource_name = "Material.002"

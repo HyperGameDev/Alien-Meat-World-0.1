@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://caxqah3ilcvfy"]
 
-[ext_resource type="Script" path="res://Scripts/Health.gd" id="1_olhai"]
+[ext_resource type="Script" path="res://Scripts/Abductee.gd" id="1_olhai"]
 [ext_resource type="PackedScene" uid="uid://dt202id03hbck" path="res://NPCs/Cows/cow_001.blend" id="3_8d8jr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j53qk"]

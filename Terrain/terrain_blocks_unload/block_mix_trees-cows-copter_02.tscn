@@ -3,7 +3,7 @@
 [ext_resource type="PlaneMesh" uid="uid://lf2tpxag765b" path="res://Terrain/terrain_blocks_big01.tres" id="1_r3d4s"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_y2prj"]
 [ext_resource type="PackedScene" uid="uid://c4gt8ofayu0ec" path="res://Objects/Foliage/Tree_01/Tree_01_00.tscn" id="3_tiju8"]
-[ext_resource type="Script" path="res://Scripts/Health.gd" id="4_vduvs"]
+[ext_resource type="Script" path="res://Scripts/Abductee.gd" id="4_vduvs"]
 [ext_resource type="PackedScene" uid="uid://c0kld2qowd56l" path="res://NPCs/Cows/Cow_01_00.tscn" id="5_bgt3v"]
 [ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="6_n4qpt"]
 [ext_resource type="PackedScene" uid="uid://cxp488n77il0e" path="res://NPCs/Helicopters/copter_001.tscn" id="7_0ofra"]

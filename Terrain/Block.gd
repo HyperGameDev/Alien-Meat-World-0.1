@@ -29,7 +29,7 @@ func reset_block_objects():
 			if object is Block_Object:
 				if object.needs_reset:
 					object.reset_object()
-			if object is Health:
+			if object is Abductee:
 				object.spawn_me()
 
 #func _process(delta):

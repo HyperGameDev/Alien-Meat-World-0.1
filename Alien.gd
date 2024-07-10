@@ -191,8 +191,8 @@ func damage_undetected(_bodypart_unarea):
 	terrain_slowdown = false
 #	print("terrain_slowdown:", terrain_slowdown)
 	
-func health_hovered(meat_hovered):
-#	print(meat_hovered)
+func abductee_hovered(abductee):
+#	print(abductee)
 	pass
 
 

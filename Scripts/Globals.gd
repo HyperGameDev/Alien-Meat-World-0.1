@@ -58,8 +58,8 @@ var current_obstacle_chunks : StringName
 var current_points_chunks : StringName
 
 var meat_objects := {
-	Health.is_types.COW: load("res://NPCs/Cows/Cow_01-03_00.tscn"),
-	Health.is_types.HUMAN: load("res://NPCs/Humans/human_01_00.tscn")
+	Abductee.is_types.COW: load("res://NPCs/Cows/Cow_01-03_00.tscn"),
+	Abductee.is_types.HUMAN: load("res://NPCs/Humans/human_01_00.tscn")
 }
 
 func _ready():

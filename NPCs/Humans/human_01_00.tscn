@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dibay38r3ct56"]
 
-[ext_resource type="Script" path="res://Scripts/Health.gd" id="1_l61qx"]
+[ext_resource type="Script" path="res://Scripts/Abductee.gd" id="1_l61qx"]
 [ext_resource type="PackedScene" uid="uid://cx5m1ls6wl8q4" path="res://NPCs/Humans/human_01_00.blend" id="1_vmfqp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ebtki"]
