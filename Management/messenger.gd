@@ -6,7 +6,7 @@ signal game_over
 
 signal debug_nodes
 
-signal score_minimum_met
+signal powerup_menu_begin
 signal powerup_chosen
 signal powerup_hovered
 

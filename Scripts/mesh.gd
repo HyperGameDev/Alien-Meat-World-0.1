@@ -9,6 +9,6 @@ var default_material = StandardMaterial3D.new()
 func _ready():
 	default_material.set_albedo(default_color)
 	var children = get_children()
-	for meshes in children:
+	for meshes: MeshInstance3D in children:
 		meshes.material_override = default_material
 		meshes.material_override = default_material

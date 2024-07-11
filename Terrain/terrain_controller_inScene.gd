@@ -2,7 +2,7 @@ extends Node3D
 
 var chunk_add_ok : bool = false
 
-var score_minimum_met : bool = false
+var powerup_menu_begin : bool = false
 
 @onready var collector_safes := %Collector_Safes
 @onready var collector_obstacles := %Collector_Obstacles
@@ -109,7 +109,7 @@ var chunks_list_06 : Array = []
 
 
 func _ready() -> void:
-	Messenger.score_minimum_met.connect(on_score_minimum_met)
+	Messenger.powerup_menu_begin.connect(on_powerup_menu_begin)
 	Messenger.level_update.connect(on_level_update)
 	
 	chunks_path_safes = Globals.current_safe_chunks
@@ -127,8 +127,8 @@ func _ready() -> void:
 	_load_terrain_scenes(chunks_path_safes,chunks_path_obstacles,chunks_path_points)
 	_init_chunks(num_terrain_chunks)
 	
-func on_score_minimum_met():
-	score_minimum_met = true
+func on_powerup_menu_begin():
+	powerup_menu_begin = true
 	
 
 func _physics_process(delta: float) -> void:

@@ -2,11 +2,13 @@ extends Node3D
 
 const ORB_MOVE_SPEED = 1
 
-@onready var orb_1 = %PowerUp_Orb_1
-@onready var orb_2 = %PowerUp_Orb_2
-@onready var orb_3 = %PowerUp_Orb_3
+@onready var orb_1: Area3D = %PowerUp_Orb_1
+@onready var orb_2: Area3D = %PowerUp_Orb_2
+@onready var orb_3: Area3D = %PowerUp_Orb_3
 
-@onready var player = %Player
+@onready var player: CharacterBody3D = %Player
+
+@export var travel_distance: float = 1.725
 
 
 
@@ -16,18 +18,18 @@ func _ready():
 	orb_1.set_collision_layer_value(6, true)
 	orb_2.set_collision_layer_value(6, true)
 	orb_3.set_collision_layer_value(6, true)
-	Messenger.score_minimum_met.connect(on_score_minimum_met)
+	Messenger.powerup_menu_begin.connect(on_powerup_menu_begin)
 	Messenger.powerup_chosen.connect(on_powerup_chosen)
 
-func on_score_minimum_met():
+func on_powerup_menu_begin():
 	visible = true
 	position.x = player.position.x
 	var tween = get_tree().create_tween();
-	tween.tween_property(self, "position:y", -1.725, ORB_MOVE_SPEED)
+	tween.tween_property(self, "position:y", -travel_distance, ORB_MOVE_SPEED)
 	
 func on_powerup_chosen(orb):
 	print("Orb ",orb," chosen!")
 	var tween = get_tree().create_tween();
-	tween.tween_property(self, "position:y", 1.5, ORB_MOVE_SPEED)
+	tween.tween_property(self, "position:y", travel_distance, ORB_MOVE_SPEED)
 	await get_tree().create_timer(ORB_MOVE_SPEED).timeout
 	visible = false

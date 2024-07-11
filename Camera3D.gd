@@ -24,7 +24,7 @@ var attack_target = null
 var hover_target = null
 
 
-var score_minimum_met = false
+var powerup_menu_begin = false
 
 
 func _ready():	
@@ -33,7 +33,7 @@ func _ready():
 		breakpoint
 		
 	Messenger.grab_ended.connect(on_grab_ended)
-	Messenger.score_minimum_met.connect(on_score_minimum_met)
+	Messenger.powerup_menu_begin.connect(on_powerup_menu_begin)
 	Messenger.powerup_chosen.connect(on_powerup_chosen)
 	
 func _physics_process(_delta):
@@ -62,7 +62,7 @@ func on_grab_ended():
 	is_attempting_grab = false
 
 func _process(_delta):
-	if !score_minimum_met:
+	if !powerup_menu_begin:
 		var raycast_result = attack_ray() ## Shoots the ray
 		if Input.is_action_pressed("Grab"): 
 			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
@@ -168,8 +168,8 @@ func cursor_ray(): ## This should be what the player head follows
 		Messenger.mouse_pos_3d.emit(raycast_result.position)
 #	print(raycast_result)
 
-func on_score_minimum_met():
-	score_minimum_met = true
+func on_powerup_menu_begin():
+	powerup_menu_begin = true
 
 func on_powerup_chosen(orb):
-	score_minimum_met = false
+	powerup_menu_begin = false

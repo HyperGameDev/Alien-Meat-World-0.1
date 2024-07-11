@@ -16,18 +16,21 @@ func _process(delta):
 		%Label_showFPS.visible = false
 
 func _input(event):
-	if event.is_action_pressed("Debug 1"):
-		for dmg_label in get_tree().get_nodes_in_group("Dmg_Labels_Player"):
-			dmg_label.visible = !dmg_label.visible
-	if event.is_action_pressed("Debug 2"):
-		pass
-	if event.is_action_pressed("Debug 3"):
-		show_fps = !show_fps
-	if event.is_action_pressed("Debug 4"):
-		debug_menu.visible = !debug_menu.visible
-	if event.is_action_pressed("Debug 5"):
-		terrain_controller.terrain_velocity = 0
-		player.terrain_slowdown = true
-	if event.is_action_pressed("Debug 6"):
-		terrain_controller.terrain_velocity = terrain_controller.TERRAIN_VELOCITY
-		player.terrain_slowdown = false
+	#region devControls
+	if OS.is_debug_build():
+		if event.is_action_pressed("Debug 1"):
+			for dmg_label in get_tree().get_nodes_in_group("Dmg_Labels_Player"):
+				dmg_label.visible = !dmg_label.visible
+		if event.is_action_pressed("Debug 2"):
+			Messenger.abduction.emit(1)
+		if event.is_action_pressed("Debug 3"):
+			show_fps = !show_fps
+		if event.is_action_pressed("Debug 4"):
+			debug_menu.visible = !debug_menu.visible
+		if event.is_action_pressed("Debug 5"):
+			terrain_controller.terrain_velocity = 0
+			player.terrain_slowdown = true
+		if event.is_action_pressed("Debug 6"):
+			terrain_controller.terrain_velocity = terrain_controller.TERRAIN_VELOCITY
+			player.terrain_slowdown = false
+		#endregion
