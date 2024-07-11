@@ -257,3 +257,45 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Choose Orb 3"
+
+[node name="VBox_6" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Cheat Tools"
+horizontal_alignment = 1
+
+[node name="Divider" type="Panel" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
+
+[node name="Button_hurtLegR" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Hurt LegR"
+
+[node name="Button_hurtLegL" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Hurt LegL"
+
+[node name="Button_killLegs" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Kill Legs"

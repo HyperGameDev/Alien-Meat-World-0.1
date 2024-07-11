@@ -26,6 +26,7 @@ func on_powerup_hovered(orb_hovered):
 	if orb_hovered == is_orb:
 		animation.play("hover")
 		
+		
 func on_anything_seen(target):
 	if !target.is_empty():
 		if target["collider"].has_method("on_powerup_hovered"):

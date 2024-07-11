@@ -134,21 +134,28 @@ func attack_ray(): ## Detects obstacles, NPC's and Meat/Abductee; emits attack_t
 func powerup_ray():
 	var raycast_result = hover_ray(32,true)
 	if !raycast_result.is_empty():
+		# These regions could become a single function if needed someday
+		#region Orb 1 Interaction
 		if raycast_result["collider"].is_type == PowerUp_Orb.is_types.Orb_1:
 			Messenger.powerup_hovered.emit(1)
 			if Input.is_action_just_pressed("Grab"):
 				Messenger.powerup_chosen.emit(1)
 				print("Left orb chosen")
+		#endregion
+		#region Orb 2 Interaction
 		if raycast_result["collider"].is_type == PowerUp_Orb.is_types.Orb_2:
 			Messenger.powerup_hovered.emit(2)
 			if Input.is_action_just_pressed("Grab"):
 				Messenger.powerup_chosen.emit(2)
 				print("Middle orb chosen")
+		#endregion
+		#region Orb 3 Interaction
 		if raycast_result["collider"].is_type == PowerUp_Orb.is_types.Orb_3:
 			Messenger.powerup_hovered.emit(3)
 			if Input.is_action_just_pressed("Grab"):
 				Messenger.powerup_chosen.emit(3)
 				print("Right orb chosen")
+		#endregion
 
 func player_hover_ray(): ## Player Hover detection
 	var raycast_result = hover_ray(32768,true)

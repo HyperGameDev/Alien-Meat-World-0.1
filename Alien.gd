@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-
 const SPEED = 5.0
 const JUMP_VELOCITY = 6
 const FALL_DEATH_DISTANCE = -50

@@ -1651,7 +1651,7 @@ transparent_bg = true
 theme_override_styles/fill = ExtResource("5_k8xva")
 
 [node name="Armature" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0526883, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, -0.075329, -0.0284092, -0.010423)
@@ -1783,7 +1783,7 @@ font_size = 35
 outline_size = 30
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.121412, 0.992082, -0.0446477, -0.963849, -0.128552, -0.235435, -0.239196, 0.0144421, 0.971358, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.449964, 0.650682, 0.612458, -0.888133, -0.250028, -0.386867, -0.0985483, -0.717676, 0.690065, 0.445561, 1.13443, 0.268376)
 visible = false
 bone_name = "ElbowR"
 bone_idx = 7
