@@ -10,7 +10,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Consider tucking these away in a function then calling them in ready
+	# CONSIDER tucking these away in a function then calling them in ready
 	Messenger.level_update.connect(on_level_update)
 	%Button_killLegs.pressed.connect(on_killLegs)
 	%Button_hurtLegR.pressed.connect(on_hurtLegR)

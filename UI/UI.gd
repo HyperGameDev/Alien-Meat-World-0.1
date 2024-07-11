@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+#region onreadys
 @onready var terrain_controller: Node3D = %TerrainController_inScene
 @onready var player: CharacterBody3D = %Player
 
@@ -9,22 +10,39 @@ extends CanvasLayer
 @onready var levelup_message: MarginContainer = %MarginContainer_LevelUp
 @onready var loading_text: MarginContainer = %MarginContainer_Loading
 
+@onready var orb_1: Area3D = %PowerUp_Orb_1
+@onready var orb_2: Area3D = %PowerUp_Orb_2
+@onready var orb_3: Area3D = %PowerUp_Orb_3
+
+@onready var orb_1_ui: Control = %Orb1_UI
+@onready var orb_2_ui: Control = %Orb2_UI
+@onready var orb_3_ui: Control = %Orb3_UI
+
 @onready var animation_score: AnimationPlayer = %"Animation_HUD-Score"
 @onready var animation_levelup: AnimationPlayer = %"Animation_HUD-LevelUp"
 @onready var animation_loading: AnimationPlayer = %Animation_Loading
+#endregion
 
 var score: int = 0
 var score_minimum: int = -1
 var score_minimum_met: bool = false
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
+	
+	#region Hiding Elements Outside of Editor
+	orb_1_ui.visible = false
+	orb_2_ui.visible = false
+	orb_3_ui.visible = false
 	loading_text.visible = false
 	levelup_message.visible = false
+	#endregion
+	
 	# Update current level's minimum score
 	on_level_update(Globals.level_current)
 	score_minimum_play_animation()
 	
+	Messenger.powerup_hovered.connect(on_powerup_hovered)
 	Messenger.level_update.connect(on_level_update)
 	Messenger.abduction.connect(on_abduction)
 	on_level_update(Globals.level_current)
@@ -35,6 +53,20 @@ func _process(delta):
 	if score >= score_minimum and !score_minimum_met:
 		on_score_minimum_met()
 		
+func on_powerup_hovered(orb):
+	match orb:
+		1:
+			orb_1_ui.visible = true
+			orb_1_ui.position = get_viewport().get_camera_3d().unproject_position(orb_1.global_position)
+		2:
+			orb_2_ui.visible = true
+			orb_2_ui.position = get_viewport().get_camera_3d().unproject_position(orb_2.global_position)
+		3:
+			orb_3_ui.visible = true
+			orb_3_ui.position = get_viewport().get_camera_3d().unproject_position(orb_3.global_position)
+		_:
+			pass
+	
 func on_powerup_chosen(orb):
 	score_minimum_met = false
 	score_minimum_play_animation()
@@ -81,6 +113,8 @@ func score_minimum_text_update():
 	label_scoreMinimum.text = str(score_minimum)
 	
 func on_level_update(level):
+	
+	# CONSIDER making this a dictionary to save some performance
 	match level:
 		0:
 			score_minimum = 1

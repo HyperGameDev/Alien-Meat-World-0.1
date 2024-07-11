@@ -97,7 +97,7 @@ func copter_stop(thing_in_player_perimeter):
 		is_moving = false
 #		print(copter_area, " was actually seen!")
 		
-		# Consider moving copters_stopped calculation to the Area on the Player if this count is needed on a per-copter basis!
+		# CONSIDER moving copters_stopped calculation to the Area on the Player if this count is needed on a per-copter basis!
 		copters_stopped += 1
 		Messenger.copter_unit_stopped.emit(copters_stopped)
 #		print(copters_stopped)

@@ -1,9 +1,9 @@
-[gd_scene load_steps=76 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=77 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="2_qvpxy"]
-[ext_resource type="Script" path="res://Alien.gd" id="3_ia6ow"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="3_ia6ow"]
 [ext_resource type="Environment" uid="uid://ctltfiohrppec" path="res://Environment/enviro-01.tres" id="3_o1fgy"]
 [ext_resource type="Script" path="res://Terrain/TerrainCollector.gd" id="4_0jb24"]
 [ext_resource type="PackedScene" uid="uid://c1q8m4i26u6vr" path="res://alien_3.tscn" id="4_huvyo"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Player/PowerUp_Menu.gd" id="8_i4g5f"]
 [ext_resource type="Script" path="res://Player/PowerUp_Orb.gd" id="9_l1n0p"]
 [ext_resource type="Script" path="res://Scripts/BodyPart.gd" id="10_2td36"]
+[ext_resource type="FontFile" uid="uid://coxuea18eaai4" path="res://UI/Fonts/Agrandir-GrandHeavy.otf" id="10_dhtlq"]
 [ext_resource type="Animation" uid="uid://dyfra10hcoilw" path="res://UI/Powerups/Animations/hover_1.res" id="10_o5ywd"]
 [ext_resource type="Script" path="res://Player/ScoreDunk.gd" id="11_318ny"]
 [ext_resource type="Animation" uid="uid://bpoqnqqafs0qh" path="res://UI/Powerups/Animations/hover_2.res" id="11_shcqq"]
@@ -1220,24 +1221,10 @@ texture = SubResource("ViewportTexture_s2cav")
 texture = SubResource("ViewportTexture_82jui")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.00921001, 0)
-
-[node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
-bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
-bones/2/rotation = Quaternion(0.0276023, 0.0423357, -0.042658, 0.997811)
-bones/3/rotation = Quaternion(-0.0205892, 0.00189199, 0.0252498, 0.999467)
-bones/6/rotation = Quaternion(-0.0895069, -0.0808807, -0.717954, 0.685558)
-bones/7/rotation = Quaternion(0.0104958, 0.238896, -0.0409419, 0.970125)
-bones/8/rotation = Quaternion(-0.00231333, 0.0242911, -0.00433505, 0.999693)
-bones/10/rotation = Quaternion(-0.289795, -0.0479284, -0.24514, 0.92392)
-bones/11/rotation = Quaternion(-0.760895, 0.0962255, 0.209214, 0.606637)
-bones/12/rotation = Quaternion(0.416566, -0.288618, -0.240819, 0.827755)
-bones/14/rotation = Quaternion(-0.122028, -0.101716, -0.0764657, 0.984335)
-bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
-bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0998802, 0)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.667584, 0.684334, -0.294922, -0.687997, -0.718146, -0.10903, -0.286272, 0.130056, 0.949786, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.713756, 0.491813, -0.499634, -0.590904, -0.805723, 0.0510293, -0.377288, 0.331499, 0.865288, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)
@@ -1311,6 +1298,131 @@ visible = false
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("12_gi6vt")
+
+[node name="Orb1_UI" type="Control" parent="HUD"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -293.5
+offset_top = 120.0
+offset_right = -293.5
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer_Orb1" type="MarginContainer" parent="HUD/Orb1_UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.5
+offset_top = -20.0
+offset_right = 159.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Orb1_UI/MarginContainer_Orb1"]
+layout_mode = 2
+
+[node name="PowerUp_Name" type="Label" parent="HUD/Orb1_UI/MarginContainer_Orb1/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("10_dhtlq")
+theme_override_font_sizes/font_size = 30
+text = "Powerup Name"
+
+[node name="Orb2_UI" type="Control" parent="HUD"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer_Orb2" type="MarginContainer" parent="HUD/Orb2_UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.5
+offset_top = -15.5
+offset_right = 159.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Orb2_UI/MarginContainer_Orb2"]
+layout_mode = 2
+
+[node name="PowerUp_Name" type="Label" parent="HUD/Orb2_UI/MarginContainer_Orb2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("10_dhtlq")
+theme_override_font_sizes/font_size = 30
+text = "Powerup Name"
+horizontal_alignment = 1
+
+[node name="Orb3_UI" type="Control" parent="HUD"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 307.5
+offset_top = 130.0
+offset_right = 307.5
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer_Orb3" type="MarginContainer" parent="HUD/Orb3_UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.5
+offset_top = -20.0
+offset_right = 159.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Orb3_UI/MarginContainer_Orb3"]
+layout_mode = 2
+
+[node name="PowerUp_Name" type="Label" parent="HUD/Orb3_UI/MarginContainer_Orb3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("10_dhtlq")
+theme_override_font_sizes/font_size = 30
+text = "Powerup Name"
 
 [node name="MarginContainer_Loading" type="MarginContainer" parent="HUD"]
 unique_name_in_owner = true

@@ -48,8 +48,11 @@ func on_something_hit(what_got_hit,is_delayed):
 	if what_got_hit == $".." and $"..".health_current > 0:
 		#print($"..".name, " just got hit!")
 #		await get_tree().create_timer(attacked_duration).timeout
+
+		# CONSIDER refactoring as a set function in the script declaration? (So I don't have to remember to emit everytime)
 		$"..".health_current -= $"..".damage_taken
 		$"..".update_hitpoints.emit()
+		
 		var health_current_float: float = $"..".health_current * 1.0
 		var health_max_float: float = $"..".health_max * 1.0
 		var health_lost: float = health_max_float - health_current_float
@@ -88,5 +91,8 @@ func reset_damage():
 	#$Animation_Degrade.stop()
 	$Animation_Degrade.seek(0.0, true)
 	$"..".health_current = $"..".health_max
+	
+	# CONSIDER refactoring as a set function in the script declaration? (So I don't have to remember to emit everytime)
 	$"..".update_hitpoints.emit()
+	
 	$"..".restore_collision()
