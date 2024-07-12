@@ -37,6 +37,14 @@ func on_powerup_menu_begin():
 		
 	var tween = get_tree().create_tween();
 	tween.tween_property(self, "position:y", -travel_distance, ORB_MOVE_SPEED)
+	
+	Globals.powerups_to_choose = Globals.powerups.keys()
+	Globals.powerups_to_choose.shuffle()
+	orb_1.powerup_key = Globals.powerups_to_choose.pop_front()
+	orb_2.powerup_key = Globals.powerups_to_choose.pop_front()
+	orb_3.powerup_key = Globals.powerups_to_choose.pop_front()
+	#print("\n Orb 1: ", orb_1.powerup_key,
+	#"\n Orb 2: ", orb_2.powerup_key, "\n Orb 3: ", orb_3.powerup_key)
 
 
 func on_powerup_chosen(orb):

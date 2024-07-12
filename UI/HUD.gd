@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+class_name HUD
+
 #region onreadys
 @onready var terrain_controller: Node3D = %TerrainController_inScene
 @onready var player: CharacterBody3D = %Player
@@ -14,9 +16,13 @@ extends CanvasLayer
 @onready var orb_2: Area3D = %PowerUp_Orb_2
 @onready var orb_3: Area3D = %PowerUp_Orb_3
 
-@onready var orb_1_ui: Control = %Orb1_UI
-@onready var orb_2_ui: Control = %Orb2_UI
-@onready var orb_3_ui: Control = %Orb3_UI
+@onready var powerup_name: Control = %PowerUp_Name
+@onready var powerup_name_label: Label = %PowerUp_Name_Text
+@onready var powerup_description: MarginContainer = %"MarginContainer_PowerUp-Description"
+@onready var powerup_description_label: Label = %Powerup_Description_Text
+
+
+
 
 @onready var animation_score: AnimationPlayer = %"Animation_HUD-Score"
 @onready var animation_levelup: AnimationPlayer = %"Animation_HUD-LevelUp"
@@ -31,9 +37,8 @@ var score_minimum_met: bool = false
 func _ready():
 	
 	#region Hiding Elements Outside of Editor
-	orb_1_ui.visible = false
-	orb_2_ui.visible = false
-	orb_3_ui.visible = false
+	powerup_name.visible = false
+	powerup_description.visible = false
 	loading_text.visible = false
 	levelup_message.visible = false
 	#endregion
@@ -53,17 +58,32 @@ func _process(delta):
 	if score >= score_minimum and !score_minimum_met:
 		on_score_minimum_met()
 		
+func on_powerup_unhovered():
+	powerup_name.visible = false
+	powerup_description.visible = false
+
 func on_powerup_hovered(orb):
 	match orb:
 		1:
-			orb_1_ui.visible = true
-			orb_1_ui.position = get_viewport().get_camera_3d().unproject_position(orb_1.global_position)
+			powerup_name.visible = true
+			powerup_description.visible = true
+			powerup_name.position = get_viewport().get_camera_3d().unproject_position(orb_1.global_position)
+			
+			powerup_name_label.text = Globals.powerups[orb_1.powerup_key].powerupName
+			powerup_description_label.text = Globals.powerups[orb_1.powerup_key].powerupDescription
+			 
 		2:
-			orb_2_ui.visible = true
-			orb_2_ui.position = get_viewport().get_camera_3d().unproject_position(orb_2.global_position)
+			powerup_name.visible = true
+			powerup_description.visible = true
+			powerup_name.position = get_viewport().get_camera_3d().unproject_position(orb_2.global_position)
+			powerup_name_label.text = Globals.powerups[orb_2.powerup_key].powerupName
+			powerup_description_label.text = Globals.powerups[orb_2.powerup_key].powerupDescription
 		3:
-			orb_3_ui.visible = true
-			orb_3_ui.position = get_viewport().get_camera_3d().unproject_position(orb_3.global_position)
+			powerup_name.visible = true
+			powerup_description.visible = true
+			powerup_name.position = get_viewport().get_camera_3d().unproject_position(orb_3.global_position)
+			powerup_name_label.text = Globals.powerups[orb_3.powerup_key].powerupName
+			powerup_description_label.text = Globals.powerups[orb_3.powerup_key].powerupDescription
 		_:
 			pass
 	

@@ -1,5 +1,26 @@
 extends Node
 
+var powerups_to_choose: Array = []
+var powerups := {
+	PowerUp1 = {
+		powerupName = "PowerUp 1",
+		powerupDescription = "This is the first powerup in the dictionary. It will do something."
+	},
+	PowerUp2 = {
+		powerupName = "P.U. 2",
+		powerupDescription = "The second powerup will do some things."
+	},
+	Powerup3 = {
+		powerupName = "PowerUp No. Three",
+		powerupDescription = "It might be strong."
+	},
+	Powerup4 = {
+		powerupName = "PowerUp 4th",
+		powerupDescription = "Just works."
+	}
+}
+		
+
 var obstacles_hilited := []
 var score = 0
 
