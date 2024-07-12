@@ -40,9 +40,16 @@ func on_powerup_menu_begin():
 	
 	Globals.powerups_to_choose = Globals.powerups.keys()
 	Globals.powerups_to_choose.shuffle()
+	
 	orb_1.powerup_key = Globals.powerups_to_choose.pop_front()
+	orb_1.on_powerups_assigned()
+	
 	orb_2.powerup_key = Globals.powerups_to_choose.pop_front()
+	orb_2.on_powerups_assigned()
+	
+	
 	orb_3.powerup_key = Globals.powerups_to_choose.pop_front()
+	orb_3.on_powerups_assigned()
 	#print("\n Orb 1: ", orb_1.powerup_key,
 	#"\n Orb 2: ", orb_2.powerup_key, "\n Orb 3: ", orb_3.powerup_key)
 

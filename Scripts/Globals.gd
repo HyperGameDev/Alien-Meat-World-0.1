@@ -4,19 +4,23 @@ var powerups_to_choose: Array = []
 var powerups := {
 	PowerUp1 = {
 		powerupName = "PowerUp 1",
-		powerupDescription = "This is the first powerup in the dictionary. It will do something."
+		powerupDescription = "This is the first powerup in the dictionary. It will do something.",
+		powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_01.png"
 	},
 	PowerUp2 = {
 		powerupName = "P.U. 2",
-		powerupDescription = "The second powerup will do some things."
+		powerupDescription = "The second powerup will do some things.",
+		powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_02.png"
 	},
 	Powerup3 = {
 		powerupName = "PowerUp No. Three",
-		powerupDescription = "It might be strong."
+		powerupDescription = "It might be strong.",
+		powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_03.png"
 	},
 	Powerup4 = {
 		powerupName = "PowerUp 4th",
-		powerupDescription = "Just works."
+		powerupDescription = "Just works.",
+		powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_04.png"
 	}
 }
 		

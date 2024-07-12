@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=87 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
@@ -16,8 +16,8 @@
 [ext_resource type="Script" path="res://Scripts/BodyPart.gd" id="10_2td36"]
 [ext_resource type="FontFile" uid="uid://coxuea18eaai4" path="res://UI/Fonts/Agrandir-GrandHeavy.otf" id="10_dhtlq"]
 [ext_resource type="Animation" uid="uid://dyfra10hcoilw" path="res://UI/Powerups/Animations/hover_1.res" id="10_o5ywd"]
+[ext_resource type="Texture2D" uid="uid://dq5uh67af12y3" path="res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_01.png" id="10_rng1m"]
 [ext_resource type="Script" path="res://Player/ScoreDunk.gd" id="11_318ny"]
-[ext_resource type="Texture2D" uid="uid://cfecmj0cgr7q7" path="res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_04.png" id="11_sg3qu"]
 [ext_resource type="Animation" uid="uid://bpoqnqqafs0qh" path="res://UI/Powerups/Animations/hover_2.res" id="11_shcqq"]
 [ext_resource type="Animation" uid="uid://cfajlfyq1ba2s" path="res://UI/Powerups/Animations/hover_3.res" id="12_gh6mc"]
 [ext_resource type="Script" path="res://UI/HUD.gd" id="12_gi6vt"]
@@ -92,6 +92,11 @@ height = 1.6
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_u46gw"]
 gradient = SubResource("Gradient_vglv7")
 
+[sub_resource type="Gradient" id="Gradient_hps5a"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tp42u"]
+gradient = SubResource("Gradient_hps5a")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fj4ut"]
 blend_mode = 3
 depth_draw_mode = 1
@@ -99,12 +104,12 @@ diffuse_mode = 3
 specular_mode = 1
 disable_ambient_light = true
 albedo_color = Color(0.431373, 1, 0.419608, 0.537255)
-metallic = 0.2
-metallic_specular = 0.3
+metallic = 0.35
+metallic_specular = 0.0
 roughness = 0.36
 emission_enabled = true
 emission = Color(0.862745, 0.862745, 0.862745, 1)
-emission_energy_multiplier = 0.5
+emission_energy_multiplier = 0.09
 rim_enabled = true
 rim_tint = 0.0
 clearcoat_enabled = true
@@ -113,9 +118,13 @@ anisotropy = 1.0
 ao_light_affect = 0.83
 ao_texture = SubResource("GradientTexture2D_u46gw")
 heightmap_scale = -2.7
-subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.8
+subsurf_scatter_skin_mode = true
 backlight_enabled = true
-backlight = Color(1, 1, 1, 1)
+backlight = Color(0.482353, 0.482353, 0.482353, 1)
+refraction_scale = 1.0
+refraction_texture = SubResource("GradientTexture2D_tp42u")
+detail_blend_mode = 1
 disable_receive_shadows = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_08qdd"]
@@ -313,13 +322,13 @@ height = 0.8
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pqt4u"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oa7i8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwkf1"]
 render_priority = 127
 transparency = 1
 blend_mode = 1
 depth_draw_mode = 1
 no_depth_test = true
-albedo_texture = ExtResource("11_sg3qu")
+albedo_texture = ExtResource("10_rng1m")
 rim_enabled = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dsm6n"]
@@ -334,10 +343,28 @@ _data = {
 "hover": ExtResource("10_o5ywd")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ujhk"]
+render_priority = 127
+transparency = 1
+blend_mode = 1
+depth_draw_mode = 1
+no_depth_test = true
+albedo_texture = ExtResource("10_rng1m")
+rim_enabled = true
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ygaqg"]
 _data = {
 "hover": ExtResource("11_shcqq")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h25p1"]
+render_priority = 127
+transparency = 1
+blend_mode = 1
+depth_draw_mode = 1
+no_depth_test = true
+albedo_texture = ExtResource("10_rng1m")
+rim_enabled = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x646a"]
 _data = {
@@ -1079,7 +1106,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_fj4ut")
 transform = Transform3D(0.325, 0, 0, 0, -1.42062e-08, -0.325, 0, 0.325, -1.42062e-08, 0, 0, 0)
 mesh = SubResource("PlaneMesh_pqt4u")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_oa7i8")
+surface_material_override/0 = SubResource("StandardMaterial3D_vwkf1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PowerUp_Menu/PowerUp_Orb_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271964, 0, -0.00519168)
@@ -1102,6 +1129,12 @@ is_type = 1
 mesh = SubResource("SphereMesh_5k002")
 surface_material_override/0 = SubResource("StandardMaterial3D_fj4ut")
 
+[node name="Icon" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_2/MeshInstance3D"]
+transform = Transform3D(0.325, 0, 0, 0, -1.42062e-08, -0.325, 0, 0.325, -1.42062e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_pqt4u")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_5ujhk")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PowerUp_Menu/PowerUp_Orb_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271964, 0, -0.00519168)
 shape = SubResource("SphereShape3D_dsm6n")
@@ -1122,6 +1155,12 @@ is_type = 2
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_3"]
 mesh = SubResource("SphereMesh_5k002")
 surface_material_override/0 = SubResource("StandardMaterial3D_fj4ut")
+
+[node name="Icon" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_3/MeshInstance3D"]
+transform = Transform3D(0.325, 0, 0, 0, -1.42062e-08, -0.325, 0, 0.325, -1.42062e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_pqt4u")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_h25p1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PowerUp_Menu/PowerUp_Orb_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271964, 0, -0.00519168)
@@ -1259,7 +1298,7 @@ texture = SubResource("ViewportTexture_s2cav")
 texture = SubResource("ViewportTexture_82jui")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.042939, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.107852, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
@@ -1276,7 +1315,7 @@ bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.357755, 0.264816, -0.896016, -0.845738, -0.499575, 0.190031, -0.397113, 0.825383, 0.402497, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.73929, 0.584886, -0.335142, -0.601174, -0.797079, -0.0649237, -0.304961, 0.153408, 0.940439, 0.445561, 1.13443, 0.268376)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)

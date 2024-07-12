@@ -2,12 +2,14 @@ extends Area3D
 
 class_name PowerUp_Orb
 
-@onready var hud = %HUD
-@onready var animation = $Animation_PowerUp_Orb
+@onready var hud: CanvasLayer = %HUD
+@onready var animation: AnimationPlayer = $Animation_PowerUp_Orb
+@onready var icon: MeshInstance3D = $MeshInstance3D/Icon
+
 @export var is_type: is_types
 enum is_types {Orb_1, Orb_2, Orb_3}
 
-var is_orb = 0
+var is_orb: int = 0
 var powerup_key: Variant
 
 # Called when the node enters the scene tree for the first time.
@@ -24,6 +26,10 @@ func _ready():
 		is_types.Orb_3:
 			is_orb = 3
 
+
+func on_powerups_assigned():
+	var texture = load(Globals.powerups[powerup_key].powerupIcon)
+	icon.get("surface_material_override/0").set_texture(StandardMaterial3D.TEXTURE_ALBEDO, texture)
 
 func on_powerup_hovered(orb_hovered):
 	if orb_hovered == is_orb:
