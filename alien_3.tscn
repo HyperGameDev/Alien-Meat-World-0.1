@@ -1651,49 +1651,36 @@ transparent_bg = true
 theme_override_styles/fill = ExtResource("5_k8xva")
 
 [node name="Armature" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.12744, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, -0.075329, -0.0284092, -0.010423)
 bones/0/rotation = Quaternion(-2.98023e-08, 1.19209e-07, 0, 1)
-bones/1/position = Vector3(0.000474975, 0.241475, 0.000474975)
 bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
-bones/1/scale = Vector3(1.00048, 1.00048, 1.00048)
-bones/2/position = Vector3(-7.48877e-07, 0.519572, -3.53011e-08)
+bones/1/scale = Vector3(1, 1, 1)
 bones/2/rotation = Quaternion(0.0276023, 0.0423357, -0.042658, 0.997811)
-bones/2/scale = Vector3(1.00048, 1.00048, 1.00048)
+bones/2/scale = Vector3(1, 1, 1)
 bones/3/rotation = Quaternion(-0.0205892, 0.00189199, 0.0252498, 0.999467)
-bones/3/scale = Vector3(1, 1, 1)
 bones/4/rotation = Quaternion(-3.55271e-15, 8.88178e-14, -1.21169e-27, 1)
-bones/5/position = Vector3(-5.42995e-09, 0.268125, 1.92848e-08)
 bones/5/rotation = Quaternion(-3.55271e-15, 3.55271e-15, -1.21169e-27, 1)
-bones/5/scale = Vector3(1.00048, 1.00048, 1.00048)
-bones/6/position = Vector3(0.000474975, 0.241475, 0.000474975)
 bones/6/rotation = Quaternion(-0.0895069, -0.0808807, -0.717954, 0.685558)
-bones/6/scale = Vector3(1.00048, 1.00048, 1.00048)
-bones/7/position = Vector3(-4.74906e-06, 0.468296, 1.27069e-06)
+bones/6/scale = Vector3(1, 1, 1)
 bones/7/rotation = Quaternion(0.0104958, 0.238896, -0.0409419, 0.970125)
-bones/8/position = Vector3(0.000474975, 0.759475, 0.000474975)
 bones/8/rotation = Quaternion(-0.00231333, 0.0242911, -0.00433505, 0.999693)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(0.5, -0.5, -0.5, -0.5)
 bones/10/rotation = Quaternion(-0.289795, -0.0479284, -0.24514, 0.92392)
-bones/10/scale = Vector3(1, 0.999998, 1)
-bones/11/position = Vector3(-6.7018e-07, 0.501944, -1.5535e-07)
+bones/10/scale = Vector3(1, 1, 1)
 bones/11/rotation = Quaternion(-0.760895, 0.0962255, 0.209214, 0.606637)
-bones/11/scale = Vector3(0.999999, 1, 0.999999)
+bones/11/scale = Vector3(1, 1, 1)
 bones/12/rotation = Quaternion(0.416566, -0.288618, -0.240819, 0.827755)
-bones/12/scale = Vector3(0.999999, 1, 1)
+bones/12/scale = Vector3(1, 1, 1)
 bones/13/rotation = Quaternion(0.5, 0.5, 0.5, -0.5)
-bones/14/position = Vector3(0.000474975, 0.000474975, 0.000474975)
 bones/14/rotation = Quaternion(-0.122028, -0.101716, -0.0764657, 0.984335)
-bones/14/scale = Vector3(1, 1, 0.999999)
-bones/15/position = Vector3(-8.19931e-07, 0.40572, 5.85299e-08)
 bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
-bones/15/scale = Vector3(0.999999, 1, 1)
-bones/16/position = Vector3(4.92499e-07, 0.526815, -2.25095e-07)
+bones/15/scale = Vector3(1, 1, 1)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
-bones/16/scale = Vector3(0.999999, 1, 1)
+bones/16/scale = Vector3(1, 1, 1)
 
 [node name="Alien_ArmL" parent="Armature/Skeleton3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 2.98023e-08, 0, -2.98023e-08, 0.999999, -0.00951421, -0.00403788, -0.00525001)
@@ -1783,7 +1770,7 @@ font_size = 35
 outline_size = 30
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.449964, 0.650682, 0.612458, -0.888133, -0.250028, -0.386867, -0.0985483, -0.717676, 0.690065, 0.445561, 1.13443, 0.268376)
+transform = Transform3D(-0.621098, 0.284959, -0.730093, -0.620139, -0.748313, 0.235489, -0.479234, 0.599021, 0.64149, 0.449514, 1.13444, 0.267902)
 visible = false
 bone_name = "ElbowR"
 bone_idx = 7
