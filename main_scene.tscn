@@ -1088,6 +1088,7 @@ libraries = {
 }
 
 [node name="PowerUp_Menu" type="Node3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 script = ExtResource("8_i4g5f")
 
@@ -1298,7 +1299,7 @@ texture = SubResource("ViewportTexture_s2cav")
 texture = SubResource("ViewportTexture_82jui")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0893404, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.00659637, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/position = Vector3(5.84336e-10, 0.241477, -5.4619e-09)
@@ -1315,7 +1316,7 @@ bones/15/position = Vector3(-1.86265e-08, 0.40572, 5.21541e-08)
 bones/16/position = Vector3(-2.79397e-08, 0.526815, -2.6077e-08)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.535098, 0.642958, 0.547974, -0.841842, -0.351692, -0.409409, -0.0705144, -0.680381, 0.729458, 0.449514, 1.13444, 0.267902)
+transform = Transform3D(-0.657085, 0.715583, -0.237022, -0.705076, -0.694655, -0.142555, -0.266659, 0.0734479, 0.960988, 0.449514, 1.13444, 0.267902)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)

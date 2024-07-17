@@ -10,7 +10,7 @@ class_name PowerUp_Orb
 enum is_types {Orb_1, Orb_2, Orb_3}
 
 var is_orb: int = 0
-var powerup_key: Variant
+var powerup_key: Variant = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,6 +28,8 @@ func _ready():
 
 
 func on_powerups_assigned():
+	if powerup_key == null:
+		print("No powerups found in powerups_available array.")
 	var texture = load(Globals.powerups[powerup_key].powerupIcon)
 	icon.get("surface_material_override/0").set_texture(StandardMaterial3D.TEXTURE_ALBEDO, texture)
 

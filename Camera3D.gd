@@ -10,6 +10,7 @@ const CAM_Z_OFFSET = 13
 @export var cam_x_offset: float = 0.0
 
 @onready var cam_target = %Cam_Target
+@onready var powerup_menu = %PowerUp_Menu
 
 # Temporary Grab Mechanic vars
 var is_grabbed = false
@@ -180,3 +181,5 @@ func on_powerup_menu_begin():
 
 func on_powerup_chosen(orb):
 	powerup_menu_begin = false
+	var orb_chosen = %PowerUp_Menu.get_children()[orb - 1]
+	Globals.powerups_available.erase(orb_chosen.powerup_key)

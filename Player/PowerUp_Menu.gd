@@ -35,28 +35,43 @@ func on_powerup_menu_begin():
 		travel_distance = TRAVEL_DISTANCE + offset_y
 	#endregion
 		
+	#region Animate menu descent
 	var tween = get_tree().create_tween();
 	tween.tween_property(self, "position:y", -travel_distance, ORB_MOVE_SPEED)
 	
-	Globals.powerups_to_choose = Globals.powerups.keys()
-	Globals.powerups_to_choose.shuffle()
+	#endregion
 	
-	orb_1.powerup_key = Globals.powerups_to_choose.pop_front()
+	
+	
+	#region Assign all available powerups to an array
+	
+	print("\nPowerups available: ", Globals.powerups_available)
+	# Then shuffle that array
+	Globals.powerups_available.shuffle()
+	print("Powerups shuffled: ", Globals.powerups_available)
+	
+	#endregion
+	
+	#region Assign each array'd powerup to an orb
+	orb_1.powerup_key = Globals.powerups_available[0]
 	orb_1.on_powerups_assigned()
 	
-	orb_2.powerup_key = Globals.powerups_to_choose.pop_front()
+	orb_2.powerup_key = Globals.powerups_available[1]
 	orb_2.on_powerups_assigned()
 	
-	
-	orb_3.powerup_key = Globals.powerups_to_choose.pop_front()
+	orb_3.powerup_key = Globals.powerups_available[2]
 	orb_3.on_powerups_assigned()
+	
+	#debug
 	#print("\n Orb 1: ", orb_1.powerup_key,
 	#"\n Orb 2: ", orb_2.powerup_key, "\n Orb 3: ", orb_3.powerup_key)
+	
+	#endregion
 
 
 func on_powerup_chosen(orb):
 	
-		#region Travel Distance Calculation
+	#region Travel Distance Calculation
 	var offset_y: float = TRAVEL_DISTANCE + player_height
 	var travel_distance: float = TRAVEL_DISTANCE
 	
@@ -64,7 +79,11 @@ func on_powerup_chosen(orb):
 		travel_distance = TRAVEL_DISTANCE + offset_y
 	#endregion
 	
+	#region Animate menu ascent
 	var tween = get_tree().create_tween();
 	tween.tween_property(self, "position:y", travel_distance, ORB_MOVE_SPEED)
 	await get_tree().create_timer(ORB_MOVE_SPEED).timeout
+	
+	#endregion
+	
 	visible = false

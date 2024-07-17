@@ -109,7 +109,6 @@ var chunks_list_06 : Array = []
 
 
 func _ready() -> void:
-	Messenger.powerup_menu_begin.connect(on_powerup_menu_begin)
 	Messenger.level_update.connect(on_level_update)
 	
 	chunks_path_safes = Globals.current_safe_chunks
@@ -126,9 +125,6 @@ func _ready() -> void:
 
 	_load_terrain_scenes(chunks_path_safes,chunks_path_obstacles,chunks_path_points)
 	_init_chunks(num_terrain_chunks)
-	
-func on_powerup_menu_begin():
-	powerup_menu_begin = true
 	
 
 func _physics_process(delta: float) -> void:
