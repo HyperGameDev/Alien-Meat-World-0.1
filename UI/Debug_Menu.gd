@@ -1,5 +1,6 @@
 extends Control
 
+@onready var player = get_tree().get_root().get_node("Main Scene/Player")
 @onready var level_current = Globals.current_safe_chunks
 @onready var label_levelCurrent = %Label_levelCurrent
 
@@ -12,6 +13,7 @@ extends Control
 func _ready():
 	# CONSIDER tucking these away in a function then calling them in ready
 	Messenger.level_update.connect(on_level_update)
+	%Button_playerHeight.pressed.connect(on_playerHeight)
 	%Button_killLegs.pressed.connect(on_killLegs)
 	%Button_hurtLegR.pressed.connect(on_hurtLegR)
 	%Button_hurtLegL.pressed.connect(on_hurtLegL)
@@ -49,7 +51,9 @@ func on_killLegs():
 	Messenger.amount_damaged.emit(1)
 	Messenger.area_damaged.emit(leg_r)
 	Messenger.area_damaged.emit(leg_l)
-	print("Player Height: ", powerup_menu.player_height, "; Travel Distance: ", powerup_menu.TRAVEL_DISTANCE)
+	
+func on_playerHeight():
+	print("Player Height: ", player.position.y, "; Travel Distance: ", powerup_menu.TRAVEL_DISTANCE)
 
 func on_hurtLegR():
 	Messenger.amount_damaged.emit(.1)

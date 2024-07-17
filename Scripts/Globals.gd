@@ -1,5 +1,7 @@
 extends Node
 
+@export var level_current = 1
+
 var powerups_to_choose: Array = []
 var powerups := {
 	PowerUp1 = {
@@ -28,7 +30,7 @@ var powerups := {
 var obstacles_hilited := []
 var score = 0
 
-@export var level_current = 0
+
 
 var level_chunks_safe := [
 	"res://Terrain/terrain_level_00/terrain_level_00_safes/",

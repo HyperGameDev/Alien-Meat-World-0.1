@@ -1651,7 +1651,7 @@ transparent_bg = true
 theme_override_styles/fill = ExtResource("5_k8xva")
 
 [node name="Armature" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.12744, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, -0.075329, -0.0284092, -0.010423)
@@ -1670,7 +1670,6 @@ bones/8/rotation = Quaternion(-0.00231333, 0.0242911, -0.00433505, 0.999693)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(0.5, -0.5, -0.5, -0.5)
 bones/10/rotation = Quaternion(-0.289795, -0.0479284, -0.24514, 0.92392)
-bones/10/scale = Vector3(1, 1, 1)
 bones/11/rotation = Quaternion(-0.760895, 0.0962255, 0.209214, 0.606637)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/rotation = Quaternion(0.416566, -0.288618, -0.240819, 0.827755)
@@ -1770,7 +1769,7 @@ font_size = 35
 outline_size = 30
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.621098, 0.284959, -0.730093, -0.620139, -0.748313, 0.235489, -0.479234, 0.599021, 0.64149, 0.449514, 1.13444, 0.267902)
+transform = Transform3D(-0.524203, 0.763425, 0.377351, -0.842242, -0.399282, -0.362218, -0.125857, -0.507697, 0.852294, 0.449515, 1.13444, 0.267902)
 visible = false
 bone_name = "ElbowR"
 bone_idx = 7

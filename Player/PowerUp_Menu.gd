@@ -31,7 +31,7 @@ func on_powerup_menu_begin():
 	var offset_y = TRAVEL_DISTANCE + player_height
 	var travel_distance = TRAVEL_DISTANCE
 	
-	if player.position.y < 0:
+	if player.position.y < -.9:
 		travel_distance = TRAVEL_DISTANCE + offset_y
 	#endregion
 		
@@ -57,8 +57,8 @@ func on_powerup_menu_begin():
 func on_powerup_chosen(orb):
 	
 		#region Travel Distance Calculation
-	var offset_y = TRAVEL_DISTANCE + player_height
-	var travel_distance = TRAVEL_DISTANCE
+	var offset_y: float = TRAVEL_DISTANCE + player_height
+	var travel_distance: float = TRAVEL_DISTANCE
 	
 	if player.position.y < 0:
 		travel_distance = TRAVEL_DISTANCE + offset_y
