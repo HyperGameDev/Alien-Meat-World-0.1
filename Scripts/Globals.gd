@@ -1,6 +1,6 @@
 extends Node
 
-@export var level_current = 1
+@export var level_current = 0
 
 var powerups_available: Array = []
 var powerups := {
@@ -147,7 +147,6 @@ func _ready():
 	on_level_update(level_current)
 	
 	powerups_available = powerups.keys()
-	print("Powerups available: ", powerups_available)
 
 func on_level_update(level):
 	level_current = level

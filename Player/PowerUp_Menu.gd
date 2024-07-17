@@ -45,10 +45,8 @@ func on_powerup_menu_begin():
 	
 	#region Assign all available powerups to an array
 	
-	print("\nPowerups available: ", Globals.powerups_available)
 	# Then shuffle that array
 	Globals.powerups_available.shuffle()
-	print("Powerups shuffled: ", Globals.powerups_available)
 	
 	#endregion
 	

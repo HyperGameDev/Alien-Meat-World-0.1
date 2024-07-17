@@ -22,9 +22,10 @@ const TERRAIN_VELOCITY : float = 11.0
 @export var num_terrain_chunks : int = 9
 
 ## Number of starting chunks
-@export var starting_chunks_max : int = 7
-var starting_chunks_current : int = 0
-var starting_chunks_over : bool = false
+@export var starting_chunks_max: int = 7
+var starting_chunks_current: int = 0
+var starting_chunks_over: bool = false
+var first_level_loaded: bool = false
 
 ## Paths to directories holding the terrain chunks scenes
 var chunks_path_safes : StringName
@@ -166,7 +167,7 @@ func chunks_update():
 
 func chunks_for_level():
 	# Updating lists-of-chunks-to-choose with level-relevant chunks, when starting ones are over.
-	if starting_chunks_over:
+	if starting_chunks_over and !first_level_loaded:
 		if Globals.level_current <= 1:
 			chunks_list_01 = chunks_list_01_level1
 			chunks_list_02 = chunks_list_02_level1
@@ -174,6 +175,7 @@ func chunks_for_level():
 			chunks_list_04 = chunks_list_safes
 			chunks_list_05 = chunks_list_safes
 			chunks_list_06 = chunks_list_safes
+		first_level_loaded = true
 
 func chunk_chosen_to_add():			
 	if chunks_list_current.size() == 0:
