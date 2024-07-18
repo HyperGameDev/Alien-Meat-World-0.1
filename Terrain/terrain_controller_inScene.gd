@@ -153,7 +153,6 @@ func _ready() -> void:
 	chunks_path_menu = Globals.current_menu_chunks
 	
 	
-	_load_terrain_scenes()
 	chunks_update(num_terrain_chunks)
 	
 
@@ -162,24 +161,55 @@ func _physics_process(delta: float) -> void:
 			
 	
 
+## Adds files to the correct nodes at game start
+func chunks_update(num_terrain_chunks: int) -> void: 
+	#region Add SAFE files to a collector
+	var dir_safes = DirAccess.open(chunks_path_safes)
+	for safes_path in dir_safes.get_files():
+		Chunks_Safes.append(load(chunks_path_safes + "/" + safes_path.trim_suffix(".remap")))
 
-func chunks_update(num_terrain_chunks: int) -> void: ## Adds files to the correct nodes at game start
 	# GETTING AN ERROR? You probably added a non-scene file into your level folder. You're welcome.
 	for LevelChunk in Chunks_Safes:
 		var chunk =  LevelChunk.instantiate()
 		collector_safes.add_child(chunk)
-	
+
+	#endregion
+
+	#region Add OBSTACLE files to a collector
+	var dir_obstacles = DirAccess.open(chunks_path_obstacles)
+	for obstacles_path in dir_obstacles.get_files():
+		Chunks_Obstacles.append(load(chunks_path_obstacles + "/" + obstacles_path.trim_suffix(".remap")))
+
+	# GETTING AN ERROR? You probably added a non-scene file into your level folder. You're welcome.
 	for LevelChunk in Chunks_Obstacles:
 		var chunk =  LevelChunk.instantiate()
 		collector_obstacles.add_child(chunk)
+		
+	#endregion
 			
+	#region Add POINTS files to a collector	
+	var dir_points = DirAccess.open(chunks_path_points)
+	for points_path in dir_points.get_files():
+		Chunks_Points.append(load(chunks_path_points + "/" + points_path.trim_suffix(".remap")))
+		
+	# GETTING AN ERROR? You probably added a non-scene file into your level folder. You're welcome.
 	for LevelChunk in Chunks_Points:
 		var chunk =  LevelChunk.instantiate()
 		collector_points.add_child(chunk)
 		
+	#endregion
+		
+	#region Add MENU files to a collector
+	var dir_menu = DirAccess.open(chunks_path_menu)
+	for menu_path in dir_menu.get_files():
+		Chunks_Menu.append(load(chunks_path_menu + "/" + menu_path.trim_suffix(".remap")))
+		
+	# GETTING AN ERROR? You probably added a non-scene file into your level folder. You're welcome.
 	for LevelChunk in Chunks_Menu:
 		var chunk =  LevelChunk.instantiate()
 		collector_menu.add_child(chunk)
+	
+	#endregion
 		
 	# Setup first starting chunks to spawn in
 	if !first_chunks_loaded:
@@ -303,27 +333,6 @@ func _append_to_far_edge(target_block: MeshInstance3D, appending_block: MeshInst
 	#print("Last added: ",target_block, " at ",target_block.position.z,"; chunk_to_add: ",chunk_to_add)
 	
 	
-
-
-func _load_terrain_scenes() -> void:
-	
-	var dir_safes = DirAccess.open(chunks_path_safes)
-	for safes_path in dir_safes.get_files():
-		# Preparing the chunk files to be added to the collector
-		Chunks_Safes.append(load(chunks_path_safes + "/" + safes_path.trim_suffix(".remap")))
-		
-		
-	var dir_obstacles = DirAccess.open(chunks_path_obstacles)
-	for obstacles_path in dir_obstacles.get_files():
-		Chunks_Obstacles.append(load(chunks_path_obstacles + "/" + obstacles_path.trim_suffix(".remap")))
-		
-	var dir_points = DirAccess.open(chunks_path_points)
-	for points_path in dir_points.get_files():
-		Chunks_Points.append(load(chunks_path_points + "/" + points_path.trim_suffix(".remap")))
-		
-	var dir_menu = DirAccess.open(chunks_path_menu)
-	for menu_path in dir_menu.get_files():
-		Chunks_Menu.append(load(chunks_path_menu + "/" + menu_path.trim_suffix(".remap")))
 		
 func on_level_update(level):
 	match level:
@@ -428,6 +437,5 @@ func on_level_update(level):
 	Chunks_Obstacles.clear()
 	Chunks_Points.clear()
 	
-	_load_terrain_scenes()
 	chunks_update(num_terrain_chunks)
 	
