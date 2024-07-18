@@ -5,7 +5,7 @@ const JUMP_VELOCITY = 6
 const FALL_DEATH_DISTANCE = -50
 const BOUNDARY_DISTANCE = 30
 
-@export var controls_locked = false
+@export var controls_locked = true
 
 @onready var animation = get_node("Alien/AnimationTree_Alien")
 @onready var skeleton: Skeleton3D = get_node("Alien/Armature/Skeleton3D")

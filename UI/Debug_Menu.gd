@@ -3,6 +3,7 @@ extends Control
 @onready var player = get_tree().get_root().get_node("Main Scene/Player")
 @onready var level_current = Globals.current_safe_chunks
 @onready var label_levelCurrent = %Label_levelCurrent
+@onready var terrain_controller = get_tree().get_root().get_node("Main Scene/TerrainController_inScene")
 
 @onready var powerup_menu = get_tree().get_root().get_node("Main Scene/PowerUp_Menu")
 
@@ -13,6 +14,9 @@ extends Control
 func _ready():
 	# CONSIDER tucking these away in a function then calling them in ready
 	Messenger.level_update.connect(on_level_update)
+	%Button_Cutscene.pressed.connect(on_Cutscene)
+	%Button_Menu.pressed.connect(on_Menu)
+	%Button_Game.pressed.connect(on_Game)
 	%Button_playerHeight.pressed.connect(on_playerHeight)
 	%Button_killLegs.pressed.connect(on_killLegs)
 	%Button_hurtLegR.pressed.connect(on_hurtLegR)
@@ -31,6 +35,15 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func on_Cutscene():
+	terrain_controller.is_level_type = 0
+
+func on_Menu():
+	terrain_controller.is_level_type = 1
+	
+func on_Game():
+	terrain_controller.is_level_type = 2
 
 func on_scoreUp():
 	Messenger.abduction.emit(1)
