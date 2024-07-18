@@ -29,7 +29,7 @@ const TERRAIN_VELOCITY: float = 11.0
 @export var starting_chunks_max: int = 9
 var starting_chunks_current: int = 0
 var starting_chunks_over: bool = false
-var first_level_loaded: bool = false
+var first_chunks_loaded: bool = false
 
 ## Paths to directories holding the terrain chunks scenes
 var chunks_path_safes: StringName
@@ -154,36 +154,16 @@ func _ready() -> void:
 	
 	
 	_load_terrain_scenes()
-	_init_chunks(num_terrain_chunks)
+	chunks_update(num_terrain_chunks)
 	
 
 func _physics_process(delta: float) -> void:
-	match is_level_type:
-		level_type.CUTSCENE:
-			pass
-		level_type.MENU:
-			if !first_level_loaded:
-				chunks_list_01 = chunks_list_menu
-				chunks_list_02 = chunks_list_menu
-				chunks_list_03 = chunks_list_menu
-				chunks_list_04 = chunks_list_menu
-				chunks_list_05 = chunks_list_menu
-				chunks_list_06 = chunks_list_menu
-			_progress_terrain_menu(delta)
-		level_type.GAME:
-			if !first_level_loaded:
-				chunks_list_01 = chunks_list_safes
-				chunks_list_02 = chunks_list_safes
-				chunks_list_03 = chunks_list_safes
-				chunks_list_04 = chunks_list_safes
-				chunks_list_05 = chunks_list_safes
-				chunks_list_06 = chunks_list_safes
-			_progress_terrain_game(delta)
+		_progress_terrain(delta,level_type)
 			
 	
 
 
-func _init_chunks(num_terrain_chunks: int) -> void: ## Adds files to the correct nodes at game start
+func chunks_update(num_terrain_chunks: int) -> void: ## Adds files to the correct nodes at game start
 	# GETTING AN ERROR? You probably added a non-scene file into your level folder. You're welcome.
 	for LevelChunk in Chunks_Safes:
 		var chunk =  LevelChunk.instantiate()
@@ -202,193 +182,98 @@ func _init_chunks(num_terrain_chunks: int) -> void: ## Adds files to the correct
 		collector_menu.add_child(chunk)
 		
 	# Setup first starting chunks to spawn in
-	match is_level_type:
-		level_type.CUTSCENE:
-			pass
-		level_type.MENU:
-			for i in range(num_terrain_chunks):
-				var chunk = collector_menu.get_children().pick_random()
-				chunk.reparent(self)
-		level_type.GAME:
-			for i in range(num_terrain_chunks):
-				var chunk = collector_safes.get_children().pick_random()
-				chunk.reparent(self)
-		
-		
-func chunks_update():
-	for LevelChunk in Chunks_Safes:
-		var chunk =  LevelChunk.instantiate()
-		collector_safes.add_child(chunk)
+	if !first_chunks_loaded:
+		chunks_list_01 = chunks_list_menu
+		chunks_list_02 = chunks_list_menu
+		chunks_list_03 = chunks_list_menu
+		chunks_list_04 = chunks_list_menu
+		chunks_list_05 = chunks_list_menu
+		chunks_list_06 = chunks_list_menu
 	
-	for LevelChunk in Chunks_Obstacles:
-		var chunk =  LevelChunk.instantiate()
-		collector_obstacles.add_child(chunk)
-			
-	for LevelChunk in Chunks_Points:
-		var chunk =  LevelChunk.instantiate()
-		collector_points.add_child(chunk)
+		for i in range(num_terrain_chunks):
+			var chunk = collector_menu.get_children().pick_random()
+			chunk.reparent(self)
 		
-	if is_level_type == level_type.MENU:	
-		for LevelChunk in Chunks_Menu:
-			var chunk =  LevelChunk.instantiate()
-			collector_menu.add_child(chunk)
+		first_chunks_loaded = true
 
-func chunks_for_level():
-	# Updating lists-of-chunks-to-choose with level-relevant chunks, when starting ones are over.
-	if starting_chunks_over and !first_level_loaded:
-		if Globals.level_current <= 1:
-			chunks_list_01 = chunks_list_01_level1
-			chunks_list_02 = chunks_list_02_level1
-			chunks_list_03 = chunks_list_safes
-			chunks_list_04 = chunks_list_safes
-			chunks_list_05 = chunks_list_safes
-			chunks_list_06 = chunks_list_safes
-		first_level_loaded = true
 
-func chunk_chosen_to_add():			
+func chunk_chosen_to_add():
 	if chunks_list_current.size() == 0:
 		chunks_list_current = [chunks_list_01,chunks_list_02].pick_random().duplicate()
 	
 	chunk_to_add = chunks_list_current.pop_front()
 	#print("Popped chunk: ", chunk_to_add)
 
-func _progress_terrain_menu(delta: float) -> void:
-	
+
+func _progress_terrain(delta: float, level_type) -> void:
+	#region Move and remove chunks
 	# Advance chunks towards the player
 	for chunk in self.get_children():
 		chunk.position.z += terrain_velocity * delta
-		
+
 	# If the first chunk passes a certain spot
 	if get_child(0).position.z >= get_child(0).mesh.size.y *2:
-		
-		# Assign the last chunk in the array (-1) to this var
+	#endregion
+
+		# Assign the last chunk in the array (-1) to a var
 		var last_terrain = get_child(-1)
 		
 		# Assign the first chunk to this var, and remove the chunk
 		var first_terrain = get_children().pop_front()
-		#print("1st popped: ",first_terrain,"; chunk_to_add: ",chunk_to_add)
-		print_rich("[font size=15][color=red][b]First popped: [/b][/color]",first_terrain,"; \n \t[i]type:[/i] ",first_terrain.is_type,"; \n \t[i]parent:[/i] ",first_terrain.get_parent(),"\n")
 		
-		
-		if !first_terrain.is_level == Globals.level_current:
-			#(func():await get_tree().process_frame;first_terrain.queue_free.call_deferred()).call_deferred()
-			#first_terrain.queue_free.call_deferred()
-			
-			first_terrain.queue_free()
-		else:
-			
-
-			if first_terrain.is_type == Block.is_types.MENU:
-					
-				#print("Returned a MENU chunk")
-				# Reparent the removed chunk to the collector(s)
-				first_terrain.reparent(collector_menu)
-				# Move removed chunk to the collectors' position
-				first_terrain.position.z = 0.0
-				# Make sure chunk has reset potential (temporary logic)
-				if first_terrain.has_method("reset_block_objects"):
-				# Run the reset function to check if objects need resetting.
-					first_terrain.reset_block_objects()
-				
-				
-		var rng = randf()
-		var chunk_add = 	collector_menu.get_children().pick_random()
-		
-		chunk_chosen_to_add()
-		
-		if collector_menu.get_children().size() > 0 and collector_obstacles.get_children().size() > 0 and collector_points.get_children().size() > 0:
-			
-			chunk_add = chunk_to_add.get_children().pick_random()
-		
-		# Choose a chunk to add in to the level
-		chunk_add.reparent(self) 
-		#print_rich("[font size=15][color=green][b]Last added: [/b][/color]",chunk_add,"; \n \t[i]pos:[/i] ",chunk_add.position,"; \n \t[i]level:[/i] ",chunk_add.is_level,"; \n \t[i]parent:[/i] ",chunk_add.get_parent(),"\n")
-		print_rich("[font size=15][color=green][b]Last added: [/b][/color]",chunk_add,"; \n \t[i]type:[/i] ",chunk_add.is_type,"; \n \t[i]parent:[/i] ",chunk_add.get_parent(),"\n")
-		# Add the new chunk to the end of the level
-		_append_to_far_edge(last_terrain, chunk_add)
-
-
-func _progress_terrain_game(delta: float) -> void:
-	
-	# Advance chunks towards the player
-	for chunk in self.get_children():
-		chunk.position.z += terrain_velocity * delta
-		
-	# If the first chunk passes a certain spot
-	if get_child(0).position.z >= get_child(0).mesh.size.y *2:
-		
-		# Assign the last chunk in the array (-1) to this var
-		var last_terrain = get_child(-1)
-		
-		# Assign the first chunk to this var, and remove the chunk
-		var first_terrain = get_children().pop_front()
+		#region Print Chunk info: 1st Popped
 		#print("1st popped: ",first_terrain,"; chunk_to_add: ",chunk_to_add)
 		#print_rich("[font size=15][color=red][b]First popped: [/b][/color]",first_terrain,"; \n \t[i]pos:[/i] ",first_terrain.position,"; \n \t[i]level:[/i] ",first_terrain.is_level,"; \n \t[i]parent:[/i] ",first_terrain.get_parent(),"\n")
+		#endregion
 		
-		
+		# Delete old level chunks
 		if !first_terrain.is_level == Globals.level_current:
-			#(func():await get_tree().process_frame;first_terrain.queue_free.call_deferred()).call_deferred()
-			#first_terrain.queue_free.call_deferred()
-			
 			first_terrain.queue_free()
+			
+		# If not old level chunks, then:
 		else:
-			
-			
-			
 			if first_terrain.is_type == Block.is_types.SAFE:
-				#print("Sees Safe ", starting_chunks_current," of ",starting_chunks_max,"; first level loaded = ",first_level_loaded)
-				# If starting chunks are not done, increase chunk count
-				if !starting_chunks_over and !starting_chunks_current == starting_chunks_max:
-					starting_chunks_current += 1
-				# If starting chunks are done, stop counting and update the level 
-				else:
-					starting_chunks_over = true
-					chunks_for_level()
-					
-				#print("Returned a SAFE chunk")
-				# Reparent the removed chunk to the collector(s)
+
 				first_terrain.reparent(collector_safes)
-				# Move removed chunk to the collectors' position
 				first_terrain.position.z = 0.0
-				# Make sure chunk has reset potential (temporary logic)
-				if first_terrain.has_method("reset_block_objects"):
-				# Run the reset function to check if objects need resetting.
-					first_terrain.reset_block_objects()
 				
+				if first_terrain.has_method("reset_block_objects"):
+					first_terrain.reset_block_objects()
+
 			if first_terrain.is_type == Block.is_types.OBSTACLE:
-				#print("Returned an OBSTACLE chunk")
 				first_terrain.reparent(collector_obstacles)
 				first_terrain.position.z = 0.0
+				
 				if first_terrain.has_method("reset_block_objects"):
 					first_terrain.reset_block_objects()
-					
+
 			if first_terrain.is_type == Block.is_types.POINTS:
-				#print("Returned a POINTS chunk")
 				first_terrain.reparent(collector_points)
 				first_terrain.position.z = 0.0
 				if first_terrain.has_method("reset_block_objects"):
 					first_terrain.reset_block_objects()
-				
+
 			if first_terrain.is_type == Block.is_types.MENU:
-					
-				#print("Returned a MENU chunk")
-				# Reparent the removed chunk to the collector(s)
 				first_terrain.reparent(collector_menu)
-				# Move removed chunk to the collectors' position
 				first_terrain.position.z = 0.0
-				# Make sure chunk has reset potential (temporary logic)
+
 				if first_terrain.has_method("reset_block_objects"):
-				# Run the reset function to check if objects need resetting.
 					first_terrain.reset_block_objects()
-				
-		var rng = randf()
+
+		# Choose a new chunk to add
 		var chunk_add = collector_safes.get_children().pick_random()
 		
+		# Check if current playlist is empty.
+		# If it is empty, load a new list.
 		chunk_chosen_to_add()
 		
+		# Checking if collectors are ready
+		# This might not be necessary...
 		if collector_obstacles.get_children().size() > 0 and collector_points.get_children().size() > 0:
 			
+			# Add a random chunk from the current list
 			chunk_add = chunk_to_add.get_children().pick_random()
+			# Debug to see what got added
 			#match chunk_add.is_type:
 				#0: 
 					#print("SAFE")
@@ -396,17 +281,17 @@ func _progress_terrain_game(delta: float) -> void:
 					#print("OBSTACLE")
 				#2:
 					#print("POINTS")
+				#3:
+					#print("MENU")
 		
-		#if rng >= .75:
-			#if collector_obstacles.get_children().size() > 0 :
-				#chunk_add = collector_obstacles.get_children().pick_random()
-		#elif rng > .5: 
-			#if collector_points.get_children().size() > 0:
-				#chunk_add = collector_points.get_children().pick_random()
-		
+
 		# Choose a chunk to add in to the level
 		chunk_add.reparent(self) 
+		#region Print Chunk info: Last Added
 		#print_rich("[font size=15][color=green][b]Last added: [/b][/color]",chunk_add,"; \n \t[i]pos:[/i] ",chunk_add.position,"; \n \t[i]level:[/i] ",chunk_add.is_level,"; \n \t[i]parent:[/i] ",chunk_add.get_parent(),"\n")
+		
+		#endregion
+		
 		# Add the new chunk to the end of the level
 		_append_to_far_edge(last_terrain, chunk_add)
 
@@ -424,8 +309,9 @@ func _load_terrain_scenes() -> void:
 	
 	var dir_safes = DirAccess.open(chunks_path_safes)
 	for safes_path in dir_safes.get_files():
-		# Adds files as nodes to the Terrain Collector (I think)
+		# Preparing the chunk files to be added to the collector
 		Chunks_Safes.append(load(chunks_path_safes + "/" + safes_path.trim_suffix(".remap")))
+		
 		
 	var dir_obstacles = DirAccess.open(chunks_path_obstacles)
 	for obstacles_path in dir_obstacles.get_files():
@@ -543,5 +429,5 @@ func on_level_update(level):
 	Chunks_Points.clear()
 	
 	_load_terrain_scenes()
-	chunks_update()
+	chunks_update(num_terrain_chunks)
 	

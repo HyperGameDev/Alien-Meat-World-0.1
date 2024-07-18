@@ -1,6 +1,6 @@
 extends Node
 
-@export var level_current = 0
+@export var level_current = 1
 
 var powerups_available: Array = []
 var powerups := {
