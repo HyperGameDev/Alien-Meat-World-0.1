@@ -38,12 +38,11 @@ func _process(delta):
 	
 func on_Cutscene():
 	terrain_controller.is_level_type = 0
-
 func on_Menu():
 	terrain_controller.is_level_type = 1
-	
 func on_Game():
 	terrain_controller.is_level_type = 2
+	#Messenger.level_update.emit(1)
 
 func on_scoreUp():
 	Messenger.abduction.emit(1)

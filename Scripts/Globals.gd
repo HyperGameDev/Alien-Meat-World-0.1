@@ -130,9 +130,26 @@ var level_chunks_obstacles := [
 	"res://Terrain/terrain_level_12/terrain_level_12_obstacles/"
 ]
 
+var level_chunks_menu := [
+	"res://Terrain/terrain_level_menu/",
+	"res://Terrain/terrain_level_menu/",
+	"res://Terrain/terrain_level_menu/",
+	"res://Terrain/terrain_level_menu/",
+	"res://Terrain/terrain_level_menu/",
+	"res://Terrain/terrain_level_menu/",
+	"res://Terrain/terrain_level_menu/",
+	"res://Terrain/terrain_level_menu/",
+	"res://Terrain/terrain_level_menu/",
+	"res://Terrain/terrain_level_menu/",
+	"res://Terrain/terrain_level_menu/",
+	"res://Terrain/terrain_level_menu/",
+	"res://Terrain/terrain_level_menu/"
+]
+
 var current_safe_chunks : StringName
 var current_obstacle_chunks : StringName
 var current_points_chunks : StringName
+var current_menu_chunks : StringName
 
 var meat_objects := {
 	Abductee.is_types.COW: load("res://NPCs/Cows/Cow_01-03_00.tscn"),
@@ -152,8 +169,12 @@ func on_level_update(level):
 	level_current = level
 	print("Globals tried updating paths")
 	current_safe_chunks = level_chunks_safe[level]
+	
 	current_points_chunks = level_chunks_points[level]
+	
 	current_obstacle_chunks = level_chunks_obstacles[level]
+	
+	current_menu_chunks = level_chunks_menu[level]
 	
 func on_game_over():
 	obstacles_hilited = [] ## Empties out the last hilighted obstacle array

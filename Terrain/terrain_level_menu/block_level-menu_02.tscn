@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfjn66arvqmul"]
+
+[ext_resource type="PackedScene" uid="uid://7cd7bq27jnyj" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_blank-grass.tscn" id="1_uwsv3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5kgoc"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Terrain_0" instance=ExtResource("1_uwsv3")]
+transform = Transform3D(1, 0, 8.72665e-05, 0, 1, 0, -8.72665e-05, 0, 1, 0, 0, -7)
+surface_material_override/0 = SubResource("StandardMaterial3D_5kgoc")
+is_type = 3
+
+[node name="grass_plane_01-01_00" parent="." index="4"]
+visible = false

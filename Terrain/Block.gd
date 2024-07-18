@@ -10,7 +10,7 @@ var is_level: int = -1
 @onready var ground = $Ground
 
 @export var is_type: is_types
-enum is_types {SAFE,OBSTACLE,POINTS}
+enum is_types {SAFE,OBSTACLE,POINTS,MENU}
 
 func _ready():
 	if has_node("Ground"):
@@ -20,7 +20,10 @@ func _ready():
 		marker_left.visible = false
 		
 	## Identifies the level number by finding the two level digits in the scene file path, after moving 30 characters in from the left; level digits are then 2 characters back from the right.
-	is_level = scene_file_path.left(30).right(2).to_int() 
+	if is_type == is_types.MENU:
+		is_level = scene_file_path.left(30).right(2).to_int() 
+	else:
+		is_level = Globals.level_current
 		
 
 
