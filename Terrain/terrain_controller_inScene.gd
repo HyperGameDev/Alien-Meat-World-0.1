@@ -3,28 +3,27 @@ extends Node3D
 enum level_type {CUTSCENE, MENU, GAME}
 @export var is_level_type: level_type = 1
 
-var chunk_add_ok : bool = false
+var chunk_add_ok: bool = false
 
-var powerup_menu_begin : bool = false
+var powerup_menu_begin: bool = false
 
 @onready var collector_safes := %Collector_Safes
 @onready var collector_obstacles := %Collector_Obstacles
 @onready var collector_points := %Collector_Points
 @onready var collector_menu := %Collector_Menu
 
-## Holds the catalog of loaded terrian block scenes
-var Chunks_Safes : Array = []
-var Chunks_Obstacles : Array = []
-var Chunks_Points : Array = []
-var Chunks_Menu : Array = []
+## Holds the current level's chunk files
+var Chunks_Safes: Array = []
+var Chunks_Obstacles: Array = []
+var Chunks_Points: Array = []
+var Chunks_Menu: Array = []
 
-## The set of terrian chunks which are currently rendered to viewport
-var terrain_belt : Array[MeshInstance3D] = []
+
 @export var terrain_velocity : float = 11.0
-const TERRAIN_VELOCITY : float = 11.0
+const TERRAIN_VELOCITY: float = 11.0
 
 ## The number of chunks to keep rendered to the viewport
-@export var num_terrain_chunks : int = 9
+@export var num_terrain_chunks: int = 9
 
 ## Number of starting chunks
 @export var starting_chunks_max: int = 9
@@ -33,29 +32,26 @@ var starting_chunks_over: bool = false
 var first_level_loaded: bool = false
 
 ## Paths to directories holding the terrain chunks scenes
-var chunks_path_safes : StringName
-var chunks_path_obstacles : StringName
-var chunks_path_points : StringName
-var chunks_path_menu : StringName
+var chunks_path_safes: StringName
+var chunks_path_obstacles: StringName
+var chunks_path_points: StringName
+var chunks_path_menu: StringName
 
-## Likelihood that certain chunks will spawn
-@export var chunk_likelihood_safes : float = .3
-@export var chunk_likelihood_obstacles : float = .2
-@export var chunk_likelihood_points : float = .5
+## Holds the chunk list currently being drawn from
+var chunks_list_current: Array = []
 
-## Level Chunk Setup
-var chunks_list_current : Array = []
-@onready var chunk_to_add = collector_safes.get_children().pick_random()
-var chunk_wait : bool = false
+## Pop-fronted chunk from current playlist
+@onready var chunk_to_add: Node3D = collector_safes.get_children().pick_random()
 
 ## Level Chunks Playlists
-var chunks_list_01 : Array = []
-var chunks_list_02 : Array = []
-var chunks_list_03 : Array = []
-var chunks_list_04 : Array = []
-var chunks_list_05 : Array = []
-var chunks_list_06 : Array = []
+var chunks_list_01: Array = []
+var chunks_list_02: Array = []
+var chunks_list_03: Array = []
+var chunks_list_04: Array = []
+var chunks_list_05: Array = []
+var chunks_list_06: Array = []
 
+#region Level 1 Chunks Lists
 @onready var chunks_list_01_level1 : Array = [
 	collector_safes,
 	collector_safes,
@@ -102,6 +98,10 @@ var chunks_list_06 : Array = []
 	collector_points,
 	collector_safes,
 	]
+
+#endregion
+
+#region Other Chunks Lists
 @onready var chunks_list_safes : Array = [
 	collector_safes,
 	collector_safes,
@@ -113,7 +113,6 @@ var chunks_list_06 : Array = []
 	collector_safes,
 	collector_safes
 	]
-	
 @onready var chunks_list_obstacles : Array = [
 	collector_obstacles,
 	collector_obstacles,
@@ -142,6 +141,9 @@ var chunks_list_06 : Array = []
 	collector_menu,
 	collector_menu
 	]
+
+#endregion
+
 func _ready() -> void:
 	Messenger.level_update.connect(on_level_update)
 	
@@ -150,15 +152,8 @@ func _ready() -> void:
 	chunks_path_points = Globals.current_points_chunks
 	chunks_path_menu = Globals.current_menu_chunks
 	
-	# Establishes all starting "lists" as safe chunks
-	chunks_list_01 = chunks_list_menu
-	chunks_list_02 = chunks_list_menu
-	chunks_list_03 = chunks_list_menu
-	chunks_list_04 = chunks_list_menu
-	chunks_list_05 = chunks_list_menu
-	chunks_list_06 = chunks_list_menu
-
-	_load_terrain_scenes(chunks_path_safes,chunks_path_obstacles,chunks_path_points)
+	
+	_load_terrain_scenes()
 	_init_chunks(num_terrain_chunks)
 	
 
@@ -167,6 +162,13 @@ func _physics_process(delta: float) -> void:
 		level_type.CUTSCENE:
 			pass
 		level_type.MENU:
+			if !first_level_loaded:
+				chunks_list_01 = chunks_list_menu
+				chunks_list_02 = chunks_list_menu
+				chunks_list_03 = chunks_list_menu
+				chunks_list_04 = chunks_list_menu
+				chunks_list_05 = chunks_list_menu
+				chunks_list_06 = chunks_list_menu
 			_progress_terrain_menu(delta)
 		level_type.GAME:
 			if !first_level_loaded:
@@ -290,7 +292,7 @@ func _progress_terrain_menu(delta: float) -> void:
 				
 				
 		var rng = randf()
-		var chunk_add = collector_menu.get_children().pick_random()
+		var chunk_add = 	collector_menu.get_children().pick_random()
 		
 		chunk_chosen_to_add()
 		
@@ -418,7 +420,7 @@ func _append_to_far_edge(target_block: MeshInstance3D, appending_block: MeshInst
 	
 
 
-func _load_terrain_scenes(chunks_path_safes: String, chunks_path_obstacles: String, chunks_path_points: String) -> void:
+func _load_terrain_scenes() -> void:
 	
 	var dir_safes = DirAccess.open(chunks_path_safes)
 	for safes_path in dir_safes.get_files():
@@ -540,6 +542,6 @@ func on_level_update(level):
 	Chunks_Obstacles.clear()
 	Chunks_Points.clear()
 	
-	_load_terrain_scenes(Globals.current_safe_chunks,Globals.current_obstacle_chunks,Globals.current_points_chunks)
+	_load_terrain_scenes()
 	chunks_update()
 	
