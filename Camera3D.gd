@@ -9,8 +9,9 @@ const CAM_Z_OFFSET = 13
 @export var cam_y_offset: float = 3.7
 @export var cam_x_offset: float = 0.0
 
-@onready var cam_target = %Cam_Target
-@onready var powerup_menu = %PowerUp_Menu
+@onready var cam_target: Node3D = %Cam_Target
+@onready var powerup_menu: Node3D = %PowerUp_Menu
+@onready var hud: CanvasLayer = %HUD
 
 # Temporary Grab Mechanic vars
 var is_grabbed = false
@@ -93,6 +94,9 @@ func _process(_delta):
 	# Cursor Position implementation
 	cursor_ray()
 	
+	if Globals.level_current == 0:
+		main_menu_ray()
+	
 	
 
 func hover_ray(mask,has_mask): ## Raycast that receives a target via argument
@@ -120,6 +124,7 @@ func hover_ray(mask,has_mask): ## Raycast that receives a target via argument
 func general_ray():
 	var general_ray_result = hover_ray(0,false)
 	Messenger.anything_seen.emit(general_ray_result)
+	
 
 func attack_ray(): ## Detects obstacles, NPC's and Meat/Abductee; emits attack_target to hitpoints, and returns attack_target to Meat/Abductee within this script
 	var raycast_result = hover_ray(2 + 4 + 8,true)
@@ -131,6 +136,21 @@ func attack_ray(): ## Detects obstacles, NPC's and Meat/Abductee; emits attack_t
 #		print("Pos: ", attack_target.position)
 #		return raycast_result.collider
 		return attack_target
+		
+func main_menu_ray():
+	var raycast_result = hover_ray(16384,true)
+#	print(raycast_result)
+	if !raycast_result.is_empty():
+		hover_target = raycast_result.collider
+		
+		# Emits signal with parameter "true" or "false" if the hover_target is/isn't set to %Player
+		if Input.is_action_just_pressed("Grab"):
+			hud.animation_loading.play("loading_text")
+			hud.loading_text.visible = true
+			await get_tree().create_timer(.6).timeout
+			Messenger.game_begin.emit()
+#
+#		return raycast_result.collider
 
 func powerup_ray():
 	var raycast_result = hover_ray(32,true)

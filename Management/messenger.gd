@@ -2,6 +2,7 @@ extends Node
 
 var debug_hp_Player = true
 
+signal game_begin
 signal game_over
 
 signal debug_nodes

@@ -41,11 +41,14 @@ func _ready():
 	Messenger.area_undamaged.connect(damage_undetected)
 	Messenger.mouse_pos_3d.connect(mouse_pos)
 	Messenger.something_attacked.connect(do_grab)
+	Messenger.level_update.connect(on_level_update)
+	Messenger.game_begin.connect(on_game_begin)
 
 #	print("Elbow L:", arm_l_rotation.x)
 #	print("Elbow R:", arm_r_rotation.x)
 #	print("Player Layer: ", collision_layer, "; Player Mask: ", collision_mask)
 	
+	on_level_update(Globals.level_current)
 	set_max_slides(20)
 
 	
@@ -200,3 +203,12 @@ func slowdown(slowdown_amount):
 		terrain_slowdown = true
 #		print("terrain_slowdown:", terrain_slowdown)
 		terrain_controller.terrain_velocity = 0
+		
+func on_level_update(level):
+	if level == 0:
+		self.visible = false
+		controls_locked = true
+
+func on_game_begin():
+	self.visible = true
+	controls_locked = false

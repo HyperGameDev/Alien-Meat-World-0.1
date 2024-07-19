@@ -6,6 +6,7 @@ class_name HUD
 @onready var terrain_controller: Node3D = %TerrainController_inScene
 @onready var player: CharacterBody3D = %Player
 
+@onready var container_score: MarginContainer = %MarginContainer_Score
 @onready var label_score: Label = %Score_Number
 @onready var label_scoreMinimum: Label = %Score_Number_Minimum
 
@@ -52,12 +53,22 @@ func _ready():
 	Messenger.abduction.connect(on_abduction)
 	on_level_update(Globals.level_current)
 	Messenger.powerup_chosen.connect(on_powerup_chosen)
+	Messenger.game_begin.connect(on_game_begin)
 	
 func _process(delta):
 	label_score.text = str(score)
 	if score >= score_minimum and !score_minimum_met:
 		on_score_minimum_met()
 		
+func on_game_begin():
+	Messenger.level_update.emit(1)
+	score_minimum_text_update()
+	score_minimum_play_animation()
+	container_score.visible = true
+	await get_tree().create_timer(2.5).timeout
+	animation_loading.stop()
+	loading_text.visible = false
+
 func on_powerup_unhovered():
 	powerup_name.visible = false
 	powerup_description.visible = false
@@ -133,6 +144,10 @@ func score_minimum_text_update():
 	label_scoreMinimum.text = str(score_minimum)
 	
 func on_level_update(level):
+	if level == 0:
+		container_score.visible = false
+		
+		
 	
 	# CONSIDER making this a dictionary to save some performance
 	match level:
