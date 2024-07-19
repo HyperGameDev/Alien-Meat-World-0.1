@@ -1047,6 +1047,7 @@ script = ExtResource("4_0jb24")
 
 [node name="TerrainController_inScene" parent="." instance=ExtResource("6_ywiix")]
 unique_name_in_owner = true
+is_level_type = 1
 
 [node name="ScoreDunk" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.54315, 0.166246)
@@ -1306,7 +1307,7 @@ texture = SubResource("ViewportTexture_s2cav")
 texture = SubResource("ViewportTexture_82jui")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0110535, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0240041, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/position = Vector3(5.84336e-10, 0.241477, -5.4619e-09)
@@ -1323,7 +1324,7 @@ bones/15/position = Vector3(-1.86265e-08, 0.40572, 5.21541e-08)
 bones/16/position = Vector3(-2.79397e-08, 0.526815, -2.6077e-08)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.673302, 0.659902, -0.333459, -0.675712, -0.732275, -0.0847823, -0.300131, 0.168238, 0.938945, 0.449514, 1.13444, 0.267902)
+transform = Transform3D(-0.207423, 0.22834, -0.951229, -0.92974, -0.348425, 0.119098, -0.304237, 0.909099, 0.284568, 0.449514, 1.13444, 0.267902)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)

@@ -1,7 +1,7 @@
 extends Node3D
 
 enum level_type {DEBUG, GAME}
-@export var is_level_type: level_type = 1
+@export var is_level_type: level_type = 12
 
 @onready var collector_safes := %Collector_Safes
 @onready var collector_obstacles := %Collector_Obstacles

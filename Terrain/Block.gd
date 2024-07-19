@@ -20,7 +20,7 @@ func _ready():
 		marker_left.visible = false
 		
 	## Identifies the level number by finding the two level digits in the scene file path, after moving 30 characters in from the left; level digits are then 2 characters back from the right.
-	if is_type == is_types.MENU:
+	if !is_type == is_types.MENU:
 		is_level = scene_file_path.left(30).right(2).to_int() 
 	else:
 		is_level = 100
