@@ -8,6 +8,5 @@ func _ready():
 	Messenger.level_update.connect(on_level_update)
 	
 func on_level_update(level):
-	if terrain_controller.is_level_type == terrain_controller.level_type.GAME:
-		for chunk in get_children():
-			chunk.queue_free()
+	for chunk in get_children():
+		chunk.queue_free()

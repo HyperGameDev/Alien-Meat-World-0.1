@@ -23,7 +23,7 @@ func _ready():
 	if is_type == is_types.MENU:
 		is_level = scene_file_path.left(30).right(2).to_int() 
 	else:
-		is_level = Globals.level_current
+		is_level = 100
 		
 
 

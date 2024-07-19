@@ -1,11 +1,7 @@
 extends Node3D
 
-enum level_type {CUTSCENE, MENU, GAME}
+enum level_type {DEBUG, GAME}
 @export var is_level_type: level_type = 1
-
-var chunk_add_ok: bool = false
-
-var powerup_menu_begin: bool = false
 
 @onready var collector_safes := %Collector_Safes
 @onready var collector_obstacles := %Collector_Obstacles
@@ -25,10 +21,7 @@ const TERRAIN_VELOCITY: float = 11.0
 ## The number of chunks to keep rendered to the viewport
 @export var num_terrain_chunks: int = 9
 
-## Number of starting chunks
-@export var starting_chunks_max: int = 9
-var starting_chunks_current: int = 0
-var starting_chunks_over: bool = false
+## Whether initial chunks have been added in or not
 var first_chunks_loaded: bool = false
 
 ## Paths to directories holding the terrain chunks scenes
@@ -43,7 +36,7 @@ var chunks_list_current: Array = []
 ## Pop-fronted chunk from current playlist
 @onready var chunk_to_add: Node3D = collector_safes.get_children().pick_random()
 
-## Level Chunks Playlists
+## Potentially-current Level Chunk Playlists
 var chunks_list_01: Array = []
 var chunks_list_02: Array = []
 var chunks_list_03: Array = []
@@ -212,7 +205,7 @@ func chunks_update(num_terrain_chunks: int) -> void:
 	#endregion
 		
 	# Setup first starting chunks to spawn in
-	if !first_chunks_loaded:
+	if !first_chunks_loaded and is_level_type == level_type.GAME:
 		chunks_list_01 = chunks_list_menu
 		chunks_list_02 = chunks_list_menu
 		chunks_list_03 = chunks_list_menu
@@ -225,7 +218,21 @@ func chunks_update(num_terrain_chunks: int) -> void:
 			chunk.reparent(self)
 		
 		first_chunks_loaded = true
-
+		
+		
+	if !first_chunks_loaded and is_level_type == level_type.DEBUG:
+		chunks_list_01 = chunks_list_01_level1
+		chunks_list_02 = chunks_list_02_level1
+		chunks_list_03 = chunks_list_safes
+		chunks_list_04 = chunks_list_safes
+		chunks_list_05 = chunks_list_safes
+		chunks_list_06 = chunks_list_safes
+	
+		for i in range(num_terrain_chunks):
+			var chunk = collector_safes.get_children().pick_random()
+			chunk.reparent(self)
+		
+		first_chunks_loaded = true
 
 func chunk_chosen_to_add():
 	if chunks_list_current.size() == 0:
@@ -244,12 +251,12 @@ func _progress_terrain(delta: float, level_type) -> void:
 	# If the first chunk passes a certain spot
 	if get_child(0).position.z >= get_child(0).mesh.size.y *2:
 	#endregion
-
+ 
 		# Assign the last chunk in the array (-1) to a var
-		var last_terrain = get_child(-1)
+		var last_terrain: Node3D = get_child(-1)
 		
 		# Assign the first chunk to this var, and remove the chunk
-		var first_terrain = get_children().pop_front()
+		var first_terrain: Node3D = get_children().pop_front()
 		
 		#region Print Chunk info: 1st Popped
 		#print("1st popped: ",first_terrain,"; chunk_to_add: ",chunk_to_add)
@@ -257,7 +264,7 @@ func _progress_terrain(delta: float, level_type) -> void:
 		#endregion
 		
 		# Delete old level chunks
-		if !first_terrain.is_level == Globals.level_current:
+		if !first_terrain.is_level == Globals.level_current and !first_terrain.is_level == 100:
 			first_terrain.queue_free()
 			
 		# If not old level chunks, then:
@@ -324,7 +331,6 @@ func _progress_terrain(delta: float, level_type) -> void:
 		
 		# Add the new chunk to the end of the level
 		_append_to_far_edge(last_terrain, chunk_add)
-
 
 
 func _append_to_far_edge(target_block: MeshInstance3D, appending_block: MeshInstance3D) -> void:
