@@ -14,7 +14,7 @@ func _ready():
 func show_arrow(target):
 	visible = true
 	arrow_target = target
-	if !target.is_in_group("Meat"):
+	if !target.is_in_group("Abductee"):
 		arrow_position = target.get_owner().get_node("Marker3D").global_position
 	else:
 		arrow_position = target.get_node("Marker3D").global_position

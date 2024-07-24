@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://cywp671prq4xd"]
 
 [ext_resource type="Script" path="res://UI/hover_interactables.gd" id="1_4y25w"]
-[ext_resource type="Script" path="res://UI/arrow_subviewport.gd" id="1_ylots"]
+[ext_resource type="Script" path="res://UI/arrow_hover.gd" id="1_ylots"]
 [ext_resource type="PackedScene" uid="uid://dehqfy3da00hl" path="res://UI/arrow.tscn" id="2_ndmsv"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_nnsj0"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ffgjo"]
 viewport_path = NodePath("Arrow_Hover_front/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_gl2n2"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_l1egt"]
 viewport_path = NodePath("Arrow_Hover_back/SubViewport")
 
 [sub_resource type="Animation" id="Animation_0otxf"]
@@ -78,12 +78,13 @@ script = ExtResource("1_4y25w")
 
 [node name="Arrow_Hover_front" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225994, 0)
+visible = false
 layers = 4
 cast_shadow = 0
 billboard = 1
 no_depth_test = true
 alpha_cut = 2
-texture = SubResource("ViewportTexture_nnsj0")
+texture = SubResource("ViewportTexture_ffgjo")
 script = ExtResource("1_ylots")
 
 [node name="SubViewport" type="SubViewport" parent="Arrow_Hover_front"]
@@ -94,11 +95,12 @@ transparent_bg = true
 
 [node name="Arrow_Hover_back" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225994, 0)
+visible = false
 layers = 4
 cast_shadow = 0
 billboard = 1
 alpha_cut = 2
-texture = SubResource("ViewportTexture_gl2n2")
+texture = SubResource("ViewportTexture_l1egt")
 script = ExtResource("1_ylots")
 
 [node name="SubViewport" type="SubViewport" parent="Arrow_Hover_back"]

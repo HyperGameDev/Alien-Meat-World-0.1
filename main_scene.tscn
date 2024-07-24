@@ -1,6 +1,7 @@
-[gd_scene load_steps=88 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=89 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
+[ext_resource type="Script" path="res://main_scene.gd" id="1_fw7jj"]
 [ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="2_qvpxy"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="3_ia6ow"]
@@ -875,6 +876,7 @@ size = Vector3(137.258, 1, 6.5647)
 
 [node name="Main Scene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.65595e-05, -0.0122666, 0.00316)
+script = ExtResource("1_fw7jj")
 
 [node name="Debug 3D" type="Node3D" parent="."]
 
@@ -1311,33 +1313,21 @@ texture = SubResource("ViewportTexture_s2cav")
 texture = SubResource("ViewportTexture_82jui")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0967541, 0)
+transform = Transform3D(1, 0, 0, 0, 0.906306, 0.422617, 0, -0.422617, 0.906306, 0, 0.014275, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/position = Vector3(5.84336e-10, 0.241477, -5.4619e-09)
-bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
 bones/2/position = Vector3(2.42144e-08, 0.519572, 3.1665e-08)
-bones/2/rotation = Quaternion(0.0276023, 0.0423357, -0.042658, 0.997811)
-bones/3/rotation = Quaternion(-0.0205892, 0.00189199, 0.0252498, 0.999467)
 bones/3/scale = Vector3(1, 1, 1)
 bones/5/position = Vector3(5.84294e-10, 0.268124, -5.4619e-09)
 bones/6/position = Vector3(0.00465325, 0.241477, -4.35248e-09)
-bones/6/rotation = Quaternion(-0.0895069, -0.0808807, -0.717954, 0.685558)
 bones/7/position = Vector3(1.8999e-07, 0.468296, -1.76951e-08)
-bones/7/rotation = Quaternion(0.0104958, 0.238896, -0.0409419, 0.970125)
 bones/8/position = Vector3(-8.19564e-08, 0.759707, -2.79397e-08)
-bones/8/rotation = Quaternion(-0.00231333, 0.0242911, -0.00433505, 0.999693)
-bones/10/rotation = Quaternion(-0.289795, -0.0479284, -0.24514, 0.92392)
 bones/11/position = Vector3(-5.58794e-09, 0.501944, -4.5402e-09)
-bones/11/rotation = Quaternion(-0.760895, 0.0962255, 0.209214, 0.606637)
-bones/12/rotation = Quaternion(0.416566, -0.288618, -0.240819, 0.827755)
 bones/14/position = Vector3(0, 0.077027, 0)
-bones/14/rotation = Quaternion(-0.122028, -0.101716, -0.0764657, 0.984335)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/position = Vector3(-1.86265e-08, 0.40572, 5.21541e-08)
-bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/16/position = Vector3(-2.79397e-08, 0.526815, -2.6077e-08)
-bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
 
 [node name="Alien_ArmL" parent="Player/Alien/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = null
@@ -1367,7 +1357,7 @@ surface_material_override/0 = null
 surface_material_override/0 = null
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.121353, 0.991606, -0.0446263, -0.963387, -0.12849, -0.235322, -0.239081, 0.0144352, 0.970892, 0.449514, 1.13444, 0.267902)
+transform = Transform3D(-0.62042, 0.671949, 0.404431, -0.780743, -0.480322, -0.399664, -0.0742961, -0.563716, 0.82262, 0.449514, 1.13444, 0.267902)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)

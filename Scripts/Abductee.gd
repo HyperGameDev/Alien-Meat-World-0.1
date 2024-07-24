@@ -54,7 +54,7 @@ func _ready():
 	set_collision_mask_value(1, true)
 	set_collision_mask_value(16, false)
 	
-	self.add_to_group("Meat")
+	self.add_to_group("Abductee")
 	
 
 	mouse_entered.connect(_on_mouse_entered)

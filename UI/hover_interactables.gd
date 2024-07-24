@@ -23,7 +23,7 @@ func hover_fx_begin(target):
 	hovered_current = target
 	if Globals.obstacles_hilited.is_empty():
 		hovered_old = hovered_current
-	if !target.is_in_group("Meat"):
+	if !target.is_in_group("Abductee") and !target.is_in_group("Menu Alien"):
 		for node in target.get_owner().get_children():
 			if node is MeshInstance3D:
 				Globals.obstacles_hilited.append(node)

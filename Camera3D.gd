@@ -70,7 +70,7 @@ func _process(_delta):
 			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
 			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_back").force_hide_arrow()
 			if !raycast_result == null:
-				if raycast_result.is_in_group("Meat"):
+				if raycast_result.is_in_group("Abductee"):
 					var meat_original = raycast_result
 					if meat_original.has_method("spawn_me") and !is_attempting_grab and !is_in_group("Grabbed"):
 					#disappears the object
@@ -127,7 +127,7 @@ func general_ray():
 	
 
 func attack_ray(): ## Detects obstacles, NPC's and Meat/Abductee; emits attack_target to hitpoints, and returns attack_target to Meat/Abductee within this script
-	var raycast_result = hover_ray(2 + 4 + 8,true)
+	var raycast_result = hover_ray(2 + 4 + 8 + 16384,true)
 	if !raycast_result.is_empty():
 		attack_ray_pos = raycast_result.position
 		attack_target = raycast_result.collider

@@ -124,7 +124,7 @@ func on_body_entered(body):
 		animation_dunkOrb.play("hover_throb")
 
 func on_body_exited(body):
-	if body.is_in_group("Meat"):
+	if body.is_in_group("Abductee"):
 		Messenger.meat_left_dunk.emit(body)
 		animation_dunkOrb.play("base_size", .2)
 		

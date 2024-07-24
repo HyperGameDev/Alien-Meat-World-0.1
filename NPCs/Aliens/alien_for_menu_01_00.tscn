@@ -51,6 +51,7 @@ _data = {
 script = ExtResource("2_thfq0")
 
 [node name="Area3D" type="Area3D" parent="." index="0"]
+unique_name_in_owner = true
 collision_layer = 16384
 collision_mask = 0
 
@@ -59,6 +60,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
 shape = SubResource("BoxShape3D_ye5re")
 
 [node name="Alien" parent="." index="1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 surface_material_override/0 = ExtResource("2_bscvk")
 surface_material_override/1 = ExtResource("3_5l7rc")
 surface_material_override/3 = ExtResource("4_yigq1")
@@ -68,3 +70,6 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_v31q7")
 }
+
+[node name="Marker3D" type="Marker3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
