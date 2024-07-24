@@ -6,8 +6,10 @@ const CAM_Z_OFFSET = 13
 
 # Cam Movement vars
 @export var cam_lerpspeed: float = .05
-@export var cam_y_offset: float = 3.7
+@export var cam_y_offset: float = 4.0
+const CAM_Y_OFFSET: float = 4.0
 @export var cam_x_offset: float = 0.0
+const CAM_X_OFFSET: float = 0.0
 
 @onready var cam_target: Node3D = %Cam_Target
 @onready var powerup_menu: Node3D = %PowerUp_Menu
@@ -53,6 +55,7 @@ func _physics_process(_delta):
 	cam_follow_pos.z += cam_z_offset
 	cam_follow_pos.y += cam_y_offset
 	cam_follow_pos.x += cam_x_offset
+	
 	
 	# Camera Follow Normalize
 	var cam_direction: Vector3 = cam_follow_pos - self.position

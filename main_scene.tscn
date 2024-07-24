@@ -1016,6 +1016,7 @@ size = Vector3(30, 7, 200)
 material = SubResource("FogMaterial_2kk4o")
 
 [node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.04125, -3.42927, 1.85991)
 attributes = SubResource("CameraAttributesPractical_se27i")
 doppler_tracking = 2
@@ -1025,7 +1026,6 @@ size = 5.0
 near = 0.214
 far = 1000.0
 script = ExtResource("2_qvpxy")
-cam_y_offset = 4.025
 
 [node name="Collector_Points" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -1313,7 +1313,7 @@ texture = SubResource("ViewportTexture_s2cav")
 texture = SubResource("ViewportTexture_82jui")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.906306, 0.422617, 0, -0.422617, 0.906306, 0, 0.014275, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0402625, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/position = Vector3(5.84336e-10, 0.241477, -5.4619e-09)
@@ -1357,7 +1357,7 @@ surface_material_override/0 = null
 surface_material_override/0 = null
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.62042, 0.671949, 0.404431, -0.780743, -0.480322, -0.399664, -0.0742961, -0.563716, 0.82262, 0.449514, 1.13444, 0.267902)
+transform = Transform3D(-0.337281, 0.258293, -0.905277, -0.858409, -0.479175, 0.183102, -0.386492, 0.838854, 0.383338, 0.449514, 1.13444, 0.267902)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)
