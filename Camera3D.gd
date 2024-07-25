@@ -148,7 +148,6 @@ func main_menu_ray():
 		
 		# Emits signal with parameter "true" or "false" if the hover_target is/isn't set to %Player
 		if Input.is_action_just_pressed("Grab"):
-			print("LOOP?")
 			Messenger.game_preload.emit()
 #
 #		return raycast_result.collider

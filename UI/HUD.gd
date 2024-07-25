@@ -53,12 +53,20 @@ func _ready():
 	Messenger.abduction.connect(on_abduction)
 	on_level_update(Globals.level_current)
 	Messenger.powerup_chosen.connect(on_powerup_chosen)
+	Messenger.game_preload.connect(on_game_preload)
 	Messenger.game_begin.connect(on_game_begin)
 	
 func _process(delta):
 	label_score.text = str(score)
 	if score >= score_minimum and !score_minimum_met:
 		on_score_minimum_met()
+		
+func on_game_preload():
+	await get_tree().create_timer(1).timeout
+	animation_loading.play("loading_text")
+	loading_text.visible = true
+	await get_tree().create_timer(.6).timeout
+	Messenger.game_begin.emit()
 		
 func on_game_begin():
 	Messenger.level_update.emit(1)

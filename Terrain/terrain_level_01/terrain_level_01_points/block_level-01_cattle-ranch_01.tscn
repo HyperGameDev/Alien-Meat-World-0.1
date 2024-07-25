@@ -30,7 +30,6 @@ size = Vector3(3.6, 1, 16.18)
 [node name="Terrain_0" instance=ExtResource("1_c6wno")]
 transform = Transform3D(1, 0, 8.72665e-05, 0, 1, 0, -8.72665e-05, 0, 1, 0, 0, -7)
 surface_material_override/0 = ExtResource("2_it4jp")
-surface_material_override/0 = ExtResource("2_it4jp")
 is_type = 2
 
 [node name="Grass_Hider" parent="." index="0" instance=ExtResource("3_pc2nc")]

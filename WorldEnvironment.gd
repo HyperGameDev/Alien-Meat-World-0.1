@@ -22,4 +22,6 @@ func on_game_begin():
 	environment.set_volumetric_fog_emission_energy(9.79)
 	environment.set_fog_light_energy(0.93)
 	environment.sky.sky_material.set_sky_energy_multiplier(1.0)
+	fog_left.visible = true
+	fog_right.visible = true
 	

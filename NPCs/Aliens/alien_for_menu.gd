@@ -49,11 +49,6 @@ func on_game_preload():
 	animation_exclaim.play("exclaim_begin")
 	await get_tree().create_timer(1).timeout
 	animation_exclaim.play("exclaim_end")
-	await get_tree().create_timer(1).timeout
-	hud.animation_loading.play("loading_text")
-	hud.loading_text.visible = true
-	await get_tree().create_timer(.6).timeout
-	Messenger.game_begin.emit()
 	
 	
 func on_game_begin():

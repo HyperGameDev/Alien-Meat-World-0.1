@@ -1412,7 +1412,7 @@ texture = SubResource("ViewportTexture_s2cav")
 texture = SubResource("ViewportTexture_82jui")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.028988, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.08589, 0)
 
 [node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
 bones/1/position = Vector3(5.84336e-10, 0.241477, -5.4619e-09)
@@ -1468,7 +1468,7 @@ surface_material_override/0 = null
 surface_material_override/0 = null
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.247553, 0.238878, -0.938965, -0.910289, -0.389233, 0.140969, -0.331801, 0.889627, 0.313803, 0.449514, 1.13444, 0.267902)
+transform = Transform3D(-0.645222, 0.42064, -0.637771, -0.633266, -0.761449, 0.138454, -0.427391, 0.493212, 0.75768, 0.449514, 1.13444, 0.267902)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)
