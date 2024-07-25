@@ -148,10 +148,8 @@ func main_menu_ray():
 		
 		# Emits signal with parameter "true" or "false" if the hover_target is/isn't set to %Player
 		if Input.is_action_just_pressed("Grab"):
-			hud.animation_loading.play("loading_text")
-			hud.loading_text.visible = true
-			await get_tree().create_timer(.6).timeout
-			Messenger.game_begin.emit()
+			print("LOOP?")
+			Messenger.game_preload.emit()
 #
 #		return raycast_result.collider
 

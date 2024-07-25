@@ -2,10 +2,14 @@ extends Node3D
 
 class_name Alien_For_Menu
 
-static var is_visible: bool = true
+static var is_visible: bool = false
+static var is_hoverable: bool = false
+
+@onready var hud: CanvasLayer = get_tree().get_root().get_node("Main Scene/HUD")
 
 @onready var area: Area3D = %Area3D
-@onready var animation: AnimationPlayer = %AnimationPlayer
+@onready var animation_alien: AnimationTree = $Alien/AnimationTree
+@onready var animation_exclaim: AnimationPlayer = $Alien/Alien_Exclaim/AnimationPlayer 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,14 +19,43 @@ func _ready() -> void:
 		visible = true
 	else:
 		visible = false
+		
+	if is_hoverable:
+		area.set_collision_layer_value(15,true)
+	else:
+		area.set_collision_layer_value(15,false)
+		
 	var ani_pos: float = randf_range(0.0,0.9)
-	animation.play("bounce")
-	animation.seek(ani_pos,true)
-	
+	animation_alien.set("parameters/Transition/transition_request", "bouncing")
+	#animation_alien.seek(ani_pos,true)
+	animation_alien.set("parameters/TimeSeek/seek_request",ani_pos)
+	Messenger.game_menu.connect(on_game_menu)
+	Messenger.game_preload.connect(on_game_preload)
 	Messenger.game_begin.connect(on_game_begin)
 	Messenger.attack_target.connect(am_i_hovered)
 
-
+func on_game_menu():
+	is_visible = true
+	visible = true
+	is_hoverable = true
+	area.set_collision_layer_value(15,true)
+	
+func on_game_preload():
+	is_hoverable = false
+	area.set_collision_layer_value(15,false)
+	animation_alien.set("parameters/Transition/transition_request", "stopping")
+	
+	# TODO Make this an animation that runs a function at the end
+	animation_exclaim.play("exclaim_begin")
+	await get_tree().create_timer(1).timeout
+	animation_exclaim.play("exclaim_end")
+	await get_tree().create_timer(1).timeout
+	hud.animation_loading.play("loading_text")
+	hud.loading_text.visible = true
+	await get_tree().create_timer(.6).timeout
+	Messenger.game_begin.emit()
+	
+	
 func on_game_begin():
 	visible = false
 	is_visible = false

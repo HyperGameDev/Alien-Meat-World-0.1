@@ -139,6 +139,7 @@ var chunks_list_06: Array = []
 
 func _ready() -> void:
 	Messenger.level_update.connect(on_level_update)
+	Messenger.game_preload.connect(on_game_preload)	
 	
 	chunks_path_safes = Globals.current_safe_chunks
 	chunks_path_obstacles = Globals.current_obstacle_chunks
@@ -445,3 +446,5 @@ func on_level_update(level):
 	
 	chunks_update(num_terrain_chunks)
 	
+func on_game_preload():
+	terrain_velocity = 0.0

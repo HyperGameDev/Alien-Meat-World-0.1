@@ -2,7 +2,11 @@ extends Node
 
 var debug_hp_Player = true
 
+signal game_intro
+signal game_menu
+signal game_preload
 signal game_begin
+
 signal game_over
 
 signal debug_nodes

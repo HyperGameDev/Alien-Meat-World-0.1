@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://UI/arrow_hover.gd" id="1_ylots"]
 [ext_resource type="PackedScene" uid="uid://dehqfy3da00hl" path="res://UI/arrow.tscn" id="2_ndmsv"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ffgjo"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_x0ujp"]
 viewport_path = NodePath("Arrow_Hover_front/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_l1egt"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ywg4r"]
 viewport_path = NodePath("Arrow_Hover_back/SubViewport")
 
 [sub_resource type="Animation" id="Animation_0otxf"]
@@ -84,7 +84,7 @@ cast_shadow = 0
 billboard = 1
 no_depth_test = true
 alpha_cut = 2
-texture = SubResource("ViewportTexture_ffgjo")
+texture = SubResource("ViewportTexture_x0ujp")
 script = ExtResource("1_ylots")
 
 [node name="SubViewport" type="SubViewport" parent="Arrow_Hover_front"]
@@ -100,7 +100,7 @@ layers = 4
 cast_shadow = 0
 billboard = 1
 alpha_cut = 2
-texture = SubResource("ViewportTexture_l1egt")
+texture = SubResource("ViewportTexture_ywg4r")
 script = ExtResource("1_ylots")
 
 [node name="SubViewport" type="SubViewport" parent="Arrow_Hover_back"]
