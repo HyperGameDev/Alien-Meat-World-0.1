@@ -21,6 +21,8 @@ var grab_offset: Vector3 = Vector3(0, 0, 0)
 var attack_ray_pos: Vector3 = Vector3(0, 0, 0)
 var is_attempting_grab = false
 
+var menu_pickable: bool = false
+
 # Raycast 1: Grab var
 var attack_target = null
 
@@ -39,6 +41,8 @@ func _ready():
 	Messenger.grab_ended.connect(on_grab_ended)
 	Messenger.powerup_menu_begin.connect(on_powerup_menu_begin)
 	Messenger.powerup_chosen.connect(on_powerup_chosen)
+	Messenger.game_menu.connect(on_game_menu)
+	Messenger.game_preload.connect(on_game_preload)
 	
 func _physics_process(_delta):
 	
@@ -97,8 +101,12 @@ func _process(_delta):
 	# Cursor Position implementation
 	cursor_ray()
 	
-	if Globals.level_current == 0:
+	if menu_pickable:
+		# Main Menu Button detection
 		main_menu_ray()
+		
+		if Globals.level_current == 0:
+			menu_alien_ray()
 	
 	
 
@@ -127,7 +135,14 @@ func hover_ray(mask,has_mask): ## Raycast that receives a target via argument
 func general_ray():
 	var general_ray_result = hover_ray(0,false)
 	Messenger.anything_seen.emit(general_ray_result)
-	
+
+func main_menu_ray():
+	var raycast_result = hover_ray(64,true)
+	if !raycast_result.is_empty():
+		hover_target = raycast_result.collider
+		Messenger.button_hovered.emit(hover_target)
+		if Input.is_action_just_pressed("Grab"):
+			Messenger.button_chosen.emit(hover_target)
 
 func attack_ray(): ## Detects obstacles, NPC's and Meat/Abductee; emits attack_target to hitpoints, and returns attack_target to Meat/Abductee within this script
 	var raycast_result = hover_ray(2 + 4 + 8 + 16384,true)
@@ -140,7 +155,7 @@ func attack_ray(): ## Detects obstacles, NPC's and Meat/Abductee; emits attack_t
 #		return raycast_result.collider
 		return attack_target
 		
-func main_menu_ray():
+func menu_alien_ray():
 	var raycast_result = hover_ray(16384,true)
 #	print(raycast_result)
 	if !raycast_result.is_empty():
@@ -203,3 +218,9 @@ func on_powerup_chosen(orb):
 	powerup_menu_begin = false
 	var orb_chosen = %PowerUp_Menu.get_children()[orb - 1]
 	Globals.powerups_available.erase(orb_chosen.powerup_key)
+
+func on_game_menu():
+	menu_pickable = true
+
+func on_game_preload():
+	menu_pickable = false

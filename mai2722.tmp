@@ -101,20 +101,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -2.15), Vector3(0, 0, 20)]
 }
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"menu_flyaway_over"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_77rvn"]
 length = 0.001
@@ -1568,10 +1554,37 @@ texture = SubResource("ViewportTexture_s2cav")
 texture = SubResource("ViewportTexture_82jui")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.00954365, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.00860397, 0)
+
+[node name="Alien_ArmL" parent="Player/Alien/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = null
+
+[node name="Alien_ArmR" parent="Player/Alien/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = null
+
+[node name="Alien_Body" parent="Player/Alien/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = null
+surface_material_override/1 = null
+
+[node name="Alien_Body_Heart" parent="Player/Alien/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = null
+surface_material_override/1 = null
+surface_material_override/2 = null
+surface_material_override/3 = null
+
+[node name="Alien_Head" parent="Player/Alien/Armature/Skeleton3D" index="5"]
+surface_material_override/0 = null
+surface_material_override/1 = null
+surface_material_override/2 = null
+
+[node name="Alien_LegL" parent="Player/Alien/Armature/Skeleton3D" index="6"]
+surface_material_override/0 = null
+
+[node name="Alien_LegR" parent="Player/Alien/Armature/Skeleton3D" index="7"]
+surface_material_override/0 = null
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.121353, 0.991606, -0.0446263, -0.963387, -0.12849, -0.235322, -0.239081, 0.0144352, 0.970892, 0.449515, 1.13444, 0.267902)
+transform = Transform3D(-0.0785314, 0.198799, -0.976889, -0.97578, -0.216021, 0.0344816, -0.204174, 0.955936, 0.210948, 0.449515, 1.13444, 0.267902)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)

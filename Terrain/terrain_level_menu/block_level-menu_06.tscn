@@ -15,121 +15,141 @@ is_type = 3
 visible = false
 
 [node name="alien_for_menu_01_00" parent="." index="5" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 3.00035, -0.75, -3.94973)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 3.80035, -0.75, -3.94966)
+unhoverable = true
 
 [node name="alien_for_menu_01_01" parent="." index="6" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -4.99967, -0.75, -3.75044)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -5.59967, -0.75, -3.75049)
 
 [node name="alien_for_menu_01_02" parent="." index="7" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -6.99965, -0.75, -3.95061)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -7.59965, -0.75, -3.95066)
 
 [node name="alien_for_menu_01_03" parent="." index="8" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 6.40035, -0.75, -3.94945)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 7.20035, -0.75, -3.94938)
+unhoverable = true
 
 [node name="alien_for_menu_01_04" parent="." index="9" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 1.00033, -0.75, -3.74991)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 1.80033, -0.75, -3.74984)
+unhoverable = true
 
 [node name="alien_for_menu_01_05" parent="." index="10" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 5.00037, -0.75, -4.14957)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 5.80037, -0.75, -4.1495)
+unhoverable = true
 
 [node name="alien_for_menu_01_12" parent="." index="11" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -7.20006, -0.75, 0.649375)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -7.80006, -0.75, 0.649323)
 
 [node name="alien_for_menu_01_16" parent="." index="12" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -7.00077, -0.75, 8.84939)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -7.60077, -0.75, 8.84934)
 
 [node name="alien_for_menu_01_17" parent="." index="13" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -5.20004, -0.75, 0.449554)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -5.80004, -0.75, 0.449502)
 
 [node name="alien_for_menu_01_18" parent="." index="14" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 3, -0.75, 0.0502706)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 3.8, -0.75, 0.0503402)
+unhoverable = true
 
 [node name="alien_for_menu_01_19" parent="." index="15" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 4.8, -0.75, 0.0504198)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 5.6, -0.75, 0.0504899)
+unhoverable = true
 
 [node name="alien_for_menu_01_22" parent="." index="16" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 6.19999, -0.75, 0.250545)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 6.99999, -0.75, 0.250615)
+unhoverable = true
 
 [node name="alien_for_menu_01_23" parent="." index="17" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 0.800006, -0.75, 0.0500708)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 1.60001, -0.75, 0.0501409)
+unhoverable = true
 
 [node name="alien_for_menu_01_25" parent="." index="18" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -5.0004, -0.75, 4.64956)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -5.6004, -0.75, 4.64951)
 
 [node name="alien_for_menu_01_26" parent="." index="19" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -7.20038, -0.75, 4.44937)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -7.80038, -0.75, 4.44932)
 
 [node name="alien_for_menu_01_27" parent="." index="20" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 6.39962, -0.75, 4.45056)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 7.19962, -0.75, 4.45063)
+unhoverable = true
 
 [node name="alien_for_menu_01_30" parent="." index="21" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -3.2, -0.75, 0.0497293)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -3.8, -0.75, 0.0496774)
 
 [node name="alien_for_menu_01_31" parent="." index="22" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 4.80068, -0.75, -7.74958)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 5.60068, -0.75, -7.74951)
+unhoverable = true
 
 [node name="alien_for_menu_01_36" parent="." index="23" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -2.99963, -0.75, -4.15026)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -3.59963, -0.75, -4.15031)
 
 [node name="alien_for_menu_01_37" parent="." index="24" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 2.8007, -0.75, -7.94976)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 3.6007, -0.75, -7.94969)
+unhoverable = true
 
 [node name="alien_for_menu_01_38" parent="." index="25" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 2.79925, -0.75, 8.65024)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 3.59925, -0.75, 8.65031)
+unhoverable = true
 
 [node name="alien_for_menu_01_41" parent="." index="26" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -3.19932, -0.75, -7.75028)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -3.79932, -0.75, -7.75033)
 
 [node name="alien_for_menu_01_32" parent="." index="27" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -4.99932, -0.75, -7.75044)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -5.59932, -0.75, -7.75049)
 
 [node name="alien_for_menu_01_33" parent="." index="28" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -7.19932, -0.75, -7.75063)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -7.79932, -0.75, -7.75068)
 
 [node name="alien_for_menu_01_34" parent="." index="29" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 6.20066, -0.75, -7.54947)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 7.00066, -0.75, -7.5494)
+unhoverable = true
 
 [node name="alien_for_menu_01_42" parent="." index="30" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -0.999654, -0.75, -3.95008)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -1.59965, -0.75, -3.95013)
 
 [node name="alien_for_menu_01_44" parent="." index="31" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 6.39925, -0.75, 8.65056)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 7.19925, -0.75, 8.65063)
+unhoverable = true
 
 [node name="alien_for_menu_01_54" parent="." index="32" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 2.79968, -0.75, 3.65024)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 3.59968, -0.75, 3.65031)
+unhoverable = true
 
 [node name="alien_for_menu_01_55" parent="." index="33" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 4.99967, -0.75, 3.85044)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 5.79967, -0.75, 3.85051)
+unhoverable = true
 
 [node name="alien_for_menu_01_58" parent="." index="34" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 0.799592, -0.75, 4.65007)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 1.59959, -0.75, 4.65014)
+unhoverable = true
 
 [node name="alien_for_menu_01_59" parent="." index="35" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -1.0004, -0.75, 4.64991)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -1.6004, -0.75, 4.64986)
 
 [node name="alien_for_menu_01_45" parent="." index="36" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -1.20001, -0.75, 0.249901)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -1.80001, -0.75, 0.249849)
 
 [node name="alien_for_menu_01_47" parent="." index="37" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -1.19934, -0.75, -7.55011)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -1.79934, -0.75, -7.55016)
 
 [node name="alien_for_menu_01_35" parent="." index="38" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 0.800682, -0.75, -7.74993)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 1.60068, -0.75, -7.74986)
+unhoverable = true
 
 [node name="alien_for_menu_01_64" parent="." index="39" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -3.20035, -0.75, 4.04973)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -3.80035, -0.75, 4.04968)
 
 [node name="alien_for_menu_01_65" parent="." index="40" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 4.79925, -0.75, 8.65042)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 5.59925, -0.75, 8.65049)
+unhoverable = true
 
 [node name="alien_for_menu_01_66" parent="." index="41" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -3.20075, -0.75, 8.64972)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -3.80075, -0.75, 8.64967)
 
 [node name="alien_for_menu_01_67" parent="." index="42" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -5.00075, -0.75, 8.64956)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -5.60075, -0.75, 8.64951)
 
 [node name="alien_for_menu_01_70" parent="." index="43" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -1.20077, -0.75, 8.84989)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, -1.80077, -0.75, 8.84984)
 
 [node name="alien_for_menu_01_71" parent="." index="44" instance=ExtResource("2_5sgl3")]
-transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 0.79925, -0.75, 8.65007)
+transform = Transform3D(-1, 0, -8.74206e-08, 0, 1, 0, 8.74206e-08, 0, -1, 1.59925, -0.75, 8.65014)
+unhoverable = true

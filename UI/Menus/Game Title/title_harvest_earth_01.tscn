@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl47jmquemxqt"]
+
+[ext_resource type="PackedScene" uid="uid://behnb1fck202s" path="res://UI/Menus/Game Title/Title_Harvest-Earth_01.blend" id="1_6nqjr"]
+[ext_resource type="Material" uid="uid://wlh1o57jss18" path="res://UI/Menus/Game Title/game-title-color_02.tres" id="2_k3xox"]
+[ext_resource type="Material" uid="uid://bxspoylputkh8" path="res://UI/Menus/Game Title/game-title-color_03.tres" id="3_76fds"]
+
+[node name="Title_Harvest-Earth_01" instance=ExtResource("1_6nqjr")]
+
+[node name="Text_Harvest" parent="." index="0"]
+cast_shadow = 0
+surface_material_override/0 = ExtResource("2_k3xox")
+
+[node name="Text_Earth" parent="." index="1"]
+cast_shadow = 0
+surface_material_override/0 = ExtResource("3_76fds")

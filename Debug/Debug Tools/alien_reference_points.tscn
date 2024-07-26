@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3nfi2fkax7a3"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1bxfi"]
+size = Vector2(2, 23.155)
+
+[node name="AlienReference Points" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 0.6, -0.000183105)
+mesh = SubResource("PlaneMesh_1bxfi")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 0.6, 0.000148296)
+mesh = SubResource("PlaneMesh_1bxfi")
+skeleton = NodePath("../..")

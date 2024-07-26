@@ -2,6 +2,7 @@ extends MeshInstance3D
 
 class_name Block
 
+
 static var menu_is_visible: bool = false
 var is_level: int = -1
 

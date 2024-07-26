@@ -2,6 +2,7 @@ extends Node
 
 @export var level_current = 0
 
+var reloading: bool = false
 var powerups_available: Array = []
 var powerups := {
 	PowerUp1 = {
@@ -177,7 +178,10 @@ func on_level_update(level):
 	current_menu_chunks = level_chunks_menu[level]
 	
 func on_game_over():
+	reloading = true
+	powerups_available = powerups.keys()
 	obstacles_hilited = [] ## Empties out the last hilighted obstacle array
+	Messenger.level_update.emit(0)
 	get_tree().reload_current_scene()
 	
 func on_abduction(score_value):

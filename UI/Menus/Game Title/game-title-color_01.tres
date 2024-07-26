@@ -1,0 +1,32 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://bdp0xqqud8747"]
+
+[sub_resource type="Gradient" id="Gradient_g3dg8"]
+offsets = PackedFloat32Array(0.192913, 0.444882, 0.511811)
+colors = PackedColorArray(0.207843, 0.678431, 0.733333, 1, 0.301094, 2.40654e-05, 1.22733e-05, 1, 0.180392, 0.929412, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h57fq"]
+gradient = SubResource("Gradient_g3dg8")
+fill_from = Vector2(0.508547, 0.487179)
+
+[sub_resource type="Gradient" id="Gradient_c7idf"]
+offsets = PackedFloat32Array(0.610236, 0.783465)
+colors = PackedColorArray(0.180392, 0, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rlmkm"]
+gradient = SubResource("Gradient_c7idf")
+fill_from = Vector2(0.405983, 0.551282)
+fill_to = Vector2(0.363248, 0.235043)
+
+[resource]
+diffuse_mode = 2
+albedo_texture = SubResource("GradientTexture2D_h57fq")
+metallic_specular = 1.0
+roughness = 0.99
+emission = Color(0.321569, 0.321569, 0.321569, 1)
+emission_energy_multiplier = 2.46
+emission_operator = 1
+rim_enabled = true
+rim = 0.51
+rim_tint = 0.0
+rim_texture = SubResource("GradientTexture2D_rlmkm")
+uv1_offset = Vector3(2.425, 0, 0)

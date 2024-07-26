@@ -2,14 +2,18 @@ extends Node
 
 var debug_hp_Player = true
 
-signal game_intro
-signal game_menu
-signal game_preload
+signal game_intro # Cutscene
+signal game_menu # Main Menu
+signal game_preload # Teleporting to earth
 signal game_begin
 
 signal game_over
 
 signal debug_nodes
+
+signal button_action
+signal button_chosen
+signal button_hovered
 
 signal powerup_menu_begin
 signal powerup_chosen

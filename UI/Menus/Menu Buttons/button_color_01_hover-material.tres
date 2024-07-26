@@ -1,0 +1,26 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://cmjdxexp2uj7v"]
+
+[ext_resource type="Texture2D" uid="uid://ckujdf1t2bxkh" path="res://UI/Menus/Menu Buttons/button_color_01_unhover.tres" id="1_f5sx0"]
+
+[sub_resource type="Gradient" id="Gradient_rr18u"]
+offsets = PackedFloat32Array(0.255906, 0.783465)
+colors = PackedColorArray(0.180392, 0, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ko3qe"]
+gradient = SubResource("Gradient_rr18u")
+fill_from = Vector2(0.111111, 0.606838)
+fill_to = Vector2(0.286325, 0.196581)
+
+[resource]
+diffuse_mode = 2
+albedo_texture = ExtResource("1_f5sx0")
+metallic_specular = 1.0
+roughness = 0.99
+emission_enabled = true
+emission = Color(0.321569, 0.321569, 0.321569, 1)
+emission_energy_multiplier = 2.46
+rim_enabled = true
+rim = 0.46
+rim_tint = 0.51
+rim_texture = SubResource("GradientTexture2D_ko3qe")
+uv1_offset = Vector3(2.425, 0, 0)

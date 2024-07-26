@@ -2,6 +2,8 @@ extends Node3D
 
 class_name Alien_For_Menu
 
+@export var unhoverable: bool = false
+
 static var is_visible: bool = false
 static var is_hoverable: bool = false
 
@@ -20,7 +22,7 @@ func _ready() -> void:
 	else:
 		visible = false
 		
-	if is_hoverable:
+	if is_hoverable and !unhoverable:
 		area.set_collision_layer_value(15,true)
 	else:
 		area.set_collision_layer_value(15,false)
@@ -38,7 +40,8 @@ func on_game_menu():
 	is_visible = true
 	visible = true
 	is_hoverable = true
-	area.set_collision_layer_value(15,true)
+	if !unhoverable:
+		area.set_collision_layer_value(15,true)
 	
 func on_game_preload():
 	is_hoverable = false

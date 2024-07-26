@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dau1u4884p5ma"]
+
+[ext_resource type="PackedScene" uid="uid://b15hmln81poqf" path="res://UI/Menus/Game Title/Title_Abduct-n_Run_01.blend" id="1_pp2k7"]
+[ext_resource type="Material" uid="uid://wlh1o57jss18" path="res://UI/Menus/Game Title/game-title-color_02.tres" id="2_g7rf0"]
+
+[node name="Title_Abduct-n_Run_01" instance=ExtResource("1_pp2k7")]
+
+[node name="Text" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_g7rf0")

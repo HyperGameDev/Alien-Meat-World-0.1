@@ -1,0 +1,176 @@
+[gd_scene load_steps=15 format=3 uid="uid://d4b3danoj2o4u"]
+
+[ext_resource type="PackedScene" uid="uid://bpshnnih0tle3" path="res://UI/Menus/Menu Buttons/Button_Credits_01.blend" id="1_rxlfk"]
+[ext_resource type="Material" uid="uid://djhuewq7fxifo" path="res://UI/Menus/Menu Buttons/button_color_01.tres" id="2_6kbtk"]
+[ext_resource type="Material" uid="uid://cmjdxexp2uj7v" path="res://UI/Menus/Menu Buttons/button_color_01_hover-material.tres" id="2_ud6yc"]
+[ext_resource type="Script" path="res://UI/Menus/Menu Buttons/Button3D.gd" id="3_okr3t"]
+
+[sub_resource type="Animation" id="Animation_ivhc3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cxrgr"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.5708, -0.174533, 0), Vector3(1.5708, 0, 0), Vector3(1.5708, 0.174533, 0), Vector3(1.5708, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text:material_override")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_6kbtk")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Text:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_18joy"]
+resource_name = "stop"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text:material_override")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ud6yc")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Text:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.35, 1.35, 1.35)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qe4mq"]
+_data = {
+"RESET": SubResource("Animation_ivhc3"),
+"idle": SubResource("Animation_cxrgr"),
+"stop": SubResource("Animation_18joy")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_86tgm"]
+animation = &"stop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gvk01"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_m3mci"]
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_it6sg"]
+xfade_time = 0.1
+input_0/name = "idling"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "stopping"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ncv37"]
+graph_offset = Vector2(-235, 62)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_gvk01")
+nodes/Animation/position = Vector2(-80, 140)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_86tgm")
+"nodes/Animation 2/position" = Vector2(-20, 320)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_m3mci")
+nodes/TimeScale/position = Vector2(140, 200)
+nodes/Transition/node = SubResource("AnimationNodeTransition_it6sg")
+nodes/Transition/position = Vector2(340, 80)
+nodes/output/position = Vector2(500, 180)
+node_connections = [&"TimeScale", 0, &"Animation", &"Transition", 0, &"TimeScale", &"Transition", 1, &"Animation 2", &"output", 0, &"Transition"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_beh4v"]
+size = Vector3(3.25586, 1, 1)
+
+[node name="Button_Credits_01" instance=ExtResource("1_rxlfk")]
+
+[node name="Text" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, -1, 0, 1, -3.61999e-06, 0, -0.114889, 0)
+material_override = ExtResource("2_6kbtk")
+cast_shadow = 0
+surface_material_override/0 = ExtResource("2_ud6yc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_qe4mq")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_qe4mq")
+}
+tree_root = SubResource("AnimationNodeBlendTree_ncv37")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 0.4
+parameters/Transition/current_state = "idling"
+parameters/Transition/transition_request = ""
+parameters/Transition/current_index = 0
+
+[node name="Button3D" type="Area3D" parent="." index="3"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_okr3t")
+is_button = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13361, 0)
+shape = SubResource("BoxShape3D_beh4v")
