@@ -1,9 +1,9 @@
 [gd_scene load_steps=21 format=3 uid="uid://cu6g2i3jshy23"]
 
 [ext_resource type="PackedScene" uid="uid://sinmj7kc41ys" path="res://Player/PlayerV2/Alien_head-body_v2_lowpoly.blend" id="1_br7x4"]
-[ext_resource type="Material" uid="uid://ceyvghpuqtg0c" path="res://Player/textures/alien_skin_01.tres" id="2_bscvk"]
 [ext_resource type="Script" path="res://NPCs/Aliens/alien_for_menu.gd" id="2_thfq0"]
 [ext_resource type="Material" uid="uid://c7geoa58ckfal" path="res://Player/textures/alien_mouth_01.tres" id="3_5l7rc"]
+[ext_resource type="Material" uid="uid://blqytdo38ks5j" path="res://Player/PlayerV2/textures/alien_menu_skin.tres" id="3_d0j0y"]
 [ext_resource type="Material" uid="uid://ctrq3rqbk526b" path="res://Player/textures/alien_teeth_01.tres" id="4_yigq1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ye5re"]
@@ -202,7 +202,7 @@ shape = SubResource("BoxShape3D_ye5re")
 
 [node name="Alien" parent="." index="2"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-surface_material_override/0 = ExtResource("2_bscvk")
+surface_material_override/0 = ExtResource("3_d0j0y")
 surface_material_override/1 = ExtResource("3_5l7rc")
 surface_material_override/3 = ExtResource("4_yigq1")
 
