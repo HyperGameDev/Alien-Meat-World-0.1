@@ -1595,9 +1595,9 @@ parameters/TimeScale/scale = 1.3
 parameters/reach/active = false
 parameters/reach/internal_active = false
 parameters/reach/request = 0
-"parameters/walk to run/current_state" = "walking"
+"parameters/walk to run/current_state" = "running"
 "parameters/walk to run/transition_request" = ""
-"parameters/walk to run/current_index" = 0
+"parameters/walk to run/current_index" = 1
 
 [node name="Animation_Alien" type="AnimationPlayer" parent="." index="1"]
 root_node = NodePath("../Armature")
@@ -1650,7 +1650,7 @@ transparent_bg = true
 theme_override_styles/fill = ExtResource("5_k8xva")
 
 [node name="Armature" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0190585, 0)
+transform = Transform3D(1, 0, 0, 0, 0.853369, 0.521304, 0, -0.521304, 0.853369, 0, 0.0856921, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, -0.075329, -0.0284092, -0.010423)
@@ -1768,7 +1768,7 @@ font_size = 35
 outline_size = 30
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.682384, 0.634959, -0.362186, -0.661287, -0.74737, -0.0643241, -0.31153, 0.195615, 0.929884, 0.449515, 1.13444, 0.267902)
+transform = Transform3D(-0.243966, 0.726359, 0.64256, -0.950753, -0.048524, -0.306127, -0.191179, -0.6856, 0.702427, 0.449515, 1.13444, 0.267902)
 visible = false
 bone_name = "ElbowR"
 bone_idx = 7

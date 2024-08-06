@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=114 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://main_scene.gd" id="1_fw7jj"]
@@ -28,7 +28,9 @@
 [ext_resource type="Script" path="res://Scripts/BodyPart.gd" id="10_2td36"]
 [ext_resource type="FontFile" uid="uid://coxuea18eaai4" path="res://UI/Fonts/Agrandir-GrandHeavy.otf" id="10_dhtlq"]
 [ext_resource type="Animation" uid="uid://dyfra10hcoilw" path="res://UI/Powerups/Animations/hover_1.res" id="10_o5ywd"]
+[ext_resource type="PackedScene" uid="uid://bqcmgtxclt7rg" path="res://Cutscenes/cutscene_intro.tscn" id="10_p7d5b"]
 [ext_resource type="Texture2D" uid="uid://dq5uh67af12y3" path="res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_01.png" id="10_rng1m"]
+[ext_resource type="Script" path="res://Cutscenes/cutscene_intro.gd" id="11_8hav3"]
 [ext_resource type="Script" path="res://Player/ScoreDunk.gd" id="11_318ny"]
 [ext_resource type="Animation" uid="uid://bpoqnqqafs0qh" path="res://UI/Powerups/Animations/hover_2.res" id="11_shcqq"]
 [ext_resource type="Animation" uid="uid://cfajlfyq1ba2s" path="res://UI/Powerups/Animations/hover_3.res" id="12_gh6mc"]
@@ -1095,6 +1097,18 @@ libraries = {
 [node name="Cutscenes" type="Node3D" parent="."]
 unique_name_in_owner = true
 
+[node name="Cutscene_Intro" parent="Cutscenes" instance=ExtResource("10_p7d5b")]
+transform = Transform3D(0.766044, -0.642788, 0, 0.642788, 0.766044, 0, 0, 0, 1, 0.25, 0.15, -18.15)
+script = ExtResource("11_8hav3")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Cutscenes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.5)
+visible = false
+light_energy = 13.91
+light_indirect_energy = 5.645
+light_volumetric_fog_energy = 0.0
+light_specular = 0.111
+
 [node name="UI_Top" type="CanvasLayer" parent="."]
 layer = 3
 follow_viewport_scale = 1.94
@@ -1571,24 +1585,10 @@ texture = SubResource("ViewportTexture_s2cav")
 texture = SubResource("ViewportTexture_82jui")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.00954365, 0)
-
-[node name="Skeleton3D" parent="Player/Alien/Armature" index="0"]
-bones/1/rotation = Quaternion(-0.079637, 0.0577422, 0.709877, 0.697423)
-bones/2/rotation = Quaternion(0.0276023, 0.0423357, -0.042658, 0.997811)
-bones/3/rotation = Quaternion(-0.0205892, 0.00189199, 0.0252498, 0.999467)
-bones/6/rotation = Quaternion(-0.0895069, -0.0808807, -0.717954, 0.685558)
-bones/7/rotation = Quaternion(0.0104958, 0.238896, -0.0409419, 0.970125)
-bones/8/rotation = Quaternion(-0.00231333, 0.0242911, -0.00433505, 0.999693)
-bones/10/rotation = Quaternion(-0.289795, -0.0479284, -0.24514, 0.92392)
-bones/11/rotation = Quaternion(-0.760895, 0.0962255, 0.209214, 0.606637)
-bones/12/rotation = Quaternion(0.416566, -0.288618, -0.240819, 0.827755)
-bones/14/rotation = Quaternion(-0.122028, -0.101716, -0.0764657, 0.984335)
-bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
-bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
+transform = Transform3D(1, 0, 0, 0, 0.906306, 0.422617, 0, -0.422617, 0.906306, 0, 0, 0)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.121353, 0.991606, -0.0446263, -0.963387, -0.12849, -0.235322, -0.239081, 0.0144352, 0.970892, 0.449514, 1.13444, 0.267902)
+transform = Transform3D(-0.485777, 0.649674, 0.58476, -0.869789, -0.293054, -0.396972, -0.0865364, -0.701458, 0.707438, 0.449515, 1.13444, 0.267902)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)

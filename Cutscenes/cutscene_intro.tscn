@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqcmgtxclt7rg"]
+
+[ext_resource type="PackedScene" uid="uid://dt8grt2od753k" path="res://Objects/Space/capsule_01_01_00.tscn" id="1_xw3k2"]
+
+[node name="Cutscene_Intro" type="Node3D"]
+
+[node name="capsule_01-01_00" parent="." instance=ExtResource("1_xw3k2")]
