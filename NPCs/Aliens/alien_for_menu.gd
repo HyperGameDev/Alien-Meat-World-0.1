@@ -10,7 +10,7 @@ static var is_hoverable: bool = false
 @onready var hud: CanvasLayer = get_tree().get_root().get_node("Main Scene/HUD")
 
 @onready var area: Area3D = %Area3D
-@onready var animation_alien: AnimationTree = $Alien/AnimationTree
+@onready var animation_menu_alien: AnimationTree = $Alien/AnimationTree
 @onready var animation_exclaim: AnimationPlayer = $Alien/Alien_Exclaim/AnimationPlayer 
 
 # Called when the node enters the scene tree for the first time.
@@ -28,9 +28,9 @@ func _ready() -> void:
 		area.set_collision_layer_value(15,false)
 		
 	var ani_pos: float = randf_range(0.0,0.9)
-	animation_alien.set("parameters/Transition/transition_request", "bouncing")
-	#animation_alien.seek(ani_pos,true)
-	animation_alien.set("parameters/TimeSeek/seek_request",ani_pos)
+	animation_menu_alien.set("parameters/Transition/transition_request", "bouncing")
+	#animation_menu_alien.seek(ani_pos,true)
+	animation_menu_alien.set("parameters/TimeSeek/seek_request",ani_pos)
 	Messenger.game_menu.connect(on_game_menu)
 	Messenger.game_preload.connect(on_game_preload)
 	Messenger.game_begin.connect(on_game_begin)
@@ -46,7 +46,7 @@ func on_game_menu():
 func on_game_preload():
 	is_hoverable = false
 	area.set_collision_layer_value(15,false)
-	animation_alien.set("parameters/Transition/transition_request", "stopping")
+	animation_menu_alien.set("parameters/Transition/transition_request", "stopping")
 	
 	# TODO Make this an animation that runs a function at the end
 	animation_exclaim.play("exclaim_begin")

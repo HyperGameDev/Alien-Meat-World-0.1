@@ -1096,6 +1096,7 @@ libraries = {
 
 [node name="Cutscenes" type="Node3D" parent="."]
 unique_name_in_owner = true
+visible = false
 
 [node name="Cutscene_Intro" parent="Cutscenes" instance=ExtResource("10_p7d5b")]
 transform = Transform3D(0.766044, -0.642788, 0, 0.642788, 0.766044, 0, 0, 0, 1, 0.25, 0.15, -18.15)
@@ -1496,7 +1497,7 @@ shape = SubResource("CapsuleShape3D_102ua")
 [node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/DetectionAreas/Area_Head"]
 
 [node name="Area_LegR" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 1.86265e-09)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
 collision_layer = 32768
 collision_mask = 4
 script = ExtResource("10_2td36")
@@ -1573,7 +1574,7 @@ visible = false
 mesh = SubResource("SphereMesh_vojki")
 
 [node name="Alien" parent="Player" instance=ExtResource("4_huvyo")]
-transform = Transform3D(1, 0.000486921, 0.000306959, -0.000486927, 1, 2.02912e-05, -0.000306949, -2.04407e-05, 1, 0.0986362, 0, 0)
+transform = Transform3D(1, 0.000486921, 0.000306959, -0.000486927, 1, 2.02954e-05, -0.000306949, -2.04369e-05, 1, 0.0986362, 0, 0)
 
 [node name="AnimationTree_Alien" parent="Player/Alien" index="0"]
 parameters/TimeScale/scale = 1.0
@@ -1585,10 +1586,10 @@ texture = SubResource("ViewportTexture_s2cav")
 texture = SubResource("ViewportTexture_82jui")
 
 [node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.906306, 0.422617, 0, -0.422617, 0.906306, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0431256, 0)
 
 [node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.485777, 0.649674, 0.58476, -0.869789, -0.293054, -0.396972, -0.0865364, -0.701458, 0.707438, 0.449515, 1.13444, 0.267902)
+transform = Transform3D(-0.35899, 0.265142, -0.894889, -0.844409, -0.500728, 0.190381, -0.397618, 0.823997, 0.403645, 0.449515, 1.13444, 0.267902)
 
 [node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)
