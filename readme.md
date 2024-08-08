@@ -5,6 +5,10 @@ This is the github repo for the game Lýz makes in her streams.
 Find the streams [here](https://www.patreon.com/HyperGameDev).
 Thanks to everyone [here](https://docs.google.com/spreadsheets/d/18sNHRUy0WmAL3Gzo8xI9gAq4eJD3nLzMznWri01CLxQ/edit?usp=sharing) for your contributions!
 
+## Project Roadmap
+
+[Click here](https://excalidraw.com/#json=cY7qeTcT7i0D0kMG1gSql,QrESjlM_ezE2rSgCX1n2kQ) to see a rough sketch of the game's progress!
+
 ## 🔨 How to Set Up
 
 Make sure you have Blender integrated with your Godot Editor, otherwise the project won't load.
