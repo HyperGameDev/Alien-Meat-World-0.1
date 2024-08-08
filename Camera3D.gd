@@ -42,7 +42,7 @@ func _ready():
 	Messenger.powerup_menu_begin.connect(on_powerup_menu_begin)
 	Messenger.powerup_chosen.connect(on_powerup_chosen)
 	Messenger.game_menu.connect(on_game_menu)
-	Messenger.game_preload.connect(on_game_preload)
+	Messenger.game_postmenu.connect(on_game_postmenu)
 	
 func _physics_process(_delta):
 	
@@ -172,7 +172,7 @@ func menu_alien_ray():
 		
 		# Emits signal with parameter "true" or "false" if the hover_target is/isn't set to %Player
 		if Input.is_action_just_pressed("Grab"):
-			Messenger.swap_game_state.emit(Globals.is_game_states.PRELOAD)
+			Messenger.swap_game_state.emit(Globals.is_game_states.POSTMENU)
 
 #
 #		return raycast_result.collider
@@ -232,5 +232,5 @@ func on_powerup_chosen(orb):
 func on_game_menu():
 	menu_pickable = true
 
-func on_game_preload():
+func on_game_postmenu():
 	menu_pickable = false

@@ -32,7 +32,7 @@ func _ready() -> void:
 	#animation_menu_alien.seek(ani_pos,true)
 	animation_menu_alien.set("parameters/TimeSeek/seek_request",ani_pos)
 	Messenger.game_menu.connect(on_game_menu)
-	Messenger.game_preload.connect(on_game_preload)
+	Messenger.game_postmenu.connect(on_game_postmenu)
 	Messenger.game_begin.connect(on_game_begin)
 	Messenger.attack_target.connect(am_i_hovered)
 
@@ -43,7 +43,7 @@ func on_game_menu():
 	if !unhoverable:
 		area.set_collision_layer_value(15,true)
 	
-func on_game_preload():
+func on_game_postmenu():
 	is_hoverable = false
 	area.set_collision_layer_value(15,false)
 	animation_menu_alien.set("parameters/Transition/transition_request", "stopping")

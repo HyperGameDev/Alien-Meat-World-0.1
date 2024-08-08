@@ -32,7 +32,7 @@ var is_dying = false
 
 
 @onready var copter_area = self
-@onready var player = get_tree().get_current_scene().get_node("Player/DetectionAreas/Area_Player-Proximity")
+@onready var player = get_tree().get_current_scene().get_node("Player/Alien_V1/DetectionAreas/Area_Player-Proximity")
 
 
 # Called when the node enters the scene tree for the first time.

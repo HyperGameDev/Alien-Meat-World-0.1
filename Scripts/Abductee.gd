@@ -5,7 +5,7 @@ class_name Abductee
 @export var is_type: is_types
 enum is_types {COW, HUMAN}
 
-@export var indicator_color: Color = Color(.5,.5,1,1)
+@export var indicator_color: Color = Color(.5, .5, 1.0, 1.0)
 
 @export var empathy_ok: bool = false
 @export var abduction_offset: Vector3 = Vector3(0,.5,0)
@@ -72,7 +72,7 @@ func _ready():
 	# Setting up meat material changes based on cursor behavior
 	default_material.set_albedo(Color(.32, .75, .35))
 	hover_material.set_albedo(Color(.32, .75, .35))
-	select_material.set_albedo(Color(1, 0, .1))
+	select_material.set_albedo(Color(1.0, .0, .1))
 	
 	
 func am_i_hovered(target):

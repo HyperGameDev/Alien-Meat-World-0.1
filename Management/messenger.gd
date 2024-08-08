@@ -6,7 +6,8 @@ signal swap_game_state
 
 signal game_intro # Cutscene
 signal game_menu # Main Menu
-signal game_preload # Teleporting to earth
+signal game_postmenu # Teleporting to earth
+signal game_prebegin
 signal game_begin
 
 signal game_over

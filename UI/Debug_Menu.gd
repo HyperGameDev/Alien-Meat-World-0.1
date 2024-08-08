@@ -14,6 +14,13 @@ extends Control
 func _ready():
 	# CONSIDER tucking these away in a function then calling them in ready
 	Messenger.level_update.connect(on_level_update)
+	
+	%Button_State_PreIntro.pressed.connect(on_state_PreIntro)
+	%Button_State_Intro.pressed.connect(on_state_Intro)
+	%Button_State_Menu.pressed.connect(on_state_Menu)
+	%Button_State_PostMenu.pressed.connect(on_state_PostMenu)
+	%Button_State_PreBegin.pressed.connect(on_state_PreBegin)
+	%Button_State_Begin.pressed.connect(on_state_Begin)
 	%Button_Cutscene.pressed.connect(on_Cutscene)
 	%Button_Menu.pressed.connect(on_Menu)
 	%Button_Game.pressed.connect(on_Game)
@@ -81,6 +88,24 @@ func on_level_update(level):
 
 func on_levelDebug_01():
 	Messenger.level_update.emit(0)
-
 func on_level_01():
 	Messenger.level_update.emit(1)
+
+
+func on_state_PreIntro():
+		Messenger.swap_game_state.emit(Globals.is_game_states.PREINTRO)
+
+func on_state_Intro():
+	Messenger.swap_game_state.emit(Globals.is_game_states.INTRO)
+	
+func on_state_Menu():
+	Messenger.swap_game_state.emit(Globals.is_game_states.MENU)
+	
+func on_state_PostMenu():
+	Messenger.swap_game_state.emit(Globals.is_game_states.POSTMENU)
+
+func on_state_PreBegin():
+	Messenger.swap_game_state.emit(Globals.is_game_states.PREBEGIN)
+
+func on_state_Begin():
+	Messenger.swap_game_state.emit(Globals.is_game_states.BEGIN)

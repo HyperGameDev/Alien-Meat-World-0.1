@@ -5,7 +5,7 @@ class_name Obstacle
 signal update_hitpoints
 
 @export var has_arrow = true
-@export var indicator_color = Color(1,.5,0,1)
+@export var indicator_color = Color(1.0,.5,.0,1.0)
 
 @export var health_max: int
 @onready var health_current = health_max

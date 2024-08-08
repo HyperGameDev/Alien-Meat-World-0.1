@@ -3,7 +3,7 @@ extends Node
 @export var level_current = 0
 
 var is_game_state: is_game_states
-enum is_game_states {PREINTRO,INTRO,MENU,PRELOAD,BEGIN}
+enum is_game_states {PREINTRO,INTRO,MENU,POSTMENU,PREBEGIN,BEGIN}
 
 var is_player_version: is_player_versions
 enum is_player_versions {V1,V2_BIPED,V2_QUADRUPED}

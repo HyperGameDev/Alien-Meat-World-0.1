@@ -9,9 +9,6 @@ extends Node3D
 @export var menu_cam_rot_y: float = 14.3
 @export var menu_cam_rot_x: float = 6.4
 
-var past_preintro: bool = false
-var past_intro: bool = false
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = false

@@ -180,14 +180,13 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Terrain Heights"
 
 [node name="VBox_4" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Asset Showcases"
+text = "Game States"
 horizontal_alignment = 1
 
 [node name="Divider" type="Panel" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
@@ -195,12 +194,53 @@ custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
 
-[node name="Button_assets_01" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
+[node name="Button_State_PreIntro" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 31
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Asset Expo 1"
+text = "Pre-Intro"
+
+[node name="Button_State_Intro" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Intro"
+
+[node name="Button_State_Menu" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Menu"
+
+[node name="Button_State_PostMenu" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Post-Menu"
+
+[node name="Button_State_PreBegin" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Pre-Begin"
+
+[node name="Button_State_Begin" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Begin"
 
 [node name="VBox_5" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
 layout_mode = 2

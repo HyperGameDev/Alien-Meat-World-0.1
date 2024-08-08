@@ -83,7 +83,7 @@ func _ready():
 	
 # Material setup
 	default_material.set_albedo(Color(0.3, 0.74, .35))
-	damage_material.set_albedo(Color(0.5, 0.0, 0.0))
+	damage_material.set_albedo(Color(0.5, .0, .0))
 	
 # Damage Flash timer setup
 	limb_dmg_flash_length.timeout.connect(on_limb_dmg_flash_end)

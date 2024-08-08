@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var show_fps = false
+@export var show_info = false
 var old_player = true
 var biped = true
 @onready var debug_menu = %Menu
@@ -10,11 +10,12 @@ var biped = true
 # Called when the node enters the scene tree for the first time.
 func _process(delta):
 	if OS.is_debug_build():
-		if show_fps:
-			%Label_showFPS.visible = true
-			%Label_showFPS.text = "FPS: " + str(Engine.get_frames_per_second())
+		if show_info:
+			%Container_MoreInfo.visible = true
+			%Label_showFPS.text = "FPS: " + str(Engine.get_frames_per_second()).pad_zeros(3)
+			%Label_showState.text = "State: " + str(Globals.is_game_states.keys()[Globals.is_game_state])
 		else:
-			%Label_showFPS.visible = false
+			%Container_MoreInfo.visible = false
 	else:
 		pass
 
@@ -27,7 +28,7 @@ func _input(event):
 			for dmg_label in get_tree().get_nodes_in_group("Dmg_Labels_Player"):
 				dmg_label.visible = !dmg_label.visible
 		if event.is_action_pressed("Debug 3"): # Show/Hide FPS
-			show_fps = !show_fps
+			show_info = !show_info
 		if event.is_action_pressed("Debug 4"):
 			old_player = !old_player
 			if old_player:

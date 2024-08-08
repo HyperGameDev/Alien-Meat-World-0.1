@@ -1111,6 +1111,7 @@ script = ExtResource("2_0mwwt")
 
 [node name="Blackout_BG" type="Panel" parent="UI_Top"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1601,8 +1602,9 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, 0.
 shape = SubResource("CapsuleShape3D_102ua")
 
 [node name="Debug" type="CanvasLayer" parent="."]
-layer = 2
+layer = 128
 script = ExtResource("1_1xhrq")
+show_info = true
 
 [node name="Information" type="Control" parent="Debug"]
 layout_mode = 3
@@ -1624,17 +1626,26 @@ grow_vertical = 0
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_bottom = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Debug/Information/MarginContainer"]
-layout_mode = 2
-
-[node name="Label_showFPS" type="Label" parent="Debug/Information/MarginContainer/HBoxContainer"]
+[node name="Container_MoreInfo" type="HBoxContainer" parent="Debug/Information/MarginContainer"]
 unique_name_in_owner = true
-z_index = 1
+layout_mode = 2
+theme_override_constants/separation = 180
+
+[node name="Label_showFPS" type="Label" parent="Debug/Information/MarginContainer/Container_MoreInfo"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
 theme_override_font_sizes/font_size = 50
 text = "FPS: "
+
+[node name="Label_showState" type="Label" parent="Debug/Information/MarginContainer/Container_MoreInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 50
+text = "State:"
 
 [node name="Label_Hide-Hp" type="Label" parent="Debug/Information"]
 visible = false
