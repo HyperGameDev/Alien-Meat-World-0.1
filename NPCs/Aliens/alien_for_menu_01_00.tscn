@@ -202,6 +202,7 @@ shape = SubResource("BoxShape3D_ye5re")
 
 [node name="Alien" parent="." index="2"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+lod_bias = 10.0
 surface_material_override/0 = ExtResource("3_d0j0y")
 surface_material_override/1 = ExtResource("3_5l7rc")
 surface_material_override/3 = ExtResource("4_yigq1")

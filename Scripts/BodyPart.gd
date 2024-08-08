@@ -9,11 +9,11 @@ const LIMB_MORPH_SPEED = 1.25
 @export var collision: CollisionShape3D
 @export var collision_area: CollisionShape3D
 
-@onready var mesh = player.get_node("Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1])
+@onready var mesh = player.get_node("Alien_V1/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1])
 
 @onready var bodypart_name = name.split("_")[1]	
 
-@onready var skeleton = get_tree().get_root().get_node("Main Scene/Player/Alien/Armature/Skeleton3D")
+@onready var skeleton = get_tree().get_root().get_node("Main Scene/Player/Alien_V1/Alien/Armature/Skeleton3D")
 
 var limb_dmg_flash_end = false
 
@@ -168,7 +168,7 @@ func on_area_damaged(collided_bodypart):
 			current_health -= limb_damage_amount
 			#print("'Damage_Detected' damage: ", limb_damage_amount)
 			# Update the Damage Label
-			player.get_node("Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
+			player.get_node("Alien_V1/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
 		
 			# Inform Messenger of damage, e.g. so UI_FX can flash the screen
 			Messenger.limb_is_damaged.emit()
@@ -237,7 +237,7 @@ func on_abductee_detected(collided_bodypart, empathy_ok):
 	if collided_bodypart == self and current_health < max_health:
 		current_health += 1
 		shape_change_limbs_any()
-		player.get_node("Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
+		player.get_node("Alien_V1/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
 #		print("current_health collected")
 		mesh.show()
 		var tween = get_tree().create_tween();

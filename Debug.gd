@@ -1,12 +1,11 @@
 extends CanvasLayer
 
 var show_fps = false
-var old_player_global = true
+var old_player = true
+var biped = true
 @onready var debug_menu = %Menu
 @onready var terrain_controller = %TerrainController_inScene
 @onready var player = %Player
-
-#@onready var testanimation = $"../Player/Alien/Armature/Skeleton3D/Alien_ArmL/Animation_Limb-Shrink"
 	
 # Called when the node enters the scene tree for the first time.
 func _process(delta):
@@ -30,23 +29,33 @@ func _input(event):
 		if event.is_action_pressed("Debug 3"): # Show/Hide FPS
 			show_fps = !show_fps
 		if event.is_action_pressed("Debug 4"):
-			old_player_global = !old_player_global
-			on_player_swap(old_player_global)
+			old_player = !old_player
+			if old_player:
+				Globals.is_player_version = Globals.is_player_versions.V1
+			else:
+				if biped:
+					Globals.is_player_version = Globals.is_player_versions.V2_BIPED
+				else: 
+					Globals.is_player_version = Globals.is_player_versions.V2_QUADRUPED
+			Messenger.swap_player.emit()
 		if event.is_action_pressed("Debug 5"): # Pause the terrain movement
 			terrain_controller.terrain_velocity = 0
 			player.terrain_slowdown = true
 		if event.is_action_pressed("Debug 6"): # Play the terrain movement
 			terrain_controller.terrain_velocity = terrain_controller.TERRAIN_VELOCITY
 			player.terrain_slowdown = false
+		if event.is_action_pressed("Debug 7"):
+			pass
+		if event.is_action_pressed("Debug 8"):
+			pass
+		if event.is_action_pressed("Debug 9"):
+			biped = !biped
+			if biped:
+				Globals.is_player_version = Globals.is_player_versions.V2_BIPED
+			else:
+				Globals.is_player_version = Globals.is_player_versions.V2_QUADRUPED
+			Messenger.swap_player.emit()
 		if event.is_action_pressed("Debug 0"):
 			debug_menu.visible = !debug_menu.visible
 			
 		#endregion
-		
-func on_player_swap(old_player):
-	if old_player:
-		player.visible = true
-		player.controls_locked = false
-	else:
-		player.visible = false
-		player.controls_locked = true

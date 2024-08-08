@@ -1,14 +1,15 @@
 extends CharacterBody3D
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 6
-const FALL_DEATH_DISTANCE = -50
-const BOUNDARY_DISTANCE = 30
+const SPEED : float = 5.0
+const JUMP_VELOCITY : int = 6
+const FALL_DEATH_DISTANCE : int = -50
+const BOUNDARY_DISTANCE : int = 30
 
-@export var controls_locked = true
+@export var controls_locked : bool = true
 
-@onready var animation = get_node("Alien/AnimationTree_Alien")
-@onready var skeleton: Skeleton3D = get_node("Alien/Armature/Skeleton3D")
+@onready var animation: AnimationTree = get_node("Alien_V1/Alien/AnimationTree_Alien")
+
+@onready var skeleton: Skeleton3D = get_node("Alien_V1/Alien/Armature/Skeleton3D")
 @onready var terrain_controller = %TerrainController_inScene
 
 var terrain_slowdown = false
@@ -37,6 +38,7 @@ var distance
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
+	Messenger.swap_player.connect(on_swap_player)
 	Messenger.amount_slowed.connect(slowdown)
 	Messenger.area_undamaged.connect(damage_undetected)
 	Messenger.mouse_pos_3d.connect(mouse_pos)
@@ -94,7 +96,7 @@ func _physics_process(delta):
 
 		
 	if terrain_slowdown == true:
-		$Alien/Animation_Alien.stop(true)
+		$Alien_V1/Alien/Animation_Alien.stop(true)
 
 # Collision stops level movement
 	move_and_slide()
@@ -127,13 +129,16 @@ func mouse_pos(mouse):
 #	skeleton.set_bone_pose_rotation(arm_l, look_pos)
 
 func grab_action_tween(amount):
-	if hit_object != null:
-#		print("Object isn't Null (", hit_object.name, ")")
-		aim_bone_at_target(arm_grabbing,hit_object,amount)
+	if !skeleton.is_inside_tree():
+		return
 		
+	if hit_object != null:
+	#		print("Object isn't Null (", hit_object.name, ")")
+			aim_bone_at_target(arm_grabbing,hit_object,amount)
+			
 	else:
-#		print("Object Null!")
-		aim_bone_at_target(arm_grabbing,null,amount)
+	#		print("Object Null!")
+			aim_bone_at_target(arm_grabbing,null,amount)
 	
 func do_grab(what_is_hit):
 	grab = true
@@ -212,3 +217,27 @@ func on_level_update(level):
 func on_game_begin():
 	self.visible = true
 	controls_locked = false
+	
+func on_swap_player():
+	match Globals.is_player_version:
+		Globals.is_player_versions.V1:
+			animation = get_node("Alien_V1/Alien/AnimationTree_Alien")
+			get_node("Alien_V1").visible = true
+			get_node("Alien_V2").visible = false
+			
+		Globals.is_player_versions.V2_BIPED:
+			animation = get_node("Alien_V2/Alien/Alien_biped_human/AnimationTree_Alien")
+			get_node("Alien_V1").visible = false
+			get_node("Alien_V2").visible = true
+			get_node("Alien_V2/Alien/Alien_biped_human").visible = true
+			get_node("Alien_V2/Alien/Alien_quadruped").visible = false
+			
+		Globals.is_player_versions.V2_QUADRUPED:
+			animation = get_node("Alien_V2/Alien/Alien_quadruped/AnimationTree_Alien")
+			get_node("Alien_V1").visible = false
+			get_node("Alien_V2").visible = true
+			get_node("Alien_V2/Alien/Alien_biped_human").visible = false
+			get_node("Alien_V2/Alien/Alien_quadruped").visible = true
+			
+		_:
+			pass

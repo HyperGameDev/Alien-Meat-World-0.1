@@ -71,6 +71,9 @@ func on_grab_ended():
 	is_attempting_grab = false
 
 func _process(_delta):
+	if get_viewport() == null:
+		return
+	
 	if !powerup_menu_begin:
 		var raycast_result = attack_ray() ## Shoots the ray
 		if Input.is_action_pressed("Grab"): 
@@ -111,13 +114,16 @@ func _process(_delta):
 	
 
 func hover_ray(mask,has_mask): ## Raycast that receives a target via argument
+	if get_viewport() == null:
+		return
+	
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 3000
 	var from = project_ray_origin(mouse_pos)
 	var to = from + project_ray_normal(mouse_pos) * ray_length
 	var space = get_world_3d().direct_space_state
 	var ray_query = PhysicsRayQueryParameters3D.new()
-	ray_query.exclude = [$"../Player/DetectionAreas/Area_Player-Proximity"]
+	ray_query.exclude = [$"../Player/Alien_V1/DetectionAreas/Area_Player-Proximity"]
 	ray_query.from = from
 	ray_query.to = to
 	
@@ -156,6 +162,9 @@ func attack_ray(): ## Detects obstacles, NPC's and Meat/Abductee; emits attack_t
 		return attack_target
 		
 func menu_alien_ray():
+	if get_viewport() == null:
+		return
+		
 	var raycast_result = hover_ray(16384,true)
 #	print(raycast_result)
 	if !raycast_result.is_empty():
@@ -163,7 +172,8 @@ func menu_alien_ray():
 		
 		# Emits signal with parameter "true" or "false" if the hover_target is/isn't set to %Player
 		if Input.is_action_just_pressed("Grab"):
-			Messenger.game_preload.emit()
+			Messenger.swap_game_state.emit(Globals.is_game_states.PRELOAD)
+
 #
 #		return raycast_result.collider
 

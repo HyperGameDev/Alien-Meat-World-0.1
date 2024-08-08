@@ -1,14 +1,17 @@
 extends WorldEnvironment
 
+
+@onready var sun: DirectionalLight3D = %DirectionalLight3D
 @onready var fog_left: FogVolume =  %Fog_boundaryLeft
 @onready var fog_right: FogVolume =  %Fog_boundaryRight
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-		Messenger.level_update.connect(on_level_update)
-		Messenger.game_begin.connect(on_game_begin)
+	sun.visible = false
+	Messenger.level_update.connect(on_level_update)
+	Messenger.game_begin.connect(on_game_begin)
 		
-		on_level_update(Globals.level_current)
+	on_level_update(Globals.level_current)
 
 func on_level_update(level):
 	if level == 0:

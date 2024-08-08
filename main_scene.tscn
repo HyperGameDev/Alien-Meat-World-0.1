@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=113 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://main_scene.gd" id="1_fw7jj"]
@@ -37,6 +37,7 @@
 [ext_resource type="Script" path="res://UI/HUD.gd" id="12_gi6vt"]
 [ext_resource type="PackedScene" uid="uid://cjvyodfle2c7n" path="res://UI/Menus/menu.tscn" id="14_eaktg"]
 [ext_resource type="FontFile" uid="uid://cx2fw81sqeocp" path="res://UI/Fonts/Agrandir-TextBold.otf" id="22_3bjjk"]
+[ext_resource type="PackedScene" uid="uid://dxlg40tq3harq" path="res://Player/PlayerV2/alien_v2.tscn" id="30_sd4ur"]
 
 [sub_resource type="Animation" id="Animation_saise"]
 length = 0.001
@@ -82,7 +83,6 @@ animation = &"idle"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_i23ja"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_d0wwf"]
-graph_offset = Vector2(-362, 103)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_p4h4o")
 nodes/Animation/position = Vector2(-200, 280)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_i23ja")
@@ -567,12 +567,6 @@ radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_s2cav"]
-viewport_path = NodePath("HP_Head/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_82jui"]
-viewport_path = NodePath("HP_Empathy/SubViewport")
-
 [sub_resource type="Animation" id="Animation_ei6f7"]
 length = 0.001
 tracks/0/type = "value"
@@ -1044,24 +1038,25 @@ size = Vector3(137.258, 1, 6.5647)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.65595e-05, -0.0122666, 0.00316)
 script = ExtResource("1_fw7jj")
 
-[node name="Main Menu" type="Node3D" parent="."]
+[node name="Main_Menu" type="Node3D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_212kh")
 
-[node name="Title" type="Node3D" parent="Main Menu"]
+[node name="Title" type="Node3D" parent="Main_Menu"]
 transform = Transform3D(0.658179, 0, 0.38, 0, 0.76, 0, -0.38, 0, 0.658179, -4.775, 1.8, 1.5)
 
-[node name="Title_Harvest-Earth_01" parent="Main Menu/Title" instance=ExtResource("2_750hd")]
+[node name="Title_Harvest-Earth_01" parent="Main_Menu/Title" instance=ExtResource("2_750hd")]
 
-[node name="Title_Abduct-n_Run_01" parent="Main Menu/Title" instance=ExtResource("3_b8b56")]
+[node name="Title_Abduct-n_Run_01" parent="Main_Menu/Title" instance=ExtResource("3_b8b56")]
 visible = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Main Menu/Title"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Main_Menu/Title"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_0r0h7")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="Main Menu/Title"]
+[node name="AnimationTree" type="AnimationTree" parent="Main_Menu/Title"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_0r0h7")
@@ -1070,26 +1065,26 @@ tree_root = SubResource("AnimationNodeBlendTree_d0wwf")
 anim_player = NodePath("../AnimationPlayer")
 parameters/TimeScale/scale = 0.4
 
-[node name="Menu Buttons" type="Node3D" parent="Main Menu"]
+[node name="Menu_Buttons" type="Node3D" parent="Main_Menu"]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -0.050961, 0.95, 4.5)
 script = ExtResource("5_ph3hx")
 
-[node name="Button_Story_01" parent="Main Menu/Menu Buttons" instance=ExtResource("4_y5b27")]
+[node name="Button_Story_01" parent="Main_Menu/Menu_Buttons" instance=ExtResource("4_y5b27")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.05, 0)
 
-[node name="Button_Settings_01" parent="Main Menu/Menu Buttons" instance=ExtResource("5_8mo0v")]
+[node name="Button_Settings_01" parent="Main_Menu/Menu_Buttons" instance=ExtResource("5_8mo0v")]
 transform = Transform3D(0.22, 0, 7.45058e-09, 0, 0.22, 0, -7.45058e-09, 0, 0.22, 0, -0.275, 0)
 
-[node name="Button_Credits_01" parent="Main Menu/Menu Buttons" instance=ExtResource("6_i0ytw")]
+[node name="Button_Credits_01" parent="Main_Menu/Menu_Buttons" instance=ExtResource("6_i0ytw")]
 transform = Transform3D(0.22, 0, 7.45058e-09, 0, 0.22, 0, -7.45058e-09, 0, 0.22, 0, -0.6, 0)
 
-[node name="Text" parent="Main Menu/Menu Buttons/Button_Credits_01" index="0"]
+[node name="Text" parent="Main_Menu/Menu_Buttons/Button_Credits_01" index="0"]
 transform = Transform3D(1, 0, 0, 0, -3.61999e-06, -1, 0, 1, -3.61999e-06, 0, -0.114889, 0)
 
-[node name="Button_Quit_01" parent="Main Menu/Menu Buttons" instance=ExtResource("7_vhbtm")]
+[node name="Button_Quit_01" parent="Main_Menu/Menu_Buttons" instance=ExtResource("7_vhbtm")]
 transform = Transform3D(0.18, 0, 7.45058e-09, 0, 0.18, 0, -7.45058e-09, 0, 0.18, 0, -0.9, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Main Menu"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Main_Menu"]
 libraries = {
 "": SubResource("AnimationLibrary_lyaxn")
 }
@@ -1104,7 +1099,6 @@ script = ExtResource("11_8hav3")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Cutscenes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.5)
-visible = false
 light_energy = 13.91
 light_indirect_energy = 5.645
 light_volumetric_fog_energy = 0.0
@@ -1123,6 +1117,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_muw3l")
+metadata/_edit_use_anchors_ = true
 
 [node name="Container_Message" type="MarginContainer" parent="UI_Top/Blackout_BG"]
 unique_name_in_owner = true
@@ -1150,51 +1145,51 @@ libraries = {
 "": SubResource("AnimationLibrary_fe77p")
 }
 
-[node name="Debug 3D" type="Node3D" parent="."]
+[node name="Debug_3D" type="Node3D" parent="."]
 
-[node name="POS_Furthest-Spawn" type="Node3D" parent="Debug 3D"]
+[node name="POS_Furthest-Spawn" type="Node3D" parent="Debug_3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.431, -130)
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Debug 3D/POS_Furthest-Spawn"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Debug_3D/POS_Furthest-Spawn"]
 mesh = SubResource("BoxMesh_war41")
 surface_material_override/0 = SubResource("StandardMaterial3D_y1q3j")
 
-[node name="POS_Highest" type="Node3D" parent="Debug 3D"]
+[node name="POS_Highest" type="Node3D" parent="Debug_3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, -130)
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Debug 3D/POS_Highest"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Debug_3D/POS_Highest"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08253, 94.9054)
 mesh = SubResource("BoxMesh_qcmfl")
 surface_material_override/0 = SubResource("StandardMaterial3D_y1q3j")
 
-[node name="POS_Furthest-Attacker-Area" type="Node3D" parent="Debug 3D"]
+[node name="POS_Furthest-Attacker-Area" type="Node3D" parent="Debug_3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.431, -50)
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Debug 3D/POS_Furthest-Attacker-Area"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Debug_3D/POS_Furthest-Attacker-Area"]
 mesh = SubResource("BoxMesh_war41")
 
-[node name="POS_Furthest-Player-Area" type="Node3D" parent="Debug 3D"]
+[node name="POS_Furthest-Player-Area" type="Node3D" parent="Debug_3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.431, -10)
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Debug 3D/POS_Furthest-Player-Area"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Debug_3D/POS_Furthest-Player-Area"]
 mesh = SubResource("BoxMesh_war41")
 
-[node name="DEBUG_Grab-Spot" type="Node3D" parent="Debug 3D"]
+[node name="DEBUG_Grab-Spot" type="Node3D" parent="Debug_3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35532, -2.09172)
 visible = false
 
-[node name="DEBUG_Grab-Target" type="MeshInstance3D" parent="Debug 3D/DEBUG_Grab-Spot"]
+[node name="DEBUG_Grab-Target" type="MeshInstance3D" parent="Debug_3D/DEBUG_Grab-Spot"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0.00010472, 0, -0.00010472, 1, 1.90266, -0.021749, -1.93132)
 mesh = SubResource("SphereMesh_veqak")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_gwj1g")
 
-[node name="Debug_fog_boundary" type="MeshInstance3D" parent="Debug 3D"]
+[node name="Debug_fog_boundary" type="MeshInstance3D" parent="Debug_3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.253605, 0.0409188, -502)
 visible = false
 mesh = SubResource("BoxMesh_mcpq4")
@@ -1475,142 +1470,134 @@ script = ExtResource("5_iuboh")
 visible = false
 mesh = SubResource("BoxMesh_svwv1")
 
-[node name="DetectionAreas" type="Node3D" parent="Player"]
+[node name="Alien_V2" type="Node3D" parent="Player"]
+visible = false
+
+[node name="Alien" parent="Player/Alien_V2" instance=ExtResource("30_sd4ur")]
+
+[node name="Alien_V1" type="Node3D" parent="Player"]
+
+[node name="Alien" parent="Player/Alien_V1" instance=ExtResource("4_huvyo")]
+transform = Transform3D(1, 0.000486921, 0.000306959, -0.000486927, 1, 2.02875e-05, -0.000306949, -2.04369e-05, 1, 0.0986362, 0, 0)
+
+[node name="DetectionAreas" type="Node3D" parent="Player/Alien_V1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.514768, -0.031039, 0.00222724)
 
-[node name="Area_Head" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("is_head", "player", "collision", "collision_area")]
+[node name="Area_Head" type="Area3D" parent="Player/Alien_V1/DetectionAreas" node_paths=PackedStringArray("is_head", "player", "collision", "collision_area")]
 unique_name_in_owner = true
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.358542, 1.26877, -0.0011203)
 collision_layer = 32768
 collision_mask = 4
 script = ExtResource("10_2td36")
 is_head = NodePath(".")
-player = NodePath("../..")
-collision = NodePath("../../Collision_AlienBody")
+player = NodePath("../../..")
+collision = NodePath("../../../Collision_V1_AlienBody")
 collision_area = NodePath("CollisionA_AlienBody")
 
-[node name="CollisionA_AlienBody" type="CollisionShape3D" parent="Player/DetectionAreas/Area_Head"]
+[node name="CollisionA_AlienBody" type="CollisionShape3D" parent="Player/Alien_V1/DetectionAreas/Area_Head"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.669039, 2.20307, 1.86489)
 shape = SubResource("CapsuleShape3D_102ua")
 
-[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/DetectionAreas/Area_Head"]
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V1/DetectionAreas/Area_Head"]
 
-[node name="Area_LegR" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
+[node name="Area_LegR" type="Area3D" parent="Player/Alien_V1/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
 collision_layer = 32768
 collision_mask = 4
 script = ExtResource("10_2td36")
-player = NodePath("../..")
-collision = NodePath("../../Collision_LegRight")
+player = NodePath("../../..")
+collision = NodePath("../../../Collision_V1_LegRight")
 collision_area = NodePath("CollisionA_LegRight")
 is_part = 1
 
-[node name="CollisionA_LegRight" type="CollisionShape3D" parent="Player/DetectionAreas/Area_LegR"]
+[node name="CollisionA_LegRight" type="CollisionShape3D" parent="Player/Alien_V1/DetectionAreas/Area_LegR"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.354678, 0.465157, 0.185392)
 shape = SubResource("CapsuleShape3D_3kibt")
 
-[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/DetectionAreas/Area_LegR"]
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V1/DetectionAreas/Area_LegR"]
 
-[node name="Area_LegL" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
+[node name="Area_LegL" type="Area3D" parent="Player/Alien_V1/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
 collision_layer = 32768
 collision_mask = 4
 script = ExtResource("10_2td36")
-player = NodePath("../..")
-collision = NodePath("../../Collision_LegLeft")
+player = NodePath("../../..")
+collision = NodePath("../../../Collision_V1_LegLeft")
 collision_area = NodePath("CollisionA_LegLeft")
 is_part = 2
 
-[node name="CollisionA_LegLeft" type="CollisionShape3D" parent="Player/DetectionAreas/Area_LegL"]
+[node name="CollisionA_LegLeft" type="CollisionShape3D" parent="Player/Alien_V1/DetectionAreas/Area_LegL"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.328862, 0.441083, 0.0353434)
 shape = SubResource("CapsuleShape3D_f5maj")
 
-[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/DetectionAreas/Area_LegL"]
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V1/DetectionAreas/Area_LegL"]
 
-[node name="Area_ArmR" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
+[node name="Area_ArmR" type="Area3D" parent="Player/Alien_V1/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
 collision_layer = 32768
 collision_mask = 4
 script = ExtResource("10_2td36")
-player = NodePath("../..")
-collision = NodePath("../../Collision_ArmRight")
+player = NodePath("../../..")
+collision = NodePath("../../../Collision_V1_ArmRight")
 collision_area = NodePath("CollisionA_ArmRight")
 is_part = 3
 
-[node name="CollisionA_ArmRight" type="CollisionShape3D" parent="Player/DetectionAreas/Area_ArmR"]
+[node name="CollisionA_ArmRight" type="CollisionShape3D" parent="Player/Alien_V1/DetectionAreas/Area_ArmR"]
 transform = Transform3D(0.0959294, -0.0282334, -0.00065124, -0.000468328, -0.0038961, 0.099923, -0.028237, -0.0958525, -0.00386973, 0.222895, 1.25142, -0.735707)
 shape = SubResource("CapsuleShape3D_0yil0")
 
-[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/DetectionAreas/Area_ArmR"]
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V1/DetectionAreas/Area_ArmR"]
 
-[node name="Area_ArmL" type="Area3D" parent="Player/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
+[node name="Area_ArmL" type="Area3D" parent="Player/Alien_V1/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
 collision_layer = 32768
 collision_mask = 4
 script = ExtResource("10_2td36")
-player = NodePath("../..")
-collision = NodePath("../../Collision_ArmLeft")
+player = NodePath("../../..")
+collision = NodePath("../../../Collision_V1_ArmLeft")
 collision_area = NodePath("CollisionA_ArmLeft")
 is_part = 4
 
-[node name="CollisionA_ArmLeft" type="CollisionShape3D" parent="Player/DetectionAreas/Area_ArmL"]
+[node name="CollisionA_ArmLeft" type="CollisionShape3D" parent="Player/Alien_V1/DetectionAreas/Area_ArmL"]
 transform = Transform3D(0.0981955, -0.0188975, -0.000720685, 2.24717e-12, -0.00381088, 0.0999274, -0.0189113, -0.0981243, -0.00374211, -0.678474, 1.34599, -0.666391)
 shape = SubResource("CapsuleShape3D_v6wbe")
 
-[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/DetectionAreas/Area_ArmL"]
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V1/DetectionAreas/Area_ArmL"]
 
-[node name="Area_Player-Proximity" type="Area3D" parent="Player/DetectionAreas"]
+[node name="Area_Player-Proximity" type="Area3D" parent="Player/Alien_V1/DetectionAreas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00993299, 1, -0.00758123)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("8_0gjb7")
 
-[node name="Collision_Copter-Proximity" type="CollisionShape3D" parent="Player/DetectionAreas/Area_Player-Proximity"]
+[node name="Collision_Copter-Proximity" type="CollisionShape3D" parent="Player/Alien_V1/DetectionAreas/Area_Player-Proximity"]
 shape = SubResource("SphereShape3D_ukq6r")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/DetectionAreas/Area_Player-Proximity"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Alien_V1/DetectionAreas/Area_Player-Proximity"]
 visible = false
 mesh = SubResource("SphereMesh_vojki")
 
-[node name="Alien" parent="Player" instance=ExtResource("4_huvyo")]
-transform = Transform3D(1, 0.000486921, 0.000306959, -0.000486927, 1, 2.02954e-05, -0.000306949, -2.04369e-05, 1, 0.0986362, 0, 0)
-
-[node name="AnimationTree_Alien" parent="Player/Alien" index="0"]
-parameters/TimeScale/scale = 1.0
-
-[node name="HP_Head" parent="Player/Alien" index="2"]
-texture = SubResource("ViewportTexture_s2cav")
-
-[node name="HP_Empathy" parent="Player/Alien" index="3"]
-texture = SubResource("ViewportTexture_82jui")
-
-[node name="Armature" parent="Player/Alien" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0431256, 0)
-
-[node name="BoneAttachment3D" parent="Player/Alien/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.35899, 0.265142, -0.894889, -0.844409, -0.500728, 0.190381, -0.397618, 0.823997, 0.403645, 0.449515, 1.13444, 0.267902)
-
-[node name="Collision_LegRight" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.453314, 0.486024, 0.185392)
+[node name="Collision_V1_LegRight" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, 0.453314, 0.486024, 0.185392)
 shape = SubResource("CapsuleShape3D_3kibt")
 
-[node name="Collision_LegLeft" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.230226, 0.61232, 0.0353434)
+[node name="Collision_V1_LegLeft" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, -0.230226, 0.61232, 0.0353434)
 shape = SubResource("CapsuleShape3D_f5maj")
 
-[node name="Collision_ArmLeft" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(0.0981955, -0.0188975, -0.000720685, 2.24717e-12, -0.00381088, 0.0999274, -0.0189113, -0.0981243, -0.00374211, -0.586321, 1.35585, -0.666911)
+[node name="Collision_V1_ArmLeft" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.0981955, -0.0188975, -0.000720685, 0, -0.00381088, 0.0999274, -0.0189113, -0.0981243, -0.00374211, -0.586321, 1.35585, -0.666911)
 shape = SubResource("CapsuleShape3D_v6wbe")
 disabled = true
 
-[node name="Collision_ArmRight" type="CollisionShape3D" parent="Player"]
+[node name="Collision_V1_ArmRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.0959294, -0.0282334, -0.00065124, -0.000468328, -0.0038961, 0.099923, -0.028237, -0.0958525, -0.00386973, 0.406346, 1.14241, -0.754826)
 shape = SubResource("CapsuleShape3D_0yil0")
 disabled = true
 
-[node name="Collision_AlienBody" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.085939, 1.48907, 0.180266)
+[node name="Collision_V1_AlienBody" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, 0.085939, 1.48907, 0.180266)
 shape = SubResource("CapsuleShape3D_102ua")
 
 [node name="Debug" type="CanvasLayer" parent="."]
@@ -1888,7 +1875,4 @@ shape = SubResource("BoxShape3D_s8eah")
 
 [connection signal="timeout" from="UI_FX/Timer_FX_Flash" to="UI_FX" method="_on_timer_fx_flash_timeout"]
 
-[editable path="Main Menu/Menu Buttons/Button_Credits_01"]
-[editable path="Player/Alien"]
-[editable path="Player/Alien/HP_Head/SubViewport/HP_Bar"]
-[editable path="Player/Alien/HP_Empathy/SubViewport/HP_Bar"]
+[editable path="Main_Menu/Menu_Buttons/Button_Credits_01"]
