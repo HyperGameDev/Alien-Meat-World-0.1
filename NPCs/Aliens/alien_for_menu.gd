@@ -12,9 +12,15 @@ static var is_hoverable: bool = false
 @onready var area: Area3D = %Area3D
 @onready var animation_menu_alien: AnimationTree = $Alien/AnimationTree
 @onready var animation_exclaim: AnimationPlayer = $Alien/Alien_Exclaim/AnimationPlayer 
+@onready var animation_teleport: AnimationPlayer = $Orb/AnimationPlayer
+@onready var exclamation: MeshInstance3D = %Alien_Exclaim
+@onready var orb: MeshInstance3D = %Orb
+
+var was_chosen : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	orb.visible = false
 	area.add_to_group("Menu Alien")
 	
 	if is_visible:
@@ -36,6 +42,15 @@ func _ready() -> void:
 	Messenger.game_begin.connect(on_game_begin)
 	Messenger.attack_target.connect(am_i_hovered)
 
+
+func am_i_hovered(target):
+	if target == area:
+		if has_node("Marker3D"):
+			Messenger.something_hovered.emit(area)
+			if Input.is_action_just_pressed("Grab"):
+				was_chosen = true
+
+
 func on_game_menu():
 	is_visible = true
 	visible = true
@@ -46,20 +61,42 @@ func on_game_menu():
 func on_game_postmenu():
 	is_hoverable = false
 	area.set_collision_layer_value(15,false)
-	animation_menu_alien.set("parameters/Transition/transition_request", "stopping")
+	if !was_chosen:
+		animation_menu_alien.set("parameters/Transition/transition_request", "stopping")
+	else:
+		exclamation.visible = false
+		
 	
 	# TODO Make this an animation that runs a function at the end
 	animation_exclaim.play("exclaim_begin")
-	await get_tree().create_timer(1).timeout
-	animation_exclaim.play("exclaim_end")
+
+		
+func animation_exclaim_halfway():
+	if was_chosen:
+		orb.visible = true
+		animation_teleport.play("teleport")
+	
+		
+func animation_teleport_halfway():
+	if was_chosen:
+		animation_menu_alien.set("parameters/Transition/transition_request", "stopping")
+		
+func animation_teleport_liftoff():
+	if was_chosen:
+		animation_menu_alien.tree_root.get("nodes/Transition/node").xfade_time = 0.0
+		animation_menu_alien.set("parameters/Transition/transition_request", "teleporting")
+		
+func animation_teleport_ascent():
+		Messenger.swap_game_state.emit(Globals.is_game_states.PREBEGIN)
+
+func animation_teleport_finished():
+	if was_chosen:
+		print("Should be hidden")
+		visible = false
 	
 	
 func on_game_begin():
 	visible = false
 	is_visible = false
 
-func am_i_hovered(target):
-	if target == area:
-		if has_node("Marker3D"):
-			Messenger.something_hovered.emit(area)
 

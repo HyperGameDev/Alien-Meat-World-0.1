@@ -67,6 +67,8 @@ func _physics_process(_delta):
 	self.position += cam_direction * cam_lerpspeed
 	self.rotation = cam_target.rotation
 
+	#print("Cam Y: ", position.y, "; Offset Y: ", cam_y_offset)
+
 func on_grab_ended():
 	is_attempting_grab = false
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=109 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://main_scene.gd" id="1_fw7jj"]
@@ -36,6 +36,7 @@
 [ext_resource type="Animation" uid="uid://cfajlfyq1ba2s" path="res://UI/Powerups/Animations/hover_3.res" id="12_gh6mc"]
 [ext_resource type="Script" path="res://UI/HUD.gd" id="12_gi6vt"]
 [ext_resource type="PackedScene" uid="uid://cjvyodfle2c7n" path="res://UI/Menus/menu.tscn" id="14_eaktg"]
+[ext_resource type="Material" uid="uid://b6sjs7rd7u4iv" path="res://UI/Orbs/orb_texture_01.tres" id="21_glvus"]
 [ext_resource type="FontFile" uid="uid://cx2fw81sqeocp" path="res://UI/Fonts/Agrandir-TextBold.otf" id="22_3bjjk"]
 [ext_resource type="PackedScene" uid="uid://dxlg40tq3harq" path="res://Player/PlayerV2/alien_v2.tscn" id="30_sd4ur"]
 
@@ -254,46 +255,6 @@ dof_blur_amount = 1.0
 [sub_resource type="SphereMesh" id="SphereMesh_y8ywy"]
 radius = 0.8
 height = 1.6
-
-[sub_resource type="Gradient" id="Gradient_vglv7"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_u46gw"]
-gradient = SubResource("Gradient_vglv7")
-
-[sub_resource type="Gradient" id="Gradient_hps5a"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_tp42u"]
-gradient = SubResource("Gradient_hps5a")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fj4ut"]
-blend_mode = 3
-depth_draw_mode = 1
-diffuse_mode = 3
-specular_mode = 1
-disable_ambient_light = true
-albedo_color = Color(0.431373, 1, 0.419608, 0.537255)
-metallic = 0.35
-metallic_specular = 0.0
-roughness = 0.36
-emission_enabled = true
-emission = Color(0.862745, 0.862745, 0.862745, 1)
-emission_energy_multiplier = 0.09
-rim_enabled = true
-rim_tint = 0.0
-clearcoat_enabled = true
-clearcoat_roughness = 1.0
-anisotropy = 1.0
-ao_light_affect = 0.83
-ao_texture = SubResource("GradientTexture2D_u46gw")
-heightmap_scale = -2.7
-subsurf_scatter_strength = 0.8
-subsurf_scatter_skin_mode = true
-backlight_enabled = true
-backlight = Color(0.482353, 0.482353, 0.482353, 1)
-refraction_scale = 1.0
-refraction_texture = SubResource("GradientTexture2D_tp42u")
-detail_blend_mode = 1
-disable_receive_shadows = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_08qdd"]
 radius = 0.8
@@ -1338,7 +1299,7 @@ aabb = AABB(-0.781489, -1.07957, -1, 1.4077, 1.14254, 2)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ScoreDunk"]
 unique_name_in_owner = true
 mesh = SubResource("SphereMesh_y8ywy")
-surface_material_override/0 = SubResource("StandardMaterial3D_fj4ut")
+surface_material_override/0 = ExtResource("21_glvus")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ScoreDunk"]
 unique_name_in_owner = true
@@ -1383,7 +1344,7 @@ script = ExtResource("9_l1n0p")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_1"]
 mesh = SubResource("SphereMesh_5k002")
-surface_material_override/0 = SubResource("StandardMaterial3D_fj4ut")
+surface_material_override/0 = ExtResource("21_glvus")
 
 [node name="Icon" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_1/MeshInstance3D"]
 transform = Transform3D(0.325, 0, 0, 0, -1.42062e-08, -0.325, 0, 0.325, -1.42062e-08, 0, 0, 0)
@@ -1410,7 +1371,7 @@ is_type = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_2"]
 mesh = SubResource("SphereMesh_5k002")
-surface_material_override/0 = SubResource("StandardMaterial3D_fj4ut")
+surface_material_override/0 = ExtResource("21_glvus")
 
 [node name="Icon" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_2/MeshInstance3D"]
 transform = Transform3D(0.325, 0, 0, 0, -1.42062e-08, -0.325, 0, 0.325, -1.42062e-08, 0, 0, 0)
@@ -1437,7 +1398,7 @@ is_type = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_3"]
 mesh = SubResource("SphereMesh_5k002")
-surface_material_override/0 = SubResource("StandardMaterial3D_fj4ut")
+surface_material_override/0 = ExtResource("21_glvus")
 
 [node name="Icon" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_3/MeshInstance3D"]
 transform = Transform3D(0.325, 0, 0, 0, -1.42062e-08, -0.325, 0, 0.325, -1.42062e-08, 0, 0, 0)

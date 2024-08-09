@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://cu6g2i3jshy23"]
+[gd_scene load_steps=28 format=3 uid="uid://cu6g2i3jshy23"]
 
 [ext_resource type="PackedScene" uid="uid://sinmj7kc41ys" path="res://Player/PlayerV2/Alien_head-body_v2_lowpoly.blend" id="1_br7x4"]
 [ext_resource type="Script" path="res://NPCs/Aliens/alien_for_menu.gd" id="2_thfq0"]
 [ext_resource type="Material" uid="uid://c7geoa58ckfal" path="res://Player/textures/alien_mouth_01.tres" id="3_5l7rc"]
 [ext_resource type="Material" uid="uid://blqytdo38ks5j" path="res://Player/PlayerV2/textures/alien_menu_skin.tres" id="3_d0j0y"]
 [ext_resource type="Material" uid="uid://ctrq3rqbk526b" path="res://Player/textures/alien_teeth_01.tres" id="4_yigq1"]
+[ext_resource type="Material" uid="uid://c76v4xp5gpcuv" path="res://UI/Orbs/orb_texture_01_alien-planet.tres" id="6_8xb0u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ye5re"]
 size = Vector3(0.75, 1, 0.675)
@@ -57,17 +58,37 @@ tracks/0/keys = {
 "values": [Vector3(0, 0.33, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_pumuc"]
+resource_name = "teleporr"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Alien:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 18.75, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v31q7"]
 _data = {
 "RESET": SubResource("Animation_3mqgr"),
 "bounce": SubResource("Animation_gigg3"),
-"stop_moving": SubResource("Animation_d3i4t")
+"stop_moving": SubResource("Animation_d3i4t"),
+"teleport": SubResource("Animation_pumuc")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pvcw2"]
+animation = &"teleport"
 
 [sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_kji5o"]
 
 [sub_resource type="Curve" id="Curve_41j1f"]
-_data = [Vector2(0, 0.00738919), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_w62jl"]
@@ -79,6 +100,9 @@ input_0/reset = true
 input_1/name = "stopping"
 input_1/auto_advance = false
 input_1/reset = true
+input_2/name = "teleporting"
+input_2/auto_advance = false
+input_2/reset = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lfdgt"]
 animation = &"bounce"
@@ -87,16 +111,19 @@ animation = &"bounce"
 animation = &"stop_moving"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_no2jd"]
+graph_offset = Vector2(-53, 63)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_pvcw2")
+nodes/Animation/position = Vector2(300, 360)
 nodes/TimeSeek/node = SubResource("AnimationNodeTimeSeek_kji5o")
-nodes/TimeSeek/position = Vector2(360, 60)
+nodes/TimeSeek/position = Vector2(380, 80)
 nodes/Transition/node = SubResource("AnimationNodeTransition_w62jl")
-nodes/Transition/position = Vector2(540, 60)
+nodes/Transition/position = Vector2(560, 140)
 nodes/bouncing/node = SubResource("AnimationNodeAnimation_lfdgt")
 nodes/bouncing/position = Vector2(180, 80)
 nodes/output/position = Vector2(760, 140)
 nodes/stopping/node = SubResource("AnimationNodeAnimation_x3r5k")
-nodes/stopping/position = Vector2(320, 240)
-node_connections = [&"TimeSeek", 0, &"bouncing", &"Transition", 0, &"TimeSeek", &"Transition", 1, &"stopping", &"output", 0, &"Transition"]
+nodes/stopping/position = Vector2(260, 220)
+node_connections = [&"TimeSeek", 0, &"bouncing", &"Transition", 0, &"TimeSeek", &"Transition", 1, &"stopping", &"Transition", 2, &"Animation", &"output", 0, &"Transition"]
 
 [sub_resource type="Animation" id="Animation_crecq"]
 length = 0.001
@@ -127,6 +154,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_54w0g"]
 resource_name = "exclaim"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -134,10 +162,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(0.5, 1),
+"times": PackedFloat32Array(0, 0.15, 1.2, 1.4),
+"transitions": PackedFloat32Array(0.5, 1, 1, 0.5),
 "update": 0,
-"values": [Vector3(6.55671e-09, 1.54654, -0.075), Vector3(0, 2.29654, 0)]
+"values": [Vector3(6.55671e-09, 1.54654, -0.075), Vector3(0, 2.29654, 0), Vector3(0, 2.29654, 0), Vector3(6.55671e-09, 1.54654, -0.075)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -146,10 +174,24 @@ tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(0.5, 1),
+"times": PackedFloat32Array(0, 0.15, 1.2, 1.4),
+"transitions": PackedFloat32Array(0.5, 1, 1, 0.5),
 "update": 0,
-"values": [Vector3(0.335, 0.335, 0.335), Vector3(1, 1, 1)]
+"values": [Vector3(0.335, 0.335, 0.335), Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0.335, 0.335, 0.335)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"animation_exclaim_halfway"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_8p605"]
@@ -186,12 +228,74 @@ _data = {
 "exclaim_end": SubResource("Animation_8p605")
 }
 
+[sub_resource type="SphereMesh" id="SphereMesh_mt4uq"]
+radius = 0.7
+height = 1.4
+
+[sub_resource type="Animation" id="Animation_2oalq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 20, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5fck1"]
+resource_name = "descend"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.7, 2.3, 4),
+"transitions": PackedFloat32Array(0.5, 1, 2, 0.5),
+"update": 0,
+"values": [Vector3(0, 5, 0), Vector3(0, 1.35, 0), Vector3(0, 1.35, 0), Vector3(0, 20, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.7, 2.3, 3.4, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"animation_teleport_halfway"
+}, {
+"args": [],
+"method": &"animation_teleport_liftoff"
+}, {
+"args": [],
+"method": &"animation_teleport_ascent"
+}, {
+"args": [],
+"method": &"animation_teleport_finished"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ogiek"]
+_data = {
+"RESET": SubResource("Animation_2oalq"),
+"teleport": SubResource("Animation_5fck1")
+}
+
 [node name="alien_for_menu_01_00" instance=ExtResource("1_br7x4")]
 script = ExtResource("2_thfq0")
 
-[node name="Alien_Exclaim#AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
-
-[node name="Area3D" type="Area3D" parent="." index="1"]
+[node name="Area3D" type="Area3D" parent="." index="0"]
 unique_name_in_owner = true
 collision_layer = 16384
 collision_mask = 0
@@ -200,7 +304,7 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
 shape = SubResource("BoxShape3D_ye5re")
 
-[node name="Alien" parent="." index="2"]
+[node name="Alien" parent="." index="1"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 lod_bias = 10.0
 surface_material_override/0 = ExtResource("3_d0j0y")
@@ -221,11 +325,12 @@ libraries = {
 tree_root = SubResource("AnimationNodeBlendTree_no2jd")
 anim_player = NodePath("../AnimationPlayer")
 parameters/TimeSeek/seek_request = -1.0
-parameters/Transition/current_state = "bouncing"
+parameters/Transition/current_state = "stopping"
 parameters/Transition/transition_request = ""
-parameters/Transition/current_index = 0
+parameters/Transition/current_index = 1
 
 [node name="Alien_Exclaim" parent="Alien" index="2"]
+unique_name_in_owner = true
 transform = Transform3D(0.335, 0, 0, 0, 0.335, 0, 0, 0, 0.335, 6.55671e-09, 1.54654, -0.075)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Alien/Alien_Exclaim" index="0"]
@@ -233,5 +338,16 @@ libraries = {
 "": SubResource("AnimationLibrary_otltl")
 }
 
-[node name="Marker3D" type="Marker3D" parent="." index="3"]
+[node name="Marker3D" type="Marker3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+
+[node name="Orb" type="MeshInstance3D" parent="." index="3"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+mesh = SubResource("SphereMesh_mt4uq")
+surface_material_override/0 = ExtResource("6_8xb0u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Orb" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_ogiek")
+}

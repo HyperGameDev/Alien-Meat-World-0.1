@@ -1,5 +1,7 @@
 extends Node
 
+## Search files for swap_game_state to find other transition points between states
+
 @onready var blackout: Panel = get_tree().current_scene.get_node("%Blackout_BG")
 @onready var sun: DirectionalLight3D = get_tree().current_scene.get_node("%DirectionalLight3D")
 @onready var terrain_controller: Node3D = get_tree().current_scene.get_node("%TerrainController_inScene")
@@ -24,6 +26,9 @@ func on_swap_game_state(game_state):
 		Globals.is_game_states.POSTMENU:
 			on_game_state_postmenu()
 			
+		Globals.is_game_states.PREBEGIN:
+			on_game_state_prebegin()
+			
 		Globals.is_game_states.BEGIN:
 			on_game_state_begin()
 			
@@ -45,15 +50,25 @@ func on_game_state_intro():
 	# CONSIDER refactoring these tweens into an animationplayer!
 	var tween_fadeout = get_tree().create_tween();
 	tween_fadeout.tween_property(blackout, "self_modulate", Color(1.0, 1.0, 1.0, 1.0), 1.0)
-	await get_tree().create_timer(1).timeout
+	
+	await tween_fadeout.finished
 	var tween_fadein = get_tree().create_tween();
 	tween_fadein.tween_property(blackout, "self_modulate", Color(1.0,1.0,1.0,.0), 0.1)
 	
 	
 func on_game_state_menu():
-	Messenger.game_menu.emit()
+	var tween_fadeout = get_tree().create_tween();
+	tween_fadeout.tween_property(blackout, "self_modulate", Color(1.0, 1.0, 1.0, 1.0), .6)
+	
+	await tween_fadeout.finished
+	
 	main_menu.visible = true
 	terrain_controller.terrain_velocity = 6.5
+	
+	var tween_fadein = get_tree().create_tween();
+	tween_fadein.tween_property(blackout, "self_modulate", Color(1.0,1.0,1.0,.0), 1.0)
+	
+	Messenger.game_menu.emit()
 	
 	camera.cam_y_offset = main_menu.menu_cam_pos_y
 
@@ -67,9 +82,26 @@ func on_game_state_postmenu():
 	main_menu.animation.play("menu_exit")
 	terrain_controller.terrain_velocity = 0.0
 	Messenger.game_postmenu.emit()
+	
+func on_game_state_prebegin():
+	camera.cam_y_offset += 6.0
+	var tween_fadeout = get_tree().create_tween();
+	tween_fadeout.tween_property(blackout, "self_modulate", Color(1.0, 1.0, 1.0, 1.0), .3)
+	
+	await tween_fadeout.finished
+	camera.cam_y_offset += 20.0
+	
+	await get_tree().create_timer(2.0).timeout
+	cam_target.rotation.y = cam_target.ROTATION_Y
+	cam_target.rotation.x = deg_to_rad(cam_target.ROTATION_X)
+	camera.cam_x_offset = camera.CAM_X_OFFSET
+	camera.cam_y_offset -= camera.cam_y_offset - camera.CAM_Y_OFFSET
+	Messenger.swap_game_state.emit(Globals.is_game_states.BEGIN)
+	
+	var tween_fadein = get_tree().create_tween();
+	tween_fadein.tween_property(blackout, "self_modulate", Color(1.0,1.0,1.0,.0), .6)
 
 func on_game_state_begin():
 	Messenger.game_begin.emit()
 	terrain_controller.terrain_velocity = terrain_controller.TERRAIN_VELOCITY
-	camera.cam_x_offset = camera.CAM_X_OFFSET
-	camera.cam_y_offset = camera.CAM_Y_OFFSET
+	#camera.cam_y_offset = camera.CAM_Y_OFFSET

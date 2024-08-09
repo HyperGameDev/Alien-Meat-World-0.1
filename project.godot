@@ -47,6 +47,11 @@ folder_colors={
 "res://Terrain/terrain_level_12/": "purple"
 }
 
+[gui]
+
+theme/warnings/inferred_declaration=0
+theme/warnings/untyped_declaration=0
+
 [input]
 
 ui_left={

@@ -34,7 +34,7 @@ var dunk_ascent_timer_duration: float = 2.0
 
 func _ready():
 	set_collision_mask_value(4, true)
-	
+	visible = false
 	$VisibleOnScreenNotifier3D.screen_exited.connect(on_screen_exited)
 	body_entered.connect(on_body_entered)
 	body_exited.connect(on_body_exited)
@@ -106,11 +106,16 @@ func on_screen_exited():
 		for meat in get_tree().get_nodes_in_group("Dunked"):
 			meat.queue_free()
 			
+		
+		visible = false
+		
 		# Does this do anything useful? I added it because it makes sense, but it seems to work without it...
 		dunked_meat = null
+
 			
 
 func on_grab_begun():
+	visible = true
 	is_grabbing = true
 #	collision.disabled = false
 	

@@ -63,10 +63,10 @@ func _process(delta):
 		
 func on_game_postmenu():
 	await get_tree().create_timer(1).timeout
-	animation_loading.play("loading_text")
-	loading_text.visible = true
-	await get_tree().create_timer(.6).timeout
-	Messenger.swap_game_state.emit(Globals.is_game_states.BEGIN)
+	#animation_loading.play("loading_text")
+	#loading_text.visible = true
+	#await get_tree().create_timer(.6).timeout
+	#Messenger.swap_game_state.emit(Globals.is_game_states.BEGIN)
 		
 func on_game_begin():
 	Messenger.level_update.emit(1)
