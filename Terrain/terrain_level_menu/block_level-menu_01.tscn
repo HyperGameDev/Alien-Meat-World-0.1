@@ -12,6 +12,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_5kgoc")
 is_type = 3
 
 [node name="grass_plane_01-01_00" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 visible = false
 
 [node name="alien_for_menu_01_06" parent="." index="5" instance=ExtResource("2_fcdqx")]

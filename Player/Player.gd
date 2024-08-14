@@ -45,6 +45,7 @@ func _ready():
 	Messenger.something_attacked.connect(do_grab)
 	Messenger.level_update.connect(on_level_update)
 	Messenger.game_begin.connect(on_game_begin)
+	Messenger.game_play.connect(on_game_play)
 
 #	print("Elbow L:", arm_l_rotation.x)
 #	print("Elbow R:", arm_r_rotation.x)
@@ -216,6 +217,8 @@ func on_level_update(level):
 
 func on_game_begin():
 	self.visible = true
+	
+func on_game_play():
 	controls_locked = false
 	
 func on_swap_player():

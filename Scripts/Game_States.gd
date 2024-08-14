@@ -11,6 +11,8 @@ extends Node
 
 func _ready() -> void:
 	Messenger.swap_game_state.connect(on_swap_game_state)
+	
+	Messenger.swap_game_state.emit(Globals.is_game_states.PREINTRO)
 
 func on_swap_game_state(game_state):
 	match game_state:
@@ -31,6 +33,12 @@ func on_swap_game_state(game_state):
 			
 		Globals.is_game_states.BEGIN:
 			on_game_state_begin()
+			
+		Globals.is_game_states.PLAY:
+			on_game_state_play()
+		
+		Globals.is_game_states.PAUSE:
+			on_game_state_pause()
 			
 		_:
 			pass
@@ -103,5 +111,13 @@ func on_game_state_prebegin():
 
 func on_game_state_begin():
 	Messenger.game_begin.emit()
-	terrain_controller.terrain_velocity = terrain_controller.TERRAIN_VELOCITY
+	Messenger.level_update.emit(1)
+	
 	#camera.cam_y_offset = camera.CAM_Y_OFFSET
+	
+func on_game_state_play():
+	Messenger.game_play.emit()
+	terrain_controller.terrain_velocity = terrain_controller.TERRAIN_VELOCITY
+
+func on_game_state_pause():
+	pass

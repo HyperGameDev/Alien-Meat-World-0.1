@@ -242,6 +242,22 @@ theme_override_font_sizes/font_size = 31
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Begin"
 
+[node name="Button_State_Play" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Play"
+
+[node name="Button_State_Pause" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Pause"
+
 [node name="VBox_5" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
 layout_mode = 2
 

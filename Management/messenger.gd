@@ -9,6 +9,8 @@ signal game_menu # Main Menu
 signal game_postmenu # Teleporting to earth
 signal game_prebegin
 signal game_begin
+signal game_play
+signal game_pause
 
 signal game_over
 

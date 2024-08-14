@@ -1283,7 +1283,6 @@ script = ExtResource("4_0jb24")
 
 [node name="TerrainController_inScene" parent="." instance=ExtResource("6_ywiix")]
 unique_name_in_owner = true
-is_level_type = 1
 
 [node name="ScoreDunk" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.54315, 0.166246)
@@ -1369,15 +1368,14 @@ collision_mask = 0
 script = ExtResource("9_l1n0p")
 is_type = 1
 
+[node name="Icon" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_2"]
+transform = Transform3D(0.325, 0, 0, 0, -1.42062e-08, -0.325, 0, 0.325, -1.42062e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_pqt4u")
+surface_material_override/0 = SubResource("StandardMaterial3D_5ujhk")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_2"]
 mesh = SubResource("SphereMesh_5k002")
 surface_material_override/0 = ExtResource("21_glvus")
-
-[node name="Icon" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_2/MeshInstance3D"]
-transform = Transform3D(0.325, 0, 0, 0, -1.42062e-08, -0.325, 0, 0.325, -1.42062e-08, 0, 0, 0)
-mesh = SubResource("PlaneMesh_pqt4u")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_5ujhk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PowerUp_Menu/PowerUp_Orb_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271964, 0, -0.00519168)

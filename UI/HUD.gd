@@ -69,7 +69,6 @@ func on_game_postmenu():
 	#Messenger.swap_game_state.emit(Globals.is_game_states.BEGIN)
 		
 func on_game_begin():
-	Messenger.level_update.emit(1)
 	score_minimum_text_update()
 	score_minimum_play_animation()
 	container_score.visible = true

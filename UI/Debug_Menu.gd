@@ -21,6 +21,8 @@ func _ready():
 	%Button_State_PostMenu.pressed.connect(on_state_PostMenu)
 	%Button_State_PreBegin.pressed.connect(on_state_PreBegin)
 	%Button_State_Begin.pressed.connect(on_state_Begin)
+	%Button_State_Play.pressed.connect(on_state_Play)
+	%Button_State_Pause.pressed.connect(on_state_Pause)
 	%Button_Cutscene.pressed.connect(on_Cutscene)
 	%Button_Menu.pressed.connect(on_Menu)
 	%Button_Game.pressed.connect(on_Game)
@@ -109,3 +111,9 @@ func on_state_PreBegin():
 
 func on_state_Begin():
 	Messenger.swap_game_state.emit(Globals.is_game_states.BEGIN)
+	
+func on_state_Play():
+	Messenger.swap_game_state.emit(Globals.is_game_states.PLAY)
+	
+func on_state_Pause():
+	Messenger.swap_game_state.emit(Globals.is_game_states.PAUSE)

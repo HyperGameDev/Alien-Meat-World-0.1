@@ -12,13 +12,12 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = false
-	Messenger.swap_game_state.emit(Globals.is_game_states.PREINTRO)
 
 
 func _input(event):
 	if event is InputEventKey and Globals.is_game_state == Globals.is_game_states.INTRO:
 		if event.pressed:	
 			Messenger.swap_game_state.emit(Globals.is_game_states.MENU)
-	
+
 func menu_flyaway_over():
 	visible = false

@@ -1,7 +1,7 @@
 extends Node3D
 
 enum level_type {DEBUG, GAME}
-@export var is_level_type: level_type = 12
+@export var is_level_type: level_type = 1
 
 @onready var collector_safes := %Collector_Safes
 @onready var collector_obstacles := %Collector_Obstacles
@@ -193,14 +193,17 @@ func chunks_update(num_terrain_chunks: int) -> void:
 	#endregion
 		
 	#region Add MENU files to a collector
-	var dir_menu = DirAccess.open(chunks_path_menu)
-	for menu_path in dir_menu.get_files():
-		Chunks_Menu.append(load(chunks_path_menu + "/" + menu_path.trim_suffix(".remap")))
-		
-	# GETTING AN ERROR? You probably added a non-scene file into your level folder. You're welcome.
-	for LevelChunk in Chunks_Menu:
-		var chunk =  LevelChunk.instantiate()
-		collector_menu.add_child(chunk)
+	if !first_chunks_loaded:
+		var dir_menu = DirAccess.open(chunks_path_menu)
+		for menu_path in dir_menu.get_files():
+			Chunks_Menu.append(load(chunks_path_menu + "/" + menu_path.trim_suffix(".remap")))
+			
+		# GETTING AN ERROR? You probably added a non-scene file into your level folder. You're welcome.
+		for LevelChunk in Chunks_Menu:
+			var chunk =  LevelChunk.instantiate()
+			collector_menu.add_child(chunk)
+	else:
+		pass
 	
 	#endregion
 		
@@ -260,7 +263,7 @@ func _progress_terrain(delta: float, level_type) -> void:
 		
 		#region Print Chunk info: 1st Popped
 		#print("1st popped: ",first_terrain,"; chunk_to_add: ",chunk_to_add)
-		#print_rich("[font size=15][color=red][b]First popped: [/b][/color]",first_terrain,"; \n \t[i]pos:[/i] ",first_terrain.position,"; \n \t[i]level:[/i] ",first_terrain.is_level,"; \n \t[i]parent:[/i] ",first_terrain.get_parent(),"\n")
+		print_rich("[font size=15][color=red][b]First popped: [/b][/color]",first_terrain,"; \n \t[i]pos:[/i] ",first_terrain.position,"; \n \t[i]level:[/i] ",first_terrain.is_level,"; \n \t[i]parent:[/i] ",first_terrain.get_parent(),"\n")
 		#endregion
 		
 		# Delete old level chunks
@@ -273,7 +276,6 @@ func _progress_terrain(delta: float, level_type) -> void:
 
 				first_terrain.reparent(collector_safes)
 				first_terrain.position.z = 0.0
-				
 				if first_terrain.has_method("reset_block_objects"):
 					first_terrain.reset_block_objects()
 
@@ -293,7 +295,6 @@ func _progress_terrain(delta: float, level_type) -> void:
 			if first_terrain.is_type == Block.is_types.MENU:
 				first_terrain.reparent(collector_menu)
 				first_terrain.position.z = 0.0
-
 				if first_terrain.has_method("reset_block_objects"):
 					first_terrain.reset_block_objects()
 
@@ -322,10 +323,13 @@ func _progress_terrain(delta: float, level_type) -> void:
 					#print("MENU")
 		
 
-		# Choose a chunk to add in to the level
-		chunk_add.reparent(self) 
+		# Add the randomly chosen chunk into the level
+		if Globals.is_game_state >= 5: # Added to eliminate chunk_add as a cause for the too-many-chunks-at-start-sometimes-bug
+			chunk_add.reparent(self) 
+		else:
+			first_terrain.reparent(self)
 		#region Print Chunk info: Last Added
-		#print_rich("[font size=15][color=green][b]Last added: [/b][/color]",chunk_add,"; \n \t[i]pos:[/i] ",chunk_add.position,"; \n \t[i]level:[/i] ",chunk_add.is_level,"; \n \t[i]parent:[/i] ",chunk_add.get_parent(),"\n")
+		print_rich("[font size=15][color=green][b]Last added: [/b][/color]",chunk_add,"; \n \t[i]pos:[/i] ",chunk_add.position,"; \n \t[i]level:[/i] ",chunk_add.is_level,"; \n \t[i]parent:[/i] ",chunk_add.get_parent(),"\n")
 		
 		#endregion
 		
@@ -439,8 +443,15 @@ func on_level_update(level):
 	chunks_path_obstacles = Globals.current_obstacle_chunks
 	chunks_path_points = Globals.current_points_chunks
 	
+	# This should be unnecessary
+	#chunks_path_menu = Globals.current_menu_chunks
+	
+	
 	Chunks_Safes.clear()
 	Chunks_Obstacles.clear()
 	Chunks_Points.clear()
+	
+	# This should be unnecessary
+	#Chunks_Menu.clear()
 	
 	chunks_update(num_terrain_chunks)
