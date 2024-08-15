@@ -14,9 +14,10 @@ const BOUNDARY_DISTANCE : int = 30
 @onready var skeleton: Skeleton3D = get_node("Alien_V1/Alien/Armature/Skeleton3D")
 @onready var terrain_controller = %TerrainController_inScene
 
-@onready var orb: MeshInstance3D = get_node("Alien_V1/Alien/Orb_New-Game-Teleporter")
-@onready var orb_animation: AnimationPlayer = get_node("Alien_V1/Alien/Orb_New-Game-Teleporter/AnimationPlayer")
+@onready var mesh_orb: MeshInstance3D = get_node("Alien_V1/Alien/Orb_New-Game-Teleporter")
+@onready var animation_orb: AnimationPlayer = get_node("Alien_V1/Alien/Orb_New-Game-Teleporter/AnimationPlayer")
 var orb_onscreen = false
+@onready var animation_armature: AnimationPlayer = get_node("Alien_V1/Alien/Armature/AnimationPlayer")
 
 var terrain_slowdown = false
 
@@ -63,7 +64,7 @@ func _ready():
 	on_level_update(Globals.level_current)
 	set_max_slides(20)
 	
-	orb.visible = false
+	mesh_orb.visible = false
 
 	
 func _physics_process(delta):
@@ -234,8 +235,10 @@ func on_game_begin():
 func new_game_teleport():
 	if camera.position.y <= 30.0:
 		teleported = true
-		orb.visible = true
-		orb_animation.play("teleport")
+		mesh_orb.visible = true
+		animation_orb.play("teleport")
+		animation_armature.play("teleport")
+		
 
 func on_game_play():
 	controls_locked = false

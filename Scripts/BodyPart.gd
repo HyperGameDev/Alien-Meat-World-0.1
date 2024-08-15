@@ -263,3 +263,6 @@ func on_transform():
 func on_game_prebegin():
 	if is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
 		collision.set_deferred("disabled", true)
+		mesh.visible = false
+	if is_part == BodyPart.is_parts.ARM_L or is_part == BodyPart.is_parts.ARM_R:
+		mesh.visible = false

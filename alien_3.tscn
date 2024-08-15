@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://c1q8m4i26u6vr"]
+[gd_scene load_steps=64 format=3 uid="uid://c1q8m4i26u6vr"]
 
 [ext_resource type="PackedScene" uid="uid://diukxh5eov8fo" path="res://Player/Alien_3.blend" id="1_p4qsu"]
 [ext_resource type="Animation" uid="uid://d0dlpska7au7x" path="res://Player/Animations/Run_Blndr_1.res" id="2_2sg84"]
@@ -18,6 +18,7 @@
 [ext_resource type="Material" uid="uid://ctrq3rqbk526b" path="res://Player/textures/alien_teeth_01.tres" id="16_luf2d"]
 [ext_resource type="Material" uid="uid://b6sjs7rd7u4iv" path="res://UI/Orbs/orb_texture_01.tres" id="17_s6dlm"]
 [ext_resource type="Script" path="res://Orb_New-Game-Teleporter.gd" id="18_h2j76"]
+[ext_resource type="Animation" uid="uid://lrcqe00dtq51" path="res://Player/Animations/teleport.res" id="19_vvk7g"]
 
 [sub_resource type="Animation" id="Animation_bx7n0"]
 resource_name = "Feed_Walk_1"
@@ -1205,6 +1206,9 @@ tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = PackedFloat32Array(0.2, 1, -0.707107, 0, 0, 0.707107)
 
+[sub_resource type="Animation" id="Animation_m77ld"]
+resource_name = "blank"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c7iwo"]
 _data = {
 "Feed_Walk_1": SubResource("Animation_bx7n0"),
@@ -1220,8 +1224,16 @@ _data = {
 "Swipe_R-Arm": SubResource("Animation_nm2x0"),
 "Walk_1": SubResource("Animation_01jtj"),
 "Walk_1_Grab": SubResource("Animation_7w1n6"),
-"Walk_2": ExtResource("3_qg7ll")
+"Walk_2": ExtResource("3_qg7ll"),
+"blank": SubResource("Animation_m77ld")
 }
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_run1o"]
+filter_enabled = true
+filters = [".", ".:position", ".:rotation", "Skeleton3D:ArmL", "Skeleton3D:ArmR", "Skeleton3D:ElbowL", "Skeleton3D:ElbowR", "Skeleton3D:FootL", "Skeleton3D:FootR", "Skeleton3D:HandL", "Skeleton3D:HandR", "Skeleton3D:KneeL", "Skeleton3D:KneeR", "Skeleton3D:LegL", "Skeleton3D:LegR", "Skeleton3D:Root", "Skeleton3D:ThighL", "Skeleton3D:ThighR", "Skeleton3D:neutral_bone"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jdjpt"]
+animation = &"blank"
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_8iwoq"]
 
@@ -1238,7 +1250,7 @@ fadeout_curve = SubResource("Curve_wu7uv")
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_di8pp"]
 animation = &"Reach_2"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1v5cn"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jrexy"]
 animation = &"Run_2"
 
 [sub_resource type="Curve" id="Curve_eway4"]
@@ -1255,24 +1267,29 @@ input_1/name = "running"
 input_1/auto_advance = false
 input_1/reset = true
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kf68q"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y3xh1"]
 animation = &"Walk_2"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_epmww"]
+graph_offset = Vector2(-142.392, -172.722)
+"nodes/Add2 3/node" = SubResource("AnimationNodeAdd2_run1o")
+"nodes/Add2 3/position" = Vector2(960, -180)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_jdjpt")
+"nodes/Animation 3/position" = Vector2(800, -180)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_8iwoq")
-nodes/TimeScale/position = Vector2(260, 160)
-nodes/output/position = Vector2(840, -20)
+nodes/TimeScale/position = Vector2(360, 100)
+nodes/output/position = Vector2(1140, 0)
 nodes/reach/node = SubResource("AnimationNodeOneShot_d6ox5")
-nodes/reach/position = Vector2(660, -20)
+nodes/reach/position = Vector2(800, -20)
 nodes/reaching/node = SubResource("AnimationNodeAnimation_di8pp")
-nodes/reaching/position = Vector2(460, 200)
-nodes/running/node = SubResource("AnimationNodeAnimation_1v5cn")
-nodes/running/position = Vector2(100, 180)
+nodes/reaching/position = Vector2(600, 140)
+nodes/running/node = SubResource("AnimationNodeAnimation_jrexy")
+nodes/running/position = Vector2(180, 120)
 "nodes/walk to run/node" = SubResource("AnimationNodeTransition_se77x")
-"nodes/walk to run/position" = Vector2(460, 20)
-nodes/walking/node = SubResource("AnimationNodeAnimation_kf68q")
-nodes/walking/position = Vector2(260, 40)
-node_connections = [&"TimeScale", 0, &"running", &"output", 0, &"reach", &"reach", 0, &"walk to run", &"reach", 1, &"reaching", &"walk to run", 0, &"walking", &"walk to run", 1, &"TimeScale"]
+"nodes/walk to run/position" = Vector2(600, -40)
+nodes/walking/node = SubResource("AnimationNodeAnimation_y3xh1")
+nodes/walking/position = Vector2(360, -60)
+node_connections = [&"Add2 3", 0, &"Animation 3", &"Add2 3", 1, &"reach", &"TimeScale", 0, &"running", &"output", 0, &"Add2 3", &"reach", 0, &"walk to run", &"reach", 1, &"reaching", &"walk to run", 0, &"walking", &"walk to run", 1, &"TimeScale"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_bk7ge"]
 viewport_path = NodePath("HP_Head/SubViewport")
@@ -1422,6 +1439,31 @@ albedo_color = Color(0.682353, 0.0196078, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xcuby"]
 size = Vector3(0.195, 35.13, 1)
+
+[sub_resource type="Animation" id="Animation_eas3c"]
+resource_name = "RESET"
+
+[sub_resource type="Animation" id="Animation_is45n"]
+resource_name = "descend"
+length = 4.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Orb_New-Game-Teleporter/../Armature:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.7),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 28.725, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gck2m"]
+_data = {
+"RESET": SubResource("Animation_eas3c"),
+"teleport": SubResource("Animation_is45n")
+}
 
 [sub_resource type="Animation" id="Animation_vl1u3"]
 resource_name = "RunVsWalk_dope -noimp"
@@ -1601,65 +1643,11 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 30, 0)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("%Orb_New-Game-Teleporter/../Armature:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 28.725, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_qsunm"]
-resource_name = "descend"
-length = 6.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3.7, 4.3, 6),
-"transitions": PackedFloat32Array(0.5, 1, 2, 0.5),
-"update": 0,
-"values": [Vector3(0, 30, 0), Vector3(0, 1.35, 0), Vector3(0, 1.35, 0), Vector3(0, 20, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(4.8),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"animation_teleport_finished"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("%Orb_New-Game-Teleporter/../Armature:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 3.7),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector3(0, 28.725, 0), Vector3(0, 0, 0)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g0os0"]
 _data = {
 "RESET": SubResource("Animation_54sl3"),
-"teleport": SubResource("Animation_qsunm")
+"teleport": ExtResource("19_vvk7g")
 }
 
 [node name="Alien_3" instance=ExtResource("1_p4qsu")]
@@ -1672,13 +1660,14 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeBlendTree_epmww")
 anim_player = NodePath("../Animation_Alien")
+"parameters/Add2 3/add_amount" = 1.0
 parameters/TimeScale/scale = 1.3
 parameters/reach/active = false
 parameters/reach/internal_active = false
 parameters/reach/request = 0
-"parameters/walk to run/current_state" = "walking"
+"parameters/walk to run/current_state" = "running"
 "parameters/walk to run/transition_request" = ""
-"parameters/walk to run/current_index" = 0
+"parameters/walk to run/current_index" = 1
 
 [node name="Animation_Alien" type="AnimationPlayer" parent="." index="1"]
 root_node = NodePath("../Armature")
@@ -1731,7 +1720,7 @@ transparent_bg = true
 theme_override_styles/fill = ExtResource("5_k8xva")
 
 [node name="Armature" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 28.725, 0)
+transform = Transform3D(1, 0, 0, 0, 0.931019, 0.364965, 0, -0.364965, 0.931019, 0, 0.179347, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 0, 0)
@@ -1763,7 +1752,6 @@ bones/16/scale = Vector3(1, 1, 1)
 
 [node name="Alien_ArmL" parent="Armature/Skeleton3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 2.98023e-08, 0, -2.98023e-08, 0.999999, -0.012302, -0.00403788, -0.00123134)
-visible = false
 surface_material_override/0 = ExtResource("11_cui7w")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_ArmL" index="0" groups=["Dmg_Labels_Player"]]
@@ -1779,7 +1767,6 @@ outline_size = 30
 
 [node name="Alien_ArmR" parent="Armature/Skeleton3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 3.55271e-15, 1, 0.00129759, 0, 0)
-visible = false
 surface_material_override/0 = ExtResource("11_cui7w")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_ArmR" index="0" groups=["Dmg_Labels_Player"]]
@@ -1825,7 +1812,6 @@ font_size = 35
 outline_size = 30
 
 [node name="Alien_LegL" parent="Armature/Skeleton3D" index="6"]
-visible = false
 surface_material_override/0 = ExtResource("11_cui7w")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegL" index="0" groups=["Dmg_Labels_Player"]]
@@ -1839,7 +1825,6 @@ font_size = 35
 outline_size = 30
 
 [node name="Alien_LegR" parent="Armature/Skeleton3D" index="7"]
-visible = false
 surface_material_override/0 = ExtResource("11_cui7w")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegR" index="0" groups=["Dmg_Labels_Player"]]
@@ -1853,7 +1838,7 @@ font_size = 35
 outline_size = 30
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.121353, 0.991606, -0.0446263, -0.963387, -0.12849, -0.235322, -0.239081, 0.0144352, 0.970892, 0.449515, 1.13444, 0.267902)
+transform = Transform3D(-0.616897, 0.663654, 0.423086, -0.783981, -0.470778, -0.404651, -0.0693692, -0.58132, 0.810713, 0.449515, 1.13444, 0.267902)
 visible = false
 bone_name = "ElbowR"
 bone_idx = 7
@@ -1862,6 +1847,11 @@ bone_idx = 7
 transform = Transform3D(0.999999, 4.09782e-08, 1.49012e-07, 8.3819e-08, 0.999999, -3.91155e-08, 0, -1.86265e-09, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_xcuby")
 skeleton = NodePath("../../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Armature" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_gck2m")
+}
 
 [node name="AnimationPlayer" parent="." index="5"]
 libraries = {
