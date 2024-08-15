@@ -344,6 +344,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 [node name="Orb" type="MeshInstance3D" parent="." index="3"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+transparency = 1.0
 mesh = SubResource("SphereMesh_mt4uq")
 surface_material_override/0 = ExtResource("6_8xb0u")
 

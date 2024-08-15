@@ -46,7 +46,7 @@ func _input(event):
 			terrain_controller.terrain_velocity = terrain_controller.TERRAIN_VELOCITY
 			player.terrain_slowdown = false
 		if event.is_action_pressed("Debug 7"):
-			pass
+			Messenger.transform.emit()
 		if event.is_action_pressed("Debug 8"):
 			pass
 		if event.is_action_pressed("Debug 9"):

@@ -80,6 +80,8 @@ signal meat_in_dunk
 
 signal abduction
 
+signal transform
+
 signal hitpoint_update
 
 signal level_update

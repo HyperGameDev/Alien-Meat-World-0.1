@@ -37,6 +37,7 @@ func _ready():
 	%Button_scoreUp.pressed.connect(on_scoreUp)
 	%Button_levelDebug_01.pressed.connect(on_levelDebug_01)
 	%Button_level_01.pressed.connect(on_level_01)
+	%Button_Transform.pressed.connect(on_Transform)
 	
 	label_levelCurrent.text = str("Current Level: ",Globals.level_current)
 
@@ -117,3 +118,6 @@ func on_state_Play():
 	
 func on_state_Pause():
 	Messenger.swap_game_state.emit(Globals.is_game_states.PAUSE)
+	
+func on_Transform():
+	Messenger.transform.emit()

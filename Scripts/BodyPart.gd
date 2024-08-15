@@ -81,6 +81,10 @@ func _ready():
 	Messenger.instant_death.connect(fall_death)
 	Messenger.abductee_detected.connect(on_abductee_detected)
 	
+	Messenger.game_prebegin.connect(on_game_prebegin)
+	
+	Messenger.transform.connect(on_transform)
+	
 # Material setup
 	default_material.set_albedo(Color(0.3, 0.74, .35))
 	damage_material.set_albedo(Color(0.5, .0, .0))
@@ -248,3 +252,14 @@ func on_abductee_detected(collided_bodypart, empathy_ok):
 	if collided_bodypart == is_head and is_part == BodyPart.is_parts.HEAD:
 		Messenger.head_health.emit(current_health, max_health)
 		Messenger.head_is_healed.emit()
+
+func on_transform():
+		mesh.show()
+		var tween = get_tree().create_tween();
+		tween.tween_property(player, "position", Vector3(player.position.x, -.03, player.position.z), stand_speed)
+		collision.set_deferred("disabled", false)
+		collision_area.set_deferred("disabled", false)
+		
+func on_game_prebegin():
+	if is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
+		collision.set_deferred("disabled", true)

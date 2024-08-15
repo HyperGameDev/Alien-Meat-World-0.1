@@ -74,6 +74,8 @@ func on_game_postmenu():
 func animation_exclaim_halfway():
 	if was_chosen:
 		orb.visible = true
+		var tween = get_tree().create_tween();
+		tween.tween_property(orb, "transparency", 0, .4)
 		animation_teleport.play("teleport")
 	
 		
