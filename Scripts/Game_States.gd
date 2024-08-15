@@ -97,6 +97,8 @@ func on_game_state_prebegin():
 	tween_fadeout.tween_property(blackout, "self_modulate", Color(1.0, 1.0, 1.0, 1.0), .3)
 	
 	await tween_fadeout.finished
+	Messenger.game_prebegin.emit()
+	Messenger.level_update.emit(1)
 	camera.cam_y_offset += 20.0
 	
 	await get_tree().create_timer(2.0).timeout
@@ -111,9 +113,6 @@ func on_game_state_prebegin():
 
 func on_game_state_begin():
 	Messenger.game_begin.emit()
-	Messenger.level_update.emit(1)
-	
-	#camera.cam_y_offset = camera.CAM_Y_OFFSET
 	
 func on_game_state_play():
 	Messenger.game_play.emit()

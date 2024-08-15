@@ -10,7 +10,6 @@ var is_level: int = -1
 @onready var marker_right = %Marker_boundaryRight
 @onready var marker_left = %Marker_boundaryLeft
 @onready var ground = $Ground
-@onready var grass = $"grass_plane_01-01_00"
 @onready var grass_material = preload("res://Terrain/BASE_TERRAIN_BLOCKS/block_default-grass-shader.tres")
 
 @export var is_type: is_types
@@ -52,5 +51,5 @@ func on_game_menu():
 func on_game_begin():
 	if is_type == is_types.MENU:
 		if has_node("grass_plane_01-01_00"):
-			grass.visible = true
+			$"grass_plane_01-01_00".visible = true
 			material_override = grass_material

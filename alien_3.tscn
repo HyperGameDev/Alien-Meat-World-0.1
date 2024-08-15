@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://c1q8m4i26u6vr"]
+[gd_scene load_steps=58 format=3 uid="uid://c1q8m4i26u6vr"]
 
 [ext_resource type="PackedScene" uid="uid://diukxh5eov8fo" path="res://Player/Alien_3.blend" id="1_p4qsu"]
 [ext_resource type="Animation" uid="uid://d0dlpska7au7x" path="res://Player/Animations/Run_Blndr_1.res" id="2_2sg84"]
@@ -16,6 +16,8 @@
 [ext_resource type="Material" uid="uid://d1dtjsbfwmi1a" path="res://Player/textures/alien_heart-outer_01.tres" id="14_h5uap"]
 [ext_resource type="Material" uid="uid://c7geoa58ckfal" path="res://Player/textures/alien_mouth_01.tres" id="15_ml75u"]
 [ext_resource type="Material" uid="uid://ctrq3rqbk526b" path="res://Player/textures/alien_teeth_01.tres" id="16_luf2d"]
+[ext_resource type="Material" uid="uid://b6sjs7rd7u4iv" path="res://UI/Orbs/orb_texture_01.tres" id="17_s6dlm"]
+[ext_resource type="Script" path="res://Orb_New-Game-Teleporter.gd" id="18_h2j76"]
 
 [sub_resource type="Animation" id="Animation_bx7n0"]
 resource_name = "Feed_Walk_1"
@@ -1581,6 +1583,61 @@ _data = {
 "Walk_2 ": SubResource("Animation_1d7u0")
 }
 
+[sub_resource type="SphereMesh" id="SphereMesh_pc24m"]
+radius = 0.7
+height = 1.4
+
+[sub_resource type="Animation" id="Animation_54sl3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 30, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qsunm"]
+resource_name = "descend"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.7, 4.3, 6),
+"transitions": PackedFloat32Array(0.5, 1, 2, 0.5),
+"update": 0,
+"values": [Vector3(0, 30, 0), Vector3(0, 1.35, 0), Vector3(0, 1.35, 0), Vector3(0, 20, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"animation_teleport_finished"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g0os0"]
+_data = {
+"RESET": SubResource("Animation_54sl3"),
+"teleport": SubResource("Animation_qsunm")
+}
+
 [node name="Alien_3" instance=ExtResource("1_p4qsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0731478, 0)
 
@@ -1732,7 +1789,7 @@ surface_material_override/1 = ExtResource("15_ml75u")
 surface_material_override/2 = ExtResource("16_luf2d")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_Head" index="0" groups=["Dmg_Labels_Player"]]
-transform = Transform3D(1.9966, 0, 0.17468, 0, 2.00423, 0, -0.17468, 0, 1.9966, -0.0141464, 2.50105, 0.804974)
+transform = Transform3D(1.9966, 0, 0.17468, 1.77636e-15, 2.00423, -1.42109e-14, -0.17468, 0, 1.9966, -0.0145269, 2.51767, 0.806979)
 visible = false
 offset = Vector2(0, -120)
 alpha_cut = 1
@@ -1768,7 +1825,7 @@ font_size = 35
 outline_size = 30
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.449749, 0.65037, 0.612164, -0.887707, -0.249908, -0.386681, -0.098501, -0.717332, 0.689734, 0.449515, 1.13444, 0.267902)
+transform = Transform3D(-0.121353, 0.991606, -0.0446263, -0.963387, -0.12849, -0.235322, -0.239081, 0.0144352, 0.970892, 0.449515, 1.13444, 0.267902)
 visible = false
 bone_name = "ElbowR"
 bone_idx = 7
@@ -1781,6 +1838,18 @@ skeleton = NodePath("../../..")
 [node name="AnimationPlayer" parent="." index="5"]
 libraries = {
 "": SubResource("AnimationLibrary_djb3j")
+}
+
+[node name="Orb_New-Game-Teleporter" type="MeshInstance3D" parent="." index="6"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
+mesh = SubResource("SphereMesh_pc24m")
+surface_material_override/0 = ExtResource("17_s6dlm")
+script = ExtResource("18_h2j76")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Orb_New-Game-Teleporter" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_g0os0")
 }
 
 [editable path="HP_Head/SubViewport/HP_Bar"]

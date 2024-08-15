@@ -7,10 +7,16 @@ const BOUNDARY_DISTANCE : int = 30
 
 @export var controls_locked : bool = true
 
+@onready var camera: Camera3D = %Camera3D
+
 @onready var animation: AnimationTree = get_node("Alien_V1/Alien/AnimationTree_Alien")
 
 @onready var skeleton: Skeleton3D = get_node("Alien_V1/Alien/Armature/Skeleton3D")
 @onready var terrain_controller = %TerrainController_inScene
+
+@onready var orb: MeshInstance3D = get_node("Alien_V1/Alien/Orb_New-Game-Teleporter")
+@onready var orb_animation: AnimationPlayer = get_node("Alien_V1/Alien/Orb_New-Game-Teleporter/AnimationPlayer")
+var orb_onscreen = false
 
 var terrain_slowdown = false
 
@@ -21,6 +27,8 @@ var terrain_slowdown = false
 #@onready var arm_r_rotation = skeleton.get_bone_pose_rotation(arm_r)
 #@onready var arm_l_rotation = skeleton.get_bone_pose_rotation(arm_l)
 @onready var head_rotation = skeleton.get_bone_pose_rotation(head)
+
+var teleported = false
 
 var look_pos
 
@@ -47,15 +55,20 @@ func _ready():
 	Messenger.game_begin.connect(on_game_begin)
 	Messenger.game_play.connect(on_game_play)
 
+
 #	print("Elbow L:", arm_l_rotation.x)
 #	print("Elbow R:", arm_r_rotation.x)
 #	print("Player Layer: ", collision_layer, "; Player Mask: ", collision_mask)
 	
 	on_level_update(Globals.level_current)
 	set_max_slides(20)
+	
+	orb.visible = false
 
 	
 func _physics_process(delta):
+	if Globals.is_game_state == Globals.is_game_states.BEGIN and !teleported:
+		new_game_teleport()
 #	aim_bone_at_target(arm_grabbing, hit_object)
 #	print(hit_object)
 #	print("Is on floor: ", is_on_floor())
@@ -218,6 +231,12 @@ func on_level_update(level):
 func on_game_begin():
 	self.visible = true
 	
+func new_game_teleport():
+	if camera.position.y <= 30.0:
+		teleported = true
+		orb.visible = true
+		orb_animation.play("teleport")
+
 func on_game_play():
 	controls_locked = false
 	

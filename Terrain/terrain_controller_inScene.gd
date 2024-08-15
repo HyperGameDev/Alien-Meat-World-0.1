@@ -139,6 +139,7 @@ var chunks_list_06: Array = []
 
 func _ready() -> void:
 	Messenger.level_update.connect(on_level_update)
+	Messenger.game_prebegin.connect(on_game_prebegin)
 	
 	chunks_path_safes = Globals.current_safe_chunks
 	chunks_path_obstacles = Globals.current_obstacle_chunks
@@ -455,3 +456,6 @@ func on_level_update(level):
 	#Chunks_Menu.clear()
 	
 	chunks_update(num_terrain_chunks)
+	
+func on_game_prebegin():
+	chunks_list_current.clear()

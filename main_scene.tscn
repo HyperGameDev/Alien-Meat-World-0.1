@@ -193,6 +193,44 @@ _data = {
 "message_flash": SubResource("Animation_1ubfb")
 }
 
+[sub_resource type="Animation" id="Animation_ei6f7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Loading_Text:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Loading..."]
+}
+
+[sub_resource type="Animation" id="Animation_65pkm"]
+resource_name = "loading_text"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Loading_Text:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["Loading...", "Loading..", "Loading.", "Loading", "Loading.", "Loading.."]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kkp1t"]
+_data = {
+"RESET": SubResource("Animation_ei6f7"),
+"loading_text": SubResource("Animation_65pkm")
+}
+
 [sub_resource type="BoxMesh" id="BoxMesh_war41"]
 size = Vector3(1, 0.755, 0.855)
 
@@ -527,44 +565,6 @@ height = 17.822
 radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
-
-[sub_resource type="Animation" id="Animation_ei6f7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Loading_Text:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["Loading..."]
-}
-
-[sub_resource type="Animation" id="Animation_65pkm"]
-resource_name = "loading_text"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Loading_Text:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": ["Loading...", "Loading..", "Loading.", "Loading", "Loading.", "Loading.."]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kkp1t"]
-_data = {
-"RESET": SubResource("Animation_ei6f7"),
-"loading_text": SubResource("Animation_65pkm")
-}
 
 [sub_resource type="Animation" id="Animation_ghinw"]
 length = 0.001
@@ -1072,7 +1072,6 @@ script = ExtResource("2_0mwwt")
 
 [node name="Blackout_BG" type="Panel" parent="UI_Top"]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1105,6 +1104,33 @@ horizontal_alignment = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI_Top/Blackout_BG/Container_Message"]
 libraries = {
 "": SubResource("AnimationLibrary_fe77p")
+}
+
+[node name="MarginContainer_Loading" type="MarginContainer" parent="UI_Top/Blackout_BG"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -215.0
+offset_top = -86.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Loading_Text" type="Label" parent="UI_Top/Blackout_BG/MarginContainer_Loading"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("7_1vj6d")
+theme_override_font_sizes/font_size = 37
+text = "Loading..."
+
+[node name="Animation_Loading" type="AnimationPlayer" parent="UI_Top/Blackout_BG/MarginContainer_Loading"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_kkp1t")
 }
 
 [node name="Debug_3D" type="Node3D" parent="."]
@@ -1368,14 +1394,15 @@ collision_mask = 0
 script = ExtResource("9_l1n0p")
 is_type = 1
 
-[node name="Icon" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_2"]
-transform = Transform3D(0.325, 0, 0, 0, -1.42062e-08, -0.325, 0, 0.325, -1.42062e-08, 0, 0, 0)
-mesh = SubResource("PlaneMesh_pqt4u")
-surface_material_override/0 = SubResource("StandardMaterial3D_5ujhk")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_2"]
 mesh = SubResource("SphereMesh_5k002")
 surface_material_override/0 = ExtResource("21_glvus")
+
+[node name="Icon" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_2/MeshInstance3D"]
+transform = Transform3D(0.325, 0, 0, 0, -1.42062e-08, -0.325, 0, 0.325, -1.42062e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_pqt4u")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_5ujhk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PowerUp_Menu/PowerUp_Orb_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271964, 0, -0.00519168)
@@ -1690,32 +1717,6 @@ theme_override_font_sizes/font_size = 50
 text = "Description of powerup goes here. More text might be added if necessary."
 horizontal_alignment = 1
 autowrap_mode = 2
-
-[node name="MarginContainer_Loading" type="MarginContainer" parent="HUD"]
-unique_name_in_owner = true
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -215.0
-offset_top = -86.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Loading_Text" type="Label" parent="HUD/MarginContainer_Loading"]
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 15
-theme_override_fonts/font = ExtResource("7_1vj6d")
-theme_override_font_sizes/font_size = 37
-text = "Loading..."
-
-[node name="Animation_Loading" type="AnimationPlayer" parent="HUD/MarginContainer_Loading"]
-unique_name_in_owner = true
-libraries = {
-"": SubResource("AnimationLibrary_kkp1t")
-}
 
 [node name="MarginContainer_Score" type="MarginContainer" parent="HUD"]
 unique_name_in_owner = true

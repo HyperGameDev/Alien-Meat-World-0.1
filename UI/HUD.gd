@@ -13,6 +13,7 @@ class_name HUD
 @onready var levelup_message: MarginContainer = %MarginContainer_LevelUp
 @onready var loading_text: MarginContainer = %MarginContainer_Loading
 
+
 @onready var orb_1: Area3D = %PowerUp_Orb_1
 @onready var orb_2: Area3D = %PowerUp_Orb_2
 @onready var orb_3: Area3D = %PowerUp_Orb_3
@@ -53,28 +54,17 @@ func _ready():
 	Messenger.abduction.connect(on_abduction)
 	on_level_update(Globals.level_current)
 	Messenger.powerup_chosen.connect(on_powerup_chosen)
-	Messenger.game_postmenu.connect(on_game_postmenu)
-	Messenger.game_begin.connect(on_game_begin)
+	Messenger.game_play.connect(on_game_play)
 	
 func _process(delta):
 	label_score.text = str(score)
 	if score >= score_minimum and !score_minimum_met:
 		on_score_minimum_met()
-		
-func on_game_postmenu():
-	await get_tree().create_timer(1).timeout
-	#animation_loading.play("loading_text")
-	#loading_text.visible = true
-	#await get_tree().create_timer(.6).timeout
-	#Messenger.swap_game_state.emit(Globals.is_game_states.BEGIN)
-		
-func on_game_begin():
+	
+func on_game_play():
 	score_minimum_text_update()
 	score_minimum_play_animation()
 	container_score.visible = true
-	await get_tree().create_timer(2.5).timeout
-	animation_loading.stop()
-	loading_text.visible = false
 
 func on_powerup_unhovered():
 	powerup_name.visible = false
