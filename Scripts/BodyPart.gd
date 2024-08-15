@@ -164,7 +164,7 @@ func on_area_damaged(collided_bodypart):
 		if current_health > 0 and amount_to_damage == Obstacle.damage_amounts.FULL:
 			current_health -= max_health
 		
-		if current_health > 0 and amount_to_damage != Obstacle.damage_amounts.NONE:
+		if current_health > 0 and !amount_to_damage == Obstacle.damage_amounts.NONE:
 #			is_damaged = true
 			# Ensure limb is visible
 			mesh.show()
