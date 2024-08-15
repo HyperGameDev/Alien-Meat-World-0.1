@@ -122,4 +122,3 @@ func _on_mouse_entered(): ## For hover arrow indicator
 	
 func _on_mouse_exited(): ## For hover arrow indicator
 	pass
-

@@ -25,4 +25,3 @@ func spawn_helicopter():
 		copter_spawns += 1
 		var copter = preload("res://NPCs/Helicopters/copter_001.tscn").instantiate()
 		get_tree().get_current_scene().add_child(copter)
-

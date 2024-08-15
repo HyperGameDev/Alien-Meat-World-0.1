@@ -1019,9 +1019,6 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="Main_Menu/Title"]
 root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_0r0h7")
-}
 tree_root = SubResource("AnimationNodeBlendTree_d0wwf")
 anim_player = NodePath("../AnimationPlayer")
 parameters/TimeScale/scale = 0.4

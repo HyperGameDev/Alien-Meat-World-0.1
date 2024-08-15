@@ -49,7 +49,7 @@ void fragment() {
 	vec3 screen_normal = texture(NORMAL_TEXTURE, uv).rgb;
 	screen_normal = screen_normal * 2.0 - 1.0;
 	vec2 offset = 1.0 / VIEWPORT_SIZE;
-	
+
 	if (is_edge(uv, screen_normal, offset)) {
 		ALBEDO = outline_color;
 	} else {

@@ -85,3 +85,9 @@ signal transform
 signal hitpoint_update
 
 signal level_update
+
+func _ready() -> void:
+	level_update.connect(on_level_update)
+	
+func on_level_update():
+	pass

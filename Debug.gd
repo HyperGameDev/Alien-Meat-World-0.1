@@ -9,15 +9,12 @@ var biped = true
 	
 # Called when the node enters the scene tree for the first time.
 func _process(delta):
-	if OS.is_debug_build():
-		if show_info:
-			%Container_MoreInfo.visible = true
-			%Label_showFPS.text = "FPS: " + str(Engine.get_frames_per_second()).pad_zeros(3)
-			%Label_showState.text = "State: " + str(Globals.is_game_states.keys()[Globals.is_game_state])
-		else:
-			%Container_MoreInfo.visible = false
+	if show_info:
+		%Container_MoreInfo.visible = true
+		%Label_showFPS.text = "FPS: " + str(Engine.get_frames_per_second()).pad_zeros(3)
+		%Label_showState.text = "State: " + str(Globals.is_game_states.keys()[Globals.is_game_state])
 	else:
-		pass
+		%Container_MoreInfo.visible = false
 
 func _input(event):
 	#region devControls

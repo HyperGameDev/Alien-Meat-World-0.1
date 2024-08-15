@@ -264,7 +264,7 @@ func _progress_terrain(delta: float, level_type) -> void:
 		
 		#region Print Chunk info: 1st Popped
 		#print("1st popped: ",first_terrain,"; chunk_to_add: ",chunk_to_add)
-		print_rich("[font size=15][color=red][b]First popped: [/b][/color]",first_terrain,"; \n \t[i]pos:[/i] ",first_terrain.position,"; \n \t[i]level:[/i] ",first_terrain.is_level,"; \n \t[i]parent:[/i] ",first_terrain.get_parent(),"\n")
+		#print_rich("[font size=15][color=red][b]First popped: [/b][/color]",first_terrain,"; \n \t[i]pos:[/i] ",first_terrain.position,"; \n \t[i]level:[/i] ",first_terrain.is_level,"; \n \t[i]parent:[/i] ",first_terrain.get_parent(),"\n")
 		#endregion
 		
 		# Delete old level chunks
@@ -330,7 +330,7 @@ func _progress_terrain(delta: float, level_type) -> void:
 		else:
 			first_terrain.reparent(self)
 		#region Print Chunk info: Last Added
-		print_rich("[font size=15][color=green][b]Last added: [/b][/color]",chunk_add,"; \n \t[i]pos:[/i] ",chunk_add.position,"; \n \t[i]level:[/i] ",chunk_add.is_level,"; \n \t[i]parent:[/i] ",chunk_add.get_parent(),"\n")
+		#print_rich("[font size=15][color=green][b]Last added: [/b][/color]",chunk_add,"; \n \t[i]pos:[/i] ",chunk_add.position,"; \n \t[i]level:[/i] ",chunk_add.is_level,"; \n \t[i]parent:[/i] ",chunk_add.get_parent(),"\n")
 		
 		#endregion
 		

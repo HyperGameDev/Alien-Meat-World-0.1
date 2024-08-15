@@ -100,5 +100,3 @@ func animation_teleport_finished():
 func on_game_begin():
 	visible = false
 	is_visible = false
-
-
