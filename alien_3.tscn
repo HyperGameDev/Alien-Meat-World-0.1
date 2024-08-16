@@ -28,7 +28,7 @@ point_count = 2
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_d6ox5"]
 filter_enabled = true
-filters = [".", "Skeleton3D:ElbowR", "Skeleton3D:HandR"]
+filters = [".", "Armature/Skeleton3D:ElbowR", "Armature/Skeleton3D:HandR", "Skeleton3D:ElbowR", "Skeleton3D:HandR"]
 fadeout_time = 1.0
 fadeout_curve = SubResource("Curve_wu7uv")
 
@@ -58,12 +58,12 @@ input_1/reset = true
 animation = &"Walk_2"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_epmww"]
-graph_offset = Vector2(-135.463, 7.73901)
+graph_offset = Vector2(62.537, -86.261)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_8iwoq")
 nodes/TimeScale/position = Vector2(360, 100)
 nodes/output/position = Vector2(1140, 0)
 nodes/reach/node = SubResource("AnimationNodeOneShot_d6ox5")
-nodes/reach/position = Vector2(800, -20)
+nodes/reach/position = Vector2(900, -80)
 nodes/reaching/node = SubResource("AnimationNodeAnimation_di8pp")
 nodes/reaching/position = Vector2(600, 140)
 nodes/running/node = SubResource("AnimationNodeAnimation_jrexy")
@@ -1486,17 +1486,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0731478, 0)
 
 [node name="AnimationTree_Alien" type="AnimationTree" parent="." index="0"]
 process_priority = -1
-active = false
-root_node = NodePath("../Armature")
 tree_root = SubResource("AnimationNodeBlendTree_epmww")
-anim_player = NodePath("../Animation_Alien")
+anim_player = NodePath("../AnimationPlayer")
 parameters/TimeScale/scale = 1.3
 parameters/reach/active = false
 parameters/reach/internal_active = false
 parameters/reach/request = 0
-"parameters/walk to run/current_state" = "running"
+"parameters/walk to run/current_state" = "walking"
 "parameters/walk to run/transition_request" = ""
-"parameters/walk to run/current_index" = 1
+"parameters/walk to run/current_index" = 0
 
 [node name="Animation_Alien" type="AnimationPlayer" parent="." index="1"]
 root_node = NodePath("../Armature")
@@ -1549,7 +1547,7 @@ transparent_bg = true
 theme_override_styles/fill = ExtResource("5_k8xva")
 
 [node name="Armature" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.974368, 0.224951, 0, -0.224951, 0.974368, 0, 0.07, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0028901, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 0, 0)
@@ -1563,10 +1561,10 @@ bones/5/rotation = Quaternion(-3.55271e-15, 3.55271e-15, -1.21169e-27, 1)
 bones/6/rotation = Quaternion(-0.0895069, -0.0808807, -0.717954, 0.685558)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/rotation = Quaternion(0.0104958, 0.238896, -0.0409419, 0.970125)
+bones/7/scale = Vector3(1, 1, 1)
 bones/8/rotation = Quaternion(-0.00231333, 0.0242911, -0.00433505, 0.999693)
 bones/8/scale = Vector3(1, 1, 1)
 bones/10/rotation = Quaternion(-0.289795, -0.0479284, -0.24514, 0.92392)
-bones/10/scale = Vector3(1, 1, 1)
 bones/11/rotation = Quaternion(-0.760895, 0.0962255, 0.209214, 0.606637)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/rotation = Quaternion(0.416566, -0.288618, -0.240819, 0.827755)
@@ -1575,6 +1573,7 @@ bones/14/rotation = Quaternion(-0.122028, -0.101716, -0.0764657, 0.984335)
 bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/15/scale = Vector3(1, 1, 1)
 bones/16/rotation = Quaternion(0.0914563, 0.225529, 0.0423055, 0.969011)
+bones/16/scale = Vector3(1, 1, 1)
 bones/17/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 
 [node name="Alien_ArmL" parent="Armature/Skeleton3D" index="0"]
@@ -1588,7 +1587,7 @@ offset = Vector2(80, -150)
 double_sided = false
 alpha_cut = 1
 outline_modulate = Color(0, 0.219608, 0, 1)
-text = "4"
+text = "2"
 font_size = 35
 outline_size = 30
 
@@ -1602,7 +1601,7 @@ visible = false
 offset = Vector2(-30, -150)
 alpha_cut = 1
 outline_modulate = Color(0, 0.219608, 0, 1)
-text = "4"
+text = "2"
 font_size = 35
 outline_size = 30
 
@@ -1623,10 +1622,10 @@ surface_material_override/3 = ExtResource("14_h5uap")
 [node name="Body_Shield" parent="Armature/Skeleton3D/Alien_Body_Heart" index="0" instance=ExtResource("6_gq8ww")]
 visible = false
 
-[node name="Alien_Head" parent="Armature/Skeleton3D" index="5"]
+[node name="Alien_Head" parent="Armature/Skeleton3D" index="4"]
 surface_material_override/0 = ExtResource("11_cui7w")
 surface_material_override/1 = ExtResource("15_ml75u")
-surface_material_override/2 = ExtResource("16_luf2d")
+surface_material_override/3 = ExtResource("16_luf2d")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_Head" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.9966, 0, 0.17468, 1.77636e-15, 2.00423, -1.42109e-14, -0.17468, 0, 1.9966, -0.0145269, 2.51767, 0.806979)
@@ -1638,8 +1637,8 @@ text = "4"
 font_size = 35
 outline_size = 30
 
-[node name="Alien_LegL" parent="Armature/Skeleton3D" index="6"]
-transform = Transform3D(1, 0, 0, 0, 0.991164, 0.132645, 0, -0.132645, 0.991164, 0, 0.11472, 0.053495)
+[node name="Alien_LegL" parent="Armature/Skeleton3D" index="5"]
+transform = Transform3D(1, 0, 0, 0, 0.997564, -0.0697566, 0, 0.0697566, 0.997564, 0, 0, 0)
 surface_material_override/0 = ExtResource("11_cui7w")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegL" index="0" groups=["Dmg_Labels_Player"]]
@@ -1648,11 +1647,11 @@ visible = false
 offset = Vector2(10, -50)
 alpha_cut = 1
 outline_modulate = Color(0, 0.219608, 0, 1)
-text = "4"
+text = "2"
 font_size = 35
 outline_size = 30
 
-[node name="Alien_LegR" parent="Armature/Skeleton3D" index="7"]
+[node name="Alien_LegR" parent="Armature/Skeleton3D" index="6"]
 surface_material_override/0 = ExtResource("11_cui7w")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegR" index="0" groups=["Dmg_Labels_Player"]]
@@ -1661,12 +1660,12 @@ visible = false
 offset = Vector2(-30, -50)
 alpha_cut = 1
 outline_modulate = Color(0, 0.219608, 0, 1)
-text = "4"
+text = "2"
 font_size = 35
 outline_size = 30
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.828476, 0.553817, 0.0831466, -0.451217, -0.748054, 0.48664, 0.331708, 0.365653, 0.869637, 0.310782, 1.19854, 0.603294)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="7"]
+transform = Transform3D(-0.0180396, 0.18853, -0.981902, -0.988077, -0.153543, -0.0113281, -0.1529, 0.96999, 0.189052, 0.449514, 1.13444, 0.267902)
 visible = false
 bone_name = "ElbowR"
 bone_idx = 7
@@ -1682,18 +1681,87 @@ libraries = {
 }
 
 [node name="Armature_hurt" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0028901, 0)
 
 [node name="Skeleton3D" parent="Armature_hurt" index="0"]
-bones/2/rotation = Quaternion(0.650817, -0.0134977, 0.0679329, 0.756069)
-bones/3/rotation = Quaternion(-0.254302, 0.0057372, 0.57704, 0.776094)
-bones/7/rotation = Quaternion(-0.406063, 0.210146, -0.0737861, 0.886288)
-bones/8/rotation = Quaternion(-0.574993, 0.0173465, 0.519726, 0.631638)
-bones/9/rotation = Quaternion(0.335239, -0.335239, -0.622587, -0.622587)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(-0.42673, 0.0691059, 0.13451, 0.891646)
+bones/3/rotation = Quaternion(-0.468731, -0.0232332, -0.577639, 0.667895)
+bones/3/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(-0.0806613, -0.0903314, -0.758579, 0.640228)
+bones/7/rotation = Quaternion(0.611919, 0.19833, -0.0680688, 0.762618)
+bones/8/rotation = Quaternion(-0.298786, 0.0084674, -0.421597, 0.856102)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.648017, -0.648017, -0.282972, -0.282972)
+bones/10/scale = Vector3(1, 1, 1)
 bones/11/rotation = Quaternion(0.834516, -0.0792691, -0.228095, -0.495249)
-bones/12/rotation = Quaternion(0.327736, -0.329323, -0.132702, 0.875514)
-bones/13/rotation = Quaternion(0.616297, 0.616297, 0.346667, -0.346667)
-bones/16/rotation = Quaternion(-0.0548451, 0.226662, -0.421977, 0.8761)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(-0.0822446, -0.457276, 0.64168, 0.610231)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(0.299888, 0.299888, 0.640365, -0.640365)
+bones/14/rotation = Quaternion(-0.0301206, -0.0746789, 0.021727, 0.996516)
+bones/15/rotation = Quaternion(-0.728062, -0.0399724, 0.188485, 0.657876)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(-0.0326323, 0.230908, -0.335132, 0.912854)
+bones/16/scale = Vector3(1, 1, 1)
+
+[node name="Alien-hurt_ArmL" parent="Armature_hurt/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("11_cui7w")
+
+[node name="Dmg_Label" type="Label3D" parent="Armature_hurt/Skeleton3D/Alien-hurt_ArmL" index="0" groups=["Dmg_Labels_Player"]]
+transform = Transform3D(1.97934, 0, 0.17317, -7.45058e-09, 1.9869, 2.98023e-08, -0.17317, 0, 1.97934, -1.74479, 3.06826, -1.30488)
+visible = false
+offset = Vector2(80, -150)
+double_sided = false
+alpha_cut = 1
+outline_modulate = Color(0, 0.219608, 0, 1)
+text = "2"
+font_size = 35
+outline_size = 30
+
+[node name="Alien-hurt_ArmR" parent="Armature_hurt/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("11_cui7w")
+
+[node name="Dmg_Label" type="Label3D" parent="Armature_hurt/Skeleton3D/Alien-hurt_ArmR" index="0" groups=["Dmg_Labels_Player"]]
+transform = Transform3D(1.98337, 0, 0.173522, 0, 1.99094, 0, -0.173522, 0, 1.98337, 0.552544, 3.06795, -1.50591)
+visible = false
+offset = Vector2(-30, -150)
+alpha_cut = 1
+outline_modulate = Color(0, 0.219608, 0, 1)
+text = "2"
+font_size = 35
+outline_size = 30
+
+[node name="Alien-hurt_Head" parent="Armature_hurt/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("11_cui7w")
+surface_material_override/1 = ExtResource("15_ml75u")
+surface_material_override/3 = ExtResource("16_luf2d")
+
+[node name="Alien-hurt_LegL" parent="Armature_hurt/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("11_cui7w")
+
+[node name="Dmg_Label" type="Label3D" parent="Armature_hurt/Skeleton3D/Alien-hurt_LegL" index="0" groups=["Dmg_Labels_Player"]]
+transform = Transform3D(1.97393, 0, 0.172697, 0, 1.98147, 0, -0.172697, 0, 1.97393, -0.428096, 1.00287, 0.779777)
+visible = false
+offset = Vector2(10, -50)
+alpha_cut = 1
+outline_modulate = Color(0, 0.219608, 0, 1)
+text = "2"
+font_size = 35
+outline_size = 30
+
+[node name="Alien-hurt_LegR" parent="Armature_hurt/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("11_cui7w")
+
+[node name="Dmg_Label" type="Label3D" parent="Armature_hurt/Skeleton3D/Alien-hurt_LegR" index="0" groups=["Dmg_Labels_Player"]]
+transform = Transform3D(1.97392, 0, 0.172696, 0, 1.98146, 0, -0.172696, 0, 1.97392, 0.670326, 1.00287, 0.683676)
+visible = false
+offset = Vector2(-30, -50)
+alpha_cut = 1
+outline_modulate = Color(0, 0.219608, 0, 1)
+text = "2"
+font_size = 35
+outline_size = 30
 
 [node name="Orb_New-Game-Teleporter" type="MeshInstance3D" parent="." index="6"]
 unique_name_in_owner = true

@@ -101,84 +101,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 31
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 
-[node name="VBox_2" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Actual Levels"
-horizontal_alignment = 1
-
-[node name="Divider" type="Panel" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
-custom_minimum_size = Vector2(0, 5)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
-
-[node name="Button_level_01" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Level 1"
-
-[node name="Button_level_02" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Level 2"
-
-[node name="VBox_3" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Debug Levels"
-horizontal_alignment = 1
-
-[node name="Divider" type="Panel" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
-custom_minimum_size = Vector2(0, 5)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
-
-[node name="Button_levelDebug_01" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Blank Level"
-
-[node name="Button_levelDebug_02" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Damage Debug"
-
-[node name="Button_levelDebug_03" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Avoidance Debug"
-
-[node name="Button_levelDebug_04" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Terrain Heights"
-
 [node name="VBox_4" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
 layout_mode = 2
 
@@ -257,6 +179,84 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 31
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Pause"
+
+[node name="VBox_2" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Actual Levels"
+horizontal_alignment = 1
+
+[node name="Divider" type="Panel" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
+
+[node name="Button_level_01" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Level 1"
+
+[node name="Button_level_02" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Level 2"
+
+[node name="VBox_3" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Debug Levels"
+horizontal_alignment = 1
+
+[node name="Divider" type="Panel" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
+
+[node name="Button_levelDebug_01" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Blank Level"
+
+[node name="Button_levelDebug_02" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Damage Debug"
+
+[node name="Button_levelDebug_03" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Avoidance Debug"
+
+[node name="Button_levelDebug_04" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Terrain Heights"
 
 [node name="VBox_5" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
 layout_mode = 2
@@ -405,3 +405,21 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 27
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Transform"
+
+[node name="Button_healLegR" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Heal Leg R"
+
+[node name="Button_healLegL" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "Heal Leg L"

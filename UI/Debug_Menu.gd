@@ -10,6 +10,8 @@ extends Control
 @onready var leg_r = get_tree().get_root().get_node("Main Scene/Player/Alien_V1/DetectionAreas/Area_LegR")
 @onready var leg_l = get_tree().get_root().get_node("Main Scene/Player/Alien_V1/DetectionAreas/Area_LegL")
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# CONSIDER tucking these away in a function then calling them in ready
@@ -38,6 +40,8 @@ func _ready():
 	%Button_levelDebug_01.pressed.connect(on_levelDebug_01)
 	%Button_level_01.pressed.connect(on_level_01)
 	%Button_Transform.pressed.connect(on_Transform)
+	%Button_healLegL.pressed.connect(on_healLegL)
+	%Button_healLegR.pressed.connect(on_healLegR)
 	
 	label_levelCurrent.text = str("Current Level: ",Globals.level_current)
 
@@ -121,3 +125,9 @@ func on_state_Pause():
 	
 func on_Transform():
 	Messenger.transform.emit()
+
+func on_healLegL():
+	Messenger.abductee_detected.emit(leg_l,true)
+	
+func on_healLegR():
+	Messenger.abductee_detected.emit(leg_r,true)

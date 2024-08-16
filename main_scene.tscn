@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=111 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://main_scene.gd" id="1_fw7jj"]
@@ -547,24 +547,32 @@ height = 10.262
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3kibt"]
 radius = 2.367
-height = 9.409
+height = 6.034
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f5maj"]
 radius = 2.365
-height = 12.21
+height = 6.034
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0yil0"]
 radius = 1.83641
-height = 18.7386
+height = 10.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6wbe"]
 radius = 1.901
-height = 17.822
+height = 10.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ukq6r"]
 radius = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vojki"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bwnin"]
+radius = 2.367
+height = 13.648
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lqgqe"]
+radius = 2.365
+height = 13.648
 
 [sub_resource type="Animation" id="Animation_ghinw"]
 length = 0.001
@@ -1485,13 +1493,14 @@ shape = SubResource("CapsuleShape3D_102ua")
 
 [node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V1/DetectionAreas/Area_Head"]
 
-[node name="Area_LegR" type="Area3D" parent="Player/Alien_V1/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
+[node name="Area_LegR" type="Area3D" parent="Player/Alien_V1/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_hurt", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
 collision_layer = 32768
 collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../../..")
 collision = NodePath("../../../Collision_V1_LegRight")
+collision_hurt = NodePath("../../../Collision_V1_LegRight_hurt")
 collision_area = NodePath("CollisionA_LegRight")
 is_part = 1
 
@@ -1502,13 +1511,14 @@ disabled = true
 
 [node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V1/DetectionAreas/Area_LegR"]
 
-[node name="Area_LegL" type="Area3D" parent="Player/Alien_V1/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
+[node name="Area_LegL" type="Area3D" parent="Player/Alien_V1/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_hurt", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
 collision_layer = 32768
 collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../../..")
 collision = NodePath("../../../Collision_V1_LegLeft")
+collision_hurt = NodePath("../../../Collision_V1_LegLeft_hurt")
 collision_area = NodePath("CollisionA_LegLeft")
 is_part = 2
 
@@ -1519,13 +1529,14 @@ disabled = true
 
 [node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V1/DetectionAreas/Area_LegL"]
 
-[node name="Area_ArmR" type="Area3D" parent="Player/Alien_V1/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
+[node name="Area_ArmR" type="Area3D" parent="Player/Alien_V1/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_hurt", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
 collision_layer = 32768
 collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../../..")
 collision = NodePath("../../../Collision_V1_ArmRight")
+collision_hurt = NodePath("../../../Collision_V1_ArmRight_hurt")
 collision_area = NodePath("CollisionA_ArmRight")
 is_part = 3
 
@@ -1536,13 +1547,14 @@ disabled = true
 
 [node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V1/DetectionAreas/Area_ArmR"]
 
-[node name="Area_ArmL" type="Area3D" parent="Player/Alien_V1/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_area")]
+[node name="Area_ArmL" type="Area3D" parent="Player/Alien_V1/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_hurt", "collision_area")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
 collision_layer = 32768
 collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../../..")
 collision = NodePath("../../../Collision_V1_ArmLeft")
+collision_hurt = NodePath("../../../Collision_V1_ArmLeft_hurt")
 collision_area = NodePath("CollisionA_ArmLeft")
 is_part = 4
 
@@ -1568,20 +1580,40 @@ visible = false
 mesh = SubResource("SphereMesh_vojki")
 
 [node name="Collision_V1_LegRight" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, 0.453314, 0.486024, 0.185392)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, 0.453, 0.612, 0.185)
+shape = SubResource("CapsuleShape3D_bwnin")
+
+[node name="Collision_V1_LegRight_hurt" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, 0.453314, 0.685498, 0.170901)
 shape = SubResource("CapsuleShape3D_3kibt")
+disabled = true
 
 [node name="Collision_V1_LegLeft" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, -0.230226, 0.61232, 0.0353434)
+shape = SubResource("CapsuleShape3D_lqgqe")
+
+[node name="Collision_V1_LegLeft_hurt" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, -0.23, 0.685, 0.035)
 shape = SubResource("CapsuleShape3D_f5maj")
+disabled = true
 
 [node name="Collision_V1_ArmLeft" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.0981955, -0.0188975, -0.000720685, 0, -0.00381088, 0.0999274, -0.0189113, -0.0981243, -0.00374211, -0.586321, 1.35585, -0.666911)
 shape = SubResource("CapsuleShape3D_v6wbe")
 disabled = true
 
+[node name="Collision_V1_ArmLeft_hurt" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.0981955, -0.0188975, -0.000720685, 0, -0.00381088, 0.0999274, -0.0189113, -0.0981243, -0.00374211, -0.586321, 1.39208, -0.168225)
+shape = SubResource("CapsuleShape3D_v6wbe")
+disabled = true
+
 [node name="Collision_V1_ArmRight" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.0959294, -0.0282334, -0.00065124, -0.000468328, -0.0038961, 0.099923, -0.028237, -0.0958525, -0.00386973, 0.406346, 1.14241, -0.754826)
+shape = SubResource("CapsuleShape3D_0yil0")
+disabled = true
+
+[node name="Collision_V1_ArmRight_hurt" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.0959294, -0.0282334, -0.00065124, -0.000468328, -0.0038961, 0.099923, -0.028237, -0.0958525, -0.00386973, 0.506346, 1.17864, -0.25614)
 shape = SubResource("CapsuleShape3D_0yil0")
 disabled = true
 
