@@ -12,6 +12,7 @@ const BOUNDARY_DISTANCE : int = 30
 @onready var animation: AnimationTree = get_node("Alien_V1/Alien/AnimationTree_Alien")
 
 @onready var skeleton: Skeleton3D = get_node("Alien_V1/Alien/Armature/Skeleton3D")
+@onready var skeleton_hurt: Skeleton3D = get_node("Alien_V1/Alien/Armature_hurt/Skeleton3D")
 @onready var terrain_controller = %TerrainController_inScene
 
 @onready var mesh_orb: MeshInstance3D = get_node("Alien_V1/Alien/Orb_New-Game-Teleporter")
@@ -124,6 +125,7 @@ func rotate_head_to_direction(dir:Vector3):
 	
 	# Movement application
 	skeleton.set_bone_pose_rotation(head, Quaternion(head_rotation.x, atan2(dir.x, -dir.z) * -2.3, head_rotation.z, head_rotation.w))
+	skeleton_hurt.set_bone_pose_rotation(head, Quaternion(head_rotation.x, atan2(dir.x, -dir.z) * -2.3, head_rotation.z, head_rotation.w))
 	
 #func rotate_player_to_direction(dir:Vector3):
 #	# Movement logic
@@ -136,7 +138,9 @@ func mouse_pos(mouse):
 	look_pos = mouse - self.global_position
 #	rotate_arm_r_to_direction(look_pos)
 #	rotate_arm_l_to_direction(look_pos)
+
 	rotate_head_to_direction(look_pos)
+	
 #	rotate_player_to_direction(look_pos)
 	
 #	# Follow Cursor
@@ -246,23 +250,20 @@ func on_game_play():
 func on_swap_player():
 	match Globals.is_player_version:
 		Globals.is_player_versions.V1:
+			head = 5
 			animation = get_node("Alien_V1/Alien/AnimationTree_Alien")
+			skeleton = get_node("Alien_V1/Alien/Armature/Skeleton3D")
+			skeleton_hurt = get_node("Alien_V1/Alien/Armature_hurt/Skeleton3D")
 			get_node("Alien_V1").visible = true
-			get_node("Alien_V2").visible = false
+			get_node("Alien_V3").visible = false
 			
-		Globals.is_player_versions.V2_BIPED:
-			animation = get_node("Alien_V2/Alien/Alien_biped_human/AnimationTree_Alien")
+		Globals.is_player_versions.V3:
+			head = 7
+			animation = get_node("Alien_V3/Alien/AnimationTree_Alien")
+			skeleton = get_node("Alien_V3/Alien/Armature/Skeleton3D")
+			skeleton_hurt = get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D")
 			get_node("Alien_V1").visible = false
-			get_node("Alien_V2").visible = true
-			get_node("Alien_V2/Alien/Alien_biped_human").visible = true
-			get_node("Alien_V2/Alien/Alien_quadruped").visible = false
-			
-		Globals.is_player_versions.V2_QUADRUPED:
-			animation = get_node("Alien_V2/Alien/Alien_quadruped/AnimationTree_Alien")
-			get_node("Alien_V1").visible = false
-			get_node("Alien_V2").visible = true
-			get_node("Alien_V2/Alien/Alien_biped_human").visible = false
-			get_node("Alien_V2/Alien/Alien_quadruped").visible = true
+			get_node("Alien_V3").visible = true
 			
 		_:
 			pass

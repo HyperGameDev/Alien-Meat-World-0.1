@@ -13,6 +13,8 @@ const LIMB_MORPH_SPEED = 1.25
 @onready var mesh_hurt = player.get_node("Alien_V1/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1])
 @onready var mesh = player.get_node("Alien_V1/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1])
 
+@onready var dmg_label = player.get_node("Alien_V1/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label")
+
 @onready var bodypart_name = name.split("_")[1]	
 
 @onready var skeleton = get_tree().get_root().get_node("Main Scene/Player/Alien_V1/Alien/Armature/Skeleton3D")
@@ -83,6 +85,8 @@ func _ready():
 	
 	Messenger.game_prebegin.connect(on_game_prebegin)
 	
+	Messenger.swap_player.connect(on_swap_player)
+	
 	Messenger.transform.connect(on_transform)
 	
 # Material setup
@@ -144,7 +148,7 @@ func on_area_damaged(collided_bodypart):
 			current_health -= limb_damage_amount
 			
 			# Update the Damage Label
-			player.get_node("Alien_V1/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
+			dmg_label.text = str(current_health)
 		
 			# Inform Messenger of damage, e.g. so UI_FX can flash the screen
 			Messenger.limb_is_damaged.emit()
@@ -152,7 +156,7 @@ func on_area_damaged(collided_bodypart):
 			match current_health:
 				0: 
 					if is_part == BodyPart.is_parts.ARM_L or is_part == BodyPart.is_parts.ARM_R or is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
-						player.get_node("Alien_V1/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
+						dmg_label.text = str(current_health)
 						mesh.visible = false
 						mesh_hurt.visible = false
 						collision_hurt.set_deferred("disabled", true)
@@ -161,7 +165,7 @@ func on_area_damaged(collided_bodypart):
 						mesh_hurt.visible = false
 				1:
 					if is_part == BodyPart.is_parts.ARM_L or is_part == BodyPart.is_parts.ARM_R or is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
-						player.get_node("Alien_V1/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
+						dmg_label.text = str(current_health)
 						mesh.visible = false
 						mesh_hurt.visible = true
 						collision.set_deferred("disabled", true)
@@ -224,12 +228,12 @@ func on_abductee_detected(collided_bodypart, empathy_ok):
 	if collided_bodypart == self and current_health < max_health:
 		current_health += 1
 
-		player.get_node("Alien_V1/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
+		dmg_label.text = str(current_health)
 			
 		match current_health:
 			1: 
 				if is_part == BodyPart.is_parts.ARM_L or is_part == BodyPart.is_parts.ARM_R or is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
-					player.get_node("Alien_V1/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
+					dmg_label.text = str(current_health)
 					mesh_hurt.visible = true
 					collision_hurt.set_deferred("disabled", false)
 					
@@ -242,7 +246,7 @@ func on_abductee_detected(collided_bodypart, empathy_ok):
 					mesh_hurt.visible = true
 			2:
 				if is_part == BodyPart.is_parts.ARM_L or is_part == BodyPart.is_parts.ARM_R or is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
-					player.get_node("Alien_V1/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1] + "/Dmg_Label").text = str(current_health)
+					dmg_label.text = str(current_health)
 					mesh.visible = true
 					mesh_hurt.visible = false
 					collision.set_deferred("disabled", false)
@@ -270,6 +274,25 @@ func on_transform():
 		tween.tween_property(player, "position", Vector3(player.position.x, -.03, player.position.z), stand_speed)
 		collision.set_deferred("disabled", false)
 		collision_area.set_deferred("disabled", false)
+		
+		
+func on_swap_player():
+	match Globals.is_player_version:
+		Globals.is_player_versions.V1:
+			mesh = player.get_node("Alien_V1/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1])
+			mesh_hurt = player.get_node("Alien_V1/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1])
+			skeleton = get_tree().get_root().get_node("Main Scene/Player/Alien_V1/Alien/Armature/Skeleton3D")
+			dmg_label = player.get_node("Alien_V1/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label")
+			
+		Globals.is_player_versions.V3:
+			mesh = player.get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1])
+			mesh_hurt = player.get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1])
+			skeleton = get_tree().get_root().get_node("Main Scene/Player/Alien_V1/Alien/Armature/Skeleton3D")
+			dmg_label = player.get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label")
+			
+		_:
+			pass
+
 
 func on_game_prebegin():
 	if is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
@@ -281,3 +304,4 @@ func on_game_prebegin():
 		mesh_hurt.visible = false
 	if is_part == BodyPart.is_parts.HEAD:
 		mesh_hurt.visible = false
+		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=112 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://main_scene.gd" id="1_fw7jj"]
@@ -39,6 +39,7 @@
 [ext_resource type="Material" uid="uid://b6sjs7rd7u4iv" path="res://UI/Orbs/orb_texture_01.tres" id="21_glvus"]
 [ext_resource type="FontFile" uid="uid://cx2fw81sqeocp" path="res://UI/Fonts/Agrandir-TextBold.otf" id="22_3bjjk"]
 [ext_resource type="PackedScene" uid="uid://dxlg40tq3harq" path="res://Player/PlayerV2/alien_v2.tscn" id="30_sd4ur"]
+[ext_resource type="PackedScene" uid="uid://cug028qxxwj68" path="res://Player/PlayerV3/alien_v3.tscn" id="31_xhesi"]
 
 [sub_resource type="Animation" id="Animation_saise"]
 length = 0.001
@@ -1259,7 +1260,7 @@ script = ExtResource("3_ujty4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 unique_name_in_owner = true
-transform = Transform3D(0.973789, 0.213969, 0.0771552, -0.122917, 0.209622, 0.970026, 0.191382, -0.954084, 0.230428, -3.29657, 12.6533, 4.59552)
+transform = Transform3D(0.97237, 0.175379, -0.154074, 0, 0.660002, 0.751264, 0.233445, -0.730507, 0.641766, -3.29657, 12.6533, 4.59552)
 shadow_enabled = true
 shadow_opacity = 0.82
 shadow_blur = 2.599
@@ -1461,6 +1462,116 @@ script = ExtResource("5_iuboh")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Cam_Target"]
 visible = false
 mesh = SubResource("BoxMesh_svwv1")
+
+[node name="Alien_V3" type="Node3D" parent="Player"]
+visible = false
+
+[node name="Alien" parent="Player/Alien_V3" instance=ExtResource("31_xhesi")]
+
+[node name="DetectionAreas" type="Node3D" parent="Player/Alien_V3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.514768, -0.031039, 0.00222724)
+
+[node name="Area_Head" type="Area3D" parent="Player/Alien_V3/DetectionAreas" node_paths=PackedStringArray("is_head", "player", "collision", "collision_area")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.358542, 1.26877, -0.0011203)
+collision_layer = 32768
+collision_mask = 4
+script = ExtResource("10_2td36")
+is_head = NodePath(".")
+player = NodePath("../../..")
+collision = NodePath("../../../Collision_V1_AlienBody")
+collision_area = NodePath("CollisionA_AlienBody")
+
+[node name="CollisionA_AlienBody" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.669039, 2.20307, 1.86489)
+shape = SubResource("CapsuleShape3D_102ua")
+
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V3/DetectionAreas/Area_Head"]
+
+[node name="Area_LegR" type="Area3D" parent="Player/Alien_V3/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_hurt", "collision_area")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
+collision_layer = 32768
+collision_mask = 4
+script = ExtResource("10_2td36")
+player = NodePath("../../..")
+collision = NodePath("../../../Collision_V1_LegRight")
+collision_hurt = NodePath("../../../Collision_V1_LegRight_hurt")
+collision_area = NodePath("CollisionA_LegRight")
+is_part = 1
+
+[node name="CollisionA_LegRight" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.354678, 0.465157, 0.185392)
+shape = SubResource("CapsuleShape3D_3kibt")
+disabled = true
+
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
+
+[node name="Area_LegL" type="Area3D" parent="Player/Alien_V3/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_hurt", "collision_area")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
+collision_layer = 32768
+collision_mask = 4
+script = ExtResource("10_2td36")
+player = NodePath("../../..")
+collision = NodePath("../../../Collision_V1_LegLeft")
+collision_hurt = NodePath("../../../Collision_V1_LegLeft_hurt")
+collision_area = NodePath("CollisionA_LegLeft")
+is_part = 2
+
+[node name="CollisionA_LegLeft" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.328862, 0.441083, 0.0353434)
+shape = SubResource("CapsuleShape3D_f5maj")
+disabled = true
+
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
+
+[node name="Area_ArmR" type="Area3D" parent="Player/Alien_V3/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_hurt", "collision_area")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
+collision_layer = 32768
+collision_mask = 4
+script = ExtResource("10_2td36")
+player = NodePath("../../..")
+collision = NodePath("../../../Collision_V1_ArmRight")
+collision_hurt = NodePath("../../../Collision_V1_ArmRight_hurt")
+collision_area = NodePath("CollisionA_ArmRight")
+is_part = 3
+
+[node name="CollisionA_ArmRight" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
+transform = Transform3D(0.0959294, -0.0282334, -0.00065124, -0.000468328, -0.0038961, 0.099923, -0.028237, -0.0958525, -0.00386973, 0.222895, 1.25142, -0.735707)
+shape = SubResource("CapsuleShape3D_0yil0")
+disabled = true
+
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
+
+[node name="Area_ArmL" type="Area3D" parent="Player/Alien_V3/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_hurt", "collision_area")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375994, 0, 0)
+collision_layer = 32768
+collision_mask = 4
+script = ExtResource("10_2td36")
+player = NodePath("../../..")
+collision = NodePath("../../../Collision_V1_ArmLeft")
+collision_hurt = NodePath("../../../Collision_V1_ArmLeft_hurt")
+collision_area = NodePath("CollisionA_ArmLeft")
+is_part = 4
+
+[node name="CollisionA_ArmLeft" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
+transform = Transform3D(0.0981955, -0.0188975, -0.000720685, 2.24717e-12, -0.00381088, 0.0999274, -0.0189113, -0.0981243, -0.00374211, -0.678474, 1.34599, -0.666391)
+shape = SubResource("CapsuleShape3D_v6wbe")
+disabled = true
+
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
+
+[node name="Area_Player-Proximity" type="Area3D" parent="Player/Alien_V3/DetectionAreas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00993299, 1, -0.00758123)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("8_0gjb7")
+
+[node name="Collision_Copter-Proximity" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_Player-Proximity"]
+shape = SubResource("SphereShape3D_ukq6r")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Alien_V3/DetectionAreas/Area_Player-Proximity"]
+visible = false
+mesh = SubResource("SphereMesh_vojki")
 
 [node name="Alien_V2" type="Node3D" parent="Player"]
 visible = false

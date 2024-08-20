@@ -32,9 +32,9 @@ func _input(event):
 				Globals.is_player_version = Globals.is_player_versions.V1
 			else:
 				if biped:
-					Globals.is_player_version = Globals.is_player_versions.V2_BIPED
+					Globals.is_player_version = Globals.is_player_versions.V3
 				else: 
-					Globals.is_player_version = Globals.is_player_versions.V2_QUADRUPED
+					pass
 			Messenger.swap_player.emit()
 		if event.is_action_pressed("Debug 5"): # Pause the terrain movement
 			terrain_controller.terrain_velocity = 0
@@ -47,12 +47,7 @@ func _input(event):
 		if event.is_action_pressed("Debug 8"):
 			pass
 		if event.is_action_pressed("Debug 9"):
-			biped = !biped
-			if biped:
-				Globals.is_player_version = Globals.is_player_versions.V2_BIPED
-			else:
-				Globals.is_player_version = Globals.is_player_versions.V2_QUADRUPED
-			Messenger.swap_player.emit()
+			pass
 		if event.is_action_pressed("Debug 0"):
 			debug_menu.visible = !debug_menu.visible
 			
