@@ -1,5 +1,12 @@
 extends Camera3D
 
+@onready var window_size : Vector2 = get_window().size
+@onready var mouse_pos : Vector2 = get_viewport().get_mouse_position()
+var is_joypad : bool = false
+
+@onready var grabber_pos : Vector2 = %Crosshair.position
+var ray_mover: Vector2 = Vector2(0,0)
+
 # Adjust these together!!
 @export var cam_z_offset: float = 13.0
 const CAM_Z_OFFSET = 13
@@ -33,7 +40,8 @@ var hover_target = null
 var powerup_menu_begin = false
 
 
-func _ready():	
+func _ready():
+	InputMap.action_set_deadzone("Move Grabber Up",0.001)
 	if !cam_z_offset == CAM_Z_OFFSET:
 		print("ERROR: Ensure Camera's Z constant and variable match!")
 		breakpoint
@@ -47,8 +55,8 @@ func _ready():
 func _physics_process(_delta):
 	
 	# Camera Move back If Speeding Up
-	var input_up = Input.is_action_pressed("ui_up")
-	var input_up_end = Input.is_action_just_released("ui_up")
+	var input_up = Input.is_action_pressed("Move Forward")
+	var input_up_end = Input.is_action_just_released("Move Forward")
 	if input_up and cam_z_offset == CAM_Z_OFFSET:
 		cam_z_offset += .75
 	if input_up_end and cam_z_offset >= CAM_Z_OFFSET:
@@ -73,6 +81,19 @@ func on_grab_ended():
 	is_attempting_grab = false
 
 func _process(_delta):
+	mouse_pos = get_viewport().get_mouse_position()
+	var cursor_velocity = Vector2.ZERO
+	var inputVector = Vector2(
+		Input.get_action_strength("Move Grabber Right") - Input.get_action_strength("Move Grabber Left"),
+		Input.get_action_strength("Move Grabber Down") - Input.get_action_strength("Move Grabber Up")
+	).limit_length()
+	cursor_velocity = inputVector
+	if is_joypad:
+		Input.warp_mouse(mouse_pos + cursor_velocity * 2.0 * _delta * window_size)
+	else:
+		pass
+	
+	
 	if get_viewport() == null:
 		return
 	
@@ -81,6 +102,7 @@ func _process(_delta):
 		if Input.is_action_pressed("Grab"): 
 			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
 			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_back").force_hide_arrow()
+			
 			if !raycast_result == null:
 				if raycast_result.is_in_group("Abductee"):
 					var meat_original = raycast_result
@@ -113,13 +135,18 @@ func _process(_delta):
 		if Globals.level_current == 0:
 			menu_alien_ray()
 	
-	
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		is_joypad = false
+	if event is InputEventJoypadMotion:
+		is_joypad = true
+
+
 
 func hover_ray(mask,has_mask): ## Raycast that receives a target via argument
 	if get_viewport() == null:
 		return
 	
-	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 3000
 	var from = project_ray_origin(mouse_pos)
 	var to = from + project_ray_normal(mouse_pos) * ray_length

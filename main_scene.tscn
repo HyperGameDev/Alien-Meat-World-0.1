@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=115 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://main_scene.gd" id="1_fw7jj"]
@@ -36,7 +36,9 @@
 [ext_resource type="Animation" uid="uid://cfajlfyq1ba2s" path="res://UI/Powerups/Animations/hover_3.res" id="12_gh6mc"]
 [ext_resource type="Script" path="res://UI/HUD.gd" id="12_gi6vt"]
 [ext_resource type="PackedScene" uid="uid://cjvyodfle2c7n" path="res://UI/Menus/menu.tscn" id="14_eaktg"]
+[ext_resource type="Script" path="res://crosshair.gd" id="15_507w8"]
 [ext_resource type="Material" uid="uid://b6sjs7rd7u4iv" path="res://UI/Orbs/orb_texture_01.tres" id="21_glvus"]
+[ext_resource type="Script" path="res://grab_point.gd" id="21_u3g24"]
 [ext_resource type="FontFile" uid="uid://cx2fw81sqeocp" path="res://UI/Fonts/Agrandir-TextBold.otf" id="22_3bjjk"]
 [ext_resource type="PackedScene" uid="uid://dxlg40tq3harq" path="res://Player/PlayerV2/alien_v2.tscn" id="30_sd4ur"]
 [ext_resource type="PackedScene" uid="uid://cug028qxxwj68" path="res://Player/PlayerV3/alien_v3.tscn" id="31_xhesi"]
@@ -231,6 +233,8 @@ _data = {
 "RESET": SubResource("Animation_ei6f7"),
 "loading_text": SubResource("Animation_65pkm")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mct4r"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_war41"]
 size = Vector3(1, 0.755, 0.855)
@@ -1084,7 +1088,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_muw3l")
-metadata/_edit_use_anchors_ = true
 
 [node name="Container_Message" type="MarginContainer" parent="UI_Top/Blackout_BG"]
 unique_name_in_owner = true
@@ -1138,6 +1141,23 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_kkp1t")
 }
+
+[node name="Crosshair" type="Panel" parent="UI_Top"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mct4r")
+script = ExtResource("15_507w8")
 
 [node name="Debug_3D" type="Node3D" parent="."]
 
@@ -1316,7 +1336,13 @@ script = ExtResource("4_0jb24")
 [node name="TerrainController_inScene" parent="." instance=ExtResource("6_ywiix")]
 unique_name_in_owner = true
 
+[node name="Grab_Point" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18279e-11, 2.7, -2.32831e-10)
+script = ExtResource("21_u3g24")
+
 [node name="ScoreDunk" type="Area3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.54315, 0.166246)
 collision_layer = 0
 collision_mask = 0

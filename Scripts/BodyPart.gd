@@ -2,7 +2,7 @@ extends Area3D
 
 class_name BodyPart
 
-const LIMB_MORPH_SPEED = 1.25
+const LIMB_MORPH_SPEED : float = 1.25
 
 @export var is_head: Area3D
 @export var player: CharacterBody3D
@@ -10,33 +10,35 @@ const LIMB_MORPH_SPEED = 1.25
 @export var collision_hurt: CollisionShape3D
 @export var collision_area: CollisionShape3D
 
-@onready var mesh_hurt = player.get_node("Alien_V1/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1])
-@onready var mesh = player.get_node("Alien_V1/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1])
+@onready var mesh_hurt : MeshInstance3D = player.get_node("Alien_V1/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1])
+@onready var mesh : MeshInstance3D = player.get_node("Alien_V1/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1])
 
-@onready var dmg_label = player.get_node("Alien_V1/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label")
+@onready var dmg_label : Label3D = player.get_node("Alien_V1/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label")
 
-@onready var bodypart_name = name.split("_")[1]	
+@onready var bodypart_name : String = name.split("_")[1]	
 
-@onready var skeleton = get_tree().get_root().get_node("Main Scene/Player/Alien_V1/Alien/Armature/Skeleton3D")
+@onready var skeleton : Skeleton3D = get_tree().get_root().get_node("Main Scene/Player/Alien_V1/Alien/Armature/Skeleton3D")
 
-var limb_dmg_flash_end = false
+@onready var score_dunk : Area3D = %ScoreDunk
+
+var limb_dmg_flash_end : bool = false
 
 @onready var material_damaged_timer : Timer = Timer.new()
 @onready var material_reset_timer : Timer = Timer.new()
-@onready var limb_dmg_flash_length = $"Timer_limb-dmg-flash_length"
+@onready var limb_dmg_flash_length : Timer = $"Timer_limb-dmg-flash_length"
 
-const LIMB_DMG_FLASH_ON_LENGTH = 0.4
-const LIMB_DMG_FLASH_OFF_LENGTH = 0.2
+const LIMB_DMG_FLASH_ON_LENGTH : float = 0.4
+const LIMB_DMG_FLASH_OFF_LENGTH : float = 0.2
 
-@export var is_part: is_parts
+@export var is_part : is_parts
 
 var amount_to_damage = null
 
-var max_health = 2
-var current_health = 2
-var stand_speed = .5
+var max_health : int = 2
+var current_health : int = 2
+var stand_speed : float = .5
 
-var limb_damage_amount = 1
+var limb_damage_amount : int = 1
 
 var dict_scale_limbs:Dictionary = {
 	0: Vector3(0.0, 0.0, 0.0),
@@ -81,7 +83,7 @@ func _ready():
 	Messenger.area_damaged.connect(on_area_damaged)
 	Messenger.amount_damaged.connect(_damage_amount)
 	Messenger.instant_death.connect(fall_death)
-	Messenger.abductee_detected.connect(on_abductee_detected)
+	Messenger.player_hover.connect(on_player_hover)
 	
 	Messenger.game_prebegin.connect(on_game_prebegin)
 	
@@ -220,54 +222,63 @@ func fall_death(fall_death):
 		Messenger.game_over.emit()
 
 
-func on_abductee_detected(collided_bodypart, empathy_ok):
-	if collided_bodypart == self and empathy_ok == false:
-		Messenger.empathy_consumed.emit()
+func on_player_hover(is_hovered):
+	#if collided_bodypart == self and empathy_ok == false:
+		#Messenger.empathy_consumed.emit()
 #		print("collided with bad Abductee")
 
-	if collided_bodypart == self and current_health < max_health:
-		current_health += 1
 
-		dmg_label.text = str(current_health)
+		#dmg_label.text = str(current_health)]
+	if is_hovered:
+		var grabbed_abductees : Array = get_tree().get_nodes_in_group("Grabbed")
+		var grabbed_abductees_int: int = grabbed_abductees.size()
+		if grabbed_abductees_int > 0:
+			#print("Player hovered is ",is_hovered," with ",grabbed_abductees_int," abductee(s) hand!")
+			if current_health < max_health:
+				current_health += 1
 			
-		match current_health:
-			1: 
-				if is_part == BodyPart.is_parts.ARM_L or is_part == BodyPart.is_parts.ARM_R or is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
-					dmg_label.text = str(current_health)
-					mesh_hurt.visible = true
-					collision_hurt.set_deferred("disabled", false)
-					
-					var tween = get_tree().create_tween();
-					tween.set_ease(Tween.EASE_IN)
-					tween.tween_property(player, "position", Vector3(player.position.x, -.222, player.position.z), stand_speed)
-					
-				if is_part == BodyPart.is_parts.HEAD:
-					mesh.visible = false
-					mesh_hurt.visible = true
-			2:
-				if is_part == BodyPart.is_parts.ARM_L or is_part == BodyPart.is_parts.ARM_R or is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
-					dmg_label.text = str(current_health)
-					mesh.visible = true
-					mesh_hurt.visible = false
-					collision.set_deferred("disabled", false)
-					collision_hurt.set_deferred("disabled", true)
-					
-					var tween = get_tree().create_tween();
-					tween.set_ease(Tween.EASE_IN)
-					tween.tween_property(player, "position", Vector3(player.position.x, -.03, player.position.z), stand_speed)
-					
-					
-				if is_part == BodyPart.is_parts.HEAD:
-					mesh.visible = true
-					mesh_hurt.visible = false
-			_:
+				match current_health:
+					1: 
+						if is_part == BodyPart.is_parts.ARM_L or is_part == BodyPart.is_parts.ARM_R or is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
+							dmg_label.text = str(current_health)
+							mesh_hurt.visible = true
+							collision_hurt.set_deferred("disabled", false)
+							
+							var tween = get_tree().create_tween();
+							tween.set_ease(Tween.EASE_IN)
+							tween.tween_property(player, "position", Vector3(player.position.x, -.222, player.position.z), stand_speed)
+							
+						if is_part == BodyPart.is_parts.HEAD:
+							mesh.visible = false
+							mesh_hurt.visible = true
+					2:
+						if is_part == BodyPart.is_parts.ARM_L or is_part == BodyPart.is_parts.ARM_R or is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
+							dmg_label.text = str(current_health)
+							mesh.visible = true
+							mesh_hurt.visible = false
+							collision.set_deferred("disabled", false)
+							collision_hurt.set_deferred("disabled", true)
+							
+							var tween = get_tree().create_tween();
+							tween.set_ease(Tween.EASE_IN)
+							tween.tween_property(player, "position", Vector3(player.position.x, -.03, player.position.z), stand_speed)
+							
+							
+						if is_part == BodyPart.is_parts.HEAD:
+							mesh.visible = true
+							mesh_hurt.visible = false
+					_:
+						pass
+						
+			else:
 				pass
-
-		# Healed the Head?
-	if collided_bodypart == is_head and is_part == BodyPart.is_parts.HEAD:
-		Messenger.head_health.emit(current_health, max_health)
-		Messenger.head_is_healed.emit()
-
+				
+			for abductee in grabbed_abductees:
+				abductee.queue_free()
+				score_dunk.dunk_ascent_timer_duration = 0.2
+				score_dunk.on_grab_ended()
+				
+				
 func on_transform():
 		mesh.show()
 		var tween = get_tree().create_tween();

@@ -14,6 +14,7 @@ extends Area3D
 var dunk_y_offset: float = 5.6
 const DUNK_Y_OFFSET: float = 5.6
 
+
 @export var dunk_ascent_distance: float = 1.6
 
 # Cam Movement vars
@@ -68,9 +69,8 @@ func _physics_process(delta):
 	
 	
 	
-	# Dunk descent
+	# Dunk ascent
 	if is_grabbing and dunk_y_offset == DUNK_Y_OFFSET:
-#		dunk_ascent_timer_duration = DUNK_ASCENT_TIMER_DURATION
 		dunk_ascent_timer.start(dunk_ascent_timer_duration)
 		dunk_y_offset -= dunk_ascent_distance
 		
@@ -97,6 +97,7 @@ func _physics_process(delta):
 		
 func on_ascent_timer_timeout():
 	dunk_y_offset += dunk_ascent_distance
+	dunk_ascent_timer_duration = DUNK_ASCENT_TIMER_DURATION
 	
 func on_screen_exited():
 	if !dunked_meat == null:

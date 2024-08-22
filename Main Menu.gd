@@ -18,6 +18,10 @@ func _input(event):
 	if event is InputEventKey and Globals.is_game_state == Globals.is_game_states.INTRO:
 		if event.pressed:	
 			Messenger.swap_game_state.emit(Globals.is_game_states.MENU)
+	if event is InputEventJoypadButton and Globals.is_game_state == Globals.is_game_states.INTRO:
+		if event.pressed:	
+			Messenger.swap_game_state.emit(Globals.is_game_states.MENU)
+		
 
 func menu_flyaway_over():
 	visible = false

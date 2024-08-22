@@ -15,28 +15,29 @@ enum is_types {COW, HUMAN}
 
 @onready var detect_surface: RayCast3D = $RayCast_surfaceDetect
 
-@onready var camera: Camera3D =  get_tree().get_current_scene().get_node("Camera3D")
-@onready var player: CharacterBody3D =  get_tree().get_current_scene().get_node("Player")
-@onready var collision = $CollisionShape3D
+@onready var camera : Camera3D =  get_tree().get_current_scene().get_node("Camera3D")
+@onready var player : CharacterBody3D =  get_tree().get_current_scene().get_node("Player")
+@onready var collision : CollisionShape3D = $CollisionShape3D
+@onready var grab_point : Marker3D = get_tree().get_current_scene().get_node("Grab_Point")
 
-@export var velocity: int = 60
-@export var grab_distance_offset: float = 14.0
+@export var velocity : int = 60
+@export var grab_distance_offset : float = 14.0
 
-var planeToMoveOn: Plane
-var has_been_grabbed: bool = false
+var planeToMoveOn : Plane
+var has_been_grabbed : bool = false
+var cursorPosition_on_grab : Vector2 = Vector2(0,0)
 
-var is_in_dunk: bool = false
-var has_been_dunked: bool = false
-
+var is_in_dunk : bool = false
+var has_been_dunked : bool = false
 
 var default_material := StandardMaterial3D.new()
 var hover_material := StandardMaterial3D.new()
 var select_material := StandardMaterial3D.new()
 
-var spawn: bool = false
-var spawned: bool = false
+var spawn : bool = false
+var spawned : bool = false
 
-var fell: bool = false
+var fell : bool = false
 
 func _ready():
 	if !has_node("RayCast_surfaceDetect"):
@@ -57,6 +58,7 @@ func _ready():
 	self.add_to_group("Abductee")
 	
 
+	body_entered.connect(on_body_entered)
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 	
@@ -127,11 +129,27 @@ func _physics_process(delta):
 			has_been_grabbed = true
 			
 #		collision.disabled = true
-		var cursorPosition = get_viewport().get_mouse_position()
-		var rayStartPoint = camera.project_ray_origin(cursorPosition)
-		var rayDirection = camera.project_ray_normal(cursorPosition)
+		var grab_point_2d : Vector2 = camera.unproject_position(grab_point.global_position)
+		var cursorPosition : Vector2 = get_viewport().get_mouse_position()
+		#print(cursorPosition_offset)
+		var rayStartPoint : Vector3 = camera.project_ray_origin(cursorPosition)
+		var rayDirection : Vector3 = camera.project_ray_normal(cursorPosition)
 		var goTo = planeToMoveOn.intersects_ray(rayStartPoint, rayDirection)
+		
 		self.linear_velocity = (goTo - self.global_position) * velocity
+		
+		if cursorPosition.x < cursorPosition_on_grab.x:
+			Messenger.grab_point_offset.emit(1)
+		if cursorPosition.x > cursorPosition_on_grab.x:
+			Messenger.grab_point_offset.emit(2)
+		if cursorPosition.y < cursorPosition_on_grab.y:
+			Messenger.grab_point_offset.emit(3)
+		if cursorPosition.y > cursorPosition_on_grab.y:
+			Messenger.grab_point_offset.emit(4)
+		if cursorPosition.x == cursorPosition_on_grab.x and cursorPosition.y == cursorPosition_on_grab.y:
+			Messenger.grab_point_offset.emit(0)
+			
+		
 	else:
 		if is_in_group("Dropped") and detect_surface.is_colliding():
 			if !detect_surface.get_collider() == self.get_parent():
@@ -157,8 +175,11 @@ func on_dunk_is_at_position(dunk_position):
 func _has_been_grabbed():
 	Messenger.grab_begun.emit()
 	var plane_z_position = player.global_position.z
-	planeToMoveOn  = Plane(Vector3(0,0,1), plane_z_position)
-#	print(plane_z_position)
+	planeToMoveOn = Plane(Vector3(0,0,1), plane_z_position)
+	cursorPosition_on_grab = get_viewport().get_mouse_position()
+	print("Initial grab pos: ",cursorPosition_on_grab)
+	
+	
 
 	#self.reparent(get_tree().get_current_scene())
 
@@ -172,11 +193,11 @@ func on_meat_left_dunk(dunked_body):
 		is_in_dunk = false
 	
 
-#func on_area_entered(collided_bodypart):
-	# collided_bodypart.mesh.hide()
-	# collided_bodypart.mesh
-	# print("Abductee Sees Player")
-	#Messenger.abductee_detected.emit(collided_bodypart, empathy_ok)
+func on_body_entered(collided_bodypart):
+	#collided_bodypart.mesh.hide()
+	#collided_bodypart.mesh
+	print("Abductee Sees Player")
+	Messenger.abductee_detected.emit(collided_bodypart, empathy_ok)
 	
  
 func _on_mouse_entered(): ## For hover arrow indicator
