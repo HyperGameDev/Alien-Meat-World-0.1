@@ -81,6 +81,8 @@ signal meat_left_dunk
 signal meat_in_dunk
 
 signal abduction
+signal eating_begun
+signal eating_finished
 
 signal transform
 

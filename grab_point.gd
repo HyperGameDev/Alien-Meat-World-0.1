@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	self.position += grab_point_direction * grab_point_lerpspeed
 	
 func on_grab_point_offset(direction):
-	print(direction)
+	#print(direction)
 	match direction:
 		0:
 			grab_point_x_offset = GRAB_POINT_X_OFFSET

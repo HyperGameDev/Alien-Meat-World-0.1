@@ -20,6 +20,18 @@ const LIMB_MORPH_SPEED : float = 1.25
 @onready var skeleton : Skeleton3D = get_tree().get_root().get_node("Main Scene/Player/Alien_V1/Alien/Armature/Skeleton3D")
 
 @onready var score_dunk : Area3D = %ScoreDunk
+@onready var animation_blood_human : AnimationPlayer = %"Particles_Blood-Human"/AnimationPlayer
+
+@onready var healsCount_ArmL: Label3D = %healsCount_ArmL
+@onready var animation_healsCount_ArmL = %healsCount_ArmL/AnimationPlayer
+@onready var healsCount_ArmR: Label3D = %healsCount_ArmR
+@onready var animation_healsCount_ArmR = %healsCount_ArmR/AnimationPlayer
+@onready var healsCount_LegL: Label3D = %healsCount_LegL
+@onready var animation_healsCount_LegL = %healsCount_LegL/AnimationPlayer
+@onready var healsCount_LegR: Label3D = %healsCount_LegR
+@onready var animation_healsCount_LegR = %healsCount_LegR/AnimationPlayer
+@onready var healsCount_Head: Label3D = %healsCount_Head
+@onready var animation_healsCount_Head = %healsCount_Head/AnimationPlayer
 
 var limb_dmg_flash_end : bool = false
 
@@ -234,6 +246,9 @@ func on_player_hover(is_hovered):
 		var grabbed_abductees_int: int = grabbed_abductees.size()
 		if grabbed_abductees_int > 0:
 			#print("Player hovered is ",is_hovered," with ",grabbed_abductees_int," abductee(s) hand!")
+			
+			do_eating()
+			
 			if current_health < max_health:
 				current_health += 1
 			
@@ -270,6 +285,19 @@ func on_player_hover(is_hovered):
 					_:
 						pass
 						
+				match is_part:
+					BodyPart.is_parts.ARM_L:
+						animation_healsCount_ArmL.play("heals_up")
+					BodyPart.is_parts.ARM_R:
+						animation_healsCount_ArmR.play("heals_up")
+					BodyPart.is_parts.LEG_L:
+						animation_healsCount_LegL.play("heals_up")
+					BodyPart.is_parts.LEG_R:
+						animation_healsCount_LegR.play("heals_up")
+					BodyPart.is_parts.HEAD:
+						animation_healsCount_Head.play("heals_up")
+						
+						
 			else:
 				pass
 				
@@ -304,6 +332,12 @@ func on_swap_player():
 		_:
 			pass
 
+func do_eating():
+	animation_blood_human.play("feed")
+	Messenger.eating_begun.emit()
+	
+	await animation_blood_human.animation_finished
+	Messenger.eating_finished.emit()
 
 func on_game_prebegin():
 	if is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:

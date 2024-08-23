@@ -2,9 +2,11 @@ extends Camera3D
 
 @onready var window_size : Vector2 = get_window().size
 @onready var mouse_pos : Vector2 = get_viewport().get_mouse_position()
-var is_joypad : bool = false
 
-@onready var grabber_pos : Vector2 = %Crosshair.position
+var sensitivity: float = 1000.0 
+var x_axis: float = 0.0
+var y_axis: float = 0.0
+
 var ray_mover: Vector2 = Vector2(0,0)
 
 # Adjust these together!!
@@ -36,16 +38,18 @@ var attack_target = null
 # Raycast 2: Hover-Player var
 var hover_target = null
 
-
-var powerup_menu_begin = false
+var prevent_attacking : bool = false
 
 
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	InputMap.action_set_deadzone("Move Grabber Up",0.001)
 	if !cam_z_offset == CAM_Z_OFFSET:
 		print("ERROR: Ensure Camera's Z constant and variable match!")
 		breakpoint
 		
+	Messenger.eating_begun.connect(on_eating_begun)
+	Messenger.eating_finished.connect(on_eating_finished)
 	Messenger.grab_ended.connect(on_grab_ended)
 	Messenger.powerup_menu_begin.connect(on_powerup_menu_begin)
 	Messenger.powerup_chosen.connect(on_powerup_chosen)
@@ -80,24 +84,31 @@ func _physics_process(_delta):
 func on_grab_ended():
 	is_attempting_grab = false
 
-func _process(_delta):
-	mouse_pos = get_viewport().get_mouse_position()
-	var cursor_velocity = Vector2.ZERO
-	var inputVector = Vector2(
-		Input.get_action_strength("Move Grabber Right") - Input.get_action_strength("Move Grabber Left"),
-		Input.get_action_strength("Move Grabber Down") - Input.get_action_strength("Move Grabber Up")
-	).limit_length()
-	cursor_velocity = inputVector
-	if is_joypad:
-		Input.warp_mouse(mouse_pos + cursor_velocity * 2.0 * _delta * window_size)
-	else:
-		pass
+func _process(delta: float) -> void:
+	if x_axis != 0.0 or y_axis != 0.0:
+		mouse_pos = get_viewport().get_mouse_position()
+		var new_mouse_pos = mouse_pos + Vector2(x_axis, y_axis) * sensitivity * delta
+		Input.warp_mouse(new_mouse_pos)
+		
+	
+	
+	
+	#var cursor_velocity = Vector2.ZERO
+	#var inputVector = Vector2(
+		#Input.get_action_strength("Move Grabber Right") - Input.get_action_strength("Move Grabber Left"),
+		#Input.get_action_strength("Move Grabber Down") - Input.get_action_strength("Move Grabber Up")
+	#).limit_length()
+	#cursor_velocity = inputVector
+	#if is_joypad:
+		#Input.warp_mouse(mouse_pos + cursor_velocity * 2.0 * _delta * window_size)
+	#else:
+		#pass
 	
 	
 	if get_viewport() == null:
 		return
 	
-	if !powerup_menu_begin:
+	if !prevent_attacking:
 		var raycast_result = attack_ray() ## Shoots the ray
 		if Input.is_action_pressed("Grab"): 
 			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
@@ -134,12 +145,21 @@ func _process(_delta):
 		
 		if Globals.level_current == 0:
 			menu_alien_ray()
+		
 	
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		is_joypad = false
 	if event is InputEventJoypadMotion:
-		is_joypad = true
+		if event is not InputEventMouseMotion:
+			#is_joypad = true
+			#axis 0 and 1 for left stick, 2 and 3 for right stick
+			if event.axis == 2:
+				x_axis = event.axis_value
+			if event.axis == 3:
+				y_axis = event.axis_value
+	else:
+		mouse_pos = get_viewport().get_mouse_position()
+	
+		
 
 
 
@@ -251,10 +271,10 @@ func cursor_ray(): ## This should be what the player head follows
 #	print(raycast_result)
 
 func on_powerup_menu_begin():
-	powerup_menu_begin = true
+	prevent_attacking = true
 
 func on_powerup_chosen(orb):
-	powerup_menu_begin = false
+	prevent_attacking = false
 	var orb_chosen = %PowerUp_Menu.get_children()[orb - 1]
 	Globals.powerups_available.erase(orb_chosen.powerup_key)
 
@@ -263,3 +283,9 @@ func on_game_menu():
 
 func on_game_postmenu():
 	menu_pickable = false
+
+func on_eating_begun():
+	prevent_attacking = true
+
+func on_eating_finished():
+	prevent_attacking = false

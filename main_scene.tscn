@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=130 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://main_scene.gd" id="1_fw7jj"]
@@ -36,10 +36,12 @@
 [ext_resource type="Animation" uid="uid://cfajlfyq1ba2s" path="res://UI/Powerups/Animations/hover_3.res" id="12_gh6mc"]
 [ext_resource type="Script" path="res://UI/HUD.gd" id="12_gi6vt"]
 [ext_resource type="PackedScene" uid="uid://cjvyodfle2c7n" path="res://UI/Menus/menu.tscn" id="14_eaktg"]
-[ext_resource type="Script" path="res://crosshair.gd" id="15_507w8"]
+[ext_resource type="Script" path="res://UI/Crosshair/crosshair3D.gd" id="15_507w8"]
+[ext_resource type="Script" path="res://UI/Crosshair/crosshair2D.gd" id="15_xei3f"]
 [ext_resource type="Material" uid="uid://b6sjs7rd7u4iv" path="res://UI/Orbs/orb_texture_01.tres" id="21_glvus"]
 [ext_resource type="Script" path="res://grab_point.gd" id="21_u3g24"]
 [ext_resource type="FontFile" uid="uid://cx2fw81sqeocp" path="res://UI/Fonts/Agrandir-TextBold.otf" id="22_3bjjk"]
+[ext_resource type="Animation" uid="uid://i8aovdslp0f0" path="res://UI/Animations/score_up.res" id="25_pb78e"]
 [ext_resource type="PackedScene" uid="uid://dxlg40tq3harq" path="res://Player/PlayerV2/alien_v2.tscn" id="30_sd4ur"]
 [ext_resource type="PackedScene" uid="uid://cug028qxxwj68" path="res://Player/PlayerV3/alien_v3.tscn" id="31_xhesi"]
 
@@ -234,7 +236,130 @@ _data = {
 "loading_text": SubResource("Animation_65pkm")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mct4r"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrp36"]
+content_margin_left = 30.0
+content_margin_top = 30.0
+content_margin_right = 30.0
+content_margin_bottom = 30.0
+bg_color = Color(0.466667, 0.85098, 0.505882, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.466667, 0.85098, 0.505882, 1)
+corner_radius_top_left = 500
+corner_radius_top_right = 500
+corner_radius_bottom_right = 500
+corner_radius_bottom_left = 500
+
+[sub_resource type="Animation" id="Animation_lpe12"]
+resource_name = "grow"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:theme_override_styles/panel:content_margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [30.0, 60.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:theme_override_styles/panel:content_margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [30.0, 60.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer:theme_override_styles/panel:content_margin_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [30.0, 60.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer:theme_override_styles/panel:content_margin_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [30.0, 60.0]
+}
+
+[sub_resource type="Animation" id="Animation_0afky"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:theme_override_styles/panel:content_margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [30.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:theme_override_styles/panel:content_margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [30.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer:theme_override_styles/panel:content_margin_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [30.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer:theme_override_styles/panel:content_margin_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [30.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y52jq"]
+_data = {
+"RESET": SubResource("Animation_0afky"),
+"grow": SubResource("Animation_lpe12")
+}
 
 [sub_resource type="BoxMesh" id="BoxMesh_war41"]
 size = Vector3(1, 0.755, 0.855)
@@ -442,7 +567,7 @@ tracks/2/keys = {
 "values": [Color(0, 0.258824, 0.0431373, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_gvfe1"]
+[sub_resource type="Animation" id="Animation_dfa8v"]
 resource_name = "score_up"
 length = 1.4
 tracks/0/type = "value"
@@ -452,7 +577,7 @@ tracks/0/path = NodePath(".:font_size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.12, 0.3, 0.51),
+"times": PackedFloat32Array(0, 0.12, 0.3, 0.533333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [1, 80, 50, 80]
@@ -467,7 +592,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1175, 0.51, 1.2, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.603922, 0.929412, 0.619608, 0), Color(0.603922, 0.929412, 0.619608, 1), Color(0.603922, 0.929412, 0.619608, 1), Color(0.603922, 0.929412, 0.619608, 1), Color(0.603922, 0.929412, 0.619608, 0)]
+"values": [Color(0.603922, 0.929412, 0.619608, 0), Color(0.6045, 0.794375, 0.93, 1), Color(0.603922, 0.796078, 0.929412, 1), Color(0.603922, 0.796078, 0.929412, 1), Color(0.603922, 0.929412, 0.619608, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -476,16 +601,17 @@ tracks/2/path = NodePath(".:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1175, 0.51, 1.2, 1.4),
+"times": PackedFloat32Array(0, 0.1, 0.51, 1.2, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0, 0.258824, 0.0431373, 0), Color(0, 0.258824, 0.0431373, 1), Color(0, 0.258824, 0.0431373, 1), Color(0, 0.258824, 0.0431373, 1), Color(0, 0.258824, 0.0431373, 0)]
+"values": [Color(0, 0.258824, 0.0431373, 0), Color(0, 0.314167, 0.65, 1), Color(0, 0.314167, 0.65, 1), Color(0, 0.314167, 0.65, 1), Color(0, 0.258824, 0.0431373, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vv7br"]
 _data = {
 "RESET": SubResource("Animation_yd82m"),
-"score_up": SubResource("Animation_gvfe1")
+"heals_up": SubResource("Animation_dfa8v"),
+"score_up": ExtResource("25_pb78e")
 }
 
 [sub_resource type="SphereMesh" id="SphereMesh_5k002"]
@@ -578,6 +704,82 @@ height = 13.648
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lqgqe"]
 radius = 2.365
 height = 13.648
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mrwwm"]
+direction = Vector3(0, 0.275, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+linear_accel_min = -31.08
+linear_accel_max = 2.71
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lcscx"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_462u4"]
+material = SubResource("StandardMaterial3D_lcscx")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="Animation" id="Animation_wr84n"]
+resource_name = "feed"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:process_material:linear_accel")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.06667, 1.43333, 2.26667),
+"transitions": PackedFloat32Array(0.5, 0.5, 1, 0.5, 1),
+"update": 0,
+"values": [Vector2(-31.08, 2.71), Vector2(-31.08, 2.71), Vector2(-2.23517e-06, 18.25), Vector2(-2.23517e-06, 33.79), Vector2(-31.08, 2.71)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_kwgy5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:process_material:linear_accel")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-31.08, 2.71)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxcj8"]
+_data = {
+"RESET": SubResource("Animation_kwgy5"),
+"feed": SubResource("Animation_wr84n")
+}
 
 [sub_resource type="Animation" id="Animation_ghinw"]
 length = 0.001
@@ -1008,6 +1210,22 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_s8eah"]
 size = Vector3(137.258, 1, 6.5647)
 
+[sub_resource type="TorusMesh" id="TorusMesh_fmdd3"]
+inner_radius = 0.047
+outer_radius = 0.068
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cr8rk"]
+no_depth_test = true
+shading_mode = 0
+
+[sub_resource type="TorusMesh" id="TorusMesh_em5qu"]
+inner_radius = 0.03
+outer_radius = 0.086
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qj1h"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
 [node name="Main Scene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.65595e-05, -0.0122666, 0.00316)
 script = ExtResource("1_fw7jj")
@@ -1088,6 +1306,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_muw3l")
+metadata/_edit_lock_ = true
 
 [node name="Container_Message" type="MarginContainer" parent="UI_Top/Blackout_BG"]
 unique_name_in_owner = true
@@ -1142,22 +1361,42 @@ libraries = {
 "": SubResource("AnimationLibrary_kkp1t")
 }
 
-[node name="Crosshair" type="Panel" parent="UI_Top"]
-unique_name_in_owner = true
+[node name="Control" type="Control" parent="UI_Top"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1109.0
+offset_bottom = -624.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_xei3f")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_Top/Control"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -24.0
+offset_top = -16.0
+offset_right = 86.0
+offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_mct4r")
-script = ExtResource("15_507w8")
+theme_override_styles/panel = SubResource("StyleBoxFlat_qrp36")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI_Top/Control/PanelContainer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_y52jq")
+}
+
+[node name="Panel" type="Panel" parent="UI_Top/Control/PanelContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
 
 [node name="Debug_3D" type="Node3D" parent="."]
 
@@ -1758,18 +1997,128 @@ disabled = true
 transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, 0.085939, 1.48907, 0.180266)
 shape = SubResource("CapsuleShape3D_102ua")
 
+[node name="Particles_Blood-Human" type="GPUParticles3D" parent="Player"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 1.2693, 0.910425)
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_mrwwm")
+draw_pass_1 = SubResource("SphereMesh_462u4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Particles_Blood-Human"]
+libraries = {
+"": SubResource("AnimationLibrary_cxcj8")
+}
+
+[node name="healsCount_ArmL" type="Label3D" parent="Player"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.997371, 0.0724549, 0, -0.0724549, 0.997371, -0.8, 1.42026, 0)
+no_depth_test = true
+alpha_antialiasing_mode = 1
+render_priority = 127
+outline_render_priority = 126
+modulate = Color(0, 0.258824, 0.0431373, 0)
+outline_modulate = Color(0.603922, 0.929412, 0.619608, 0)
+text = "+1"
+font = ExtResource("7_1vj6d")
+font_size = 80
+outline_size = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/healsCount_ArmL"]
+libraries = {
+"": SubResource("AnimationLibrary_vv7br")
+}
+
+[node name="healsCount_ArmR" type="Label3D" parent="Player"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.997371, 0.0724549, 0, -0.0724549, 0.997371, 0.8, 1.42026, 0)
+no_depth_test = true
+alpha_antialiasing_mode = 1
+render_priority = 127
+outline_render_priority = 126
+modulate = Color(0, 0.258824, 0.0431373, 0)
+outline_modulate = Color(0.603922, 0.929412, 0.619608, 0)
+text = "+1"
+font = ExtResource("7_1vj6d")
+font_size = 80
+outline_size = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/healsCount_ArmR"]
+libraries = {
+"": SubResource("AnimationLibrary_vv7br")
+}
+
+[node name="healsCount_LegL" type="Label3D" parent="Player"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.997371, 0.0724549, 0, -0.0724549, 0.997371, -0.85, 0.556, 0)
+no_depth_test = true
+alpha_antialiasing_mode = 1
+render_priority = 127
+outline_render_priority = 126
+modulate = Color(0, 0.258824, 0.0431373, 0)
+outline_modulate = Color(0.603922, 0.929412, 0.619608, 0)
+text = "+1"
+font = ExtResource("7_1vj6d")
+font_size = 80
+outline_size = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/healsCount_LegL"]
+libraries = {
+"": SubResource("AnimationLibrary_vv7br")
+}
+
+[node name="healsCount_LegR" type="Label3D" parent="Player"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.997371, 0.0724549, 0, -0.0724549, 0.997371, 0.85, 0.556083, 0)
+no_depth_test = true
+alpha_antialiasing_mode = 1
+render_priority = 127
+outline_render_priority = 126
+modulate = Color(0, 0.258824, 0.0431373, 0)
+outline_modulate = Color(0.603922, 0.929412, 0.619608, 0)
+text = "+1"
+font = ExtResource("7_1vj6d")
+font_size = 80
+outline_size = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/healsCount_LegR"]
+libraries = {
+"": SubResource("AnimationLibrary_vv7br")
+}
+
+[node name="healsCount_Head" type="Label3D" parent="Player"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.997371, 0.0724549, 0, -0.0724549, 0.997371, 0, 2.06839, 0)
+no_depth_test = true
+alpha_antialiasing_mode = 1
+render_priority = 127
+outline_render_priority = 126
+modulate = Color(0, 0.258824, 0.0431373, 0)
+outline_modulate = Color(0.603922, 0.929412, 0.619608, 0)
+text = "+1"
+font = ExtResource("7_1vj6d")
+font_size = 80
+outline_size = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/healsCount_Head"]
+libraries = {
+"": SubResource("AnimationLibrary_vv7br")
+}
+
 [node name="Debug" type="CanvasLayer" parent="."]
 layer = 128
 script = ExtResource("1_1xhrq")
 show_info = true
 
 [node name="Information" type="Control" parent="Debug"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Debug/Information"]
 layout_mode = 1
@@ -2014,6 +2363,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.63274, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Debug_Ground"]
 shape = SubResource("BoxShape3D_s8eah")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("TorusMesh_fmdd3")
+surface_material_override/0 = SubResource("StandardMaterial3D_cr8rk")
+script = ExtResource("15_507w8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 1.86265e-09)
+mesh = SubResource("TorusMesh_em5qu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_8qj1h")
+script = ExtResource("15_507w8")
 
 [connection signal="timeout" from="UI_FX/Timer_FX_Flash" to="UI_FX" method="_on_timer_fx_flash_timeout"]
 

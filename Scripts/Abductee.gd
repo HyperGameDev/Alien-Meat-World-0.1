@@ -177,7 +177,7 @@ func _has_been_grabbed():
 	var plane_z_position = player.global_position.z
 	planeToMoveOn = Plane(Vector3(0,0,1), plane_z_position)
 	cursorPosition_on_grab = get_viewport().get_mouse_position()
-	print("Initial grab pos: ",cursorPosition_on_grab)
+	#print("Initial grab pos: ",cursorPosition_on_grab)
 	
 	
 
