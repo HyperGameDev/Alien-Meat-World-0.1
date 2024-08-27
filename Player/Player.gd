@@ -49,6 +49,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	Messenger.swap_player.connect(on_swap_player)
+	Messenger.movement_start.connect(on_movement_start)
+	Messenger.movement_stop.connect(on_movement_stop)
 	Messenger.amount_slowed.connect(slowdown)
 	Messenger.area_undamaged.connect(damage_undetected)
 	Messenger.mouse_pos_3d.connect(mouse_pos)
@@ -103,12 +105,13 @@ func _physics_process(delta):
 		if input_up and terrain_slowdown == false:
 			terrain_controller.terrain_velocity = move_toward(terrain_controller.terrain_velocity, 30, 1)
 		if input_up == false and terrain_slowdown == false:
-			terrain_controller.terrain_velocity = terrain_controller.TERRAIN_VELOCITY
+			Messenger.movement_start.emit(false)
 
 		if input_up == true:
 			animation.set("parameters/walk to run/transition_request", "running")
-		else:
-			animation.set("parameters/walk to run/transition_request", "walking")
+		else: 
+			if !terrain_slowdown:
+				animation.set("parameters/walk to run/transition_request", "walking")
 
 		
 	if terrain_slowdown == true:
@@ -124,8 +127,8 @@ func rotate_head_to_direction(dir:Vector3):
 	var pos_2D: Vector2 = Vector2(-transform.basis.z.x, -transform.basis.z.z)
 	
 	# Movement application
-	skeleton.set_bone_pose_rotation(head, Quaternion(head_rotation.x, atan2(dir.x, -dir.z) * -2.3, head_rotation.z, head_rotation.w))
-	skeleton_hurt.set_bone_pose_rotation(head, Quaternion(head_rotation.x, atan2(dir.x, -dir.z) * -2.3, head_rotation.z, head_rotation.w))
+	skeleton.set_bone_pose_rotation(head, Quaternion(head_rotation.x, atan2(dir.x, -dir.z) * -3, head_rotation.z, head_rotation.w))
+	skeleton_hurt.set_bone_pose_rotation(head, Quaternion(head_rotation.x, atan2(dir.x, -dir.z) * -3, head_rotation.z, head_rotation.w))
 	
 #func rotate_player_to_direction(dir:Vector3):
 #	# Movement logic
@@ -224,13 +227,24 @@ func abductee_hovered(abductee):
 
 func slowdown(slowdown_amount):
 	if slowdown_amount == Obstacle.slowdown_amounts.FULL:
-		terrain_slowdown = true
-#		print("terrain_slowdown:", terrain_slowdown)
-		terrain_controller.terrain_velocity = 0
+		Messenger.movement_stop.emit(false)
 		
 func on_level_update(level):
 	if level == 0:
 		self.visible = false
+		controls_locked = true
+		
+func on_movement_start(unlock_controls):
+	terrain_slowdown = false
+	animation.set("parameters/walk to run/transition_request", "walking")
+	if unlock_controls:
+		controls_locked = false
+	
+func on_movement_stop(lock_controls):
+	terrain_slowdown = true
+	velocity = Vector3(0,0,0)
+	animation.set("parameters/walk to run/transition_request", "idling")
+	if lock_controls:
 		controls_locked = true
 
 func on_game_begin():
@@ -258,7 +272,7 @@ func on_swap_player():
 			get_node("Alien_V3").visible = false
 			
 		Globals.is_player_versions.V3:
-			head = 7
+			head = 6
 			animation = get_node("Alien_V3/Alien/AnimationTree_Alien")
 			skeleton = get_node("Alien_V3/Alien/Armature/Skeleton3D")
 			skeleton_hurt = get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D")

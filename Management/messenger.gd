@@ -31,6 +31,9 @@ signal player_hover
 signal area_damaged
 signal area_undamaged
 
+signal movement_start
+signal movement_stop
+
 signal instant_death
 signal limb_is_damaged
 

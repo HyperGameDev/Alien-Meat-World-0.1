@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://c1q8m4i26u6vr"]
+[gd_scene load_steps=59 format=3 uid="uid://c1q8m4i26u6vr"]
 
 [ext_resource type="PackedScene" uid="uid://diukxh5eov8fo" path="res://Player/Alien_3.blend" id="1_p4qsu"]
 [ext_resource type="Animation" uid="uid://d0dlpska7au7x" path="res://Player/Animations/Run_Blndr_1.res" id="2_2sg84"]
@@ -20,6 +20,9 @@
 [ext_resource type="Script" path="res://Orb_New-Game-Teleporter.gd" id="18_h2j76"]
 [ext_resource type="Animation" uid="uid://lrcqe00dtq51" path="res://Player/Animations/teleport.res" id="19_vvk7g"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4cfbq"]
+animation = &"Reach_2"
+
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_8iwoq"]
 
 [sub_resource type="Curve" id="Curve_wu7uv"]
@@ -33,7 +36,7 @@ fadeout_time = 1.0
 fadeout_curve = SubResource("Curve_wu7uv")
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_di8pp"]
-animation = &"Reach_2"
+animation = &"Reach"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jrexy"]
 animation = &"Run_2"
@@ -53,26 +56,32 @@ input_1/name = "running"
 input_1/auto_advance = false
 input_1/break_loop_at_end = false
 input_1/reset = true
+input_2/name = "idling"
+input_2/auto_advance = false
+input_2/break_loop_at_end = false
+input_2/reset = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y3xh1"]
 animation = &"Walk_2"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_epmww"]
-graph_offset = Vector2(376, -142)
+graph_offset = Vector2(-222.563, -142)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_4cfbq")
+nodes/Animation/position = Vector2(300, 180)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_8iwoq")
-nodes/TimeScale/position = Vector2(360, 100)
+nodes/TimeScale/position = Vector2(340, -20)
 nodes/output/position = Vector2(1140, 0)
 nodes/reach/node = SubResource("AnimationNodeOneShot_d6ox5")
 nodes/reach/position = Vector2(900, -80)
 nodes/reaching/node = SubResource("AnimationNodeAnimation_di8pp")
 nodes/reaching/position = Vector2(600, 140)
 nodes/running/node = SubResource("AnimationNodeAnimation_jrexy")
-nodes/running/position = Vector2(180, 120)
+nodes/running/position = Vector2(160, 0)
 "nodes/walk to run/node" = SubResource("AnimationNodeTransition_se77x")
 "nodes/walk to run/position" = Vector2(600, -40)
 nodes/walking/node = SubResource("AnimationNodeAnimation_y3xh1")
-nodes/walking/position = Vector2(360, -60)
-node_connections = [&"TimeScale", 0, &"running", &"output", 0, &"reach", &"reach", 0, &"walk to run", &"reach", 1, &"reaching", &"walk to run", 0, &"walking", &"walk to run", 1, &"TimeScale"]
+nodes/walking/position = Vector2(340, -180)
+node_connections = [&"TimeScale", 0, &"running", &"output", 0, &"reach", &"reach", 0, &"walk to run", &"reach", 1, &"reaching", &"walk to run", 0, &"walking", &"walk to run", 1, &"TimeScale", &"walk to run", 2, &"Animation"]
 
 [sub_resource type="Animation" id="Animation_bx7n0"]
 resource_name = "Feed_Walk_1"
@@ -1547,7 +1556,7 @@ transparent_bg = true
 theme_override_styles/fill = ExtResource("5_k8xva")
 
 [node name="Armature" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.055132, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 0, 0)
@@ -1559,13 +1568,16 @@ bones/3/rotation = Quaternion(-0.0205892, 0.00189199, 0.0252498, 0.999467)
 bones/4/rotation = Quaternion(-3.55271e-15, 8.88178e-14, -1.21169e-27, 1)
 bones/5/rotation = Quaternion(-3.55271e-15, 3.55271e-15, -1.21169e-27, 1)
 bones/6/rotation = Quaternion(-0.0895069, -0.0808807, -0.717954, 0.685558)
+bones/6/scale = Vector3(1, 1, 1)
 bones/7/rotation = Quaternion(0.0104958, 0.238896, -0.0409419, 0.970125)
+bones/7/scale = Vector3(1, 1, 1)
 bones/8/rotation = Quaternion(-0.00231333, 0.0242911, -0.00433505, 0.999693)
 bones/8/scale = Vector3(1, 1, 1)
 bones/10/rotation = Quaternion(-0.289795, -0.0479284, -0.24514, 0.92392)
 bones/11/rotation = Quaternion(-0.760895, 0.0962255, 0.209214, 0.606637)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/rotation = Quaternion(0.416566, -0.288618, -0.240819, 0.827755)
+bones/12/scale = Vector3(1, 1, 1)
 bones/14/rotation = Quaternion(-0.122028, -0.101716, -0.0764657, 0.984335)
 bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/15/scale = Vector3(1, 1, 1)
@@ -1610,7 +1622,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_l2ye2")
 [node name="Body_Shield" parent="Armature/Skeleton3D/Alien_Body" index="0" instance=ExtResource("6_gq8ww")]
 
 [node name="Alien_Body_Heart" parent="Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0.00373947, -2.22889e-10)
 surface_material_override/0 = ExtResource("11_cui7w")
 surface_material_override/1 = SubResource("StandardMaterial3D_l2ye2")
 surface_material_override/2 = ExtResource("13_sarqy")
@@ -1662,7 +1674,7 @@ font_size = 35
 outline_size = 30
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="7"]
-transform = Transform3D(-0.483184, 0.709545, 0.512912, -0.868806, -0.31618, -0.381059, -0.108206, -0.629743, 0.76923, 0.449514, 1.13444, 0.267902)
+transform = Transform3D(-0.284123, 0.274994, -0.918505, -0.891982, -0.427146, 0.148034, -0.351627, 0.86135, 0.366652, 0.449514, 1.13444, 0.267902)
 visible = false
 bone_name = "ElbowR"
 bone_idx = 7
@@ -1678,28 +1690,28 @@ libraries = {
 }
 
 [node name="Armature_hurt" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.055132, 0)
 
 [node name="Skeleton3D" parent="Armature_hurt" index="0"]
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(0.540528, -0.00234918, 0.0887175, 0.836632)
-bones/3/rotation = Quaternion(-0.259404, 0.00510772, 0.55189, 0.792528)
+bones/2/rotation = Quaternion(-0.536831, 0.0724198, 0.171462, 0.822903)
+bones/3/rotation = Quaternion(-0.414293, -0.0219044, -0.58165, 0.699689)
 bones/3/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(-0.0806613, -0.0903314, -0.758579, 0.640228)
-bones/7/rotation = Quaternion(-0.351807, 0.215508, -0.102856, 0.905102)
-bones/8/rotation = Quaternion(-0.442705, 0.0187366, 0.478477, 0.758103)
+bones/7/rotation = Quaternion(0.516002, 0.204749, -0.222603, 0.801416)
+bones/8/rotation = Quaternion(-0.58326, 0.00876172, -0.293938, 0.757186)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(0.335239, -0.335239, -0.622587, -0.622587)
+bones/9/rotation = Quaternion(0.612909, -0.612909, -0.352622, -0.352622)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/rotation = Quaternion(0.834516, -0.0792691, -0.228095, -0.495249)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/rotation = Quaternion(0.305251, -0.350267, -0.0745377, 0.882371)
+bones/12/rotation = Quaternion(0.0667566, -0.459792, 0.415477, 0.781994)
 bones/12/scale = Vector3(1, 1, 1)
-bones/13/rotation = Quaternion(0.603939, 0.603939, 0.367773, -0.367773)
+bones/13/rotation = Quaternion(0.369713, 0.369713, 0.602754, -0.602754)
 bones/14/rotation = Quaternion(-0.0301206, -0.0746789, 0.021727, 0.996516)
 bones/15/rotation = Quaternion(-0.728062, -0.0399724, 0.188485, 0.657876)
 bones/15/scale = Vector3(1, 1, 1)
-bones/16/rotation = Quaternion(-0.069529, 0.222597, -0.478286, 0.846676)
+bones/16/rotation = Quaternion(0.0205431, 0.232296, -0.119551, 0.965051)
 bones/16/scale = Vector3(1, 1, 1)
 
 [node name="Alien-hurt_ArmL" parent="Armature_hurt/Skeleton3D" index="0"]

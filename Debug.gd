@@ -37,11 +37,9 @@ func _input(event):
 					pass
 			Messenger.swap_player.emit()
 		if event.is_action_pressed("Debug 5"): # Pause the terrain movement
-			terrain_controller.terrain_velocity = 0
-			player.terrain_slowdown = true
+			Messenger.movement_stop.emit(false)
 		if event.is_action_pressed("Debug 6"): # Play the terrain movement
-			terrain_controller.terrain_velocity = terrain_controller.TERRAIN_VELOCITY
-			player.terrain_slowdown = false
+			Messenger.movement_start.emit(false)
 		if event.is_action_pressed("Debug 7"):
 			Messenger.transform.emit()
 		if event.is_action_pressed("Debug 8"):

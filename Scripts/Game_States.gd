@@ -88,7 +88,7 @@ func on_game_state_menu():
 	
 func on_game_state_postmenu():
 	main_menu.animation.play("menu_exit")
-	terrain_controller.terrain_velocity = 0.0
+	Messenger.movement_stop.emit(false)
 	Messenger.game_postmenu.emit()
 	
 func on_game_state_prebegin():
@@ -116,7 +116,7 @@ func on_game_state_begin():
 	
 func on_game_state_play():
 	Messenger.game_play.emit()
-	terrain_controller.terrain_velocity = terrain_controller.TERRAIN_VELOCITY
+	Messenger.movement_start.emit(false)
 
 func on_game_state_pause():
 	pass

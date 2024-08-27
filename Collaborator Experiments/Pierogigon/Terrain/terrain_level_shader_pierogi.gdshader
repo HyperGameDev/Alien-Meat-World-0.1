@@ -21,12 +21,12 @@ void fragment() {
 	float noise_value = texture(noise_texture, UV * noise_size).r;
 
 	//greyscale values have r==g==b, so it doesnt matter which i pick. i did "r" to get a float.
-	
+
 	float mask_noise_combo = noise_value * (mask_value_red + blue_value_ratio * mask_value_blue) / 2.0 * noise_strength;
 	float uv_factor = dirtiness * (1.0 - clamp(mask_noise_combo + 0.01, 0.0, 0.9));
-	
+
 	vec3 gradient_color_1 = texture(gradient_texture_1, vec2(uv_factor)).rgb;
-	
+
 	ALBEDO = gradient_color_1.rgb;
 
 }

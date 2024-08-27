@@ -98,9 +98,7 @@ func on_powerup_hovered(orb):
 func on_powerup_chosen(orb):
 	score_minimum_met = false
 	score_minimum_play_animation()
-	terrain_controller.terrain_velocity = terrain_controller.TERRAIN_VELOCITY
-	player.terrain_slowdown = false
-	player.controls_locked = false
+	Messenger.movement_start.emit(true)
 		
 func on_score_minimum_met():
 	score_minimum_met = true
@@ -110,12 +108,9 @@ func score_minimum_met_animation_finished():
 	animation_levelup.play("levelup_text_in")
 	levelup_message.visible = true
 	
-	#region Pause Movement
-	terrain_controller.terrain_velocity = 0
-	player.terrain_slowdown = true
-	player.controls_locked = true
-	player.velocity = Vector3(0,0,0)
-	#endregion
+	
+	Messenger.movement_stop.emit(true)
+	
 	
 	animation_loading.play("loading_text")
 	loading_text.visible = true
