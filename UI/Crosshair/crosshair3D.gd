@@ -11,7 +11,6 @@ func _ready() -> void:
 	planeToMoveOn = Plane(Vector3(0,0,1), 5.5)
 
 func _process(delta: float) -> void:
-	print(get_parent().get_parent().name)
 	var cursorPosition : Vector2 = get_viewport().get_mouse_position()
 	#print(cursorPosition_offset)
 	var rayStartPoint : Vector3 = camera.project_ray_origin(cursorPosition)
