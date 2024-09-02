@@ -1217,6 +1217,7 @@ outer_radius = 0.068
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cr8rk"]
 no_depth_test = true
 shading_mode = 0
+disable_receive_shadows = true
 
 [sub_resource type="TorusMesh" id="TorusMesh_em5qu"]
 inner_radius = 0.03
@@ -1225,6 +1226,7 @@ outer_radius = 0.086
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qj1h"]
 shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
+disable_receive_shadows = true
 
 [node name="Main Scene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.65595e-05, -0.0122666, 0.00316)
@@ -1361,7 +1363,7 @@ libraries = {
 "": SubResource("AnimationLibrary_kkp1t")
 }
 
-[node name="Control" type="Control" parent="UI_Top"]
+[node name="Crosshair2D" type="Control" parent="UI_Top"]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -1373,7 +1375,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("15_xei3f")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_Top/Control"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_Top/Crosshair2D"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1388,13 +1390,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qrp36")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI_Top/Control/PanelContainer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI_Top/Crosshair2D/PanelContainer"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_y52jq")
 }
 
-[node name="Panel" type="Panel" parent="UI_Top/Control/PanelContainer"]
+[node name="Panel" type="Panel" parent="UI_Top/Crosshair2D/PanelContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
@@ -2364,14 +2366,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.63274, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Debug_Ground"]
 shape = SubResource("BoxShape3D_s8eah")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Crosshair3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+cast_shadow = 0
 mesh = SubResource("TorusMesh_fmdd3")
 surface_material_override/0 = SubResource("StandardMaterial3D_cr8rk")
 script = ExtResource("15_507w8")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+[node name="Crosshair3D Outer" type="MeshInstance3D" parent="Crosshair3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 1.86265e-09)
+cast_shadow = 0
 mesh = SubResource("TorusMesh_em5qu")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_8qj1h")

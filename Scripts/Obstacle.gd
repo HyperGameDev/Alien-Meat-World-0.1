@@ -4,6 +4,9 @@ class_name Obstacle
 
 signal update_hitpoints
 
+static var is_collidable = false
+static var is_visible = false
+
 @export var has_arrow = true
 @export var indicator_color = Color(1.0,.5,.0,1.0)
 
@@ -19,6 +22,17 @@ enum slowdown_amounts {NONE, PARTIAL, FULL}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if is_collidable:
+		monitoring = true
+		monitorable = true
+	else:
+		monitoring = false
+		monitorable = false
+		
+	if is_visible:
+		get_owner().visible = true
+	else:
+		get_owner().visible = false
 		
 	# Check if it is a sub-obstacle
 	if $"../..".has_signal("update_hitpoints"):

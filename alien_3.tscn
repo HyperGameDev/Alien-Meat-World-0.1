@@ -1556,7 +1556,7 @@ transparent_bg = true
 theme_override_styles/fill = ExtResource("5_k8xva")
 
 [node name="Armature" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.055132, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.097988, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 0, 0)
@@ -1568,16 +1568,13 @@ bones/3/rotation = Quaternion(-0.0205892, 0.00189199, 0.0252498, 0.999467)
 bones/4/rotation = Quaternion(-3.55271e-15, 8.88178e-14, -1.21169e-27, 1)
 bones/5/rotation = Quaternion(-3.55271e-15, 3.55271e-15, -1.21169e-27, 1)
 bones/6/rotation = Quaternion(-0.0895069, -0.0808807, -0.717954, 0.685558)
-bones/6/scale = Vector3(1, 1, 1)
 bones/7/rotation = Quaternion(0.0104958, 0.238896, -0.0409419, 0.970125)
-bones/7/scale = Vector3(1, 1, 1)
 bones/8/rotation = Quaternion(-0.00231333, 0.0242911, -0.00433505, 0.999693)
 bones/8/scale = Vector3(1, 1, 1)
 bones/10/rotation = Quaternion(-0.289795, -0.0479284, -0.24514, 0.92392)
 bones/11/rotation = Quaternion(-0.760895, 0.0962255, 0.209214, 0.606637)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/rotation = Quaternion(0.416566, -0.288618, -0.240819, 0.827755)
-bones/12/scale = Vector3(1, 1, 1)
 bones/14/rotation = Quaternion(-0.122028, -0.101716, -0.0764657, 0.984335)
 bones/15/rotation = Quaternion(-0.652992, -0.113178, 0.257512, 0.703193)
 bones/15/scale = Vector3(1, 1, 1)
@@ -1674,7 +1671,7 @@ font_size = 35
 outline_size = 30
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="7"]
-transform = Transform3D(-0.284123, 0.274994, -0.918505, -0.891982, -0.427146, 0.148034, -0.351627, 0.86135, 0.366652, 0.449514, 1.13444, 0.267902)
+transform = Transform3D(-0.494689, 0.290628, -0.819035, -0.741988, -0.631911, 0.223925, -0.452478, 0.718487, 0.528242, 0.449514, 1.13444, 0.267902)
 visible = false
 bone_name = "ElbowR"
 bone_idx = 7
@@ -1690,28 +1687,28 @@ libraries = {
 }
 
 [node name="Armature_hurt" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.055132, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.097988, 0)
 
 [node name="Skeleton3D" parent="Armature_hurt" index="0"]
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(-0.536831, 0.0724198, 0.171462, 0.822903)
-bones/3/rotation = Quaternion(-0.414293, -0.0219044, -0.58165, 0.699689)
+bones/2/rotation = Quaternion(-0.561854, 0.0720471, 0.199769, 0.799513)
+bones/3/rotation = Quaternion(-0.37754, -0.0207573, -0.572249, 0.727711)
 bones/3/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(-0.0806613, -0.0903314, -0.758579, 0.640228)
-bones/7/rotation = Quaternion(0.516002, 0.204749, -0.222603, 0.801416)
-bones/8/rotation = Quaternion(-0.58326, 0.00876172, -0.293938, 0.757186)
+bones/7/rotation = Quaternion(0.421971, 0.205324, -0.339962, 0.81499)
+bones/8/rotation = Quaternion(-0.693314, 0.00898327, -0.202565, 0.691522)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(0.612909, -0.612909, -0.352622, -0.352622)
+bones/9/rotation = Quaternion(0.590941, -0.590941, -0.388316, -0.388316)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/rotation = Quaternion(0.834516, -0.0792691, -0.228095, -0.495249)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/rotation = Quaternion(0.0667566, -0.459792, 0.415477, 0.781994)
+bones/12/rotation = Quaternion(0.176478, -0.429791, 0.213013, 0.859512)
 bones/12/scale = Vector3(1, 1, 1)
-bones/13/rotation = Quaternion(0.369713, 0.369713, 0.602754, -0.602754)
+bones/13/rotation = Quaternion(0.39414, 0.39414, 0.587072, -0.587072)
 bones/14/rotation = Quaternion(-0.0301206, -0.0746789, 0.021727, 0.996516)
 bones/15/rotation = Quaternion(-0.728062, -0.0399724, 0.188485, 0.657876)
 bones/15/scale = Vector3(1, 1, 1)
-bones/16/rotation = Quaternion(0.0205431, 0.232296, -0.119551, 0.965051)
+bones/16/rotation = Quaternion(0.0366498, 0.230305, -0.0521407, 0.971029)
 bones/16/scale = Vector3(1, 1, 1)
 
 [node name="Alien-hurt_ArmL" parent="Armature_hurt/Skeleton3D" index="0"]
