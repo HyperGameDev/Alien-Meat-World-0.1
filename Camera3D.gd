@@ -177,7 +177,7 @@ func hover_ray(mask,has_mask): ## Raycast that receives a target via argument
 	ray_query.to = to
 	
 	
-	# collision areas vs bodies dependent on whether collide_ was set to true/false when this function was called
+	# collision areas vs bodies dependent on whether collide_bodies was set to true/false when this function was called
 	ray_query.collide_with_areas = true
 #	ray_query.collide_with_bodies = collide_bodies
 	
@@ -254,12 +254,13 @@ func powerup_ray():
 
 func player_hover_ray(): ## Player Hover detection
 	var raycast_result = hover_ray(32768,true)
-#	print(raycast_result)
+	#print(raycast_result)
 	if !raycast_result.is_empty():
 		hover_target = raycast_result.collider
 		
 		# Emits signal with parameter "true" or "false" if the hover_target is/isn't set to %Player
-		Messenger.player_hover.emit(hover_target == %Player)
+		Messenger.player_hover.emit(hover_target == %Player or hover_target == $"../Player/Alien_V3/DetectionAreas/Area_Head")
+		Messenger.player_head_hover.emit(hover_target == $"../Player/Alien_V3/DetectionAreas/Area_Feed")
 #
 #		return raycast_result.collider
 

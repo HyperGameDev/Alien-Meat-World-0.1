@@ -4,8 +4,8 @@ class_name Obstacle
 
 signal update_hitpoints
 
-static var is_collidable = false
-static var is_visible = false
+static var is_collidable = true
+static var is_visible = true
 
 @export var has_arrow = true
 @export var indicator_color = Color(1.0,.5,.0,1.0)

@@ -58,6 +58,8 @@ func _ready():
 	Messenger.level_update.connect(on_level_update)
 	Messenger.game_begin.connect(on_game_begin)
 	Messenger.game_play.connect(on_game_play)
+	Messenger.eating_begun.connect(on_eating_begun)
+	Messenger.eating_finished.connect(on_eating_finished)
 
 
 #	print("Elbow L:", arm_l_rotation.x)
@@ -168,7 +170,7 @@ func do_grab(what_is_hit):
 	hit_object = what_is_hit
 #	print("Grab Begun on ", hit_object.name)
 
-	animation.set("parameters/reach/request", 1)
+	animation.set("parameters/reach right/request", 1)
 	get_tree().create_tween().tween_method(grab_action_tween,0.0,1.0,grab_duration)
 	
 #	aim_bone_at_target(arm_grabbing,hit_object, 0.0)
@@ -260,6 +262,15 @@ func new_game_teleport():
 
 func on_game_play():
 	controls_locked = false
+	
+	
+func on_eating_begun():
+	animation.process_priority = 0
+	animation.set("parameters/feed/request", 1)
+	
+func on_eating_finished():
+	animation.process_priority = -1
+	
 	
 func on_swap_player():
 	match Globals.is_player_version:

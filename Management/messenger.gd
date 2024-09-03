@@ -27,6 +27,7 @@ signal powerup_chosen
 signal powerup_hovered
 
 signal player_hover
+signal player_head_hover
 
 signal area_damaged
 signal area_undamaged

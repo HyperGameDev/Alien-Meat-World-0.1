@@ -90,12 +90,16 @@ var damage_material = StandardMaterial3D.new()
 
 func _ready():
 #	print("Areas' Layer: ", collision_layer, "; Areas' Mask: ", collision_mask)
-# Messenger setup
+
+	
+	set_collision_layer_value(16,true)
+	set_collision_mask_value(3,false)
+
 	area_entered.connect(on_area_entered)
 	Messenger.area_damaged.connect(on_area_damaged)
 	Messenger.amount_damaged.connect(_damage_amount)
 	Messenger.instant_death.connect(fall_death)
-	Messenger.player_hover.connect(on_player_hover)
+	Messenger.player_head_hover.connect(on_player_head_hover)
 	
 	Messenger.game_prebegin.connect(on_game_prebegin)
 	
@@ -234,7 +238,7 @@ func fall_death(fall_death):
 		Messenger.game_over.emit()
 
 
-func on_player_hover(is_hovered):
+func on_player_head_hover(is_hovered):
 	#if collided_bodypart == self and empathy_ok == false:
 		#Messenger.empathy_consumed.emit()
 #		print("collided with bad Abductee")
