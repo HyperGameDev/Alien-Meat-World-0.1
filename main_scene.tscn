@@ -1742,6 +1742,7 @@ mesh = SubResource("BoxMesh_svwv1")
 
 [node name="Alien_V3" type="Node3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, 0)
+visible = false
 
 [node name="Alien" parent="Player/Alien_V3" instance=ExtResource("31_xhesi")]
 
@@ -1866,7 +1867,6 @@ visible = false
 [node name="Alien" parent="Player/Alien_V2" instance=ExtResource("30_sd4ur")]
 
 [node name="Alien_V1" type="Node3D" parent="Player"]
-visible = false
 
 [node name="Alien" parent="Player/Alien_V1" instance=ExtResource("4_huvyo")]
 transform = Transform3D(1, 0.000486921, 0.000306959, -0.000486927, 1, 2.02875e-05, -0.000306949, -2.04369e-05, 1, 0.0986362, 0, 0)

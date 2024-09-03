@@ -23,6 +23,7 @@ var orb_onscreen = false
 var terrain_slowdown = false
 
 var is_grabbing = false
+var is_eating = false
 
 
 #@onready var arm_r = 7
@@ -278,21 +279,27 @@ func on_grab_ended():
 	if is_grabbing:
 		animation.set("parameters/hungry/request", 3)
 		await get_tree().create_timer(.2).timeout
-		animation.process_priority = -1
 		is_grabbing = false
+		if !is_eating:
+			animation.process_priority = -1
+		else:
+			pass
 	
 func on_eating_begun():
+	is_eating = true
 	animation.process_priority = 0
 	animation.set("parameters/feed/request", 1)
 	
 func on_eating_finished():
 	animation.process_priority = -1
+	is_eating = false
 	
 	
 func on_swap_player():
 	match Globals.is_player_version:
 		Globals.is_player_versions.V1:
 			head = 5
+			arm_grabbing = 8
 			animation = get_node("Alien_V1/Alien/AnimationTree_Alien")
 			skeleton = get_node("Alien_V1/Alien/Armature/Skeleton3D")
 			skeleton_hurt = get_node("Alien_V1/Alien/Armature_hurt/Skeleton3D")
@@ -301,6 +308,7 @@ func on_swap_player():
 			
 		Globals.is_player_versions.V3:
 			head = 6
+			arm_grabbing = 12
 			animation = get_node("Alien_V3/Alien/AnimationTree_Alien")
 			skeleton = get_node("Alien_V3/Alien/Armature/Skeleton3D")
 			skeleton_hurt = get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D")
