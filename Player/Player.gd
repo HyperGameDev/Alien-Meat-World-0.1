@@ -10,17 +10,20 @@ const BOUNDARY_DISTANCE : int = 30
 @onready var camera: Camera3D = %Camera3D
 
 @onready var animation: AnimationTree = get_node("Alien_V1/Alien/AnimationTree_Alien")
+@onready var animation_armature: AnimationPlayer = get_node("Alien_V1/Alien/Armature/AnimationPlayer")
 
 @onready var skeleton: Skeleton3D = get_node("Alien_V1/Alien/Armature/Skeleton3D")
 @onready var skeleton_hurt: Skeleton3D = get_node("Alien_V1/Alien/Armature_hurt/Skeleton3D")
-@onready var terrain_controller = %TerrainController_inScene
 
 @onready var mesh_orb: MeshInstance3D = get_node("Alien_V1/Alien/Orb_New-Game-Teleporter")
 @onready var animation_orb: AnimationPlayer = get_node("Alien_V1/Alien/Orb_New-Game-Teleporter/AnimationPlayer")
 var orb_onscreen = false
-@onready var animation_armature: AnimationPlayer = get_node("Alien_V1/Alien/Armature/AnimationPlayer")
 
+@onready var terrain_controller = %TerrainController_inScene
 var terrain_slowdown = false
+
+var is_grabbing = false
+
 
 #@onready var arm_r = 7
 #@onready var arm_l = 2
@@ -60,6 +63,8 @@ func _ready():
 	Messenger.game_play.connect(on_game_play)
 	Messenger.eating_begun.connect(on_eating_begun)
 	Messenger.eating_finished.connect(on_eating_finished)
+	Messenger.grab_begun.connect(on_grab_begun)
+	Messenger.grab_ended.connect(on_grab_ended)
 
 
 #	print("Elbow L:", arm_l_rotation.x)
@@ -263,6 +268,18 @@ func new_game_teleport():
 func on_game_play():
 	controls_locked = false
 	
+	
+func on_grab_begun():
+	is_grabbing = true
+	animation.process_priority = 0
+	animation.set("parameters/hungry/request", 1)
+	
+func on_grab_ended():
+	if is_grabbing:
+		animation.set("parameters/hungry/request", 3)
+		await get_tree().create_timer(.2).timeout
+		animation.process_priority = -1
+		is_grabbing = false
 	
 func on_eating_begun():
 	animation.process_priority = 0
