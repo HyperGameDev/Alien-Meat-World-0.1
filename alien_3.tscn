@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://c1q8m4i26u6vr"]
+[gd_scene load_steps=54 format=3 uid="uid://c1q8m4i26u6vr"]
 
 [ext_resource type="PackedScene" uid="uid://diukxh5eov8fo" path="res://Player/Alien_3.blend" id="1_p4qsu"]
 [ext_resource type="Animation" uid="uid://d0dlpska7au7x" path="res://Player/Animations/Run_Blndr_1.res" id="2_2sg84"]
@@ -16,9 +16,7 @@
 [ext_resource type="Material" uid="uid://d1dtjsbfwmi1a" path="res://Player/textures/alien_heart-outer_01.tres" id="14_h5uap"]
 [ext_resource type="Material" uid="uid://c7geoa58ckfal" path="res://Player/textures/alien_mouth_01.tres" id="15_ml75u"]
 [ext_resource type="Material" uid="uid://ctrq3rqbk526b" path="res://Player/textures/alien_teeth_01.tres" id="16_luf2d"]
-[ext_resource type="Material" uid="uid://b6sjs7rd7u4iv" path="res://UI/Orbs/orb_texture_01.tres" id="17_s6dlm"]
-[ext_resource type="Script" path="res://Orb_New-Game-Teleporter.gd" id="18_h2j76"]
-[ext_resource type="Animation" uid="uid://lrcqe00dtq51" path="res://Player/Animations/teleport.res" id="19_vvk7g"]
+[ext_resource type="PackedScene" uid="uid://2pewl6rltxmk" path="res://Player/orb_new_game_teleporter.tscn" id="17_i3emh"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4cfbq"]
 animation = &"Reach_2"
@@ -1465,31 +1463,6 @@ _data = {
 "teleport": SubResource("Animation_is45n")
 }
 
-[sub_resource type="SphereMesh" id="SphereMesh_pc24m"]
-radius = 0.7
-height = 1.4
-
-[sub_resource type="Animation" id="Animation_54sl3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 30, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_g0os0"]
-_data = {
-"RESET": SubResource("Animation_54sl3"),
-"teleport": ExtResource("19_vvk7g")
-}
-
 [node name="Alien_3" instance=ExtResource("1_p4qsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0731478, 0)
 
@@ -1556,7 +1529,7 @@ transparent_bg = true
 theme_override_styles/fill = ExtResource("5_k8xva")
 
 [node name="Armature" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.0425183, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, 0, 0.00516737, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 0, 0)
@@ -1671,7 +1644,7 @@ font_size = 35
 outline_size = 30
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="7"]
-transform = Transform3D(-0.35441, 0.263658, -0.89715, -0.847406, -0.496192, 0.188937, -0.395344, 0.827211, 0.39928, 0.449514, 1.13444, 0.267902)
+transform = Transform3D(-0.6508, 0.731137, -0.204692, -0.714629, -0.680933, -0.160116, -0.256448, 0.0420753, 0.965642, 0.449514, 1.13444, 0.267902)
 visible = false
 bone_name = "ElbowR"
 bone_idx = 7
@@ -1687,28 +1660,28 @@ libraries = {
 }
 
 [node name="Armature_hurt" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0425183, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00516737, 0)
 
 [node name="Skeleton3D" parent="Armature_hurt" index="0"]
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(-0.130113, 0.03986, 0.371044, 0.918591)
-bones/3/rotation = Quaternion(-0.584332, -0.0220303, -0.374678, 0.719505)
+bones/2/rotation = Quaternion(0.473133, -0.000604616, 0.200084, 0.857969)
+bones/3/rotation = Quaternion(-0.324345, -0.00143195, 0.307876, 0.894433)
 bones/3/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(-0.0806613, -0.0903314, -0.758579, 0.640228)
-bones/7/rotation = Quaternion(0.495721, 0.203967, -0.265627, 0.801311)
-bones/8/rotation = Quaternion(-0.503262, 0.010526, -0.242648, 0.8293)
+bones/7/rotation = Quaternion(0.00766596, 0.226612, -0.288347, 0.930293)
+bones/8/rotation = Quaternion(-0.64788, 0.0124756, -0.0180084, 0.761428)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(0.589225, -0.589225, -0.390915, -0.390915)
+bones/9/rotation = Quaternion(0.342543, -0.342543, -0.618599, -0.618599)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/rotation = Quaternion(0.834516, -0.0792691, -0.228095, -0.495249)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/rotation = Quaternion(-0.154364, -0.43822, 0.731067, 0.499676)
+bones/12/rotation = Quaternion(0.227612, -0.405041, 0.106523, 0.879084)
 bones/12/scale = Vector3(1, 1, 1)
-bones/13/rotation = Quaternion(0.426657, 0.426657, 0.563883, -0.563883)
+bones/13/rotation = Quaternion(0.478262, 0.478262, 0.520831, -0.520831)
 bones/14/rotation = Quaternion(-0.0301206, -0.0746789, 0.021727, 0.996516)
 bones/15/rotation = Quaternion(-0.728062, -0.0399724, 0.188485, 0.657876)
 bones/15/scale = Vector3(1, 1, 1)
-bones/16/rotation = Quaternion(0.013107, 0.232834, -0.150339, 0.960737)
+bones/16/rotation = Quaternion(-0.157822, 0.171685, -0.793698, 0.561837)
 bones/16/scale = Vector3(1, 1, 1)
 
 [node name="Alien-hurt_ArmL" parent="Armature_hurt/Skeleton3D" index="0"]
@@ -1743,6 +1716,16 @@ surface_material_override/0 = ExtResource("11_cui7w")
 surface_material_override/1 = ExtResource("15_ml75u")
 surface_material_override/3 = ExtResource("16_luf2d")
 
+[node name="Dmg_Label" type="Label3D" parent="Armature_hurt/Skeleton3D/Alien-hurt_Head" index="0" groups=["Dmg_Labels_Player"]]
+transform = Transform3D(1.9966, 0, 0.17468, 1.77636e-15, 2.00423, -1.42109e-14, -0.17468, 0, 1.9966, -0.0145269, 2.51767, 0.806979)
+visible = false
+offset = Vector2(0, -120)
+alpha_cut = 1
+outline_modulate = Color(0, 0.219608, 0, 1)
+text = "4"
+font_size = 35
+outline_size = 30
+
 [node name="Alien-hurt_LegL" parent="Armature_hurt/Skeleton3D" index="3"]
 surface_material_override/0 = ExtResource("11_cui7w")
 
@@ -1769,17 +1752,9 @@ text = "2"
 font_size = 35
 outline_size = 30
 
-[node name="Orb_New-Game-Teleporter" type="MeshInstance3D" parent="." index="6"]
+[node name="Orb_New-Game-Teleporter" parent="." index="6" instance=ExtResource("17_i3emh")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
-mesh = SubResource("SphereMesh_pc24m")
-surface_material_override/0 = ExtResource("17_s6dlm")
-script = ExtResource("18_h2j76")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Orb_New-Game-Teleporter" index="0"]
-libraries = {
-"": SubResource("AnimationLibrary_g0os0")
-}
 
 [editable path="HP_Head/SubViewport/HP_Bar"]
 [editable path="HP_Empathy/SubViewport/HP_Bar"]
+[editable path="Orb_New-Game-Teleporter"]

@@ -398,15 +398,6 @@ theme_override_font_sizes/font_size = 27
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Player Height"
 
-[node name="Button_Transform" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 27
-theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "Transform"
-
 [node name="Button_healLegR" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)

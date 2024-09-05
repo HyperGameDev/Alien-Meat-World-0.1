@@ -39,7 +39,6 @@ func _ready():
 	%Button_scoreUp.pressed.connect(on_scoreUp)
 	%Button_levelDebug_01.pressed.connect(on_levelDebug_01)
 	%Button_level_01.pressed.connect(on_level_01)
-	%Button_Transform.pressed.connect(on_Transform)
 	%Button_healLegL.pressed.connect(on_healLegL)
 	%Button_healLegR.pressed.connect(on_healLegR)
 	
@@ -122,9 +121,6 @@ func on_state_Play():
 	
 func on_state_Pause():
 	Messenger.swap_game_state.emit(Globals.is_game_states.PAUSE)
-	
-func on_Transform():
-	Messenger.transform.emit()
 
 func on_healLegL():
 	Messenger.abductee_detected.emit(leg_l,true)

@@ -9,14 +9,14 @@ const BOUNDARY_DISTANCE : int = 30
 
 @onready var camera: Camera3D = %Camera3D
 
-@onready var animation: AnimationTree = get_node("Alien_V1/Alien/AnimationTree_Alien")
-@onready var animation_armature: AnimationPlayer = get_node("Alien_V1/Alien/Armature/AnimationPlayer")
+@onready var animation: AnimationTree = get_node("Alien_V3/Alien/AnimationTree_Alien")
+@onready var animation_armature: AnimationPlayer = get_node("Alien_V3/Alien/Armature/AnimationPlayer")
 
-@onready var skeleton: Skeleton3D = get_node("Alien_V1/Alien/Armature/Skeleton3D")
-@onready var skeleton_hurt: Skeleton3D = get_node("Alien_V1/Alien/Armature_hurt/Skeleton3D")
+@onready var skeleton: Skeleton3D = get_node("Alien_V3/Alien/Armature/Skeleton3D")
+@onready var skeleton_hurt: Skeleton3D = get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D")
 
-@onready var mesh_orb: MeshInstance3D = get_node("Alien_V1/Alien/Orb_New-Game-Teleporter")
-@onready var animation_orb: AnimationPlayer = get_node("Alien_V1/Alien/Orb_New-Game-Teleporter/AnimationPlayer")
+@onready var mesh_orb: MeshInstance3D = get_node("Alien_V3/Alien/Orb_New-Game-Teleporter")
+@onready var animation_orb: AnimationPlayer = get_node("Alien_V3/Alien/Orb_New-Game-Teleporter/AnimationPlayer")
 var orb_onscreen = false
 
 @onready var terrain_controller = %TerrainController_inScene
@@ -28,7 +28,7 @@ var is_eating = false
 
 #@onready var arm_r = 7
 #@onready var arm_l = 2
-@onready var head = 5
+@onready var head = 6
 
 #@onready var arm_r_rotation = skeleton.get_bone_pose_rotation(arm_r)
 #@onready var arm_l_rotation = skeleton.get_bone_pose_rotation(arm_l)
@@ -40,7 +40,7 @@ var look_pos
 
 var grab = false
 var hit_object
-var arm_grabbing = 8
+var arm_grabbing = 12
 var arm_grabbing_child = arm_grabbing + 1
 var stretch_distance = Vector3(0,12,0)
 #var grab_tween_amount = 0.0
@@ -297,6 +297,15 @@ func on_eating_finished():
 	
 func on_swap_player():
 	match Globals.is_player_version:
+		Globals.is_player_versions.V3:
+			head = 6
+			arm_grabbing = 12
+			animation = get_node("Alien_V3/Alien/AnimationTree_Alien")
+			skeleton = get_node("Alien_V3/Alien/Armature/Skeleton3D")
+			skeleton_hurt = get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D")
+			get_node("Alien_V3").visible = true
+			get_node("Alien_V1").visible = false
+			
 		Globals.is_player_versions.V1:
 			head = 5
 			arm_grabbing = 8
@@ -305,15 +314,6 @@ func on_swap_player():
 			skeleton_hurt = get_node("Alien_V1/Alien/Armature_hurt/Skeleton3D")
 			get_node("Alien_V1").visible = true
 			get_node("Alien_V3").visible = false
-			
-		Globals.is_player_versions.V3:
-			head = 6
-			arm_grabbing = 12
-			animation = get_node("Alien_V3/Alien/AnimationTree_Alien")
-			skeleton = get_node("Alien_V3/Alien/Armature/Skeleton3D")
-			skeleton_hurt = get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D")
-			get_node("Alien_V1").visible = false
-			get_node("Alien_V3").visible = true
 			
 		_:
 			pass

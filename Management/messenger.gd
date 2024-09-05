@@ -88,8 +88,6 @@ signal abduction
 signal eating_begun
 signal eating_finished
 
-signal transform
-
 signal hitpoint_update
 
 signal level_update
