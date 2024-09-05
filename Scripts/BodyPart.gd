@@ -8,7 +8,10 @@ const LIMB_MORPH_SPEED : float = 1.25
 @export var player: CharacterBody3D
 @export var collision: CollisionShape3D
 @export var collision_hurt: CollisionShape3D
-@export var collision_area: CollisionShape3D
+@export var collision_area_lower: CollisionShape3D
+@export var collision_area_upper: CollisionShape3D
+@export var collision_area_lower_hurt: CollisionShape3D
+@export var collision_area_upper_hurt: CollisionShape3D
 
 @onready var mesh_hurt : MeshInstance3D = player.get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1])
 @onready var mesh : MeshInstance3D = player.get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1])
@@ -256,12 +259,6 @@ func on_player_head_hover(is_hovered):
 			var standup_mid : bool = false
 			var standup_high : bool = false
 			
-			#var leg_l_hp_0 : bool = false
-			#var leg_l_hp_1 : bool = false
-			#
-			#var leg_r_hp_0 : bool = false
-			#var leg_r_hp_1 : bool = false
-			
 			var legs_either_0 : bool = false
 			var legs_either_1 : bool = false
 			var legs_either_2 : bool = false
@@ -287,22 +284,6 @@ func on_player_head_hover(is_hovered):
 			if legs_either_0:
 				if !legs_either_1:
 					standup_mid = true
-				 
-			
-			
-			#if leg_l.current_health == 1:
-				#leg_l_hp_1 = true
-			#if leg_l.current_health == 0:
-				#leg_l_hp_0 = true
-				#
-			#if leg_r.current_health == 1:
-				#leg_r_hp_1 = true
-			#if leg_r.current_health == 0:
-				#leg_r_hp_0 = true
-			#
-			#if leg_r_hp_1 and leg_l_hp_1:
-				#standup_high = true
-		
 			
 	
 			if current_health < max_health:
@@ -397,12 +378,18 @@ func on_game_prebegin():
 	if is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
 		current_health = 0
 		collision.set_deferred("disabled", true)
-		collision_area.set_deferred("disabled", false)
+		collision_area_lower.set_deferred("disabled", false)
+		collision_area_upper.set_deferred("disabled", false)
+		collision_area_lower_hurt.set_deferred("disabled", false)
+		collision_area_upper_hurt.set_deferred("disabled", false)
 		mesh.visible = false
 		mesh_hurt.visible = false
 	if is_part == BodyPart.is_parts.ARM_L or is_part == BodyPart.is_parts.ARM_R:
 		current_health = 0
-		collision_area.set_deferred("disabled", false)
+		collision_area_lower.set_deferred("disabled", false)
+		collision_area_upper.set_deferred("disabled", false)
+		collision_area_lower_hurt.set_deferred("disabled", false)
+		collision_area_upper_hurt.set_deferred("disabled", false)
 		mesh.visible = false
 		mesh_hurt.visible = false
 	if is_part == BodyPart.is_parts.HEAD:

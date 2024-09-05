@@ -22,12 +22,12 @@ void vertex() {
 void fragment() {
     vec2 base_uv = UV;
     vec3 albedo_tex = texture(texture_albedo,base_uv).rgb;
-    
+
     vec2 highlight_uv = (INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).yx - MODEL_MATRIX[3].yx;
     highlight_uv.x += TIME * 0.4;
     highlight_uv.x *= 1.0;
     float highlight_mask = texture(highlight_texture,highlight_uv).r;
-    
+
     ALBEDO = albedo_color * albedo_tex;
     EMISSION = highlight_color.rgb * highlight_mask * emission_power * highlight;
     SPECULAR = 0.5;
