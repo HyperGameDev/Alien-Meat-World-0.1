@@ -16,8 +16,8 @@ const LIMB_MORPH_SPEED : float = 1.25
 @onready var mesh_hurt : MeshInstance3D = player.get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1])
 @onready var mesh : MeshInstance3D = player.get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1])
 
-@onready var leg_l : Area3D = $"../../../Alien_V1/DetectionAreas/Area_LegL"
-@onready var leg_r : Area3D = $"../../../Alien_V1/DetectionAreas/Area_LegR"
+@onready var leg_l : Area3D = $"../../../Alien_V3/DetectionAreas/Area_LegL"
+@onready var leg_r : Area3D = $"../../../Alien_V3/DetectionAreas/Area_LegR"
 
 @onready var dmg_label : Label3D = player.get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label")
 @onready var dmg_label_hurt : Label3D = player.get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1] + "/Dmg_Label")
@@ -106,8 +106,6 @@ func _ready():
 	Messenger.player_head_hover.connect(on_player_head_hover)
 	
 	Messenger.game_prebegin.connect(on_game_prebegin)
-	
-	Messenger.swap_player.connect(on_swap_player)
 	
 # Material setup
 	default_material.set_albedo(Color(0.3, 0.74, .35))
@@ -349,24 +347,6 @@ func on_player_head_hover(is_hovered):
 				score_dunk.on_grab_ended()
 				
 		
-		
-func on_swap_player():
-	match Globals.is_player_version:
-		Globals.is_player_versions.V3:
-			mesh = player.get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1])
-			mesh_hurt = player.get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1])
-			dmg_label = player.get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label")
-			dmg_label_hurt = player.get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1] + "/Dmg_Label")
-			
-		Globals.is_player_versions.V1:
-			mesh = player.get_node("Alien_V1/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1])
-			mesh_hurt = player.get_node("Alien_V1/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1])
-			dmg_label = player.get_node("Alien_V1/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label")
-			dmg_label_hurt = player.get_node("Alien_V1/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1] + "/Dmg_Label")
-			
-		_:
-			pass
-
 func do_eating():
 	animation_blood_human.play("feed")
 	Messenger.eating_begun.emit()
@@ -376,6 +356,7 @@ func do_eating():
 
 func on_game_prebegin():
 	if is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
+		print(collision_area_lower)
 		current_health = 0
 		collision.set_deferred("disabled", true)
 		collision_area_lower.set_deferred("disabled", false)

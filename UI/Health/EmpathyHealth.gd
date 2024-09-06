@@ -1,7 +1,5 @@
 extends Node
 
-# @onready var mesh = player.get_node("Alien_V1/Alien/Armature/Skeleton3D/Alien_Heart")
-
 var max_health = 4
 var current_health = 4
 
@@ -35,7 +33,7 @@ func on_empathy_consumed():
 		# Apply damage
 		current_health -= empathy_damage_amount
 		# Update the Damage Label
-#		player.get_node("Alien_V1/Alien/Armature/Skeleton3D/Alien_Heart/Dmg_Label").text = str(current_health)
+#		player.get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_Heart/Dmg_Label").text = str(current_health)
 
 			
 	# Damaged with <=0 Health	

@@ -5,9 +5,6 @@ extends Node
 var is_game_state: is_game_states
 enum is_game_states {PREINTRO,INTRO,MENU,POSTMENU,PREBEGIN,BEGIN,PLAY,PAUSE}
 
-var is_player_version: is_player_versions
-enum is_player_versions {V3,V1}
-
 var reloading: bool = false
 var powerups_available: Array = []
 var powerups := {

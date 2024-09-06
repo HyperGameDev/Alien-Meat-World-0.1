@@ -16,8 +16,6 @@ signal game_over
 
 signal debug_nodes
 
-signal swap_player
-
 signal button_action
 signal button_chosen
 signal button_hovered

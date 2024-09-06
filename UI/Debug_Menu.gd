@@ -7,8 +7,8 @@ extends Control
 
 @onready var powerup_menu = get_tree().get_root().get_node("Main Scene/PowerUp_Menu")
 
-@onready var leg_r = get_tree().get_root().get_node("Main Scene/Player/Alien_V1/DetectionAreas/Area_LegR")
-@onready var leg_l = get_tree().get_root().get_node("Main Scene/Player/Alien_V1/DetectionAreas/Area_LegL")
+@onready var leg_r = get_tree().get_root().get_node("Main Scene/Player/Alien_V3/DetectionAreas/Area_LegR")
+@onready var leg_l = get_tree().get_root().get_node("Main Scene/Player/Alien_V3/DetectionAreas/Area_LegL")
 
 
 

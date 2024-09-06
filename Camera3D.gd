@@ -172,7 +172,7 @@ func hover_ray(mask,has_mask): ## Raycast that receives a target via argument
 	var to = from + project_ray_normal(mouse_pos) * ray_length
 	var space = get_world_3d().direct_space_state
 	var ray_query = PhysicsRayQueryParameters3D.new()
-	ray_query.exclude = [$"../Player/Alien_V1/DetectionAreas/Area_Player-Proximity"]
+	ray_query.exclude = [$"../Player/Alien_V3/DetectionAreas/Area_Player-Proximity"]
 	ray_query.from = from
 	ray_query.to = to
 	

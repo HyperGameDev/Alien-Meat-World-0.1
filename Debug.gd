@@ -27,15 +27,7 @@ func _input(event):
 		if event.is_action_pressed("Debug 3"): # Show/Hide FPS
 			show_info = !show_info
 		if event.is_action_pressed("Debug 4"):
-			old_player = !old_player
-			if old_player:
-				Globals.is_player_version = Globals.is_player_versions.V1
-			else:
-				if biped:
-					Globals.is_player_version = Globals.is_player_versions.V3
-				else: 
-					pass
-			Messenger.swap_player.emit()
+			pass
 		if event.is_action_pressed("Debug 5"): # Pause the terrain movement
 			Messenger.movement_stop.emit(false)
 		if event.is_action_pressed("Debug 6"): # Play the terrain movement

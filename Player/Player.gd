@@ -52,7 +52,6 @@ var distance
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
-	Messenger.swap_player.connect(on_swap_player)
 	Messenger.movement_start.connect(on_movement_start)
 	Messenger.movement_stop.connect(on_movement_stop)
 	Messenger.amount_slowed.connect(slowdown)
@@ -120,10 +119,6 @@ func _physics_process(delta):
 		else: 
 			if !terrain_slowdown:
 				animation.set("parameters/walk to run/transition_request", "walking")
-
-		
-	if terrain_slowdown == true:
-		$Alien_V1/Alien/Animation_Alien.stop(true)
 
 # Collision stops level movement
 	move_and_slide()
@@ -293,27 +288,3 @@ func on_eating_begun():
 func on_eating_finished():
 	animation.process_priority = -1
 	is_eating = false
-	
-	
-func on_swap_player():
-	match Globals.is_player_version:
-		Globals.is_player_versions.V3:
-			head = 6
-			arm_grabbing = 12
-			animation = get_node("Alien_V3/Alien/AnimationTree_Alien")
-			skeleton = get_node("Alien_V3/Alien/Armature/Skeleton3D")
-			skeleton_hurt = get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D")
-			get_node("Alien_V3").visible = true
-			get_node("Alien_V1").visible = false
-			
-		Globals.is_player_versions.V1:
-			head = 5
-			arm_grabbing = 8
-			animation = get_node("Alien_V1/Alien/AnimationTree_Alien")
-			skeleton = get_node("Alien_V1/Alien/Armature/Skeleton3D")
-			skeleton_hurt = get_node("Alien_V1/Alien/Armature_hurt/Skeleton3D")
-			get_node("Alien_V1").visible = true
-			get_node("Alien_V3").visible = false
-			
-		_:
-			pass
