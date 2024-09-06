@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=3 uid="uid://b3g7wl2wuuw1x"]
+[gd_scene load_steps=143 format=3 uid="uid://b3g7wl2wuuw1x"]
 
 [ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
 [ext_resource type="Script" path="res://main_scene.gd" id="1_fw7jj"]
@@ -671,8 +671,16 @@ _data = {
 [sub_resource type="BoxMesh" id="BoxMesh_svwv1"]
 size = Vector3(1, 1, 7.48)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_mus1r"]
-radius = 2.234
+[sub_resource type="BoxMesh" id="BoxMesh_6l5sf"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_007nq"]
+radius = 0.1725
+height = 0.405
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1xtn1"]
+radius = 0.08
+height = 0.185
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4bfpf"]
 radius = 0.046
@@ -722,6 +730,10 @@ height = 0.441
 radius = 0.021
 height = 0.336
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g737w"]
+radius = 0.221
+height = 0.547
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_ukq6r"]
 radius = 10.0
 
@@ -730,25 +742,17 @@ radius = 10.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_5ifj4"]
 radius = 0.4
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bwnin"]
-radius = 2.367
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_76qxs"]
+radius = 1.097
 height = 13.648
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3kibt"]
 radius = 2.367
 height = 6.034
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lqgqe"]
-radius = 2.365
-height = 13.648
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f5maj"]
 radius = 2.365
 height = 6.034
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6wbe"]
-radius = 1.901
-height = 10.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ttmvh"]
 radius = 2.698
@@ -1784,198 +1788,78 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, 0)
 [node name="Alien" parent="Player/Alien_V3" instance=ExtResource("31_xhesi")]
 
 [node name="Skeleton3D" parent="Player/Alien_V3/Alien/Armature" index="0"]
-bones/0/position = Vector3(1.79864e-08, 0.871844, 0.340395)
-bones/0/rotation = Quaternion(-2.68838e-08, 0.992053, -0.12582, -1.11281e-07)
-bones/1/position = Vector3(-3.77255e-15, 0.152219, -2.77244e-08)
-bones/1/rotation = Quaternion(-0.0418486, 1.07827e-07, -2.68887e-10, 0.999124)
-bones/1/scale = Vector3(1, 1, 1)
-bones/2/position = Vector3(7.94549e-15, 0.100126, -1.84919e-08)
-bones/2/rotation = Quaternion(-0.121875, -1.56259e-07, 5.25124e-09, 0.992545)
-bones/3/position = Vector3(2.48159e-16, 0.072657, 1.73478e-08)
-bones/3/rotation = Quaternion(0.0236011, 8.11346e-09, -4.54099e-09, 0.999721)
-bones/4/position = Vector3(-4.22959e-14, 0.192579, -9.88337e-08)
-bones/4/rotation = Quaternion(0.464, 2.06729e-07, 2.27747e-08, 0.885835)
-bones/5/position = Vector3(4.07765e-14, 0.0302935, -8.2971e-08)
-bones/5/rotation = Quaternion(-0.27, 6.11135e-08, -9.34e-08, 0.96286)
-bones/6/position = Vector3(4.29249e-15, 0.0307997, 4.17942e-08)
-bones/6/rotation = Quaternion(-0.1936, -1.6964e-07, -4.57833e-08, 0.981081)
-bones/7/position = Vector3(0.0183, 0.137221, 0.0782509)
-bones/7/rotation = Quaternion(-0.543774, -0.435985, -0.448699, 0.559371)
-bones/7/scale = Vector3(1, 1, 1)
-bones/8/position = Vector3(-0.00684521, 0.42393, -0.0455702)
-bones/8/rotation = Quaternion(-0.205249, 0.783291, -0.520558, 0.270827)
-bones/8/scale = Vector3(1, 1, 1)
-bones/9/position = Vector3(-7.9413e-09, 0.614494, 6.32484e-08)
-bones/9/rotation = Quaternion(0.567711, -0.522646, 0.0895025, 0.62971)
-bones/9/scale = Vector3(1, 1, 1)
-bones/10/position = Vector3(-3.28308e-08, 0.403433, -1.99631e-08)
-bones/10/rotation = Quaternion(-0.0185654, 0.013644, -0.00528799, 0.999721)
-bones/10/scale = Vector3(1, 1, 1)
-bones/11/position = Vector3(-0.0183, 0.137221, 0.0782509)
-bones/11/rotation = Quaternion(-0.543774, 0.435985, 0.448699, 0.559371)
-bones/11/scale = Vector3(1, 1, 1)
-bones/12/position = Vector3(0.00684553, 0.42393, -0.0455702)
-bones/12/rotation = Quaternion(-0.190448, -0.76502, 0.536707, 0.300699)
-bones/12/scale = Vector3(1, 1, 1)
-bones/13/position = Vector3(4.1813e-08, 0.614494, 1.83364e-08)
-bones/13/rotation = Quaternion(0.554461, 0.526701, -0.0854951, 0.638631)
-bones/13/scale = Vector3(1, 1, 1)
-bones/14/position = Vector3(-8.54062e-09, 0.403433, 7.38087e-08)
-bones/14/rotation = Quaternion(-0.0185654, -0.013644, 0.005288, 0.999721)
-bones/14/scale = Vector3(1, 1, 1)
-bones/15/position = Vector3(0.1184, 0.0319979, -0.0417032)
-bones/15/rotation = Quaternion(1.69341e-07, 0.696936, 0.717133, 5.26172e-08)
-bones/15/scale = Vector3(1, 1, 1)
-bones/16/position = Vector3(-0.1184, 0.0319978, -0.0417032)
-bones/16/rotation = Quaternion(1.69341e-07, 0.696936, 0.717133, 5.26172e-08)
-bones/16/scale = Vector3(1, 1, 1)
-bones/17/position = Vector3(5.63263e-08, -7.63924e-08, 2.48568e-08)
-bones/17/rotation = Quaternion(-0.245152, -0.76121, -0.285631, 0.528086)
-bones/17/scale = Vector3(1, 1, 1)
-bones/18/position = Vector3(4.20744e-09, -5.09553e-08, 3.73602e-08)
-bones/18/rotation = Quaternion(-0.245152, 0.76121, 0.285631, 0.528086)
-bones/18/scale = Vector3(1, 1, 1)
-bones/19/position = Vector3(0.200125, 0.0696598, 0.0264434)
-bones/19/rotation = Quaternion(0.91827, 0.0850284, 0.0468883, 0.383865)
-bones/20/position = Vector3(-1.21954e-08, 0.536703, -2.25419e-08)
-bones/20/rotation = Quaternion(0.873713, 0.00877139, 0.0241622, 0.485762)
-bones/20/scale = Vector3(1, 1, 1)
-bones/21/position = Vector3(-2.59286e-08, 0.456613, -7.46159e-10)
-bones/21/rotation = Quaternion(-0.40962, 0.00500149, 0.0693076, 0.909606)
-bones/21/scale = Vector3(1, 1, 1)
-bones/22/position = Vector3(4.60094e-08, 0.129245, 9.37369e-09)
-bones/22/rotation = Quaternion(6.11763e-08, 0.961249, -0.275683, -4.16009e-07)
-bones/22/scale = Vector3(1, 1, 1)
-bones/23/position = Vector3(-0.0379999, 0.0199704, 0.0879904)
-bones/23/rotation = Quaternion(0.679705, 0.679706, -0.194937, 0.194937)
-bones/23/scale = Vector3(1, 1, 1)
-bones/24/position = Vector3(-0.200125, 0.0696598, 0.0264435)
-bones/24/rotation = Quaternion(0.894135, -0.0461161, -0.0046974, 0.445391)
-bones/24/scale = Vector3(1, 1, 1)
-bones/25/position = Vector3(3.77764e-08, 0.536703, -9.6398e-08)
-bones/25/rotation = Quaternion(0.427934, -0.00541625, -0.0161094, 0.90365)
-bones/25/scale = Vector3(1, 1, 1)
-bones/26/position = Vector3(1.94582e-08, 0.456613, 2.52593e-08)
-bones/26/rotation = Quaternion(-0.601322, 0.0270551, -0.047993, 0.797105)
-bones/26/scale = Vector3(1, 1, 1)
-bones/27/position = Vector3(4.50941e-08, 0.129246, -3.92254e-08)
-bones/27/rotation = Quaternion(1.92755e-07, 0.961249, -0.275683, 3.00083e-07)
-bones/27/scale = Vector3(1, 1, 1)
-bones/28/position = Vector3(0.0379999, 0.0199705, 0.0879904)
-bones/28/rotation = Quaternion(-0.679705, 0.679706, -0.194937, -0.194937)
-bones/28/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(-0.0317224, 0.632801, -0.54636, 0.547766)
+bones/9/rotation = Quaternion(0.402435, -0.469156, 0.00768423, 0.786053)
+bones/12/rotation = Quaternion(-0.325607, -0.831613, 0.449515, 0.01832)
+bones/13/rotation = Quaternion(0.680741, 0.543552, -0.155268, 0.465871)
+bones/19/rotation = Quaternion(0.991258, 0.0947711, -0.0215352, -0.0892321)
+bones/20/rotation = Quaternion(0.696493, 0.0131718, 0.0248727, 0.717012)
+bones/21/rotation = Quaternion(-0.467446, -0.0231064, 0.021546, 0.883457)
+bones/24/rotation = Quaternion(0.925798, -0.0344268, -0.00380016, 0.376428)
+bones/25/rotation = Quaternion(0.115401, 0.00188091, -0.00068259, 0.993317)
+bones/26/rotation = Quaternion(-0.526729, 0.0189627, -0.0304803, 0.849275)
 
 [node name="Armature_hurt" parent="Player/Alien_V3/Alien" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.068931, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0244949, 0)
 
 [node name="Skeleton3D" parent="Player/Alien_V3/Alien/Armature_hurt" index="0"]
-bones/0/position = Vector3(8.99322e-09, 1.04996, 0.286445)
-bones/0/rotation = Quaternion(-2.68837e-08, 0.992053, -0.12582, -1.11281e-07)
-bones/1/position = Vector3(-1.04084e-14, 0.0761098, 5.29609e-09)
-bones/1/rotation = Quaternion(-0.0418488, 1.07827e-07, -2.69028e-10, 0.999124)
-bones/2/position = Vector3(-8.46479e-15, 0.0500626, 3.06733e-08)
-bones/2/rotation = Quaternion(-0.121874, -1.56259e-07, 5.25138e-09, 0.992546)
-bones/3/position = Vector3(-4.74908e-16, 0.0363287, -3.16694e-08)
-bones/3/rotation = Quaternion(0.0236009, 8.1134e-09, -4.541e-09, 0.999721)
-bones/4/position = Vector3(6.10869e-15, 0.0962892, -7.81388e-08)
-bones/4/rotation = Quaternion(0.463998, 2.06728e-07, 2.27747e-08, 0.885836)
-bones/4/scale = Vector3(1, 1, 1)
-bones/5/position = Vector3(-6.05269e-14, 0.0151468, 2.0175e-07)
-bones/5/rotation = Quaternion(-0.269999, 6.11139e-08, -9.33999e-08, 0.962861)
-bones/5/scale = Vector3(1, 1, 1)
-bones/6/position = Vector3(-1.25612e-14, 0.0153998, 5.83187e-08)
-bones/6/rotation = Quaternion(-0.1936, -1.6964e-07, -4.5783e-08, 0.981081)
-bones/6/scale = Vector3(1, 1, 1)
-bones/7/position = Vector3(0.109171, 0.0859041, -0.00187773)
-bones/7/rotation = Quaternion(-0.543774, -0.435985, -0.448699, 0.559371)
-bones/7/scale = Vector3(1, 1, 1)
-bones/8/position = Vector3(-0.00218986, 0.211691, -0.0225418)
-bones/8/rotation = Quaternion(-0.205249, 0.783291, -0.520558, 0.270827)
-bones/8/scale = Vector3(1, 1, 1)
-bones/9/position = Vector3(3.15937e-08, 0.307247, -1.953e-07)
-bones/9/rotation = Quaternion(0.567711, -0.522646, 0.0895025, 0.62971)
-bones/9/scale = Vector3(1, 1, 1)
-bones/10/position = Vector3(-1.85354e-09, 0.201717, -2.23544e-08)
-bones/10/rotation = Quaternion(-0.0185654, 0.013644, -0.005288, 0.999721)
-bones/10/scale = Vector3(1, 1, 1)
-bones/11/position = Vector3(-0.109171, 0.0859041, -0.00187777)
-bones/11/rotation = Quaternion(-0.543774, 0.435985, 0.448699, 0.559371)
-bones/11/scale = Vector3(1, 1, 1)
-bones/12/position = Vector3(0.00218989, 0.211691, -0.0225417)
-bones/12/rotation = Quaternion(-0.190448, -0.76502, 0.536707, 0.300699)
-bones/12/scale = Vector3(1, 1, 1)
-bones/13/position = Vector3(8.68228e-08, 0.307247, -4.33223e-09)
-bones/13/rotation = Quaternion(0.554461, 0.526701, -0.0854952, 0.638631)
-bones/13/scale = Vector3(1, 1, 1)
-bones/14/position = Vector3(1.93049e-08, 0.201716, -6.08852e-08)
-bones/14/rotation = Quaternion(-0.0185654, -0.013644, 0.00528801, 0.999721)
-bones/14/scale = Vector3(1, 1, 1)
-bones/15/position = Vector3(0.0592, 0.015999, -0.0208516)
-bones/15/rotation = Quaternion(1.69341e-07, 0.696936, 0.717133, 5.26172e-08)
-bones/16/position = Vector3(-0.0592, 0.015999, -0.0208516)
-bones/16/rotation = Quaternion(-2.05966e-07, 0.696936, 0.717133, 1.35698e-07)
-bones/16/scale = Vector3(1, 1, 1)
-bones/17/position = Vector3(-1.93612e-08, 2.20986e-09, 1.25717e-08)
-bones/17/rotation = Quaternion(-0.245152, -0.76121, -0.285631, 0.528086)
-bones/18/position = Vector3(-8.42438e-09, -2.04839e-08, 1.4122e-08)
-bones/18/rotation = Quaternion(-0.245152, 0.76121, 0.285631, 0.528086)
-bones/18/scale = Vector3(1, 1, 1)
-bones/19/position = Vector3(0.181513, -0.0592656, 0.00246798)
-bones/19/rotation = Quaternion(0.91827, 0.0850285, 0.0468889, 0.383865)
-bones/19/scale = Vector3(1, 1, 0.999998)
-bones/20/position = Vector3(2.25529e-08, 0.268351, -3.22901e-08)
-bones/20/rotation = Quaternion(0.873713, 0.00877138, 0.0241622, 0.485761)
-bones/20/scale = Vector3(1, 1, 1)
-bones/21/position = Vector3(3.72321e-09, 0.228306, -3.83307e-08)
-bones/21/rotation = Quaternion(-0.409621, 0.00500146, 0.0693076, 0.909606)
-bones/21/scale = Vector3(1, 1, 1)
-bones/22/position = Vector3(3.99951e-09, 0.0646228, 7.60919e-08)
-bones/22/rotation = Quaternion(9.16774e-08, 0.961249, -0.275682, -5.30727e-07)
-bones/23/position = Vector3(-0.019, 0.00998512, 0.0439953)
-bones/23/rotation = Quaternion(0.679706, 0.679705, -0.194936, 0.194936)
-bones/23/scale = Vector3(1, 1, 1)
-bones/24/position = Vector3(-0.181513, -0.0592657, 0.00246792)
-bones/24/rotation = Quaternion(0.894136, -0.0461161, -0.00469737, 0.445391)
-bones/24/scale = Vector3(1, 1, 1)
-bones/25/position = Vector3(-5.20379e-09, 0.268351, 4.15648e-08)
-bones/25/rotation = Quaternion(0.427934, -0.00541608, -0.0161095, 0.90365)
-bones/25/scale = Vector3(1, 1, 1)
-bones/26/position = Vector3(3.01153e-08, 0.228307, -2.32591e-08)
-bones/26/rotation = Quaternion(-0.601322, 0.0270552, -0.0479929, 0.797105)
-bones/26/scale = Vector3(1, 1, 1)
-bones/27/position = Vector3(5.6983e-09, 0.0646227, -4.52696e-08)
-bones/27/rotation = Quaternion(-6.36034e-08, 0.961249, -0.275683, 4.19541e-07)
-bones/27/scale = Vector3(1, 1, 1)
-bones/28/position = Vector3(0.019, 0.00998528, 0.0439954)
-bones/28/rotation = Quaternion(-0.679706, 0.679706, -0.194937, -0.194937)
+bones/8/rotation = Quaternion(-0.0317224, 0.632801, -0.54636, 0.547766)
+bones/9/rotation = Quaternion(0.402435, -0.469156, 0.00768421, 0.786053)
+bones/12/rotation = Quaternion(-0.325607, -0.831613, 0.449515, 0.0183199)
+bones/13/rotation = Quaternion(0.680741, 0.543552, -0.155268, 0.465871)
+bones/19/rotation = Quaternion(0.991258, 0.0947712, -0.0215348, -0.0892318)
+bones/20/rotation = Quaternion(0.696493, 0.0131718, 0.0248727, 0.717012)
+bones/21/rotation = Quaternion(-0.467447, -0.0231064, 0.021546, 0.883457)
+bones/24/rotation = Quaternion(0.925798, -0.0344267, -0.00380013, 0.376428)
+bones/25/rotation = Quaternion(0.115401, 0.00188109, -0.000682599, 0.993317)
+bones/26/rotation = Quaternion(-0.526729, 0.0189628, -0.0304803, 0.849275)
+
+[node name="Alien-hurt_Body" parent="Player/Alien_V3/Alien/Armature_hurt/Skeleton3D" index="5"]
+visible = false
+mesh = SubResource("BoxMesh_6l5sf")
 
 [node name="DetectionAreas" type="Node3D" parent="Player/Alien_V3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.514768, -0.031039, 0.00222724)
 
-[node name="Area_Head" type="Area3D" parent="Player/Alien_V3/DetectionAreas" node_paths=PackedStringArray("is_head", "player", "collision")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.358542, 1.26877, -0.0011203)
+[node name="Area_Head" type="Area3D" parent="Player/Alien_V3/DetectionAreas" node_paths=PackedStringArray("is_head", "player", "collision", "collision_area_head", "collision_area_head_hurt")]
 collision_layer = 32768
 collision_mask = 4
 script = ExtResource("10_2td36")
 is_head = NodePath(".")
 player = NodePath("../../..")
 collision = NodePath("../../../Collision_V1_AlienBody")
+collision_area_head = NodePath("CollisionA_AlienHead")
+collision_area_head_hurt = NodePath("CollisionA-hurt_AlienHead")
+
+[node name="Bone_Head" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_Head"]
+transform = Transform3D(-1, 8.52651e-14, -3.89414e-07, -4.26326e-14, 1, 3.27826e-07, 3.89414e-07, 2.68221e-07, -1, -0.514768, 1.43589, 0.258268)
+bone_name = "spine.006"
+bone_idx = 6
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_Head/Bone_Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+remote_path = NodePath("../../CollisionA_AlienHead")
+
+[node name="Bone-hurt_Head" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_Head"]
+transform = Transform3D(-1, 5.68434e-14, -3.89414e-07, 2.84217e-14, 1, 1.49012e-07, 3.89414e-07, -2.98023e-08, -1, -0.514768, 1.33525, 0.244267)
+bone_name = "spine.006_2"
+bone_idx = 6
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature_hurt/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_Head/Bone-hurt_Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.245, -0.025)
+remote_path = NodePath("../../CollisionA-hurt_AlienHead")
 
 [node name="CollisionA_AlienHead" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 1.49012e-08, 0, -1.49012e-08, 1, -1.66904, 3.77158, 2.75358)
-shape = SubResource("SphereShape3D_mus1r")
+transform = Transform3D(-1, 8.52651e-14, -3.89414e-07, -4.26326e-14, 1, 3.27826e-07, 3.89414e-07, 2.68221e-07, -1, -0.514768, 1.68589, 0.258268)
+shape = SubResource("CapsuleShape3D_007nq")
 
-[node name="CollisionA_AlienHead2" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 1.49012e-08, 0, -1.49012e-08, 1, -1.66904, 3.77158, 2.75358)
-shape = SubResource("SphereShape3D_mus1r")
-
-[node name="CollisionA_AlienHead3" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 1.49012e-08, 0, -1.49012e-08, 1, -1.66904, 3.77158, 2.75358)
-shape = SubResource("SphereShape3D_mus1r")
-
-[node name="CollisionA_AlienHead4" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 1.49012e-08, 0, -1.49012e-08, 1, -1.66904, 3.77158, 2.75358)
-shape = SubResource("SphereShape3D_mus1r")
+[node name="CollisionA-hurt_AlienHead" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_Head"]
+transform = Transform3D(-1, 5.68434e-14, -3.89414e-07, 2.84217e-14, 1, 1.49012e-07, 3.89414e-07, -2.98023e-08, -1, -0.514768, 1.58025, 0.269267)
+shape = SubResource("CapsuleShape3D_1xtn1")
 
 [node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V3/DetectionAreas/Area_Head"]
 
@@ -1995,7 +1879,7 @@ is_part = 1
 [node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
 
 [node name="Bone_LegR_Lower" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
-transform = Transform3D(-0.997967, 0.0634741, -0.00570156, -0.063243, -0.975341, 0.21145, 0.00786061, 0.211381, 0.977372, -0.272628, 0.476726, -0.038737)
+transform = Transform3D(-0.997777, 0.065031, 0.0145482, -0.066481, -0.95641, -0.284357, -0.00457802, -0.284692, 0.958608, -0.281967, 0.474628, 0.0284953)
 bone_name = "shin.R"
 bone_idx = 25
 use_external_skeleton = true
@@ -2006,7 +1890,7 @@ transform = Transform3D(0.999657, -0.0261769, 0, 0.0260564, 0.995055, 0.0958458,
 remote_path = NodePath("../../CollisionA_LegR_Lower")
 
 [node name="Bone-hurt_LegR_Lower" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
-transform = Transform3D(-0.997967, 0.0634738, -0.00570184, -0.0632427, -0.975341, 0.21145, 0.00786026, 0.211382, 0.977373, -0.312247, 0.745018, 0.129669)
+transform = Transform3D(-0.997777, 0.0650309, 0.0145478, -0.0664808, -0.956411, -0.284358, -0.00457839, -0.284692, 0.958609, -0.316917, 0.766187, 0.163285)
 bone_name = "shin.R_2"
 bone_idx = 25
 use_external_skeleton = true
@@ -2017,7 +1901,7 @@ transform = Transform3D(1, 0, 0, 0, 0.993171, 0.116671, 0, -0.116671, 0.993171, 
 remote_path = NodePath("../../CollisionA-hurt_LegR_Lower")
 
 [node name="Bone_LegR_Upper" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
-transform = Transform3D(-0.995703, 0.0782836, 0.0494798, -0.0920669, -0.778976, -0.620258, -0.0100124, -0.622147, 0.782837, -0.314643, 0.894805, 0.295171)
+transform = Transform3D(-0.997601, 0.0608834, 0.032955, -0.0692103, -0.865682, -0.495787, -0.00165665, -0.496878, 0.867819, -0.314643, 0.939241, 0.295171)
 bone_name = "thigh.R"
 bone_idx = 24
 use_external_skeleton = true
@@ -2028,7 +1912,7 @@ transform = Transform3D(1, 0, 0, 0, 0.999048, -0.0436194, 0, 0.0436194, 0.999048
 remote_path = NodePath("../../CollisionA_LegR_Upper")
 
 [node name="Bone-hurt_LegR_Upper" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
-transform = Transform3D(-0.995703, 0.0782836, 0.0494798, -0.0920669, -0.778977, -0.620258, -0.0100124, -0.622147, 0.782837, -0.333255, 0.954058, 0.296623)
+transform = Transform3D(-0.997601, 0.0608834, 0.0329549, -0.0692103, -0.865682, -0.495788, -0.00165669, -0.496878, 0.86782, -0.333255, 0.998494, 0.296623)
 bone_name = "thigh.R_2"
 bone_idx = 24
 use_external_skeleton = true
@@ -2039,22 +1923,22 @@ transform = Transform3D(0.999048, -0.0436194, 0, 0.0435471, 0.997392, -0.057564,
 remote_path = NodePath("../../CollisionA-hurt_LegR_Upper")
 
 [node name="CollisionA_LegR_Lower" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
-transform = Transform3D(-0.995957, 0.0898302, 0.000408408, -0.0891656, -0.989122, 0.116994, 0.0109136, 0.116485, 0.993132, -0.245511, 0.214017, 0.0182574)
+transform = Transform3D(-0.995777, 0.0894342, 0.0207141, -0.0906653, -0.922696, -0.374716, -0.0143996, -0.375011, 0.926908, -0.254431, 0.217062, -0.0483258)
 shape = SubResource("CapsuleShape3D_4bfpf")
 disabled = true
 
 [node name="CollisionA_LegR_Upper" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
-transform = Transform3D(-0.995703, 0.0803673, 0.046018, -0.0920669, -0.80529, -0.585689, -0.0100124, -0.587408, 0.809229, -0.296967, 0.715714, 0.184091)
+transform = Transform3D(-0.997601, 0.0622629, 0.0302679, -0.0692104, -0.886483, -0.457555, -0.00165665, -0.458551, 0.888666, -0.301034, 0.745054, 0.212522)
 shape = SubResource("CapsuleShape3D_rj7nq")
 disabled = true
 
 [node name="CollisionA-hurt_LegR_Lower" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
-transform = Transform3D(-0.997967, 0.0637055, 0.00174265, -0.0632427, -0.99335, 0.0962117, 0.00786026, 0.0959072, 0.99536, -0.302409, 0.59384, 0.162433)
+transform = Transform3D(-0.997777, 0.0628895, 0.0220356, -0.0664808, -0.916703, -0.394001, -0.00457839, -0.39459, 0.918847, -0.306837, 0.617943, 0.119158)
 shape = SubResource("CapsuleShape3D_2efwe")
 disabled = true
 
 [node name="CollisionA-hurt_LegR_Upper" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
-transform = Transform3D(-0.991222, 0.124357, 0.0448914, -0.127459, -0.8086, -0.574389, -0.03513, -0.575068, 0.817352, -0.329271, 0.862501, 0.24299)
+transform = Transform3D(-0.993917, 0.106135, 0.0293956, -0.108087, -0.888918, -0.445133, -0.0211137, -0.445602, 0.894983, -0.331356, 0.899814, 0.257459)
 shape = SubResource("CapsuleShape3D_1mw1v")
 disabled = true
 
@@ -2074,7 +1958,7 @@ is_part = 2
 [node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
 
 [node name="Bone_LegL_Lower" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
-transform = Transform3D(-0.989611, -0.0571419, 0.131927, 0.13092, 0.021041, 0.99117, -0.0594131, 0.998145, -0.0133425, -0.779383, 0.440247, 0.0172004)
+transform = Transform3D(-0.988557, 0.0713109, 0.132929, 0.150202, 0.383799, 0.911119, 0.0139548, 0.92066, -0.390118, -0.813668, 0.461392, 0.518674)
 bone_name = "shin.L"
 bone_idx = 20
 use_external_skeleton = true
@@ -2085,7 +1969,7 @@ transform = Transform3D(0.999657, -0.0261769, 0, 0.0260564, 0.995055, 0.0958458,
 remote_path = NodePath("../../CollisionA_LegL_Lower")
 
 [node name="Bone-hurt_LegL_Lower" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
-transform = Transform3D(-0.989611, -0.0571427, 0.131928, 0.130921, 0.0210422, 0.991169, -0.0594143, 0.998143, -0.0133409, -0.728527, 0.726779, 0.157637)
+transform = Transform3D(-0.988557, 0.0713098, 0.132929, 0.150201, 0.383798, 0.911119, 0.0139539, 0.920658, -0.390118, -0.745669, 0.759569, 0.408374)
 bone_name = "shin.L_2"
 bone_idx = 20
 use_external_skeleton = true
@@ -2096,7 +1980,7 @@ transform = Transform3D(1, 0, 0, 0, 0.993171, 0.116671, 0, -0.116671, 0.993171, 
 remote_path = NodePath("../../CollisionA-hurt_LegL_Lower")
 
 [node name="Bone_LegL_Upper" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
-transform = Transform3D(-0.981143, -0.12016, -0.151391, 0.180871, -0.846945, -0.49997, -0.0681433, -0.517923, 0.852709, -0.714893, 0.894805, 0.295171)
+transform = Transform3D(-0.981109, -0.184042, 0.0596074, 0.192094, -0.890343, 0.412784, -0.0228984, 0.416436, 0.908878, -0.714893, 0.939241, 0.295171)
 bone_name = "thigh.L"
 bone_idx = 19
 use_external_skeleton = true
@@ -2107,7 +1991,7 @@ transform = Transform3D(1, 0, 0, 0, 0.999048, -0.0436194, 0, 0.0436194, 0.999048
 remote_path = NodePath("../../CollisionA_LegL_Upper")
 
 [node name="Bone-hurt_LegL_Upper" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
-transform = Transform3D(-0.981143, -0.12016, -0.151392, 0.180871, -0.846945, -0.499969, -0.0681444, -0.517924, 0.852706, -0.696281, 0.954058, 0.296623)
+transform = Transform3D(-0.981109, -0.184042, 0.0596063, 0.192094, -0.890343, 0.412782, -0.0228993, 0.416435, 0.908876, -0.696281, 0.998494, 0.296623)
 bone_name = "thigh.L_2"
 bone_idx = 19
 use_external_skeleton = true
@@ -2118,33 +2002,31 @@ transform = Transform3D(0.999048, -0.0436194, 0, 0.0435471, 0.997392, -0.057564,
 remote_path = NodePath("../../CollisionA-hurt_LegL_Upper")
 
 [node name="CollisionA_LegL_Lower" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
-transform = Transform3D(-0.991091, -0.0435948, 0.125843, 0.128937, -0.077457, 0.988623, -0.0333512, 0.996043, 0.0823869, -0.784915, 0.444619, 0.287294)
+transform = Transform3D(-0.986693, 0.0840994, 0.139152, 0.157865, 0.290673, 0.94371, 0.0389179, 0.953121, -0.300081, -0.784529, 0.563516, 0.767112)
 shape = SubResource("CapsuleShape3D_4bfpf")
 disabled = true
 
 [node name="CollisionA_LegL_Upper" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
-transform = Transform3D(-0.981143, -0.12665, -0.146006, 0.180871, -0.867948, -0.46255, -0.0681433, -0.480236, 0.874489, -0.743911, 0.704447, 0.207725)
+transform = Transform3D(-0.981109, -0.181267, 0.0675785, 0.192094, -0.87149, 0.451227, -0.0228984, 0.455684, 0.889848, -0.752051, 0.762589, 0.405345)
 shape = SubResource("CapsuleShape3D_rj7nq")
 disabled = true
 
 [node name="CollisionA-hurt_LegL_Lower" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
-transform = Transform3D(-0.989611, -0.0721446, 0.12436, 0.130921, -0.0947422, 0.986855, -0.0594143, 0.992883, 0.103205, -0.737384, 0.73004, 0.312349)
+transform = Transform3D(-0.988557, 0.0553139, 0.140341, 0.150201, 0.274876, 0.949675, 0.0139539, 0.959886, -0.28004, -0.734616, 0.819057, 0.551075)
 shape = SubResource("CapsuleShape3D_2efwe")
 disabled = true
 
 [node name="CollisionA-hurt_LegL_Upper" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
-transform = Transform3D(-0.985822, -0.0857564, -0.144224, 0.142562, -0.881379, -0.450386, -0.0884925, -0.464563, 0.881106, -0.716075, 0.858533, 0.254691)
+transform = Transform3D(-0.98804, -0.137339, 0.0701017, 0.154176, -0.872661, 0.463349, -0.00246085, 0.468617, 0.883397, -0.719617, 0.91216, 0.353867)
 shape = SubResource("CapsuleShape3D_1mw1v")
 disabled = true
 
-[node name="Area_ArmR" type="Area3D" parent="Player/Alien_V3/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_hurt", "collision_area_lower", "collision_area_upper", "collision_area_lower_hurt", "collision_area_upper_hurt")]
+[node name="Area_ArmR" type="Area3D" parent="Player/Alien_V3/DetectionAreas" node_paths=PackedStringArray("player", "collision_area_lower", "collision_area_upper", "collision_area_lower_hurt", "collision_area_upper_hurt")]
 transform = Transform3D(0.990252, 0.0902013, -0.106138, -0.0748751, 0.987253, 0.140444, 0.117453, -0.131128, 0.984383, -0.72615, 0.475807, 0.621374)
 collision_layer = 32768
 collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../../..")
-collision = NodePath("../../../Collision_V1_ArmRight")
-collision_hurt = NodePath("../../../Collision_V1_ArmRight_hurt")
 collision_area_lower = NodePath("CollisionA_ArmR_Lower")
 collision_area_upper = NodePath("CollisionA_ArmR_Upper")
 collision_area_lower_hurt = NodePath("CollisionA-hurt_ArmR_Lower")
@@ -2152,7 +2034,7 @@ collision_area_upper_hurt = NodePath("CollisionA-hurt_ArmR_Upper")
 is_part = 3
 
 [node name="Bone_ArmR_Lower" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
-transform = Transform3D(0.959598, 0.236471, 0.152488, -0.113715, -0.169786, 0.978898, 0.257372, -0.956689, -0.136036, 0.800928, 0.3069, -0.339185)
+transform = Transform3D(0.93328, 0.282681, 0.221539, -0.0997074, -0.388664, 0.915969, 0.345032, -0.876944, -0.334546, 0.774994, 0.408328, 0.0209165)
 bone_name = "forearm.R"
 bone_idx = 13
 use_external_skeleton = true
@@ -2163,7 +2045,7 @@ transform = Transform3D(0.999525, -0.025412, -0.0174358, 0.026152, 0.998706, 0.0
 remote_path = NodePath("../../CollisionA_ArmR_Lower")
 
 [node name="Bone-hurt_ArmR_Lower" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
-transform = Transform3D(0.959599, 0.236471, 0.152488, -0.113715, -0.169786, 0.978899, 0.257372, -0.956689, -0.136036, 0.557957, 0.561155, -0.291875)
+transform = Transform3D(0.93328, 0.282682, 0.221539, -0.0997072, -0.388664, 0.915969, 0.345032, -0.876944, -0.334547, 0.543327, 0.633804, -0.108703)
 bone_name = "forearm.R_2"
 bone_idx = 13
 use_external_skeleton = true
@@ -2174,7 +2056,7 @@ transform = Transform3D(0.999517, -0.0257163, -0.0174464, 0.026168, 0.999315, 0.
 remote_path = NodePath("../../CollisionA-hurt_ArmR_Lower")
 
 [node name="Bone_ArmR_Upper" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
-transform = Transform3D(0.665223, 0.42158, -0.616237, 0.399065, -0.898318, -0.183771, -0.631051, -0.12367, -0.76582, 0.54187, 0.858911, -0.263191)
+transform = Transform3D(0.652264, 0.38479, -0.65306, -0.109575, -0.80465, -0.58355, -0.750029, 0.452188, -0.482682, 0.538543, 0.90278, -0.25695)
 bone_name = "upper_arm.R"
 bone_idx = 12
 use_external_skeleton = true
@@ -2185,7 +2067,7 @@ transform = Transform3D(0.999512, -0.0259294, -0.0174507, 0.0261744, 0.99956, 0.
 remote_path = NodePath("../../CollisionA_ArmR_Upper")
 
 [node name="Bone-hurt_ArmR_Upper" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
-transform = Transform3D(0.665223, 0.421581, -0.616238, 0.399065, -0.898319, -0.183771, -0.631051, -0.12367, -0.76582, 0.428428, 0.837161, -0.253877)
+transform = Transform3D(0.652264, 0.384791, -0.65306, -0.109575, -0.804651, -0.583551, -0.75003, 0.452188, -0.482682, 0.425101, 0.88103, -0.247636)
 bone_name = "upper_arm.R_2"
 bone_idx = 12
 use_external_skeleton = true
@@ -2196,35 +2078,33 @@ transform = Transform3D(0.999512, -0.0259294, -0.0174507, 0.0261744, 0.99956, 0.
 remote_path = NodePath("../../CollisionA-hurt_ArmR_Upper")
 
 [node name="CollisionA_ArmR_Lower" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
-transform = Transform3D(0.967813, 0.205062, 0.145903, -0.10214, -0.209802, 0.972394, 0.230012, -0.955999, -0.182104, 0.902292, 0.200769, -0.783437)
+transform = Transform3D(0.943841, 0.248839, 0.217353, -0.0948897, -0.42598, 0.899743, 0.31648, -0.869839, -0.378445, 0.896136, 0.201673, -0.380974)
 shape = SubResource("CapsuleShape3D_0yil0")
 disabled = true
 
 [node name="CollisionA_ArmR_Upper" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
-transform = Transform3D(0.665407, 0.413027, -0.621805, 0.372218, -0.905622, -0.203231, -0.647061, -0.0962159, -0.756343, 0.657576, 0.594396, -0.308492)
+transform = Transform3D(0.650862, 0.37712, -0.658907, -0.14055, -0.793045, -0.592727, -0.746072, 0.478393, -0.463159, 0.643065, 0.66082, -0.130703)
 shape = SubResource("CapsuleShape3D_r7y2a")
 disabled = true
 
 [node name="CollisionA-hurt_ArmR_Lower" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
-transform = Transform3D(0.967879, 0.207573, 0.141861, -0.101695, -0.192805, 0.975954, 0.229933, -0.959031, -0.165502, 0.602003, 0.515071, -0.515312)
+transform = Transform3D(0.94394, 0.25259, 0.212547, -0.0944768, -0.410218, 0.907081, 0.31631, -0.876311, -0.363357, 0.597804, 0.537303, -0.312928)
 shape = SubResource("CapsuleShape3D_r580w")
 disabled = true
 
 [node name="CollisionA-hurt_ArmR_Upper" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
-transform = Transform3D(0.665407, 0.413028, -0.621806, 0.372218, -0.905623, -0.203231, -0.647061, -0.0962159, -0.756343, 0.497761, 0.671462, -0.285575)
+transform = Transform3D(0.650863, 0.377121, -0.658907, -0.14055, -0.793045, -0.592728, -0.746073, 0.478393, -0.463159, 0.487296, 0.727581, -0.17113)
 shape = SubResource("CapsuleShape3D_1hsj8")
 disabled = true
 
 [node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
 
-[node name="Area_ArmL" type="Area3D" parent="Player/Alien_V3/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_hurt", "collision_area_lower", "collision_area_upper", "collision_area_lower_hurt", "collision_area_upper_hurt")]
+[node name="Area_ArmL" type="Area3D" parent="Player/Alien_V3/DetectionAreas" node_paths=PackedStringArray("player", "collision_area_lower", "collision_area_upper", "collision_area_lower_hurt", "collision_area_upper_hurt")]
 transform = Transform3D(0.990211, -0.0897146, 0.106922, 0.0742307, 0.987237, 0.140901, -0.118198, -0.131585, 0.984233, -1.452, 0.476, 0.621)
 collision_layer = 32768
 collision_mask = 4
 script = ExtResource("10_2td36")
 player = NodePath("../../..")
-collision = NodePath("../../../Collision_V1_ArmLeft")
-collision_hurt = NodePath("../../../Collision_V1_ArmLeft_hurt")
 collision_area_lower = NodePath("CollisionA_ArmL_Lower")
 collision_area_upper = NodePath("CollisionA_ArmL_Upper")
 collision_area_lower_hurt = NodePath("CollisionA-hurt_ArmL_Lower")
@@ -2234,7 +2114,7 @@ is_part = 4
 [node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
 
 [node name="Bone_ArmL_Lower" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
-transform = Transform3D(0.963392, -0.23332, -0.132057, 0.0824448, -0.210875, 0.974031, -0.255108, -0.94926, -0.183918, 0.327579, 0.203166, -0.171378)
+transform = Transform3D(0.976583, -0.215005, 0.00773759, 0.00155811, 0.0430306, 0.999073, -0.215138, -0.975665, 0.0423582, 0.286793, 0.423993, -0.507487)
 bone_name = "forearm.L"
 bone_idx = 9
 use_external_skeleton = true
@@ -2245,7 +2125,7 @@ transform = Transform3D(0.999525, -0.025412, -0.0174358, 0.026152, 0.998706, 0.0
 remote_path = NodePath("../../CollisionA_ArmL_Lower")
 
 [node name="Bone-hurt_ArmL_Lower" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
-transform = Transform3D(0.963392, -0.233321, -0.132057, 0.0824449, -0.210875, 0.974031, -0.255109, -0.949259, -0.183919, 0.574836, 0.457609, -0.146361)
+transform = Transform3D(0.976583, -0.215005, 0.00773743, 0.00155791, 0.0430301, 0.999073, -0.215138, -0.975665, 0.0423576, 0.556092, 0.589958, -0.311285)
 bone_name = "forearm.L_2"
 bone_idx = 9
 use_external_skeleton = true
@@ -2256,7 +2136,7 @@ transform = Transform3D(0.999687, 0.0179065, -0.0174464, -0.0174464, 0.999505, 0
 remote_path = NodePath("../../CollisionA-hurt_ArmL_Lower")
 
 [node name="Bone_ArmL_Upper" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
-transform = Transform3D(0.6599, -0.435517, 0.612256, -0.357162, -0.898745, -0.254349, 0.661035, -0.05083, -0.748632, 0.595202, 0.755439, -0.140143)
+transform = Transform3D(0.624688, -0.507258, 0.59368, -0.746596, -0.61077, 0.263731, 0.228821, -0.607988, -0.760257, 0.5985, 0.799308, -0.133882)
 bone_name = "upper_arm.L"
 bone_idx = 8
 use_external_skeleton = true
@@ -2267,7 +2147,7 @@ transform = Transform3D(0.999512, -0.0259294, -0.0174507, 0.0261744, 0.99956, 0.
 remote_path = NodePath("../../CollisionA_ArmL_Upper")
 
 [node name="Bone-hurt_ArmL_Upper" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
-transform = Transform3D(0.659901, -0.435517, 0.612256, -0.357162, -0.898745, -0.254349, 0.661034, -0.0508297, -0.748632, 0.708647, 0.733746, -0.130744)
+transform = Transform3D(0.624688, -0.507259, 0.593679, -0.746597, -0.61077, 0.26373, 0.228822, -0.607988, -0.760257, 0.711946, 0.777615, -0.124483)
 bone_name = "upper_arm.L_2"
 bone_idx = 8
 use_external_skeleton = true
@@ -2278,24 +2158,44 @@ transform = Transform3D(0.999512, -0.0259294, -0.0174507, 0.0261744, 0.99956, 0.
 remote_path = NodePath("../../CollisionA-hurt_ArmL_Upper")
 
 [node name="CollisionA_ArmL_Lower" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
-transform = Transform3D(0.954679, -0.251682, -0.158886, 0.0927723, -0.255607, 0.96232, -0.282811, -0.933446, -0.220674, 0.217499, 0.0770021, -0.608257)
+transform = Transform3D(0.970622, -0.239884, -0.0186768, 0.0189724, -0.00107843, 0.99982, -0.239861, -0.970801, 0.00350466, 0.181287, 0.416107, -0.963233)
 shape = SubResource("CapsuleShape3D_ae2xo")
 disabled = true
 
 [node name="CollisionA_ArmL_Upper" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
-transform = Transform3D(0.658637, -0.46126, 0.594507, -0.384857, -0.885423, -0.260601, 0.646594, -0.0571585, -0.76069, 0.475378, 0.489953, -0.163969)
+transform = Transform3D(0.621246, -0.531789, 0.575547, -0.757714, -0.594943, 0.268166, 0.19981, -0.602697, -0.772549, 0.457505, 0.624127, -0.320538)
 shape = SubResource("CapsuleShape3D_ukb5m")
 disabled = true
 
 [node name="CollisionA-hurt_ArmL_Lower" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
-transform = Transform3D(0.964796, -0.212539, -0.154907, 0.10354, -0.234487, 0.96659, -0.241761, -0.948601, -0.204225, 0.521762, 0.400894, -0.365118)
+transform = Transform3D(0.980167, -0.197612, -0.0149324, 0.0186966, 0.0171962, 0.999678, -0.197291, -0.98013, 0.0205501, 0.506149, 0.591948, -0.537979)
 shape = SubResource("CapsuleShape3D_memod")
 disabled = true
 
 [node name="CollisionA-hurt_ArmL_Upper" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
-transform = Transform3D(0.658637, -0.46126, 0.594506, -0.384857, -0.885423, -0.260601, 0.646594, -0.0571581, -0.76069, 0.651973, 0.598578, -0.1472)
+transform = Transform3D(0.621246, -0.531789, 0.575547, -0.757714, -0.594944, 0.268165, 0.19981, -0.602697, -0.772549, 0.644503, 0.690996, -0.222981)
 shape = SubResource("CapsuleShape3D_50x6w")
 disabled = true
+
+[node name="Area_Body" type="Area3D" parent="Player/Alien_V3/DetectionAreas" node_paths=PackedStringArray("player")]
+script = ExtResource("10_2td36")
+player = NodePath("../../..")
+is_part = 5
+
+[node name="Bone_Body" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_Body"]
+transform = Transform3D(-1, -8.13429e-08, -2.14028e-07, -2.53376e-08, 0.968339, -0.24964, 2.27558e-07, -0.24964, -0.968339, -0.514768, 0.878388, 0.338167)
+bone_name = "spine"
+bone_idx = 0
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_Body/Bone_Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.295, -0.02)
+remote_path = NodePath("../../CollisionA_AlienBody")
+
+[node name="CollisionA_AlienBody" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_Body"]
+transform = Transform3D(-1, -8.13429e-08, -2.14028e-07, -2.53376e-08, 0.968339, -0.24964, 2.27558e-07, -0.24964, -0.968339, -0.514768, 1.16904, 0.283891)
+shape = SubResource("CapsuleShape3D_g737w")
 
 [node name="Area_Player-Proximity" type="Area3D" parent="Player/Alien_V3/DetectionAreas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00993299, 1, -0.00758123)
@@ -2322,51 +2222,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0498692, 0.00362279)
 shape = SubResource("SphereShape3D_5ifj4")
 
 [node name="Collision_V1_LegRight" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, 0.453, 0.612, 0.185)
-visible = false
-shape = SubResource("CapsuleShape3D_bwnin")
+transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, 0.305226, 0.612, 0.185)
+shape = SubResource("CapsuleShape3D_76qxs")
+
+[node name="Collision_V1_LegLeft" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, -0.235, 0.612, 0.185)
+shape = SubResource("CapsuleShape3D_76qxs")
 
 [node name="Collision_V1_LegRight_hurt" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, 0.453314, 0.79, 0.170901)
-visible = false
 shape = SubResource("CapsuleShape3D_3kibt")
 disabled = true
 
-[node name="Collision_V1_LegLeft" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, -0.230226, 0.79, 0.0353434)
-visible = false
-shape = SubResource("CapsuleShape3D_lqgqe")
-
 [node name="Collision_V1_LegLeft_hurt" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, -0.23, 0.79, 0.035)
-visible = false
 shape = SubResource("CapsuleShape3D_f5maj")
-disabled = true
-
-[node name="Collision_V1_ArmLeft" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(0.0981955, -0.0188975, -0.000720685, 0, -0.00381088, 0.0999274, -0.0189113, -0.0981243, -0.00374211, -0.586321, 1.35585, -0.666911)
-shape = SubResource("CapsuleShape3D_v6wbe")
-disabled = true
-
-[node name="Collision_V1_ArmLeft_hurt" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(0.0981955, -0.0188975, -0.000720685, 0, -0.00381088, 0.0999274, -0.0189113, -0.0981243, -0.00374211, -0.586321, 1.39208, -0.168225)
-shape = SubResource("CapsuleShape3D_v6wbe")
-disabled = true
-
-[node name="Collision_V1_ArmRight" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(0.0959294, -0.0282334, -0.00065124, -0.000468328, -0.0038961, 0.099923, -0.028237, -0.0958525, -0.00386973, 0.406346, 1.14241, -0.754826)
-shape = SubResource("CapsuleShape3D_0yil0")
-disabled = true
-
-[node name="Collision_V1_ArmRight_hurt" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(0.0959294, -0.0282334, -0.00065124, -0.000468328, -0.0038961, 0.099923, -0.028237, -0.0958525, -0.00386973, 0.506346, 1.17864, -0.25614)
-visible = false
-shape = SubResource("CapsuleShape3D_0yil0")
 disabled = true
 
 [node name="Collision_V1_AlienBody" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.1, 0, 0, 0, 0.0999999, -2.79397e-09, 0, 2.79397e-09, 0.0999999, -0.014061, 1.18986, 0.202002)
-visible = false
 shape = SubResource("SphereShape3D_ttmvh")
 
 [node name="Particles_Blood-Human" type="GPUParticles3D" parent="Player"]
@@ -2483,6 +2357,7 @@ script = ExtResource("1_1xhrq")
 show_info = true
 
 [node name="Information" type="Control" parent="Debug"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

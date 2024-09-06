@@ -92,9 +92,12 @@ func on_update_hitpoints():
 	
 	
 func on_area_entered(collided_bodypart):
-#	collided_bodypart.mesh.hide()
-#	collided_bodypart.mesh
-	Messenger.amount_damaged.emit(damage_amount)
+	# Getting an error? Did you add a new area to the player without a defined is_part?
+	if collided_bodypart.is_part == BodyPart.is_parts.BODY:
+		Messenger.amount_damaged.emit(Obstacle.damage_amounts.NONE)
+	else:
+		Messenger.amount_damaged.emit(damage_amount)
+		
 	Messenger.area_damaged.emit(collided_bodypart)
 	Messenger.amount_slowed.emit(slowdown_amount)
 	

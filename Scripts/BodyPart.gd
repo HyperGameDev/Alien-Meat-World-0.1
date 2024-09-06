@@ -12,6 +12,10 @@ const LIMB_MORPH_SPEED : float = 1.25
 @export var collision_area_upper: CollisionShape3D
 @export var collision_area_lower_hurt: CollisionShape3D
 @export var collision_area_upper_hurt: CollisionShape3D
+@export var collision_area_head: CollisionShape3D
+@export var collision_area_head_hurt: CollisionShape3D
+
+@onready var bodypart_name : String = name.split("_")[1]
 
 @onready var mesh_hurt : MeshInstance3D = player.get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1])
 @onready var mesh : MeshInstance3D = player.get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1])
@@ -22,7 +26,6 @@ const LIMB_MORPH_SPEED : float = 1.25
 @onready var dmg_label : Label3D = player.get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label")
 @onready var dmg_label_hurt : Label3D = player.get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1] + "/Dmg_Label")
 
-@onready var bodypart_name : String = name.split("_")[1]	
 
 @onready var score_dunk : Area3D = %ScoreDunk
 @onready var animation_blood_human : AnimationPlayer = %"Particles_Blood-Human"/AnimationPlayer
@@ -48,6 +51,11 @@ const LIMB_DMG_FLASH_ON_LENGTH : float = 0.4
 const LIMB_DMG_FLASH_OFF_LENGTH : float = 0.2
 
 @export var is_part : is_parts
+enum is_parts {HEAD, LEG_R, LEG_L, ARM_R, ARM_L, BODY}
+
+var last_collided_area_old
+var last_collided_area_current
+var last_collided_area_count : int = 0
 
 var amount_to_damage = null
 
@@ -86,7 +94,6 @@ var dict_position_limbs_l:Dictionary = {
 
 #var is_damaged = false
 
-enum is_parts {HEAD, LEG_R, LEG_L, ARM_R, ARM_L}
 
 # Materials
 var default_material = StandardMaterial3D.new()
@@ -98,7 +105,7 @@ func _ready():
 	
 	set_collision_layer_value(16,true)
 	set_collision_mask_value(3,true)
-
+  
 	area_entered.connect(on_area_entered)
 	Messenger.area_damaged.connect(on_area_damaged)
 	Messenger.amount_damaged.connect(_damage_amount)
@@ -112,18 +119,20 @@ func _ready():
 	damage_material.set_albedo(Color(0.5, .0, .0))
 	
 # Damage Flash timer setup
-	limb_dmg_flash_length.timeout.connect(on_limb_dmg_flash_end)
+	if !is_part == BodyPart.is_parts.BODY:
+		limb_dmg_flash_length.timeout.connect(on_limb_dmg_flash_end)
 
-	material_damaged_timer.timeout.connect(on_material_damaged_timer_end)
-	add_child(material_damaged_timer)
-	material_damaged_timer.start(LIMB_DMG_FLASH_ON_LENGTH)
-	
-	material_reset_timer.one_shot = true
-	add_child(material_reset_timer)
+		material_damaged_timer.timeout.connect(on_material_damaged_timer_end)
+		add_child(material_damaged_timer)
+		material_damaged_timer.start(LIMB_DMG_FLASH_ON_LENGTH)
+		
+		material_reset_timer.one_shot = true
+		add_child(material_reset_timer)
 	
 func on_area_entered(area):
 	var is_delayed = false
 	Messenger.something_hit.emit(area,is_delayed)
+	last_collided_area_current = area
 
 func _damage_amount(damage_amount):
 	amount_to_damage = damage_amount
@@ -135,6 +144,11 @@ func _damage_amount(damage_amount):
 		limb_damage_amount = 0
 		#print("'Damage_Amount' damage: ", limb_damage_amount)
 
+func reset_last_collided_area_count():
+	print("Collision check timer begun!")
+	await get_tree().create_timer(5).timeout
+	last_collided_area_count = 0
+	print("Collision check timer ended!")
 	
 func on_area_damaged(collided_bodypart):
 	
@@ -148,10 +162,11 @@ func on_area_damaged(collided_bodypart):
 #	
 	
 		# Define Mesh Flash Length
-		var limb_dmg_total_flash_length = 0
-		limb_dmg_total_flash_length += 4
-		limb_dmg_flash_length.start(limb_dmg_total_flash_length)
-		limb_dmg_flash_end = false
+		if !is_part == BodyPart.is_parts.BODY:
+			var limb_dmg_total_flash_length = 0
+			limb_dmg_total_flash_length += 4
+			limb_dmg_flash_length.start(limb_dmg_total_flash_length)
+			limb_dmg_flash_end = false
 		
 		# This code needs work, only applies to one limb if multiple are hit
 		if current_health > 0 and amount_to_damage == Obstacle.damage_amounts.FULL:
@@ -162,8 +177,19 @@ func on_area_damaged(collided_bodypart):
 			# Ensure limb is visible
 			mesh.show()
 			
+			if last_collided_area_count == 0:
+				last_collided_area_old = last_collided_area_current
+			if last_collided_area_current == last_collided_area_old:
+				last_collided_area_count += 1
+			else:
+				last_collided_area_count = 0
+			
 			# Apply damage
-			current_health -= limb_damage_amount
+			if last_collided_area_count < 2:
+				current_health -= limb_damage_amount
+			else:
+				reset_last_collided_area_count()
+				
 			
 			# Update the Damage Label
 			dmg_label.text = str(current_health)
@@ -174,24 +200,54 @@ func on_area_damaged(collided_bodypart):
 			
 			match current_health:
 				0: 
-					if is_part == BodyPart.is_parts.ARM_L or is_part == BodyPart.is_parts.ARM_R or is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
+					if is_part == BodyPart.is_parts.HEAD or is_part == BodyPart.is_parts.BODY:
+						if is_part == BodyPart.is_parts.HEAD:
+							dmg_label.text = str(current_health)
+							mesh.visible = false
+							mesh_hurt.visible = false
+							
+							collision_area_head.set_deferred("disabled", true)
+							collision_area_head_hurt.set_deferred("disabled", true)
+						
+					else:
 						dmg_label.text = str(current_health)
+						
 						mesh.visible = false
 						mesh_hurt.visible = false
-						collision_hurt.set_deferred("disabled", true)
-					if is_part == BodyPart.is_parts.HEAD:
-						mesh.visible = false
-						mesh_hurt.visible = false
+						
+						collision_area_lower_hurt.set_deferred("disabled", true)
+						collision_area_upper_hurt.set_deferred("disabled", true)
+						#print("Limb: ",self.name," adjusted its collisions!")
+						
+						if is_part == BodyPart.is_parts.LEG_R or is_part == BodyPart.is_parts.LEG_L:
+							collision_hurt.set_deferred("disabled", true)
+						
 				1:
-					if is_part == BodyPart.is_parts.ARM_L or is_part == BodyPart.is_parts.ARM_R or is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
+					if is_part == BodyPart.is_parts.HEAD or is_part == BodyPart.is_parts.BODY:
+						if is_part == BodyPart.is_parts.HEAD:
+							dmg_label.text = str(current_health)
+							mesh.visible = false
+							mesh_hurt.visible = true
+							
+							collision_area_head.set_deferred("disabled", true)
+							collision_area_head_hurt.set_deferred("disabled", false)
+						
+					else:
 						dmg_label.text = str(current_health)
+						
 						mesh.visible = false
 						mesh_hurt.visible = true
-						collision.set_deferred("disabled", true)
-						collision_hurt.set_deferred("disabled", false)
-					if is_part == BodyPart.is_parts.HEAD:
-						mesh.visible = false
-						mesh_hurt.visible = true
+						
+						collision_area_lower.set_deferred("disabled", true)
+						collision_area_upper.set_deferred("disabled", true)
+						collision_area_lower_hurt.set_deferred("disabled", false)
+						collision_area_upper_hurt.set_deferred("disabled", false)
+						#print("Limb: ",self.name," adjusted its collisions!")
+						
+						if is_part == BodyPart.is_parts.LEG_R or is_part == BodyPart.is_parts.LEG_L:
+							collision.set_deferred("disabled", true)
+							collision_hurt.set_deferred("disabled", false)
+							
 				_:
 					pass
 			
@@ -215,8 +271,8 @@ func on_area_damaged(collided_bodypart):
 			await get_tree().create_timer(LIMB_MORPH_SPEED + .3).timeout
 			Messenger.game_over.emit()
 			
-			
-
+	
+	
 func on_material_damaged_timer_end():
 	if current_health < max_health and limb_dmg_flash_end == false and amount_to_damage != Obstacle.damage_amounts.NONE:
 			mesh.material_override = damage_material
@@ -289,36 +345,59 @@ func on_player_head_hover(is_hovered):
 			
 				match current_health: # Checks the hp it's healing INTO, not from:
 					1:
-						if is_part == BodyPart.is_parts.HEAD:
-							mesh.visible = false
-							mesh_hurt.visible = true
+						if is_part == BodyPart.is_parts.HEAD or is_part == BodyPart.is_parts.BODY:
+							if is_part == BodyPart.is_parts.HEAD:
+								dmg_label.text = str(current_health)
+								mesh.visible = false
+								mesh_hurt.visible = true
+								
+								collision_area_head.set_deferred("disabled", true)
+								collision_area_head_hurt.set_deferred("disabled", false)
+							
 						else:
+							print("Healing on limbs attempted!")
 							dmg_label.text = str(current_health)
 							dmg_label_hurt.text = str(current_health)
 							
 							mesh_hurt.visible = true
-							collision_hurt.set_deferred("disabled", false)
+							
+							collision_area_lower_hurt.set_deferred("disabled", false)
+							collision_area_upper_hurt.set_deferred("disabled", false)
 							
 							if is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
+								collision_hurt.set_deferred("disabled", false)
+								
 								if standup_mid and !legs_either_2:
-									print("Stood low to mid, via Leg ",is_part)
 									var tween = get_tree().create_tween();
 									tween.set_ease(Tween.EASE_IN)
 									tween.tween_property(player, "position", Vector3(player.position.x, -.25, player.position.z), stand_speed)
+									
 					2:
-						if is_part == BodyPart.is_parts.HEAD:
-							mesh.visible = true
-							mesh_hurt.visible = false
+						if is_part == BodyPart.is_parts.HEAD or is_part == BodyPart.is_parts.BODY:
+							if is_part == BodyPart.is_parts.HEAD:
+								dmg_label.text = str(current_health)
+								mesh.visible = true
+								mesh_hurt.visible = false
+								
+								collision_area_head.set_deferred("disabled", false)
+								collision_area_head_hurt.set_deferred("disabled", true)
+							
 						else:
 							dmg_label.text = str(current_health)
+							
 							mesh.visible = true
 							mesh_hurt.visible = false
-							collision.set_deferred("disabled", false)
-							collision_hurt.set_deferred("disabled", true)
+							
+							collision_area_lower.set_deferred("disabled", false)
+							collision_area_upper.set_deferred("disabled", false)
+							collision_area_lower_hurt.set_deferred("disabled", true)
+							collision_area_upper_hurt.set_deferred("disabled", true)
 							
 							if is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
+								collision.set_deferred("disabled", false)
+								collision_hurt.set_deferred("disabled", true)
+								
 								if standup_high and !legs_either_2:
-									print("Stood mid to high, via Leg ",is_part)
 									var tween = get_tree().create_tween();
 									tween.set_ease(Tween.EASE_IN)
 									tween.tween_property(player, "position", Vector3(player.position.x, -.03, player.position.z), stand_speed)
@@ -359,20 +438,22 @@ func on_game_prebegin():
 		print(collision_area_lower)
 		current_health = 0
 		collision.set_deferred("disabled", true)
-		collision_area_lower.set_deferred("disabled", false)
-		collision_area_upper.set_deferred("disabled", false)
-		collision_area_lower_hurt.set_deferred("disabled", false)
-		collision_area_upper_hurt.set_deferred("disabled", false)
+		collision_area_lower.set_deferred("disabled", true)
+		collision_area_upper.set_deferred("disabled", true)
+		collision_area_lower_hurt.set_deferred("disabled", true)
+		collision_area_upper_hurt.set_deferred("disabled", true)
 		mesh.visible = false
 		mesh_hurt.visible = false
 	if is_part == BodyPart.is_parts.ARM_L or is_part == BodyPart.is_parts.ARM_R:
 		current_health = 0
-		collision_area_lower.set_deferred("disabled", false)
-		collision_area_upper.set_deferred("disabled", false)
-		collision_area_lower_hurt.set_deferred("disabled", false)
-		collision_area_upper_hurt.set_deferred("disabled", false)
+		collision_area_lower.set_deferred("disabled", true)
+		collision_area_upper.set_deferred("disabled", true)
+		collision_area_lower_hurt.set_deferred("disabled", true)
+		collision_area_upper_hurt.set_deferred("disabled", true)
 		mesh.visible = false
 		mesh_hurt.visible = false
 	if is_part == BodyPart.is_parts.HEAD:
 		mesh_hurt.visible = false
+		collision_area_head.set_deferred("disabled", false)
+		collision_area_head_hurt.set_deferred("disabled", true)
 		

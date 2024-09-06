@@ -1,5 +1,7 @@
 extends Area3D
 
+var is_part : int = -2
+
 @onready var copter_area_collision = $"Collision_Copter-Proximity"
 
 # Called when the node enters the scene tree for the first time.
