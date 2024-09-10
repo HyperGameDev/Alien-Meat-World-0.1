@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://baqb67vqjeobo"]
+
+[ext_resource type="PackedScene" uid="uid://bfo4cjpl44jdf" path="res://Objects/Buildings/Farm/grain_bin_01-01_01.blend" id="1_pb5ra"]
+[ext_resource type="Material" uid="uid://k7amywk044hv" path="res://Objects/Buildings/Farm/grain-bin_main.tres" id="2_7oqx4"]
+[ext_resource type="Material" uid="uid://c25tdfymthxmy" path="res://Objects/Buildings/Farm/grain-bin_drum.tres" id="3_1bi23"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bchtv"]
+albedo_color = Color(0.42, 0.42, 0.3906, 1)
+metallic_specular = 0.17
+uv1_scale = Vector3(2.26, 2.26, 2.26)
+uv1_offset = Vector3(0.16, 0, 0)
+
+[node name="grain_bin_01-01_01" instance=ExtResource("1_pb5ra")]
+
+[node name="Grain-Bin_Base" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_bchtv")
+
+[node name="Grain-Bin_Pump" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_7oqx4")
+
+[node name="Grain-Bin_Main" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_7oqx4")
+surface_material_override/1 = ExtResource("3_1bi23")
+
+[node name="Grain-Bin_Main_hurt1" parent="." index="3"]
+visible = false
+lod_bias = 128.0
+surface_material_override/0 = ExtResource("2_7oqx4")
+surface_material_override/1 = ExtResource("3_1bi23")
+
+[node name="Grain-Bin_Main_hurt2" parent="." index="4"]
+visible = false
+lod_bias = 128.0
+surface_material_override/0 = ExtResource("2_7oqx4")
+surface_material_override/1 = ExtResource("3_1bi23")
+
+[node name="Grain-Bin_Main_hurt3" parent="." index="5"]
+visible = false
+surface_material_override/0 = ExtResource("2_7oqx4")
+surface_material_override/1 = ExtResource("3_1bi23")
