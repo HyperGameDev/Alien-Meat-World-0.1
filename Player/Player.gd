@@ -17,39 +17,42 @@ const BOUNDARY_DISTANCE : int = 30
 
 @onready var mesh_orb: MeshInstance3D = get_node("Alien_V3/Alien/Orb_New-Game-Teleporter")
 @onready var animation_orb: AnimationPlayer = get_node("Alien_V3/Alien/Orb_New-Game-Teleporter/AnimationPlayer")
-var orb_onscreen = false
+var orb_onscreen : bool = false
 
-@onready var terrain_controller = %TerrainController_inScene
-var terrain_slowdown = false
+@onready var terrain_controller : Node3D = %TerrainController_inScene
+var terrain_slowdown : bool = false
 
-var is_grabbing = false
-var is_eating = false
+var is_grabbing : bool = false
+var is_eating : bool = false
 
 
 #@onready var arm_r = 7
 #@onready var arm_l = 2
-@onready var head = 6
+@onready var head : int = 6
 
 #@onready var arm_r_rotation = skeleton.get_bone_pose_rotation(arm_r)
 #@onready var arm_l_rotation = skeleton.get_bone_pose_rotation(arm_l)
-@onready var head_rotation = skeleton.get_bone_pose_rotation(head)
+@onready var head_rotation : Quaternion = skeleton.get_bone_pose_rotation(head)
 
-var teleported = false
+var teleported : bool = false
 
-var look_pos
+var look_pos : Vector3
 
-var grab = false
-var hit_object
-var arm_grabbing = 12
-var arm_grabbing_child = arm_grabbing + 1
-var stretch_distance = Vector3(0,12,0)
+var grab : bool = false
+var hit_object : Node3D
+var arm_grabbing : int = 12
+var arm_grabbing_child : int = arm_grabbing + 1
+var stretch_distance : Vector3 = Vector3(0,12,0)
 #var grab_tween_amount = 0.0
-var grab_duration = .2
-var distance
+var grab_duration : float = .2
+
+# Distance grabbing arm travels:
+var distance : float
+var distance_hurt : float
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	Messenger.movement_start.connect(on_movement_start)
@@ -169,7 +172,7 @@ func do_grab(what_is_hit):
 	grab = true
 #	if grab == true
 	hit_object = what_is_hit
-#	print("Grab Begun on ", hit_object.name)
+	#print("Grab Begun on ", hit_object.name)
 
 	animation.set("parameters/reach right/request", 1)
 	get_tree().create_tween().tween_method(grab_action_tween,0.0,1.0,grab_duration)
@@ -187,14 +190,20 @@ func do_grab(what_is_hit):
 
 func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 	var bone_transform = skeleton.get_bone_global_pose_no_override(bone_index)
+	var bone_transform_hurt = skeleton_hurt.get_bone_global_pose_no_override(bone_index)
 	
 	var bone_origin = bone_transform.origin
+	var bone_origin_hurt = bone_transform_hurt.origin
+	
 	if(target == null):
 #		print("Object Null, Arm is snapping back.", "(Tween amount is: ", amount, ")")
 		skeleton.set_bone_global_pose_override(bone_index,bone_transform,amount,false)
+		skeleton_hurt.set_bone_global_pose_override(bone_index,bone_transform_hurt,amount,false)
 		return
 		
 #	print ("Object is ", target.name, ". Arm is moving.", "(Tween amount is: ", amount, ")")
+	
+#region Healthy Arm Code
 	var target_pos = skeleton.to_local(target.global_position)
 	var direction = (target_pos - bone_transform.origin).normalized()
 	distance = target_pos.distance_to(bone_transform.origin)
@@ -205,8 +214,23 @@ func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 	new_transform = transform_look_at(new_transform, direction)
 
 	new_transform.basis.y *= distance
+#endregion
+
+#region Hurt Arm Code
+	var target_pos_hurt = skeleton_hurt.to_local(target.global_position)
+	var direction_hurt = (target_pos_hurt - bone_transform_hurt.origin).normalized()
+	distance_hurt = target_pos_hurt.distance_to(bone_transform_hurt.origin)
+	
+	var new_transform_hurt:Transform3D = bone_transform_hurt
+	new_transform_hurt.origin = bone_origin_hurt
+	
+	new_transform_hurt = transform_look_at(new_transform_hurt, direction_hurt)
+
+	new_transform_hurt.basis.y *= distance_hurt
+#endregion
 
 	skeleton.set_bone_global_pose_override(bone_index,new_transform,amount,true)
+	skeleton_hurt.set_bone_global_pose_override(bone_index,new_transform_hurt,amount,true)
 
 
 func transform_look_at(_transform,direction):
