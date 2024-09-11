@@ -58,6 +58,8 @@ signal abductee_detected
 
 signal hover_pos
 
+signal spawn_npc
+
 signal copter_unit_stopped
 
 # Raycast results

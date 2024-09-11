@@ -27,7 +27,7 @@ func _input(event):
 		if event.is_action_pressed("Debug 3"): # Show/Hide FPS
 			show_info = !show_info
 		if event.is_action_pressed("Debug 4"):
-			pass
+			Messenger.spawn_npc.emit("copter")
 		if event.is_action_pressed("Debug 5"): # Pause the terrain movement
 			Messenger.movement_stop.emit(false)
 		if event.is_action_pressed("Debug 6"): # Play the terrain movement

@@ -22,6 +22,7 @@ Messenger="*res://Management/messenger.gd"
 Globals="*res://Scripts/Globals.gd"
 Hover_Interactables_Autoloaded="*res://UI/hover_interactables.tscn"
 Game_States="*res://Scripts/Game_States.gd"
+NpcSpawns="*res://NPCs/NPC Spawns.gd"
 
 [display]
 
