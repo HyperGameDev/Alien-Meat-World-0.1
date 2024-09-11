@@ -15,6 +15,11 @@ const BOUNDARY_DISTANCE : int = 30
 @onready var skeleton: Skeleton3D = get_node("Alien_V3/Alien/Armature/Skeleton3D")
 @onready var skeleton_hurt: Skeleton3D = get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D")
 
+@onready var collision_area_armr_upper: CollisionShape3D = $Alien_V3/DetectionAreas/Area_ArmR/CollisionA_ArmR_Upper
+@onready var collision_area_armr_lower: CollisionShape3D = $Alien_V3/DetectionAreas/Area_ArmR/CollisionA_ArmR_Lower
+@onready var collision_area_hurt_armr_upper: CollisionShape3D = $"Alien_V3/DetectionAreas/Area_ArmR/CollisionA-hurt_ArmR_Upper"
+@onready var collision_area_hurt_armr_lower: CollisionShape3D = $"Alien_V3/DetectionAreas/Area_ArmR/CollisionA-hurt_ArmR_Lower"
+
 @onready var mesh_orb: MeshInstance3D = get_node("Alien_V3/Alien/Orb_New-Game-Teleporter")
 @onready var animation_orb: AnimationPlayer = get_node("Alien_V3/Alien/Orb_New-Game-Teleporter/AnimationPlayer")
 var orb_onscreen : bool = false
@@ -38,13 +43,12 @@ var teleported : bool = false
 
 var look_pos : Vector3
 
-var grab : bool = false
+var attack : bool = false
 var hit_object : Node3D
-var arm_grabbing : int = 12
-var arm_grabbing_child : int = arm_grabbing + 1
+var arm_attacking : int = 12
+var arm_attacking_child : int = arm_attacking + 1
 var stretch_distance : Vector3 = Vector3(0,12,0)
-#var grab_tween_amount = 0.0
-var grab_duration : float = .2
+var attack_duration : float = .2
 
 # Distance grabbing arm travels:
 var distance : float
@@ -57,10 +61,10 @@ var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	Messenger.movement_start.connect(on_movement_start)
 	Messenger.movement_stop.connect(on_movement_stop)
-	Messenger.amount_slowed.connect(slowdown)
-	Messenger.area_undamaged.connect(damage_undetected)
-	Messenger.mouse_pos_3d.connect(mouse_pos)
-	Messenger.something_attacked.connect(do_grab)
+	Messenger.amount_slowed.connect(on_amount_slowed)
+	Messenger.area_undamaged.connect(on_area_undamaged)
+	Messenger.mouse_pos_3d.connect(on_mouse_pos_3d)
+	Messenger.something_attacked.connect(on_something_attacked)
 	Messenger.level_update.connect(on_level_update)
 	Messenger.game_begin.connect(on_game_begin)
 	Messenger.game_play.connect(on_game_play)
@@ -83,7 +87,7 @@ func _ready():
 func _physics_process(delta):
 	if Globals.is_game_state == Globals.is_game_states.BEGIN and !teleported:
 		new_game_teleport()
-#	aim_bone_at_target(arm_grabbing, hit_object)
+#	aim_bone_at_target(arm_attacking, hit_object)
 #	print(hit_object)
 #	print("Is on floor: ", is_on_floor())
 #	print(self.global_position.y)
@@ -143,7 +147,7 @@ func rotate_head_to_direction(dir:Vector3):
 #	# Movement application
 #	rotation.y = -atan2(dir.x, -dir.z)
 
-func mouse_pos(mouse):
+func on_mouse_pos_3d(mouse):
 	look_pos = mouse - self.global_position
 #	rotate_arm_r_to_direction(look_pos)
 #	rotate_arm_l_to_direction(look_pos)
@@ -156,36 +160,50 @@ func mouse_pos(mouse):
 #	skeleton.set_bone_pose_rotation(arm_r, look_pos)
 #	skeleton.set_bone_pose_rotation(arm_l, look_pos)
 
-func grab_action_tween(amount):
+func attack_action_tween(amount):
 	if !skeleton.is_inside_tree():
 		return
 		
 	if hit_object != null:
 	#		print("Object isn't Null (", hit_object.name, ")")
-			aim_bone_at_target(arm_grabbing,hit_object,amount)
+			aim_bone_at_target(arm_attacking,hit_object,amount)
 			
 	else:
 	#		print("Object Null!")
-			aim_bone_at_target(arm_grabbing,null,amount)
+			aim_bone_at_target(arm_attacking,null,amount)
 	
-func do_grab(what_is_hit):
-	grab = true
-#	if grab == true
-	hit_object = what_is_hit
-	#print("Grab Begun on ", hit_object.name)
+func on_something_attacked(what_is_hit):
+	if !attack:
+		attack = true
+		
+		collision_area_armr_upper.set_deferred("disabled", true)
+		collision_area_armr_lower.set_deferred("disabled", true)
+		collision_area_hurt_armr_upper.set_deferred("disabled", true)
+		collision_area_hurt_armr_lower.set_deferred("disabled", true)
+		
+	#	if grab == true
+		hit_object = what_is_hit
+		#print("Grab Begun on ", hit_object.name)
 
-	animation.set("parameters/reach right/request", 1)
-	get_tree().create_tween().tween_method(grab_action_tween,0.0,1.0,grab_duration)
+		animation.set("parameters/reach right/request", 1)
+		get_tree().create_tween().tween_method(attack_action_tween,0.0,1.0,attack_duration)
+		
+	#	aim_bone_at_target(arm_attacking,hit_object, 0.0)
+		await get_tree().create_timer(attack_duration * 2).timeout
+		var area = what_is_hit
+		var is_delayed = true
+		Messenger.something_hit.emit(area,is_delayed)
+	#	print("Grab Ending from ", hit_object.name)
+		# Retract the arm
+		get_tree().create_tween().tween_method(attack_action_tween,1.0,0.0,attack_duration)
+		await get_tree().create_timer(attack_duration).timeout
+		collision_area_armr_upper.set_deferred("disabled", false)
+		collision_area_armr_lower.set_deferred("disabled", false)
+		collision_area_hurt_armr_upper.set_deferred("disabled", false)
+		collision_area_hurt_armr_lower.set_deferred("disabled", false)
+		
+		attack = false
 	
-#	aim_bone_at_target(arm_grabbing,hit_object, 0.0)
-	await get_tree().create_timer(grab_duration * 2).timeout
-	grab = false
-	var area = what_is_hit
-	var is_delayed = true
-	Messenger.something_hit.emit(area,is_delayed)
-#	print("Grab Ending from ", hit_object.name)
-	# Retract the arm
-	get_tree().create_tween().tween_method(grab_action_tween,1.0,0.0,grab_duration)
 
 
 func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
@@ -242,7 +260,7 @@ func transform_look_at(_transform,direction):
 	return xform
 	
 
-func damage_undetected(_bodypart_unarea):
+func on_area_undamaged(_bodypart_unarea):
 #	print("Feet Unseen")
 	terrain_slowdown = false
 #	print("terrain_slowdown:", terrain_slowdown)
@@ -252,7 +270,7 @@ func abductee_hovered(abductee):
 	pass
 
 
-func slowdown(slowdown_amount):
+func on_amount_slowed(slowdown_amount):
 	if slowdown_amount == Obstacle.slowdown_amounts.FULL:
 		Messenger.movement_stop.emit(false)
 		

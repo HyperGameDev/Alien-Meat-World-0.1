@@ -11,7 +11,7 @@ var health_percent_lost: float = 0.0
 # Getting attacked
 var target
 var was_hit = false
-@onready var attacked_duration = get_tree().get_current_scene().get_node("Player").grab_duration
+@onready var attacked_duration = get_tree().get_current_scene().get_node("Player").attack_duration
 
 func _ready():			
 	if !has_node("Animation_Degrade"):
