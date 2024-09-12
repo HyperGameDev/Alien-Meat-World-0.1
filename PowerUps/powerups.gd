@@ -10,4 +10,4 @@ func on_add_powerup(powerup):
 		"drone":
 			var drone = preload("res://PowerUps/PU_Drone/pu_drone.tscn").instantiate()
 			add_child(drone)
-			drone.global_position = Vector3(-1,2,0)
+			drone.position = Vector3(-1,2,0)
