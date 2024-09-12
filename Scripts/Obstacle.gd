@@ -36,6 +36,7 @@ func _ready():
 		
 	# Check if it is a sub-obstacle
 	if $"../..".has_signal("update_hitpoints"):
+	
 		$"../..".update_hitpoints.connect(on_update_top_level_hitpoints)
 		if !has_node("CollisionShape3D"):
 			print("ERROR: Sub-Obstacle is missing a properly named 'CollisionShape3D'")
@@ -62,11 +63,13 @@ func _ready():
 	set_collision_layer_value(2, false)
 	set_collision_layer_value(3, true)
 	set_collision_layer_value(4, false)
+	set_collision_layer_value(8, false)
 	
 	set_collision_mask_value(1, false)
 	set_collision_mask_value(2, false)
 	set_collision_mask_value(3, false)
 	set_collision_mask_value(4, false)
+	set_collision_mask_value(8, false)
 	set_collision_mask_value(16, true)
 	
 	# If this is set, obstacled the copter collides with also impact the player's collision (namely on full slowdowns)

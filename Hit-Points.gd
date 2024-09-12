@@ -50,6 +50,7 @@ func on_something_hit(what_got_hit,is_delayed):
 #		await get_tree().create_timer(attacked_duration).timeout
 
 		# CONSIDER refactoring as a set function in the script declaration? (So I don't have to remember to emit everytime)
+		# CONSIDER actually, more importantly, making this more modular and less convoluted. Can start with having damage_taken be variable instead of fixed on the obstacle and/or copter.
 		$"..".health_current -= $"..".damage_taken
 		$"..".update_hitpoints.emit()
 		

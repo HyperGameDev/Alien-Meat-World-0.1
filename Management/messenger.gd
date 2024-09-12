@@ -24,6 +24,8 @@ signal powerup_menu_begin
 signal powerup_chosen
 signal powerup_hovered
 
+signal add_powerup
+
 signal player_hover
 signal player_head_hover
 

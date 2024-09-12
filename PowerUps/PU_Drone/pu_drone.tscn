@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv66gb5x6ujbn"]
+
+[ext_resource type="Script" path="res://PowerUps/PU_Drone/pu_drone.gd" id="1_xcfnh"]
+[ext_resource type="Material" uid="uid://k7amywk044hv" path="res://Objects/Buildings/Farm/grain-bin_main.tres" id="2_cjnrb"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_2t78n"]
+size = Vector3(0.755, 1, 0.415)
+
+[node name="PU_Drone" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 2.0672, 0.852462)
+script = ExtResource("1_xcfnh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.47035e-08, 1, 0, -1, -4.47035e-08, 0, 0, 0)
+mesh = SubResource("PrismMesh_2t78n")
+surface_material_override/0 = ExtResource("2_cjnrb")

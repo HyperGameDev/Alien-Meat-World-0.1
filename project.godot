@@ -215,6 +215,7 @@ Jump={
 3d_physics/layer_5="Cursor Zone"
 3d_physics/layer_6="PowerUps"
 3d_physics/layer_7="Menu Buttons"
+3d_physics/layer_8="Projectile"
 3d_physics/layer_15="Menu Alien"
 3d_physics/layer_16="Player"
 avoidance/layer_1="Ground"

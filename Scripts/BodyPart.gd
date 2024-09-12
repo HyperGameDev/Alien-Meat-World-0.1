@@ -105,6 +105,7 @@ func _ready():
 	
 	set_collision_layer_value(16,true)
 	set_collision_mask_value(3,true)
+	set_collision_mask_value(8,true)
   
 	area_entered.connect(on_area_entered)
 	Messenger.area_damaged.connect(on_area_damaged)
@@ -136,12 +137,13 @@ func on_area_entered(area):
 
 func _damage_amount(damage_amount):
 	amount_to_damage = damage_amount
-	if amount_to_damage == Obstacle.damage_amounts.FULL:
-		limb_damage_amount = 100
-	if amount_to_damage == Obstacle.damage_amounts.LOWEST:
-		limb_damage_amount = 1
-	if amount_to_damage == Obstacle.damage_amounts.NONE:
-		limb_damage_amount = 0
+	match amount_to_damage:
+		Obstacle.damage_amounts.FULL or Projectile.damage_amounts.FULL:
+			limb_damage_amount = 100
+		Obstacle.damage_amounts.LOWEST or Projectile.damage_amounts.LOWEST:
+			limb_damage_amount = 1
+		Obstacle.damage_amounts.NONE or  Projectile.damage_amounts.NONE:
+			limb_damage_amount = 0
 		#print("'Damage_Amount' damage: ", limb_damage_amount)
 
 func reset_last_collided_area_count():

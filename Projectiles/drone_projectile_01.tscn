@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1noi17fgblk0"]
+
+[ext_resource type="Script" path="res://Scripts/Projectile.gd" id="1_rxb5x"]
+[ext_resource type="Material" uid="uid://dud0jtjkh61f3" path="res://Projectiles/drone_bullet_01.tres" id="2_ykq58"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e4m6r"]
+radius = 0.097
+
+[sub_resource type="SphereMesh" id="SphereMesh_7eb3r"]
+radius = 0.1
+height = 0.2
+
+[node name="Drone_Projectile_01" type="Node3D"]
+
+[node name="Projectile" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_rxb5x")
+player_owned = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Projectile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00326499)
+shape = SubResource("SphereShape3D_e4m6r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Projectile"]
+mesh = SubResource("SphereMesh_7eb3r")
+surface_material_override/0 = ExtResource("2_ykq58")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmmlash6nlm4r"]
+
+[ext_resource type="Script" path="res://Scripts/Projectile.gd" id="1_ci1mr"]
+[ext_resource type="Material" uid="uid://crf5j3t1jddne" path="res://Projectiles/bullet_01.tres" id="2_lsbdf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e4m6r"]
+radius = 0.017
+
+[sub_resource type="BoxMesh" id="BoxMesh_0si7f"]
+size = Vector3(0.055, 0.03, 0.095)
+
+[node name="Copter_Projectile_01" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.925493)
+
+[node name="Projectile" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_ci1mr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Projectile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0306336)
+shape = SubResource("SphereShape3D_e4m6r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Projectile"]
+mesh = SubResource("BoxMesh_0si7f")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("2_lsbdf")

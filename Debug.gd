@@ -33,7 +33,7 @@ func _input(event):
 		if event.is_action_pressed("Debug 6"): # Play the terrain movement
 			Messenger.movement_start.emit(false)
 		if event.is_action_pressed("Debug 7"):
-			pass
+			Messenger.add_powerup.emit("drone")
 		if event.is_action_pressed("Debug 8"):
 			pass
 		if event.is_action_pressed("Debug 9"):

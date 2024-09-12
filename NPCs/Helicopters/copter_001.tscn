@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://cxp488n77il0e"]
+[gd_scene load_steps=40 format=4 uid="uid://cxp488n77il0e"]
 
 [ext_resource type="Script" path="res://NPCs/Helicopters/copter.gd" id="2_l3hi8"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_nrwea"]
@@ -397,6 +397,91 @@ _data = {
 "falling": SubResource("Animation_wi6fg")
 }
 
+[sub_resource type="Animation" id="Animation_0x4qo"]
+resource_name = "strafing"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("copter_001:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.01875, 0.504167, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2, 0, 0), Vector3(-2, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitPoints/Obstacle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.01875, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.06613, 0), Vector3(-2, -1.066, 0), Vector3(2, -1.066, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-0.01875, 0.510417, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.00413191, 0.510933, 0.235844), Vector3(2, 0.511, 0.236), Vector3(-2, 0.511, 0.236)]
+}
+
+[sub_resource type="Animation" id="Animation_m1d3q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("copter_001:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitPoints/Obstacle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.06613, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.00413191, 0.510933, 0.235844)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_33bqv"]
+_data = {
+"RESET": SubResource("Animation_m1d3q"),
+"strafing": SubResource("Animation_0x4qo")
+}
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pk0f"]
 resource_name = "copter"
 cull_mode = 2
@@ -648,6 +733,11 @@ libraries = {
 [node name="Animation_CopterDeath" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_jwt5m")
+}
+
+[node name="Animation_CopterMovement" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_33bqv")
 }
 
 [node name="Copter" type="MeshInstance3D" parent="."]

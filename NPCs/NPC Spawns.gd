@@ -27,6 +27,7 @@ func on_spawn_npc(npc):
 
 func spawn_copter_fleet():
 	#spawn_interval_timer.start(randi_range(spawn_interval_min,spawn_interval_max))
+	
 
 #	print(copter_spawns, " copters spawned")
 	if copter_spawns <= 5:
