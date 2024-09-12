@@ -137,6 +137,7 @@ func _on_mouse_exited(): ## For hover arrow indicator
 	pass
 	
 func on_projectile_interval_timeout():
+	player_head = get_tree().get_current_scene().get_node("Player/Alien_V3/DetectionAreas/Area_Head/CollisionA_AlienHead")
 	projectile_interval_timer.start(randf_range(projectile_interval_min,projectile_interval_max))
 	
 	var copter_bullet = preload("res://Projectiles/copter_projectile_01.tscn").instantiate()
@@ -144,6 +145,6 @@ func on_projectile_interval_timeout():
 	
 	copter_bullet.global_position = copter_mesh.global_position
 	
-	copter_bullet.get_node("Projectile").speed = 1
+	copter_bullet.get_node("Projectile").speed = .5
 	
 	copter_bullet.get_node("Projectile").direction = (player_head.global_position - copter_bullet.global_position).normalized()

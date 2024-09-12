@@ -15,10 +15,18 @@ const BOUNDARY_DISTANCE : int = 30
 @onready var skeleton: Skeleton3D = get_node("Alien_V3/Alien/Armature/Skeleton3D")
 @onready var skeleton_hurt: Skeleton3D = get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D")
 
-@onready var collision_area_armr_upper: CollisionShape3D = $Alien_V3/DetectionAreas/Area_ArmR/CollisionA_ArmR_Upper
-@onready var collision_area_armr_lower: CollisionShape3D = $Alien_V3/DetectionAreas/Area_ArmR/CollisionA_ArmR_Lower
-@onready var collision_area_hurt_armr_upper: CollisionShape3D = $"Alien_V3/DetectionAreas/Area_ArmR/CollisionA-hurt_ArmR_Upper"
-@onready var collision_area_hurt_armr_lower: CollisionShape3D = $"Alien_V3/DetectionAreas/Area_ArmR/CollisionA-hurt_ArmR_Lower"
+@onready var arm_l: Area3D = get_node("Alien_V3/DetectionAreas/Area_ArmL")
+@onready var arm_r: Area3D = get_node("Alien_V3/DetectionAreas/Area_ArmR")
+
+@onready var collision_area_armr_upper: CollisionShape3D = get_node("Alien_V3/DetectionAreas/Area_ArmR/CollisionA_ArmR_Upper")
+@onready var collision_area_armr_lower: CollisionShape3D = get_node("Alien_V3/DetectionAreas/Area_ArmR/CollisionA_ArmR_Lower")
+@onready var collision_area_hurt_armr_upper: CollisionShape3D = get_node("Alien_V3/DetectionAreas/Area_ArmR/CollisionA-hurt_ArmR_Upper")
+@onready var collision_area_hurt_armr_lower: CollisionShape3D = get_node("Alien_V3/DetectionAreas/Area_ArmR/CollisionA-hurt_ArmR_Lower")
+
+@onready var collision_area_arml_upper: CollisionShape3D = get_node("Alien_V3/DetectionAreas/Area_ArmL/CollisionA_ArmL_Upper")
+@onready var collision_area_arml_lower: CollisionShape3D = get_node("Alien_V3/DetectionAreas/Area_ArmL/CollisionA_ArmL_Lower")
+@onready var collision_area_hurt_arml_upper: CollisionShape3D = get_node("Alien_V3/DetectionAreas/Area_ArmL/CollisionA-hurt_ArmL_Upper")
+@onready var collision_area_hurt_arml_lower: CollisionShape3D = get_node("Alien_V3/DetectionAreas/Area_ArmL/CollisionA-hurt_ArmL_Lower")
 
 @onready var mesh_orb: MeshInstance3D = get_node("Alien_V3/Alien/Orb_New-Game-Teleporter")
 @onready var animation_orb: AnimationPlayer = get_node("Alien_V3/Alien/Orb_New-Game-Teleporter/AnimationPlayer")
@@ -197,10 +205,28 @@ func on_something_attacked(what_is_hit):
 		# Retract the arm
 		get_tree().create_tween().tween_method(attack_action_tween,1.0,0.0,attack_duration)
 		await get_tree().create_timer(attack_duration).timeout
-		collision_area_armr_upper.set_deferred("disabled", false)
-		collision_area_armr_lower.set_deferred("disabled", false)
-		collision_area_hurt_armr_upper.set_deferred("disabled", false)
-		collision_area_hurt_armr_lower.set_deferred("disabled", false)
+		
+		match arm_r.current_health:
+			0:
+				pass
+			1:
+				collision_area_hurt_armr_upper.set_deferred("disabled", false)
+				collision_area_hurt_armr_lower.set_deferred("disabled", false)
+			2: 	
+				collision_area_armr_upper.set_deferred("disabled", false)
+				collision_area_armr_lower.set_deferred("disabled", false)
+					
+		match arm_l.current_health:
+			0:
+				pass
+			1:
+				collision_area_hurt_arml_upper.set_deferred("disabled", false)
+				collision_area_hurt_arml_lower.set_deferred("disabled", false)
+			2: 	
+				collision_area_arml_upper.set_deferred("disabled", false)
+				collision_area_arml_lower.set_deferred("disabled", false)
+
+				
 		
 		attack = false
 	

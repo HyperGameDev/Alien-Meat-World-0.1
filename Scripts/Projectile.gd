@@ -11,7 +11,7 @@ enum damage_amounts {LOWEST, FULL, NONE}
 
 var target_posd : Vector3 = Vector3.ZERO
 var velocity : Vector3 = Vector3.ZERO
-var speed : int = 50
+var speed : float = 50.0
 var direction : Vector3 = Vector3(0,0,0)
 var shoot_at_player : bool = true
 
@@ -35,16 +35,20 @@ func _ready() -> void:
 
 
 func on_area_entered(area):
+	print("Bullet passed through ",area,"!")
 	# Getting an error? Did you add a new area to the player without a defined is_part?
 	if !player_owned:
+		if area.is_part == BodyPart.is_parts.HEAD or area.is_part == BodyPart.is_parts.ARM_R or  area.is_part == BodyPart.is_parts.ARM_L or  area.is_part == BodyPart.is_parts.LEG_R or  area.is_part == BodyPart.is_parts.LEG_L:
+			Messenger.amount_damaged.emit(damage_amount)
+			Messenger.area_damaged.emit(area)
+			queue_free()
+			
 		if area.is_part == BodyPart.is_parts.BODY:
 			Messenger.amount_damaged.emit(Projectile.damage_amounts.NONE)
-		else:
-			Messenger.amount_damaged.emit(damage_amount)
+			Messenger.area_damaged.emit(area)
+			queue_free()
 			
-		Messenger.area_damaged.emit(area)
-		
-		queue_free()
+	
 	else:
 		Messenger.something_hit.emit(area,false)
 	
