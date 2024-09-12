@@ -38,6 +38,8 @@ var attack_target = null
 # Raycast 2: Hover-Player var
 var hover_target = null
 
+var interact_target = null
+
 var prevent_attacking : bool = false
 
 
@@ -89,20 +91,6 @@ func _process(delta: float) -> void:
 		mouse_pos = get_viewport().get_mouse_position()
 		var new_mouse_pos = mouse_pos + Vector2(x_axis, y_axis) * sensitivity * delta
 		Input.warp_mouse(new_mouse_pos)
-		
-	
-	
-	
-	#var cursor_velocity = Vector2.ZERO
-	#var inputVector = Vector2(
-		#Input.get_action_strength("Move Grabber Right") - Input.get_action_strength("Move Grabber Left"),
-		#Input.get_action_strength("Move Grabber Down") - Input.get_action_strength("Move Grabber Up")
-	#).limit_length()
-	#cursor_velocity = inputVector
-	#if is_joypad:
-		#Input.warp_mouse(mouse_pos + cursor_velocity * 2.0 * _delta * window_size)
-	#else:
-		#pass
 	
 	
 	if get_viewport() == null:
@@ -138,6 +126,9 @@ func _process(delta: float) -> void:
 	
 	# Cursor Position implementation
 	cursor_ray()
+	
+	# Interactable Detection implementation
+	interact_ray()
 	
 	if menu_pickable:
 		# Main Menu Button detection
@@ -198,6 +189,16 @@ func main_menu_ray():
 		Messenger.button_hovered.emit(hover_target)
 		if Input.is_action_just_pressed("Grab"):
 			Messenger.button_chosen.emit(hover_target)
+
+func interact_ray():
+	var raycast_result = hover_ray(256,true)
+	if !raycast_result.is_empty():
+		#print("Interact Ray saw something: ",raycast_result)
+		interact_target = raycast_result.collider
+		Messenger.interactable_hovered.emit(interact_target)
+		if Input.is_action_pressed("Grab"): 
+			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
+			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_back").force_hide_arrow()
 
 func attack_ray(): ## Detects obstacles, NPC's and Meat/Abductee; emits attack_target to hitpoints, and returns attack_target to Meat/Abductee within this script
 	var raycast_result = hover_ray(2 + 4 + 8 + 16384,true)

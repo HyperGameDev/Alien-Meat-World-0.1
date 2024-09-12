@@ -2,6 +2,8 @@ extends RigidBody3D
 
 class_name Abductee
 
+var is_interactable: bool = false
+
 @export var is_type: is_types
 enum is_types {COW, HUMAN}
 
@@ -62,7 +64,7 @@ func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 	
-	Messenger.attack_target.connect(am_i_hovered)
+	Messenger.interactable_hovered.connect(am_i_hovered)
 	
 	
 	Messenger.meat_entered_dunk.connect(on_meat_entered_dunk)
@@ -78,8 +80,10 @@ func _ready():
 	
 	
 func am_i_hovered(target):
+	#print("Something hovered emitted! On...?")
 	if target == self:
 		if has_node("Marker3D"):
+			#print("Something hovered emitted! On ",self,"!")
 			Messenger.something_hovered.emit(self)
 	
 func _process(delta):
@@ -98,8 +102,14 @@ func _process(delta):
 func _physics_process(delta):
 	if !spawned:
 		spawn_me()
+	else:
+		if is_interactable:
+			set_collision_layer_value(4, true)
+		else:
+			set_collision_layer_value(4, false)
+			
 	if spawn:
-		set_collision_layer_value(4, true)
+		set_collision_layer_value(9, true)
 		visible = true
 	else:
 		set_collision_layer_value(4, false)

@@ -72,7 +72,10 @@ signal anything_seen
 # Obstacle reports
 signal something_hit
 signal something_attacked
+
 signal something_hovered
+
+signal interactable_hovered
 
 # Actual grabbing
 signal grab_begun
