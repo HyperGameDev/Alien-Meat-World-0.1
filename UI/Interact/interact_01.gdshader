@@ -1,6 +1,7 @@
 shader_type spatial;
 render_mode unshaded, cull_disabled, depth_draw_opaque;
 
+uniform float alpha: hint_range(0.0, 1.0, 0.1) = 0.0;
 uniform vec2 center = vec2(0.5);
 uniform float size;
 uniform float width;
@@ -14,7 +15,7 @@ void fragment() {
 	float l = h - (width * 0.5);
 	if (d <= h && d > l) {
 		vec4 color = mix(inner_color, outer_color, smoothstep(l, h, d));
-		ALPHA = color.a;
+		ALPHA = color.a * alpha;
 		ALBEDO = color.rgb;
 	}
 }
