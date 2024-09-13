@@ -153,7 +153,6 @@ func reset_last_collided_area_count():
 	print("Collision check timer ended!")
 	
 func on_area_damaged(collided_bodypart):
-	
 	# Check what limb I am
 	if collided_bodypart == self:
 #		print(collided_bodypart.name.split("_")[1])
@@ -199,6 +198,10 @@ func on_area_damaged(collided_bodypart):
 		
 			# Inform Messenger of damage, e.g. so UI_FX can flash the screen
 			Messenger.limb_is_damaged.emit()
+			
+			
+			if is_part == BodyPart.is_parts.ARM_R or is_part == BodyPart.is_parts.ARM_L:
+				Messenger.arm_health_update.emit()
 			
 			match current_health:
 				0: 
@@ -344,6 +347,10 @@ func on_player_head_hover(is_hovered):
 	
 			if current_health < max_health:
 				current_health += 1
+				
+				
+				if is_part == BodyPart.is_parts.ARM_R or is_part == BodyPart.is_parts.ARM_L:
+					Messenger.arm_health_update.emit()
 			
 				match current_health: # Checks the hp it's healing INTO, not from:
 					1:

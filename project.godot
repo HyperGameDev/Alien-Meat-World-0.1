@@ -24,6 +24,10 @@ Hover_Interactables_Autoloaded="*res://UI/hover_interactables.tscn"
 Game_States="*res://Scripts/Game_States.gd"
 NpcSpawns="*res://NPCs/NPC Spawns.gd"
 
+[debug]
+
+shapes/collision/shape_color=Color(1, 0.575538, 0.784082, 1)
+
 [display]
 
 window/size/viewport_width=1109

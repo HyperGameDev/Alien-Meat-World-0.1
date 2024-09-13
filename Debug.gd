@@ -37,7 +37,7 @@ func _input(event):
 		if event.is_action_pressed("Debug 8"):
 			pass
 		if event.is_action_pressed("Debug 9"):
-			pass
+			Messenger.arm_health_update.emit()
 		if event.is_action_pressed("Debug 0"):
 			debug_menu.visible = !debug_menu.visible
 			

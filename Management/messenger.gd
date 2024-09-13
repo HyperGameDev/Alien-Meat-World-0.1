@@ -51,6 +51,7 @@ signal empathy_health
 signal limbs_is_damaged
 signal limbs_is_healed
 signal limbs_health
+signal arm_health_update
 
 signal amount_damaged
 signal amount_slowed

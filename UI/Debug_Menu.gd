@@ -10,6 +10,7 @@ extends Control
 @onready var leg_r = get_tree().get_root().get_node("Main Scene/Player/Alien_V3/DetectionAreas/Area_LegR")
 @onready var leg_l = get_tree().get_root().get_node("Main Scene/Player/Alien_V3/DetectionAreas/Area_LegL")
 
+@onready var interact = get_tree().get_root().get_node("Main Scene/UI_Interaction")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -41,6 +42,9 @@ func _ready():
 	%Button_level_01.pressed.connect(on_level_01)
 	%Button_healLegL.pressed.connect(on_healLegL)
 	%Button_healLegR.pressed.connect(on_healLegR)
+	%Button_22.pressed.connect(on_interact_22)
+	%Button_11.pressed.connect(on_interact_11)
+	%Button_00.pressed.connect(on_interact_00)
 	
 	label_levelCurrent.text = str("Current Level: ",Globals.level_current)
 
@@ -127,3 +131,19 @@ func on_healLegL():
 	
 func on_healLegR():
 	Messenger.abductee_detected.emit(leg_r,true)
+
+func on_interact_22():
+	interact.debugr = 2
+	interact.debugl = 2
+	Messenger.arm_health_update.emit()
+	
+func on_interact_11():
+	interact.debugr = 1
+	interact.debugl = 1
+	Messenger.arm_health_update.emit()
+	
+func on_interact_00():
+	interact.debugr = 0
+	interact.debugl = 0
+	Messenger.arm_health_update.emit()
+	

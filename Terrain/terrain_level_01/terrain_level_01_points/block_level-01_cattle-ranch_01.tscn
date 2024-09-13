@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ce4fmb5061j0k" path="res://Objects/Buildings/Barns/Cow_Barn_01/cow_barn_01_02_00.tscn" id="15_ufqnp"]
 [ext_resource type="PackedScene" uid="uid://d21gtemvo26ou" path="res://Objects/Misc/electric_pole_01_01_00.tscn" id="16_4s5ub"]
 [ext_resource type="PackedScene" uid="uid://bw3rfvleuqpka" path="res://Objects/Foliage/Tree_03/Tree_03-02_00.tscn" id="16_7wvjh"]
-[ext_resource type="PackedScene" uid="uid://och3wiqb2w4n" path="res://NPCs/Humans/human_02_00.tscn" id="18_bnk3i"]
+[ext_resource type="PackedScene" uid="uid://d0dc5ce516l3" path="res://NPCs/Humans/human_02-01_00.tscn" id="18_eu21e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_efiy5"]
 size = Vector3(9.12, 1, 13.425)
@@ -642,14 +642,29 @@ transform = Transform3D(2.44981e-08, 0, -1, 0, 1, 0, 1, 0, 2.44981e-08, 23.4999,
 [node name="Tree_03-02_03" parent="." index="180" instance=ExtResource("16_7wvjh")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 17.3999, 0, 1.60152)
 
-[node name="human_02_00" parent="." index="182" instance=ExtResource("18_bnk3i")]
-transform = Transform3D(1, 0, -8.72665e-05, 0, 1, 0, 8.72665e-05, 0, 1, 1.19936, -0.0122838, 7.30011)
+[node name="Human_02-01_00" parent="." index="182" instance=ExtResource("18_eu21e")]
+transform = Transform3D(1, 0, -8.72665e-05, 0, 1, 0, 8.72665e-05, 0, 1, -0.100646, 0, 7.39999)
 
-[node name="human_02_01" parent="." index="183" instance=ExtResource("18_bnk3i")]
-transform = Transform3D(0.965903, 0, -0.258903, 0, 1, 0, 0.258903, 0, 0.965903, 2.79936, -0.0122838, 7.30024)
+[node name="Human_02-01_01" parent="." index="183" instance=ExtResource("18_eu21e")]
+transform = Transform3D(1, 0, -8.72665e-05, 0, 1, 0, 8.72665e-05, 0, 1, 1.29936, 0, 7.30011)
 
-[node name="human_02_02" parent="." index="184" instance=ExtResource("18_bnk3i")]
-transform = Transform3D(0.866069, 0, 0.499924, 0, 1, 0, -0.499924, 0, 0.866069, -0.211259, -0.0122838, 7.81099)
+[node name="Human_02-01_02" parent="." index="184" instance=ExtResource("18_eu21e")]
+transform = Transform3D(1, 0, -8.72665e-05, 0, 1, 0, 8.72665e-05, 0, 1, -1.5007, 0, 7.99987)
+
+[node name="Human_02-01_03" parent="." index="185" instance=ExtResource("18_eu21e")]
+transform = Transform3D(1, 0, -8.72665e-05, 0, 1, 0, 8.72665e-05, 0, 1, 1.19924, 0, 8.7001)
+
+[node name="Human_02-01_04" parent="." index="186" instance=ExtResource("18_eu21e")]
+transform = Transform3D(1, 0, -8.72665e-05, 0, 1, 0, 8.72665e-05, 0, 1, -2.00054, 0, 6.19983)
+
+[node name="Human_02-01_05" parent="." index="187" instance=ExtResource("18_eu21e")]
+transform = Transform3D(1, 0, -8.72665e-05, 0, 1, 0, 8.72665e-05, 0, 1, -0.000479966, 0, 5.5)
+
+[node name="Human_02-01_06" parent="." index="188" instance=ExtResource("18_eu21e")]
+transform = Transform3D(1, 0, -8.72665e-05, 0, 1, 0, 8.72665e-05, 0, 1, -1.30047, 0, 5.39989)
+
+[node name="Human_02-01_07" parent="." index="189" instance=ExtResource("18_eu21e")]
+transform = Transform3D(1, 0, -8.72665e-05, 0, 1, 0, 8.72665e-05, 0, 1, 1.69956, 0, 5.00015)
 
 [editable path="electric-pole_01-01_00"]
 [editable path="electric-pole_01-01_00/Obstacle/HitPoints"]

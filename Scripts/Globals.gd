@@ -157,7 +157,7 @@ var current_menu_chunks : StringName
 
 var meat_objects := {
 	Abductee.is_types.COW: load("res://NPCs/Cows/Cow_01-03_00.tscn"),
-	Abductee.is_types.HUMAN: load("res://NPCs/Humans/human_01_00.tscn")
+	Abductee.is_types.HUMAN: load("res://NPCs/Humans/human_02-01_00.tscn")
 }
 
 func _ready():

@@ -102,6 +102,7 @@ theme_override_font_sizes/font_size = 31
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 
 [node name="VBox_4" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]
@@ -197,6 +198,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
 
 [node name="Button_level_01" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_2"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
@@ -228,6 +230,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
 
 [node name="Button_levelDebug_01" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_3"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
@@ -275,6 +278,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
 
 [node name="Button_scoreUp" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -284,6 +288,7 @@ text = "Add Point"
 
 [node name="Button_scoreClear" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 31
@@ -292,6 +297,7 @@ text = "Clear Score"
 
 [node name="Button_powerup1" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
@@ -300,6 +306,7 @@ text = "Choose Orb 1"
 
 [node name="Button_powerup2" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
@@ -308,6 +315,7 @@ text = "Choose Orb 2"
 
 [node name="Button_powerup3" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
@@ -315,7 +323,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Choose Orb 3"
 
 [node name="VBox_6" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
@@ -331,6 +338,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
+visible = false
 layout_mode = 2
 
 [node name="Button_Cutscene" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6/HBoxContainer"]
@@ -360,6 +368,36 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "Game"
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
+layout_mode = 2
+
+[node name="Button_22" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "22"
+
+[node name="Button_11" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "11"
+
+[node name="Button_00" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "00"
+
 [node name="Button_hurtLegR" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
 unique_name_in_owner = true
 visible = false
@@ -382,6 +420,7 @@ text = "Hurt LegL"
 
 [node name="Button_killLegs" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -391,6 +430,7 @@ text = "Kill Legs"
 
 [node name="Button_playerHeight" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -400,6 +440,7 @@ text = "Player Height"
 
 [node name="Button_healLegR" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -409,6 +450,7 @@ text = "Heal Leg R"
 
 [node name="Button_healLegL" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
