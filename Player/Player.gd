@@ -56,7 +56,7 @@ var hit_object : Node3D
 var arm_attacking : int = 12
 var arm_attacking_child : int = arm_attacking + 1
 var stretch_distance : Vector3 = Vector3(0,12,0)
-var attack_duration : float = .2
+var attack_duration : float = .1
 
 # Distance grabbing arm travels:
 var distance : float
@@ -205,6 +205,8 @@ func on_something_attacked(what_is_hit):
 		# Retract the arm
 		get_tree().create_tween().tween_method(attack_action_tween,1.0,0.0,attack_duration)
 		await get_tree().create_timer(attack_duration).timeout
+		
+		animation.set("parameters/reach right/request", 3)
 		
 		match arm_r.current_health:
 			0:

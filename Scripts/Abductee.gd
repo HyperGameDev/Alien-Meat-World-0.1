@@ -36,7 +36,7 @@ var default_material := StandardMaterial3D.new()
 var hover_material := StandardMaterial3D.new()
 var select_material := StandardMaterial3D.new()
 
-var spawn : bool = false
+var is_available : bool = false
 var spawned : bool = false
 
 var fell : bool = false
@@ -64,7 +64,7 @@ func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 	
-	Messenger.interactable_hovered.connect(am_i_hovered)
+	Messenger.abductee_hovered.connect(on_abductee_hovered)
 	
 	
 	Messenger.meat_entered_dunk.connect(on_meat_entered_dunk)
@@ -79,7 +79,7 @@ func _ready():
 	select_material.set_albedo(Color(1.0, .0, .1))
 	
 	
-func am_i_hovered(target):
+func on_abductee_hovered(target):
 	#print("Something hovered emitted! On...?")
 	if target == self:
 		if has_node("Marker3D"):
@@ -108,7 +108,7 @@ func _physics_process(delta):
 		else:
 			set_collision_layer_value(4, false)
 			
-	if spawn:
+	if is_available:
 		set_collision_layer_value(9, true)
 		visible = true
 	else:
@@ -172,9 +172,9 @@ func spawn_me():
 		if !is_in_group("Dunked"):
 			var boolean = pow(-1, randi() % 2)
 			if boolean > 0:
-				spawn = true
+				is_available = true
 			else:
-				spawn = false
+				is_available = false
 		
 func on_dunk_is_at_position(dunk_position):
 	if has_been_dunked:

@@ -76,7 +76,7 @@ signal something_attacked
 
 signal something_hovered
 
-signal interactable_hovered
+signal abductee_hovered
 
 # Actual grabbing
 signal grab_begun

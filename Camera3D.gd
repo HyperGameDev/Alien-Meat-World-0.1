@@ -38,7 +38,7 @@ var attack_target = null
 # Raycast 2: Hover-Player var
 var hover_target = null
 
-var interact_target = null
+var abduction_target = null
 
 var prevent_attacking : bool = false
 
@@ -107,11 +107,11 @@ func _process(delta: float) -> void:
 					var meat_original = raycast_result
 					if meat_original.has_method("spawn_me") and !is_attempting_grab and !is_in_group("Grabbed"):
 					#disappears the object
-						meat_original.spawn = false
+						meat_original.is_available = false
 					
 						var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
 						get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
-						meat_new.spawn = true
+						meat_new.is_available = true
 						meat_new.add_to_group("Grabbed")
 						is_attempting_grab = true
 	else:
@@ -128,7 +128,7 @@ func _process(delta: float) -> void:
 	cursor_ray()
 	
 	# Interactable Detection implementation
-	interact_ray()
+	abduct_ray()
 	
 	if menu_pickable:
 		# Main Menu Button detection
@@ -190,12 +190,13 @@ func main_menu_ray():
 		if Input.is_action_just_pressed("Grab"):
 			Messenger.button_chosen.emit(hover_target)
 
-func interact_ray():
+func abduct_ray():
 	var raycast_result = hover_ray(256,true)
 	if !raycast_result.is_empty():
 		#print("Interact Ray saw something: ",raycast_result)
-		interact_target = raycast_result.collider
-		Messenger.interactable_hovered.emit(interact_target)
+		abduction_target = raycast_result.collider
+		if abduction_target.is_available:
+			Messenger.abductee_hovered.emit(abduction_target)
 		if Input.is_action_pressed("Grab"): 
 			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
 			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_back").force_hide_arrow()

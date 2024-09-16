@@ -34,7 +34,7 @@ var dunk_ascent_timer_duration: float = 2.0
 
 
 func _ready():
-	set_collision_mask_value(4, true)
+	set_collision_mask_value(9, true)
 	visible = false
 	$VisibleOnScreenNotifier3D.screen_exited.connect(on_screen_exited)
 	body_entered.connect(on_body_entered)
