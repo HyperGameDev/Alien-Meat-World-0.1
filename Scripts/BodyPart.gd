@@ -30,16 +30,19 @@ const LIMB_MORPH_SPEED : float = 1.25
 @onready var score_dunk : Area3D = %ScoreDunk
 @onready var animation_blood_human : AnimationPlayer = %"Particles_Blood-Human"/AnimationPlayer
 
-@onready var healsCount_ArmL: Label3D = %healsCount_ArmL
-@onready var animation_healsCount_ArmL = %healsCount_ArmL/AnimationPlayer
-@onready var healsCount_ArmR: Label3D = %healsCount_ArmR
-@onready var animation_healsCount_ArmR = %healsCount_ArmR/AnimationPlayer
-@onready var healsCount_LegL: Label3D = %healsCount_LegL
-@onready var animation_healsCount_LegL = %healsCount_LegL/AnimationPlayer
-@onready var healsCount_LegR: Label3D = %healsCount_LegR
-@onready var animation_healsCount_LegR = %healsCount_LegR/AnimationPlayer
-@onready var healsCount_Head: Label3D = %healsCount_Head
-@onready var animation_healsCount_Head = %healsCount_Head/AnimationPlayer
+
+#region HP Labels
+@onready var hpCount_ArmL: Label3D = %hpLabels/hpCount_ArmL
+@onready var animation_hpCount_ArmL = %hpLabels/hpCount_ArmL/AnimationPlayer
+@onready var hpCount_ArmR: Label3D = %hpLabels/hpCount_ArmR
+@onready var animation_hpCount_ArmR = %hpLabels/hpCount_ArmR/AnimationPlayer
+@onready var hpCount_LegL: Label3D = %hpLabels/hpCount_LegL
+@onready var animation_hpCount_LegL = %hpLabels/hpCount_LegL/AnimationPlayer
+@onready var hpCount_LegR: Label3D = %hpLabels/hpCount_LegR
+@onready var animation_hpCount_LegR = %hpLabels/hpCount_LegR/AnimationPlayer
+@onready var hpCount_Head: Label3D = %hpLabels/hpCount_Head
+@onready var animation_hpCount_Head = %hpLabels/hpCount_Head/AnimationPlayer
+#endregion
 
 var limb_dmg_flash_end : bool = false
 
@@ -120,15 +123,15 @@ func _ready():
 	damage_material.set_albedo(Color(0.5, .0, .0))
 	
 # Damage Flash timer setup
-	if !is_part == BodyPart.is_parts.BODY:
-		limb_dmg_flash_length.timeout.connect(on_limb_dmg_flash_end)
-
-		material_damaged_timer.timeout.connect(on_material_damaged_timer_end)
-		add_child(material_damaged_timer)
-		material_damaged_timer.start(LIMB_DMG_FLASH_ON_LENGTH)
-		
-		material_reset_timer.one_shot = true
-		add_child(material_reset_timer)
+	#if !is_part == BodyPart.is_parts.BODY:
+		#limb_dmg_flash_length.timeout.connect(on_limb_dmg_flash_end)
+#
+		#material_damaged_timer.timeout.connect(on_material_damaged_timer_end)
+		#add_child(material_damaged_timer)
+		#material_damaged_timer.start(LIMB_DMG_FLASH_ON_LENGTH)
+		#
+		#material_reset_timer.one_shot = true
+		#add_child(material_reset_timer)
 	
 func on_area_entered(area):
 	var is_delayed = false
@@ -191,10 +194,12 @@ func on_area_damaged(collided_bodypart):
 			else:
 				reset_last_collided_area_count()
 				
-			
-			# Update the Damage Label
+			var damage_amount: String = "-1"
+				
+			# Update the DEBUG Damage Label
 			dmg_label.text = str(current_health)
 			dmg_label_hurt.text = str(current_health)
+			
 		
 			# Inform Messenger of damage, e.g. so UI_FX can flash the screen
 			Messenger.limb_is_damaged.emit()
@@ -256,7 +261,24 @@ func on_area_damaged(collided_bodypart):
 				_:
 					pass
 			
-			
+				
+			match is_part:
+				BodyPart.is_parts.ARM_L:
+					hpCount_ArmL.text = damage_amount
+					animation_hpCount_ArmL.play("hp_down")
+				BodyPart.is_parts.ARM_R:
+					hpCount_ArmR.text = damage_amount
+					animation_hpCount_ArmR.play("hp_down")
+				BodyPart.is_parts.LEG_L:
+					hpCount_LegL.text = damage_amount
+					animation_hpCount_LegL.play("hp_down")
+				BodyPart.is_parts.LEG_R:
+					hpCount_LegR.text = damage_amount
+					animation_hpCount_LegR.play("hp_down")
+				BodyPart.is_parts.HEAD:
+					print("ArmL healed by: ",damage_amount)
+					hpCount_Head.text = damage_amount
+					animation_hpCount_Head.play("hp_down")
 			
 			
 	# Damaged the Head?
@@ -347,7 +369,12 @@ func on_player_head_hover(is_hovered):
 	
 			if current_health < max_health:
 				current_health += 1
-				
+				var heal_amount: String = "+1"
+
+				#if !powerup_hp:
+					#heal_amount = "+1"
+				#else:
+					#heal_amount = "+2"
 				
 				if is_part == BodyPart.is_parts.ARM_R or is_part == BodyPart.is_parts.ARM_L:
 					Messenger.arm_health_update.emit()
@@ -364,7 +391,7 @@ func on_player_head_hover(is_hovered):
 								collision_area_head_hurt.set_deferred("disabled", false)
 							
 						else:
-							print("Healing on limbs attempted!")
+							#print("Healing on limbs attempted!")
 							dmg_label.text = str(current_health)
 							dmg_label_hurt.text = str(current_health)
 							
@@ -415,15 +442,21 @@ func on_player_head_hover(is_hovered):
 						
 				match is_part:
 					BodyPart.is_parts.ARM_L:
-						animation_healsCount_ArmL.play("heals_up")
+						hpCount_ArmL.text = heal_amount
+						animation_hpCount_ArmL.play("hp_up")
 					BodyPart.is_parts.ARM_R:
-						animation_healsCount_ArmR.play("heals_up")
+						hpCount_ArmR.text = heal_amount
+						animation_hpCount_ArmR.play("hp_up")
 					BodyPart.is_parts.LEG_L:
-						animation_healsCount_LegL.play("heals_up")
+						hpCount_LegL.text = heal_amount
+						animation_hpCount_LegL.play("hp_up")
 					BodyPart.is_parts.LEG_R:
-						animation_healsCount_LegR.play("heals_up")
+						hpCount_LegR.text = heal_amount
+						animation_hpCount_LegR.play("hp_up")
 					BodyPart.is_parts.HEAD:
-						animation_healsCount_Head.play("heals_up")
+						print("ArmL healed by: ",heal_amount)
+						hpCount_Head.text = heal_amount
+						animation_hpCount_Head.play("hp_up")
 						
 						
 			else:
