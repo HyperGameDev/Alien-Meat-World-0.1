@@ -9,7 +9,7 @@ func _ready() -> void:
 func on_button_action(button):
 	match button:
 		0:
-			Messenger.game_over.emit()
+			Messenger.restart.emit()
 		1:
 			pass
 		2:

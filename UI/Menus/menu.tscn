@@ -102,7 +102,6 @@ theme_override_font_sizes/font_size = 31
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 
 [node name="VBox_4" type="VBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons"]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_4"]

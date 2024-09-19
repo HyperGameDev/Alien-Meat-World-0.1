@@ -3,9 +3,8 @@ extends Node
 @export var level_current = 0
 
 var is_game_state: is_game_states
-enum is_game_states {PREINTRO,INTRO,MENU,POSTMENU,PREBEGIN,BEGIN,PLAY,PAUSE}
+enum is_game_states {PREINTRO,INTRO,MENU,POSTMENU,PREBEGIN,BEGIN,PLAY,PAUSE,OVER}
 
-var reloading: bool = false
 var powerups_available: Array = []
 var powerups := {
 	PowerUp1 = {
@@ -163,8 +162,9 @@ var meat_objects := {
 func _ready():
 	Messenger.swap_game_state.connect(on_swap_game_state)
 	Messenger.abduction.connect(on_abduction)
-	Messenger.game_over.connect(on_game_over)
 	Messenger.level_update.connect(on_level_update)
+	Messenger.restart.connect(on_restart)
+	Messenger.retry.connect(on_retry)
 	on_level_update(level_current)
 	
 	powerups_available = powerups.keys()
@@ -180,12 +180,23 @@ func on_level_update(level):
 	
 	current_menu_chunks = level_chunks_menu[level]
 	
-func on_game_over():
-	reloading = true
+func on_retry(is_restart):
+	Game_States.is_paused = false
+	get_tree().paused = false
 	powerups_available = powerups.keys()
 	obstacles_hilited = [] ## Empties out the last hilighted obstacle array
+	if !is_restart:
+		Messenger.level_update.emit(1)
+		Messenger.swap_game_state.emit(Globals.is_game_states.PLAY)
+		
+	
+func on_restart():
+	print("Restart attempted")
+	Messenger.retry.emit(true)
 	Messenger.level_update.emit(0)
-	get_tree().reload_current_scene()
+	get_tree().call_deferred("reload_current_scene")
+	#get_tree().call_deferred("change_scene_to_file","res://main_scene.tscn")
+	Messenger.swap_game_state.emit(Globals.is_game_states.PREINTRO)
 	
 func on_abduction(score_value):
 	score += score_value

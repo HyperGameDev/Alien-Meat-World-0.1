@@ -11,8 +11,10 @@ signal game_prebegin
 signal game_begin
 signal game_play
 signal game_pause
-
 signal game_over
+
+signal restart
+signal retry # 1 argument, is_restart bool true/false
 
 signal debug_nodes
 
@@ -33,7 +35,7 @@ signal area_damaged
 signal area_undamaged
 
 signal movement_start
-signal movement_stop
+signal movement_stop # 1 argument, lock_controls true/false
 
 signal instant_death
 signal limb_is_damaged
@@ -97,9 +99,3 @@ signal eating_finished
 signal hitpoint_update
 
 signal level_update
-
-func _ready() -> void:
-	level_update.connect(on_level_update)
-	
-func on_level_update():
-	pass

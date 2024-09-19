@@ -4,7 +4,7 @@ extends WorldEnvironment
 @export var environment_visible = true
 
 @onready var environment_empty = preload("res://Environment/enviro-00.tres")
-@onready var sun: DirectionalLight3D = %DirectionalLight3D
+@onready var sun: DirectionalLight3D = get_tree().current_scene.get_node("WorldEnvironment/DirectionalLight3D")
 @onready var fog_left: FogVolume =  %Fog_boundaryLeft
 @onready var fog_right: FogVolume =  %Fog_boundaryRight
 

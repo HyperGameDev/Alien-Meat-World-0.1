@@ -18,6 +18,7 @@ var hilite_retry: bool = false
 
 func _ready() -> void:
 	visible = false
+	Messenger.game_over.connect(on_game_over)
 	
 #region Continue Button Setup
 	button_continue.pressed.connect(on_button_continue)
@@ -56,8 +57,17 @@ func _input(event: InputEvent):
 	if event.is_action_pressed("Unpause") and Globals.is_game_state == Globals.is_game_states.PAUSE:
 		
 		get_tree().paused = false
-	if event.is_action_released("Pause") and Globals.is_game_state == Globals.is_game_states.PAUSE:
-		button_continue.grab_focus()
+		
+	if event.is_action_released("Pause"):
+		if Globals.is_game_state == Globals.is_game_states.PAUSE:
+			button_continue.grab_focus()
+		if Globals.is_game_state == Globals.is_game_states.OVER:
+			button_retry.grab_focus()
+
+func on_game_over():
+	button_continue.visible = false
+	button_settings.visible = false
+	button_main_menu.get_child(0).text = "Restart"
 
 #region Continue Button
 func on_button_continue():
@@ -86,28 +96,24 @@ func on_button_settings():
 func on_button_settings_focus():
 	if !hilite_settings:
 		hilite_settings = true
-		print("Settings Focused")
 		animation_settings.play("hilite")
 func on_button_settings_hover():
 	if !hilite_settings:
 		hilite_settings = true
-		print("Settings Hovered")
 		animation_settings.play("hilite")
 func on_button_settings_unfocus():
 	if hilite_settings:
 		hilite_settings = false
-		print("Settings Unfocused")
 		animation_settings.play("unhilite")
 func on_button_settings_unhover():
 	if hilite_settings:
 		hilite_settings = false
-		print("Settings Unhovered")
 		animation_settings.play("unhilite")
 #endregion
 	
 #region Main Menu Button
 func on_button_main_menu():
-	pass
+	Messenger.restart.emit.call_deferred()
 func on_button_main_menu_focus():
 	if !hilite_main_menu:
 		hilite_main_menu = true
@@ -128,7 +134,7 @@ func on_button_main_menu_unhover():
 	
 #region Retry Button
 func on_button_retry():
-	pass
+	Messenger.retry.emit(false)
 func on_button_retry_focus():
 	if !hilite_retry:
 		hilite_retry = true

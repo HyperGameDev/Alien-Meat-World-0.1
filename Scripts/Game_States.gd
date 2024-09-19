@@ -3,7 +3,7 @@ extends Node
 ## Search files for swap_game_state to find other transition points between states
 
 @onready var blackout: Panel = get_tree().current_scene.get_node("%Blackout_BG")
-@onready var sun: DirectionalLight3D = get_tree().current_scene.get_node("%DirectionalLight3D")
+@onready var sun: DirectionalLight3D = get_tree().current_scene.get_node("WorldEnvironment/DirectionalLight3D")
 @onready var terrain_controller: Node3D = get_tree().current_scene.get_node("%TerrainController_inScene")
 @onready var cam_target: Node3D = get_tree().current_scene.get_node("%Cam_Target")
 @onready var camera: Camera3D = get_tree().current_scene.get_node("%Camera3D")
@@ -44,21 +44,42 @@ func on_swap_game_state(game_state):
 		Globals.is_game_states.PAUSE:
 			on_game_state_pause()
 			
+		Globals.is_game_states.OVER:
+			on_game_state_over()
+			
 		_:
 			pass
 			
 func on_game_state_preintro():
-	await get_tree().create_timer(2).timeout
-	#region Fade in the game
-	var tween = get_tree().create_tween();
-	tween.tween_property(blackout, "self_modulate", Color(1.0, 1.0, 1.0, .0), 1.0)
-	sun.visible = true
-	#endregion
-	Messenger.swap_game_state.emit(Globals.is_game_states.INTRO)
-	Messenger.game_intro.emit()
+	await get_tree().process_frame
+	if get_tree().current_scene:
+		#print("Preintro sees tree, and process frame await over")
+#region Re-declarations because reload apparently
+		blackout = get_tree().current_scene.get_node("%Blackout_BG")
+		sun = get_tree().current_scene.get_node("WorldEnvironment/DirectionalLight3D")
+		terrain_controller = get_tree().current_scene.get_node("%TerrainController_inScene")
+		cam_target = get_tree().current_scene.get_node("%Cam_Target")
+		camera = get_tree().current_scene.get_node("%Camera3D")
+		main_menu = get_tree().current_scene.get_node("%Main_Menu")
+		pause_menu = get_tree().current_scene.get_node("Pause_Menu")
+#endregion
+		
+		await get_tree().create_timer(2).timeout
+		#region Fade in the game
+		var tween = get_tree().create_tween();
+		tween.tween_property(blackout, "self_modulate", Color(1.0, 1.0, 1.0, .0), 1.0)
+		sun.visible = true
+		#endregion
+		Messenger.swap_game_state.emit(Globals.is_game_states.INTRO)
+	else:
+		print("Preintro does NOT see tree!!!")
+		#get_tree().change_scene_to_file("res://main_scene.tscn")
+		get_tree().set_current_scene($"Main Scene")
+		on_game_state_preintro()
 	
 
 func on_game_state_intro():
+	Messenger.game_intro.emit()
 	# CONSIDER refactoring these tweens into an animationplayer!
 	var tween_fadeout = get_tree().create_tween();
 	tween_fadeout.tween_property(blackout, "self_modulate", Color(1.0, 1.0, 1.0, 1.0), 1.0)
@@ -138,3 +159,8 @@ func _process(delta: float) -> void:
 	if is_paused and !get_tree().paused:
 		Messenger.swap_game_state.emit(Globals.is_game_states.PLAY)
 		is_paused = false
+		
+func on_game_state_over():
+	Messenger.game_over.emit()
+	Messenger.movement_stop.emit(true)
+	pause_menu.visible = true

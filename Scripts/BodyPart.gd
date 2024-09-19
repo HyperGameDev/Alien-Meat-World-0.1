@@ -296,7 +296,8 @@ func on_area_damaged(collided_bodypart):
 		# Restart game on Death
 		if current_health <= 0:
 			await get_tree().create_timer(LIMB_MORPH_SPEED + .3).timeout
-			Messenger.game_over.emit()
+			
+			Messenger.swap_game_state.emit(Globals.is_game_states.OVER)
 			
 	
 	
@@ -319,7 +320,8 @@ func fall_death(fall_death):
 		current_health = 0
 #		is_damaged = true
 		Messenger.head_is_damaged.emit()
-		Messenger.game_over.emit()
+		
+		Messenger.swap_game_state.emit(Globals.is_game_states.OVER)
 
 
 func on_player_head_hover(is_hovered):
