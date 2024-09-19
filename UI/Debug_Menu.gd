@@ -45,6 +45,12 @@ func _ready():
 	%Button_22.pressed.connect(on_interact_22)
 	%Button_11.pressed.connect(on_interact_11)
 	%Button_00.pressed.connect(on_interact_00)
+	%Button_01.pressed.connect(on_interact_01)
+	%Button_10.pressed.connect(on_interact_10)
+	%Button_02.pressed.connect(on_interact_02)
+	%Button_20.pressed.connect(on_interact_20)
+	%Button_12.pressed.connect(on_interact_12)
+	%Button_21.pressed.connect(on_interact_21)
 	
 	label_levelCurrent.text = str("Current Level: ",Globals.level_current)
 
@@ -133,17 +139,50 @@ func on_healLegR():
 	Messenger.abductee_detected.emit(leg_r,true)
 
 func on_interact_22():
-	interact.debugr = 2
 	interact.debugl = 2
+	interact.debugr = 2
 	Messenger.arm_health_update.emit()
 	
 func on_interact_11():
-	interact.debugr = 1
 	interact.debugl = 1
+	interact.debugr = 1
 	Messenger.arm_health_update.emit()
 	
 func on_interact_00():
-	interact.debugr = 0
 	interact.debugl = 0
+	interact.debugr = 0
+	Messenger.arm_health_update.emit()	
+	
+func on_interact_01():
+	print("am also button")
+	interact.debugl = 0
+	interact.debugr = 1
 	Messenger.arm_health_update.emit()
+	
+func on_interact_10():
+	print("am button")
+	interact.debugl = 1
+	interact.debugr = 0
+	Messenger.arm_health_update.emit()
+	
+func on_interact_02():
+	interact.debugl = 0
+	interact.debugr = 2
+	Messenger.arm_health_update.emit()
+	
+func on_interact_20():
+	interact.debugl = 2
+	interact.debugr = 0
+	Messenger.arm_health_update.emit()
+	
+func on_interact_12():
+	interact.debugl = 1
+	interact.debugr = 2
+	Messenger.arm_health_update.emit()
+	
+func on_interact_21():
+	interact.debugl = 2
+	interact.debugr = 1
+	Messenger.arm_health_update.emit()
+	
 	

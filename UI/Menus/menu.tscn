@@ -370,23 +370,23 @@ text = "Game"
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
 layout_mode = 2
 
-[node name="Button_22" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6/HBoxContainer2"]
+[node name="Button_20" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6/HBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "22"
+text = "20"
 
-[node name="Button_11" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6/HBoxContainer2"]
+[node name="Button_10" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6/HBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
-text = "11"
+text = "10"
 
 [node name="Button_00" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6/HBoxContainer2"]
 unique_name_in_owner = true
@@ -396,6 +396,69 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
 text = "00"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
+layout_mode = 2
+
+[node name="Button_21" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "21"
+
+[node name="Button_11" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "11"
+
+[node name="Button_01" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "01"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
+layout_mode = 2
+
+[node name="Button_22" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6/HBoxContainer4"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "22"
+
+[node name="Button_12" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6/HBoxContainer4"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "12"
+
+[node name="Button_02" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6/HBoxContainer4"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_m22gf")
+text = "02"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
+layout_mode = 2
 
 [node name="Button_hurtLegR" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_6"]
 unique_name_in_owner = true
