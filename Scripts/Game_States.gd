@@ -8,6 +8,10 @@ extends Node
 @onready var cam_target: Node3D = get_tree().current_scene.get_node("%Cam_Target")
 @onready var camera: Camera3D = get_tree().current_scene.get_node("%Camera3D")
 @onready var main_menu: Node3D = get_tree().current_scene.get_node("%Main_Menu")
+@onready var pause_menu: CanvasLayer = get_tree().current_scene.get_node("Pause_Menu")
+
+var is_paused: bool = false
+
 
 func _ready() -> void:
 	Messenger.swap_game_state.connect(on_swap_game_state)
@@ -115,8 +119,22 @@ func on_game_state_begin():
 	Messenger.game_begin.emit()
 	
 func on_game_state_play():
+	pause_menu.visible = false
 	Messenger.game_play.emit()
 	Messenger.movement_start.emit(false)
 
+
+func _input(event: InputEvent):
+	if event.is_action_pressed("Pause") and Globals.is_game_state == Globals.is_game_states.PLAY:
+		Messenger.swap_game_state.emit(Globals.is_game_states.PAUSE)
+		is_paused = true
+		
 func on_game_state_pause():
-	pass
+	Messenger.game_pause.emit()
+	get_tree().paused = true
+	pause_menu.visible = true
+
+func _process(delta: float) -> void:
+	if is_paused and !get_tree().paused:
+		Messenger.swap_game_state.emit(Globals.is_game_states.PLAY)
+		is_paused = false

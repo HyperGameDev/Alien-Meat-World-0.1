@@ -120,9 +120,11 @@ animation = &"idle"
 xfade_time = 0.1
 input_0/name = "idling"
 input_0/auto_advance = false
+input_0/break_loop_at_end = false
 input_0/reset = true
 input_1/name = "stopping"
 input_1/auto_advance = false
+input_1/break_loop_at_end = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_b8rdw"]
@@ -153,9 +155,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
-libraries = {
-"": SubResource("AnimationLibrary_kb5wj")
-}
 tree_root = SubResource("AnimationNodeBlendTree_b8rdw")
 anim_player = NodePath("../AnimationPlayer")
 parameters/TimeScale/scale = 0.4

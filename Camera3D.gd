@@ -57,6 +57,8 @@ func _ready():
 	Messenger.powerup_chosen.connect(on_powerup_chosen)
 	Messenger.game_menu.connect(on_game_menu)
 	Messenger.game_postmenu.connect(on_game_postmenu)
+	Messenger.game_play.connect(on_game_play)
+	Messenger.game_pause.connect(on_game_pause)
 	
 func _physics_process(_delta):
 	
@@ -292,3 +294,9 @@ func on_eating_begun():
 
 func on_eating_finished():
 	prevent_attacking = false
+
+func on_game_play():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
+func on_game_pause():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
