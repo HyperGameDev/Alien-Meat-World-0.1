@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3iqsofo0hk8n"]
+
+[ext_resource type="PackedScene" uid="uid://bbc1kihoe0swi" path="res://Objects/Buildings/Houses/farnhouse_01-02_00.blend" id="1_rmrjo"]
+
+[node name="farnhouse_01-02_00" instance=ExtResource("1_rmrjo")]
+
+[node name="Walls" parent="." index="0"]
+lod_bias = 128.0
+
+[node name="Pipe1" parent="." index="1"]
+lod_bias = 128.0
+
+[node name="Roof" parent="." index="2"]
+lod_bias = 128.0
+
+[node name="Porch1_Roof" parent="." index="3"]
+lod_bias = 128.0
+
+[node name="Porch1" parent="." index="4"]
+lod_bias = 128.0
+
+[node name="Porch2" parent="." index="5"]
+lod_bias = 128.0
