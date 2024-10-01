@@ -1,0 +1,202 @@
+[gd_scene load_steps=10 format=3 uid="uid://pixf6fu7e0g1"]
+
+[ext_resource type="PlaneMesh" uid="uid://bnal7rn3xabyx" path="res://Terrain/terrain_blocks_default-2.tres" id="1_in88k"]
+[ext_resource type="Material" uid="uid://wgjbtowhd4wg" path="res://Terrain/BASE_TERRAIN_BLOCKS/block_default-grass-shader.tres" id="2_nykes"]
+[ext_resource type="Script" path="res://Terrain/Block.gd" id="3_g4tnm"]
+[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="4_euss2"]
+[ext_resource type="PackedScene" uid="uid://dmn5h1fku4mbh" path="res://Objects/Foliage/Grass/grass_plane_01_01_00.tscn" id="5_ig5a6"]
+[ext_resource type="PackedScene" uid="uid://c3iqsofo0hk8n" path="res://Objects/Buildings/Houses/Farmhouse_01-02_00.tscn" id="6_u581k"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gjw30"]
+data = PackedVector3Array(50, 0, 10, -50, 0, 10, 50, 0, -10, -50, 0, 10, -50, 0, -10, 50, 0, -10)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qwi2u"]
+points = PackedVector3Array(-5.99455, -71.0009, -8.31296, -6.39667, -70.7782, -8.31296, -5.80767, 7.41876, -8.32274, -3.38274, 7.41876, -8.30318, -3.34691, 7.46485, 11.6602, -5.99455, -71.0009, 91.582, -6.39667, -2.12064, -8.31296, -6.39667, -70.7782, 91.582, -6.29546, 7.45717, 11.6406, -3.34691, 7.46485, 91.6015, -6.39667, -2.12064, 91.582, -6.29546, 7.45717, 91.5722)
+
+[sub_resource type="BoxMesh" id="BoxMesh_evi1g"]
+size = Vector3(3.725, 11.06, 19.375)
+
+[node name="Terrain_0" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+layers = 2
+mesh = ExtResource("1_in88k")
+surface_material_override/0 = ExtResource("2_nykes")
+script = ExtResource("3_g4tnm")
+metadata/_edit_lock_ = true
+
+[node name="Ground" type="StaticBody3D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("ConcavePolygonShape3D_gjw30")
+
+[node name="Col_Cliff-Front" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 41.6496, -7.7, 13.3291)
+shape = SubResource("ConvexPolygonShape3D_qwi2u")
+
+[node name="cliff_front_01" parent="." instance=ExtResource("4_euss2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658, -7.495, 21.33)
+visible = false
+
+[node name="Marker_boundaryRight" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7, 0, 0)
+mesh = SubResource("BoxMesh_evi1g")
+
+[node name="Marker_boundaryLeft" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.7, 0, 0)
+mesh = SubResource("BoxMesh_evi1g")
+
+[node name="grass_plane_01-01_00" parent="." instance=ExtResource("5_ig5a6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+visible = false
+
+[node name="farnhouse_01-02_00" parent="." instance=ExtResource("6_u581k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.03607, 9.53674e-07, -3.25315)
+
+[node name="farnhouse_01-02_05" parent="." instance=ExtResource("6_u581k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0361, 9.53674e-07, -3.25315)
+
+[node name="2-hp_Walls" parent="farnhouse_01-02_05" index="0"]
+visible = true
+
+[node name="2-hp_Pipe1" parent="farnhouse_01-02_05" index="1"]
+visible = true
+
+[node name="2-hp_Roof" parent="farnhouse_01-02_05" index="2"]
+visible = true
+
+[node name="2-hp_Porch1_Roof" parent="farnhouse_01-02_05" index="3"]
+visible = true
+
+[node name="2-hp_Porch1" parent="farnhouse_01-02_05" index="4"]
+visible = true
+
+[node name="2-hp_Porch2" parent="farnhouse_01-02_05" index="5"]
+visible = true
+
+[node name="1-hp_Walls" parent="farnhouse_01-02_05" index="6"]
+visible = false
+
+[node name="1-hp_Porch2" parent="farnhouse_01-02_05" index="7"]
+visible = false
+
+[node name="1-hp_Porch1" parent="farnhouse_01-02_05" index="8"]
+visible = false
+
+[node name="1-hp_Pipe1" parent="farnhouse_01-02_05" index="9"]
+visible = false
+
+[node name="farnhouse_01-02_01" parent="." instance=ExtResource("6_u581k")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 9.65653, 9.53674e-07, 3.74685)
+
+[node name="farnhouse_01-02_07" parent="." instance=ExtResource("6_u581k")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 15.6565, 9.53674e-07, 3.74685)
+
+[node name="2-hp_Walls" parent="farnhouse_01-02_07" index="0"]
+visible = true
+
+[node name="2-hp_Pipe1" parent="farnhouse_01-02_07" index="1"]
+visible = true
+
+[node name="2-hp_Roof" parent="farnhouse_01-02_07" index="2"]
+visible = true
+
+[node name="2-hp_Porch1_Roof" parent="farnhouse_01-02_07" index="3"]
+visible = true
+
+[node name="2-hp_Porch1" parent="farnhouse_01-02_07" index="4"]
+visible = true
+
+[node name="2-hp_Porch2" parent="farnhouse_01-02_07" index="5"]
+visible = true
+
+[node name="1-hp_Walls" parent="farnhouse_01-02_07" index="6"]
+visible = false
+
+[node name="1-hp_Porch2" parent="farnhouse_01-02_07" index="7"]
+visible = false
+
+[node name="1-hp_Porch1" parent="farnhouse_01-02_07" index="8"]
+visible = false
+
+[node name="1-hp_Pipe1" parent="farnhouse_01-02_07" index="9"]
+visible = false
+
+[node name="farnhouse_01-02_02" parent="." instance=ExtResource("6_u581k")]
+transform = Transform3D(-1, 0, -1.39091e-08, 0, 1, 0, 1.39091e-08, 0, -1, 5.65653, 9.53674e-07, -6.25315)
+
+[node name="farnhouse_01-02_06" parent="." instance=ExtResource("6_u581k")]
+transform = Transform3D(-1, 0, -1.39091e-08, 0, 1, 0, 1.39091e-08, 0, -1, 13.6565, 9.53674e-07, -6.25315)
+
+[node name="2-hp_Walls" parent="farnhouse_01-02_06" index="0"]
+visible = true
+
+[node name="2-hp_Pipe1" parent="farnhouse_01-02_06" index="1"]
+visible = true
+
+[node name="2-hp_Roof" parent="farnhouse_01-02_06" index="2"]
+visible = true
+
+[node name="2-hp_Porch1_Roof" parent="farnhouse_01-02_06" index="3"]
+visible = true
+
+[node name="2-hp_Porch1" parent="farnhouse_01-02_06" index="4"]
+visible = true
+
+[node name="2-hp_Porch2" parent="farnhouse_01-02_06" index="5"]
+visible = true
+
+[node name="1-hp_Walls" parent="farnhouse_01-02_06" index="6"]
+visible = false
+
+[node name="1-hp_Porch2" parent="farnhouse_01-02_06" index="7"]
+visible = false
+
+[node name="1-hp_Porch1" parent="farnhouse_01-02_06" index="8"]
+visible = false
+
+[node name="1-hp_Pipe1" parent="farnhouse_01-02_06" index="9"]
+visible = false
+
+[node name="farnhouse_01-02_03" parent="." instance=ExtResource("6_u581k")]
+transform = Transform3D(5.76205e-08, 0, -1, 0, 1, 0, 1, 0, 5.76205e-08, -4.34347, 9.53674e-07, 6.74685)
+
+[node name="farnhouse_01-02_04" parent="." instance=ExtResource("6_u581k")]
+transform = Transform3D(5.76205e-08, 0, -1, 0, 1, 0, 1, 0, 5.76205e-08, -10.3435, 9.53674e-07, 6.74685)
+
+[node name="2-hp_Walls" parent="farnhouse_01-02_04" index="0"]
+visible = true
+
+[node name="2-hp_Pipe1" parent="farnhouse_01-02_04" index="1"]
+visible = true
+
+[node name="2-hp_Roof" parent="farnhouse_01-02_04" index="2"]
+visible = true
+
+[node name="2-hp_Porch1_Roof" parent="farnhouse_01-02_04" index="3"]
+visible = true
+
+[node name="2-hp_Porch1" parent="farnhouse_01-02_04" index="4"]
+visible = true
+
+[node name="2-hp_Porch2" parent="farnhouse_01-02_04" index="5"]
+visible = true
+
+[node name="1-hp_Walls" parent="farnhouse_01-02_04" index="6"]
+visible = false
+
+[node name="1-hp_Porch2" parent="farnhouse_01-02_04" index="7"]
+visible = false
+
+[node name="1-hp_Porch1" parent="farnhouse_01-02_04" index="8"]
+visible = false
+
+[node name="1-hp_Pipe1" parent="farnhouse_01-02_04" index="9"]
+visible = false
+
+[editable path="farnhouse_01-02_05"]
+[editable path="farnhouse_01-02_07"]
+[editable path="farnhouse_01-02_06"]
+[editable path="farnhouse_01-02_04"]

@@ -4,20 +4,20 @@
 
 [node name="farnhouse_01-02_00" instance=ExtResource("1_rmrjo")]
 
-[node name="Walls" parent="." index="0"]
-lod_bias = 128.0
+[node name="2-hp_Walls" parent="." index="0"]
+visible = false
 
-[node name="Pipe1" parent="." index="1"]
-lod_bias = 128.0
+[node name="2-hp_Pipe1" parent="." index="1"]
+visible = false
 
-[node name="Roof" parent="." index="2"]
-lod_bias = 128.0
+[node name="2-hp_Roof" parent="." index="2"]
+visible = false
 
-[node name="Porch1_Roof" parent="." index="3"]
-lod_bias = 128.0
+[node name="2-hp_Porch1_Roof" parent="." index="3"]
+visible = false
 
-[node name="Porch1" parent="." index="4"]
-lod_bias = 128.0
+[node name="2-hp_Porch1" parent="." index="4"]
+visible = false
 
-[node name="Porch2" parent="." index="5"]
-lod_bias = 128.0
+[node name="2-hp_Porch2" parent="." index="5"]
+visible = false
