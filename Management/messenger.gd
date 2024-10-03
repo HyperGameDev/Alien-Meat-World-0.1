@@ -27,6 +27,8 @@ signal powerup_chosen
 signal powerup_hovered
 
 signal add_powerup
+signal remove_powerup
+signal upgrade_powerup
 
 signal player_hover
 signal player_head_hover

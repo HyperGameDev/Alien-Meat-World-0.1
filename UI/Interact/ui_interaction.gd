@@ -42,14 +42,37 @@ var COLLISION_POLY_R: Array = [
 ]
 
 
+@export var scale_up_2: float = 1.7
+@export var powerup_scale_1: float = 1.7
+@export var powerup_scale_2: float = 2.55
+
+# Scalar adds
+@export var collision_poly_resides: float = 0.0
+const COLLISION_POLY_SIDES: float = 0.0
 
 # Scalar add
-@export var collision_poly_movemore_1: Vector2 = Vector2(0.0,0.0)
-const COLLISION_POLY_MOVE_1: Vector2 = Vector2(0.0,0.0)
+@export var collision_poly_movemore_R1: Vector2 = Vector2(0.0,0.0)
+const COLLISION_POLY_MOVE_R1: Vector2 = Vector2(0.0,0.0)
 
 # Scalar add
-@export var collision_poly_movemore_2: Vector2 = Vector2(0.0,0.0)
-const COLLISION_POLY_MOVE_2: Vector2 = Vector2(0.0,0.0)
+@export var collision_poly_movemore_L1: Vector2 = Vector2(0.0,0.0)
+const COLLISION_POLY_MOVE_L1: Vector2 = Vector2(0.0,0.0)
+
+# Scalar add
+@export var collision_poly_movemore_R0: Vector2 = Vector2(0.0,0.0)
+const COLLISION_POLY_MOVE_R0: Vector2 = Vector2(0.0,0.0)
+
+# Scalar add
+@export var collision_poly_movemore_L0: Vector2 = Vector2(0.0,0.0)
+const COLLISION_POLY_MOVE_L0: Vector2 = Vector2(0.0,0.0)
+
+# Scalar add
+@export var collision_poly_movemore_R2: Vector2 = Vector2(0.0,0.0)
+const COLLISION_POLY_MOVE_R2: Vector2 = Vector2(0.0,0.0)
+
+# Scalar add
+@export var collision_poly_movemore_L2: Vector2 = Vector2(0.0,0.0)
+const COLLISION_POLY_MOVE_L2: Vector2 = Vector2(0.0,0.0)
 
 # Scalar multiplies
 @export var collision_poly_resize_r: float = 1.0
@@ -74,26 +97,6 @@ const INTERACT_MESH_SIDES: float = 0.0
 # Scalar adds
 @export var interact_mesh_rerotate: float = 0.0
 const INTERACT_MESH_ROTATE: float = 0.0
-
-# Scalar multiplies
-@export var interact_collision_resize: float = 1.0
-const INTERACT_COLLISION_SIZE: Vector3 = Vector3(2.87,6.515,1.73)
-
-# Scalar multiplies
-@export var interact_collision_reheight: float = 1.0
-const INTERACT_COLLISION_HEIGHT: float = 0.865
-
-# Scalar mulitiplies
-@export var interact_collision_reforward: float = 1.0
-const INTERACT_COLLISION_FORWARD: float = 1.75
-
-# Scalar adds
-@export var interact_collision_resides: float = 0.0
-const INTERACT_COLLISION_SIDES: float = 0.0
-
-# Scalar adds
-@export var interact_collision_rerotate: float = 0.0
-const INTERACT_COLLISION_ROTATE: float = 0.0
 
 
 
@@ -123,18 +126,39 @@ func _physics_process(delta: float) -> void:
 			
 
 func on_arm_health_update():
-	match [debugl,debugr]:
+	var arm_l_match: int = arm_l.current_health
+	var arm_r_match: int = arm_r.current_health
+	
+	match Globals.powerups["Fantastic"].powerupLevel:
+		0:
+			arm_l_match = arm_l.current_health
+			arm_r_match = arm_r.current_health
+		1:
+			if not arm_l.current_health <= 0:
+				arm_l_match = arm_l.current_health + 1
+			if not arm_r.current_health <= 0:
+				arm_r_match = arm_r.current_health + 1
+		2:
+			if not arm_l.current_health <= 0:
+				arm_l_match = arm_l.current_health + 2
+			if not arm_r.current_health <= 0:
+				arm_r_match = arm_r.current_health + 2
+		_:
+			pass
+	print(arm_l_match,",",arm_r_match)
+	match [arm_l_match,arm_r_match]:
 		[0,0]:
-			interact_collision_resize = 1.0
-			interact_collision_reheight = 1.0
-			interact_collision_reforward = 1.0
-			interact_collision_resides = 0.0
-			interact_collision_rerotate = 0.0
 			collision_poly_resize_l = 0.385
 			collision_poly_resize_r = 0.385
 			collision_poly_reforward = -.75
+			collision_poly_resides = 0.0
 			collision_poly_rerotate = 0.0
-			collision_poly_movemore_1 =  Vector2(0.0,0.0)
+			collision_poly_movemore_R1 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L1 =  Vector2(0.0,0.0)
+			collision_poly_movemore_R0 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L0 =  Vector2(0.0,0.0)
+			collision_poly_movemore_R2 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L2 =  Vector2(0.0,0.0)
 			interact_mesh_resize = Vector2(1.0,1.0)
 			interact_mesh.position.y = 1.8
 			interact_mesh_resides = 0.0
@@ -142,16 +166,17 @@ func on_arm_health_update():
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.01)
 			
 		[0,1]:
-			interact_collision_resize = 1.0
-			interact_collision_reheight = 1.0
-			interact_collision_reforward = 1.0
-			interact_collision_resides = 0.0
-			interact_collision_rerotate = 0.0
-			collision_poly_resize_l = 0.39
-			collision_poly_resize_r = 1.0
+			collision_poly_resize_l = 0.42
+			collision_poly_resize_r = 1.1
 			collision_poly_reforward = 0.0
+			collision_poly_resides = 0.0
 			collision_poly_rerotate = 0.0
-			collision_poly_movemore_1 =  Vector2(0.0,-4.0)
+			collision_poly_movemore_R1 =  Vector2(1.7,-4.8)
+			collision_poly_movemore_L1 =  Vector2(1.8,5.1)
+			collision_poly_movemore_R0 =  Vector2(.3,-2.7)
+			collision_poly_movemore_L0 =  Vector2(.6,3.5)
+			collision_poly_movemore_R2 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L2 =  Vector2(0.0,0.0)
 			interact_mesh_resize = Vector2(1.8,2.0)
 			interact_mesh.position.y = 5.0
 			interact_mesh_resides = 1.15
@@ -159,11 +184,17 @@ func on_arm_health_update():
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.007)
 			
 		[1,0]:
-			interact_collision_resize = 1.0
-			interact_collision_reheight = 1.0
-			interact_collision_reforward = 1.0
-			interact_collision_resides = 0.0
-			interact_collision_rerotate = 0.0
+			collision_poly_resize_l = 1.1
+			collision_poly_resize_r = 0.42
+			collision_poly_reforward = 0.0
+			collision_poly_resides = 0.0
+			collision_poly_rerotate = 0.0
+			collision_poly_movemore_R1 =  Vector2(-1.8,5.1)
+			collision_poly_movemore_L1 =  Vector2(-1.7,-4.8)
+			collision_poly_movemore_R0 =  Vector2(-.6,3.5)
+			collision_poly_movemore_L0 =  Vector2(-.3,-2.7)
+			collision_poly_movemore_R2 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L2 =  Vector2(0.0,0.0)
 			interact_mesh_resize = Vector2(1.8,2.0)
 			interact_mesh.position.y = 5.0
 			interact_mesh_resides = -1.15
@@ -171,11 +202,17 @@ func on_arm_health_update():
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.007)
 			
 		[0,2]:
-			interact_collision_resize = 1.0
-			interact_collision_reheight = 1.0
-			interact_collision_reforward = 1.0
-			interact_collision_resides = 0.0
-			interact_collision_rerotate = 0.0
+			collision_poly_resize_l = 0.1
+			collision_poly_resize_r = 1.2 * scale_up_2
+			collision_poly_reforward = 0.0
+			collision_poly_resides = -1.0
+			collision_poly_rerotate = 0.0
+			collision_poly_movemore_R1 =  Vector2(2.1,-5.5) * scale_up_2
+			collision_poly_movemore_L1 =  Vector2(2.5,11.0) * scale_up_2
+			collision_poly_movemore_R0 =  Vector2(.3,-2.7) * scale_up_2
+			collision_poly_movemore_L0 =  Vector2(0.6,7.5) * scale_up_2
+			collision_poly_movemore_R2 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L2 =  Vector2(-.2,3.0)
 			interact_mesh_resize = Vector2(2.5,3.4)
 			interact_mesh.position.y = 9.5
 			interact_mesh_resides = 2.3
@@ -183,11 +220,17 @@ func on_arm_health_update():
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.004)
 			
 		[2,0]:
-			interact_collision_resize = 1.0
-			interact_collision_reheight = 1.0
-			interact_collision_reforward = 1.0
-			interact_collision_resides = 0.0
-			interact_collision_rerotate = 0.0
+			collision_poly_resize_l = 1.2 * scale_up_2
+			collision_poly_resize_r = 0.1
+			collision_poly_reforward = 0.0
+			collision_poly_resides = 1.0
+			collision_poly_rerotate = 0.0
+			collision_poly_movemore_R1 =  Vector2(-2.5,11.0) * scale_up_2
+			collision_poly_movemore_L1 =  Vector2(-2.1,-5.5) * scale_up_2
+			collision_poly_movemore_R0 =  Vector2(-0.6,7.5) * scale_up_2
+			collision_poly_movemore_L0 =  Vector2(-0.3,-2.7) * scale_up_2
+			collision_poly_movemore_R2 =  Vector2(0.2,3.0)
+			collision_poly_movemore_L2 =  Vector2(0.0,0.0)
 			interact_mesh_resize = Vector2(2.5,3.4)
 			interact_mesh.position.y = 9.5
 			interact_mesh_resides = -2.3
@@ -195,16 +238,17 @@ func on_arm_health_update():
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.004)
 			
 		[1,1]:
-			interact_collision_resize = 2.5
-			interact_collision_reheight = 2.5
-			interact_collision_reforward = 3.8
-			interact_collision_resides = 0.0
-			interact_collision_rerotate = 0.0
 			collision_poly_resize_l = 1.0
 			collision_poly_resize_r = 1.0
 			collision_poly_reforward = 0.0
+			collision_poly_resides = 0.0
 			collision_poly_rerotate = 0.0
-			collision_poly_movemore_1 =  Vector2(0.0,0.0)
+			collision_poly_movemore_R1 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L1 =  Vector2(0.0,0.0)
+			collision_poly_movemore_R0 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L0 =  Vector2(0.0,0.0)
+			collision_poly_movemore_R2 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L2 =  Vector2(0.0,0.0)
 			interact_mesh_resize = Vector2(2.5,2.5)
 			interact_mesh.position.y = 6.6
 			interact_mesh_resides = 0.0
@@ -214,11 +258,17 @@ func on_arm_health_update():
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.005)
 			
 		[1,2]:
-			interact_collision_resize = 2.5
-			interact_collision_reheight = 2.5
-			interact_collision_reforward = 3.8
-			interact_collision_resides = 0.0
-			interact_collision_rerotate = 0.0
+			collision_poly_resize_l = 0.42 * scale_up_2
+			collision_poly_resize_r = 1.2 * scale_up_2
+			collision_poly_reforward = 0.0
+			collision_poly_resides = -1.0
+			collision_poly_rerotate = 0.0
+			collision_poly_movemore_R1 =  Vector2(1.7,-6.0) * scale_up_2
+			collision_poly_movemore_L1 =  Vector2(2.0,5.3) * scale_up_2
+			collision_poly_movemore_R0 =  Vector2(.3,-2.7) * scale_up_2
+			collision_poly_movemore_L0 =  Vector2(.8,4.0) * scale_up_2
+			collision_poly_movemore_R2 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L2 =  Vector2(0.0,0.0)
 			interact_mesh_resize = Vector2(3.2,3.3)
 			interact_mesh.position.y = 9
 			interact_mesh_resides = 1.4
@@ -226,11 +276,17 @@ func on_arm_health_update():
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.00375)
 			
 		[2,1]:
-			interact_collision_resize = 2.5
-			interact_collision_reheight = 2.5
-			interact_collision_reforward = 3.8
-			interact_collision_resides = 0.0
-			interact_collision_rerotate = 0.0
+			collision_poly_resize_l = 1.2 * scale_up_2
+			collision_poly_resize_r = 0.42 * scale_up_2
+			collision_poly_reforward = 0.0
+			collision_poly_resides = 1.0
+			collision_poly_rerotate = 0.0
+			collision_poly_movemore_R1 =  Vector2(-2.0,5.3) * scale_up_2
+			collision_poly_movemore_L1 =  Vector2(-1.7,-6.0) * scale_up_2
+			collision_poly_movemore_R0 =  Vector2(-.8,4.0) * scale_up_2
+			collision_poly_movemore_L0 =  Vector2(-.3,-2.7) * scale_up_2
+			collision_poly_movemore_R2 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L2 =  Vector2(0.0,0.0)
 			interact_mesh_resize = Vector2(3.2,3.3)
 			interact_mesh.position.y = 9
 			interact_mesh_resides = -1.4
@@ -238,26 +294,207 @@ func on_arm_health_update():
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.00375)
 			
 		[2,2]:
-			interact_collision_resize = 4.0
-			interact_collision_reheight = 4.0
-			interact_collision_reforward = 6.6
-			interact_collision_resides = 0.0
-			interact_collision_rerotate = 0.0
 			collision_poly_resize_l = 1.625
 			collision_poly_resize_r = 1.625
 			collision_poly_reforward = 0.75
+			collision_poly_resides = 0.0
 			collision_poly_rerotate = 0.0
-			collision_poly_movemore_1 =  Vector2(0.0,0.0)
+			collision_poly_movemore_R1 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L1 =  Vector2(0.0,0.0)
+			collision_poly_movemore_R0 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L0 =  Vector2(0.0,0.0)
+			collision_poly_movemore_R2 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L2 =  Vector2(0.0,0.0)
 			interact_mesh_resize = Vector2(4.0,4.0)
 			interact_mesh.position.y = 11.5
 			interact_mesh_resides = 0.0
 			interact_mesh_rerotate = 0.0
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.00325)
 
+		[2,3]:
+			collision_poly_resize_l = (0.42 * scale_up_2) * powerup_scale_1
+			collision_poly_resize_r = (1.2 * scale_up_2) * powerup_scale_1
+			collision_poly_reforward = 0.0
+			collision_poly_resides = (-1.0) * powerup_scale_1
+			collision_poly_rerotate = 0.0
+			collision_poly_movemore_R1 =  (Vector2(1.7,-6.0) * scale_up_2) * powerup_scale_1
+			collision_poly_movemore_L1 =  (Vector2(2.0,5.3) * scale_up_2) * powerup_scale_1
+			collision_poly_movemore_R0 =  (Vector2(.3,-2.7) * scale_up_2) * powerup_scale_1
+			collision_poly_movemore_L0 =  (Vector2(.8,4.0) * scale_up_2) * powerup_scale_1
+			collision_poly_movemore_R2 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L2 =  Vector2(0.0,0.0)
+			interact_mesh_resize = (Vector2(3.2,3.3)) * powerup_scale_1
+			interact_mesh.position.y = (9) * powerup_scale_1
+			interact_mesh_resides = (1.3) * powerup_scale_1
+			interact_mesh_rerotate = (-6) * powerup_scale_1
+			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.00375)
+			
+		[3,2]:
+			collision_poly_resize_l = (1.2 * scale_up_2) * powerup_scale_1
+			collision_poly_resize_r = (0.42 * scale_up_2) * powerup_scale_1
+			collision_poly_reforward = 0.0
+			collision_poly_resides = (1.0) * powerup_scale_1
+			collision_poly_rerotate = 0.0
+			collision_poly_movemore_R1 =  (Vector2(-2.0,5.3) * scale_up_2) * powerup_scale_1
+			collision_poly_movemore_L1 =  (Vector2(-1.7,-6.0) * scale_up_2) * powerup_scale_1
+			collision_poly_movemore_R0 =  (Vector2(-.8,4.0) * scale_up_2) * powerup_scale_1
+			collision_poly_movemore_L0 =  (Vector2(-.3,-2.7) * scale_up_2) * powerup_scale_1
+			collision_poly_movemore_R2 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L2 =  Vector2(0.0,0.0)
+			interact_mesh_resize = (Vector2(3.2,3.3)) * powerup_scale_1
+			interact_mesh.position.y = (9) * powerup_scale_1
+			interact_mesh_resides = (-1.3) * powerup_scale_1
+			interact_mesh_rerotate = (6) * powerup_scale_1
+			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.00375)
+			
+		[0,3]:
+			collision_poly_resize_l = (0.1) * powerup_scale_1
+			collision_poly_resize_r = (1.2 * scale_up_2) * powerup_scale_1
+			collision_poly_reforward = 0.0
+			collision_poly_resides = (-1.0) * powerup_scale_1
+			collision_poly_rerotate = 0.0
+			collision_poly_movemore_R1 =  (Vector2(2.1,-5.5) * scale_up_2) * powerup_scale_1
+			collision_poly_movemore_L1 =  (Vector2(2.5,11.0) * scale_up_2) * powerup_scale_1
+			collision_poly_movemore_R0 =  (Vector2(.3,-2.7) * scale_up_2) * powerup_scale_1
+			collision_poly_movemore_L0 =  (Vector2(0.6,7.5) * scale_up_2) * powerup_scale_1
+			collision_poly_movemore_R2 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L2 =  (Vector2(-.2,3.0)) * powerup_scale_1
+			interact_mesh_resize = (Vector2(2.5,3.4)) * powerup_scale_1
+			interact_mesh.position.y = (9.5) * powerup_scale_1
+			interact_mesh_resides = (2.3) * powerup_scale_1
+			interact_mesh_rerotate = (-6) * powerup_scale_1
+			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.004)
+			
+		[3,0]:
+			collision_poly_resize_l = (1.2 * scale_up_2) * powerup_scale_1
+			collision_poly_resize_r = (0.1) * powerup_scale_1
+			collision_poly_reforward = 0.0
+			collision_poly_resides = (1.0) * powerup_scale_1
+			collision_poly_rerotate = 0.0
+			collision_poly_movemore_R1 =  (Vector2(-2.5,11.0) * scale_up_2) * powerup_scale_1
+			collision_poly_movemore_L1 =  (Vector2(-2.1,-5.5) * scale_up_2) * powerup_scale_1
+			collision_poly_movemore_R0 =  (Vector2(-0.6,7.5) * scale_up_2) * powerup_scale_1
+			collision_poly_movemore_L0 =  (Vector2(-.3,-2.7) * scale_up_2) * powerup_scale_1
+			collision_poly_movemore_R2 =  (Vector2(.2,3.0)) * powerup_scale_1
+			collision_poly_movemore_L2 =  Vector2(0.0,0.0)
+			interact_mesh_resize = (Vector2(2.5,3.4)) * powerup_scale_1
+			interact_mesh.position.y = (9.5) * powerup_scale_1
+			interact_mesh_resides = (-2.3) * powerup_scale_1
+			interact_mesh_rerotate = (6) * powerup_scale_1
+			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.004)
+			
+		[0,4]:
+			collision_poly_resize_l = (0.1) * powerup_scale_2
+			collision_poly_resize_r = (1.2 * scale_up_2) * powerup_scale_2
+			collision_poly_reforward = 0.0
+			collision_poly_resides = (-1.0) * powerup_scale_2
+			collision_poly_rerotate = 0.0
+			collision_poly_movemore_R1 =  (Vector2(2.1,-5.5) * scale_up_2) * powerup_scale_2
+			collision_poly_movemore_L1 =  (Vector2(2.5,11.0) * scale_up_2) * powerup_scale_2
+			collision_poly_movemore_R0 =  (Vector2(.3,-2.7) * scale_up_2) * powerup_scale_2
+			collision_poly_movemore_L0 =  (Vector2(0.6,7.5) * scale_up_2) * powerup_scale_2
+			collision_poly_movemore_R2 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L2 =  (Vector2(-.2,3.0)) * powerup_scale_2
+			interact_mesh_resize = (Vector2(2.5,3.4)) * powerup_scale_2
+			interact_mesh.position.y = (9.5) * powerup_scale_2
+			interact_mesh_resides = (2.3) * powerup_scale_2
+			interact_mesh_rerotate = (-4) * powerup_scale_2
+			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.004)
+			
+		[4,0]:
+			collision_poly_resize_l = (1.2 * scale_up_2) * powerup_scale_2
+			collision_poly_resize_r = (0.1) * powerup_scale_2
+			collision_poly_reforward = 0.0
+			collision_poly_resides = (1.0) * powerup_scale_2
+			collision_poly_rerotate = 0.0
+			collision_poly_movemore_R1 =  (Vector2(-2.5,11.0) * scale_up_2) * powerup_scale_2
+			collision_poly_movemore_L1 =  (Vector2(-2.1,-5.5) * scale_up_2) * powerup_scale_2
+			collision_poly_movemore_R0 =  (Vector2(-0.6,7.5) * scale_up_2) * powerup_scale_2
+			collision_poly_movemore_L0 =  (Vector2(-.3,-2.7) * scale_up_2) * powerup_scale_2
+			collision_poly_movemore_R2 =  (Vector2(.2,3.0)) * powerup_scale_2
+			collision_poly_movemore_L2 =  Vector2(0.0,0.0)
+			interact_mesh_resize = (Vector2(2.5,3.4)) * powerup_scale_2
+			interact_mesh.position.y = (9.5) * powerup_scale_2
+			interact_mesh_resides = (-2.3) * powerup_scale_2
+			interact_mesh_rerotate = (4) * powerup_scale_2
+			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.004)
+			
+		[3,3]:
+			collision_poly_resize_l = (1.625) * powerup_scale_1
+			collision_poly_resize_r = (1.625) * powerup_scale_1
+			collision_poly_reforward = (0.75) * powerup_scale_1
+			collision_poly_resides = 0.0
+			collision_poly_rerotate = 0.0
+			collision_poly_movemore_R1 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L1 =  Vector2(0.0,0.0)
+			collision_poly_movemore_R0 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L0 =  Vector2(0.0,0.0)
+			collision_poly_movemore_R2 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L2 =  Vector2(0.0,0.0)
+			interact_mesh_resize = (Vector2(4.0,4.0)) * powerup_scale_1
+			interact_mesh.position.y = (11.5) * powerup_scale_1
+			interact_mesh_resides = 0.0
+			interact_mesh_rerotate = 0.0
+			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.00375)
+			
+		[4,4]:
+			collision_poly_resize_l = (1.625) * powerup_scale_2
+			collision_poly_resize_r = (1.625) * powerup_scale_2
+			collision_poly_reforward = (0.75) * powerup_scale_2
+			collision_poly_resides = 0.0
+			collision_poly_rerotate = 0.0
+			collision_poly_movemore_R1 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L1 =  Vector2(0.0,0.0)
+			collision_poly_movemore_R0 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L0 =  Vector2(0.0,0.0)
+			collision_poly_movemore_R2 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L2 =  Vector2(0.0,0.0)
+			interact_mesh_resize = (Vector2(4.0,4.0)) * powerup_scale_2
+			interact_mesh.position.y = (11.5) * powerup_scale_2
+			interact_mesh_resides = 0.0
+			interact_mesh_rerotate = 0.0
+			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.00375)
+			
+		[3,4]:
+			collision_poly_resize_l = (0.42 * scale_up_2) * powerup_scale_2
+			collision_poly_resize_r = (1.2 * scale_up_2) * powerup_scale_2
+			collision_poly_reforward = 0.0
+			collision_poly_resides = (-1.0) * powerup_scale_2
+			collision_poly_rerotate = 0.0
+			collision_poly_movemore_R1 =  (Vector2(1.7,-6.0) * scale_up_2) * powerup_scale_2
+			collision_poly_movemore_L1 =  (Vector2(2.0,5.3) * scale_up_2) * powerup_scale_2
+			collision_poly_movemore_R0 =  (Vector2(.3,-2.7) * scale_up_2) * powerup_scale_2
+			collision_poly_movemore_L0 =  (Vector2(.8,4.0) * scale_up_2) * powerup_scale_2
+			collision_poly_movemore_R2 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L2 =  Vector2(0.0,0.0)
+			interact_mesh_resize = (Vector2(3.2,3.3)) * powerup_scale_2
+			interact_mesh.position.y = (9) * powerup_scale_2
+			interact_mesh_resides = (1.3) * powerup_scale_2
+			interact_mesh_rerotate = (-4) * powerup_scale_2
+			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.00375)
+			
+		[4,3]:
+			collision_poly_resize_l = (1.2 * scale_up_2) * powerup_scale_2
+			collision_poly_resize_r = (0.42 * scale_up_2) * powerup_scale_2
+			collision_poly_reforward = 0.0
+			collision_poly_resides = (1.0) * powerup_scale_2
+			collision_poly_rerotate = 0.0
+			collision_poly_movemore_R1 =  (Vector2(-2.0,5.3) * scale_up_2) * powerup_scale_2
+			collision_poly_movemore_L1 =  (Vector2(-1.7,-6.0) * scale_up_2) * powerup_scale_2
+			collision_poly_movemore_R0 =  (Vector2(-.8,4.0) * scale_up_2) * powerup_scale_2
+			collision_poly_movemore_L0 =  (Vector2(-.3,-2.7) * scale_up_2) * powerup_scale_2
+			collision_poly_movemore_R2 =  Vector2(0.0,0.0)
+			collision_poly_movemore_L2 =  Vector2(0.0,0.0)
+			interact_mesh_resize = (Vector2(3.2,3.3)) * powerup_scale_2
+			interact_mesh.position.y = (9) * powerup_scale_2
+			interact_mesh_resides = (-1.3) * powerup_scale_2
+			interact_mesh_rerotate = (4) * powerup_scale_2
+			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.00375)
+
 		_:
 			pass
 			
-
+		
 
 
 	
@@ -276,7 +513,22 @@ func on_arm_health_update():
 #endregion
 	
 	var RESIZED_COLLISION_POLY_R_1: Vector2 = collision_poly_r[1]
-	collision_poly_r[1] = RESIZED_COLLISION_POLY_R_1 + (COLLISION_POLY_MOVE_1 + collision_poly_movemore_1)
+	collision_poly_r[1] = RESIZED_COLLISION_POLY_R_1 + (COLLISION_POLY_MOVE_R1 + collision_poly_movemore_R1)
+	
+	var RESIZED_COLLISION_POLY_L_1: Vector2 = collision_poly_l[1]
+	collision_poly_l[1] = RESIZED_COLLISION_POLY_L_1 + (COLLISION_POLY_MOVE_L1 + collision_poly_movemore_L1)
+	
+	var RESIZED_COLLISION_POLY_R_0: Vector2 = collision_poly_r[0]
+	collision_poly_r[0] = RESIZED_COLLISION_POLY_R_0 + (COLLISION_POLY_MOVE_R0 + collision_poly_movemore_R0)
+	
+	var RESIZED_COLLISION_POLY_L_0: Vector2 = collision_poly_l[0]
+	collision_poly_l[0] = RESIZED_COLLISION_POLY_L_0 + (COLLISION_POLY_MOVE_L0 + collision_poly_movemore_L0)
+	
+	var RESIZED_COLLISION_POLY_R_2: Vector2 = collision_poly_r[2]
+	collision_poly_r[2] = RESIZED_COLLISION_POLY_R_2 + (COLLISION_POLY_MOVE_R2 + collision_poly_movemore_R2)
+	
+	var RESIZED_COLLISION_POLY_L_2: Vector2 = collision_poly_l[2]
+	collision_poly_l[2] = RESIZED_COLLISION_POLY_L_2 + (COLLISION_POLY_MOVE_L2 + collision_poly_movemore_L2)
 	
 	interact_collision_poly.polygon = [
 		collision_poly_r[0],
@@ -295,16 +547,13 @@ func on_arm_health_update():
 	
 	interact_collision_poly.position.y = COLLISION_POLY_FORWARD + collision_poly_reforward
 	
+	interact_collision_poly.position.x = (COLLISION_POLY_SIDES + collision_poly_resides)
+	
 	
 	
 	interact_mesh.mesh.size = (INTERACT_MESH_SIZE * interact_mesh_resize)
 	interact_mesh.position.x = (INTERACT_MESH_SIDES + interact_mesh_resides)
 	interact_mesh.rotation.z = deg_to_rad((INTERACT_MESH_ROTATE + interact_mesh_rerotate))
-	interact_collision.shape.size = (INTERACT_COLLISION_SIZE * interact_collision_resize)
-	interact_collision.position.z = (INTERACT_COLLISION_HEIGHT * interact_collision_reheight)
-	interact_collision.position.y = (INTERACT_COLLISION_FORWARD * interact_collision_reforward)
-	interact_collision.position.x = (INTERACT_COLLISION_SIDES + interact_collision_resides)
-	interact_collision.rotation.z = (INTERACT_COLLISION_ROTATE + interact_collision_rerotate)
 
 func on_body_entered(body):
 	if body.is_in_group("Abductee"):

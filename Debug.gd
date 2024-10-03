@@ -33,12 +33,22 @@ func _input(event):
 		if event.is_action_pressed("Debug 6"): # Play the terrain movement
 			Messenger.movement_start.emit(false)
 		if event.is_action_pressed("Debug 7"):
-			Messenger.add_powerup.emit("drone")
-		if event.is_action_pressed("Debug 8"):
-			pass
-		if event.is_action_pressed("Debug 9"):
+			Messenger.add_powerup.emit("Fantastic")
 			Messenger.arm_health_update.emit()
+			print("Fantastic powerup is Level 1! (via debug)")
+		if event.is_action_pressed("Debug 8"):
+			if Globals.powerups["Drone"].powerupLevel == 1:
+				Messenger.upgrade_powerup.emit("Drone")
+				print("Drone powerup is Level 2! (via debug)")
+			else:
+				print("CANNOT upgrade Drone because there is no Drone yet!")
+		if event.is_action_pressed("Debug 9"):
+			Messenger.remove_powerup.emit("Fantastic")
+			Messenger.arm_health_update.emit()
+			print("Fantastic powerup is Level 0! (via debug)")
 		if event.is_action_pressed("Debug 0"):
+			Messenger.arm_health_update.emit()
+		if event.is_action_pressed("Debug -"):
 			debug_menu.visible = !debug_menu.visible
 			
 		#endregion

@@ -7,6 +7,8 @@ const ORB_MOVE_SPEED = 1
 @onready var orb_3: Area3D = %PowerUp_Orb_3
 
 @onready var player: CharacterBody3D = %Player
+@onready var hud: HUD = %HUD
+
 
 const TRAVEL_DISTANCE: float = 1.725
 
@@ -23,6 +25,7 @@ func _ready():
 	
 
 func on_powerup_menu_begin():
+	hud.container_score.visible = false
 	visible = true
 	position.x = player.position.x
 	player_height = player.position.y
@@ -85,3 +88,4 @@ func on_powerup_chosen(orb):
 	#endregion
 	
 	visible = false
+	hud.container_score.visible = true

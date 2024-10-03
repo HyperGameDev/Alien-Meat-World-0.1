@@ -282,6 +282,8 @@ func on_powerup_chosen(orb):
 	prevent_attacking = false
 	var orb_chosen = %PowerUp_Menu.get_children()[orb - 1]
 	Globals.powerups_available.erase(orb_chosen.powerup_key)
+	Globals.powerups_chosen.append(orb_chosen.powerup_key)
+	Messenger.add_powerup.emit(orb_chosen.powerup_key)
 
 func on_game_menu():
 	menu_pickable = true
