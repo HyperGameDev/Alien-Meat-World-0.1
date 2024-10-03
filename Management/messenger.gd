@@ -65,6 +65,9 @@ signal abductee_detected
 
 signal hover_pos
 
+signal interact_obstacle_begin
+signal interact_obstacle_end
+
 signal spawn_npc
 
 signal copter_unit_stopped

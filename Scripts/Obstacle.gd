@@ -4,11 +4,13 @@ class_name Obstacle
 
 signal update_hitpoints
 
-static var is_collidable = true
-static var is_visible = true
+static var is_collidable: bool = true
+static var is_visible: bool = true
 
-@export var has_arrow = true
-@export var indicator_color = Color(1.0,.5,.0,1.0)
+var is_interactable: bool = false
+
+@export var has_arrow: bool = true
+@export var indicator_color: Color = Color(1.0,.5,.0,1.0)
 
 @export var health_max: int
 @onready var health_current = health_max
@@ -59,11 +61,16 @@ func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 	
+	Messenger.interact_obstacle_begin.connect(on_interact_begin)
+	Messenger.interact_obstacle_end.connect(on_interact_end)
+	
 	set_collision_layer_value(1, false)
 	set_collision_layer_value(2, false)
-	set_collision_layer_value(3, true)
+	set_collision_layer_value(3, false)
 	set_collision_layer_value(4, false)
 	set_collision_layer_value(8, false)
+	set_collision_layer_value(10, true)
+	
 	
 	set_collision_mask_value(1, false)
 	set_collision_mask_value(2, false)
@@ -117,3 +124,12 @@ func restore_collision():
 	for collision in get_children():
 		if collision is CollisionShape3D:
 			collision.disabled = false
+			
+func on_interact_begin(area):
+	if area == self:
+		set_collision_layer_value(3, true)
+	
+
+func on_interact_end(area):
+	if area == self:
+		set_collision_layer_value(3, false)

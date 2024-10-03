@@ -112,8 +112,12 @@ func _ready() -> void:
 	interact_area.set_collision_layer_value(1,false)
 	interact_area.set_collision_mask_value(1,false)
 	interact_area.set_collision_mask_value(9,true)
+	interact_area.set_collision_mask_value(10,true)
 	interact_area.body_entered.connect(on_body_entered)
 	interact_area.body_exited.connect(on_body_exited)
+	interact_area.area_entered.connect(on_area_entered)
+	interact_area.area_exited.connect(on_area_exited)
+	
 	interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("alpha",0.0)
 	
 	
@@ -558,12 +562,12 @@ func on_arm_health_update():
 	interact_mesh.position.x = (INTERACT_MESH_SIDES + interact_mesh_resides)
 	interact_mesh.rotation.z = deg_to_rad((INTERACT_MESH_ROTATE + interact_mesh_rerotate))
 
-func on_body_entered(body):
+func on_body_entered(body): ## Detects abductees
 	if body.is_in_group("Abductee"):
 		body.is_interactable = true
 		body.interactable_indicator.visible = true
 		
-func on_body_exited(body):
+func on_body_exited(body): ## Detects abductees
 	if body.is_in_group("Abductee"):
 		body.is_interactable = false
 		body.interactable_indicator.visible = false
@@ -573,3 +577,9 @@ func on_body_exited(body):
 			body.has_been_grabbed = false
 			Messenger.grab_ended.emit()
 			body.linear_velocity = Vector3.ZERO
+			
+func on_area_entered(area): ## Detects Obstacles and enemies
+	Messenger.interact_obstacle_begin.emit(area)
+
+func on_area_exited(area): ## Detects Obstacles and enemies
+	Messenger.interact_obstacle_end.emit(area)
