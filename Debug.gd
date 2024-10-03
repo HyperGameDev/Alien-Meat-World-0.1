@@ -1,20 +1,33 @@
 extends CanvasLayer
 
-@export var show_info = false
+@export var hide_info = true
 var old_player = true
 var biped = true
 @onready var debug_menu = %Menu
 @onready var terrain_controller = %TerrainController_inScene
 @onready var player = %Player
-	
+@onready var information: Control = %Information
+@onready var information2: HBoxContainer = %Container_MoreInfo
+@onready var information3: Control = %MarginContainer_MoreInfo
+
 # Called when the node enters the scene tree for the first time.
+
+func _ready() -> void:
+	information.visible = false
+	information2.visible = false
+	information3.visible = false
+
 func _process(delta):
-	if show_info:
-		%Container_MoreInfo.visible = true
+	if !hide_info:
+		information.visible = true
+		information2.visible = true
+		information3.visible = true
 		%Label_showFPS.text = "FPS: " + str(Engine.get_frames_per_second()).pad_zeros(3)
 		%Label_showState.text = "State: " + str(Globals.is_game_states.keys()[Globals.is_game_state])
 	else:
-		%Container_MoreInfo.visible = false
+		information.visible = false
+		information2.visible = false
+		information3.visible = false
 
 func _input(event):
 	#region devControls
@@ -25,7 +38,7 @@ func _input(event):
 			for dmg_label in get_tree().get_nodes_in_group("Dmg_Labels_Player"):
 				dmg_label.visible = !dmg_label.visible
 		if event.is_action_pressed("Debug 3"): # Show/Hide FPS
-			show_info = !show_info
+			hide_info = !hide_info
 		if event.is_action_pressed("Debug 4"):
 			Messenger.spawn_npc.emit("copter")
 		if event.is_action_pressed("Debug 5"): # Pause the terrain movement
