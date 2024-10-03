@@ -1,7 +1,7 @@
 
-# Alien Meat World
+# Harvest: EARTH!
 
-This is the github repo for the game Lýz makes in her streams.
+This is the github repo for the game Lýz is making during her livestreams!
 Find the streams [here](https://www.patreon.com/HyperGameDev).
 Thanks to everyone [here](https://docs.google.com/spreadsheets/d/18sNHRUy0WmAL3Gzo8xI9gAq4eJD3nLzMznWri01CLxQ/edit?usp=sharing) for your contributions!
 
@@ -31,20 +31,21 @@ Main Controls
   - Jump
 - Left Mouse Button
   - Abduct/Attack
+- Gamepad also works!
 
 Debug Tools
 - 1 Key
-  - Show/Hide Alien hit points
+  - Adds 1 abduction point
 - 2 Key
-  - Show/Hide obstacle/NPC hitpoints
+  - Show/Hide Player limb hitpoints
 - 3 Key
   - Show FPS
 - 4 Key
-  - Open Level Selection
+  - Spawns a helicopter (subject to change)
 - 5 Key
   - Pause terrain movement
 - 6 Key
-  - Resume terrain movement     
+  - Resume terrain movement        
 
 ## 🔗 Links
 
