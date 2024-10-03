@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://caxqah3ilcvfy"]
+[gd_scene load_steps=5 format=3 uid="uid://caxqah3ilcvfy"]
 
 [ext_resource type="Script" path="res://Scripts/Abductee.gd" id="1_olhai"]
+[ext_resource type="PackedScene" uid="uid://e6gydh42shjn" path="res://NPCs/npc_interactable.tscn" id="3_04n4k"]
 [ext_resource type="PackedScene" uid="uid://dt202id03hbck" path="res://NPCs/Cows/cow_001.blend" id="3_8d8jr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j53qk"]
@@ -24,11 +25,16 @@ target_position = Vector3(0, -0.2, 0)
 metadata/_edit_group_ = true
 
 [node name="cow_001" parent="." instance=ExtResource("3_8d8jr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0127747, 0)
 
 [node name="Cow" parent="cow_001" index="0"]
 lod_bias = 8.316
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.69, 0)
+
+[node name="Mesh_Interactable" parent="." instance=ExtResource("3_04n4k")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.018, 0, 0)
+top_level = true
 
 [editable path="cow_001"]

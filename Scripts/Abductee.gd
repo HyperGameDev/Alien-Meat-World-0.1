@@ -16,6 +16,7 @@ enum is_types {COW, HUMAN}
 #@export var score_value = 1
 
 @onready var detect_surface: RayCast3D = $RayCast_surfaceDetect
+@onready var interactable_indicator: MeshInstance3D = $Mesh_Interactable
 
 @onready var camera : Camera3D =  get_tree().get_current_scene().get_node("Camera3D")
 @onready var player : CharacterBody3D =  get_tree().get_current_scene().get_node("Player")
@@ -44,6 +45,10 @@ var fell : bool = false
 func _ready():
 	if !has_node("RayCast_surfaceDetect"):
 		print("ERROR: Somewhere, a surface detecting child is missing!")
+		breakpoint
+		
+	if !has_node("Mesh_Interactable"):
+		print("ERROR: Somewhere, a Mesh interactable child is missing!")
 		breakpoint
 
 	
@@ -78,13 +83,8 @@ func _ready():
 	hover_material.set_albedo(Color(.32, .75, .35))
 	select_material.set_albedo(Color(1.0, .0, .1))
 	
-	
-func on_abductee_hovered(target):
-	#print("Something hovered emitted! On...?")
-	if target == self:
-		if has_node("Marker3D"):
-			#print("Something hovered emitted! On ",self,"!")
-			Messenger.something_hovered.emit(self)
+	interactable_indicator.get_node("AnimationPlayer").play("interactable")
+	interactable_indicator.visible = false
 	
 func _process(delta):
 	if Input.is_action_just_released("Grab"):
@@ -100,8 +100,12 @@ func _process(delta):
 		
 
 func _physics_process(delta):
+	interactable_indicator.global_position.x = global_position.x
+	interactable_indicator.global_position.z = global_position.z
+	
 	if !spawned:
 		spawn_me()
+		
 	else:
 		if is_interactable:
 			set_collision_layer_value(4, true)
@@ -134,6 +138,7 @@ func _physics_process(delta):
 		
 			
 	if is_in_group("Grabbed"):
+		interactable_indicator.visible = false
 		if !has_been_grabbed:
 			_has_been_grabbed()
 			has_been_grabbed = true
@@ -165,7 +170,15 @@ func _physics_process(delta):
 			if !detect_surface.get_collider() == self.get_parent():
 				self.reparent(detect_surface.get_collider())
 			
-			
+	
+func on_abductee_hovered(target):
+	#print("Something hovered emitted! On...?")
+	if target == self:
+		if has_node("Marker3D"):
+			#print("Something hovered emitted! On ",self,"!")
+			Messenger.something_hovered.emit(self)			
+				
+				
 func spawn_me():
 	spawned = true
 	if !is_in_group("Grabbed"):

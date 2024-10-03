@@ -116,12 +116,15 @@ func _ready() -> void:
 	interact_area.body_exited.connect(on_body_exited)
 	interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("alpha",0.0)
 	
+	
+func _physics_process(delta: float) -> void:
+	global_position.x = player.global_position.x
+	
+
 func on_game_play():
 	Messenger.arm_health_update.emit()
 	interact_animation.play("interact_show")
 	
-func _physics_process(delta: float) -> void:
-	global_position.x = player.global_position.x
 
 			
 
@@ -558,7 +561,9 @@ func on_arm_health_update():
 func on_body_entered(body):
 	if body.is_in_group("Abductee"):
 		body.is_interactable = true
+		body.interactable_indicator.visible = true
 		
 func on_body_exited(body):
 	if body.is_in_group("Abductee"):
 		body.is_interactable = false
+		body.interactable_indicator.visible = false
