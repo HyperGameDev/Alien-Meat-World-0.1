@@ -35,7 +35,6 @@ shape = SubResource("ConvexPolygonShape3D_qwi2u")
 
 [node name="cliff_front_01" parent="." instance=ExtResource("1_5tt5l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658, -7.495, 21.33)
-visible = false
 
 [node name="Marker_boundaryRight" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true

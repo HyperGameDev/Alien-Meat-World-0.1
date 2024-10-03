@@ -150,10 +150,10 @@ func _damage_amount(damage_amount):
 		#print("'Damage_Amount' damage: ", limb_damage_amount)
 
 func reset_last_collided_area_count():
-	print("Collision check timer begun!")
+	#print("Collision check timer begun!")
 	await get_tree().create_timer(5).timeout
 	last_collided_area_count = 0
-	print("Collision check timer ended!")
+	#print("Collision check timer ended!")
 	
 func on_area_damaged(collided_bodypart):
 	# Check what limb I am
@@ -276,7 +276,6 @@ func on_area_damaged(collided_bodypart):
 					hpCount_LegR.text = damage_amount
 					animation_hpCount_LegR.play("hp_down")
 				BodyPart.is_parts.HEAD:
-					print("ArmL healed by: ",damage_amount)
 					hpCount_Head.text = damage_amount
 					animation_hpCount_Head.play("hp_down")
 			
@@ -456,7 +455,6 @@ func on_player_head_hover(is_hovered):
 						hpCount_LegR.text = heal_amount
 						animation_hpCount_LegR.play("hp_up")
 					BodyPart.is_parts.HEAD:
-						print("ArmL healed by: ",heal_amount)
 						hpCount_Head.text = heal_amount
 						animation_hpCount_Head.play("hp_up")
 						
@@ -479,7 +477,7 @@ func do_eating():
 
 func on_game_prebegin():
 	if is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
-		print(collision_area_lower)
+		#print(collision_area_lower)
 		current_health = 0
 		collision.set_deferred("disabled", true)
 		collision_area_lower.set_deferred("disabled", true)

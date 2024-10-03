@@ -87,7 +87,7 @@ func on_killLegs():
 	Messenger.area_damaged.emit(leg_r)
 	Messenger.area_damaged.emit(leg_l)
 	
-func on_playerHeight():
+func on_playerHeight(): ## Debug tool
 	print("Player Height: ", player.position.y, "; Travel Distance: ", powerup_menu.TRAVEL_DISTANCE)
 
 func on_hurtLegR():
@@ -154,13 +154,13 @@ func on_interact_00():
 	Messenger.arm_health_update.emit()	
 	
 func on_interact_01():
-	print("am also button")
+	#print("am also button")
 	interact.debugl = 0
 	interact.debugr = 1
 	Messenger.arm_health_update.emit()
 	
 func on_interact_10():
-	print("am button")
+	#print("am button")
 	interact.debugl = 1
 	interact.debugr = 0
 	Messenger.arm_health_update.emit()

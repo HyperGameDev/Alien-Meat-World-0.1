@@ -186,7 +186,7 @@ func _ready():
 
 func on_level_update(level):
 	level_current = level
-	print("Globals tried updating paths")
+	#print("Globals tried updating paths")
 	current_safe_chunks = level_chunks_safe[level]
 	
 	current_points_chunks = level_chunks_points[level]
@@ -199,14 +199,15 @@ func on_retry(is_restart):
 	Game_States.is_paused = false
 	get_tree().paused = false
 	powerups_available = powerups.keys()
-	obstacles_hilited = [] ## Empties out the last hilighted obstacle array
+	obstacles_hilited = [] ## Empties out the last hilighted obstacle arrayd
+	score = 0
 	if !is_restart:
 		Messenger.level_update.emit(1)
 		Messenger.swap_game_state.emit(Globals.is_game_states.PLAY)
 		
 	
 func on_restart():
-	print("Restart attempted")
+	#print("Restart attempted")
 	Messenger.retry.emit(true)
 	Messenger.level_update.emit(0)
 	get_tree().call_deferred("reload_current_scene")
@@ -218,4 +219,4 @@ func on_abduction(score_value):
 
 func on_swap_game_state(game_state):
 	is_game_state = game_state
-	print("Is State #: ",is_game_state)
+	#print("Is State #: ",is_game_state)

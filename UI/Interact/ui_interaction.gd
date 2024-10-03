@@ -106,7 +106,7 @@ var debugr: int = 0
 
 
 func _ready() -> void:
-	print(interact_collision_poly.polygon)
+	#print(interact_collision_poly.polygon)
 	Messenger.game_play.connect(on_game_play)
 	Messenger.arm_health_update.connect(on_arm_health_update)
 	interact_area.set_collision_layer_value(1,false)
@@ -148,7 +148,7 @@ func on_arm_health_update():
 				arm_r_match = arm_r.current_health + 2
 		_:
 			pass
-	print(arm_l_match,",",arm_r_match)
+	#print(arm_l_match,",",arm_r_match)
 	match [arm_l_match,arm_r_match]:
 		[0,0]:
 			collision_poly_resize_l = 0.385
@@ -567,3 +567,9 @@ func on_body_exited(body):
 	if body.is_in_group("Abductee"):
 		body.is_interactable = false
 		body.interactable_indicator.visible = false
+		if body.is_in_group("Grabbed"):
+			body.add_to_group("Dropped")
+			body.remove_from_group("Grabbed")
+			body.has_been_grabbed = false
+			Messenger.grab_ended.emit()
+			body.linear_velocity = Vector3.ZERO

@@ -93,7 +93,7 @@ func animation_teleport_ascent():
 
 func animation_teleport_finished():
 	if was_chosen:
-		print("Should be hidden")
+		#print("Should be hidden")
 		visible = false
 	
 	

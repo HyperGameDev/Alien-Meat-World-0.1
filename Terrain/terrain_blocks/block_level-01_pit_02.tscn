@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cy2hkgb8cq3rk"]
+[gd_scene load_steps=16 format=3 uid="uid://dbm0ultmoxc17"]
 
-[ext_resource type="Script" path="res://Terrain/Block.gd" id="1_dc538"]
-[ext_resource type="PlaneMesh" uid="uid://7d0gnku46y8v" path="res://Terrain/terrain_blocks_default.tres" id="1_rqs3v"]
-[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="2_0gg0o"]
-[ext_resource type="PackedScene" uid="uid://cvh85ky784ivq" path="res://Terrain/Cliffs/cliff_side_01.tscn" id="3_iw4bi"]
+[ext_resource type="PlaneMesh" uid="uid://7d0gnku46y8v" path="res://Terrain/terrain_blocks_default.tres" id="1_qdaah"]
+[ext_resource type="PackedScene" uid="uid://b31bi8ri5wql0" path="res://Terrain/Cliffs/cliff_front_01.tscn" id="2_rdeul"]
+[ext_resource type="PackedScene" uid="uid://cvh85ky784ivq" path="res://Terrain/Cliffs/cliff_side_01.tscn" id="3_61hth"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnprt"]
 size = Vector2(100, 20)
@@ -46,16 +45,15 @@ size = Vector2(43.28, 20)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 mesh = SubResource("PlaneMesh_wnprt")
 surface_material_override/0 = SubResource("StandardMaterial3D_gdwe7")
-script = ExtResource("1_dc538")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.9922, 0, 0)
-mesh = ExtResource("1_rqs3v")
+mesh = ExtResource("1_qdaah")
 surface_material_override/0 = SubResource("StandardMaterial3D_tmqub")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.5802, 0, 0)
-mesh = ExtResource("1_rqs3v")
+mesh = ExtResource("1_qdaah")
 surface_material_override/0 = SubResource("StandardMaterial3D_tmqub")
 
 [node name="Ground" type="StaticBody3D" parent="."]
@@ -72,10 +70,10 @@ shape = SubResource("ConcavePolygonShape3D_gjw30")
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 41.6496, -7.7, 13.3291)
 shape = SubResource("ConvexPolygonShape3D_qwi2u")
 
-[node name="cliff_front_01" parent="." instance=ExtResource("2_0gg0o")]
+[node name="cliff_front_01" parent="." instance=ExtResource("2_rdeul")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.3653, -7.495, 21.33)
 
-[node name="cliff_front_02" parent="." instance=ExtResource("2_0gg0o")]
+[node name="cliff_front_02" parent="." instance=ExtResource("2_rdeul")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.5742, -7.495, 21.33)
 
 [node name="Ground2" type="StaticBody3D" parent="."]
@@ -108,10 +106,10 @@ visible = false
 mesh = SubResource("PlaneMesh_uj3ye")
 surface_material_override/0 = SubResource("StandardMaterial3D_g47cl")
 
-[node name="cliff_side_L" parent="." instance=ExtResource("3_iw4bi")]
+[node name="cliff_side_L" parent="." instance=ExtResource("3_61hth")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -4.8, -1.6436)
 
-[node name="cliff_side_R" parent="." instance=ExtResource("3_iw4bi")]
+[node name="cliff_side_R" parent="." instance=ExtResource("3_61hth")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.1, -4.8, 1.689)
 
 [editable path="cliff_side_L"]

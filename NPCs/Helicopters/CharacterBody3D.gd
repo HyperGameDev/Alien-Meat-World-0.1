@@ -10,8 +10,8 @@ extends CharacterBody3D
 
 func _physics_process(delta):
 	# Add the gravity.
-	if is_on_floor():
-		print("Copter on floor")
+	#if is_on_floor():
+		#print("Copter on floor")
 #	if not is_on_floor():
 #		velocity.y -= gravity * delta
 

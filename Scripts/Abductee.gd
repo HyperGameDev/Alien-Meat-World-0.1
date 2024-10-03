@@ -124,16 +124,17 @@ func _physics_process(delta):
 		
 	if self.global_position.y <= -50:
 		if is_in_group("Dropped"):
-			print("Dropped Meat Object deleted by Y")
+			pass
+			#print("Dropped Meat Object deleted by Y")
 		else:
 			if !fell:
 				fell = true
-				print("DEFAULT Meat Object deleted by Y")
+				#print("DEFAULT Meat Object deleted by Y")
 		queue_free()
 		
 	if self.global_position.z > 4:
 		if is_in_group("Dropped"):
-			print("Dropped Meat Object deleted by Z")
+			#print("Dropped Meat Object deleted by Z")
 			queue_free()
 		
 			
@@ -219,7 +220,7 @@ func on_meat_left_dunk(dunked_body):
 func on_body_entered(collided_bodypart):
 	#collided_bodypart.mesh.hide()
 	#collided_bodypart.mesh
-	print("Abductee Sees Player")
+	#print("Abductee Sees Player")
 	Messenger.abductee_detected.emit(collided_bodypart, empathy_ok)
 	
  

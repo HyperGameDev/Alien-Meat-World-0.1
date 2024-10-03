@@ -35,7 +35,7 @@ func _ready() -> void:
 
 
 func on_area_entered(area):
-	print("Bullet passed through ",area,"!")
+	#print("Bullet passed through ",area,"!")
 	# Getting an error? Did you add a new area to the player without a defined is_part?
 	if !player_owned:
 		if area.is_part == BodyPart.is_parts.HEAD or area.is_part == BodyPart.is_parts.ARM_R or  area.is_part == BodyPart.is_parts.ARM_L or  area.is_part == BodyPart.is_parts.LEG_R or  area.is_part == BodyPart.is_parts.LEG_L:

@@ -441,7 +441,7 @@ func on_level_update(level):
 			chunks_list_05 = chunks_list_safes
 			chunks_list_06 = chunks_list_safes
 	
-	print("Controller tried updating paths")
+	#print("Controller tried updating paths")
 	chunks_path_safes = Globals.current_safe_chunks
 	chunks_path_obstacles = Globals.current_obstacle_chunks
 	chunks_path_points = Globals.current_points_chunks
