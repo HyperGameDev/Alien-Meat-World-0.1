@@ -1,10 +1,11 @@
-[gd_scene load_steps=40 format=4 uid="uid://cxp488n77il0e"]
+[gd_scene load_steps=41 format=4 uid="uid://cxp488n77il0e"]
 
 [ext_resource type="Script" path="res://NPCs/Helicopters/copter.gd" id="2_l3hi8"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="2_nrwea"]
 [ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="2_odnxp"]
 [ext_resource type="PackedScene" uid="uid://dkj1jo3teqjc1" path="res://NPCs/Helicopters/copter_001.blend" id="3_rkce8"]
 [ext_resource type="Script" path="res://Objects/Buildings/Houses/Particles_destruction.gd" id="4_dkois"]
+[ext_resource type="Script" path="res://NPCs/Helicopters/copter_001.gd" id="6_kin5p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ut4c5"]
 radius = 0.344305
@@ -39,7 +40,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../copter_001/Copter_Base_1-Unbroken:visible")
+tracks/2/path = NodePath("../Mesh_Collection/Copter_Base_1-Unbroken:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -51,7 +52,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../copter_001/Copter_Base_2-Broken:visible")
+tracks/3/path = NodePath("../Mesh_Collection/Copter_Base_2-Broken:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -63,7 +64,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../copter_001/Copter_Windows_1-Unbroken:visible")
+tracks/4/path = NodePath("../Mesh_Collection/Copter_Windows_1-Unbroken:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -75,7 +76,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../copter_001/Copter_Windows_2-Broken:visible")
+tracks/5/path = NodePath("../Mesh_Collection/Copter_Windows_2-Broken:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -87,7 +88,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../copter_001:visible")
+tracks/6/path = NodePath("../Mesh_Collection:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -114,7 +115,7 @@ resource_name = "degrade"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../copter_001/Copter_Base_1-Unbroken:visible")
+tracks/0/path = NodePath("../Mesh_Collection/Copter_Base_1-Unbroken:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -126,7 +127,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../copter_001/Copter_Base_2-Broken:visible")
+tracks/1/path = NodePath("../Mesh_Collection/Copter_Base_2-Broken:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -138,7 +139,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../copter_001/Copter_Windows_1-Unbroken:visible")
+tracks/2/path = NodePath("../Mesh_Collection/Copter_Windows_1-Unbroken:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -150,7 +151,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../copter_001/Copter_Windows_2-Broken:visible")
+tracks/3/path = NodePath("../Mesh_Collection/Copter_Windows_2-Broken:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -177,7 +178,7 @@ resource_name = "explode"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../copter_001:visible")
+tracks/0/path = NodePath("../Mesh_Collection:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -226,7 +227,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("copter_001:visible")
+tracks/0/path = NodePath("Mesh_Collection:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -255,7 +256,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("copter_001:visible")
+tracks/1/path = NodePath("Mesh_Collection:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -303,7 +304,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("copter_001/Copter_Propeller-Top:rotation")
+tracks/0/path = NodePath("Mesh_Collection/Copter_Propeller-Top:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -315,7 +316,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("copter_001/Copter_Propeller-Back:rotation")
+tracks/1/path = NodePath("Mesh_Collection/Copter_Propeller-Back:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -332,7 +333,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("copter_001/Copter_Propeller-Top:rotation")
+tracks/0/path = NodePath("Mesh_Collection/Copter_Propeller-Top:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -344,7 +345,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("copter_001/Copter_Propeller-Back:rotation")
+tracks/1/path = NodePath("Mesh_Collection/Copter_Propeller-Back:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -365,7 +366,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("copter_001:rotation")
+tracks/0/path = NodePath("Mesh_Collection:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -381,7 +382,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("copter_001:rotation")
+tracks/0/path = NodePath("Mesh_Collection:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -402,7 +403,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("copter_001:position")
+tracks/0/path = NodePath("Mesh_Collection:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -442,7 +443,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("copter_001:position")
+tracks/0/path = NodePath("Mesh_Collection:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -662,9 +663,10 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4uy6m")
 
 [node name="Copter_01_00" type="Area3D"]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 0
 script = ExtResource("2_l3hi8")
+is_attacking = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 8.52435e-08, 0.221889, 0.975072, -1.93982e-08, 0.975072, -0.221889, 0.00413191, 0.510933, 0.235844)
@@ -760,34 +762,42 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_aqxav")
 skeleton = NodePath("")
 
-[node name="copter_001" parent="." instance=ExtResource("3_rkce8")]
+[node name="Mesh_Collection" parent="." instance=ExtResource("3_rkce8")]
+unique_name_in_owner = true
 transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0, 0, 0)
+script = ExtResource("6_kin5p")
 
-[node name="Copter_Base_1-Unbroken" parent="copter_001" index="0"]
+[node name="Copter_Base_1-Unbroken" parent="Mesh_Collection" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_jyh5j")
 surface_material_override/1 = SubResource("StandardMaterial3D_jyh5j")
 
-[node name="Copter_Propeller-Top" parent="copter_001" index="2"]
+[node name="Copter_Propeller-Top" parent="Mesh_Collection" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00278479, 0.67625, 0.183361)
 
-[node name="Copter_Windows_1-Unbroken" parent="copter_001" index="3"]
+[node name="Copter_Windows_1-Unbroken" parent="Mesh_Collection" index="3"]
 surface_material_override/0 = SubResource("StandardMaterial3D_imruk")
 
-[node name="Copter_Base_2-Broken" parent="copter_001" index="4"]
+[node name="Copter_Base_2-Broken" parent="Mesh_Collection" index="4"]
 transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, -0.000132367, -0.000288534, -6.32942e-05)
 visible = false
 surface_material_override/0 = SubResource("StandardMaterial3D_jyh5j")
 surface_material_override/1 = SubResource("StandardMaterial3D_jyh5j")
 
-[node name="Copter_Windows_2-Broken" parent="copter_001" index="5"]
+[node name="Copter_Windows_2-Broken" parent="Mesh_Collection" index="5"]
 visible = false
 surface_material_override/0 = SubResource("StandardMaterial3D_imruk")
 
-[node name="RayCast_copterDeath" type="RayCast3D" parent="copter_001"]
+[node name="RayCast_copterDeath" type="RayCast3D" parent="Mesh_Collection"]
 unique_name_in_owner = true
 transform = Transform3D(-1, -8.51821e-08, -1.96658e-08, 0, 0.224951, -0.97437, 8.74228e-08, -0.97437, -0.224951, 0.000606665, 0.442976, -0.0597829)
 hit_from_inside = true
 
+[node name="Marker3D" type="Marker3D" parent="Mesh_Collection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62789, 0)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62789, 0)
+
 [editable path="HitPoints"]
 [editable path="HitPoints/Obstacle/HitPoints"]
-[editable path="copter_001"]
+[editable path="Mesh_Collection"]

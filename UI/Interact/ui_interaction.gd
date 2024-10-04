@@ -113,6 +113,7 @@ func _ready() -> void:
 	interact_area.set_collision_mask_value(1,false)
 	interact_area.set_collision_mask_value(9,true)
 	interact_area.set_collision_mask_value(10,true)
+	interact_area.set_collision_mask_value(Globals.collision.NPC_INTERACT,true)
 	interact_area.body_entered.connect(on_body_entered)
 	interact_area.body_exited.connect(on_body_exited)
 	interact_area.area_entered.connect(on_area_entered)
@@ -580,6 +581,8 @@ func on_body_exited(body): ## Detects abductees
 			
 func on_area_entered(area): ## Detects Obstacles and enemies
 	Messenger.interact_obstacle_begin.emit(area)
+	Messenger.interact_npc_begin.emit(area)
 
 func on_area_exited(area): ## Detects Obstacles and enemies
 	Messenger.interact_obstacle_end.emit(area)
+	Messenger.interact_npc_end.emit(area)

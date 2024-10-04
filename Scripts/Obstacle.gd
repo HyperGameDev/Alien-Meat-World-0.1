@@ -65,7 +65,7 @@ func _ready():
 	Messenger.interact_obstacle_end.connect(on_interact_obstacle_end)
 	
 	set_collision_layer_value(1, false)
-	set_collision_layer_value(2, false)
+	set_collision_layer_value(Globals.collision.NPC, false)
 	set_collision_layer_value(3, false)
 	set_collision_layer_value(4, false)
 	set_collision_layer_value(8, false)

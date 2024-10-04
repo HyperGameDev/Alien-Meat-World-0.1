@@ -12,43 +12,75 @@ func _ready():
 	
 	Messenger.interact_obstacle_begin.connect(on_interact_obstacle_begin)
 	Messenger.interact_obstacle_end.connect(on_interact_obstacle_end)
-
-func on_anything_seen(target): ## Ends the hover effect
-	
-	if !target.is_empty():
-		if target["collider"] != hovered_old:
-			if !hovered_old == null:
-				for mesh in Globals.obstacles_hilited:
-					if mesh.get_owner().interactable == true:
-						mesh.material_overlay = material_interactable
-					else:
-						mesh.material_overlay = null
-				Globals.obstacles_hilited.clear()
+	Messenger.interact_npc_begin.connect(on_interact_npc_begin)
+	Messenger.interact_npc_end.connect(on_interact_npc_end)
 
 func on_something_hovered(target): ## Begins the hover effect
 	hovered_current = target
 	if Globals.obstacles_hilited.is_empty():
 		hovered_old = hovered_current
 	if !target.is_in_group("Abductee") and !target.is_in_group("Menu Alien"):
-		for node in target.get_owner().get_children():
-			if node is MeshInstance3D:
-				Globals.obstacles_hilited.append(node)
-				if node.material_overlay == null or node.material_overlay == material_interactable:
-					#if node.get_owner().has_method("hover_fx_begin"):
-						#print("IT DOES SOMETHING")
-						#node.get_owner().hover_fx_begin()
-					node.material_overlay = material_hilite
+		if target.is_in_group("NPC"):
+			for node in target.get_children():
+				hilite_fx_begin(node)
+				for subnode in node.get_children():
+					hilite_fx_begin(subnode)
+		else:
+			for node in target.get_owner().get_children():
+				hilite_fx_begin(node)
 				
-			# Checks children for meshes
-			for subnode in node.get_children():
-				if subnode is MeshInstance3D:
-					Globals.obstacles_hilited.append(subnode)
-					if subnode.material_overlay == null or subnode.material_overlay == material_interactable:
-						subnode.material_overlay = material_hilite
+				if !node.get_node("../..").has_signal("update_hitpoints"):
+					for subnode in node.get_children():
+						hilite_fx_begin(subnode)
 		
+func hilite_fx_begin(node):
+	if node is MeshInstance3D:
+		Globals.obstacles_hilited.append(node)
+		if node.material_overlay == null or node.material_overlay == material_interactable:
+			node.material_overlay = material_hilite
+	
+func on_anything_seen(target): ## Ends the hover effect	
+	if !target.is_empty():
+		if target["collider"] != hovered_old:
+			if !hovered_old == null:
+				for mesh in Globals.obstacles_hilited:
+					if mesh.get_owner().interactable == true and !mesh.is_in_group("Abductee"):
+						mesh.material_overlay = material_interactable
+					else:
+						mesh.material_overlay = null
+				Globals.obstacles_hilited.clear()
+
+
 func on_interact_obstacle_begin(area):
-	area.get_owner().interactable = true
-	for node in area.get_owner().get_children():
+	if area.get_owner() == null:
+		interact_fx_begin(area)
+	else:
+		interact_fx_begin(area.get_owner())
+
+func on_interact_obstacle_end(area):
+	if area.get_owner() == null:
+		interact_fx_end(area)
+	else:
+		interact_fx_end(area.get_owner())
+	
+func on_interact_npc_begin(area):
+	if area.get_owner() == null:
+		interact_fx_begin(area)
+	else:
+		interact_fx_begin(area.get_owner())
+
+func on_interact_npc_end(area):
+	if area.get_owner() == null:
+		interact_fx_end(area)
+	else:
+		interact_fx_end(area.get_owner())	
+		
+func interact_fx_begin(target):
+	target.interactable = true
+	for node in target.get_children():
+		if node.has_node("%Mesh_Collection"):
+			print("Sees mesh collection")
+			node.get_node("%Mesh_Collection").interactable = true
 		if node is MeshInstance3D:
 			if node.material_overlay == null:
 				node.material_overlay = material_interactable
@@ -58,10 +90,12 @@ func on_interact_obstacle_begin(area):
 			if subnode is MeshInstance3D:
 				if subnode.material_overlay == null:
 					subnode.material_overlay = material_interactable
-	
-func on_interact_obstacle_end(area):
-	area.get_owner().interactable = false
-	for node in area.get_owner().get_children():
+
+func interact_fx_end(target):
+	target.interactable = false
+	for node in target.get_children():
+		if node.has_node("%Mesh_Collection"):
+			node.get_node("%Mesh_Collection").interactable = false
 		if node is MeshInstance3D:
 			if node.material_overlay == material_interactable:
 				node.material_overlay = null

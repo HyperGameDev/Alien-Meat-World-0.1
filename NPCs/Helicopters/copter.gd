@@ -5,7 +5,9 @@ class_name Copter
 signal update_hitpoints
 signal is_destroyed
 
-@onready var copter_mesh : Node3D = $copter_001
+var interactable = false
+
+@onready var copter_mesh : Node3D = %Mesh_Collection
 @onready var terrain_controller : Node3D = get_tree().get_current_scene().get_node("%TerrainController_inScene")
 @onready var detect_copterDeath : RayCast3D = %RayCast_copterDeath
 #@onready var detect_left = %RayCast_Left
@@ -13,6 +15,8 @@ signal is_destroyed
 
 static var copters_stopped : int = 0
 
+
+@export var is_attacking: bool = true
 
 var health_max : int = 2
 var health_current : int = 2
@@ -45,17 +49,25 @@ var projectile_interval_max : float = 4.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	add_to_group("NPC")
 	update_hitpoints.emit()
-	update_hitpoints.connect(health_effects)
-	set_collision_layer_value(1, false)
-	set_collision_layer_value(2, true)
 	
+	update_hitpoints.connect(health_effects)
+	set_collision_layer_value(Globals.collision.GROUND, false)
+	set_collision_layer_value(Globals.collision.NPC, false)
+	set_collision_layer_value(Globals.collision.NPC_INTERACT, true)
 	set_collision_mask_value(1, false)
 	
 	player_proximity.area_entered.connect(copter_stop)
 	
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
+	
+	Messenger.interact_npc_begin.connect(on_interact_npc_begin)
+	Messenger.interact_npc_end.connect(on_interact_npc_end)
+	
+	
+	
 	
 	projectile_interval_timer.timeout.connect(on_projectile_interval_timeout)
 	projectile_interval_timer.one_shot = true
@@ -137,8 +149,17 @@ func _on_mouse_entered(): ## For hover arrow indicator
 func _on_mouse_exited(): ## For hover arrow indicator
 	pass
 	
+func on_interact_npc_begin(area):
+	if area == self:
+		set_collision_layer_value(Globals.collision.NPC, true)
+	
+func on_interact_npc_end(area):
+	if area == self:
+		set_collision_layer_value(Globals.collision.NPC, false)
+	
+	
 func on_projectile_interval_timeout():
-	if !is_dying:
+	if !is_dying and is_attacking:
 		projectile_interval_timer.start(randf_range(projectile_interval_min,projectile_interval_max))
 		
 		var copter_bullet = preload("res://Projectiles/copter_projectile_01.tscn").instantiate()

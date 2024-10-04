@@ -86,7 +86,7 @@ func _ready():
 	interactable_indicator.get_node("AnimationPlayer").play("interactable")
 	interactable_indicator.visible = false
 	
-func _process(delta):
+func _process(_delta: float) -> void:
 	if Input.is_action_just_released("Grab"):
 		if is_in_group("Grabbed"):
 			add_to_group("Dropped")
@@ -99,7 +99,7 @@ func _process(delta):
 		has_been_dunked = true
 		
 
-func _physics_process(delta):
+func _physics_process(_delta: float) -> void:
 	interactable_indicator.global_position.x = global_position.x
 	interactable_indicator.global_position.z = global_position.z
 	

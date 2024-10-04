@@ -94,11 +94,23 @@ var powerups := {
 	#}
 }
 		
-
 var obstacles_hilited := []
 var score = 0
 
-
+enum collision {DO_NOT_SET = 0,
+				GROUND = 1,
+				NPC = 2,
+				OBSTACLE = 3,
+				ABDUCTEE = 4,
+				CURSOR_ZONE = 5,
+				POWERUPS = 6,
+				MENU_BUTTONS = 7,
+				PROJECTILE = 8,
+				ABDUCTEE_INTERACT = 9,
+				OBSTACLE_INTERACT = 10,
+				NPC_INTERACT = 11,
+				PLAYER = 16
+				}
 
 var level_chunks_safe := [
 	"res://Terrain/terrain_level_00/terrain_level_00_safes/",
