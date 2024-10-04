@@ -9,7 +9,7 @@
 [ext_resource type="Material" uid="uid://b2fn5t1qp7laq" path="res://Objects/Buildings/Barns/Barn_colors_01_trim-roof.tres" id="4_65dux"]
 [ext_resource type="Material" uid="uid://bvh7twuuqmgij" path="res://Objects/Buildings/Barns/Barn_colors_01_lt-brwn.tres" id="4_iw4f4"]
 [ext_resource type="Material" uid="uid://dm2xmli38jgry" path="res://Objects/Buildings/Barns/Barn_colors_01_trim-02.tres" id="5_51bpe"]
-[ext_resource type="PackedScene" uid="uid://cjrknjfhngp6q" path="res://Objects/Foliage/Grass/grass_hider.tscn" id="10_kblv2"]
+[ext_resource type="PackedScene" path="res://Objects/Foliage/Grass/grass_hider.tscn" id="10_kblv2"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ik16r"]
 points = PackedVector3Array(-3.61779, -0.00413442, -0.899377, -3.61779, 0.591922, -0.899377, 3.46972, -0.00413442, -0.899377, -3.61779, -0.00413442, 0.899377, -3.61779, 0.995425, -0.000176072, 3.46972, 0.591922, -0.899377, 3.46972, -0.00413442, 0.899377, -3.61779, 0.591922, 0.899377, 3.46972, 0.995425, -0.000176072, 3.46972, 0.591922, 0.899377)

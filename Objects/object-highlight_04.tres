@@ -6,4 +6,6 @@
 render_priority = 1
 shader = ExtResource("1_e4k0i")
 shader_parameter/outline_threshold = 0.4
-shader_parameter/outline_color = Color(1.1, 1, 1, 1)
+shader_parameter/inline_threshold = 1.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/inline_color = Color(1, 1, 1, 0.32549)

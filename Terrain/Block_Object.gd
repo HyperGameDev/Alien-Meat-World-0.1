@@ -7,6 +7,7 @@ class_name Block_Object
 signal update_reset_status
 
 var hilited = false
+var interactable = false
 var needs_reset = false
 var damaged_parts := []
 

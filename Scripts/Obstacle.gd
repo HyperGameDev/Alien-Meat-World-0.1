@@ -61,8 +61,8 @@ func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 	
-	Messenger.interact_obstacle_begin.connect(on_interact_begin)
-	Messenger.interact_obstacle_end.connect(on_interact_end)
+	Messenger.interact_obstacle_begin.connect(on_interact_obstacle_begin)
+	Messenger.interact_obstacle_end.connect(on_interact_obstacle_end)
 	
 	set_collision_layer_value(1, false)
 	set_collision_layer_value(2, false)
@@ -125,11 +125,11 @@ func restore_collision():
 		if collision is CollisionShape3D:
 			collision.disabled = false
 			
-func on_interact_begin(area):
+func on_interact_obstacle_begin(area):
 	if area == self:
 		set_collision_layer_value(3, true)
 	
 
-func on_interact_end(area):
+func on_interact_obstacle_end(area):
 	if area == self:
 		set_collision_layer_value(3, false)
