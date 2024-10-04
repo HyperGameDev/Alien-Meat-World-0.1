@@ -44,7 +44,7 @@ func on_anything_seen(target): ## Ends the hover effect
 		if target["collider"] != hovered_old:
 			if !hovered_old == null:
 				for mesh in Globals.obstacles_hilited:
-					if mesh.get_owner().interactable == true and !mesh.is_in_group("Abductee"):
+					if mesh.get_owner().interactable == true:
 						mesh.material_overlay = material_interactable
 					else:
 						mesh.material_overlay = null
