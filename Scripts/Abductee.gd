@@ -5,7 +5,7 @@ class_name Abductee
 var is_interactable: bool = false
 
 @export var is_type: is_types
-enum is_types {COW, HUMAN}
+enum is_types {COW, HUMAN, TREE1}
 
 @export var indicator_color: Color = Color(.5, .5, 1.0, 1.0)
 
