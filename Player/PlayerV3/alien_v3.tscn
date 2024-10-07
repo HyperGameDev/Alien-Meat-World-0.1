@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cug028qxxwj68"]
+[gd_scene load_steps=34 format=3 uid="uid://cug028qxxwj68"]
 
 [ext_resource type="PackedScene" uid="uid://0vjnh2t4d80i" path="res://Player/PlayerV3/Alien_v3.blend" id="1_3fjhf"]
 [ext_resource type="Material" uid="uid://d120p0j7v2cji" path="res://Player/textures/alien_skin_thick-by-thotee_01.tres" id="2_bo1tu"]
@@ -140,12 +140,6 @@ nodes/walking/node = SubResource("AnimationNodeAnimation_8rirk")
 nodes/walking/position = Vector2(-620, 60)
 node_connections = [&"TimeScale", 0, &"running", &"TimeScale 2", 0, &"walking", &"feed", 0, &"reach left", &"feed", 1, &"feeding", &"hungry", 0, &"walk to run", &"hungry", 1, &"hungering     ", &"output", 0, &"feed", &"reach left", 0, &"reach right", &"reach left", 1, &"reaching left", &"reach right", 0, &"hungry", &"reach right", 1, &"reaching right", &"walk to run", 0, &"TimeScale 2", &"walk to run", 1, &"TimeScale", &"walk to run", 2, &"Animation 2"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxqwq"]
-albedo_color = Color(0.298039, 0.741176, 0.352941, 1)
-metallic_specular = 0.0
-rim_tint = 1.0
-clearcoat_roughness = 1.0
-
 [sub_resource type="Animation" id="Animation_2wrmx"]
 length = 0.001
 tracks/0/type = "value"
@@ -270,7 +264,7 @@ outline_size = 30
 [node name="Alien_ArmR" parent="Armature/Skeleton3D" index="1"]
 material_overlay = ExtResource("2_bo1tu")
 lod_bias = 128.0
-surface_material_override/0 = SubResource("StandardMaterial3D_vxqwq")
+surface_material_override/0 = ExtResource("2_fot6n")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_ArmR" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.98337, 0, 0.173522, 0, 1.99094, 0, -0.173522, 0, 1.98337, 0.552544, 3.17795, -1.7911)
@@ -283,19 +277,19 @@ font_size = 35
 outline_size = 30
 
 [node name="Alien_Body" parent="Armature/Skeleton3D" index="2"]
-visible = false
 material_overlay = ExtResource("2_bo1tu")
-surface_material_override/0 = SubResource("StandardMaterial3D_vxqwq")
+surface_material_override/0 = ExtResource("2_fot6n")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_Body" index="0"]
 
 [node name="Alien_Body_Heart" parent="Armature/Skeleton3D" index="3"]
+visible = false
 material_overlay = ExtResource("2_bo1tu")
-surface_material_override/0 = SubResource("StandardMaterial3D_vxqwq")
+surface_material_override/0 = ExtResource("2_fot6n")
 
 [node name="Alien_Head" parent="Armature/Skeleton3D" index="4"]
 material_overlay = ExtResource("2_bo1tu")
-surface_material_override/0 = SubResource("StandardMaterial3D_vxqwq")
+surface_material_override/0 = ExtResource("2_fot6n")
 surface_material_override/1 = ExtResource("3_dgdvf")
 surface_material_override/3 = ExtResource("4_cvm8w")
 
@@ -315,7 +309,7 @@ surface_material_override/1 = ExtResource("6_m14ic")
 
 [node name="Alien_LegL" parent="Armature/Skeleton3D" index="6"]
 material_overlay = ExtResource("2_bo1tu")
-surface_material_override/0 = SubResource("StandardMaterial3D_vxqwq")
+surface_material_override/0 = ExtResource("2_fot6n")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegL" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.92935, 0, 0.168797, 0, 1.93672, 0, -0.168797, 0, 1.92935, -0.418427, 1.07776, 0.483412)
@@ -330,7 +324,7 @@ outline_size = 30
 [node name="Alien_LegR" parent="Armature/Skeleton3D" index="7"]
 transform = Transform3D(0.977415, 0, 0, 0, 0.977415, 0, 0, 0, 0.977415, 0, -0.00997866, 0)
 material_overlay = ExtResource("2_bo1tu")
-surface_material_override/0 = SubResource("StandardMaterial3D_vxqwq")
+surface_material_override/0 = ExtResource("2_fot6n")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegR" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(2.01953, 0, 0.176686, 0, 2.02725, 0, -0.176686, 0, 2.01953, 0.685815, 1.14879, 0.407689)
@@ -394,7 +388,7 @@ bones/28/rotation = Quaternion(-0.679705, 0.679706, -0.194937, -0.194937)
 [node name="Alien-hurt_ArmL" parent="Armature_hurt/Skeleton3D" index="0"]
 material_overlay = ExtResource("2_bo1tu")
 lod_bias = 128.0
-surface_material_override/0 = SubResource("StandardMaterial3D_vxqwq")
+surface_material_override/0 = ExtResource("2_fot6n")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature_hurt/Skeleton3D/Alien-hurt_ArmL" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.97934, 0, 0.17317, -7.45058e-09, 1.9869, 2.98023e-08, -0.17317, 0, 1.97934, -1.74479, 3.2436, -1.59007)
@@ -410,7 +404,7 @@ outline_size = 30
 [node name="Alien-hurt_ArmR" parent="Armature_hurt/Skeleton3D" index="1"]
 material_overlay = ExtResource("2_bo1tu")
 lod_bias = 128.0
-surface_material_override/0 = SubResource("StandardMaterial3D_vxqwq")
+surface_material_override/0 = ExtResource("2_fot6n")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature_hurt/Skeleton3D/Alien-hurt_ArmR" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.98337, 0, 0.173522, 0, 1.99094, 0, -0.173522, 0, 1.98337, 0.552544, 3.17795, -1.7911)
@@ -425,7 +419,7 @@ outline_size = 30
 [node name="Alien-hurt_Head" parent="Armature_hurt/Skeleton3D" index="2"]
 material_overlay = ExtResource("2_bo1tu")
 lod_bias = 128.0
-surface_material_override/0 = SubResource("StandardMaterial3D_vxqwq")
+surface_material_override/0 = ExtResource("2_fot6n")
 surface_material_override/1 = ExtResource("3_dgdvf")
 surface_material_override/3 = ExtResource("4_cvm8w")
 
@@ -442,7 +436,7 @@ outline_size = 30
 [node name="Alien-hurt_LegL" parent="Armature_hurt/Skeleton3D" index="3"]
 material_overlay = ExtResource("2_bo1tu")
 lod_bias = 128.0
-surface_material_override/0 = SubResource("StandardMaterial3D_vxqwq")
+surface_material_override/0 = ExtResource("2_fot6n")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature_hurt/Skeleton3D/Alien-hurt_LegL" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.97393, 0, 0.172697, 0, 1.98147, 0, -0.172697, 0, 1.97393, -0.428096, 1.11287, 0.494582)
@@ -457,7 +451,7 @@ outline_size = 30
 [node name="Alien-hurt_LegR" parent="Armature_hurt/Skeleton3D" index="4"]
 material_overlay = ExtResource("2_bo1tu")
 lod_bias = 128.0
-surface_material_override/0 = SubResource("StandardMaterial3D_vxqwq")
+surface_material_override/0 = ExtResource("2_fot6n")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature_hurt/Skeleton3D/Alien-hurt_LegR" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.97392, 0, 0.172696, 0, 1.98146, 0, -0.172696, 0, 1.97392, 0.670326, 1.11287, 0.398481)

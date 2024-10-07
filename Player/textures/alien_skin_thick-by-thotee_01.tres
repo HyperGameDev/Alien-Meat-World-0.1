@@ -1,26 +1,18 @@
-[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://d120p0j7v2cji"]
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://d120p0j7v2cji"]
 
 [ext_resource type="Material" uid="uid://derfnvp2h1bvx" path="res://Objects/object-highlight_03.tres" id="1_kg26b"]
-[ext_resource type="Shader" path="res://Objects/object-highlight-by-thotee_01.gdshader" id="2_j53k4"]
-
-[sub_resource type="Gradient" id="Gradient_qhe5r"]
-offsets = PackedFloat32Array(0.198473, 0.465649, 0.549618, 0.832061)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1ajxi"]
-gradient = SubResource("Gradient_qhe5r")
-fill_from = Vector2(0.547009, 0.717949)
-fill_to = Vector2(0.106838, 0.521368)
-repeat = 1
+[ext_resource type="Shader" path="res://Player/textures/alien_skin_thick-by-thotee_01.gdshader" id="2_lqepf"]
+[ext_resource type="Texture2D" uid="uid://bctr6jk5e6rq0" path="res://Player/textures/alien_skin_thick-hilite-02.tres" id="3_i2sv0"]
 
 [resource]
 render_priority = 1
 next_pass = ExtResource("1_kg26b")
-shader = ExtResource("2_j53k4")
+shader = ExtResource("2_lqepf")
+shader_parameter/show_skin = true
 shader_parameter/albedo_color = Color(0, 0, 0, 1)
 shader_parameter/uv1_scale = Vector2(1, 1)
 shader_parameter/uv1_offset = Vector2(0, 0)
-shader_parameter/highlight = 0.485
+shader_parameter/highlight = 1.79
 shader_parameter/highlight_color = Color(3.54964e-07, 0.247506, 0.00270723, 1)
 shader_parameter/emission_power = 5.0
-shader_parameter/highlight_texture = SubResource("GradientTexture2D_1ajxi")
+shader_parameter/highlight_texture = ExtResource("3_i2sv0")

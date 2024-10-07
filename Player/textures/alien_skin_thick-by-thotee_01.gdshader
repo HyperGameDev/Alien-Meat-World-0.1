@@ -2,6 +2,7 @@ shader_type spatial;
 
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
 
+uniform bool show_skin = true;
 uniform vec3 albedo_color : source_color = vec3(1,1,1);
 uniform sampler2D texture_albedo : source_color,filter_linear_mipmap_anisotropic,repeat_enable;
 
@@ -31,5 +32,10 @@ void fragment() {
     ALBEDO = albedo_color * albedo_tex;
     EMISSION = highlight_color.rgb * highlight_mask * emission_power * highlight;
     SPECULAR = 0.5;
-	ALPHA = highlight_mask;
+	if (show_skin == true) {
+		ALPHA = highlight_mask;
+		}
+	else {
+		ALPHA = 0.0;
+		}
 }
