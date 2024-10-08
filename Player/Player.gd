@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 var horiz_speed : float = 0.0
 const HORIZ_SPEED : float = 4.0
-const JUMP_VELOCITY : int = 6
+const JUMP_VELOCITY : int = 5
 const FALL_DEATH_DISTANCE : int = -50
 const BOUNDARY_DISTANCE : int = 30
 
@@ -64,7 +64,7 @@ var distance : float
 var distance_hurt : float
 
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
+# Get the gravity from the project setti	ngs to be synced with RigidBody nodes.
 var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():

@@ -666,7 +666,6 @@ shadow_mesh = SubResource("ArrayMesh_4uy6m")
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("2_l3hi8")
-is_attacking = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 8.52435e-08, 0.221889, 0.975072, -1.93982e-08, 0.975072, -0.221889, 0.00413191, 0.510933, 0.235844)

@@ -79,7 +79,7 @@ func interact_fx_begin(target):
 	target.interactable = true
 	for node in target.get_children():
 		if node.has_node("%Mesh_Collection"):
-			print("Sees mesh collection")
+			#print("Sees mesh collection")
 			node.get_node("%Mesh_Collection").interactable = true
 		if node is MeshInstance3D:
 			if node.material_overlay == null:
