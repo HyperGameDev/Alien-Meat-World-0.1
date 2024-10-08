@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
-const SPEED : float = 5.0
+var horiz_speed : float = 0.0
+const HORIZ_SPEED : float = 4.0
 const JUMP_VELOCITY : int = 6
 const FALL_DEATH_DISTANCE : int = -50
 const BOUNDARY_DISTANCE : int = 30
@@ -119,21 +120,35 @@ func _physics_process(delta):
 		var input_x = Input.get_axis("Move Left", "Move Right")
 		var direction_x = (transform.basis * Vector3(input_x, 0, 0)).normalized()
 		if direction_x:
-			velocity.x = direction_x.x * SPEED
+			velocity.x = direction_x.x * horiz_speed
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, horiz_speed)
 		
 		var input_up = Input.is_action_pressed("Move Forward")
+		var input_down = Input.is_action_pressed("Move Sloward")
 		if input_up and terrain_slowdown == false:
 			terrain_controller.terrain_velocity = move_toward(terrain_controller.terrain_velocity, 30, 1)
-		if input_up == false and terrain_slowdown == false:
+		if !input_up and !terrain_slowdown and !input_down:
 			Messenger.movement_start.emit(false)
 
-		if input_up == true:
+		if input_up == true and !input_down: ## Running
+			#print("Running, terrain @ ",terrain_controller.terrain_velocity)
 			animation.set("parameters/walk to run/transition_request", "running")
+			horiz_speed = 5.0
 		else: 
-			if !terrain_slowdown:
-				animation.set("parameters/walk to run/transition_request", "walking")
+			if !terrain_slowdown and !input_down: ## Walking
+				#print("Walking, terrain @ ",terrain_controller.terrain_velocity)
+				animation.set("parameters/TimeScale walking/transition_request", "walking")
+				animation.set("parameters/TimeScale walking/scale", 1)
+				terrain_controller.terrain_velocity = move_toward(terrain_controller.terrain_velocity, terrain_controller.TERRAIN_VELOCITY, 1)
+				horiz_speed = HORIZ_SPEED
+				
+			if input_down and !input_up: ## Slowing
+				#print("Slowing, terrain @ ",terrain_controller.terrain_velocity)
+				animation.set("parameters/TimeScale walking/transition_request", "walking")
+				animation.set("parameters/TimeScale walking/scale", .7)
+				terrain_controller.terrain_velocity = move_toward(terrain_controller.terrain_velocity, 7.0, 1)
+				horiz_speed = 2.5
 
 # Collision stops level movement
 	move_and_slide()
@@ -208,23 +223,23 @@ func on_something_attacked(what_is_hit):
 		
 		animation.set("parameters/reach right/request", 3)
 		
-		match arm_r.current_health:
-			0:
+		match floorf(arm_r.current_health):
+			0.0:
 				pass
-			1:
+			1.0:
 				collision_area_hurt_armr_upper.set_deferred("disabled", false)
 				collision_area_hurt_armr_lower.set_deferred("disabled", false)
-			2: 	
+			2.0: 	
 				collision_area_armr_upper.set_deferred("disabled", false)
 				collision_area_armr_lower.set_deferred("disabled", false)
 					
-		match arm_l.current_health:
-			0:
+		match floorf(arm_l.current_health):
+			0.0:
 				pass
-			1:
+			1.0:
 				collision_area_hurt_arml_upper.set_deferred("disabled", false)
 				collision_area_hurt_arml_lower.set_deferred("disabled", false)
-			2: 	
+			2.0: 	
 				collision_area_arml_upper.set_deferred("disabled", false)
 				collision_area_arml_lower.set_deferred("disabled", false)
 

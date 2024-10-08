@@ -134,28 +134,29 @@ func on_game_play():
 			
 
 func on_arm_health_update():
-	var arm_l_match: int = arm_l.current_health
-	var arm_r_match: int = arm_r.current_health
+	var arm_l_match: float = floorf(arm_l.current_health)
+	var arm_r_match: float = floorf(arm_r.current_health)
 	
 	match Globals.powerups["Fantastic"].powerupLevel:
 		0:
-			arm_l_match = arm_l.current_health
-			arm_r_match = arm_r.current_health
+			arm_l_match = floorf(arm_l.current_health)
+			arm_r_match = floorf(arm_r.current_health)
 		1:
-			if not arm_l.current_health <= 0:
-				arm_l_match = arm_l.current_health + 1
-			if not arm_r.current_health <= 0:
-				arm_r_match = arm_r.current_health + 1
+			if not floorf(arm_l.current_health) <= 0.0:
+				arm_l_match = floorf(arm_l.current_health) + 1.0
+			if not floorf(arm_r.current_health) <= 0.0:
+				arm_r_match = floorf(arm_r.current_health) + 1.0
 		2:
-			if not arm_l.current_health <= 0:
-				arm_l_match = arm_l.current_health + 2
-			if not arm_r.current_health <= 0:
-				arm_r_match = arm_r.current_health + 2
+			if not floorf(arm_l.current_health) <= 0.0:
+				arm_l_match = floorf(arm_l.current_health) + 2.0
+			if not floorf(arm_r.current_health) <= 0.0:
+				arm_r_match = arm_r.current_health + 2.0
 		_:
 			pass
-	#print(arm_l_match,",",arm_r_match)
+	#print("Match checks for: ",arm_l_match,",",arm_r_match)
+	#print("Limbs set to: ",floorf(arm_l.current_health),",",floorf(arm_r.current_health))
 	match [arm_l_match,arm_r_match]:
-		[0,0]:
+		[0.0,0.0]:
 			collision_poly_resize_l = 0.385
 			collision_poly_resize_r = 0.385
 			collision_poly_reforward = -.75
@@ -173,7 +174,7 @@ func on_arm_health_update():
 			interact_mesh_rerotate = 0.0
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.01)
 			
-		[0,1]:
+		[0.0,1.0]:
 			collision_poly_resize_l = 0.42
 			collision_poly_resize_r = 1.1
 			collision_poly_reforward = 0.0
@@ -191,7 +192,7 @@ func on_arm_health_update():
 			interact_mesh_rerotate = -10
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.007)
 			
-		[1,0]:
+		[1.0,0.0]:
 			collision_poly_resize_l = 1.1
 			collision_poly_resize_r = 0.42
 			collision_poly_reforward = 0.0
@@ -209,7 +210,7 @@ func on_arm_health_update():
 			interact_mesh_rerotate = 10
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.007)
 			
-		[0,2]:
+		[0.0,2.0]:
 			collision_poly_resize_l = 0.1
 			collision_poly_resize_r = 1.2 * scale_up_2
 			collision_poly_reforward = 0.0
@@ -227,7 +228,7 @@ func on_arm_health_update():
 			interact_mesh_rerotate = -10
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.004)
 			
-		[2,0]:
+		[2.0,0.0]:
 			collision_poly_resize_l = 1.2 * scale_up_2
 			collision_poly_resize_r = 0.1
 			collision_poly_reforward = 0.0
@@ -245,7 +246,7 @@ func on_arm_health_update():
 			interact_mesh_rerotate = 10
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.004)
 			
-		[1,1]:
+		[1.0,1.0]:
 			collision_poly_resize_l = 1.0
 			collision_poly_resize_r = 1.0
 			collision_poly_reforward = 0.0
@@ -265,7 +266,7 @@ func on_arm_health_update():
 			
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.005)
 			
-		[1,2]:
+		[1.0,2.0]:
 			collision_poly_resize_l = 0.42 * scale_up_2
 			collision_poly_resize_r = 1.2 * scale_up_2
 			collision_poly_reforward = 0.0
@@ -283,7 +284,7 @@ func on_arm_health_update():
 			interact_mesh_rerotate = -10
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.00375)
 			
-		[2,1]:
+		[2.0,1.0]:
 			collision_poly_resize_l = 1.2 * scale_up_2
 			collision_poly_resize_r = 0.42 * scale_up_2
 			collision_poly_reforward = 0.0
@@ -301,7 +302,7 @@ func on_arm_health_update():
 			interact_mesh_rerotate = 10
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.00375)
 			
-		[2,2]:
+		[2.0,2.0]:
 			collision_poly_resize_l = 1.625
 			collision_poly_resize_r = 1.625
 			collision_poly_reforward = 0.75
@@ -319,7 +320,7 @@ func on_arm_health_update():
 			interact_mesh_rerotate = 0.0
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.00325)
 
-		[2,3]:
+		[2.0,3.0]:
 			collision_poly_resize_l = (0.42 * scale_up_2) * powerup_scale_1
 			collision_poly_resize_r = (1.2 * scale_up_2) * powerup_scale_1
 			collision_poly_reforward = 0.0
@@ -337,7 +338,7 @@ func on_arm_health_update():
 			interact_mesh_rerotate = (-6) * powerup_scale_1
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.00375)
 			
-		[3,2]:
+		[3.0,2.0]:
 			collision_poly_resize_l = (1.2 * scale_up_2) * powerup_scale_1
 			collision_poly_resize_r = (0.42 * scale_up_2) * powerup_scale_1
 			collision_poly_reforward = 0.0
@@ -355,7 +356,7 @@ func on_arm_health_update():
 			interact_mesh_rerotate = (6) * powerup_scale_1
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.00375)
 			
-		[0,3]:
+		[0.0,3.0]:
 			collision_poly_resize_l = (0.1) * powerup_scale_1
 			collision_poly_resize_r = (1.2 * scale_up_2) * powerup_scale_1
 			collision_poly_reforward = 0.0
@@ -373,7 +374,7 @@ func on_arm_health_update():
 			interact_mesh_rerotate = (-6) * powerup_scale_1
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.004)
 			
-		[3,0]:
+		[3.0,0.0]:
 			collision_poly_resize_l = (1.2 * scale_up_2) * powerup_scale_1
 			collision_poly_resize_r = (0.1) * powerup_scale_1
 			collision_poly_reforward = 0.0
@@ -391,7 +392,7 @@ func on_arm_health_update():
 			interact_mesh_rerotate = (6) * powerup_scale_1
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.004)
 			
-		[0,4]:
+		[0.0,4.0]:
 			collision_poly_resize_l = (0.1) * powerup_scale_2
 			collision_poly_resize_r = (1.2 * scale_up_2) * powerup_scale_2
 			collision_poly_reforward = 0.0
@@ -409,7 +410,7 @@ func on_arm_health_update():
 			interact_mesh_rerotate = (-4) * powerup_scale_2
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.004)
 			
-		[4,0]:
+		[4.0,0.0]:
 			collision_poly_resize_l = (1.2 * scale_up_2) * powerup_scale_2
 			collision_poly_resize_r = (0.1) * powerup_scale_2
 			collision_poly_reforward = 0.0
@@ -427,7 +428,7 @@ func on_arm_health_update():
 			interact_mesh_rerotate = (4) * powerup_scale_2
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.004)
 			
-		[3,3]:
+		[3.0,3.0]:
 			collision_poly_resize_l = (1.625) * powerup_scale_1
 			collision_poly_resize_r = (1.625) * powerup_scale_1
 			collision_poly_reforward = (0.75) * powerup_scale_1
@@ -445,7 +446,7 @@ func on_arm_health_update():
 			interact_mesh_rerotate = 0.0
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.00375)
 			
-		[4,4]:
+		[4.0,4.0]:
 			collision_poly_resize_l = (1.625) * powerup_scale_2
 			collision_poly_resize_r = (1.625) * powerup_scale_2
 			collision_poly_reforward = (0.75) * powerup_scale_2
@@ -463,7 +464,7 @@ func on_arm_health_update():
 			interact_mesh_rerotate = 0.0
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.00375)
 			
-		[3,4]:
+		[3.0,4.0]:
 			collision_poly_resize_l = (0.42 * scale_up_2) * powerup_scale_2
 			collision_poly_resize_r = (1.2 * scale_up_2) * powerup_scale_2
 			collision_poly_reforward = 0.0
@@ -481,7 +482,7 @@ func on_arm_health_update():
 			interact_mesh_rerotate = (-4) * powerup_scale_2
 			interact_mesh.get_surface_override_material(0).next_pass.set_shader_parameter("width",.00375)
 			
-		[4,3]:
+		[4.0,3.0]:
 			collision_poly_resize_l = (1.2 * scale_up_2) * powerup_scale_2
 			collision_poly_resize_r = (0.42 * scale_up_2) * powerup_scale_2
 			collision_poly_reforward = 0.0

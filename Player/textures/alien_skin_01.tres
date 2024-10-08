@@ -1,6 +1,9 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://ceyvghpuqtg0c"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ceyvghpuqtg0c"]
+
+[ext_resource type="Material" uid="uid://d120p0j7v2cji" path="res://Player/textures/alien_skin_thick-by-thotee_01.tres" id="1_odsy8"]
 
 [resource]
+next_pass = ExtResource("1_odsy8")
 albedo_color = Color(0.298039, 0.741176, 0.352941, 1)
 metallic_specular = 0.0
 rim_tint = 1.0

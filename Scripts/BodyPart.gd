@@ -174,7 +174,7 @@ func on_area_damaged(collided_bodypart):
 			limb_dmg_flash_end = false
 		
 		# This code needs work, only applies to one limb if multiple are hit
-		if current_health > 0.0 and amount_to_damage == Obstacle.damage_amounts.FULL:
+		if floorf(current_health) > 0.0 and amount_to_damage == Obstacle.damage_amounts.FULL:
 			current_health -= max_health
 		
 		if current_health > 0.0 and !amount_to_damage == Obstacle.damage_amounts.NONE:
@@ -191,7 +191,7 @@ func on_area_damaged(collided_bodypart):
 			
 			# Apply damage
 			if last_collided_area_count < 2:
-				current_health -= limb_damage_amount
+				current_health -= snappedf(limb_damage_amount,0.5)
 			else:
 				reset_last_collided_area_count()
 				
@@ -209,18 +209,55 @@ func on_area_damaged(collided_bodypart):
 			if is_part == BodyPart.is_parts.ARM_R or is_part == BodyPart.is_parts.ARM_L:
 				Messenger.arm_health_update.emit()
 			
-			match current_health:
+			match floorf(current_health): 
 				0.0:
-					limb_damage_to_0()
-				
-				0.5:
-					limb_damage_to_0()
+					if is_part == BodyPart.is_parts.HEAD or is_part == BodyPart.is_parts.BODY:
+						if is_part == BodyPart.is_parts.HEAD:
+							dmg_label.text = str(current_health)
+							mesh.visible = false
+							mesh_hurt.visible = false
+							
+							collision_area_head.set_deferred("disabled", true)
+							collision_area_head_hurt.set_deferred("disabled", true)
+						
+					else:
+						dmg_label.text = str(current_health)
+						
+						mesh.visible = false
+						mesh_hurt.visible = false
+						
+						collision_area_lower_hurt.set_deferred("disabled", true)
+						collision_area_upper_hurt.set_deferred("disabled", true)
+						#print("Limb: ",self.name," adjusted its collisions!")
+						
+						if is_part == BodyPart.is_parts.LEG_R or is_part == BodyPart.is_parts.LEG_L:
+							collision_hurt.set_deferred("disabled", true)
 						
 				1.0:
-					limb_damage_to_1()
-					
-				1.5:
-					limb_damage_to_1()
+					if is_part == BodyPart.is_parts.HEAD or is_part == BodyPart.is_parts.BODY:
+						if is_part == BodyPart.is_parts.HEAD:
+							dmg_label.text = str(current_health)
+							mesh.visible = false
+							mesh_hurt.visible = true
+							
+							collision_area_head.set_deferred("disabled", true)
+							collision_area_head_hurt.set_deferred("disabled", false)
+						
+					else:
+						dmg_label.text = str(current_health)
+						
+						mesh.visible = false
+						mesh_hurt.visible = true
+						
+						collision_area_lower.set_deferred("disabled", true)
+						collision_area_upper.set_deferred("disabled", true)
+						collision_area_lower_hurt.set_deferred("disabled", false)
+						collision_area_upper_hurt.set_deferred("disabled", false)
+						#print("Limb: ",self.name," adjusted its collisions!")
+						
+						if is_part == BodyPart.is_parts.LEG_R or is_part == BodyPart.is_parts.LEG_L:
+							collision.set_deferred("disabled", true)
+							collision_hurt.set_deferred("disabled", false)
 							
 				_:
 					pass
@@ -246,10 +283,10 @@ func on_area_damaged(collided_bodypart):
 			
 	# Damaged the Head?
 	if collided_bodypart == is_head and is_part == BodyPart.is_parts.HEAD and amount_to_damage != Obstacle.damage_amounts.NONE:
-		if current_health > 0.0:
+		if floorf(current_health) > 0.0:
 			pass
 		
-		if current_health >= 0.0:
+		if floorf(current_health) >= 0.0:
 #			is_damaged = true
 
 			# Inform UI_FX to flash the screen, and HP Bar to subtract health
@@ -257,63 +294,14 @@ func on_area_damaged(collided_bodypart):
 			Messenger.head_health.emit(current_health, max_health)
 			
 		# Restart game on Death
-		if current_health <= 0.0:
+		if floorf(current_health) <= 0.0:
 			await get_tree().create_timer(LIMB_MORPH_SPEED + .3).timeout
 			
 			Messenger.swap_game_state.emit(Globals.is_game_states.OVER)
 			
 
-func limb_damage_to_0():
-	if is_part == BodyPart.is_parts.HEAD or is_part == BodyPart.is_parts.BODY:
-		if is_part == BodyPart.is_parts.HEAD:
-			dmg_label.text = str(current_health)
-			mesh.visible = false
-			mesh_hurt.visible = false
-			
-			collision_area_head.set_deferred("disabled", true)
-			collision_area_head_hurt.set_deferred("disabled", true)
-		
-	else:
-		dmg_label.text = str(current_health)
-		
-		mesh.visible = false
-		mesh_hurt.visible = false
-		
-		collision_area_lower_hurt.set_deferred("disabled", true)
-		collision_area_upper_hurt.set_deferred("disabled", true)
-		#print("Limb: ",self.name," adjusted its collisions!")
-		
-		if is_part == BodyPart.is_parts.LEG_R or is_part == BodyPart.is_parts.LEG_L:
-			collision_hurt.set_deferred("disabled", true)
-	
-func limb_damage_to_1():
-	if is_part == BodyPart.is_parts.HEAD or is_part == BodyPart.is_parts.BODY:
-		if is_part == BodyPart.is_parts.HEAD:
-			dmg_label.text = str(current_health)
-			mesh.visible = false
-			mesh_hurt.visible = true
-			
-			collision_area_head.set_deferred("disabled", true)
-			collision_area_head_hurt.set_deferred("disabled", false)
-		
-	else:
-		dmg_label.text = str(current_health)
-		
-		mesh.visible = false
-		mesh_hurt.visible = true
-		
-		collision_area_lower.set_deferred("disabled", true)
-		collision_area_upper.set_deferred("disabled", true)
-		collision_area_lower_hurt.set_deferred("disabled", false)
-		collision_area_upper_hurt.set_deferred("disabled", false)
-		#print("Limb: ",self.name," adjusted its collisions!")
-		
-		if is_part == BodyPart.is_parts.LEG_R or is_part == BodyPart.is_parts.LEG_L:
-			collision.set_deferred("disabled", true)
-			collision_hurt.set_deferred("disabled", false)
-
 func on_material_damaged_timer_end():
-	if current_health < max_health and limb_dmg_flash_end == false and amount_to_damage != Obstacle.damage_amounts.NONE:
+	if floorf(current_health) < max_health and limb_dmg_flash_end == false and amount_to_damage != Obstacle.damage_amounts.NONE:
 			mesh.material_override = damage_material
 			mesh_hurt.material_override = damage_material
 			material_reset_timer.start(LIMB_DMG_FLASH_OFF_LENGTH)
@@ -357,13 +345,13 @@ func on_player_head_hover(is_hovered):
 			var legs_either_1 : bool = false
 			var legs_either_2 : bool = false
 			
-			if leg_l.current_health == 2.0 or leg_r.current_health == 2.0:
+			if floorf(leg_l.current_health) == 2.0 or floorf(leg_r.current_health) == 2.0:
 				legs_either_2 = true
 			
-			if leg_l.current_health == 1.0 or leg_l.current_health == 1.5 or leg_r.current_health == 1.0 or leg_r.current_health == 1.5:
+			if floorf(leg_l.current_health) == 1.0 or floorf(leg_r.current_health) == 1.0:
 				legs_either_1 = true
 			
-			if leg_l.current_health == 0.0 or leg_l.current_health == 0.5 or leg_r.current_health == 0.0 or leg_r.current_health == 0.5:
+			if floorf(leg_l.current_health) == 0.0 or floorf(leg_r.current_health) == 0.0:
 				legs_either_0 = true
 			
 				
@@ -380,8 +368,8 @@ func on_player_head_hover(is_hovered):
 					standup_mid = true
 			
 	
-			if current_health < max_health:
-				current_health += 1.0
+			if floorf(current_health) < max_health:
+				current_health += snappedf(1.0,0.5)
 				var heal_amount: String = "+1"
 
 				#if !powerup_hp:
@@ -392,7 +380,7 @@ func on_player_head_hover(is_hovered):
 				if is_part == BodyPart.is_parts.ARM_R or is_part == BodyPart.is_parts.ARM_L:
 					Messenger.arm_health_update.emit()
 			
-				match current_health: # Checks the hp it's healing INTO, not from:
+				match floorf(current_health): # Checks the hp it's healing INTO, not from:
 					1.0:
 						if is_part == BodyPart.is_parts.HEAD or is_part == BodyPart.is_parts.BODY:
 							if is_part == BodyPart.is_parts.HEAD:

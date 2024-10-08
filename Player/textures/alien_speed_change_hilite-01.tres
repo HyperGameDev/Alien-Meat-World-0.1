@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://blggslnqrrr3y"]
+
+[ext_resource type="Shader" path="res://Player/textures/alien_speed_change-by-thotee_01.gdshader" id="1_2mt8k"]
+
+[sub_resource type="Gradient" id="Gradient_whj7r"]
+offsets = PackedFloat32Array(0, 0.350427, 0.794872)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nkbki"]
+gradient = SubResource("Gradient_whj7r")
+fill_to = Vector2(0.40884, 0)
+repeat = 1
+
+[resource]
+render_priority = 2
+shader = ExtResource("1_2mt8k")
+shader_parameter/show_speed = false
+shader_parameter/speed = 2.0
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/uv1_scale = Vector2(1, 1)
+shader_parameter/uv1_offset = Vector2(0, 0)
+shader_parameter/highlight = 9.635
+shader_parameter/highlight_color = Color(0, 0, 0, 1)
+shader_parameter/emission_power = 5.0
+shader_parameter/highlight_texture = SubResource("GradientTexture2D_nkbki")
