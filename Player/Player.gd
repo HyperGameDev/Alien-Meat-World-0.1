@@ -269,14 +269,44 @@ func on_something_attacked(what_is_hit):
 func arm_to_use(target):
 	#var target_x : float = target.global_position.x
 	var direction : Vector3 = (target.global_position - self.global_position).normalized()
-	if direction.x <= 0.0:
-		arm_l_attacking = true
-		arm_r_attacking = false
-		arm_attacking = arm_l_index
+	var arm_r_dead : bool = false
+	var arm_l_dead : bool = false
+	
+	if floorf(arm_r.current_health) <= 0:
+		arm_r_dead = true
 	else:
-		arm_r_attacking = true
-		arm_l_attacking = false
-		arm_attacking = arm_r_index
+		arm_r_dead = false
+		
+	if floorf(arm_l.current_health) <= 0:
+		arm_l_dead = true
+	else:
+		arm_l_dead = false
+	
+	if arm_r_dead and arm_l_dead:
+		print("both arms dead")
+	else:
+		if arm_r_dead or arm_l_dead:
+			if arm_r_dead:
+				print("arm right is dead")
+				arm_l_attacking = true
+				arm_r_attacking = false
+				arm_attacking = arm_l_index
+			if arm_l_dead:
+				print("arm left is dead")
+				arm_r_attacking = true
+				arm_l_attacking = false
+				arm_attacking = arm_r_index
+				
+		else:
+			if direction.x <= 0.0:
+				arm_l_attacking = true
+				arm_r_attacking = false
+				arm_attacking = arm_l_index
+			else:
+				arm_r_attacking = true
+				arm_l_attacking = false
+				arm_attacking = arm_r_index
+	
 
 
 func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
