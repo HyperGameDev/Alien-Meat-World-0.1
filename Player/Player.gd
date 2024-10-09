@@ -54,8 +54,12 @@ var look_pos : Vector3
 
 var attack : bool = false
 var hit_object : Node3D
+var arm_l_attacking : bool = false
+var arm_r_attacking : bool = false
+var arm_l_index : int = 8
+var arm_r_index : int = 12
 var arm_attacking : int = 12
-var arm_attacking_child : int = arm_attacking + 1
+#var arm_attacking_child : int = arm_attacking + 1
 var stretch_distance : Vector3 = Vector3(0,12,0)
 var attack_duration : float = .1
 
@@ -96,7 +100,6 @@ func _ready():
 func _physics_process(delta):
 	if Globals.is_game_state == Globals.is_game_states.BEGIN and !teleported:
 		new_game_teleport()
-#	aim_bone_at_target(arm_attacking, hit_object)
 #	print(hit_object)
 #	print("Is on floor: ", is_on_floor())
 #	print(self.global_position.y)
@@ -198,17 +201,29 @@ func attack_action_tween(amount):
 func on_something_attacked(what_is_hit):
 	if !attack:
 		attack = true
+		arm_to_use(what_is_hit)
 		
-		collision_area_armr_upper.set_deferred("disabled", true)
-		collision_area_armr_lower.set_deferred("disabled", true)
-		collision_area_hurt_armr_upper.set_deferred("disabled", true)
-		collision_area_hurt_armr_lower.set_deferred("disabled", true)
+		if arm_r_attacking:
+			collision_area_armr_upper.set_deferred("disabled", true)
+			collision_area_armr_lower.set_deferred("disabled", true)
+			collision_area_hurt_armr_upper.set_deferred("disabled", true)
+			collision_area_hurt_armr_lower.set_deferred("disabled", true)
+			
+		if arm_l_attacking:
+			collision_area_arml_upper.set_deferred("disabled", true)
+			collision_area_arml_lower.set_deferred("disabled", true)
+			collision_area_hurt_arml_upper.set_deferred("disabled", true)
+			collision_area_hurt_arml_lower.set_deferred("disabled", true)
 		
 	#	if grab == true
 		hit_object = what_is_hit
 		#print("Grab Begun on ", hit_object.name)
-
-		animation.set("parameters/reach right/request", 1)
+		
+		if arm_r_attacking:
+			animation.set("parameters/reach right/request", 1)
+		if arm_l_attacking:
+			animation.set("parameters/reach left/request", 1)
+			
 		get_tree().create_tween().tween_method(attack_action_tween,0.0,1.0,attack_duration)
 		
 	#	aim_bone_at_target(arm_attacking,hit_object, 0.0)
@@ -221,7 +236,10 @@ func on_something_attacked(what_is_hit):
 		get_tree().create_tween().tween_method(attack_action_tween,1.0,0.0,attack_duration)
 		await get_tree().create_timer(attack_duration).timeout
 		
-		animation.set("parameters/reach right/request", 3)
+		if arm_r_attacking:
+			animation.set("parameters/reach right/request", 3)
+		if arm_l_attacking:
+			animation.set("parameters/reach left/request", 3)
 		
 		match floorf(arm_r.current_health):
 			0.0:
@@ -247,6 +265,18 @@ func on_something_attacked(what_is_hit):
 		
 		attack = false
 	
+	
+func arm_to_use(target):
+	#var target_x : float = target.global_position.x
+	var direction : Vector3 = (target.global_position - self.global_position).normalized()
+	if direction.x <= 0.0:
+		arm_l_attacking = true
+		arm_r_attacking = false
+		arm_attacking = arm_l_index
+	else:
+		arm_r_attacking = true
+		arm_l_attacking = false
+		arm_attacking = arm_r_index
 
 
 func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):

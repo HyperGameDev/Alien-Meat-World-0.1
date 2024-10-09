@@ -20,6 +20,7 @@ const CAM_Y_OFFSET: float = 4.0
 @export var cam_x_offset: float = 0.0
 const CAM_X_OFFSET: float = 0.0
 
+@onready var player: CharacterBody3D = %Player
 @onready var cam_target: Node3D = %Cam_Target
 @onready var powerup_menu: Node3D = %PowerUp_Menu
 @onready var hud: CanvasLayer = %HUD
@@ -108,6 +109,7 @@ func _process(delta: float) -> void:
 				if raycast_result.is_in_group("Abductee"):
 					var meat_original = raycast_result
 					if meat_original.has_method("spawn_me") and !is_attempting_grab and !is_in_group("Grabbed"):
+						player.arm_to_use(raycast_result)
 					#disappears the object
 						meat_original.is_available = false
 					
