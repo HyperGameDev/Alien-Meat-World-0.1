@@ -18,6 +18,7 @@ const BOUNDARY_DISTANCE : int = 30
 
 @onready var arm_l: Area3D = get_node("Alien_V3/DetectionAreas/Area_ArmL")
 @onready var arm_r: Area3D = get_node("Alien_V3/DetectionAreas/Area_ArmR")
+@onready var head: Area3D = get_node("Alien_V3/DetectionAreas/Area_Head")
 
 @onready var collision_area_armr_upper: CollisionShape3D = get_node("Alien_V3/DetectionAreas/Area_ArmR/CollisionA_ArmR_Upper")
 @onready var collision_area_armr_lower: CollisionShape3D = get_node("Alien_V3/DetectionAreas/Area_ArmR/CollisionA_ArmR_Lower")
@@ -28,6 +29,9 @@ const BOUNDARY_DISTANCE : int = 30
 @onready var collision_area_arml_lower: CollisionShape3D = get_node("Alien_V3/DetectionAreas/Area_ArmL/CollisionA_ArmL_Lower")
 @onready var collision_area_hurt_arml_upper: CollisionShape3D = get_node("Alien_V3/DetectionAreas/Area_ArmL/CollisionA-hurt_ArmL_Upper")
 @onready var collision_area_hurt_arml_lower: CollisionShape3D = get_node("Alien_V3/DetectionAreas/Area_ArmL/CollisionA-hurt_ArmL_Lower")
+
+@onready var collision_area_head: CollisionShape3D = get_node("Alien_V3/DetectionAreas/Area_Head/CollisionA_AlienHead")
+@onready var collision_area_hurt_head: CollisionShape3D = get_node("Alien_V3/DetectionAreas/Area_Head/CollisionA-hurt_AlienHead")
 
 @onready var mesh_orb: MeshInstance3D = get_node("Alien_V3/Alien/Orb_New-Game-Teleporter")
 @onready var animation_orb: AnimationPlayer = get_node("Alien_V3/Alien/Orb_New-Game-Teleporter/AnimationPlayer")
@@ -42,11 +46,12 @@ var is_eating : bool = false
 
 #@onready var arm_r = 7
 #@onready var arm_l = 2
-@onready var head : int = 6
+@onready var head_index : int = 6
+@export var neck_index : int = 5
 
 #@onready var arm_r_rotation = skeleton.get_bone_pose_rotation(arm_r)
 #@onready var arm_l_rotation = skeleton.get_bone_pose_rotation(arm_l)
-@onready var head_rotation : Quaternion = skeleton.get_bone_pose_rotation(head)
+@onready var head_rotation : Quaternion = skeleton.get_bone_pose_rotation(head_index)
 
 var teleported : bool = false
 
@@ -56,9 +61,10 @@ var attack : bool = false
 var hit_object : Node3D
 var arm_l_attacking : bool = false
 var arm_r_attacking : bool = false
+var head_attacking : bool = false
 var arm_l_index : int = 8
 var arm_r_index : int = 12
-var arm_attacking : int = 12
+var attacking_limb : int = 12
 #var arm_attacking_child : int = arm_attacking + 1
 var stretch_distance : Vector3 = Vector3(0,12,0)
 var attack_duration : float = .1
@@ -163,8 +169,8 @@ func rotate_head_to_direction(dir:Vector3):
 	var pos_2D: Vector2 = Vector2(-transform.basis.z.x, -transform.basis.z.z)
 	
 	# Movement application
-	skeleton.set_bone_pose_rotation(head, Quaternion(head_rotation.x, atan2(dir.x, -dir.z) * -3, head_rotation.z, head_rotation.w))
-	skeleton_hurt.set_bone_pose_rotation(head, Quaternion(head_rotation.x, atan2(dir.x, -dir.z) * -3, head_rotation.z, head_rotation.w))
+	skeleton.set_bone_pose_rotation(head_index, Quaternion(head_rotation.x, atan2(dir.x, -dir.z) * -3, head_rotation.z, head_rotation.w))
+	skeleton_hurt.set_bone_pose_rotation(head_index, Quaternion(head_rotation.x, atan2(dir.x, -dir.z) * -3, head_rotation.z, head_rotation.w))
 	
 #func rotate_player_to_direction(dir:Vector3):
 #	# Movement logic
@@ -178,7 +184,8 @@ func on_mouse_pos_3d(mouse):
 #	rotate_arm_r_to_direction(look_pos)
 #	rotate_arm_l_to_direction(look_pos)
 
-	rotate_head_to_direction(look_pos)
+	if !head_attacking:
+		rotate_head_to_direction(look_pos)
 	
 #	rotate_player_to_direction(look_pos)
 	
@@ -192,11 +199,11 @@ func attack_action_tween(amount):
 		
 	if hit_object != null:
 	#		print("Object isn't Null (", hit_object.name, ")")
-			aim_bone_at_target(arm_attacking,hit_object,amount)
+			aim_bone_at_target(attacking_limb,hit_object,amount)
 			
 	else:
 	#		print("Object Null!")
-			aim_bone_at_target(arm_attacking,null,amount)
+			aim_bone_at_target(attacking_limb,null,amount)
 	
 func on_something_attacked(what_is_hit):
 	if !attack:
@@ -215,6 +222,11 @@ func on_something_attacked(what_is_hit):
 			collision_area_hurt_arml_upper.set_deferred("disabled", true)
 			collision_area_hurt_arml_lower.set_deferred("disabled", true)
 		
+		if head_attacking:
+			collision_area_head.set_deferred("disabled", true)
+			collision_area_hurt_head.set_deferred("disabled", true)
+			
+		
 	#	if grab == true
 		hit_object = what_is_hit
 		#print("Grab Begun on ", hit_object.name)
@@ -226,12 +238,16 @@ func on_something_attacked(what_is_hit):
 			
 		get_tree().create_tween().tween_method(attack_action_tween,0.0,1.0,attack_duration)
 		
-	#	aim_bone_at_target(arm_attacking,hit_object, 0.0)
+	#	aim_bone_at_target(attacking_limb,hit_object, 0.0)
 		await get_tree().create_timer(attack_duration * 2).timeout
 		var area = what_is_hit
 		var is_delayed = true
 		Messenger.something_hit.emit(area,is_delayed)
 	#	print("Grab Ending from ", hit_object.name)
+	
+		if head_attacking:
+			head_attacking = false
+			
 		# Retract the arm
 		get_tree().create_tween().tween_method(attack_action_tween,1.0,0.0,attack_duration)
 		await get_tree().create_timer(attack_duration).timeout
@@ -260,6 +276,15 @@ func on_something_attacked(what_is_hit):
 			2.0: 	
 				collision_area_arml_upper.set_deferred("disabled", false)
 				collision_area_arml_lower.set_deferred("disabled", false)
+				
+		match floorf(head.current_health):
+			0.0:
+				pass
+			1.0:
+				collision_area_hurt_head.set_deferred("disabled", false)
+			2.0: 	
+				collision_area_head.set_deferred("disabled", false)
+			
 
 				
 		
@@ -272,6 +297,7 @@ func arm_to_use(target):
 	var arm_r_dead : bool = false
 	var arm_l_dead : bool = false
 	
+#region Are any arms dead?
 	if floorf(arm_r.current_health) <= 0:
 		arm_r_dead = true
 	else:
@@ -281,31 +307,33 @@ func arm_to_use(target):
 		arm_l_dead = true
 	else:
 		arm_l_dead = false
+#endregion
 	
-	if arm_r_dead and arm_l_dead:
-		print("both arms dead")
+	if arm_r_dead and arm_l_dead: ## Both arms are dead
+		head_attacking = true
+		arm_r_attacking = false
+		arm_l_attacking = false
+		attacking_limb = neck_index
 	else:
 		if arm_r_dead or arm_l_dead:
 			if arm_r_dead:
-				print("arm right is dead")
 				arm_l_attacking = true
 				arm_r_attacking = false
-				arm_attacking = arm_l_index
+				attacking_limb = arm_l_index
 			if arm_l_dead:
-				print("arm left is dead")
 				arm_r_attacking = true
 				arm_l_attacking = false
-				arm_attacking = arm_r_index
+				attacking_limb = arm_r_index
 				
 		else:
 			if direction.x <= 0.0:
 				arm_l_attacking = true
 				arm_r_attacking = false
-				arm_attacking = arm_l_index
+				attacking_limb = arm_l_index
 			else:
 				arm_r_attacking = true
 				arm_l_attacking = false
-				arm_attacking = arm_r_index
+				attacking_limb = arm_r_index
 	
 
 
