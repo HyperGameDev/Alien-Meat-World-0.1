@@ -6,9 +6,12 @@ const JUMP_VELOCITY : int = 5
 const FALL_DEATH_DISTANCE : int = -50
 const BOUNDARY_DISTANCE : int = 30
 
+var cursor_pos : Vector2 = Vector2(0,0)
 @export var controls_locked : bool = true
 
 @onready var camera: Camera3D = %Camera3D
+
+@onready var grab_target: Node3D = %Grab_Target
 
 @onready var animation: AnimationTree = get_node("Alien_V3/Alien/AnimationTree_Alien")
 @onready var animation_armature: AnimationPlayer = get_node("Alien_V3/Alien/Armature/AnimationPlayer")
@@ -64,6 +67,8 @@ var hit_object : Node3D
 var arm_l_attacking : bool = false
 var arm_r_attacking : bool = false
 var head_attacking : bool = false
+var hand_l_index : int = 9
+var hand_r_index : int = 13
 var arm_l_index : int = 8
 var arm_r_index : int = 12
 var attacking_limb : int = 12
@@ -106,6 +111,8 @@ func _ready():
 
 	
 func _physics_process(delta):
+	if is_grabbing:
+		cursor_pos = get_viewport().get_mouse_position()
 	if is_holding:
 		grab_reach_begin(1.0)
 	if Globals.is_game_state == Globals.is_game_states.BEGIN and !teleported:
@@ -312,21 +319,33 @@ func arm_to_use(target):
 			if arm_r_dead:
 				arm_l_attacking = true
 				arm_r_attacking = false
-				attacking_limb = arm_l_index
+				if is_grabbing:
+					attacking_limb = arm_l_index + 1
+				else:
+					attacking_limb = arm_l_index
 			if arm_l_dead:
 				arm_r_attacking = true
 				arm_l_attacking = false
-				attacking_limb = arm_r_index
+				if is_grabbing:
+					attacking_limb = arm_r_index + 1
+				else:
+					attacking_limb = arm_r_index
 				
 		else:
 			if direction.x <= 0.0:
 				arm_l_attacking = true
 				arm_r_attacking = false
-				attacking_limb = arm_l_index
+				if is_grabbing:
+					attacking_limb = arm_l_index + 1
+				else:
+					attacking_limb = arm_l_index
 			else:
 				arm_r_attacking = true
 				arm_l_attacking = false
-				attacking_limb = arm_r_index
+				if is_grabbing:
+					attacking_limb = arm_r_index + 1
+				else:
+					attacking_limb = arm_r_index
 				
 func grab_reach_begin(amount):
 	if hit_object != null:
@@ -342,7 +361,6 @@ func attack_action_tween(amount):
 	#		print("Object isn't Null (", hit_object.name, ")")
 			aim_bone_at_target(attacking_limb,hit_object,amount)
 			if amount == 1.0 and is_grabbing:
-				print("hold got set")
 				is_holding = true
 			
 	else:
@@ -352,6 +370,8 @@ func attack_action_tween(amount):
 func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 	var bone_transform = skeleton.get_bone_global_pose_no_override(bone_index)
 	var bone_transform_hurt = skeleton_hurt.get_bone_global_pose_no_override(bone_index)
+	
+	var bone_transform2 = skeleton.get_bone_global_pose_no_override(bone_index + 1)
 	
 	var bone_origin = bone_transform.origin
 	var bone_origin_hurt = bone_transform_hurt.origin
@@ -365,7 +385,13 @@ func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 #	print ("Object is ", target.name, ". Arm is moving.", "(Tween amount is: ", amount, ")")
 	
 #region Healthy Arm Code
-	var target_pos = skeleton.to_local(target.global_position)
+	var target_pos: Vector3 = Vector3(0,0,0)
+	#var target_pos = skeleton.to_local(target.global_position)
+	if is_grabbing:
+		target_pos = skeleton.to_local(grab_target.global_position)
+	else:
+		target_pos = skeleton.to_local(target.global_position)
+		
 	var direction = (target_pos - bone_transform.origin).normalized()
 	distance = target_pos.distance_to(bone_transform.origin)
 	
@@ -456,13 +482,12 @@ func on_game_play():
 	
 func on_grab_begun(target):
 	is_grabbing = true
-	hit_object = target
+	arm_to_use(target)
+	hit_object = grab_target
 	
 	if arm_r_attacking:
-		print("R animation should be set")
 		animation.set("parameters/hold right/blend_amount", 1.0)
 	if arm_l_attacking:
-		print("L animation should be set")
 		animation.set("parameters/hold left/blend_amount", 1.0)
 		
 #region Pause head rotation
@@ -485,10 +510,8 @@ func on_grab_ended():
 		is_holding = false
 		
 		if arm_r_attacking:
-			print("R animation should be ended")
 			animation.set("parameters/hold right/blend_amount", 0.0)
 		if arm_l_attacking:
-			print("L animation should be ended")
 			animation.set("parameters/hold left/blend_amount", 0.0)
 	
 func on_eating_begun():

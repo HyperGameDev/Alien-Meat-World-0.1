@@ -111,7 +111,7 @@ func _process(delta: float) -> void:
 				if raycast_result.is_in_group("Abductee"):
 					var meat_original = raycast_result
 					if meat_original.has_method("spawn_me") and !is_attempting_grab and !is_in_group("Grabbed"):
-						player.arm_to_use(raycast_result)
+						#player.arm_to_use(raycast_result)
 					#disappears the object
 						meat_original.is_available = false
 					

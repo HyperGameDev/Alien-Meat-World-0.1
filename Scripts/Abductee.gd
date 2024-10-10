@@ -15,18 +15,22 @@ enum is_types {COW, HUMAN, TREE1}
 # If we decide on different meats having different values, use this (or another) value to add the meat to a different dunked group that can then be calculated differently by the score dunk.
 #@export var score_value = 1
 
+
 @onready var detect_surface: RayCast3D = $RayCast_surfaceDetect
 @onready var interactable_indicator: MeshInstance3D = $Mesh_Interactable
 
 @onready var camera : Camera3D =  get_tree().get_current_scene().get_node("Camera3D")
 @onready var player : CharacterBody3D =  get_tree().get_current_scene().get_node("Player")
 @onready var collision : CollisionShape3D = $CollisionShape3D
+#@onready var grab_target: Node3D = get_tree().get_current_scene().get_node("Player/Grab_Target/Grab_Target_offset")
+@onready var grab_target: Node3D = get_tree().get_current_scene().get_node("Player/Grab_Target")
 
 @export var velocity : int = 60
 @export var grab_distance_offset : float = 14.0
 
 var planeToMoveOn : Plane
 var has_been_grabbed : bool = false
+#var grab_position : Vector2 = Vector2(0,0)
 var cursorPosition_on_grab : Vector2 = Vector2(0,0)
 
 var is_in_dunk : bool = false
@@ -40,6 +44,8 @@ var is_available : bool = false
 var spawned : bool = false
 
 var fell : bool = false
+
+@onready var hand_pos : Marker3D =  get_tree().get_current_scene().get_node("Player/Alien_V3/DetectionAreas/Area_ArmR/Marker_HandR")
 
 func _ready():
 	if !has_node("RayCast_surfaceDetect"):
@@ -144,16 +150,19 @@ func _physics_process(_delta: float) -> void:
 			has_been_grabbed = true
 			
 #		collision.disabled = true
-		var cursorPosition : Vector2 = get_viewport().get_mouse_position()
-		#print(cursorPosition_offset)
-		var rayStartPoint : Vector3 = camera.project_ray_origin(cursorPosition)
-		var rayDirection : Vector3 = camera.project_ray_normal(cursorPosition)
-		var goTo = planeToMoveOn.intersects_ray(rayStartPoint, rayDirection)
+		#var grab_position : Vector2 = camera.unproject_position(hand_pos.position)
+		#print("Human Grabbed Pos: ",grab_position)
+		##var grab_position : Vector2 = get_viewport().get_mouse_position()
+		##print(cursorPosition_offset)
+		#var rayStartPoint : Vector3 = camera.project_ray_origin(grab_position)
+		#var rayDirection : Vector3 = camera.project_ray_normal(grab_position)
+		#var goTo = planeToMoveOn.intersects_ray(rayStartPoint, rayDirection)
 		
-		self.linear_velocity = (goTo - self.global_position) * velocity
+		#self.linear_velocity = (goTo - self.global_position) * velocity
+		#self.linear_velocity = (grab_target.global_position - self.global_position) * velocity
+		self.global_position = grab_target.global_position
 		
-			
-		
+
 	else:
 		if is_in_group("Dropped") and detect_surface.is_colliding():
 			if !detect_surface.get_collider() == self.get_parent():
@@ -186,10 +195,9 @@ func on_dunk_is_at_position(dunk_position):
 	
 func _has_been_grabbed():
 	Messenger.grab_begun.emit(self)
-	print("has been grabbed")
-	var plane_z_position = player.global_position.z
+	var plane_z_position: float = player.global_position.z
 	planeToMoveOn = Plane(Vector3(0,0,1), plane_z_position)
-	cursorPosition_on_grab = get_viewport().get_mouse_position()
+	#cursorPosition_on_grab = get_viewport().get_mouse_position()
 	#print("Initial grab pos: ",cursorPosition_on_grab)
 	
 	
