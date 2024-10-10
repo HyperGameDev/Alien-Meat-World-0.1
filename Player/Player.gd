@@ -11,7 +11,7 @@ var cursor_pos : Vector2 = Vector2(0,0)
 
 @onready var camera: Camera3D = %Camera3D
 
-@onready var grab_target: Node3D = %Grab_Target
+@onready var grab_target: Node3D = %Crosshair_offset
 
 @onready var animation: AnimationTree = get_node("Alien_V3/Alien/AnimationTree_Alien")
 @onready var animation_armature: AnimationPlayer = get_node("Alien_V3/Alien/Armature/AnimationPlayer")
@@ -51,6 +51,7 @@ var is_eating : bool = false
 #@onready var arm_l = 2
 @onready var head_index : int = 6
 @export var neck_index : int = 5
+@export var extra_index : int = 0
 
 #@onready var arm_r_rotation = skeleton.get_bone_pose_rotation(arm_r)
 #@onready var arm_l_rotation = skeleton.get_bone_pose_rotation(arm_l)
@@ -111,8 +112,8 @@ func _ready():
 
 	
 func _physics_process(delta):
-	if is_grabbing:
-		cursor_pos = get_viewport().get_mouse_position()
+	#if is_grabbing:
+		#arm_to_use(hit_object)
 	if is_holding:
 		grab_reach_begin(1.0)
 	if Globals.is_game_state == Globals.is_game_states.BEGIN and !teleported:
@@ -320,30 +321,30 @@ func arm_to_use(target):
 				arm_l_attacking = true
 				arm_r_attacking = false
 				if is_grabbing:
-					attacking_limb = arm_l_index + 1
+					attacking_limb = arm_l_index + extra_index
 				else:
 					attacking_limb = arm_l_index
 			if arm_l_dead:
 				arm_r_attacking = true
 				arm_l_attacking = false
 				if is_grabbing:
-					attacking_limb = arm_r_index + 1
+					attacking_limb = arm_r_index + extra_index
 				else:
 					attacking_limb = arm_r_index
 				
-		else:
+		else: # Both arms are healthy
 			if direction.x <= 0.0:
 				arm_l_attacking = true
 				arm_r_attacking = false
 				if is_grabbing:
-					attacking_limb = arm_l_index + 1
+					attacking_limb = arm_l_index + extra_index
 				else:
 					attacking_limb = arm_l_index
 			else:
 				arm_r_attacking = true
 				arm_l_attacking = false
 				if is_grabbing:
-					attacking_limb = arm_r_index + 1
+					attacking_limb = arm_r_index + extra_index
 				else:
 					attacking_limb = arm_r_index
 				
@@ -368,16 +369,21 @@ func attack_action_tween(amount):
 			aim_bone_at_target(attacking_limb,null,amount)
 	
 func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
+	
+	# Sets the local transform of the bone local to its skeleton
 	var bone_transform = skeleton.get_bone_global_pose_no_override(bone_index)
 	var bone_transform_hurt = skeleton_hurt.get_bone_global_pose_no_override(bone_index)
 	
-	var bone_transform2 = skeleton.get_bone_global_pose_no_override(bone_index + 1)
+	#var bone_transform2 = skeleton.get_bone_global_pose_no_override(bone_index + 1)
 	
+	# Defines the position of the bone relative to the local transform
 	var bone_origin = bone_transform.origin
 	var bone_origin_hurt = bone_transform_hurt.origin
 	
 	if(target == null):
 #		print("Object Null, Arm is snapping back.", "(Tween amount is: ", amount, ")")
+		
+		# Resets the bone back to starting position	
 		skeleton.set_bone_global_pose_override(bone_index,bone_transform,amount,false)
 		skeleton_hurt.set_bone_global_pose_override(bone_index,bone_transform_hurt,amount,false)
 		return

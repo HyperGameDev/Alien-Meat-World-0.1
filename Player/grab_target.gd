@@ -15,5 +15,6 @@ func _process(delta: float) -> void:
 	var rayDirection : Vector3 = camera.project_ray_normal(cursorPosition)
 	var goTo = planeToMoveOn.intersects_ray(rayStartPoint, rayDirection)
 	
+	#print(cursorPosition)
 	
 	self.global_position = goTo

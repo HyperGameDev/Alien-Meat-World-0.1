@@ -1,0 +1,3217 @@
+[gd_scene load_steps=184 format=3 uid="uid://b3g7wl2wuuw1x"]
+
+[ext_resource type="Script" path="res://Debug.gd" id="1_1xhrq"]
+[ext_resource type="Script" path="res://main_scene.gd" id="1_fw7jj"]
+[ext_resource type="Script" path="res://UI_Top.gd" id="2_0mwwt"]
+[ext_resource type="FontFile" uid="uid://cylln0kfeq4l0" path="res://UI/Fonts/Agrandir-ThinItalic.otf" id="2_1gh3k"]
+[ext_resource type="Script" path="res://Main Menu.gd" id="2_212kh"]
+[ext_resource type="PackedScene" uid="uid://bl47jmquemxqt" path="res://UI/Menus/Game Title/title_harvest_earth_01.tscn" id="2_750hd"]
+[ext_resource type="Script" path="res://UI_FX.gd" id="2_qs7h1"]
+[ext_resource type="Script" path="res://Camera3D.gd" id="2_qvpxy"]
+[ext_resource type="PackedScene" uid="uid://dau1u4884p5ma" path="res://UI/Menus/Game Title/title_abduct_n_run_01.tscn" id="3_b8b56"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="3_ia6ow"]
+[ext_resource type="Environment" uid="uid://ctltfiohrppec" path="res://Environment/enviro-01.tres" id="3_o1fgy"]
+[ext_resource type="Script" path="res://WorldEnvironment.gd" id="3_ujty4"]
+[ext_resource type="Script" path="res://Terrain/TerrainCollector.gd" id="4_0jb24"]
+[ext_resource type="PackedScene" uid="uid://yv1yotentdi0" path="res://UI/Menus/Menu Buttons/button_story_01.tscn" id="4_y5b27"]
+[ext_resource type="PackedScene" uid="uid://csoc4iagyceau" path="res://UI/Menus/Menu Buttons/button_settings_01.tscn" id="5_8mo0v"]
+[ext_resource type="Script" path="res://Cam_Target.gd" id="5_iuboh"]
+[ext_resource type="Script" path="res://Menu Buttons.gd" id="5_ph3hx"]
+[ext_resource type="PackedScene" uid="uid://d4b3danoj2o4u" path="res://UI/Menus/Menu Buttons/button_credits_01.tscn" id="6_i0ytw"]
+[ext_resource type="PackedScene" uid="uid://62tsdyaob0l4" path="res://Terrain/terrain_controller_in_scene.tscn" id="6_ywiix"]
+[ext_resource type="FontFile" uid="uid://ckdic8pw8e5i2" path="res://UI/Fonts/Agrandir-WideBlackItalic.otf" id="7_1vj6d"]
+[ext_resource type="PackedScene" uid="uid://bxcj2ojoks2sj" path="res://UI/Menus/Menu Buttons/button_quit_01.tscn" id="7_vhbtm"]
+[ext_resource type="Script" path="res://Player/Area_Player-Proximity.gd" id="8_0gjb7"]
+[ext_resource type="Script" path="res://Player/PowerUp_Menu.gd" id="8_i4g5f"]
+[ext_resource type="Script" path="res://Player/PowerUp_Orb.gd" id="9_l1n0p"]
+[ext_resource type="Script" path="res://Scripts/BodyPart.gd" id="10_2td36"]
+[ext_resource type="FontFile" uid="uid://coxuea18eaai4" path="res://UI/Fonts/Agrandir-GrandHeavy.otf" id="10_dhtlq"]
+[ext_resource type="Animation" uid="uid://dyfra10hcoilw" path="res://UI/Powerups/Animations/hover_1.res" id="10_o5ywd"]
+[ext_resource type="PackedScene" uid="uid://bqcmgtxclt7rg" path="res://Cutscenes/cutscene_intro.tscn" id="10_p7d5b"]
+[ext_resource type="Texture2D" uid="uid://dq5uh67af12y3" path="res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_01.png" id="10_rng1m"]
+[ext_resource type="Script" path="res://Cutscenes/cutscene_intro.gd" id="11_8hav3"]
+[ext_resource type="Script" path="res://Player/ScoreDunk.gd" id="11_318ny"]
+[ext_resource type="Animation" uid="uid://bpoqnqqafs0qh" path="res://UI/Powerups/Animations/hover_2.res" id="11_shcqq"]
+[ext_resource type="Animation" uid="uid://cfajlfyq1ba2s" path="res://UI/Powerups/Animations/hover_3.res" id="12_gh6mc"]
+[ext_resource type="Script" path="res://UI/HUD.gd" id="12_gi6vt"]
+[ext_resource type="PackedScene" uid="uid://cjvyodfle2c7n" path="res://UI/Menus/menu.tscn" id="14_eaktg"]
+[ext_resource type="Script" path="res://UI/Crosshair/crosshair3D.gd" id="15_507w8"]
+[ext_resource type="Script" path="res://UI/Crosshair/crosshair2D.gd" id="15_xei3f"]
+[ext_resource type="Script" path="res://UI/pause_menu.gd" id="16_wv3ul"]
+[ext_resource type="Material" uid="uid://b6sjs7rd7u4iv" path="res://UI/Orbs/orb_texture_01.tres" id="21_glvus"]
+[ext_resource type="FontFile" uid="uid://cx2fw81sqeocp" path="res://UI/Fonts/Agrandir-TextBold.otf" id="22_3bjjk"]
+[ext_resource type="Script" path="res://UI/Interact/ui_interaction.gd" id="22_gxbra"]
+[ext_resource type="Animation" uid="uid://i8aovdslp0f0" path="res://UI/Animations/score_up.res" id="25_pb78e"]
+[ext_resource type="PackedScene" uid="uid://cug028qxxwj68" path="res://Player/PlayerV3/alien_v3.tscn" id="31_xhesi"]
+[ext_resource type="Shader" path="res://UI/Interact/interact_01.gdshader" id="36_sy2ve"]
+[ext_resource type="Script" path="res://Player/area_feed.gd" id="37_1xjmt"]
+[ext_resource type="Script" path="res://Player/grab_target.gd" id="37_mdcho"]
+[ext_resource type="Script" path="res://Player/grab_target_offset.gd" id="38_6g4wd"]
+[ext_resource type="Script" path="res://PowerUps/powerups.gd" id="38_o34nr"]
+[ext_resource type="Script" path="res://preload.gd" id="45_5lb7x"]
+[ext_resource type="Script" path="res://Debug/Debug Tools/debug_ground.gd" id="46_l8cr0"]
+[ext_resource type="Material" uid="uid://dud0jtjkh61f3" path="res://Projectiles/drone_bullet_01.tres" id="46_vuvit"]
+[ext_resource type="Material" uid="uid://crf5j3t1jddne" path="res://Projectiles/bullet_01.tres" id="47_poxop"]
+[ext_resource type="Script" path="res://UI/Crosshair/crosshair_offset.gd" id="49_ebkqo"]
+
+[sub_resource type="Animation" id="Animation_saise"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.523599, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qcq67"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.523599, 0), Vector3(0, 0.698132, 0), Vector3(0, 0.523599, 0), Vector3(0, 0.349066, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0r0h7"]
+_data = {
+"RESET": SubResource("Animation_saise"),
+"idle": SubResource("Animation_qcq67")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p4h4o"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_i23ja"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_d0wwf"]
+nodes/Animation/node = SubResource("AnimationNodeAnimation_p4h4o")
+nodes/Animation/position = Vector2(-200, 280)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_i23ja")
+nodes/TimeScale/position = Vector2(60, 200)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="Animation" id="Animation_77rvn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x7qv8"]
+resource_name = "menu_exit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.425, 0.7),
+"transitions": PackedFloat32Array(0.68302, 2.21914, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -2.15), Vector3(0, 0, 20)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"menu_flyaway_over"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lyaxn"]
+_data = {
+"RESET": SubResource("Animation_77rvn"),
+"menu_exit": SubResource("Animation_x7qv8")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_muw3l"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_erqvo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1ubfb"]
+resource_name = "message_flash"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fe77p"]
+_data = {
+"RESET": SubResource("Animation_erqvo"),
+"message_flash": SubResource("Animation_1ubfb")
+}
+
+[sub_resource type="Animation" id="Animation_ei6f7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Loading_Text:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Loading..."]
+}
+
+[sub_resource type="Animation" id="Animation_65pkm"]
+resource_name = "loading_text"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Loading_Text:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["Loading...", "Loading..", "Loading.", "Loading", "Loading.", "Loading.."]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kkp1t"]
+_data = {
+"RESET": SubResource("Animation_ei6f7"),
+"loading_text": SubResource("Animation_65pkm")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrp36"]
+content_margin_left = 30.0
+content_margin_top = 30.0
+content_margin_right = 30.0
+content_margin_bottom = 30.0
+bg_color = Color(0.466667, 0.85098, 0.505882, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.466667, 0.85098, 0.505882, 1)
+corner_radius_top_left = 500
+corner_radius_top_right = 500
+corner_radius_bottom_right = 500
+corner_radius_bottom_left = 500
+
+[sub_resource type="Animation" id="Animation_0afky"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:theme_override_styles/panel:content_margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [30.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:theme_override_styles/panel:content_margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [30.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer:theme_override_styles/panel:content_margin_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [30.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer:theme_override_styles/panel:content_margin_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [30.0]
+}
+
+[sub_resource type="Animation" id="Animation_lpe12"]
+resource_name = "grow"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:theme_override_styles/panel:content_margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [30.0, 60.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:theme_override_styles/panel:content_margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [30.0, 60.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer:theme_override_styles/panel:content_margin_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [30.0, 60.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer:theme_override_styles/panel:content_margin_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [30.0, 60.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y52jq"]
+_data = {
+"RESET": SubResource("Animation_0afky"),
+"grow": SubResource("Animation_lpe12")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5cqyn"]
+bg_color = Color(0, 0, 0, 0.505882)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_padpo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_txail"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_856cx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y0f7o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_howf2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q6ku2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7tvtk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_abb6j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_66rm6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tgf3x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k05mj"]
+
+[sub_resource type="FontVariation" id="FontVariation_nqysf"]
+base_font = ExtResource("22_3bjjk")
+spacing_glyph = 3
+
+[sub_resource type="Animation" id="Animation_6bpct"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [61]
+}
+
+[sub_resource type="Animation" id="Animation_bfkl1"]
+resource_name = "hilite"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.68302, 1),
+"update": 0,
+"values": [61, 86]
+}
+
+[sub_resource type="Animation" id="Animation_ll4de"]
+resource_name = "unhilite"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.615572, 1),
+"update": 0,
+"values": [86, 61]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_82ywq"]
+_data = {
+"RESET": SubResource("Animation_6bpct"),
+"hilite": SubResource("Animation_bfkl1"),
+"unhilite": SubResource("Animation_ll4de")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_war41"]
+size = Vector3(1, 0.755, 0.855)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1q3j"]
+albedo_color = Color(1.2, 1.2, 1.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qcmfl"]
+size = Vector3(1, 0.185, 70)
+
+[sub_resource type="SphereMesh" id="SphereMesh_veqak"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwj1g"]
+albedo_color = Color(1, 0.313726, 0.439216, 0.541176)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mcpq4"]
+size = Vector3(60, 200, 1000)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j84b1"]
+size = Vector3(60, 60, 0.15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ourdh"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nthf1"]
+points = PackedVector3Array(30, 30, 0.075, 30, 30, -0.075, -30, 30, 0.075, 30, -30, 0.075, 30, -30, -0.075, -30, 30, -0.075, -30, -30, 0.075, -30, -30, -0.075)
+
+[sub_resource type="Gradient" id="Gradient_3mo1j"]
+offsets = PackedFloat32Array(0, 0.0100671, 0.345638, 0.92953)
+colors = PackedColorArray(0.384314, 1, 0.360784, 0.235294, 0.384314, 1, 0.360784, 0, 0.384314, 1, 0.360784, 0, 0.384314, 1, 0.360784, 0.235294)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hsfw6"]
+gradient = SubResource("Gradient_3mo1j")
+fill = 1
+fill_from = Vector2(0.508547, 0.551282)
+fill_to = Vector2(0.24359, 0.136752)
+
+[sub_resource type="Gradient" id="Gradient_07nq6"]
+offsets = PackedFloat32Array(0, 0.0033557, 0.00671141, 1)
+colors = PackedColorArray(0.384314, 0, 0, 0.686275, 0.384314, 0, 0, 0, 0.384314, 0, 0, 0.639216, 0.384314, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kjhx1"]
+gradient = SubResource("Gradient_07nq6")
+fill = 1
+fill_from = Vector2(0.487179, 0.504274)
+fill_to = Vector2(0.299145, 0.192308)
+repeat = 2
+
+[sub_resource type="FogMaterial" id="FogMaterial_2kk4o"]
+density = 0.5
+albedo = Color(0.513726, 0.713726, 0.898039, 1)
+edge_fade = 0.606286
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_se27i"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 82.79
+dof_blur_far_transition = 130.53
+dof_blur_near_distance = 9.32
+dof_blur_near_transition = 1140.9
+dof_blur_amount = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mtj3k"]
+size = Vector3(2.87, 6.515, 1.73)
+
+[sub_resource type="QuadMesh" id="QuadMesh_3xell"]
+size = Vector2(50, 116.638)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sum6x"]
+render_priority = 127
+shader = ExtResource("36_sy2ve")
+shader_parameter/alpha = 0.0
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/size = 0.14
+shader_parameter/width = 0.01
+shader_parameter/inner_color = Color(0.4, 0.784314, 0.403922, 0.427451)
+shader_parameter/outer_color = Color(0.476916, 0.838196, 0.17159, 0.0705882)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uudhm"]
+next_pass = SubResource("ShaderMaterial_sum6x")
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_msaub"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh_Interact-01:surface_material_override/0:next_pass:shader_parameter/alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qsc2o"]
+resource_name = "interact_hide"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh_Interact-01:surface_material_override/0:next_pass:shader_parameter/alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1.68179, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_u8qm2"]
+resource_name = "interact_show"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh_Interact-01:surface_material_override/0:next_pass:shader_parameter/alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.574349, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_38crk"]
+_data = {
+"RESET": SubResource("Animation_msaub"),
+"interact_hide": SubResource("Animation_qsc2o"),
+"interact_show": SubResource("Animation_u8qm2")
+}
+
+[sub_resource type="SphereMesh" id="SphereMesh_y8ywy"]
+radius = 0.8
+height = 1.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_08qdd"]
+radius = 0.8
+
+[sub_resource type="Animation" id="Animation_sp7qj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 4.54315, 0.166246)]
+}
+
+[sub_resource type="Animation" id="Animation_ae0b1"]
+resource_name = "ascent"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2, 0.166), Vector3(0, 5, 0.166)]
+}
+
+[sub_resource type="Animation" id="Animation_51xog"]
+resource_name = "base_size"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_apk61"]
+resource_name = "descent"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 5, 0.166), Vector3(0, 2, 0.166)]
+}
+
+[sub_resource type="Animation" id="Animation_x5mpd"]
+resource_name = "hover_throb"
+length = 0.5
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.18),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.3, 1.3, 1.3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8cfxk"]
+_data = {
+"RESET": SubResource("Animation_sp7qj"),
+"ascent": SubResource("Animation_ae0b1"),
+"base_size": SubResource("Animation_51xog"),
+"descent": SubResource("Animation_apk61"),
+"hover_throb": SubResource("Animation_x5mpd")
+}
+
+[sub_resource type="Animation" id="Animation_yd82m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [80]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:outline_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.603922, 0.929412, 0.619608, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.258824, 0.0431373, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lhn4q"]
+resource_name = "hp_down"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.3, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1, 80, 50, 80]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:outline_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.51, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.603922, 0.929412, 0.619608, 0), Color(0.996078, 0.65098, 0.772549, 1), Color(0.994431, 0.650467, 0.771279, 1), Color(0.996078, 0.65098, 0.772549, 1), Color(0.603922, 0.929412, 0.619608, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.51, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 0.933033, 1),
+"update": 0,
+"values": [Color(0, 0.258824, 0.0431373, 0), Color(0.568627, 0, 0.243137, 1), Color(0.568965, 0, 0.241265, 1), Color(0.568627, 0, 0.243137, 1), Color(0, 0.258824, 0.0431373, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.4),
+"transitions": PackedFloat32Array(1, 3.4822, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -500)]
+}
+
+[sub_resource type="Animation" id="Animation_dfa8v"]
+resource_name = "hp_up"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.3, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1, 80, 50, 80]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:outline_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1175, 0.51, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.603922, 0.929412, 0.619608, 0), Color(0.6045, 0.794375, 0.93, 1), Color(0.603922, 0.796078, 0.929412, 1), Color(0.603922, 0.796078, 0.929412, 1), Color(0.603922, 0.929412, 0.619608, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.51, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0.258824, 0.0431373, 0), Color(0, 0.314167, 0.65, 1), Color(0, 0.314167, 0.65, 1), Color(0, 0.314167, 0.65, 1), Color(0, 0.258824, 0.0431373, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vv7br"]
+_data = {
+"RESET": SubResource("Animation_yd82m"),
+"hp_down": SubResource("Animation_lhn4q"),
+"hp_up": SubResource("Animation_dfa8v"),
+"score_up": ExtResource("25_pb78e")
+}
+
+[sub_resource type="SphereMesh" id="SphereMesh_5k002"]
+radius = 0.4
+height = 0.8
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pqt4u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwkf1"]
+render_priority = 127
+transparency = 1
+blend_mode = 1
+depth_draw_mode = 1
+no_depth_test = true
+albedo_texture = ExtResource("10_rng1m")
+rim_enabled = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dsm6n"]
+radius = 0.4
+
+[sub_resource type="Animation" id="Animation_yl7re"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i0inn"]
+_data = {
+"RESET": SubResource("Animation_yl7re"),
+"hover": ExtResource("10_o5ywd")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ujhk"]
+render_priority = 127
+transparency = 1
+blend_mode = 1
+depth_draw_mode = 1
+no_depth_test = true
+albedo_texture = ExtResource("10_rng1m")
+rim_enabled = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ygaqg"]
+_data = {
+"hover": ExtResource("11_shcqq")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h25p1"]
+render_priority = 127
+transparency = 1
+blend_mode = 1
+depth_draw_mode = 1
+no_depth_test = true
+albedo_texture = ExtResource("10_rng1m")
+rim_enabled = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x646a"]
+_data = {
+"hover": ExtResource("12_gh6mc")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_svwv1"]
+size = Vector3(1, 1, 7.48)
+
+[sub_resource type="SphereMesh" id="SphereMesh_tsj2u"]
+radius = 0.15
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2a7mm"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6l5sf"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_007nq"]
+radius = 0.1725
+height = 0.405
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1xtn1"]
+radius = 0.08
+height = 0.185
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4bfpf"]
+radius = 0.046
+height = 0.491
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rj7nq"]
+radius = 0.046
+height = 0.646
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2efwe"]
+radius = 0.026
+height = 0.306
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1mw1v"]
+radius = 0.021
+height = 0.336
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0yil0"]
+radius = 0.046
+height = 0.961
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r7y2a"]
+radius = 0.046
+height = 0.676
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r580w"]
+radius = 0.021
+height = 0.441
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1hsj8"]
+radius = 0.021
+height = 0.336
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ae2xo"]
+radius = 0.046
+height = 0.956
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ukb5m"]
+radius = 0.046
+height = 0.676
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_memod"]
+radius = 0.021
+height = 0.441
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_50x6w"]
+radius = 0.021
+height = 0.336
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g737w"]
+radius = 0.221
+height = 0.547
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ww3ii"]
+radius = 10.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_vojki"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5ifj4"]
+radius = 0.4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_76qxs"]
+radius = 1.097
+height = 13.648
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3kibt"]
+radius = 2.367
+height = 6.034
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f5maj"]
+radius = 2.365
+height = 6.034
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ttmvh"]
+radius = 2.698
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mrwwm"]
+direction = Vector3(0, 0.275, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+linear_accel_min = -31.08
+linear_accel_max = 2.71
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lcscx"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_462u4"]
+material = SubResource("StandardMaterial3D_lcscx")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="Animation" id="Animation_kwgy5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:process_material:linear_accel")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-31.08, 2.71)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_wr84n"]
+resource_name = "feed"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:process_material:linear_accel")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.06667, 1.43333, 2.26667),
+"transitions": PackedFloat32Array(0.5, 0.5, 1, 0.5, 1),
+"update": 0,
+"values": [Vector2(-31.08, 2.71), Vector2(-31.08, 2.71), Vector2(-2.23517e-06, 18.25), Vector2(-2.23517e-06, 33.79), Vector2(-31.08, 2.71)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxcj8"]
+_data = {
+"RESET": SubResource("Animation_kwgy5"),
+"feed": SubResource("Animation_wr84n")
+}
+
+[sub_resource type="Animation" id="Animation_ghinw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer_Score/VBoxContainer/HBoxContainer/MarginContainer/Score_Number_Minimum:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer_Score/VBoxContainer/HBoxContainer/Score_Number_Divider:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer_Score/VBoxContainer/HBoxContainer/Score_Number:theme_override_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer_Score/VBoxContainer/HBoxContainer/Score_Number:theme_override_font_sizes/font_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [80]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer_Score/VBoxContainer/HBoxContainer/Score_Number_Divider:theme_override_font_sizes/font_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [80]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer_Score/VBoxContainer/HBoxContainer/MarginContainer/Score_Number_Minimum:theme_override_font_sizes/font_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [60]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MarginContainer_Score/VBoxContainer/HBoxContainer/MarginContainer:theme_override_constants/margin_left")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MarginContainer_Score/VBoxContainer/HBoxContainer/MarginContainer:theme_override_constants/margin_top")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("%Score_Number_Minimum:theme_override_font_sizes/font_size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [70]
+}
+
+[sub_resource type="Animation" id="Animation_bkghh"]
+resource_name = "score_minimum_met"
+length = 1.8
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("MarginContainer_Score/VBoxContainer/HBoxContainer/MarginContainer/Score_Number_Minimum:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.425, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("MarginContainer_Score/VBoxContainer/HBoxContainer/Score_Number_Divider:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.425, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("MarginContainer_Score/VBoxContainer/HBoxContainer/Score_Number:theme_override_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.425, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer_Score/VBoxContainer/HBoxContainer/Score_Number:theme_override_font_sizes/font_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.425, 0.7, 1.05, 1.25, 1.5, 1.6375),
+"transitions": PackedFloat32Array(0.4, 1, 1, 0.4, 1.4, 0.4, 1.4, 0.4),
+"update": 0,
+"values": [80, 120, 120, 80, 100, 80, 90, 80]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer_Score/VBoxContainer/HBoxContainer/Score_Number_Divider:theme_override_font_sizes/font_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.425, 0.7, 1.05, 1.25, 1.5, 1.6375),
+"transitions": PackedFloat32Array(0.4, 1, 1, 0.4, 1.4, 0.4, 1.4, 0.4),
+"update": 0,
+"values": [80, 120, 120, 80, 100, 80, 90, 80]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer_Score/VBoxContainer/HBoxContainer/MarginContainer/Score_Number_Minimum:theme_override_font_sizes/font_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.425, 0.7, 1.05, 1.25, 1.5, 1.6375),
+"transitions": PackedFloat32Array(0.4, 1, 1, 0.4, 1.4, 0.4, 1.4, 0.4),
+"update": 0,
+"values": [60, 90, 90, 50, 70, 50, 60, 50]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"score_minimum_met_animation_finished"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%Score_Number_Minimum:theme_override_font_sizes/font_size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [60, 70]
+}
+
+[sub_resource type="Animation" id="Animation_2gnc0"]
+resource_name = "score_minimum_updated"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("MarginContainer_Score/VBoxContainer/HBoxContainer/MarginContainer:theme_override_constants/margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 1, 1.2, 1.6, 1.8, 2.2, 2.4, 2.8, 3),
+"transitions": PackedFloat32Array(0.535887, 2.92817, 0.535887, 2.92817, 0.535887, 2.92817, 0.535887, 2.92817, 0.535887, 2.92817, 0.535887),
+"update": 0,
+"values": [10, 35, 10, 35, 10, 35, 10, 35, 10, 35, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer_Score/VBoxContainer/HBoxContainer/MarginContainer:theme_override_constants/margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.55, 0.8, 1.3, 1.8, 2.125, 2.4, 2.625, 2.9, 3.125),
+"transitions": PackedFloat32Array(1.68179, 0.42, 0.42, 0.420448, 1.41421, 0.42, 1.41, 0.42, 1.42, 1, 1),
+"update": 0,
+"values": [0, -400, -400, 0, -80, 0, -37, 0, -16, 0, 0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"score_minimum_text_update"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer_Score/VBoxContainer/HBoxContainer/MarginContainer/Score_Number_Minimum:theme_override_colors/font_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.25, 0.45, 0.7, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 0.560784, 0.290196, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%Score_Number_Minimum:theme_override_font_sizes/font_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [61]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_us6tq"]
+_data = {
+"RESET": SubResource("Animation_ghinw"),
+"score_minimum_met": SubResource("Animation_bkghh"),
+"score_minimum_updated": SubResource("Animation_2gnc0")
+}
+
+[sub_resource type="Animation" id="Animation_s8hub"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer_LevelUp/VBoxContainer/LevelUp_Text:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer_LevelUp/VBoxContainer/LevelUp_Text:theme_override_constants/outline_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%MarginContainer_LevelUp:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1qa5h"]
+resource_name = "levelup_text_in"
+length = 0.475
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer_LevelUp/VBoxContainer/LevelUp_Text:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.475),
+"transitions": PackedFloat32Array(0.435275, 1),
+"update": 0,
+"values": [1, 115]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer_LevelUp/VBoxContainer/LevelUp_Text:theme_override_constants/outline_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.475),
+"transitions": PackedFloat32Array(0.435275, 1),
+"update": 0,
+"values": [0, 33]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.475),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"levelup_text_animation_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_444pa"]
+resource_name = "levelup_text_out"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer_LevelUp/VBoxContainer/LevelUp_Text:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8),
+"transitions": PackedFloat32Array(2.92817, 2.92817, 0.435275),
+"update": 0,
+"values": [115, 115, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer_LevelUp/VBoxContainer/LevelUp_Text:theme_override_constants/outline_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8),
+"transitions": PackedFloat32Array(2.92817, 2.92817, 0.435275),
+"update": 0,
+"values": [33, 33, 0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%MarginContainer_LevelUp:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_740tv"]
+_data = {
+"RESET": SubResource("Animation_s8hub"),
+"levelup_text_in": SubResource("Animation_1qa5h"),
+"levelup_text_out": SubResource("Animation_444pa")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s8eah"]
+size = Vector3(137.258, 1, 6.5647)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_on63t"]
+size = Vector2(58.755, 29.72)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rivsa"]
+albedo_color = Color(0.172833, 0.172833, 0.172833, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_fmdd3"]
+inner_radius = 0.047
+outer_radius = 0.068
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cr8rk"]
+no_depth_test = true
+shading_mode = 0
+disable_receive_shadows = true
+
+[sub_resource type="TorusMesh" id="TorusMesh_em5qu"]
+inner_radius = 0.03
+outer_radius = 0.086
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qj1h"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+disable_receive_shadows = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_802u8"]
+
+[node name="Main Scene" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.65595e-05, -0.0122666, 0.00316)
+script = ExtResource("1_fw7jj")
+
+[node name="Main_Menu" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_212kh")
+
+[node name="Title" type="Node3D" parent="Main_Menu"]
+transform = Transform3D(0.658179, 0, 0.38, 0, 0.76, 0, -0.38, 0, 0.658179, -4.775, 1.8, 1.5)
+
+[node name="Title_Harvest-Earth_01" parent="Main_Menu/Title" instance=ExtResource("2_750hd")]
+
+[node name="Title_Abduct-n_Run_01" parent="Main_Menu/Title" instance=ExtResource("3_b8b56")]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Main_Menu/Title"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_0r0h7")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="Main_Menu/Title"]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeBlendTree_d0wwf")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 0.4
+
+[node name="Menu_Buttons" type="Node3D" parent="Main_Menu"]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -0.050961, 0.95, 4.5)
+script = ExtResource("5_ph3hx")
+
+[node name="Button_Story_01" parent="Main_Menu/Menu_Buttons" instance=ExtResource("4_y5b27")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.05, 0)
+
+[node name="Button_Settings_01" parent="Main_Menu/Menu_Buttons" instance=ExtResource("5_8mo0v")]
+transform = Transform3D(0.22, 0, 7.45058e-09, 0, 0.22, 0, -7.45058e-09, 0, 0.22, 0, -0.275, 0)
+
+[node name="Button_Credits_01" parent="Main_Menu/Menu_Buttons" instance=ExtResource("6_i0ytw")]
+transform = Transform3D(0.22, 0, 7.45058e-09, 0, 0.22, 0, -7.45058e-09, 0, 0.22, 0, -0.6, 0)
+
+[node name="Text" parent="Main_Menu/Menu_Buttons/Button_Credits_01" index="0"]
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, -1, 0, 1, -3.61999e-06, 0, -0.114889, 0)
+
+[node name="Button_Quit_01" parent="Main_Menu/Menu_Buttons" instance=ExtResource("7_vhbtm")]
+transform = Transform3D(0.18, 0, 7.45058e-09, 0, 0.18, 0, -7.45058e-09, 0, 0.18, 0, -0.9, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Main_Menu"]
+libraries = {
+"": SubResource("AnimationLibrary_lyaxn")
+}
+
+[node name="Cutscenes" type="Node3D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="Cutscene_Intro" parent="Cutscenes" instance=ExtResource("10_p7d5b")]
+transform = Transform3D(0.766044, -0.642788, 0, 0.642788, 0.766044, 0, 0, 0, 1, 0.25, 0.15, -18.15)
+script = ExtResource("11_8hav3")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Cutscenes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.5)
+light_energy = 13.91
+light_indirect_energy = 5.645
+light_volumetric_fog_energy = 0.0
+light_specular = 0.111
+
+[node name="UI_Top" type="CanvasLayer" parent="."]
+layer = 3
+follow_viewport_scale = 1.94
+script = ExtResource("2_0mwwt")
+
+[node name="Blackout_BG" type="Panel" parent="UI_Top"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_muw3l")
+metadata/_edit_lock_ = true
+
+[node name="Container_Message" type="MarginContainer" parent="UI_Top/Blackout_BG"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 37.0
+offset_top = -97.0
+offset_right = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Message_Skip" type="Label" parent="UI_Top/Blackout_BG/Container_Message"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1gh3k")
+theme_override_font_sizes/font_size = 41
+text = "Press any key to skip."
+horizontal_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI_Top/Blackout_BG/Container_Message"]
+libraries = {
+"": SubResource("AnimationLibrary_fe77p")
+}
+
+[node name="MarginContainer_Loading" type="MarginContainer" parent="UI_Top/Blackout_BG"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -215.0
+offset_top = -86.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Loading_Text" type="Label" parent="UI_Top/Blackout_BG/MarginContainer_Loading"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("7_1vj6d")
+theme_override_font_sizes/font_size = 37
+text = "Loading..."
+
+[node name="Animation_Loading" type="AnimationPlayer" parent="UI_Top/Blackout_BG/MarginContainer_Loading"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_kkp1t")
+}
+
+[node name="Crosshair2D" type="Control" parent="UI_Top"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1109.0
+offset_bottom = -624.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_xei3f")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_Top/Crosshair2D"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -16.0
+offset_right = 86.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qrp36")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI_Top/Crosshair2D/PanelContainer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_y52jq")
+}
+
+[node name="Panel" type="Panel" parent="UI_Top/Crosshair2D/PanelContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Pause_Menu" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 5
+follow_viewport_scale = 1.94
+script = ExtResource("16_wv3ul")
+
+[node name="Game_Dimmer" type="Panel" parent="Pause_Menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5cqyn")
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Pause_Menu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.5
+offset_top = -163.0
+offset_right = 163.5
+offset_bottom = 163.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause_Menu/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button_Continue" type="Button" parent="Pause_Menu/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 77.23)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.713726, 0.670588, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("22_3bjjk")
+theme_override_font_sizes/font_size = 61
+theme_override_styles/focus = SubResource("StyleBoxEmpty_padpo")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_txail")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_856cx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_y0f7o")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_howf2")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_q6ku2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7tvtk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_abb6j")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_66rm6")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_tgf3x")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k05mj")
+
+[node name="Label_Continue" type="Label" parent="Pause_Menu/MarginContainer/VBoxContainer/Button_Continue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.77, 0.54978, 0.5159, 1)
+theme_override_colors/font_shadow_color = Color(0.438973, 0.128744, 0.129868, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = -4
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 30
+theme_override_fonts/font = SubResource("FontVariation_nqysf")
+theme_override_font_sizes/font_size = 61
+text = "Continue"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pause_Menu/MarginContainer/VBoxContainer/Button_Continue/Label_Continue"]
+libraries = {
+"": SubResource("AnimationLibrary_82ywq")
+}
+
+[node name="Button_Settings" type="Button" parent="Pause_Menu/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 77.23)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.713726, 0.670588, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("22_3bjjk")
+theme_override_font_sizes/font_size = 61
+theme_override_styles/focus = SubResource("StyleBoxEmpty_padpo")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_txail")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_856cx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_y0f7o")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_howf2")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_q6ku2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7tvtk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_abb6j")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_66rm6")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_tgf3x")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k05mj")
+
+[node name="Label_Settings" type="Label" parent="Pause_Menu/MarginContainer/VBoxContainer/Button_Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.77, 0.54978, 0.5159, 1)
+theme_override_colors/font_shadow_color = Color(0.438973, 0.128744, 0.129868, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = -4
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 30
+theme_override_fonts/font = SubResource("FontVariation_nqysf")
+theme_override_font_sizes/font_size = 61
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pause_Menu/MarginContainer/VBoxContainer/Button_Settings/Label_Settings"]
+libraries = {
+"": SubResource("AnimationLibrary_82ywq")
+}
+
+[node name="Button_Retry" type="Button" parent="Pause_Menu/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 77.23)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.713726, 0.670588, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("22_3bjjk")
+theme_override_font_sizes/font_size = 61
+theme_override_styles/focus = SubResource("StyleBoxEmpty_padpo")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_txail")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_856cx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_y0f7o")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_howf2")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_q6ku2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7tvtk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_abb6j")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_66rm6")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_tgf3x")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k05mj")
+
+[node name="Label_Retry" type="Label" parent="Pause_Menu/MarginContainer/VBoxContainer/Button_Retry"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.77, 0.54978, 0.5159, 1)
+theme_override_colors/font_shadow_color = Color(0.438973, 0.128744, 0.129868, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = -4
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 30
+theme_override_fonts/font = SubResource("FontVariation_nqysf")
+theme_override_font_sizes/font_size = 61
+text = "Retry"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pause_Menu/MarginContainer/VBoxContainer/Button_Retry/Label_Retry"]
+libraries = {
+"": SubResource("AnimationLibrary_82ywq")
+}
+
+[node name="Button_MainMenu" type="Button" parent="Pause_Menu/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 77.23)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.713726, 0.670588, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("22_3bjjk")
+theme_override_font_sizes/font_size = 61
+theme_override_styles/focus = SubResource("StyleBoxEmpty_padpo")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_txail")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_856cx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_y0f7o")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_howf2")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_q6ku2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7tvtk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_abb6j")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_66rm6")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_tgf3x")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k05mj")
+
+[node name="Label_MainMenu" type="Label" parent="Pause_Menu/MarginContainer/VBoxContainer/Button_MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.77, 0.54978, 0.5159, 1)
+theme_override_colors/font_shadow_color = Color(0.438973, 0.128744, 0.129868, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = -4
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 30
+theme_override_fonts/font = SubResource("FontVariation_nqysf")
+theme_override_font_sizes/font_size = 61
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pause_Menu/MarginContainer/VBoxContainer/Button_MainMenu/Label_MainMenu"]
+libraries = {
+"": SubResource("AnimationLibrary_82ywq")
+}
+
+[node name="Debug_3D" type="Node3D" parent="."]
+
+[node name="POS_Furthest-Spawn" type="Node3D" parent="Debug_3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.431, -130)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Debug_3D/POS_Furthest-Spawn"]
+mesh = SubResource("BoxMesh_war41")
+surface_material_override/0 = SubResource("StandardMaterial3D_y1q3j")
+
+[node name="POS_Highest" type="Node3D" parent="Debug_3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, -130)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Debug_3D/POS_Highest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08253, 94.9054)
+mesh = SubResource("BoxMesh_qcmfl")
+surface_material_override/0 = SubResource("StandardMaterial3D_y1q3j")
+
+[node name="POS_Furthest-Attacker-Area" type="Node3D" parent="Debug_3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.431, -50)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Debug_3D/POS_Furthest-Attacker-Area"]
+mesh = SubResource("BoxMesh_war41")
+
+[node name="POS_Furthest-Player-Area" type="Node3D" parent="Debug_3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.431, -10)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Debug_3D/POS_Furthest-Player-Area"]
+mesh = SubResource("BoxMesh_war41")
+
+[node name="DEBUG_Grab-Spot" type="Node3D" parent="Debug_3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35532, -2.09172)
+visible = false
+
+[node name="DEBUG_Grab-Target" type="MeshInstance3D" parent="Debug_3D/DEBUG_Grab-Spot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0.00010472, 0, -0.00010472, 1, 1.90266, -0.021749, -1.93132)
+mesh = SubResource("SphereMesh_veqak")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_gwj1g")
+
+[node name="Debug_fog_boundary" type="MeshInstance3D" parent="Debug_3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.253605, 0.0409188, -502)
+visible = false
+mesh = SubResource("BoxMesh_mcpq4")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="Cursor_Zone" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.431, -53)
+visible = false
+collision_layer = 16
+collision_mask = 0
+
+[node name="Mesh_Head-Cursor" type="MeshInstance3D" parent="Cursor_Zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0703812, 9.53674e-07, 0.164234)
+mesh = SubResource("BoxMesh_j84b1")
+surface_material_override/0 = SubResource("StandardMaterial3D_ourdh")
+
+[node name="Collision_Head-Cursor" type="CollisionShape3D" parent="Cursor_Zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0703812, 9.53674e-07, 0.164234)
+shape = SubResource("ConvexPolygonShape3D_nthf1")
+
+[node name="UI_FX" type="Control" parent="." node_paths=PackedStringArray("limb_damage_flash", "head_damage_flash", "empathy_damage_flash", "timer_fx_flash")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_qs7h1")
+limb_damage_flash = NodePath("Dmg_Limb_BG")
+head_damage_flash = NodePath("Dmg_Head_BG")
+empathy_damage_flash = NodePath("Dmg_Empathy_BG")
+timer_fx_flash = NodePath("Timer_FX_Flash")
+
+[node name="Dmg_Limb_BG" type="TextureRect" parent="UI_FX"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_hsfw6")
+
+[node name="Dmg_Head_BG" type="TextureRect" parent="UI_FX"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_kjhx1")
+
+[node name="Dmg_Empathy_BG" type="TextureRect" parent="UI_FX"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_kjhx1")
+
+[node name="Timer_FX_Flash" type="Timer" parent="UI_FX"]
+unique_name_in_owner = true
+wait_time = 0.1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_o1fgy")
+script = ExtResource("3_ujty4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.97237, 0.175379, -0.154074, 0, 0.660002, 0.751264, 0.233445, -0.730507, 0.641766, -3.29657, 12.6533, 4.59552)
+shadow_enabled = true
+shadow_bias = 0.01
+shadow_opacity = 0.82
+shadow_blur = 2.599
+
+[node name="Fog_boundaryLeft" type="FogVolume" parent="WorldEnvironment"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.3842, -0.390587, -94.067)
+size = Vector3(30, 7, 200)
+material = SubResource("FogMaterial_2kk4o")
+
+[node name="Fog_boundaryRight" type="FogVolume" parent="WorldEnvironment"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.3839, -0.390267, -94.0668)
+size = Vector3(30, 7, 200)
+material = SubResource("FogMaterial_2kk4o")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.04125, -3.42927, 1.85991)
+attributes = SubResource("CameraAttributesPractical_se27i")
+doppler_tracking = 2
+current = true
+fov = 21.0
+size = 5.0
+near = 0.214
+far = 1000.0
+script = ExtResource("2_qvpxy")
+
+[node name="Collector_Points" type="Node3D" parent="."]
+unique_name_in_owner = true
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 118.15)
+script = ExtResource("4_0jb24")
+
+[node name="Collector_Obstacles" type="Node3D" parent="."]
+unique_name_in_owner = true
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 118.15)
+script = ExtResource("4_0jb24")
+
+[node name="Collector_Safes" type="Node3D" parent="."]
+unique_name_in_owner = true
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 118.15)
+script = ExtResource("4_0jb24")
+
+[node name="Collector_Menu" type="Node3D" parent="."]
+unique_name_in_owner = true
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 118.15)
+script = ExtResource("4_0jb24")
+
+[node name="TerrainController_inScene" parent="." instance=ExtResource("6_ywiix")]
+unique_name_in_owner = true
+
+[node name="UI_Interaction" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.03, 0)
+script = ExtResource("22_gxbra")
+
+[node name="Area_Interact-01" type="Area3D" parent="UI_Interaction"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UI_Interaction/Area_Interact-01"]
+transform = Transform3D(1, 0, 0, 0, 1, -9.87654e-13, 0, 9.87654e-13, 1, 0, 6.33, 2.16)
+visible = false
+shape = SubResource("BoxShape3D_mtj3k")
+disabled = true
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="UI_Interaction/Area_Interact-01"]
+depth = 9.23
+polygon = PackedVector2Array(3.1, 10, 1.2, 14.3, -1.2, 14.3, -3.1, 10, -3.4, 6.4, -2.9, 2.4, -1.2, -1, 1.2, -1, 2.9, 2.4, 3.4, 6.4)
+
+[node name="Mesh_Interact-01" type="MeshInstance3D" parent="UI_Interaction"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.6, -4.47035e-08)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_3xell")
+skeleton = NodePath("../../Player/Alien_V3/DetectionAreas/Area_Body")
+surface_material_override/0 = SubResource("StandardMaterial3D_uudhm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI_Interaction"]
+libraries = {
+"": SubResource("AnimationLibrary_38crk")
+}
+
+[node name="ScoreDunk" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.54315, 0.166246)
+visible = false
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("11_318ny")
+dunk_ascent_distance = 1.5
+dunk_z_offset = -0.5
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="ScoreDunk"]
+aabb = AABB(-0.781489, -1.07957, -1, 1.4077, 1.14254, 2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScoreDunk"]
+unique_name_in_owner = true
+mesh = SubResource("SphereMesh_y8ywy")
+surface_material_override/0 = ExtResource("21_glvus")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ScoreDunk"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271964, 0, -0.00519168)
+shape = SubResource("SphereShape3D_08qdd")
+
+[node name="Animation_scoreDunk" type="AnimationPlayer" parent="ScoreDunk"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_8cfxk")
+}
+
+[node name="scoreCount" type="Label3D" parent="ScoreDunk"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.931364, -0.63251, -0.00250101)
+alpha_cut = 2
+alpha_antialiasing_mode = 1
+modulate = Color(0, 0.258824, 0.0431373, 0)
+outline_modulate = Color(0.603922, 0.929412, 0.619608, 0)
+text = "0"
+font = ExtResource("7_1vj6d")
+font_size = 80
+outline_size = 20
+
+[node name="Animation_scoreCount" type="AnimationPlayer" parent="ScoreDunk/scoreCount"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_vv7br")
+}
+
+[node name="PowerUp_Menu" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+visible = false
+script = ExtResource("8_i4g5f")
+
+[node name="PowerUp_Orb_1" type="Area3D" parent="PowerUp_Menu"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3.79315, 0.166246)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("9_l1n0p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_1"]
+mesh = SubResource("SphereMesh_5k002")
+surface_material_override/0 = ExtResource("21_glvus")
+
+[node name="Icon" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_1/MeshInstance3D"]
+transform = Transform3D(0.325, 0, 0, 0, -1.42062e-08, -0.325, 0, 0.325, -1.42062e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_pqt4u")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_vwkf1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PowerUp_Menu/PowerUp_Orb_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271964, 0, -0.00519168)
+shape = SubResource("SphereShape3D_dsm6n")
+
+[node name="Animation_PowerUp_Orb" type="AnimationPlayer" parent="PowerUp_Menu/PowerUp_Orb_1"]
+libraries = {
+"": SubResource("AnimationLibrary_i0inn")
+}
+
+[node name="PowerUp_Orb_2" type="Area3D" parent="PowerUp_Menu"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.54315, 0.166246)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("9_l1n0p")
+is_type = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_2"]
+mesh = SubResource("SphereMesh_5k002")
+surface_material_override/0 = ExtResource("21_glvus")
+
+[node name="Icon" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_2/MeshInstance3D"]
+transform = Transform3D(0.325, 0, 0, 0, -1.42062e-08, -0.325, 0, 0.325, -1.42062e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_pqt4u")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_5ujhk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PowerUp_Menu/PowerUp_Orb_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271964, 0, -0.00519168)
+shape = SubResource("SphereShape3D_dsm6n")
+
+[node name="Animation_PowerUp_Orb" type="AnimationPlayer" parent="PowerUp_Menu/PowerUp_Orb_2"]
+libraries = {
+"": SubResource("AnimationLibrary_ygaqg")
+}
+
+[node name="PowerUp_Orb_3" type="Area3D" parent="PowerUp_Menu"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3.79315, 0.166246)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("9_l1n0p")
+is_type = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_3"]
+mesh = SubResource("SphereMesh_5k002")
+surface_material_override/0 = ExtResource("21_glvus")
+
+[node name="Icon" type="MeshInstance3D" parent="PowerUp_Menu/PowerUp_Orb_3/MeshInstance3D"]
+transform = Transform3D(0.325, 0, 0, 0, -1.42062e-08, -0.325, 0, 0.325, -1.42062e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_pqt4u")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_h25p1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PowerUp_Menu/PowerUp_Orb_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271964, 0, -0.00519168)
+shape = SubResource("SphereShape3D_dsm6n")
+
+[node name="Animation_PowerUp_Orb" type="AnimationPlayer" parent="PowerUp_Menu/PowerUp_Orb_3"]
+libraries = {
+"": SubResource("AnimationLibrary_x646a")
+}
+
+[node name="Player" type="CharacterBody3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.997372, -0.0724549, 0, 0.0724549, 0.997372, 0, 0, 0)
+collision_layer = 32768
+axis_lock_linear_z = true
+script = ExtResource("3_ia6ow")
+controls_locked = false
+neck_index = 6
+
+[node name="Cam_Target" type="Node3D" parent="Player"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.987688, 0.156434, 0, -0.156434, 0.987688, 0, 0, 0)
+script = ExtResource("5_iuboh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Cam_Target"]
+visible = false
+mesh = SubResource("BoxMesh_svwv1")
+
+[node name="Grab_Target" type="Node3D" parent="Player"]
+unique_name_in_owner = true
+script = ExtResource("37_mdcho")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player/Grab_Target"]
+mesh = SubResource("SphereMesh_tsj2u")
+surface_material_override/0 = SubResource("StandardMaterial3D_2a7mm")
+
+[node name="Grab_Target_offset" type="Node3D" parent="Player/Grab_Target"]
+unique_name_in_owner = true
+script = ExtResource("38_6g4wd")
+cursor_offset = Vector2(-60, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Grab_Target/Grab_Target_offset"]
+visible = false
+mesh = SubResource("SphereMesh_tsj2u")
+skeleton = NodePath("../..")
+
+[node name="Alien_V3" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, 0)
+
+[node name="Alien" parent="Player/Alien_V3" instance=ExtResource("31_xhesi")]
+
+[node name="Skeleton3D" parent="Player/Alien_V3/Alien/Armature" index="0"]
+bones/8/rotation = Quaternion(-0.305902, 0.819659, -0.353434, 0.33116)
+bones/12/rotation = Quaternion(-0.341502, -0.671812, 0.40275, 0.51946)
+bones/19/rotation = Quaternion(0.976056, 0.0511235, -0.00580648, 0.211346)
+bones/20/rotation = Quaternion(0.180529, 0.00570265, 0.0195003, 0.98336)
+bones/21/rotation = Quaternion(-0.568172, -0.0197932, 0.0501282, 0.821143)
+bones/24/rotation = Quaternion(0.975854, -0.0541884, 0.00632841, 0.211503)
+bones/25/rotation = Quaternion(0.1805, -0.00619574, -0.0229956, 0.983287)
+bones/26/rotation = Quaternion(-0.568065, 0.0223133, -0.00500876, 0.822666)
+
+[node name="Armature_hurt" parent="Player/Alien_V3/Alien" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0297975, 0)
+
+[node name="Skeleton3D" parent="Player/Alien_V3/Alien/Armature_hurt" index="0"]
+bones/8/rotation = Quaternion(-0.340627, 0.806029, -0.337772, 0.346699)
+bones/12/rotation = Quaternion(-0.36954, -0.656807, 0.379081, 0.536975)
+bones/19/rotation = Quaternion(0.976056, 0.0511236, -0.00580592, 0.211347)
+bones/20/rotation = Quaternion(0.180529, 0.00570265, 0.0195003, 0.98336)
+bones/21/rotation = Quaternion(-0.568173, -0.0197932, 0.0501282, 0.821142)
+bones/24/rotation = Quaternion(0.975854, -0.0541884, 0.00632844, 0.211503)
+bones/25/rotation = Quaternion(0.1805, -0.00619556, -0.0229957, 0.983287)
+bones/26/rotation = Quaternion(-0.568065, 0.0223134, -0.00500868, 0.822666)
+
+[node name="Alien-hurt_Body" parent="Player/Alien_V3/Alien/Armature_hurt/Skeleton3D" index="5"]
+visible = false
+mesh = SubResource("BoxMesh_6l5sf")
+
+[node name="Orb_New-Game-Teleporter" parent="Player/Alien_V3/Alien" index="4"]
+visible = false
+
+[node name="DetectionAreas" type="Node3D" parent="Player/Alien_V3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.514768, -0.031039, 0.00222724)
+
+[node name="Area_Head" type="Area3D" parent="Player/Alien_V3/DetectionAreas" node_paths=PackedStringArray("is_head", "player", "collision", "collision_area_head", "collision_area_head_hurt")]
+collision_layer = 32768
+collision_mask = 4
+script = ExtResource("10_2td36")
+is_head = NodePath(".")
+player = NodePath("../../..")
+collision = NodePath("../../../Collision_V1_AlienBody")
+collision_area_head = NodePath("CollisionA_AlienHead")
+collision_area_head_hurt = NodePath("CollisionA-hurt_AlienHead")
+
+[node name="Bone_Head" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_Head"]
+transform = Transform3D(-1, 8.52651e-14, -3.89414e-07, -4.26326e-14, 1, 3.27826e-07, 3.89414e-07, 2.68221e-07, -1, -0.514768, 1.49018, 0.258268)
+bone_name = "spine.006"
+bone_idx = 6
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_Head/Bone_Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+remote_path = NodePath("../../CollisionA_AlienHead")
+
+[node name="Bone-hurt_Head" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_Head"]
+transform = Transform3D(-1, 2.84217e-14, -3.89414e-07, 1.59872e-14, 1, 5.21541e-08, 3.89414e-07, -1.49012e-08, -1, -0.514768, 1.48568, 0.244267)
+bone_name = "spine.006_2"
+bone_idx = 6
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature_hurt/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_Head/Bone-hurt_Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.245, -0.025)
+remote_path = NodePath("../../CollisionA-hurt_AlienHead")
+
+[node name="CollisionA_AlienHead" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_Head"]
+transform = Transform3D(-1, 8.52651e-14, -3.89414e-07, -4.26326e-14, 1, 3.27826e-07, 3.89414e-07, 2.68221e-07, -1, -0.514768, 1.74018, 0.258268)
+shape = SubResource("CapsuleShape3D_007nq")
+
+[node name="CollisionA-hurt_AlienHead" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_Head"]
+transform = Transform3D(-1, 2.84217e-14, -3.89414e-07, 1.59872e-14, 1, 5.21541e-08, 3.89414e-07, -1.49012e-08, -1, -0.514768, 1.73068, 0.269267)
+shape = SubResource("CapsuleShape3D_1xtn1")
+
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V3/DetectionAreas/Area_Head"]
+
+[node name="Area_LegR" type="Area3D" parent="Player/Alien_V3/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_hurt", "collision_area_lower", "collision_area_upper", "collision_area_lower_hurt", "collision_area_upper_hurt")]
+collision_layer = 32768
+collision_mask = 4
+script = ExtResource("10_2td36")
+player = NodePath("../../..")
+collision = NodePath("../../../Collision_V1_LegRight")
+collision_hurt = NodePath("../../../Collision_V1_LegRight_hurt")
+collision_area_lower = NodePath("CollisionA_LegR_Lower")
+collision_area_upper = NodePath("CollisionA_LegR_Upper")
+collision_area_lower_hurt = NodePath("CollisionA-hurt_LegR_Lower")
+collision_area_upper_hurt = NodePath("CollisionA-hurt_LegR_Upper")
+is_part = 1
+
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
+
+[node name="Bone_LegR_Lower" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
+transform = Transform3D(-0.998025, 0.0622817, -0.00821519, -0.0627161, -0.980239, 0.187612, 0.00363193, 0.187757, 0.982209, -0.256445, 0.468158, 0.202204)
+bone_name = "shin.R"
+bone_idx = 25
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR/Bone_LegR_Lower"]
+transform = Transform3D(0.999657, -0.0261769, 0, 0.0260564, 0.995055, 0.0958458, -0.00250895, -0.0958129, 0.995396, -0.01, 0.27, 0)
+remote_path = NodePath("../../CollisionA_LegR_Lower")
+
+[node name="Bone-hurt_LegR_Lower" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
+transform = Transform3D(-0.998025, 0.0622816, -0.00821559, -0.0627161, -0.980239, 0.187612, 0.00363152, 0.187757, 0.98221, -0.304155, 0.790098, 0.250139)
+bone_name = "shin.R_2"
+bone_idx = 25
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature_hurt/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR/Bone-hurt_LegR_Lower"]
+transform = Transform3D(1, 0, 0, 0, 0.993171, 0.116671, 0, -0.116671, 0.993171, 0, 0.155, 0)
+remote_path = NodePath("../../CollisionA-hurt_LegR_Lower")
+
+[node name="Bone_LegR_Upper" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
+transform = Transform3D(-0.994047, 0.108437, 0.0105711, -0.108625, -0.978895, -0.173102, -0.00842263, -0.17322, 0.984848, -0.314643, 0.993534, 0.295171)
+bone_name = "thigh.R"
+bone_idx = 24
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR/Bone_LegR_Upper"]
+transform = Transform3D(1, 0, 0, 0, 0.999048, -0.0436194, 0, 0.0436194, 0.999048, 0, 0.21, 0.025)
+remote_path = NodePath("../../CollisionA_LegR_Upper")
+
+[node name="Bone-hurt_LegR_Upper" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
+transform = Transform3D(-0.994048, 0.108437, 0.010571, -0.108625, -0.978896, -0.173102, -0.00842268, -0.173219, 0.984849, -0.333255, 1.05279, 0.296623)
+bone_name = "thigh.R_2"
+bone_idx = 24
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature_hurt/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR/Bone-hurt_LegR_Upper"]
+transform = Transform3D(0.999048, -0.0436194, 0, 0.0435471, 0.997392, -0.057564, 0.00251091, 0.0575092, 0.998342, 0.005, 0.105, 0.015)
+remote_path = NodePath("../../CollisionA-hurt_LegR_Upper")
+
+[node name="CollisionA_LegR_Lower" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
+transform = Transform3D(-0.996039, 0.088886, -0.00220793, -0.0887068, -0.991726, 0.0927962, 0.00605863, 0.0926247, 0.995683, -0.229649, 0.20412, 0.252862)
+shape = SubResource("CapsuleShape3D_4bfpf")
+disabled = true
+
+[node name="CollisionA_LegR_Upper" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
+transform = Transform3D(-0.994047, 0.108795, 0.00583106, -0.108625, -0.985514, -0.130238, -0.00842263, -0.130096, 0.991466, -0.291607, 0.783638, 0.283416)
+shape = SubResource("CapsuleShape3D_rj7nq")
+disabled = true
+
+[node name="CollisionA-hurt_LegR_Lower" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
+transform = Transform3D(-0.998025, 0.0628148, -0.000893031, -0.0627161, -0.995434, 0.0719651, 0.00363152, 0.0718794, 0.997408, -0.294502, 0.638161, 0.279241)
+shape = SubResource("CapsuleShape3D_2efwe")
+disabled = true
+
+[node name="CollisionA-hurt_LegR_Upper" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_LegR"]
+transform = Transform3D(-0.988353, 0.152122, 0.00431144, -0.151584, -0.98156, -0.116466, -0.013485, -0.115762, 0.993187, -0.32668, 0.946863, 0.293165)
+shape = SubResource("CapsuleShape3D_1mw1v")
+disabled = true
+
+[node name="Area_LegL" type="Area3D" parent="Player/Alien_V3/DetectionAreas" node_paths=PackedStringArray("player", "collision", "collision_hurt", "collision_area_lower", "collision_area_upper", "collision_area_lower_hurt", "collision_area_upper_hurt")]
+collision_layer = 32768
+collision_mask = 4
+script = ExtResource("10_2td36")
+player = NodePath("../../..")
+collision = NodePath("../../../Collision_V1_LegLeft")
+collision_hurt = NodePath("../../../Collision_V1_LegLeft_hurt")
+collision_area_lower = NodePath("CollisionA_LegL_Lower")
+collision_area_upper = NodePath("CollisionA_LegL_Upper")
+collision_area_lower_hurt = NodePath("CollisionA-hurt_LegL_Lower")
+collision_area_upper_hurt = NodePath("CollisionA-hurt_LegL_Upper")
+is_part = 2
+
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
+
+[node name="Bone_LegL_Lower" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
+transform = Transform3D(-0.997973, -0.0630601, 0.00851862, 0.0635363, -0.980116, 0.187975, -0.0035045, 0.188136, 0.982138, -0.769772, 0.46777, 0.202375)
+bone_name = "shin.L"
+bone_idx = 20
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL/Bone_LegL_Lower"]
+transform = Transform3D(0.999657, -0.0261769, 0, 0.0260564, 0.995055, 0.0958458, -0.00250895, -0.0958129, 0.995396, -0.01, 0.27, 0)
+remote_path = NodePath("../../CollisionA_LegL_Lower")
+
+[node name="Bone-hurt_LegL_Lower" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
+transform = Transform3D(-0.997973, -0.0630605, 0.00851759, 0.0635365, -0.980117, 0.187976, -0.00350562, 0.188135, 0.982135, -0.723721, 0.789904, 0.250224)
+bone_name = "shin.L_2"
+bone_idx = 20
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature_hurt/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL/Bone-hurt_LegL_Lower"]
+transform = Transform3D(1, 0, 0, 0, 0.993171, 0.116671, 0, -0.116671, 0.993171, 0, 0.155, 0)
+remote_path = NodePath("../../CollisionA-hurt_LegL_Lower")
+
+[node name="Bone_LegL_Upper" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
+transform = Transform3D(-0.994705, -0.102253, -0.0102744, 0.102487, -0.979617, -0.172763, 0.00760058, -0.172901, 0.984911, -0.714893, 0.993534, 0.295171)
+bone_name = "thigh.L"
+bone_idx = 19
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL/Bone_LegL_Upper"]
+transform = Transform3D(1, 0, 0, 0, 0.999048, -0.0436194, 0, 0.0436194, 0.999048, 0, 0.21, 0.025)
+remote_path = NodePath("../../CollisionA_LegL_Upper")
+
+[node name="Bone-hurt_LegL_Upper" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
+transform = Transform3D(-0.994705, -0.102253, -0.0102755, 0.102487, -0.979617, -0.172763, 0.00759947, -0.172902, 0.984908, -0.696281, 1.05279, 0.296623)
+bone_name = "thigh.L_2"
+bone_idx = 19
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature_hurt/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL/Bone-hurt_LegL_Upper"]
+transform = Transform3D(0.999048, -0.0436194, 0, 0.0435471, 0.997392, -0.057564, 0.00251091, 0.0575092, 0.998342, 0.005, 0.105, 0.015)
+remote_path = NodePath("../../CollisionA-hurt_LegL_Upper")
+
+[node name="CollisionA_LegL_Lower" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
+transform = Transform3D(-0.999295, -0.0374406, 0.00243536, 0.0375046, -0.994943, 0.0931698, -0.00106528, 0.0931962, 0.995648, -0.776819, 0.202504, 0.253207)
+shape = SubResource("CapsuleShape3D_4bfpf")
+disabled = true
+
+[node name="CollisionA_LegL_Upper" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
+transform = Transform3D(-0.994705, -0.102604, -0.0058044, 0.102487, -0.98622, -0.129868, 0.00760058, -0.129775, 0.991515, -0.736623, 0.783495, 0.283485)
+shape = SubResource("CapsuleShape3D_rj7nq")
+disabled = true
+
+[node name="CollisionA-hurt_LegL_Lower" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
+transform = Transform3D(-0.997973, -0.0636236, 0.00110209, 0.0635365, -0.995355, 0.072341, -0.00350562, 0.0722637, 0.997378, -0.733495, 0.637986, 0.279385)
+shape = SubResource("CapsuleShape3D_2efwe")
+disabled = true
+
+[node name="CollisionA-hurt_LegL_Upper" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_LegL"]
+transform = Transform3D(-0.998237, -0.0591889, -0.00437241, 0.0592958, -0.991468, -0.116086, 0.00253588, -0.116141, 0.993228, -0.712146, 0.947848, 0.29328)
+shape = SubResource("CapsuleShape3D_1mw1v")
+disabled = true
+
+[node name="Area_ArmR" type="Area3D" parent="Player/Alien_V3/DetectionAreas" node_paths=PackedStringArray("player", "collision_area_lower", "collision_area_upper", "collision_area_lower_hurt", "collision_area_upper_hurt")]
+transform = Transform3D(0.990252, 0.0902013, -0.106138, -0.0748751, 0.987253, 0.140444, 0.117453, -0.131128, 0.984383, -0.72615, 0.475807, 0.621374)
+collision_layer = 32768
+collision_mask = 4
+script = ExtResource("10_2td36")
+player = NodePath("../../..")
+collision_area_lower = NodePath("CollisionA_ArmR_Lower")
+collision_area_upper = NodePath("CollisionA_ArmR_Upper")
+collision_area_lower_hurt = NodePath("CollisionA-hurt_ArmR_Lower")
+collision_area_upper_hurt = NodePath("CollisionA-hurt_ArmR_Upper")
+is_part = 3
+
+[node name="Bone_ArmR_Lower" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
+transform = Transform3D(0.866142, 0.326351, -0.37854, 0.468943, -0.26865, 0.84138, 0.172891, -0.906268, -0.385729, 0.842754, 0.425306, -0.272311)
+bone_name = "forearm.R"
+bone_idx = 13
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR/Bone_ArmR_Lower"]
+transform = Transform3D(0.999525, -0.025412, -0.0174358, 0.026152, 0.998706, 0.0436194, 0.0163048, -0.0440546, 0.998896, -0.005, 0.467, -0.028)
+remote_path = NodePath("../../CollisionA_ArmR_Lower")
+
+[node name="RemoteTransform_HandR" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR/Bone_ArmR_Lower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.922, -0.028)
+remote_path = NodePath("../../Marker_HandR")
+
+[node name="Bone-hurt_ArmR_Lower" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
+transform = Transform3D(0.866197, 0.325748, -0.378935, 0.469307, -0.26987, 0.840787, 0.171622, -0.906123, -0.386636, 0.640654, 0.634808, -0.258018)
+bone_name = "forearm.R_2"
+bone_idx = 13
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature_hurt/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR/Bone-hurt_ArmR_Lower"]
+transform = Transform3D(0.999517, -0.0257163, -0.0174464, 0.026168, 0.999315, 0.026177, 0.0167613, -0.0266208, 0.999505, -0.01, 0.232, -0.008)
+remote_path = NodePath("../../CollisionA-hurt_ArmR_Lower")
+
+[node name="RemoteTransform-hurt_HandR" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR/Bone-hurt_ArmR_Lower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.075, 0.367, -0.013)
+remote_path = NodePath("../../Marker-hurt_HandR")
+
+[node name="Bone_ArmR_Upper" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
+transform = Transform3D(0.861617, 0.501676, -0.0770489, 0.503066, -0.864247, -0.00157177, -0.0673773, -0.0374065, -0.997026, 0.534477, 0.956381, -0.249325)
+bone_name = "upper_arm.R"
+bone_idx = 12
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR/Bone_ArmR_Upper"]
+transform = Transform3D(0.999512, -0.0259294, -0.0174507, 0.0261744, 0.99956, 0.0139622, 0.017081, -0.0144121, 0.99975, 0, 0.292, 0.012)
+remote_path = NodePath("../../CollisionA_ArmR_Upper")
+
+[node name="Bone-hurt_ArmR_Upper" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
+transform = Transform3D(0.860053, 0.504122, -0.0785427, 0.505574, -0.862783, -0.00162419, -0.0685837, -0.0383122, -0.99691, 0.463223, 0.938473, -0.244533)
+bone_name = "upper_arm.R_2"
+bone_idx = 12
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature_hurt/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR/Bone-hurt_ArmR_Upper"]
+transform = Transform3D(0.999512, -0.0259294, -0.0174507, 0.0261744, 0.99956, 0.0139622, 0.017081, -0.0144121, 0.99975, 0, 0.182, 0.012)
+remote_path = NodePath("../../CollisionA-hurt_ArmR_Upper")
+
+[node name="CollisionA_ArmR_Lower" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
+transform = Transform3D(0.868093, 0.320595, -0.378989, 0.475413, -0.317285, 0.820557, 0.142819, -0.892496, -0.427848, 1.00143, 0.273944, -0.685602)
+shape = SubResource("CapsuleShape3D_0yil0")
+disabled = true
+
+[node name="CollisionA_ArmR_Upper" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
+transform = Transform3D(0.873012, 0.480224, -0.085061, 0.480173, -0.876888, -0.022417, -0.0853538, -0.0212738, -0.996123, 0.680042, 0.704002, -0.272212)
+shape = SubResource("CapsuleShape3D_r7y2a")
+disabled = true
+
+[node name="CollisionA-hurt_ArmR_Lower" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
+transform = Transform3D(0.867951, 0.313337, -0.385332, 0.476112, -0.304136, 0.825119, 0.141347, -0.899623, -0.413158, 0.710597, 0.560778, -0.466861)
+shape = SubResource("CapsuleShape3D_r580w")
+disabled = true
+
+[node name="CollisionA-hurt_ArmR_Upper" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
+transform = Transform3D(0.871487, 0.482732, -0.086493, 0.482716, -0.875489, -0.0224928, -0.0865812, -0.0221495, -0.995999, 0.55403, 0.781427, -0.263469)
+shape = SubResource("CapsuleShape3D_1hsj8")
+disabled = true
+
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
+
+[node name="Marker_HandR" type="Marker3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
+transform = Transform3D(0.866142, 0.326351, -0.37854, 0.468943, -0.26865, 0.84138, 0.172891, -0.906268, -0.385729, 0.981021, 0.0602645, -1.13167)
+
+[node name="Marker-hurt_HandR" type="Marker3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmR"]
+transform = Transform3D(0.866197, 0.325748, -0.378935, 0.469307, -0.26987, 0.840787, 0.171622, -0.906123, -0.386636, 0.700165, 0.489637, -0.59841)
+
+[node name="Area_ArmL" type="Area3D" parent="Player/Alien_V3/DetectionAreas" node_paths=PackedStringArray("player", "collision_area_lower", "collision_area_upper", "collision_area_lower_hurt", "collision_area_upper_hurt")]
+transform = Transform3D(0.990211, -0.0897146, 0.106922, 0.0742307, 0.987237, 0.140901, -0.118198, -0.131585, 0.984233, -1.452, 0.476, 0.621)
+collision_layer = 32768
+collision_mask = 4
+script = ExtResource("10_2td36")
+player = NodePath("../../..")
+collision_area_lower = NodePath("CollisionA_ArmL_Lower")
+collision_area_upper = NodePath("CollisionA_ArmL_Upper")
+collision_area_lower_hurt = NodePath("CollisionA-hurt_ArmL_Lower")
+collision_area_upper_hurt = NodePath("CollisionA-hurt_ArmL_Upper")
+is_part = 4
+
+[node name="Timer_limb-dmg-flash_length" type="Timer" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
+
+[node name="Bone_ArmL_Lower" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
+transform = Transform3D(0.67269, -0.29109, 0.680261, -0.73986, -0.252525, 0.623568, -0.00973122, -0.922766, -0.385237, 0.240055, 0.374519, 0.0055213)
+bone_name = "forearm.L"
+bone_idx = 9
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL/Bone_ArmL_Lower"]
+transform = Transform3D(0.999525, -0.025412, -0.0174358, 0.026152, 0.998706, 0.0436194, 0.0163048, -0.0440546, 0.998896, -0.005, 0.467, -0.028)
+remote_path = NodePath("../../CollisionA_ArmL_Lower")
+
+[node name="RemoteTransform_HandL" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL/Bone_ArmL_Lower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.922, -0.028)
+remote_path = NodePath("../../Marker_HandL")
+
+[node name="Bone-hurt_ArmL_Lower" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
+transform = Transform3D(0.671842, -0.2918, 0.680795, -0.740643, -0.25382, 0.622113, -0.00873327, -0.922187, -0.386646, 0.465271, 0.561622, -0.0462852)
+bone_name = "forearm.L_2"
+bone_idx = 9
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature_hurt/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL/Bone-hurt_ArmL_Lower"]
+transform = Transform3D(0.999687, 0.0179065, -0.0174464, -0.0174464, 0.999505, 0.0261769, 0.0179065, -0.0258644, 0.999505, 0, 0.232, -0.008)
+remote_path = NodePath("../../CollisionA-hurt_ArmL_Lower")
+
+[node name="RemoteTransform-hurt_HandL" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL/Bone-hurt_ArmL_Lower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.075, 0.367, -0.013)
+remote_path = NodePath("../../Marker-hurt_HandL")
+
+[node name="Bone_ArmL_Upper" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
+transform = Transform3D(0.764852, -0.589876, 0.258935, -0.453525, -0.778507, -0.433866, 0.45751, 0.21441, -0.862967, 0.60253, 0.852907, -0.126232)
+bone_name = "upper_arm.L"
+bone_idx = 8
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL/Bone_ArmL_Upper"]
+transform = Transform3D(0.999512, -0.0259294, -0.0174507, 0.0261744, 0.99956, 0.0139622, 0.017081, -0.0144121, 0.99975, 0, 0.292, 0.012)
+remote_path = NodePath("../../CollisionA_ArmL_Upper")
+
+[node name="Bone-hurt_ArmL_Upper" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
+transform = Transform3D(0.762847, -0.592452, 0.258972, -0.455821, -0.776832, -0.434465, 0.458577, 0.213385, -0.862655, 0.673791, 0.835036, -0.121388)
+bone_name = "upper_arm.L_2"
+bone_idx = 8
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature_hurt/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL/Bone-hurt_ArmL_Upper"]
+transform = Transform3D(0.999512, -0.0259294, -0.0174507, 0.0261744, 0.99956, 0.0139622, 0.017081, -0.0144121, 0.99975, 0, 0.147, 0.012)
+remote_path = NodePath("../../CollisionA-hurt_ArmL_Upper")
+
+[node name="CollisionA_ArmL_Lower" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
+transform = Transform3D(0.675849, -0.337776, 0.655084, -0.735946, -0.260868, 0.624764, -0.04014, -0.904353, -0.424892, 0.0817056, 0.242829, -0.414575)
+shape = SubResource("CapsuleShape3D_ae2xo")
+disabled = true
+
+[node name="CollisionA_ArmL_Upper" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
+transform = Transform3D(0.753462, -0.613181, 0.237288, -0.481092, -0.760152, -0.436713, 0.448159, 0.21489, -0.867742, 0.433394, 0.620376, -0.0739802)
+shape = SubResource("CapsuleShape3D_ukb5m")
+disabled = true
+
+[node name="CollisionA-hurt_ArmL_Lower" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
+transform = Transform3D(0.688914, -0.297233, 0.661099, -0.724843, -0.283047, 0.628082, 0.000434831, -0.911886, -0.410442, 0.392127, 0.497758, -0.257139)
+shape = SubResource("CapsuleShape3D_memod")
+disabled = true
+
+[node name="CollisionA-hurt_ArmL_Upper" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
+transform = Transform3D(0.751391, -0.615704, 0.237323, -0.483352, -0.758409, -0.437249, 0.449204, 0.213833, -0.867462, 0.589808, 0.715628, -0.100373)
+shape = SubResource("CapsuleShape3D_50x6w")
+disabled = true
+
+[node name="Marker_HandL" type="Marker3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
+transform = Transform3D(0.67269, -0.29109, 0.680261, -0.73986, -0.252525, 0.623568, -0.00973121, -0.922766, -0.385237, 0.0871613, -0.0237413, -0.836429)
+
+[node name="Marker-hurt_HandL" type="Marker3D" parent="Player/Alien_V3/DetectionAreas/Area_ArmL"]
+transform = Transform3D(0.671842, -0.2918, 0.680795, -0.740643, -0.25382, 0.622113, -0.00873327, -0.922187, -0.386646, 0.399718, 0.404834, -0.380356)
+
+[node name="Area_Body" type="Area3D" parent="Player/Alien_V3/DetectionAreas" node_paths=PackedStringArray("player")]
+script = ExtResource("10_2td36")
+player = NodePath("../../..")
+is_part = 5
+
+[node name="Bone_Body" type="BoneAttachment3D" parent="Player/Alien_V3/DetectionAreas/Area_Body"]
+transform = Transform3D(-1, -8.13429e-08, -2.14028e-07, -2.53376e-08, 0.968339, -0.24964, 2.27558e-07, -0.24964, -0.968339, -0.514768, 0.932681, 0.338167)
+bone_name = "spine"
+bone_idx = 0
+use_external_skeleton = true
+external_skeleton = NodePath("../../../Alien/Armature/Skeleton3D")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player/Alien_V3/DetectionAreas/Area_Body/Bone_Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.295, -0.02)
+remote_path = NodePath("../../CollisionA_AlienBody")
+
+[node name="CollisionA_AlienBody" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_Body"]
+transform = Transform3D(-1, -8.13429e-08, -2.14028e-07, -2.53376e-08, 0.968339, -0.24964, 2.27558e-07, -0.24964, -0.968339, -0.514768, 1.22333, 0.283891)
+shape = SubResource("CapsuleShape3D_g737w")
+
+[node name="Area_Player-Proximity" type="Area3D" parent="Player/Alien_V3/DetectionAreas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00993299, 1, -0.00758123)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("8_0gjb7")
+
+[node name="Collision_Copter-Proximity" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_Player-Proximity"]
+shape = SubResource("SphereShape3D_ww3ii")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Alien_V3/DetectionAreas/Area_Player-Proximity"]
+visible = false
+mesh = SubResource("SphereMesh_vojki")
+
+[node name="Area_Feed" type="Area3D" parent="Player/Alien_V3/DetectionAreas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.67102, 0.229529)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("37_1xjmt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Alien_V3/DetectionAreas/Area_Feed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0498692, 0.00362279)
+shape = SubResource("SphereShape3D_5ifj4")
+
+[node name="Collision_V1_LegRight" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, 0.305226, 0.612, 0.185)
+shape = SubResource("CapsuleShape3D_76qxs")
+
+[node name="Collision_V1_LegLeft" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, -0.235, 0.612, 0.185)
+shape = SubResource("CapsuleShape3D_76qxs")
+
+[node name="Collision_V1_LegRight_hurt" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, 0.453314, 0.79, 0.170901)
+shape = SubResource("CapsuleShape3D_3kibt")
+disabled = true
+
+[node name="Collision_V1_LegLeft_hurt" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, -4.65661e-10, 0, 4.65661e-10, 0.1, -0.23, 0.79, 0.035)
+shape = SubResource("CapsuleShape3D_f5maj")
+disabled = true
+
+[node name="Collision_V1_AlienBody" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.1, 0, 0, 0, 0.0999999, -2.79397e-09, 0, 2.79397e-09, 0.0999999, -0.014061, 1.18986, 0.202002)
+shape = SubResource("SphereShape3D_ttmvh")
+
+[node name="Particles_Blood-Human" type="GPUParticles3D" parent="Player"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 1.55734, -0.171342)
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_mrwwm")
+draw_pass_1 = SubResource("SphereMesh_462u4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Particles_Blood-Human"]
+libraries = {
+"": SubResource("AnimationLibrary_cxcj8")
+}
+
+[node name="PowerUps" type="Node3D" parent="Player"]
+script = ExtResource("38_o34nr")
+
+[node name="hpLabels" type="Node3D" parent="Player"]
+unique_name_in_owner = true
+
+[node name="hpCount_ArmL" type="Label3D" parent="Player/hpLabels"]
+transform = Transform3D(1, 0, 0, 0, 0.997371, 0.0724549, 0, -0.0724549, 0.997371, -0.8, 1.42026, -3.72529e-09)
+no_depth_test = true
+alpha_antialiasing_mode = 1
+render_priority = 127
+outline_render_priority = 126
+modulate = Color(0, 0.258824, 0.0431373, 0)
+outline_modulate = Color(0.603922, 0.929412, 0.619608, 0)
+text = "+1"
+font = ExtResource("7_1vj6d")
+font_size = 80
+outline_size = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/hpLabels/hpCount_ArmL"]
+libraries = {
+"": SubResource("AnimationLibrary_vv7br")
+}
+
+[node name="hpCount_ArmR" type="Label3D" parent="Player/hpLabels"]
+transform = Transform3D(1, 0, 0, 0, 0.997371, 0.0724549, 0, -0.0724549, 0.997371, 0.8, 1.42026, -3.72529e-09)
+no_depth_test = true
+alpha_antialiasing_mode = 1
+render_priority = 127
+outline_render_priority = 126
+modulate = Color(0, 0.258824, 0.0431373, 0)
+outline_modulate = Color(0.603922, 0.929412, 0.619608, 0)
+text = "+1"
+font = ExtResource("7_1vj6d")
+font_size = 80
+outline_size = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/hpLabels/hpCount_ArmR"]
+libraries = {
+"": SubResource("AnimationLibrary_vv7br")
+}
+
+[node name="hpCount_LegL" type="Label3D" parent="Player/hpLabels"]
+transform = Transform3D(1, 0, 0, 0, 0.997371, 0.0724549, 0, -0.0724549, 0.997371, -0.85, 0.556, 3.72529e-09)
+no_depth_test = true
+alpha_antialiasing_mode = 1
+render_priority = 127
+outline_render_priority = 126
+modulate = Color(0, 0.258824, 0.0431373, 0)
+outline_modulate = Color(0.603922, 0.929412, 0.619608, 0)
+text = "+1"
+font = ExtResource("7_1vj6d")
+font_size = 80
+outline_size = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/hpLabels/hpCount_LegL"]
+libraries = {
+"": SubResource("AnimationLibrary_vv7br")
+}
+
+[node name="hpCount_LegR" type="Label3D" parent="Player/hpLabels"]
+transform = Transform3D(1, 0, 0, 0, 0.997371, 0.0724549, 0, -0.0724549, 0.997371, 0.85, 0.556083, -3.72529e-09)
+no_depth_test = true
+alpha_antialiasing_mode = 1
+render_priority = 127
+outline_render_priority = 126
+modulate = Color(0, 0.258824, 0.0431373, 0)
+outline_modulate = Color(0.603922, 0.929412, 0.619608, 0)
+text = "+1"
+font = ExtResource("7_1vj6d")
+font_size = 80
+outline_size = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/hpLabels/hpCount_LegR"]
+libraries = {
+"": SubResource("AnimationLibrary_vv7br")
+}
+
+[node name="hpCount_Head" type="Label3D" parent="Player/hpLabels"]
+transform = Transform3D(1, 0, 0, 0, 0.997371, 0.0724549, 0, -0.0724549, 0.997371, -2.18279e-11, 2.15188, -0.115928)
+no_depth_test = true
+alpha_antialiasing_mode = 1
+render_priority = 127
+outline_render_priority = 126
+modulate = Color(0, 0.258824, 0.0431373, 0)
+outline_modulate = Color(0.603922, 0.929412, 0.619608, 0)
+text = "-1"
+font = ExtResource("7_1vj6d")
+font_size = 80
+outline_size = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/hpLabels/hpCount_Head"]
+libraries = {
+"": SubResource("AnimationLibrary_vv7br")
+}
+
+[node name="Debug" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 4
+script = ExtResource("1_1xhrq")
+
+[node name="Information" type="Control" parent="Debug"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer_MoreInfo" type="MarginContainer" parent="Debug/Information"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_bottom = 20
+
+[node name="Container_MoreInfo" type="HBoxContainer" parent="Debug/Information/MarginContainer_MoreInfo"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 180
+
+[node name="Label_showFPS" type="Label" parent="Debug/Information/MarginContainer_MoreInfo/Container_MoreInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 50
+text = "FPS: "
+
+[node name="Label_showState" type="Label" parent="Debug/Information/MarginContainer_MoreInfo/Container_MoreInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 50
+text = "State:"
+
+[node name="Label_Hide-Hp" type="Label" parent="Debug/Information"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 30
+text = "Hide Hit Points"
+
+[node name="Menu" parent="Debug" instance=ExtResource("14_eaktg")]
+unique_name_in_owner = true
+visible = false
+
+[node name="HUD" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+script = ExtResource("12_gi6vt")
+
+[node name="PowerUp_Name" type="Control" parent="HUD"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer_Orb2" type="MarginContainer" parent="HUD/PowerUp_Name"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.5
+offset_top = -100.5
+offset_right = 159.5
+offset_bottom = -69.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/PowerUp_Name/MarginContainer_Orb2"]
+layout_mode = 2
+
+[node name="PowerUp_Name_Text" type="Label" parent="HUD/PowerUp_Name/MarginContainer_Orb2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("10_dhtlq")
+theme_override_font_sizes/font_size = 30
+text = "Powerup Name"
+horizontal_alignment = 1
+
+[node name="MarginContainer_PowerUp-Description" type="MarginContainer" parent="HUD"]
+unique_name_in_owner = true
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -253.0
+offset_right = 6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = -70
+theme_override_constants/margin_right = 160
+
+[node name="Powerup_Description_Text" type="Label" parent="HUD/MarginContainer_PowerUp-Description"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("22_3bjjk")
+theme_override_font_sizes/font_size = 50
+text = "Description of powerup goes here. More text might be added if necessary."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer_Score" type="MarginContainer" parent="HUD"]
+unique_name_in_owner = true
+offset_right = 498.0
+offset_bottom = 195.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_left = 55
+theme_override_constants/margin_top = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/MarginContainer_Score"]
+layout_mode = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Score_Text" type="Label" parent="HUD/MarginContainer_Score/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("7_1vj6d")
+theme_override_font_sizes/font_size = 40
+text = "Abductions"
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer_Score/VBoxContainer"]
+layout_mode = 2
+
+[node name="Score_Number" type="Label" parent="HUD/MarginContainer_Score/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("7_1vj6d")
+theme_override_font_sizes/font_size = 80
+text = "0"
+
+[node name="Score_Number_Divider" type="Label" parent="HUD/MarginContainer_Score/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("7_1vj6d")
+theme_override_font_sizes/font_size = 80
+text = "/"
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/MarginContainer_Score/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="Score_Number_Minimum" type="Label" parent="HUD/MarginContainer_Score/VBoxContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("7_1vj6d")
+theme_override_font_sizes/font_size = 70
+text = "0"
+
+[node name="Animation_HUD-Score" type="AnimationPlayer" parent="HUD"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_us6tq")
+}
+
+[node name="MarginContainer_LevelUp" type="MarginContainer" parent="HUD"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -306.5
+offset_top = -123.0
+offset_right = 306.5
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/MarginContainer_LevelUp"]
+layout_mode = 2
+alignment = 1
+
+[node name="LevelUp_Text" type="Label" parent="HUD/MarginContainer_LevelUp/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.560784, 0.290196, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("7_1vj6d")
+theme_override_font_sizes/font_size = 1
+text = "Level Up!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelUp_Text-2" type="Label" parent="HUD/MarginContainer_LevelUp/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.560784, 0.290196, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 33
+theme_override_fonts/font = ExtResource("7_1vj6d")
+theme_override_font_sizes/font_size = 35
+text = "Something that is info!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Animation_HUD-LevelUp" type="AnimationPlayer" parent="HUD"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_740tv")
+}
+
+[node name="SpawnPlace" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.226019, -2.19981, 0.376984)
+
+[node name="Debug_Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.63274, 0)
+script = ExtResource("46_l8cr0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Debug_Ground"]
+shape = SubResource("BoxShape3D_s8eah")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Debug_Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.65, -3)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_on63t")
+surface_material_override/0 = SubResource("StandardMaterial3D_rivsa")
+
+[node name="Crosshair_offset" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.5, 0, 0)
+script = ExtResource("49_ebkqo")
+cursor_offset = Vector2(-70, 0)
+offset_offset_scale = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Crosshair_offset"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.32831e-10, 0)
+mesh = SubResource("SphereMesh_tsj2u")
+skeleton = NodePath("../../Crosshair3D")
+
+[node name="Crosshair3D" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("TorusMesh_fmdd3")
+surface_material_override/0 = SubResource("StandardMaterial3D_cr8rk")
+script = ExtResource("15_507w8")
+
+[node name="Crosshair3D Outer" type="MeshInstance3D" parent="Crosshair3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 1.86265e-09)
+cast_shadow = 0
+mesh = SubResource("TorusMesh_em5qu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_8qj1h")
+script = ExtResource("15_507w8")
+
+[node name="Preload" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18, 9.5)
+script = ExtResource("45_5lb7x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Preload"]
+mesh = SubResource("BoxMesh_802u8")
+surface_material_override/0 = ExtResource("46_vuvit")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Preload"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+mesh = SubResource("BoxMesh_802u8")
+surface_material_override/0 = ExtResource("47_poxop")
+
+[connection signal="timeout" from="UI_FX/Timer_FX_Flash" to="UI_FX" method="_on_timer_fx_flash_timeout"]
+
+[editable path="Main_Menu/Menu_Buttons/Button_Credits_01"]
+[editable path="Player/Alien_V3/Alien"]
+[editable path="Player/Alien_V3/Alien/Orb_New-Game-Teleporter"]
