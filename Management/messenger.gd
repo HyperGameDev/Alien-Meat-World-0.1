@@ -152,9 +152,6 @@ signal grab_begun
 signal grab_ended
 
 @warning_ignore("unused_signal")
-signal grab_point_offset
-
-@warning_ignore("unused_signal")
 signal grab_attempted
 @warning_ignore("unused_signal")
 signal dunk_is_at_position

@@ -43,6 +43,8 @@ var abduction_target = null
 
 var prevent_attacking : bool = false
 
+var powerups_selectable : bool = false
+
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
@@ -119,7 +121,8 @@ func _process(delta: float) -> void:
 						meat_new.add_to_group("Grabbed")
 						is_attempting_grab = true
 	else:
-		powerup_ray()
+		if powerups_selectable:
+			powerup_ray()
 		
 		
 	# Detects all things
@@ -279,6 +282,7 @@ func cursor_ray(): ## This should be what the player head follows
 
 func on_powerup_menu_begin():
 	prevent_attacking = true
+	powerups_selectable = true
 
 func on_powerup_chosen(orb):
 	prevent_attacking = false
@@ -286,6 +290,7 @@ func on_powerup_chosen(orb):
 	Globals.powerups_available.erase(orb_chosen.powerup_key)
 	Globals.powerups_chosen.append(orb_chosen.powerup_key)
 	Messenger.add_powerup.emit(orb_chosen.powerup_key)
+	powerups_selectable = false
 
 func on_game_menu():
 	menu_pickable = true

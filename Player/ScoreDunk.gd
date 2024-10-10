@@ -115,7 +115,7 @@ func on_screen_exited():
 
 			
 
-func on_grab_begun():
+func on_grab_begun(target):
 	visible = true
 	is_grabbing = true
 #	collision.disabled = false

@@ -21,7 +21,6 @@ enum is_types {COW, HUMAN, TREE1}
 @onready var camera : Camera3D =  get_tree().get_current_scene().get_node("Camera3D")
 @onready var player : CharacterBody3D =  get_tree().get_current_scene().get_node("Player")
 @onready var collision : CollisionShape3D = $CollisionShape3D
-@onready var grab_point : Marker3D = get_tree().get_current_scene().get_node("Grab_Point")
 
 @export var velocity : int = 60
 @export var grab_distance_offset : float = 14.0
@@ -145,7 +144,6 @@ func _physics_process(_delta: float) -> void:
 			has_been_grabbed = true
 			
 #		collision.disabled = true
-		var grab_point_2d : Vector2 = camera.unproject_position(grab_point.global_position)
 		var cursorPosition : Vector2 = get_viewport().get_mouse_position()
 		#print(cursorPosition_offset)
 		var rayStartPoint : Vector3 = camera.project_ray_origin(cursorPosition)
@@ -154,16 +152,6 @@ func _physics_process(_delta: float) -> void:
 		
 		self.linear_velocity = (goTo - self.global_position) * velocity
 		
-		if cursorPosition.x < cursorPosition_on_grab.x:
-			Messenger.grab_point_offset.emit(1)
-		if cursorPosition.x > cursorPosition_on_grab.x:
-			Messenger.grab_point_offset.emit(2)
-		if cursorPosition.y < cursorPosition_on_grab.y:
-			Messenger.grab_point_offset.emit(3)
-		if cursorPosition.y > cursorPosition_on_grab.y:
-			Messenger.grab_point_offset.emit(4)
-		if cursorPosition.x == cursorPosition_on_grab.x and cursorPosition.y == cursorPosition_on_grab.y:
-			Messenger.grab_point_offset.emit(0)
 			
 		
 	else:
@@ -197,7 +185,8 @@ func on_dunk_is_at_position(dunk_position):
 		self.add_to_group("Dunked")
 	
 func _has_been_grabbed():
-	Messenger.grab_begun.emit()
+	Messenger.grab_begun.emit(self)
+	print("has been grabbed")
 	var plane_z_position = player.global_position.z
 	planeToMoveOn = Plane(Vector3(0,0,1), plane_z_position)
 	cursorPosition_on_grab = get_viewport().get_mouse_position()

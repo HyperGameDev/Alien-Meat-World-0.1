@@ -57,6 +57,8 @@ var teleported : bool = false
 
 var look_pos : Vector3
 
+var is_holding : bool = false
+
 var attack : bool = false
 var hit_object : Node3D
 var arm_l_attacking : bool = false
@@ -104,6 +106,8 @@ func _ready():
 
 	
 func _physics_process(delta):
+	if is_holding:
+		grab_reach_begin(1.0)
 	if Globals.is_game_state == Globals.is_game_states.BEGIN and !teleported:
 		new_game_teleport()
 #	print(hit_object)
@@ -193,18 +197,7 @@ func on_mouse_pos_3d(mouse):
 #	skeleton.set_bone_pose_rotation(arm_r, look_pos)
 #	skeleton.set_bone_pose_rotation(arm_l, look_pos)
 
-func attack_action_tween(amount):
-	if !skeleton.is_inside_tree():
-		return
-		
-	if hit_object != null:
-	#		print("Object isn't Null (", hit_object.name, ")")
-			aim_bone_at_target(attacking_limb,hit_object,amount)
-			
-	else:
-	#		print("Object Null!")
-			aim_bone_at_target(attacking_limb,null,amount)
-	
+
 func on_something_attacked(what_is_hit):
 	if !attack:
 		attack = true
@@ -235,7 +228,7 @@ func on_something_attacked(what_is_hit):
 			animation.set("parameters/reach right/request", 1)
 		if arm_l_attacking:
 			animation.set("parameters/reach left/request", 1)
-			
+		
 		get_tree().create_tween().tween_method(attack_action_tween,0.0,1.0,attack_duration)
 		
 	#	aim_bone_at_target(attacking_limb,hit_object, 0.0)
@@ -290,12 +283,12 @@ func on_something_attacked(what_is_hit):
 		
 		attack = false
 	
-	
 func arm_to_use(target):
 	#var target_x : float = target.global_position.x
 	var direction : Vector3 = (target.global_position - self.global_position).normalized()
 	var arm_r_dead : bool = false
 	var arm_l_dead : bool = false
+
 	
 #region Are any arms dead?
 	if floorf(arm_r.current_health) <= 0:
@@ -334,9 +327,28 @@ func arm_to_use(target):
 				arm_r_attacking = true
 				arm_l_attacking = false
 				attacking_limb = arm_r_index
+				
+func grab_reach_begin(amount):
+	if hit_object != null:
+		aim_bone_at_target(attacking_limb,hit_object,amount)
+	else:
+		aim_bone_at_target(attacking_limb,null,amount)
 	
-
-
+func attack_action_tween(amount):
+	if !skeleton.is_inside_tree():
+		return
+		
+	if hit_object != null:
+	#		print("Object isn't Null (", hit_object.name, ")")
+			aim_bone_at_target(attacking_limb,hit_object,amount)
+			if amount == 1.0 and is_grabbing:
+				print("hold got set")
+				is_holding = true
+			
+	else:
+	#		print("Object Null!")
+			aim_bone_at_target(attacking_limb,null,amount)
+	
 func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 	var bone_transform = skeleton.get_bone_global_pose_no_override(bone_index)
 	var bone_transform_hurt = skeleton_hurt.get_bone_global_pose_no_override(bone_index)
@@ -380,6 +392,10 @@ func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 
 	skeleton.set_bone_global_pose_override(bone_index,new_transform,amount,true)
 	skeleton_hurt.set_bone_global_pose_override(bone_index,new_transform_hurt,amount,true)
+
+	
+
+
 
 
 func transform_look_at(_transform,direction):
@@ -438,10 +454,23 @@ func on_game_play():
 	controls_locked = false
 	
 	
-func on_grab_begun():
+func on_grab_begun(target):
 	is_grabbing = true
+	hit_object = target
+	
+	if arm_r_attacking:
+		print("R animation should be set")
+		animation.set("parameters/hold right/blend_amount", 1.0)
+	if arm_l_attacking:
+		print("L animation should be set")
+		animation.set("parameters/hold left/blend_amount", 1.0)
+		
+#region Pause head rotation
 	animation.process_priority = 0
 	animation.set("parameters/hungry/request", 1)
+#endregion
+	
+	get_tree().create_tween().tween_method(attack_action_tween,0.0,1.0,attack_duration)
 	
 func on_grab_ended():
 	if is_grabbing:
@@ -452,6 +481,15 @@ func on_grab_ended():
 			animation.process_priority = -1
 		else:
 			pass
+		get_tree().create_tween().tween_method(attack_action_tween,1.0,0.0,attack_duration)
+		is_holding = false
+		
+		if arm_r_attacking:
+			print("R animation should be ended")
+			animation.set("parameters/hold right/blend_amount", 0.0)
+		if arm_l_attacking:
+			print("L animation should be ended")
+			animation.set("parameters/hold left/blend_amount", 0.0)
 	
 func on_eating_begun():
 	is_eating = true
