@@ -6,6 +6,7 @@ const JUMP_VELOCITY : int = 5
 const FALL_DEATH_DISTANCE : int = -50
 const BOUNDARY_DISTANCE : int = 30
 
+var from_grab : bool = false
 var cursor_pos : Vector2 = Vector2(0,0)
 @export var controls_locked : bool = true
 
@@ -79,7 +80,10 @@ var attack_duration : float = .1
 
 # Distance grabbing arm travels:
 var distance : float
+var distance_prev : float
 var distance_hurt : float
+
+var follow_bone_pos : Vector3
 
 
 # Get the gravity from the project setti	ngs to be synced with RigidBody nodes.
@@ -351,6 +355,7 @@ func arm_to_use(target):
 func grab_reach_begin(amount):
 	if hit_object != null:
 		aim_bone_at_target(attacking_limb,hit_object,amount)
+		#aim_bone_at_target(attacking_limb - 1,hit_object,amount)
 	else:
 		aim_bone_at_target(attacking_limb,null,amount)
 	
@@ -359,26 +364,37 @@ func attack_action_tween(amount):
 		return
 		
 	if hit_object != null:
-	#		print("Object isn't Null (", hit_object.name, ")")
+			#print("Object isn't Null (", hit_object.name, ")")
 			aim_bone_at_target(attacking_limb,hit_object,amount)
+			#if !is_grabbing:
+				#aim_bone_at_target(attacking_limb - 1,hit_object,amount)
 			if amount == 1.0 and is_grabbing:
 				is_holding = true
-			
+			 
 	else:
-	#		print("Object Null!")
+			print("Object Null!")
 			aim_bone_at_target(attacking_limb,null,amount)
+			aim_bone_at_target(attacking_limb - 1,null,amount)
 	
 func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 	
-	# Sets the local transform of the bone local to its skeleton
+	# Sets the local transform of the bone, local to its skeleton
 	var bone_transform = skeleton.get_bone_global_pose_no_override(bone_index)
-	var bone_transform_hurt = skeleton_hurt.get_bone_global_pose_no_override(bone_index)
+	var bone_transform_13 = skeleton.get_bone_global_pose_no_override(13)
+	var bone_transform_14 = skeleton.get_bone_global_pose_no_override(14)
 	
-	#var bone_transform2 = skeleton.get_bone_global_pose_no_override(bone_index + 1)
+	var bone_transform_hurt = skeleton_hurt.get_bone_global_pose_no_override(bone_index)
+	var bone_transform_hurt_13 = skeleton_hurt.get_bone_global_pose_no_override(bone_index)
+	var bone_transform_hurt_14 = skeleton_hurt.get_bone_global_pose_no_override(bone_index)
 	
 	# Defines the position of the bone relative to the local transform
 	var bone_origin = bone_transform.origin
+	var bone_origin_13 = bone_transform_13.origin
+	var bone_origin_14 = bone_transform_14.origin
+	
 	var bone_origin_hurt = bone_transform_hurt.origin
+	var bone_origin_hurt_13 = bone_transform_hurt_13.origin
+	var bone_origin_hurt_14 = bone_transform_hurt_14.origin
 	
 	if(target == null):
 #		print("Object Null, Arm is snapping back.", "(Tween amount is: ", amount, ")")
@@ -392,34 +408,54 @@ func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 	
 #region Healthy Arm Code
 	var target_pos: Vector3 = Vector3(0,0,0)
-	#var target_pos = skeleton.to_local(target.global_position)
+	
 	if is_grabbing:
+		# Defines the global position of the target as a local position relative to the skeleton.
 		target_pos = skeleton.to_local(grab_target.global_position)
-	else:
+	else: # is attacking
 		target_pos = skeleton.to_local(target.global_position)
 		
 	var direction = (target_pos - bone_transform.origin).normalized()
+	
 	distance = target_pos.distance_to(bone_transform.origin)
+	var bone_distance = bone_origin_13.distance_to(bone_origin_14)
 	
+	# Defining a "new transform"
 	var new_transform:Transform3D = bone_transform
-	new_transform.origin = bone_origin
 	
+	# Running transform look at
 	new_transform = transform_look_at(new_transform, direction)
-
-	new_transform.basis.y *= distance
+	
+	# Stretches the arm by multiplying the bone's Up Vector by a distance
+	var bone_difference = distance - bone_distance
+	new_transform.basis.y *= bone_difference
+	
 #endregion
 
 #region Hurt Arm Code
-	var target_pos_hurt = skeleton_hurt.to_local(target.global_position)
+	var target_pos_hurt: Vector3 = Vector3(0,0,0)
+	
+	if is_grabbing:
+		# Defines the global position of the target as a local position relative to the skeleton.
+		target_pos_hurt = skeleton_hurt.to_local(grab_target.global_position)
+	else: # is attacking
+		target_pos_hurt = skeleton_hurt.to_local(target.global_position)
+		
 	var direction_hurt = (target_pos_hurt - bone_transform_hurt.origin).normalized()
+	
 	distance_hurt = target_pos_hurt.distance_to(bone_transform_hurt.origin)
+	var bone_distance_hurt = bone_origin_hurt_13.distance_to(bone_origin_hurt_14)
 	
+	# Defining a "new transform"
 	var new_transform_hurt:Transform3D = bone_transform_hurt
-	new_transform_hurt.origin = bone_origin_hurt
 	
+	# Running transform look at
 	new_transform_hurt = transform_look_at(new_transform_hurt, direction_hurt)
 
-	new_transform_hurt.basis.y *= distance_hurt
+	# Stretches the arm by multiplying the bone's Up Vector by a distance
+	var bone_difference_hurt = distance_hurt - bone_distance_hurt
+	new_transform_hurt.basis.y *= bone_difference_hurt + .6
+	
 #endregion
 
 	skeleton.set_bone_global_pose_override(bone_index,new_transform,amount,true)
@@ -432,8 +468,14 @@ func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 
 func transform_look_at(_transform,direction):
 	var xform:Transform3D = _transform
+	
+	# Defines the Up Vector
 	xform.basis.y = direction
+	
+	# Defines the Right Vector as perpindicular to both the Forward Vector and the direction
 	xform.basis.x = -xform.basis.z.cross(direction)
+	
+	
 	xform.basis = xform.basis.orthonormalized()
 #	stretch_to_target()
 	return xform

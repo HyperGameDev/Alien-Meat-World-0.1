@@ -41,6 +41,7 @@ var hover_material := StandardMaterial3D.new()
 var select_material := StandardMaterial3D.new()
 
 var is_available : bool = false
+var is_clone : bool = false
 var spawned : bool = false
 
 var fell : bool = false

@@ -110,16 +110,20 @@ func _process(delta: float) -> void:
 			if !raycast_result == null:
 				if raycast_result.is_in_group("Abductee"):
 					var meat_original = raycast_result
-					if meat_original.has_method("spawn_me") and !is_attempting_grab and !is_in_group("Grabbed"):
-						#player.arm_to_use(raycast_result)
-					#disappears the object
-						meat_original.is_available = false
-					
-						var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
-						get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
-						meat_new.is_available = true
-						meat_new.add_to_group("Grabbed")
-						is_attempting_grab = true
+					if !meat_original.is_clone:
+						if meat_original.has_method("spawn_me") and !is_attempting_grab and !is_in_group("Grabbed"):
+							#player.arm_to_use(raycast_result)
+						#disappears the object
+							meat_original.is_available = false
+						
+							var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
+							get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
+							meat_new.is_available = true
+							meat_new.is_clone = true
+							meat_new.add_to_group("Grabbed")
+							is_attempting_grab = true
+					else:
+						meat_original.add_to_group("Grabbed")
 	else:
 		if powerups_selectable:
 			powerup_ray()
