@@ -70,10 +70,10 @@ var arm_l_attacking : bool = false
 var arm_r_attacking : bool = false
 var head_attacking : bool = false
 var hand_l_index : int = 9
-var hand_r_index : int = 13
+var hand_r_index : int = 26
 var arm_l_index : int = 8
-var arm_r_index : int = 12
-var attacking_limb : int = 12
+var arm_r_index : int = 25
+var attacking_limb : int = 25
 #var arm_attacking_child : int = arm_attacking + 1
 var stretch_distance : Vector3 = Vector3(0,12,0)
 var attack_duration : float = .1
@@ -380,21 +380,21 @@ func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 	
 	# Sets the local transform of the bone, local to its skeleton
 	var bone_transform = skeleton.get_bone_global_pose_no_override(bone_index)
-	var bone_transform_13 = skeleton.get_bone_global_pose_no_override(13)
-	var bone_transform_14 = skeleton.get_bone_global_pose_no_override(14)
+	var bone_transform_next = skeleton.get_bone_global_pose_no_override(bone_index + 2)
+	var bone_transform_last = skeleton.get_bone_global_pose_no_override(bone_index + 3)
 	
 	var bone_transform_hurt = skeleton_hurt.get_bone_global_pose_no_override(bone_index)
-	var bone_transform_hurt_13 = skeleton_hurt.get_bone_global_pose_no_override(bone_index)
-	var bone_transform_hurt_14 = skeleton_hurt.get_bone_global_pose_no_override(bone_index)
+	var bone_transform_hurt_next = skeleton_hurt.get_bone_global_pose_no_override(bone_index)
+	var bone_transform_hurt_last = skeleton_hurt.get_bone_global_pose_no_override(bone_index)
 	
 	# Defines the position of the bone relative to the local transform
 	var bone_origin = bone_transform.origin
-	var bone_origin_13 = bone_transform_13.origin
-	var bone_origin_14 = bone_transform_14.origin
+	var bone_origin_next = bone_transform_next.origin
+	var bone_origin_last = bone_transform_last.origin
 	
 	var bone_origin_hurt = bone_transform_hurt.origin
-	var bone_origin_hurt_13 = bone_transform_hurt_13.origin
-	var bone_origin_hurt_14 = bone_transform_hurt_14.origin
+	var bone_origin_hurt_next = bone_transform_hurt_next.origin
+	var bone_origin_hurt_last = bone_transform_hurt_last.origin
 	
 	if(target == null):
 #		print("Object Null, Arm is snapping back.", "(Tween amount is: ", amount, ")")
@@ -418,7 +418,7 @@ func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 	var direction = (target_pos - bone_transform.origin).normalized()
 	
 	distance = target_pos.distance_to(bone_transform.origin)
-	var bone_distance = bone_origin_13.distance_to(bone_origin_14)
+	var bone_distance = bone_origin_next.distance_to(bone_origin_last)
 	
 	# Defining a "new transform"
 	var new_transform:Transform3D = bone_transform
@@ -444,7 +444,7 @@ func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 	var direction_hurt = (target_pos_hurt - bone_transform_hurt.origin).normalized()
 	
 	distance_hurt = target_pos_hurt.distance_to(bone_transform_hurt.origin)
-	var bone_distance_hurt = bone_origin_hurt_13.distance_to(bone_origin_hurt_14)
+	var bone_distance_hurt = bone_origin_hurt_next.distance_to(bone_origin_hurt_last)
 	
 	# Defining a "new transform"
 	var new_transform_hurt:Transform3D = bone_transform_hurt
