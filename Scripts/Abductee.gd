@@ -19,6 +19,8 @@ enum is_types {COW, HUMAN, TREE1}
 @onready var detect_surface: RayCast3D = $RayCast_surfaceDetect
 @onready var interactable_indicator: MeshInstance3D = $Mesh_Interactable
 
+@onready var interact_zone: Node3D = get_tree().get_current_scene().get_node("UI_Interaction")
+
 @onready var camera : Camera3D =  get_tree().get_current_scene().get_node("Camera3D")
 @onready var player : CharacterBody3D =  get_tree().get_current_scene().get_node("Player")
 @onready var collision : CollisionShape3D = $CollisionShape3D
@@ -93,13 +95,18 @@ func _ready():
 	interactable_indicator.visible = false
 	
 func _process(_delta: float) -> void:
-	if Input.is_action_just_released("Grab"):
-		if is_in_group("Grabbed"):
-			add_to_group("Dropped")
-			remove_from_group("Grabbed")
-		has_been_grabbed = false
-		Messenger.grab_ended.emit()
-		self.linear_velocity = Vector3.ZERO
+	if is_in_group("Grabbed"):
+		await get_tree().create_timer(.5).timeout
+		if Input.is_action_just_pressed("Grab"): # Dropping
+			if is_in_group("Abductee"):
+				is_interactable = false
+				interactable_indicator.visible = false
+				if is_in_group("Grabbed"):
+					add_to_group("Dropping")
+					remove_from_group("Grabbed")
+					has_been_grabbed = false
+					Messenger.grab_ended.emit()
+					linear_velocity = Vector3.ZERO
 	if is_in_dunk:
 		Messenger.meat_in_dunk.emit(self)
 		has_been_dunked = true
@@ -165,9 +172,15 @@ func _physics_process(_delta: float) -> void:
 		
 
 	else:
-		if is_in_group("Dropped") and detect_surface.is_colliding():
+		if is_in_group("Dropping") and detect_surface.is_colliding():
+			remove_from_group("Dropping")
+			add_to_group("Dropped")
+			if interact_zone.interact_area.get_overlapping_bodies().has(self):
+				is_interactable = true
+				interactable_indicator.visible = true
 			if !detect_surface.get_collider() == self.get_parent():
 				self.reparent(detect_surface.get_collider())
+				print("it should be doing that")
 			
 	
 func on_abductee_hovered(target):
