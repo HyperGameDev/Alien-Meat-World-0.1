@@ -297,7 +297,6 @@ func on_something_attacked(what_is_hit):
 	
 func arm_to_use(target):
 	#var target_x : float = target.global_position.x
-	var direction : Vector3 = (target.global_position - self.global_position).normalized()
 	var arm_r_dead : bool = false
 	var arm_l_dead : bool = false
 
@@ -337,20 +336,22 @@ func arm_to_use(target):
 					attacking_limb = arm_r_index
 				
 		else: # Both arms are healthy
-			if direction.x <= 0.0:
-				arm_l_attacking = true
-				arm_r_attacking = false
-				if is_grabbing:
-					attacking_limb = arm_l_index + extra_index
+			if !target == null:
+				var direction : Vector3 = (target.global_position - self.global_position).normalized()
+				if direction.x <= 0.0:
+					arm_l_attacking = true
+					arm_r_attacking = false
+					if is_grabbing:
+						attacking_limb = arm_l_index + extra_index
+					else:
+						attacking_limb = arm_l_index
 				else:
-					attacking_limb = arm_l_index
-			else:
-				arm_r_attacking = true
-				arm_l_attacking = false
-				if is_grabbing:
-					attacking_limb = arm_r_index + extra_index
-				else:
-					attacking_limb = arm_r_index
+					arm_r_attacking = true
+					arm_l_attacking = false
+					if is_grabbing:
+						attacking_limb = arm_r_index + extra_index
+					else:
+						attacking_limb = arm_r_index
 				
 func grab_reach_begin(amount):
 	if hit_object != null:
@@ -426,9 +427,12 @@ func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 	# Running transform look at
 	new_transform = transform_look_at(new_transform, direction)
 	
-	# Stretches the arm by multiplying the bone's Up Vector by a distance
-	var bone_difference = distance - bone_distance
-	new_transform.basis.y *= bone_difference
+	if !head_attacking:
+		# Stretches the arm by multiplying the bone's Up Vector by a distance
+		var bone_difference = distance - bone_distance
+		new_transform.basis.y *= bone_difference
+	else:
+		new_transform.basis.y *= distance
 	
 #endregion
 
@@ -451,10 +455,13 @@ func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 	
 	# Running transform look at
 	new_transform_hurt = transform_look_at(new_transform_hurt, direction_hurt)
-
-	# Stretches the arm by multiplying the bone's Up Vector by a distance
-	var bone_difference_hurt = distance_hurt - bone_distance_hurt
-	new_transform_hurt.basis.y *= bone_difference_hurt + .6
+	
+	if !head_attacking:
+		# Stretches the arm by multiplying the bone's Up Vector by a distance
+		var bone_difference_hurt = distance_hurt - bone_distance_hurt
+		new_transform_hurt.basis.y *= bone_difference_hurt + .6
+	else:
+		new_transform_hurt.basis.y *= distance_hurt
 	
 #endregion
 
@@ -529,6 +536,7 @@ func on_game_play():
 	
 	
 func on_grab_begun(target):
+	print("grab begun! oh noes")
 	is_grabbing = true
 	arm_to_use(target)
 	hit_object = grab_target
