@@ -153,6 +153,9 @@ signal grab_ended
 
 @warning_ignore("unused_signal")
 signal grab_attempted
+
+@warning_ignore("unused_signal")
+signal score_dunk_hover
 @warning_ignore("unused_signal")
 signal dunk_is_at_position
 @warning_ignore("unused_signal")

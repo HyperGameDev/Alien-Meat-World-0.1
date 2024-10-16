@@ -23,7 +23,7 @@ enum is_types {COW, HUMAN, TREE1}
 @onready var player : CharacterBody3D =  get_tree().get_current_scene().get_node("Player")
 @onready var collision : CollisionShape3D = $CollisionShape3D
 #@onready var grab_target: Node3D = get_tree().get_current_scene().get_node("Player/Grab_Target/Grab_Target_offset")
-@onready var grab_target: Node3D = get_tree().get_current_scene().get_node("Player/Grab_Target/Grab_Target_offset")
+@onready var grab_target: Node3D = get_tree().get_current_scene().get_node("Player/Grab_Target")
 
 @export var velocity : int = 60
 @export var grab_distance_offset : float = 14.0

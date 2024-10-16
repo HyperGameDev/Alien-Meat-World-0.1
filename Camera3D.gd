@@ -148,6 +148,9 @@ func _process(delta: float) -> void:
 	# Player Hover implementation
 	player_hover_ray()
 	
+	# Score Dunk ray
+	score_dunk_ray()
+	
 	# Cursor Position implementation
 	cursor_ray()
 	
@@ -290,6 +293,16 @@ func player_hover_ray(): ## Player Hover detection
 #
 #		return raycast_result.collider
 
+func score_dunk_ray(): ## Score Dunk detection
+	var raycast_result = hover_ray(2048,true)
+	#print(raycast_result)
+	if !raycast_result.is_empty():
+		hover_target = raycast_result.collider
+		
+		# Emits signal with parameter 1 being "true" or "false" if the hover_target is/isn't set to %ScoreDunk
+		Messenger.score_dunk_hover.emit(hover_target == %ScoreDunk)
+#
+#		return raycast_result.collider
 
 func cursor_ray(): ## This should be what the player head follows
 	var raycast_result = hover_ray(16,true)

@@ -241,6 +241,7 @@ Unpause={
 3d_physics/layer_9="Abductee (Interact)"
 3d_physics/layer_10="Obstacle (Interact)"
 3d_physics/layer_11="NPC (Interact)"
+3d_physics/layer_12="Score Dunk"
 3d_physics/layer_15="Menu Alien"
 3d_physics/layer_16="Player"
 avoidance/layer_1="Ground"

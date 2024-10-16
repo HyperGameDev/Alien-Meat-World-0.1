@@ -109,6 +109,7 @@ enum collision {DO_NOT_SET = 0,
 				ABDUCTEE_INTERACT = 9,
 				OBSTACLE_INTERACT = 10,
 				NPC_INTERACT = 11,
+				SCORE_DUNK = 12,
 				PLAYER = 16
 				}
 

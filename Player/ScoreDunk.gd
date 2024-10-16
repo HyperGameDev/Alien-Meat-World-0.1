@@ -14,6 +14,8 @@ extends Area3D
 var dunk_y_offset: float = 5.6
 const DUNK_Y_OFFSET: float = 5.6
 
+var what_is_dunked: RigidBody3D = null
+
 
 @export var dunk_ascent_distance: float = 1.6
 
@@ -34,7 +36,8 @@ var dunk_ascent_timer_duration: float = 2.0
 
 
 func _ready():
-	set_collision_mask_value(9, true)
+	set_collision_layer_value(Globals.collision.SCORE_DUNK, true)
+	set_collision_mask_value(Globals.collision.ABDUCTEE_INTERACT, true)
 	visible = false
 	$VisibleOnScreenNotifier3D.screen_exited.connect(on_screen_exited)
 	body_entered.connect(on_body_entered)
@@ -42,6 +45,7 @@ func _ready():
 	Messenger.grab_begun.connect(on_grab_begun)
 	Messenger.grab_ended.connect(on_grab_ended)
 	Messenger.meat_in_dunk.connect(on_meat_in_dunk)
+	Messenger.score_dunk_hover.connect(on_score_dunk_hover)
 	
 	dunk_ascent_timer.timeout.connect(on_ascent_timer_timeout)
 	dunk_ascent_timer.one_shot = true
@@ -124,13 +128,27 @@ func on_grab_ended():
 	is_grabbing = false
 #	collision.disabled = true
 
-func on_body_entered(body):
-	if body.is_in_group("Grabbed"):
-		Messenger.meat_entered_dunk.emit(body)
+
+func on_score_dunk_hover(is_hovered):
+	if is_hovered and !what_is_dunked == null:
+		Messenger.meat_entered_dunk.emit(what_is_dunked)
 		animation_dunkOrb.play("hover_throb")
+		
+		
+
+func on_body_entered(body):
+	print("it's happening")
+	what_is_dunked = body
+	#if body.is_in_group("Grabbed"):
+		#Messenger.meat_entered_dunk.emit(body)
+		#animation_dunkOrb.play("hover_throb")
 
 func on_body_exited(body):
+	print("Body exited")
+	if body == what_is_dunked:
+		what_is_dunked = null
 	if body.is_in_group("Abductee"):
+		print("Exited body was abducte")
 		Messenger.meat_left_dunk.emit(body)
 		animation_dunkOrb.play("base_size", .2)
 		
