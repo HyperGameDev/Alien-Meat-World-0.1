@@ -6,6 +6,8 @@ const LIMB_MORPH_SPEED : float = 1.25
 
 @export var is_head: Area3D
 @export var player: CharacterBody3D
+@onready var camera: Camera3D = %Camera3D
+
 @export var collision: CollisionShape3D
 @export var collision_hurt: CollisionShape3D
 @export var collision_area_lower: CollisionShape3D
@@ -323,17 +325,17 @@ func fall_death(fall_death):
 		Messenger.swap_game_state.emit(Globals.is_game_states.OVER)
 
 
-func on_player_head_hover(is_hovered):
+func on_player_head_hover(is_hovered,is_head):
 	#if collided_bodypart == self and empathy_ok == false:
 		#Messenger.empathy_consumed.emit()
 #		print("collided with bad Abductee")
 
 
 		#dmg_label.text = str(current_health)]
-	if is_hovered:
+	if is_hovered or is_head:
 		var grabbed_abductees : Array = get_tree().get_nodes_in_group("Grabbed")
 		var grabbed_abductees_int: int = grabbed_abductees.size()
-		if grabbed_abductees_int > 0:
+		if grabbed_abductees_int > 0 or is_head:
 			#print("Player hovered is ",is_hovered," with ",grabbed_abductees_int," abductee(s) hand!")
 			
 			do_eating()
@@ -371,6 +373,7 @@ func on_player_head_hover(is_hovered):
 			if floorf(current_health) < max_health:
 				current_health += snappedf(1.0,0.5)
 				var heal_amount: String = "+1"
+				#print("Healed!")
 
 				#if !powerup_hp:
 					#heal_amount = "+1"
@@ -467,7 +470,8 @@ func on_player_head_hover(is_hovered):
 				score_dunk.dunk_ascent_timer_duration = 0.2
 				score_dunk.on_grab_ended()
 				
-		
+		if is_head:
+			camera.head_grab = false
 func do_eating():
 	animation_blood_human.play("feed")
 	Messenger.eating_begun.emit()

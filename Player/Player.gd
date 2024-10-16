@@ -536,7 +536,6 @@ func on_game_play():
 	
 	
 func on_grab_begun(target):
-	print("grab begun! oh noes")
 	is_grabbing = true
 	arm_to_use(target)
 	hit_object = grab_target

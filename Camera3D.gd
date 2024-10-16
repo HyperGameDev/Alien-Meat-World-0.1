@@ -24,6 +24,10 @@ const CAM_X_OFFSET: float = 0.0
 @onready var cam_target: Node3D = %Cam_Target
 @onready var powerup_menu: Node3D = %PowerUp_Menu
 @onready var hud: CanvasLayer = %HUD
+@onready var arm_r: BodyPart = $"../Player/Alien_V3/DetectionAreas/Area_ArmR"
+@onready var arm_l: BodyPart = $"../Player/Alien_V3/DetectionAreas/Area_ArmL"
+@onready var head: BodyPart = $"../Player/Alien_V3/DetectionAreas/Area_Head"
+
 
 # Temporary Grab Mechanic vars
 var is_grabbed = false
@@ -44,6 +48,8 @@ var abduction_target = null
 var prevent_attacking : bool = false
 
 var powerups_selectable : bool = false
+
+var head_grab : bool = false
 
 
 func _ready():
@@ -114,14 +120,21 @@ func _process(delta: float) -> void:
 						if meat_original.has_method("spawn_me") and !is_attempting_grab and !is_in_group("Grabbed"):
 							#player.arm_to_use(raycast_result)
 						#disappears the object
-							meat_original.is_available = false
-						
-							var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
-							get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
-							meat_new.is_available = true
-							meat_new.is_clone = true
-							meat_new.add_to_group("Grabbed")
-							is_attempting_grab = true
+							
+							if !head_grab and arm_r.current_health == 0 and arm_l.current_health == 0:
+								head_grab = true
+								Messenger.something_attacked.emit(meat_original)
+								await get_tree().create_timer(player.attack_duration).timeout
+								meat_original.is_available = false
+								Messenger.player_head_hover.emit(false,true)
+							else:
+								meat_original.is_available = false
+								var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
+								get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
+								meat_new.is_available = true
+								meat_new.is_clone = true
+								meat_new.add_to_group("Grabbed")
+								is_attempting_grab = true
 					else:
 						meat_original.add_to_group("Grabbed")
 	else:
@@ -271,9 +284,9 @@ func player_hover_ray(): ## Player Hover detection
 	if !raycast_result.is_empty():
 		hover_target = raycast_result.collider
 		
-		# Emits signal with parameter "true" or "false" if the hover_target is/isn't set to %Player
-		Messenger.player_hover.emit(hover_target == %Player or hover_target == $"../Player/Alien_V3/DetectionAreas/Area_Head")
-		Messenger.player_head_hover.emit(hover_target == $"../Player/Alien_V3/DetectionAreas/Area_Feed")
+		# Emits signal with parameter 1 being "true" or "false" if the hover_target is/isn't set to %Player; parameter 2 determines if the player is attacking with its head or not.
+		Messenger.player_hover.emit(hover_target == %Player or hover_target == $"../Player/Alien_V3/DetectionAreas/Area_Head", false)
+		Messenger.player_head_hover.emit(hover_target == $"../Player/Alien_V3/DetectionAreas/Area_Feed", false)
 #
 #		return raycast_result.collider
 
