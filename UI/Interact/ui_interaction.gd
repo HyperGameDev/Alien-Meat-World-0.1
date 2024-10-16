@@ -574,7 +574,7 @@ func on_body_exited(body): ## Detects abductees
 		body.is_interactable = false
 		body.interactable_indicator.visible = false
 		if body.is_in_group("Grabbed"):
-			body.add_to_group("Dropped")
+			body.add_to_group("Dropping")
 			body.remove_from_group("Grabbed")
 			body.has_been_grabbed = false
 			Messenger.grab_ended.emit()
