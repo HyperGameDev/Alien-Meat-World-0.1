@@ -95,7 +95,9 @@ func _physics_process(_delta):
 	#print("Cam Y: ", position.y, "; Offset Y: ", cam_y_offset)
 
 func on_grab_ended():
+	await get_tree().create_timer(.5).timeout
 	is_attempting_grab = false
+	print("is_attempt false")
 
 func _process(delta: float) -> void:
 	if x_axis != 0.0 or y_axis != 0.0:
@@ -117,17 +119,15 @@ func _process(delta: float) -> void:
 				if raycast_result.is_in_group("Abductee"):
 					var meat_original = raycast_result
 					if !meat_original.is_clone:
-						if meat_original.has_method("spawn_me") and !is_attempting_grab and !is_in_group("Grabbed"):
-							#player.arm_to_use(raycast_result)
-						#disappears the object
+						if meat_original.has_method("spawn_me") and !is_attempting_grab and !meat_original.is_in_group("Grabbed"):
 							
-							if !head_grab and arm_r.current_health == 0 and arm_l.current_health == 0:
+							if !head_grab and arm_r.current_health == 0 and arm_l.current_health == 0: # Head is grabbing
 								head_grab = true
 								Messenger.something_attacked.emit(meat_original)
 								await get_tree().create_timer(player.attack_duration).timeout
 								meat_original.is_available = false
 								Messenger.player_head_hover.emit(false,true)
-							else:
+							else: # Arms are grabbing
 								meat_original.is_available = false
 								var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
 								get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
@@ -218,13 +218,15 @@ func main_menu_ray():
 			Messenger.button_chosen.emit(hover_target)
 
 func abduct_ray():
-	var raycast_result = hover_ray(256,true)
+	var raycast_result = hover_ray(8,true)
 	if !raycast_result.is_empty():
+		var grabbed_abductees: Array = get_tree().get_nodes_in_group("Grabbed")
 		#print("Interact Ray saw something: ",raycast_result)
 		abduction_target = raycast_result.collider
-		if abduction_target.is_available:
+		if abduction_target.is_available and grabbed_abductees.is_empty():
 			Messenger.abductee_hovered.emit(abduction_target)
-		if Input.is_action_pressed("Grab"): 
+		
+		if !grabbed_abductees.is_empty():
 			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
 			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_back").force_hide_arrow()
 

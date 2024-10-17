@@ -64,11 +64,12 @@ func _ready():
 	
 #	print("Meat Layer: ", collision_layer, "; Meat Mask: ", collision_mask)
 
+	
 	#set_collision_layer_value(4, true) # Allows it to be grabbed
 
 	# Cow Layer Properties are in PHYSICS PROCESS!!
-	set_collision_mask_value(1, true)
-	set_collision_mask_value(16, false)
+	set_collision_mask_value(Globals.collision.GROUND, true)
+	set_collision_mask_value(Globals.collision.PLAYER, false)
 	
 	self.add_to_group("Abductee")
 	
@@ -98,15 +99,13 @@ func _process(_delta: float) -> void:
 	if is_in_group("Grabbed"):
 		await get_tree().create_timer(.5).timeout
 		if Input.is_action_just_pressed("Grab"): # Dropping
-			if is_in_group("Abductee"):
-				is_interactable = false
-				interactable_indicator.visible = false
-				if is_in_group("Grabbed"):
-					add_to_group("Dropping")
-					remove_from_group("Grabbed")
-					has_been_grabbed = false
-					Messenger.grab_ended.emit()
-					linear_velocity = Vector3.ZERO
+			is_interactable = false
+			if is_in_group("Grabbed"):
+				add_to_group("Dropping")
+				remove_from_group("Grabbed")
+				has_been_grabbed = false
+				Messenger.grab_ended.emit()
+				linear_velocity = Vector3.ZERO
 	if is_in_dunk:
 		Messenger.meat_in_dunk.emit(self)
 		has_been_dunked = true
@@ -121,15 +120,15 @@ func _physics_process(_delta: float) -> void:
 		
 	else:
 		if is_interactable:
-			set_collision_layer_value(4, true)
+			set_collision_layer_value(Globals.collision.ABDUCTEE, true)
 		else:
-			set_collision_layer_value(4, false)
+			set_collision_layer_value(Globals.collision.ABDUCTEE, false)
 			
 	if is_available:
-		set_collision_layer_value(9, true)
+		set_collision_layer_value(Globals.collision.ABDUCTEE_INTERACT, true)
 		visible = true
 	else:
-		set_collision_layer_value(4, false)
+		set_collision_layer_value(Globals.collision.ABDUCTEE_INTERACT, false)
 		visible = false
 		
 	#if is_in_group("Dropped"):
@@ -183,7 +182,7 @@ func _physics_process(_delta: float) -> void:
 				#print("it should be doing that")
 			
 	
-func on_abductee_hovered(target):
+func on_abductee_hovered(target): # Called when ABDUCTEE_INTERACT layer is seen by abduct_ray
 	#print("Something hovered emitted! On...?")
 	if target == self:
 		if has_node("Marker3D"):

@@ -22,18 +22,20 @@ func show_arrow(target):
 		arrow_target = target
 		
 		#print("Sees something... ",arrow_target,"...")
-		if !target.is_in_group("Abductee"):
+		if !target.is_in_group("Abductee"): # If not abductee
 			#print("Sees non-abductee ",arrow_target,"!")
-			pass
 			if target.is_in_group("NPC"):
 				arrow_position = target.get_node("Marker3D").global_position
 			else:
 				arrow_position = target.get_owner().get_node("Marker3D").global_position
-		else:
+		else: # Is abductee
 			if target.is_available:
 				#print("Sees abductee ",arrow_target,"!")
 				arrow_target = target
 				arrow_position = target.get_node("Marker3D").global_position
+			else:
+				print("seeing that")
+				force_hide_arrow()
 		
 		global_position = arrow_position
 		arrow_shown = true

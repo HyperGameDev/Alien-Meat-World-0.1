@@ -143,18 +143,15 @@ func on_score_dunk_hover(is_hovered):
 		
 
 func on_body_entered(body):
-	print("it's happening")
 	what_is_dunked = body
 	#if body.is_in_group("Grabbed"):
 		#Messenger.meat_entered_dunk.emit(body)
 		#animation_dunkOrb.play("hover_throb")
 
 func on_body_exited(body):
-	print("Body exited")
 	if body == what_is_dunked:
 		what_is_dunked = null
 	if body.is_in_group("Abductee"):
-		print("Exited body was abducte")
 		Messenger.meat_left_dunk.emit(body)
 		animation_dunkOrb.play("base_size", .2)
 		

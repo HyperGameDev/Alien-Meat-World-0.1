@@ -64,20 +64,20 @@ func _ready():
 	Messenger.interact_obstacle_begin.connect(on_interact_obstacle_begin)
 	Messenger.interact_obstacle_end.connect(on_interact_obstacle_end)
 	
-	set_collision_layer_value(1, false)
+	set_collision_layer_value(Globals.collision.GROUND, false)
 	set_collision_layer_value(Globals.collision.NPC, false)
-	set_collision_layer_value(3, false)
-	set_collision_layer_value(4, false)
-	set_collision_layer_value(8, false)
-	set_collision_layer_value(10, true)
+	set_collision_layer_value(Globals.collision.OBSTACLE, false)
+	set_collision_layer_value(Globals.collision.ABDUCTEE, false)
+	set_collision_layer_value(Globals.collision.PROJECTILE, false)
+	set_collision_layer_value(Globals.collision.OBSTACLE_INTERACT, true)
+
 	
-	
-	set_collision_mask_value(1, false)
-	set_collision_mask_value(2, false)
-	set_collision_mask_value(3, false)
-	set_collision_mask_value(4, false)
-	set_collision_mask_value(8, false)
-	set_collision_mask_value(16, true)
+	set_collision_mask_value(Globals.collision.GROUND, false)
+	set_collision_mask_value(Globals.collision.NPC, false)
+	set_collision_mask_value(Globals.collision.OBSTACLE, false)
+	set_collision_mask_value(Globals.collision.ABDUCTEE, false)
+	set_collision_mask_value(Globals.collision.PROJECTILE, false)
+	set_collision_mask_value(Globals.collision.PLAYER, true)
 	
 	# If this is set, obstacled the copter collides with also impact the player's collision (namely on full slowdowns)
 	#set_collision_mask_value(2, true)
@@ -127,9 +127,9 @@ func restore_collision():
 			
 func on_interact_obstacle_begin(area):
 	if area == self:
-		set_collision_layer_value(3, true)
+		set_collision_layer_value(Globals.collision.OBSTACLE, true)
 	
 
 func on_interact_obstacle_end(area):
 	if area == self:
-		set_collision_layer_value(3, false)
+		set_collision_layer_value(Globals.collision.OBSTACLE, false)
