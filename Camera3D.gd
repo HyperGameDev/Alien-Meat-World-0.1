@@ -97,7 +97,6 @@ func _physics_process(_delta):
 func on_grab_ended():
 	await get_tree().create_timer(.5).timeout
 	is_attempting_grab = false
-	print("is_attempt false")
 
 func _process(delta: float) -> void:
 	if x_axis != 0.0 or y_axis != 0.0:
@@ -131,6 +130,7 @@ func _process(delta: float) -> void:
 								meat_original.is_available = false
 								var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
 								get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
+								
 								meat_new.is_available = true
 								meat_new.is_clone = true
 								meat_new.add_to_group("Grabbed")

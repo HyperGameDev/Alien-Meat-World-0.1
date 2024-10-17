@@ -5,6 +5,14 @@ extends Node
 var is_game_state: is_game_states
 enum is_game_states {PREINTRO,INTRO,MENU,POSTMENU,PREBEGIN,BEGIN,PLAY,PAUSE,OVER}
 
+var clothing_tops_paths: Array = [
+	"res://NPCs/Humans/textures/human_clothes_grn_01.tres",
+	"res://NPCs/Humans/textures/human_clothes_wht_01.tres"
+]
+
+var clothing_tops: Array = [
+]
+
 var powerups_available: Array = []
 var powerups_chosen: Array = []
 var powerups := {
@@ -197,6 +205,13 @@ func _ready():
 	on_level_update(level_current)
 	
 	powerups_available = powerups.keys()
+	
+	load_clothing(clothing_tops_paths,clothing_tops)
+
+func load_clothing(paths_array,destination_array):
+	for path in paths_array:
+		var loaded_material: StandardMaterial3D = load(path) as StandardMaterial3D
+		destination_array.append(loaded_material)
 
 func on_level_update(level):
 	level_current = level

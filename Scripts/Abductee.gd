@@ -128,7 +128,7 @@ func _physics_process(_delta: float) -> void:
 		set_collision_layer_value(Globals.collision.ABDUCTEE_INTERACT, true)
 		visible = true
 	else:
-		set_collision_layer_value(Globals.collision.ABDUCTEE_INTERACT, false)
+		set_collision_layer_value(Globals.collision.ABDUCTEE, false)
 		visible = false
 		
 	#if is_in_group("Dropped"):
@@ -197,8 +197,23 @@ func spawn_me():
 			var boolean = pow(-1, randi() % 2)
 			if boolean > 0:
 				is_available = true
+				if is_type == is_types.HUMAN:
+					human_variety()
 			else:
 				is_available = false
+
+func human_variety():
+	var human_arm_l: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_ArmL
+	var human_arm_r: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_ArmR
+	var human_body: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_Body
+	
+	var clothing_top: StandardMaterial3D = Globals.clothing_tops.pick_random()
+	
+	
+	human_arm_l.set_surface_override_material(0, clothing_top)
+	human_arm_r.set_surface_override_material(0, clothing_top)
+	human_body.set_surface_override_material(0, clothing_top)
+	human_body.set_surface_override_material(1, clothing_top)
 		
 func on_dunk_is_at_position(dunk_position):
 	if has_been_dunked:
