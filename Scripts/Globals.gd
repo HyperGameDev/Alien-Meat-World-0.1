@@ -34,72 +34,72 @@ var powerups := {
 		powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_03.png",
 		powerupLevel = 0
 	},
-	#Powerup4 = {
-		#powerupName = "PowerUp 4th",
-		#powerupDescription = "Just works.",
-		#powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_04.png",
-		#powerupLevel = 0
-	#},
-	#Powerup5 = {
-		#powerupName = "5th Powerup",
-		#powerupDescription = "Really great, not the worst; you like it.",
-		#powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_05.png",
-		#powerupLevel = 0
-	#},
-	#Powerup6 = {
-		#powerupName = "Number Six Powerup",
-		#powerupDescription = "It does SO many things. WOW. We just LOVE IT!!!",
-		#powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_06.png",
-		#powerupLevel = 0
-	#},
-	#Powerup7 = {
-		#powerupName = "Seventh Powerup!",
-		#powerupDescription = "GOOD.",
-		#powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_07.png",
-		#powerupLevel = 0
-	#},
-	#Powerup8 = {
-		#powerupName = "Of all, this is 8th",
-		#powerupDescription = "You're gonna love this one because it will make you so strong, that you won't have any fun anymore, in a GOOD way tho.",
-		#powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_08.png",
-		#powerupLevel = 0
-	#},
-	#Powerup9 = { 
-		#powerupName = "Powerup 8 + 1",
-		#powerupDescription = "This amazing powerup will help you be better.",
-		#powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_09.png",
-		#powerupLevel = 0
-	#},
-	#Powerup10 = {
-		#powerupName = "The tenth Powerup",
-		#powerupDescription = "Use this when playing.",
-		#powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_10.png",
-		#powerupLevel = 0
-	#},
-	#Powerup11 = {
-		#powerupName = "11th Powerup",
-		#powerupDescription = "Have a good time making yourself Strong. Or not.",
-		#powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_11.png",
-		#powerupLevel = 0
-	#},
-	#Powerup12 = {
-		#powerupName = "Uncle Ben Powerup",
-		#powerupDescription = "With great power, comes great responsibility.",
-		#powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_12.png",
-		#powerupLevel = 0
-	#},
-	#Powerup13 = {
-		#powerupName = "Unlucky",
-		#powerupDescription = "Don't get this one. Don't use it. You've been warned.",
-		#powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_13.png",
-		#powerupLevel = 0
-	#},
-	#Powerup14 = {
-		#powerupName = "P.U. #14",
-		#powerupDescription = "This is Final Placeholder powerup FOR NOW... until it's not. Maybe add a way to get a fourth powerup loading in (as the player)?",
-		#powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_14.png",
-		#powerupLevel = 0
-	#}
+	Powerup4 = {
+		powerupName = "PowerUp 4th",
+		powerupDescription = "Just works.",
+		powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_04.png",
+		powerupLevel = 0
+	},
+	Powerup5 = {
+		powerupName = "5th Powerup",
+		powerupDescription = "Really great, not the worst; you like it.",
+		powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_05.png",
+		powerupLevel = 0
+	},
+	Powerup6 = {
+		powerupName = "Number Six Powerup",
+		powerupDescription = "It does SO many things. WOW. We just LOVE IT!!!",
+		powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_06.png",
+		powerupLevel = 0
+	},
+	Powerup7 = {
+		powerupName = "Seventh Powerup!",
+		powerupDescription = "GOOD.",
+		powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_07.png",
+		powerupLevel = 0
+	},
+	Powerup8 = {
+		powerupName = "Of all, this is 8th",
+		powerupDescription = "You're gonna love this one because it will make you so strong, that you won't have any fun anymore, in a GOOD way tho.",
+		powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_08.png",
+		powerupLevel = 0
+	},
+	Powerup9 = { 
+		powerupName = "Powerup 8 + 1",
+		powerupDescription = "This amazing powerup will help you be better.",
+		powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_09.png",
+		powerupLevel = 0
+	},
+	Powerup10 = {
+		powerupName = "The tenth Powerup",
+		powerupDescription = "Use this when playing.",
+		powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_10.png",
+		powerupLevel = 0
+	},
+	Powerup11 = {
+		powerupName = "11th Powerup",
+		powerupDescription = "Have a good time making yourself Strong. Or not.",
+		powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_11.png",
+		powerupLevel = 0
+	},
+	Powerup12 = {
+		powerupName = "Uncle Ben Powerup",
+		powerupDescription = "With great power, comes great responsibility.",
+		powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_12.png",
+		powerupLevel = 0
+	},
+	Powerup13 = {
+		powerupName = "Unlucky",
+		powerupDescription = "Don't get this one. Don't use it. You've been warned.",
+		powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_13.png",
+		powerupLevel = 0
+	},
+	Powerup14 = {
+		powerupName = "P.U. #14",
+		powerupDescription = "This is Final Placeholder powerup FOR NOW... until it's not. Maybe add a way to get a fourth powerup loading in (as the player)?",
+		powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_14.png",
+		powerupLevel = 0
+	}
 }
 		
 var obstacles_hilited := []

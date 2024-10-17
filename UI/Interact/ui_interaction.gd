@@ -577,6 +577,7 @@ func on_body_exited(body): ## Detects abductees
 			body.add_to_group("Dropping")
 			body.remove_from_group("Grabbed")
 			body.has_been_grabbed = false
+			#print("Abductee outside interact zone emitted grab_ended")
 			Messenger.grab_ended.emit()
 			body.linear_velocity = Vector3.ZERO
 			

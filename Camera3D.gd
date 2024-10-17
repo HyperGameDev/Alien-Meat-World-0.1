@@ -28,12 +28,16 @@ const CAM_X_OFFSET: float = 0.0
 @onready var arm_l: BodyPart = $"../Player/Alien_V3/DetectionAreas/Area_ArmL"
 @onready var head: BodyPart = $"../Player/Alien_V3/DetectionAreas/Area_Head"
 
+@export var player_proximity: Area3D
+@export var powerup_proximity: Area3D
+@export var interact_collision: Area3D
+
 
 # Temporary Grab Mechanic vars
 var is_grabbed = false
 var grab_offset: Vector3 = Vector3(0, 0, 0)
 var attack_ray_pos: Vector3 = Vector3(0, 0, 0)
-var is_attempting_grab = false
+@export var is_attempting_grab = false
 
 var menu_pickable: bool = false
 
@@ -53,6 +57,10 @@ var head_grab : bool = false
 
 
 func _ready():
+	if player_proximity == null or powerup_proximity == null or interact_collision == null:
+		print("ERROR: A raycast exclusion node is set to null!")
+		breakpoint
+		
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	InputMap.action_set_deadzone("Move Grabber Up",0.001)
 	if !cam_z_offset == CAM_Z_OFFSET:
@@ -96,6 +104,7 @@ func _physics_process(_delta):
 
 func on_grab_ended():
 	await get_tree().create_timer(.5).timeout
+	#print("on_grab_ended awaited on Camera3D")
 	is_attempting_grab = false
 
 func _process(delta: float) -> void:
@@ -110,15 +119,20 @@ func _process(delta: float) -> void:
 	
 	if !prevent_attacking:
 		var raycast_result = attack_ray() ## Shoots the ray
-		if Input.is_action_pressed("Grab"): 
+		#if !raycast_result == null:
+			#if raycast_result.is_in_group("Abductee"):
+				#print(raycast_result," is seen!")
+		if Input.is_action_pressed("Grab"):
 			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
 			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_back").force_hide_arrow()
 			
 			if !raycast_result == null:
 				if raycast_result.is_in_group("Abductee"):
 					var meat_original = raycast_result
+					#print(meat_original," is assigned!")
 					if !meat_original.is_clone:
-						if meat_original.has_method("spawn_me") and !is_attempting_grab and !meat_original.is_in_group("Grabbed"):
+						if meat_original.has_method("spawn_me") and !is_attempting_grab:
+							#print("meat is not spoiled")
 							
 							if !head_grab and arm_r.current_health == 0 and arm_l.current_health == 0: # Head is grabbing
 								head_grab = true
@@ -127,10 +141,14 @@ func _process(delta: float) -> void:
 								meat_original.is_available = false
 								Messenger.player_head_hover.emit(false,true)
 							else: # Arms are grabbing
+								
+								#print("Detects arms are grabbing")
 								meat_original.is_available = false
 								var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
 								get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
 								
+								meat_new.clothing_top = meat_original.clothing_top
+								meat_new.human_variety(false)
 								meat_new.is_available = true
 								meat_new.is_clone = true
 								meat_new.add_to_group("Grabbed")
@@ -139,6 +157,7 @@ func _process(delta: float) -> void:
 						meat_original.add_to_group("Grabbed")
 	else:
 		if powerups_selectable:
+			print("Powerup Ray is happening")
 			powerup_ray()
 		
 		
@@ -190,7 +209,7 @@ func hover_ray(mask,has_mask): ## Raycast that receives a target via argument
 	var to = from + project_ray_normal(mouse_pos) * ray_length
 	var space = get_world_3d().direct_space_state
 	var ray_query = PhysicsRayQueryParameters3D.new()
-	ray_query.exclude = [$"../Player/Alien_V3/DetectionAreas/Area_Player-Proximity"]
+	ray_query.exclude = [player_proximity,powerup_proximity,interact_collision]
 	ray_query.from = from
 	ray_query.to = to
 	
@@ -313,6 +332,7 @@ func cursor_ray(): ## This should be what the player head follows
 #	print(raycast_result)
 
 func on_powerup_menu_begin():
+	print("Camera3D began powerup menu")
 	prevent_attacking = true
 	powerups_selectable = true
 

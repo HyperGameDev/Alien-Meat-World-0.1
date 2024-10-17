@@ -3,6 +3,7 @@ extends RigidBody3D
 class_name Abductee
 
 var is_interactable: bool = false
+var clothing_top: StandardMaterial3D = null
 
 @export var is_type: is_types
 enum is_types {COW, HUMAN, TREE1}
@@ -104,6 +105,7 @@ func _process(_delta: float) -> void:
 				add_to_group("Dropping")
 				remove_from_group("Grabbed")
 				has_been_grabbed = false
+				#print("Abductee dropping emitted grab_ended")
 				Messenger.grab_ended.emit()
 				linear_velocity = Vector3.ZERO
 	if is_in_dunk:
@@ -198,16 +200,17 @@ func spawn_me():
 			if boolean > 0:
 				is_available = true
 				if is_type == is_types.HUMAN:
-					human_variety()
+					human_variety(true)
 			else:
 				is_available = false
 
-func human_variety():
+func human_variety(should_randomize):
 	var human_arm_l: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_ArmL
 	var human_arm_r: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_ArmR
 	var human_body: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_Body
 	
-	var clothing_top: StandardMaterial3D = Globals.human_tops.pick_random()
+	if should_randomize:
+		clothing_top = Globals.human_tops.pick_random()
 	
 	
 	human_arm_l.set_surface_override_material(0, clothing_top)

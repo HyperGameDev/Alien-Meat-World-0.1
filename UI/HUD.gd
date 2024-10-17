@@ -120,6 +120,7 @@ func levelup_text_animation_finished():
 	Messenger.level_update.emit(Globals.level_current + 1)
 	animation_levelup.play("levelup_text_out")
 
+	#print("HUD emitted powerup_menu_begun")
 	Messenger.powerup_menu_begin.emit()
 	
 	await get_tree().create_timer(2.5).timeout

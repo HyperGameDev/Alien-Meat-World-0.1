@@ -9,7 +9,7 @@ var is_part : int = -2
 func _ready():
 	Messenger.copter_unit_stopped.connect(copter_area_size)
 
-	set_collision_mask_value(11, true)
+	set_collision_mask_value(Globals.collision.NPC_INTERACT, true)
 
 func copter_area_size(copters_stopped):
 	copter_area_collision.shape.radius = (copters_stopped * 2) + copter_area_collision.shape.radius

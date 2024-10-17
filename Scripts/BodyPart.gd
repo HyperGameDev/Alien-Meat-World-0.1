@@ -339,6 +339,8 @@ func on_player_head_hover(is_hovered,is_head):
 			#print("Player hovered is ",is_hovered," with ",grabbed_abductees_int," abductee(s) hand!")
 			
 			do_eating()
+			#print("do_eating emitted grab_ended")
+			Messenger.grab_ended.emit()
 			
 			var standup_mid : bool = false
 			var standup_high : bool = false
@@ -468,7 +470,8 @@ func on_player_head_hover(is_hovered,is_head):
 			for abductee in grabbed_abductees:
 				abductee.queue_free()
 				score_dunk.dunk_ascent_timer_duration = 0.2
-				score_dunk.on_grab_ended()
+				#print("Score dunking emitted grab_ended")
+				Messenger.grab_ended.emit()
 				
 		if is_head:
 			camera.head_grab = false
