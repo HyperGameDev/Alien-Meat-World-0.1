@@ -207,7 +207,7 @@ func human_variety():
 	var human_arm_r: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_ArmR
 	var human_body: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_Body
 	
-	var clothing_top: StandardMaterial3D = Globals.clothing_tops.pick_random()
+	var clothing_top: StandardMaterial3D = Globals.human_tops.pick_random()
 	
 	
 	human_arm_l.set_surface_override_material(0, clothing_top)
