@@ -180,7 +180,7 @@ func _physics_process(_delta: float) -> void:
 				interactable_indicator.visible = true
 			if !detect_surface.get_collider() == self.get_parent():
 				self.reparent(detect_surface.get_collider())
-				print("it should be doing that")
+				#print("it should be doing that")
 			
 	
 func on_abductee_hovered(target):

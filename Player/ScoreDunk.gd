@@ -1,7 +1,10 @@
 extends Area3D
 
-@onready var dunk_target: CharacterBody3D = %Player
+@onready var arm_r: BodyPart = $"../Player/Alien_V3/DetectionAreas/Area_ArmR"
+@onready var arm_l: BodyPart = $"../Player/Alien_V3/DetectionAreas/Area_ArmL"
 
+
+@onready var dunk_target: CharacterBody3D = %Player
 
 @onready var mesh: MeshInstance3D = %MeshInstance3D
 @onready var collision: CollisionShape3D = %CollisionShape3D
@@ -73,7 +76,7 @@ func _physics_process(delta):
 	
 	
 	
-	# Dunk ascent
+	# Dunk descent
 	if is_grabbing and dunk_y_offset == DUNK_Y_OFFSET:
 		dunk_ascent_timer.start(dunk_ascent_timer_duration)
 		dunk_y_offset -= dunk_ascent_distance
@@ -120,9 +123,12 @@ func on_screen_exited():
 			
 
 func on_grab_begun(target):
-	visible = true
-	is_grabbing = true
-#	collision.disabled = false
+	if arm_r.current_health == 0 and arm_l.current_health == 0:
+		pass
+	else:
+		visible = true
+		is_grabbing = true
+	#	collision.disabled = false
 	
 func on_grab_ended():
 	is_grabbing = false
