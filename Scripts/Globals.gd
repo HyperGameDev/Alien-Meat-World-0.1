@@ -245,6 +245,8 @@ func on_restart():
 	
 func on_abduction(score_value):
 	score += score_value
+	
+#func find_obstacles(to_check: Node) --> Block_Object
 
 func on_swap_game_state(game_state):
 	is_game_state = game_state

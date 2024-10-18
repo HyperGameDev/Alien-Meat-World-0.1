@@ -74,6 +74,7 @@ func on_powerup_hovered(orb):
 	match orb:
 		1:
 			powerup_name.visible = true
+			print("Orb 1 HUD name, visible = ",powerup_name.visible)
 			powerup_description.visible = true
 			powerup_name.position = get_viewport().get_camera_3d().unproject_position(orb_1.global_position)
 			

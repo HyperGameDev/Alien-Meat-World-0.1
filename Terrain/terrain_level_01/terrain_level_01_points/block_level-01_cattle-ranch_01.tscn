@@ -398,9 +398,6 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 [node name="electric-pole_01-01_00" parent="." index="124" instance=ExtResource("16_4s5ub")]
 transform = Transform3D(0.75, 0, 5.51372e-08, 0, 0.75, 0, -5.51372e-08, 0, 0.75, 11.8, 0, -9)
 
-[node name="CollisionShape3D_transformer" parent="electric-pole_01-01_00/Obstacle" index="2"]
-transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.031066, 3.6057, 0.2625)
-
 [node name="Transformer" parent="electric-pole_01-01_00" index="3"]
 transform = Transform3D(-0.0275849, 0, 0.0200323, 0, -0.0340914, 0, -0.0200323, 0, -0.0275849, -0.000549041, 2.68171, 0.0646185)
 
