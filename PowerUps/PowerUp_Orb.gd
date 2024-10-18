@@ -35,7 +35,7 @@ func on_powerups_assigned():
 
 func on_powerup_hovered(orb_hovered):
 	if orb_hovered == is_orb:
-		print("Animation should be RIGHT NOW playing!")
+		#print("Animation should be RIGHT NOW playing!")
 		animation.play("hover")
 		
 		

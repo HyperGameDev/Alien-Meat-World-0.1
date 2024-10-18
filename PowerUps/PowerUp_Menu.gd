@@ -39,8 +39,7 @@ func on_powerup_menu_begin():
 	#endregion
 		
 	#region Animate menu descent
-	var tween = get_tree().create_tween();
-	tween.tween_property(self, "position:y", -travel_distance, ORB_MOVE_SPEED)
+	descend_powerup_menu(travel_distance)
 	
 	#endregion
 	
@@ -69,6 +68,11 @@ func on_powerup_menu_begin():
 	
 	#endregion
 
+func descend_powerup_menu(travel_distance):
+	var tween = get_tree().create_tween();
+	tween.tween_property(self, "position:y", -travel_distance, ORB_MOVE_SPEED)
+	await tween.finished
+	Messenger.powerup_menu_descended.emit()
 
 func on_powerup_chosen(orb):
 	

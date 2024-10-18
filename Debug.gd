@@ -56,9 +56,8 @@ func _input(event):
 			else:
 				print("CANNOT upgrade Drone because there is no Drone yet!")
 		if event.is_action_pressed("Debug 9"):
-			Messenger.remove_powerup.emit("Fantastic")
-			Messenger.arm_health_update.emit()
-			print("Fantastic powerup is Level 0! (via debug)")
+			print("There are ",$"../Player/PowerUP_Menu-Proximity".powerup_overlaps.size()," overlaps in the array.")
+			print("Overlaps are: ",$"../Player/PowerUP_Menu-Proximity".powerup_overlaps)
 		if event.is_action_pressed("Debug 0"):
 			Messenger.arm_health_update.emit()
 		if event.is_action_pressed("Debug -"):

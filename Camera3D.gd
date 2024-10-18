@@ -282,11 +282,11 @@ func powerup_ray():
 		# These regions could become a single function if needed someday
 		#region Orb 1 Interaction
 		if raycast_result["collider"].is_type == PowerUp_Orb.is_types.Orb_1:
-			print("Orb 1 is hovered!")
+			#print("Orb 1 is hovered!")
 			Messenger.powerup_hovered.emit(1)
 			if Input.is_action_just_pressed("Grab"):
 				Messenger.powerup_chosen.emit(1)
-				print("Left orb chosen")
+				#print("Left orb chosen")
 		#endregion
 		#region Orb 2 Interaction
 		if raycast_result["collider"].is_type == PowerUp_Orb.is_types.Orb_2:

@@ -39,6 +39,11 @@ signal button_hovered
 
 @warning_ignore("unused_signal")
 signal powerup_menu_begin
+
+
+@warning_ignore("unused_signal")
+signal powerup_menu_descended
+
 @warning_ignore("unused_signal")
 signal powerup_chosen
 @warning_ignore("unused_signal")
