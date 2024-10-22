@@ -1,24 +1,72 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3iqsofo0hk8n"]
+[gd_scene load_steps=11 format=3 uid="uid://c3iqsofo0hk8n"]
 
 [ext_resource type="PackedScene" uid="uid://bbc1kihoe0swi" path="res://Objects/Buildings/Houses/farnhouse_01-02_00.blend" id="1_rmrjo"]
+[ext_resource type="Material" uid="uid://c62csthxuk1sf" path="res://Objects/Buildings/Houses/FarmHouse_01_color_01_walls.tres" id="2_aues7"]
 [ext_resource type="Material" uid="uid://83u85pjmbrbs" path="res://Objects/Buildings/interior.tres" id="2_tde56"]
+[ext_resource type="Material" uid="uid://dcx48w6mbgrg0" path="res://Objects/Buildings/Houses/House_01_color_02_trims.tres" id="3_dpadb"]
+[ext_resource type="Material" uid="uid://bv8bo7wkgpqx6" path="res://Objects/Buildings/Houses/House_01_color_01_windows.tres" id="4_gdu85"]
+[ext_resource type="Material" uid="uid://cvlhn4qmulfkj" path="res://Objects/Buildings/Houses/House_01_color_03_trims.tres" id="6_dcwyc"]
+[ext_resource type="Material" uid="uid://ufg81f6jk6hb" path="res://Objects/Buildings/Houses/FarmHouse_01_roof_01.tres" id="7_bfq3i"]
+[ext_resource type="Material" uid="uid://drgeuum8pa0y6" path="res://Objects/Buildings/Barns/Barn_01/basic_barn_door_color-01.tres" id="8_dcqs8"]
+[ext_resource type="Material" uid="uid://crlvtvmxf658q" path="res://Objects/Buildings/Houses/FarmHouse_01_color_01_porch.tres" id="8_sgakx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46cvn"]
+normal_scale = -1.46
+uv1_triplanar = true
 
 [node name="farnhouse_01-02_00" instance=ExtResource("1_rmrjo")]
 
 [node name="2-hp_Walls" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_aues7")
+surface_material_override/1 = ExtResource("3_dpadb")
+surface_material_override/2 = ExtResource("4_gdu85")
 surface_material_override/3 = ExtResource("2_tde56")
+surface_material_override/4 = ExtResource("3_dpadb")
+
+[node name="2-hp_Roof" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_aues7")
+surface_material_override/1 = ExtResource("6_dcwyc")
+surface_material_override/2 = ExtResource("4_gdu85")
+surface_material_override/3 = ExtResource("7_bfq3i")
+surface_material_override/4 = ExtResource("3_dpadb")
+
+[node name="2-hp_Porch1_Roof" parent="." index="3"]
+surface_material_override/0 = ExtResource("6_dcwyc")
+surface_material_override/1 = ExtResource("7_bfq3i")
+
+[node name="2-hp_Porch1" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_aues7")
+surface_material_override/1 = ExtResource("8_sgakx")
 
 [node name="2-hp_Porch2" parent="." index="5"]
+surface_material_override/0 = ExtResource("2_aues7")
+surface_material_override/1 = ExtResource("6_dcwyc")
 surface_material_override/2 = ExtResource("2_tde56")
+surface_material_override/3 = ExtResource("7_bfq3i")
+surface_material_override/4 = ExtResource("3_dpadb")
 
 [node name="1-hp_Walls" parent="." index="6"]
 visible = false
 
 [node name="1-hp_Porch2" parent="." index="7"]
 visible = false
+surface_material_override/0 = ExtResource("2_aues7")
+surface_material_override/1 = ExtResource("6_dcwyc")
+surface_material_override/2 = ExtResource("8_dcqs8")
+surface_material_override/3 = SubResource("StandardMaterial3D_46cvn")
 
 [node name="1-hp_Porch1" parent="." index="8"]
 visible = false
+surface_material_override/0 = ExtResource("8_sgakx")
 
 [node name="1-hp_Pipe1" parent="." index="9"]
 visible = false
+
+[node name="2-hp_Door1" parent="." index="10"]
+surface_material_override/0 = ExtResource("8_dcqs8")
+
+[node name="2-hp_Door2" parent="." index="11"]
+surface_material_override/0 = ExtResource("8_dcqs8")
+
+[node name="2-hp_Door3" parent="." index="12"]
+surface_material_override/0 = ExtResource("8_dcqs8")

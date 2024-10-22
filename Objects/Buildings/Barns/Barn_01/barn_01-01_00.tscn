@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://4pdxmv5v5dki"]
+
+[ext_resource type="PackedScene" uid="uid://0q6uik4oha3b" path="res://Objects/Buildings/Barns/Barn_01/barn_01-01_00.blend" id="1_cwgx3"]
+[ext_resource type="Material" uid="uid://cxu65rtd12o75" path="res://Objects/Buildings/Barns/Barn_color_01_walls.tres" id="2_6hl1j"]
+[ext_resource type="Material" uid="uid://3qsgv6kanpuy" path="res://Objects/Buildings/Barns/Barn_01/basic_barn_corrugated_roof_color-01.tres" id="3_mru0x"]
+[ext_resource type="Material" uid="uid://bv8bo7wkgpqx6" path="res://Objects/Buildings/Houses/House_01_color_01_windows.tres" id="4_gmct5"]
+[ext_resource type="Material" uid="uid://drgeuum8pa0y6" path="res://Objects/Buildings/Barns/Barn_01/basic_barn_door_color-01.tres" id="5_fmgxp"]
+[ext_resource type="Material" uid="uid://cvlhn4qmulfkj" path="res://Objects/Buildings/Houses/House_01_color_03_trims.tres" id="5_o87hb"]
+[ext_resource type="Material" uid="uid://bgxxcimk0fc0u" path="res://Objects/Buildings/Barns/Barn_01/basic_barn_corrugated_door_color-01.tres" id="7_hlby1"]
+
+[node name="barn_01-01_00" instance=ExtResource("1_cwgx3")]
+
+[node name="Barn" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_6hl1j")
+surface_material_override/1 = ExtResource("3_mru0x")
+surface_material_override/2 = ExtResource("4_gmct5")
+surface_material_override/3 = ExtResource("5_o87hb")
+
+[node name="Barn_Door-front" parent="." index="1"]
+surface_material_override/0 = ExtResource("5_fmgxp")
+surface_material_override/1 = ExtResource("4_gmct5")
+
+[node name="Barn_BigDoors-R-R" parent="." index="2"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, -0.0347311, 0.0901997)
+surface_material_override/0 = ExtResource("7_hlby1")
+
+[node name="Barn_BigDoors-R-L" parent="." index="3"]
+surface_material_override/0 = ExtResource("7_hlby1")
+
+[node name="Barn_BigDoors_L-L" parent="." index="4"]
+surface_material_override/0 = ExtResource("7_hlby1")
+
+[node name="Barn_BigDoors_L-R" parent="." index="5"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, -0.0347311, -0.0966355)
+surface_material_override/0 = ExtResource("7_hlby1")
+
+[node name="Barn_Door-back" parent="." index="6"]
+surface_material_override/0 = ExtResource("5_fmgxp")
+surface_material_override/1 = ExtResource("4_gmct5")
