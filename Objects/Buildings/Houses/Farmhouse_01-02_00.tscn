@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3iqsofo0hk8n"]
+[gd_scene load_steps=18 format=3 uid="uid://c3iqsofo0hk8n"]
 
 [ext_resource type="PackedScene" uid="uid://bbc1kihoe0swi" path="res://Objects/Buildings/Houses/farnhouse_01-02_00.blend" id="1_rmrjo"]
 [ext_resource type="Material" uid="uid://c62csthxuk1sf" path="res://Objects/Buildings/Houses/FarmHouse_01_color_01_walls.tres" id="2_aues7"]
@@ -9,10 +9,26 @@
 [ext_resource type="Material" uid="uid://ufg81f6jk6hb" path="res://Objects/Buildings/Houses/FarmHouse_01_roof_01.tres" id="7_bfq3i"]
 [ext_resource type="Material" uid="uid://drgeuum8pa0y6" path="res://Objects/Buildings/Barns/Barn_01/basic_barn_door_color-01.tres" id="8_dcqs8"]
 [ext_resource type="Material" uid="uid://crlvtvmxf658q" path="res://Objects/Buildings/Houses/FarmHouse_01_color_01_porch.tres" id="8_sgakx"]
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="10_6ya1s"]
+[ext_resource type="PackedScene" uid="uid://crbv3c67ldmgu" path="res://Management/hit_points.tscn" id="11_x2kkn"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46cvn"]
-normal_scale = -1.46
-uv1_triplanar = true
+[sub_resource type="BoxShape3D" id="BoxShape3D_khx5y"]
+size = Vector3(4.37197, 1.77917, 2.72897)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uth52"]
+size = Vector3(1.88828, 1.31683, 0.995222)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2h4k0"]
+size = Vector3(0.0817749, 1.14676, 0.0872702)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tqly6"]
+size = Vector3(0.0926453, 1.22904, 1.30461)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wifme"]
+size = Vector3(0.0817749, 1.47816, 0.0872702)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t5v2b"]
+size = Vector3(4.38276, 2.23647, 2.24908)
 
 [node name="farnhouse_01-02_00" instance=ExtResource("1_rmrjo")]
 
@@ -47,13 +63,19 @@ surface_material_override/4 = ExtResource("3_dpadb")
 
 [node name="1-hp_Walls" parent="." index="6"]
 visible = false
+surface_material_override/0 = ExtResource("2_aues7")
+surface_material_override/1 = ExtResource("3_dpadb")
+surface_material_override/2 = ExtResource("4_gdu85")
+surface_material_override/3 = ExtResource("8_dcqs8")
+surface_material_override/4 = ExtResource("8_sgakx")
 
 [node name="1-hp_Porch2" parent="." index="7"]
 visible = false
 surface_material_override/0 = ExtResource("2_aues7")
 surface_material_override/1 = ExtResource("6_dcwyc")
 surface_material_override/2 = ExtResource("8_dcqs8")
-surface_material_override/3 = SubResource("StandardMaterial3D_46cvn")
+surface_material_override/3 = ExtResource("7_bfq3i")
+surface_material_override/4 = ExtResource("3_dpadb")
 
 [node name="1-hp_Porch1" parent="." index="8"]
 visible = false
@@ -63,10 +85,57 @@ surface_material_override/0 = ExtResource("8_sgakx")
 visible = false
 
 [node name="2-hp_Door1" parent="." index="10"]
+visible = false
 surface_material_override/0 = ExtResource("8_dcqs8")
 
 [node name="2-hp_Door2" parent="." index="11"]
+visible = false
 surface_material_override/0 = ExtResource("8_dcqs8")
 
 [node name="2-hp_Door3" parent="." index="12"]
+visible = false
 surface_material_override/0 = ExtResource("8_dcqs8")
+
+[node name="Obstacle" type="Area3D" parent="." index="13"]
+script = ExtResource("10_6ya1s")
+health_max = 2
+
+[node name="HitPoints" parent="Obstacle" index="0" instance=ExtResource("11_x2kkn")]
+
+[node name="Animation_Degrade" type="AnimationPlayer" parent="Obstacle/HitPoints" index="0"]
+root_node = NodePath("../..")
+
+[node name="Marker3D" type="Marker3D" parent="Obstacle" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.12696, 0)
+
+[node name="2-hp_Walls" type="CollisionShape3D" parent="Obstacle" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.711963, 0.889685, -0.655003)
+shape = SubResource("BoxShape3D_khx5y")
+
+[node name="2-hp_Porch2" type="CollisionShape3D" parent="Obstacle" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3563, 0.658514, 1.1835)
+shape = SubResource("BoxShape3D_uth52")
+
+[node name="2-hp_Post_Short" type="CollisionShape3D" parent="Obstacle" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36255, 0.573477, -0.755429)
+shape = SubResource("BoxShape3D_2h4k0")
+
+[node name="2-hp_Porch1-Roof" type="CollisionShape3D" parent="Obstacle" index="5"]
+transform = Transform3D(-0.377421, -0.926042, 0, 0.926042, -0.377421, 0, 0, 0, 1, -2.02826, 1.28174, -1.27125)
+shape = SubResource("BoxShape3D_tqly6")
+
+[node name="2-hp_Post_long" type="CollisionShape3D" parent="Obstacle" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51401, 0.73918, -0.755429)
+shape = SubResource("BoxShape3D_wifme")
+
+[node name="2-hp_Post_Short2" type="CollisionShape3D" parent="Obstacle" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36255, 0.573477, -1.77907)
+shape = SubResource("BoxShape3D_2h4k0")
+
+[node name="2-hp_Post_long2" type="CollisionShape3D" parent="Obstacle" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51401, 0.73918, -1.77907)
+shape = SubResource("BoxShape3D_wifme")
+
+[node name="2-hp_Roof" type="CollisionShape3D" parent="Obstacle" index="9"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0.697862, 1.86318, -0.652887)
+shape = SubResource("BoxShape3D_t5v2b")
