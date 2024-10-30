@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://c3iqsofo0hk8n"]
+[gd_scene load_steps=19 format=3 uid="uid://c3iqsofo0hk8n"]
 
 [ext_resource type="PackedScene" uid="uid://bbc1kihoe0swi" path="res://Objects/Buildings/Houses/farnhouse_01-02_00.blend" id="1_rmrjo"]
 [ext_resource type="Material" uid="uid://c62csthxuk1sf" path="res://Objects/Buildings/Houses/FarmHouse_01_color_01_walls.tres" id="2_aues7"]
+[ext_resource type="Script" path="res://Terrain/Block_Object.gd" id="2_grlxg"]
 [ext_resource type="Material" uid="uid://83u85pjmbrbs" path="res://Objects/Buildings/interior.tres" id="2_tde56"]
 [ext_resource type="Material" uid="uid://dcx48w6mbgrg0" path="res://Objects/Buildings/Houses/House_01_color_02_trims.tres" id="3_dpadb"]
 [ext_resource type="Material" uid="uid://bv8bo7wkgpqx6" path="res://Objects/Buildings/Houses/House_01_color_01_windows.tres" id="4_gdu85"]
@@ -31,6 +32,7 @@ size = Vector3(0.0817749, 1.47816, 0.0872702)
 size = Vector3(4.38276, 2.23647, 2.24908)
 
 [node name="farnhouse_01-02_00" instance=ExtResource("1_rmrjo")]
+script = ExtResource("2_grlxg")
 
 [node name="2-hp_Walls" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_aues7")
@@ -99,6 +101,7 @@ surface_material_override/0 = ExtResource("8_dcqs8")
 [node name="Obstacle" type="Area3D" parent="." index="13"]
 script = ExtResource("10_6ya1s")
 health_max = 2
+slowdown_amount = 2
 
 [node name="HitPoints" parent="Obstacle" index="0" instance=ExtResource("11_x2kkn")]
 
