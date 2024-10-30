@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ble61ddhhie5n"]
+
+[ext_resource type="FontFile" uid="uid://ckdic8pw8e5i2" path="res://UI/Fonts/Agrandir-WideBlackItalic.otf" id="1_u5uxd"]
+
+[sub_resource type="FontVariation" id="FontVariation_nqysf"]
+base_font = ExtResource("1_u5uxd")
+spacing_glyph = 5
+
+[resource]
+Label/colors/font_color = Color(0.439216, 0.129412, 0.129412, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0.439216, 0.129412, 0.129412, 1)
+Label/constants/outline_size = 7
+Label/constants/shadow_offset_x = -4
+Label/constants/shadow_offset_y = 2
+Label/constants/shadow_outline_size = 20
+Label/font_sizes/font_size = 40
+Label/fonts/font = SubResource("FontVariation_nqysf")

@@ -2,6 +2,7 @@ extends CanvasLayer
 
 class_name HUD
 
+@export var visible_for_editor: bool = true
 #region onreadys
 @onready var terrain_controller: Node3D = %TerrainController_inScene
 @onready var player: CharacterBody3D = %Player
@@ -37,7 +38,8 @@ var score_minimum_met: bool = false
 
 
 func _ready():
-	
+	if !visible_for_editor:
+		visible = true
 	#region Hiding Elements Outside of Editor
 	powerup_name.visible = false
 	powerup_description.visible = false

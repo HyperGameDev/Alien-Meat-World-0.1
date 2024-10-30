@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dxs5yobj1ycsh"]
+
+[ext_resource type="FontFile" uid="uid://cx2fw81sqeocp" path="res://UI/Fonts/Agrandir-TextBold.otf" id="1_ij3ky"]
+
+[sub_resource type="FontVariation" id="FontVariation_nqysf"]
+base_font = ExtResource("1_ij3ky")
+spacing_glyph = 3
+
+[resource]
+Label/colors/font_color = Color(0.768627, 0.54902, 0.517647, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0.439216, 0.129412, 0.129412, 1)
+Label/constants/outline_size = 7
+Label/constants/shadow_offset_x = 4
+Label/constants/shadow_offset_y = -2
+Label/constants/shadow_outline_size = 20
+Label/font_sizes/font_size = 40
+Label/fonts/font = SubResource("FontVariation_nqysf")

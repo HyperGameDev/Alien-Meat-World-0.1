@@ -76,6 +76,7 @@ func _ready():
 	Messenger.game_postmenu.connect(on_game_postmenu)
 	Messenger.game_play.connect(on_game_play)
 	Messenger.game_pause.connect(on_game_pause)
+	Messenger.game_over.connect(on_game_over)
 	
 func _physics_process(_delta):
 	
@@ -361,4 +362,7 @@ func on_game_play():
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func on_game_pause():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+func on_game_over():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

@@ -1,24 +1,74 @@
 extends CanvasLayer
 
+var modulate_invisible: Color = Color(1.0,1.0,1.0,0.0)
+var modulate_visible: Color = Color(1.0,1.0,1.0,1.0)
+
+#region Game_Over Parent Nodes
+@onready var game_over_menu_bg: Panel = %"GameOver_menu-BG"
+@onready var game_over_progress_stats: MarginContainer = %"GameOver_progress-stats"
+@onready var game_over_h_separator_1: HSeparator = %GameOver_HSeparator1
+@onready var game_over_progress_bar_box: VBoxContainer = %"GameOver_progress-bar-box"
+@onready var game_over_h_separator_2: HSeparator = %GameOver_HSeparator2
+@onready var game_over_progress_bar: MarginContainer = %"GameOver_progress-bar"
+@onready var game_over_h_separator_3: HSeparator = %GameOver_HSeparator3
+#endregion
+
+#region Game_Over Stat Labels
+@onready var game_over_level_stat: Label = %"GameOver_level-stat"
+@onready var game_over_abduct_stat: Label = %"GameOver_abduct-stat"
+@onready var game_over_empathy_stat: Label = %"GameOver_empathy-stat"
+@onready var game_over_time_stat: Label = %"GameOver_time-stat"
+#endregion
+
+
+
+#region Continue Button Declaration
 @onready var button_continue: Button = $MarginContainer/VBoxContainer/Button_Continue
 @onready var animation_continue: AnimationPlayer = $MarginContainer/VBoxContainer/Button_Continue/Label_Continue/AnimationPlayer
 var hilite_continue: bool = false
+#endregion
 
+#region Settings Button Declaration
 @onready var button_settings: Button = $MarginContainer/VBoxContainer/Button_Settings
 @onready var animation_settings: AnimationPlayer = $MarginContainer/VBoxContainer/Button_Settings/Label_Settings/AnimationPlayer
 var hilite_settings: bool = false
+#endregion
 
+#region Main Menu Button Declaration
 @onready var button_main_menu: Button = $MarginContainer/VBoxContainer/Button_MainMenu
 @onready var animation_main_menu: AnimationPlayer = $MarginContainer/VBoxContainer/Button_MainMenu/Label_MainMenu/AnimationPlayer
 var hilite_main_menu: bool = false
+#endregion
 
+#region Retry Button Declaration
 @onready var button_retry: Button = $MarginContainer/VBoxContainer/Button_Retry
 @onready var animation_retry: AnimationPlayer = $MarginContainer/VBoxContainer/Button_Retry/Label_Retry/AnimationPlayer
 var hilite_retry: bool = false
+#endregion
 
+# Ready Function
 func _ready() -> void:
 	visible = false
+	
 	Messenger.game_over.connect(on_game_over)
+	
+
+#region Game_Over UI = Un-Visible
+	game_over_menu_bg.visible = false
+	game_over_progress_stats.visible = false
+	game_over_h_separator_1.visible = false
+	game_over_progress_bar_box.visible = false
+	game_over_h_separator_2.visible = false
+	game_over_progress_bar.visible = false
+	game_over_h_separator_3.visible = false
+	
+	game_over_level_stat.modulate = modulate_invisible
+	game_over_abduct_stat.modulate = modulate_invisible
+	game_over_empathy_stat.modulate = modulate_invisible
+	game_over_time_stat.modulate = modulate_invisible
+	game_over_progress_bar_box.modulate = modulate_invisible
+	game_over_progress_bar.modulate = modulate_invisible
+#endregion
 	
 #region Continue Button Setup
 	button_continue.pressed.connect(on_button_continue)
@@ -52,7 +102,7 @@ func _ready() -> void:
 	button_retry.mouse_exited.connect(on_button_retry_unhover)
 #endregion
 
-
+# Input Function
 func _input(event: InputEvent):
 	if event.is_action_pressed("Unpause") and Globals.is_game_state == Globals.is_game_states.PAUSE:
 		
@@ -64,11 +114,27 @@ func _input(event: InputEvent):
 		if Globals.is_game_state == Globals.is_game_states.OVER:
 			button_retry.grab_focus()
 
+# Game Over Function
 func on_game_over():
+#region Game_Over UI = Visible
+	game_over_menu_bg.visible = true
+	game_over_progress_stats.visible = true
+	game_over_h_separator_1.visible = true
+	game_over_progress_bar_box.visible = true
+	game_over_h_separator_2.visible = true
+	game_over_progress_bar.visible = true
+	game_over_h_separator_3.visible = true
+#endregion
+
+#region Button Changes (On Game_Over)
 	button_continue.visible = false
 	button_settings.visible = false
+	button_retry.visible = true
 	button_main_menu.get_child(0).text = "Restart"
+#endregion
 
+
+# Button Functions
 #region Continue Button
 func on_button_continue():
 	get_tree().paused = false
