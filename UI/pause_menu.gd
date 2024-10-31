@@ -23,28 +23,30 @@ var modulate_visible: Color = Color(1.0,1.0,1.0,1.0)
 
 
 #region Continue Button Declaration
-@onready var button_continue: Button = $MarginContainer/VBoxContainer/Button_Continue
-@onready var animation_continue: AnimationPlayer = $MarginContainer/VBoxContainer/Button_Continue/Label_Continue/AnimationPlayer
+@onready var button_continue: Button = %Button_Continue
+@onready var animation_continue: AnimationPlayer = %Animation_Continue
 var hilite_continue: bool = false
 #endregion
 
 #region Settings Button Declaration
-@onready var button_settings: Button = $MarginContainer/VBoxContainer/Button_Settings
-@onready var animation_settings: AnimationPlayer = $MarginContainer/VBoxContainer/Button_Settings/Label_Settings/AnimationPlayer
+@onready var button_settings: Button = %Button_Settings
+@onready var animation_settings: AnimationPlayer = %Animation_Settings
 var hilite_settings: bool = false
 #endregion
 
+#region Retry Button Declaration
+@onready var button_retry: Button = %Button_Retry
+@onready var animation_retry: AnimationPlayer = %Animation_Retry
+var hilite_retry: bool = false
+#endregion
+
 #region Main Menu Button Declaration
-@onready var button_main_menu: Button = $MarginContainer/VBoxContainer/Button_MainMenu
-@onready var animation_main_menu: AnimationPlayer = $MarginContainer/VBoxContainer/Button_MainMenu/Label_MainMenu/AnimationPlayer
+@onready var button_main_menu: Button = %Button_MainMenu
+@onready var animation_main_menu: AnimationPlayer = %Animation_MainMenu
 var hilite_main_menu: bool = false
 #endregion
 
-#region Retry Button Declaration
-@onready var button_retry: Button = $MarginContainer/VBoxContainer/Button_Retry
-@onready var animation_retry: AnimationPlayer = $MarginContainer/VBoxContainer/Button_Retry/Label_Retry/AnimationPlayer
-var hilite_retry: bool = false
-#endregion
+
 
 # Ready Function
 func _ready() -> void:
