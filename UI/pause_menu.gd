@@ -146,10 +146,18 @@ func on_game_over():
 	var abductions: int = Globals.score
 	var empathy: int = Globals.empathy
 	var total_seconds: float = Globals.time
+	var total_minutes: float = total_seconds/60
+	
+	
+	var empathy_factor: float = 0.7 + (0.3 * empathy)
+	var time_factor: float =  0.0506 * 1 * (empathy ** 2.0)
+	var abduction_factor: float = (0.345 ** (1 * abductions))
+	var score_multiplier: float = (empathy_factor + total_seconds * time_factor) * abduction_factor
 	skin_progress_old = Globals.skin_progress
 	skin_progress_target = skin_progress_old * 400
-	skin_progress_current = skin_progress_old + 335
+	skin_progress_current = skin_progress_old * score_multiplier
 	Globals.skin_progress = skin_progress_current
+	print("Multiplier: ",score_multiplier)
 	
 #region Time setup
 	var seconds:float = fmod(total_seconds , 60.0)
@@ -157,6 +165,7 @@ func on_game_over():
 	var hours:  int   =  int(total_seconds / 3600.0)
 	var time:String = str("%02d:%02d:%02d" % [hours, minutes, seconds])
 #endregion
+
 	
 	game_over_level_stat.text = level
 	game_over_abduct_stat.text = str(abductions)
@@ -170,6 +179,8 @@ func on_game_over_progress():
 	tween.tween_method(increase_progress,skin_progress_old,skin_progress_current,1)
 	
 func increase_progress(progress):
+	print("Old progress: ",skin_progress_old)
+	print("Current progress: ",skin_progress_current)
 	game_over_progress_current.text = str(progress)
 	
 # Button Functions

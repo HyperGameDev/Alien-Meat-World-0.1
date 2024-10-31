@@ -123,7 +123,7 @@ var obstacles_hilited := []
 var score: int = 0
 var time: float = 0.0
 var empathy: int = 2
-var skin_progress: int = 0
+var skin_progress: int = 1
 var skin_level: int = 0
 
 enum collision {DO_NOT_SET = 0,
@@ -234,6 +234,7 @@ func _ready():
 func _process(delta: float) -> void:
 	if is_playing:
 		time += delta
+		print("Empathy: ",empathy)
 
 func load_humans(paths_array,destination_array):
 	for path in paths_array:
