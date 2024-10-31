@@ -13,14 +13,21 @@ var modulate_visible: Color = Color(1.0,1.0,1.0,1.0)
 @onready var game_over_h_separator_3: HSeparator = %GameOver_HSeparator3
 #endregion
 
-#region Game_Over Stat Labels
+#region Game_Over Stat OnReadies
 @onready var game_over_level_stat: Label = %"GameOver_level-stat"
 @onready var game_over_abduct_stat: Label = %"GameOver_abduct-stat"
 @onready var game_over_empathy_stat: Label = %"GameOver_empathy-stat"
 @onready var game_over_time_stat: Label = %"GameOver_time-stat"
+
+@onready var game_over_progress_current: Label = %"GameOver_progress-current"
+@onready var game_over_progress_target: Label = %"GameOver_progress-target"
+
+@onready var animation_progress_stats: AnimationPlayer = %"Animation_progress-stats"
 #endregion
 
-
+var skin_progress_old : int = 0
+var skin_progress_current : int = 0
+var skin_progress_target : int = 0
 
 #region Continue Button Declaration
 @onready var button_continue: Button = %Button_Continue
@@ -135,7 +142,36 @@ func on_game_over():
 	button_main_menu.get_child(0).text = "Restart"
 #endregion
 
+	var level: String = Globals.level_label[Globals.level_current]
+	var abductions: int = Globals.score
+	var empathy: int = Globals.empathy
+	var total_seconds: float = Globals.time
+	skin_progress_old = Globals.skin_progress
+	skin_progress_target = skin_progress_old * 400
+	skin_progress_current = skin_progress_old + 335
+	Globals.skin_progress = skin_progress_current
+	
+#region Time setup
+	var seconds:float = fmod(total_seconds , 60.0)
+	var minutes:int   =  int(total_seconds / 60.0) % 60
+	var hours:  int   =  int(total_seconds / 3600.0)
+	var time:String = str("%02d:%02d:%02d" % [hours, minutes, seconds])
+#endregion
+	
+	game_over_level_stat.text = level
+	game_over_abduct_stat.text = str(abductions)
+	game_over_empathy_stat.text = str(empathy)	
+	game_over_time_stat.text = time
+	game_over_progress_current.text = str(skin_progress_old)
+	animation_progress_stats.play("show_stats")
 
+func on_game_over_progress():
+	var tween = create_tween()
+	tween.tween_method(increase_progress,skin_progress_old,skin_progress_current,1)
+	
+func increase_progress(progress):
+	game_over_progress_current.text = str(progress)
+	
 # Button Functions
 #region Continue Button
 func on_button_continue():

@@ -1,9 +1,26 @@
 extends Node
 
 @export var level_current = 0
+var level_label : Array = [
+	"0-0",
+	"1-1",
+	"1-2",
+	"1-3",
+	"2-1",
+	"2-2",
+	"2-3",
+	"3-1",
+	"3-2",
+	"3-3",
+	"4-1",
+	"4-2",
+	"4-3"
+]
 
 var is_game_state: is_game_states
 enum is_game_states {PREINTRO,INTRO,MENU,POSTMENU,PREBEGIN,BEGIN,PLAY,PAUSE,OVER}
+
+var is_playing: bool = false
 
 var human_tops_paths: Array = [
 	"res://NPCs/Humans/textures/human_clothes_grn_01.tres",
@@ -103,7 +120,11 @@ var powerups := {
 }
 		
 var obstacles_hilited := []
-var score = 0
+var score: int = 0
+var time: float = 0.0
+var empathy: int = 2
+var skin_progress: int = 0
+var skin_level: int = 0
 
 enum collision {DO_NOT_SET = 0,
 				GROUND = 1,
@@ -202,11 +223,17 @@ func _ready():
 	Messenger.level_update.connect(on_level_update)
 	Messenger.restart.connect(on_restart)
 	Messenger.retry.connect(on_retry)
+	Messenger.game_play.connect(on_game_play)
+	Messenger.game_over.connect(on_game_over)
 	on_level_update(level_current)
 	
 	powerups_available = powerups.keys()
 	
 	load_humans(human_tops_paths,human_tops)
+	
+func _process(delta: float) -> void:
+	if is_playing:
+		time += delta
 
 func load_humans(paths_array,destination_array):
 	for path in paths_array:
@@ -230,6 +257,9 @@ func on_retry(is_restart):
 	powerups_available = powerups.keys()
 	obstacles_hilited = [] ## Empties out the last hilighted obstacle arrayd
 	score = 0
+	time = 0.0
+	empathy = 0
+	is_playing = false
 	if !is_restart:
 		Messenger.level_update.emit(1)
 		Messenger.swap_game_state.emit(Globals.is_game_states.PLAY)
@@ -251,3 +281,9 @@ func on_abduction(score_value):
 func on_swap_game_state(game_state):
 	is_game_state = game_state
 	#print("Is State #: ",is_game_state)
+	
+func on_game_play():
+	is_playing = true
+	
+func on_game_over():
+	is_playing = false
