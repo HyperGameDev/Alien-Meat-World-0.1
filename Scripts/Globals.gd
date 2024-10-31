@@ -122,9 +122,12 @@ var powerups := {
 var obstacles_hilited := []
 var score: int = 0
 var time: float = 0.0
+static var EMPATHY: int = 2
 var empathy: int = 2
 var skin_progress: int = 1
-var skin_level: int = 0
+var skin_max_progress: int = 2000
+var skin_level: int = 1
+var skin_max_level: int = 38
 
 enum collision {DO_NOT_SET = 0,
 				GROUND = 1,
@@ -234,7 +237,6 @@ func _ready():
 func _process(delta: float) -> void:
 	if is_playing:
 		time += delta
-		print("Empathy: ",empathy)
 
 func load_humans(paths_array,destination_array):
 	for path in paths_array:
@@ -259,7 +261,7 @@ func on_retry(is_restart):
 	obstacles_hilited = [] ## Empties out the last hilighted obstacle arrayd
 	score = 0
 	time = 0.0
-	empathy = 0
+	empathy = EMPATHY
 	is_playing = false
 	if !is_restart:
 		Messenger.level_update.emit(1)

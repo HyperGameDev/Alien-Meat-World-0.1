@@ -22,12 +22,21 @@ var modulate_visible: Color = Color(1.0,1.0,1.0,1.0)
 @onready var game_over_progress_current: Label = %"GameOver_progress-current"
 @onready var game_over_progress_target: Label = %"GameOver_progress-target"
 
+@onready var game_over_progress_skins: ProgressBar = %"GameOver_progress-skins"
+@onready var game_over_progress_last: HSlider = %"GameOver_progress-last"
+
+
 @onready var animation_progress_stats: AnimationPlayer = %"Animation_progress-stats"
 #endregion
 
 var skin_progress_old : int = 0
 var skin_progress_current : int = 0
 var skin_progress_target : int = 0
+
+@export var empathy_base_value: float = .7
+@export var empathy_impact: float = .3
+@export var time_impact: float = 0.0506
+@export var abduction_impact: float = 1.345
 
 #region Continue Button Declaration
 @onready var button_continue: Button = %Button_Continue
@@ -149,15 +158,19 @@ func on_game_over():
 	var total_minutes: float = total_seconds/60
 	
 	
-	var empathy_factor: float = 0.7 + (0.3 * empathy)
-	var time_factor: float =  0.0506 * 1 * (empathy ** 2.0)
-	var abduction_factor: float = (0.345 ** (1 * abductions))
-	var score_multiplier: float = (empathy_factor + total_seconds * time_factor) * abduction_factor
+	var empathy_factor: float = empathy_base_value + (empathy_impact * empathy)
+	var time_factor: float =  time_impact * 1 * (empathy ** 2.0)
+	var abduction_factor: float = (abduction_impact ** (1 * abductions))
+	var score_update: float = (empathy_factor + total_seconds * time_factor) * abduction_factor
 	skin_progress_old = Globals.skin_progress
-	skin_progress_target = skin_progress_old * 400
-	skin_progress_current = skin_progress_old * score_multiplier
+	var next_skin_level: int = (Globals.skin_max_progress/Globals.skin_max_level) * Globals.skin_level
+	var magnitude = floor(log(next_skin_level) / log(10))
+	var step = pow(10, magnitude)
+	skin_progress_target = snapped(next_skin_level,step)
+	skin_progress_current = skin_progress_old + score_update
 	Globals.skin_progress = skin_progress_current
-	print("Multiplier: ",score_multiplier)
+	print("Update: ",score_update)
+	
 	
 #region Time setup
 	var seconds:float = fmod(total_seconds , 60.0)
@@ -172,16 +185,26 @@ func on_game_over():
 	game_over_empathy_stat.text = str(empathy)	
 	game_over_time_stat.text = time
 	game_over_progress_current.text = str(skin_progress_old)
+	game_over_progress_target.text = str(skin_progress_target)
 	animation_progress_stats.play("show_stats")
 
 func on_game_over_progress():
-	var tween = create_tween()
-	tween.tween_method(increase_progress,skin_progress_old,skin_progress_current,1)
+	var tween_number = create_tween()
+	tween_number.tween_method(increase_progress_number,skin_progress_old,skin_progress_current,1)
 	
-func increase_progress(progress):
-	print("Old progress: ",skin_progress_old)
-	print("Current progress: ",skin_progress_current)
+	# Linear interpolation:
+	var skin_progress_bar_begin = 1 + (skin_progress_old - 0) * (100 - 1) / (skin_progress_target - 0)
+	var skin_progress_bar_current = 1 + (skin_progress_current - 0) * (100 - 1) / (skin_progress_target - 0)
+	var tween_bar = create_tween()
+	tween_bar.tween_method(increase_progress_bar, skin_progress_bar_begin,skin_progress_bar_current,1)
+	
+func increase_progress_number(progress):
+	#print("Old progress: ",skin_progress_old)
+	#print("Current progress: ",skin_progress_current)
 	game_over_progress_current.text = str(progress)
+	
+func increase_progress_bar(progress):
+	game_over_progress_skins.value = progress
 	
 # Button Functions
 #region Continue Button
