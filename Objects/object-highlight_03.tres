@@ -29,5 +29,5 @@ void fragment() {
 render_priority = 0
 shader = SubResource("Shader_hpx2n")
 shader_parameter/outline_color = Color(1, 0, 1, 1)
-shader_parameter/outline_width = 2.43
+shader_parameter/outline_width = 0.0
 shader_parameter/constant_width = true

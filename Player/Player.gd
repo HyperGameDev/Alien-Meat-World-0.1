@@ -17,6 +17,9 @@ var cursor_pos : Vector2 = Vector2(0,0)
 @onready var animation: AnimationTree = get_node("Alien_V3/Alien/AnimationTree_Alien")
 @onready var animation_armature: AnimationPlayer = get_node("Alien_V3/Alien/Armature/AnimationPlayer")
 
+
+#@onready var armature_hurt: Skeleton3D = get_node("Alien_V3/Alien/Armature_hurt/")
+
 @onready var skeleton: Skeleton3D = get_node("Alien_V3/Alien/Armature/Skeleton3D")
 @onready var skeleton_hurt: Skeleton3D = get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D")
 
@@ -113,6 +116,7 @@ func _ready():
 	set_max_slides(20)
 	
 	mesh_orb.visible = false
+	#armature_hurt.visible = true # So it can be hidden in editor
 
 	
 func _physics_process(delta):

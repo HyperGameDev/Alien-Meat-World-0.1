@@ -33,6 +33,9 @@ var skin_progress_old : int = 0
 var skin_progress_current : int = 0
 var skin_progress_target : int = 0
 
+var skin_progress_bar_begin: int = 0
+var skin_progress_bar_current: int = 0
+
 @export var empathy_base_value: float = .7
 @export var empathy_impact: float = .3
 @export var time_impact: float = 0.0506
@@ -69,6 +72,7 @@ func _ready() -> void:
 	visible = false
 	
 	Messenger.game_over.connect(on_game_over)
+	game_over_progress_skins.value_changed.connect(on_progress_changed)
 	
 
 #region Game_Over UI = Un-Visible
@@ -134,6 +138,8 @@ func _input(event: InputEvent):
 
 # Game Over Function
 func on_game_over():
+	update_progress_target()
+	
 #region Game_Over UI = Visible
 	game_over_menu_bg.visible = true
 	game_over_progress_stats.visible = true
@@ -163,10 +169,6 @@ func on_game_over():
 	var abduction_factor: float = (abduction_impact ** (1 * abductions))
 	var score_update: float = (empathy_factor + total_seconds * time_factor) * abduction_factor
 	skin_progress_old = Globals.skin_progress
-	var next_skin_level: int = (Globals.skin_max_progress/Globals.skin_max_level) * Globals.skin_level
-	var magnitude = floor(log(next_skin_level) / log(10))
-	var step = pow(10, magnitude)
-	skin_progress_target = snapped(next_skin_level,step)
 	skin_progress_current = skin_progress_old + score_update
 	Globals.skin_progress = skin_progress_current
 	print("Update: ",score_update)
@@ -185,26 +187,72 @@ func on_game_over():
 	game_over_empathy_stat.text = str(empathy)	
 	game_over_time_stat.text = time
 	game_over_progress_current.text = str(skin_progress_old)
-	game_over_progress_target.text = str(skin_progress_target)
+	
 	animation_progress_stats.play("show_stats")
 
 func on_game_over_progress():
 	var tween_number = create_tween()
 	tween_number.tween_method(increase_progress_number,skin_progress_old,skin_progress_current,1)
 	
-	# Linear interpolation:
-	var skin_progress_bar_begin = 1 + (skin_progress_old - 0) * (100 - 1) / (skin_progress_target - 0)
-	var skin_progress_bar_current = 1 + (skin_progress_current - 0) * (100 - 1) / (skin_progress_target - 0)
-	var tween_bar = create_tween()
-	tween_bar.tween_method(increase_progress_bar, skin_progress_bar_begin,skin_progress_bar_current,1)
+	update_progess_bar()
 	
-func increase_progress_number(progress):
+func update_progress_target():
+	var next_skin_level: int = (Globals.skin_max_progress/Globals.skin_max_level) * Globals.skin_level
+	var magnitude = floor(log(next_skin_level) / log(10))
+	var step = pow(10, magnitude)
+	skin_progress_target = snapped(next_skin_level,step)
+	game_over_progress_target.text = str(skin_progress_target)
+
+func update_progess_bar():
+	var score_tick: int = skin_progress_current / 100
+
+	for number in range(100):
+		await get_tree().create_timer(.01).timeout
+		game_over_progress_skins.value += score_tick
+		if number >= 100:
+			update_progress_target()
+	
+	
+func on_progress_changed(progress):
+	print("Progress: ",progress)
+	if progress <= 50 and progress > 0:
+		print("Current progress: ",skin_progress_bar_current,"\nCurrent target: ",skin_progress_target)
+	if progress >= 100:
+		print("Full progress: ",skin_progress_bar_current,"\nFull target: ",skin_progress_target)
+		#
+		game_over_progress_skins.value = 0
+		#
+		#var next_skin_level: int = (Globals.skin_max_progress/Globals.skin_max_level) * Globals.skin_level
+		#var magnitude = floor(log(next_skin_level) / log(10))
+		#var step = pow(10, magnitude)
+		#
+		#skin_progress_current -= skin_progress_target
+		#
+		#Globals.skin_level += 1
+		#skin_progress_target = snapped(return_skin_target(), step)	
+		#
+		#game_over_progress_target.text = str(skin_progress_target)
+		#
+		## Linear interpolation:
+		#skin_progress_bar_begin = 1 + (skin_progress_old - 0) * (100 - 1) / (skin_progress_target - 0)
+		#skin_progress_bar_current = 1 + (skin_progress_current - 0) * (100 - 1) / (skin_progress_target - 0)
+		#
+		#var tween_bar = create_tween()
+		#tween_bar.tween_method\
+		#(increase_progress_bar, skin_progress_bar_begin\
+		#,skin_progress_bar_current,1)
+		
+
+func return_skin_target() -> int:
+	return (Globals.skin_max_progress/Globals.skin_max_level) * Globals.skin_level
+
+func increase_progress_number(number_progress):
 	#print("Old progress: ",skin_progress_old)
 	#print("Current progress: ",skin_progress_current)
-	game_over_progress_current.text = str(progress)
+	game_over_progress_current.text = str(number_progress)
 	
-func increase_progress_bar(progress):
-	game_over_progress_skins.value = progress
+func increase_progress_bar(bar_progress):
+	game_over_progress_skins.value = bar_progress
 	
 # Button Functions
 #region Continue Button
