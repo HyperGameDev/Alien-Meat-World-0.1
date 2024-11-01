@@ -2,6 +2,7 @@ extends Node
 
 ## Search files for swap_game_state to find other transition points between states
 
+
 @onready var blackout: Panel = get_tree().current_scene.get_node("%Blackout_BG")
 @onready var sun: DirectionalLight3D = get_tree().current_scene.get_node("WorldEnvironment/DirectionalLight3D")
 @onready var terrain_controller: Node3D = get_tree().current_scene.get_node("%TerrainController_inScene")
@@ -102,6 +103,7 @@ func on_game_state_menu():
 	tween_fadein.tween_property(blackout, "self_modulate", Color(1.0,1.0,1.0,.0), 1.0)
 	
 	Messenger.game_menu.emit()
+	Audio.audio_main_menu.playing = true
 	
 	camera.cam_y_offset = main_menu.menu_cam_pos_y
 
@@ -122,6 +124,8 @@ func on_game_state_prebegin():
 	tween_fadeout.tween_property(blackout, "self_modulate", Color(1.0, 1.0, 1.0, 1.0), .3)
 	
 	await tween_fadeout.finished
+	Audio.audio_main_menu.playing = false
+	
 	Messenger.game_prebegin.emit()
 	Messenger.level_update.emit(1)
 	camera.cam_y_offset += 20.0

@@ -190,37 +190,39 @@ func on_game_over():
 	
 	animation_progress_stats.play("show_stats")
 
-func on_game_over_progress():
+func score_number_update(): # Called by an animation
 	var tween_number = create_tween()
 	tween_number.tween_method(increase_progress_number,skin_progress_old,skin_progress_current,1)
 	
-	update_progess_bar()
 	
 func update_progress_target():
 	var next_skin_level: int = (Globals.skin_max_progress/Globals.skin_max_level) * Globals.skin_level
+	print("Global level: ",Globals.skin_level)
 	var magnitude = floor(log(next_skin_level) / log(10))
 	var step = pow(10, magnitude)
 	skin_progress_target = snapped(next_skin_level,step)
 	game_over_progress_target.text = str(skin_progress_target)
+	print("Progress target: ",skin_progress_target)
 
-func update_progess_bar():
+func update_progress_bar():
 	var score_tick: int = skin_progress_current / 100
 
 	for number in range(100):
 		await get_tree().create_timer(.01).timeout
 		game_over_progress_skins.value += score_tick
-		if number >= 100:
-			update_progress_target()
 	
 	
 func on_progress_changed(progress):
-	print("Progress: ",progress)
-	if progress <= 50 and progress > 0:
-		print("Current progress: ",skin_progress_bar_current,"\nCurrent target: ",skin_progress_target)
 	if progress >= 100:
-		print("Full progress: ",skin_progress_bar_current,"\nFull target: ",skin_progress_target)
 		#
 		game_over_progress_skins.value = 0
+		if Globals.skin_progress >= skin_progress_target:
+			Globals.skin_progress = skin_progress_current - skin_progress_target
+			skin_progress_current = Globals.skin_progress
+			Messenger.skin_level_update.emit(1)
+			print("Full progress: ",skin_progress_bar_current,"\nFull target: ",skin_progress_target,"\nGlobal Skin Progress: ",Globals.skin_progress,"\nskin_progress_current: ",skin_progress_current)
+			score_number_update()
+		update_progress_target()
 		#
 		#var next_skin_level: int = (Globals.skin_max_progress/Globals.skin_max_level) * Globals.skin_level
 		#var magnitude = floor(log(next_skin_level) / log(10))

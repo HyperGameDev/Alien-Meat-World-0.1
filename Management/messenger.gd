@@ -179,6 +179,8 @@ signal eating_finished
 
 @warning_ignore("unused_signal")
 signal hitpoint_update
+@warning_ignore("unused_signal")
+signal skin_level_update
 
 @warning_ignore("unused_signal")
 signal level_update

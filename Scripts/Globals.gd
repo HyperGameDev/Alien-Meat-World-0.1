@@ -228,6 +228,7 @@ func _ready():
 	Messenger.retry.connect(on_retry)
 	Messenger.game_play.connect(on_game_play)
 	Messenger.game_over.connect(on_game_over)
+	Messenger.skin_level_update.connect(on_skin_level_update)
 	on_level_update(level_current)
 	
 	powerups_available = powerups.keys()
@@ -253,6 +254,9 @@ func on_level_update(level):
 	current_obstacle_chunks = level_chunks_obstacles[level]
 	
 	current_menu_chunks = level_chunks_menu[level]
+	
+func on_skin_level_update(increase_level_amount):
+	skin_level += increase_level_amount
 	
 func on_retry(is_restart):
 	Game_States.is_paused = false

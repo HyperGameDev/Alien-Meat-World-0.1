@@ -1,0 +1,28 @@
+[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://bfhfkgv7ec87n"]
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_g005i"]
+resource_name = "EQ"
+
+[sub_resource type="AudioEffectEQ10" id="AudioEffectEQ10_3r2u7"]
+resource_name = "EQ10"
+
+[sub_resource type="AudioEffectEQ21" id="AudioEffectEQ21_1y8hw"]
+resource_name = "EQ21"
+band_db/250_hz = 7.0
+band_db/700_hz = -5.0
+band_db/1400_hz = -2.4
+band_db/4000_hz = 2.6
+
+[resource]
+bus/1/name = &"Music"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectEQ_g005i")
+bus/1/effect/0/enabled = false
+bus/1/effect/1/effect = SubResource("AudioEffectEQ10_3r2u7")
+bus/1/effect/1/enabled = false
+bus/1/effect/2/effect = SubResource("AudioEffectEQ21_1y8hw")
+bus/1/effect/2/enabled = true

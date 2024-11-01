@@ -17,7 +17,7 @@ uniform vec4 brick_color2 : source_color = vec4( 0.37, 0.12, 0.04, 1.0 );
 uniform vec4 mortar_joint_color : source_color = vec4( 1.0, 0.98777, 0.9877777, 1.0 );
 
 vec2 random( vec2 pos )
-{ 
+{
 	return fract(
 		sin(
 			vec2(

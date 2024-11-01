@@ -16,6 +16,9 @@ func _ready() -> void:
 	information.visible = false
 	information2.visible = false
 	information3.visible = false
+	
+	if OS.is_debug_build():
+		AudioServer.output_device = "CABLE Input (VB-Audio Virtual Cable)"
 
 func _process(delta):
 	if !hide_info:
