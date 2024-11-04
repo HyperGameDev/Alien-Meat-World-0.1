@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://cj8wicmvte4o4"]
 
-[ext_resource type="AudioStream" uid="uid://by33ytsyniad7" path="res://Music/main-menu_02.wav" id="1_erywc"]
 [ext_resource type="Script" path="res://Music/audio.gd" id="1_yav4x"]
+[ext_resource type="AudioStream" uid="uid://citee5bxp8kt0" path="res://Music/main-menu_03-02-02.wav" id="2_scnif"]
 
 [node name="Audio" type="Node3D"]
 script = ExtResource("1_yav4x")
 
 [node name="Audio_main-menu" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("1_erywc")
+stream = ExtResource("2_scnif")
 bus = &"Music"
