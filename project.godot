@@ -252,4 +252,6 @@ avoidance/layer_16="Player"
 
 [rendering]
 
+textures/vram_compression/import_s3tc_bptc=true
+textures/vram_compression/import_etc2_astc=true
 anti_aliasing/quality/screen_space_aa=1

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://sv12te45u7e0"
 path.s3tc="res://.godot/imported/Tex_Quonset_01-2_Roof-1.png-0c364e47c7fee4bd601d3e2b7f69a71f.s3tc.ctex"
+path.etc2="res://.godot/imported/Tex_Quonset_01-2_Roof-1.png-0c364e47c7fee4bd601d3e2b7f69a71f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Objects/Buildings/Military/Textures/Tex_Quonset_01-2_Roof-1.png"
-dest_files=["res://.godot/imported/Tex_Quonset_01-2_Roof-1.png-0c364e47c7fee4bd601d3e2b7f69a71f.s3tc.ctex"]
+dest_files=["res://.godot/imported/Tex_Quonset_01-2_Roof-1.png-0c364e47c7fee4bd601d3e2b7f69a71f.s3tc.ctex", "res://.godot/imported/Tex_Quonset_01-2_Roof-1.png-0c364e47c7fee4bd601d3e2b7f69a71f.etc2.ctex"]
 
 [params]
 

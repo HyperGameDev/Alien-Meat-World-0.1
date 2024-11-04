@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bp1f3knfmyhy3"
 path.s3tc="res://.godot/imported/block_level-01_cattle-ranch_01_pierogi.png-4b08f19463342cfb9887a9fdb93a9829.s3tc.ctex"
+path.etc2="res://.godot/imported/block_level-01_cattle-ranch_01_pierogi.png-4b08f19463342cfb9887a9fdb93a9829.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Collaborator Experiments/Pierogigon/Terrain/block_level-01_cattle-ranch_01_pierogi.png"
-dest_files=["res://.godot/imported/block_level-01_cattle-ranch_01_pierogi.png-4b08f19463342cfb9887a9fdb93a9829.s3tc.ctex"]
+dest_files=["res://.godot/imported/block_level-01_cattle-ranch_01_pierogi.png-4b08f19463342cfb9887a9fdb93a9829.s3tc.ctex", "res://.godot/imported/block_level-01_cattle-ranch_01_pierogi.png-4b08f19463342cfb9887a9fdb93a9829.etc2.ctex"]
 
 [params]
 

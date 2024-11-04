@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://mumcmkwr86j3"
 path.s3tc="res://.godot/imported/block_level-01_cattle-ranch_02.png-6aa45ab8162d54c2f7da499d9d24347c.s3tc.ctex"
+path.etc2="res://.godot/imported/block_level-01_cattle-ranch_02.png-6aa45ab8162d54c2f7da499d9d24347c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Terrain/terrain_level_01_textures/block_level-01_cattle-ranch_02.png"
-dest_files=["res://.godot/imported/block_level-01_cattle-ranch_02.png-6aa45ab8162d54c2f7da499d9d24347c.s3tc.ctex"]
+dest_files=["res://.godot/imported/block_level-01_cattle-ranch_02.png-6aa45ab8162d54c2f7da499d9d24347c.s3tc.ctex", "res://.godot/imported/block_level-01_cattle-ranch_02.png-6aa45ab8162d54c2f7da499d9d24347c.etc2.ctex"]
 
 [params]
 

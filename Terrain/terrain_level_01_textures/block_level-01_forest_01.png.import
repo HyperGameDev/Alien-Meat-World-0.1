@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cx1sm06gsgtfe"
 path.s3tc="res://.godot/imported/block_level-01_forest_01.png-0715d9c3667d91a4741cce9e6f7584c1.s3tc.ctex"
+path.etc2="res://.godot/imported/block_level-01_forest_01.png-0715d9c3667d91a4741cce9e6f7584c1.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Terrain/terrain_level_01_textures/block_level-01_forest_01.png"
-dest_files=["res://.godot/imported/block_level-01_forest_01.png-0715d9c3667d91a4741cce9e6f7584c1.s3tc.ctex"]
+dest_files=["res://.godot/imported/block_level-01_forest_01.png-0715d9c3667d91a4741cce9e6f7584c1.s3tc.ctex", "res://.godot/imported/block_level-01_forest_01.png-0715d9c3667d91a4741cce9e6f7584c1.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c2wdqtrki3dtx"
 path.s3tc="res://.godot/imported/circle2.svg-3f77c991b6a8a4f29fde24e7dbee2e82.s3tc.ctex"
+path.etc2="res://.godot/imported/circle2.svg-3f77c991b6a8a4f29fde24e7dbee2e82.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://UI/Crosshair/circle2.svg"
-dest_files=["res://.godot/imported/circle2.svg-3f77c991b6a8a4f29fde24e7dbee2e82.s3tc.ctex"]
+dest_files=["res://.godot/imported/circle2.svg-3f77c991b6a8a4f29fde24e7dbee2e82.s3tc.ctex", "res://.godot/imported/circle2.svg-3f77c991b6a8a4f29fde24e7dbee2e82.etc2.ctex"]
 
 [params]
 

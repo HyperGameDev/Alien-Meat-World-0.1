@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvqudve4s0wgg"
+uid="uid://dlcadjfba6lsa"
 path.s3tc="res://.godot/imported/rock_0002_normal_opengl_1k.png-0129be5e4218cb21b2d782db2e992123.s3tc.ctex"
+path.etc2="res://.godot/imported/rock_0002_normal_opengl_1k.png-0129be5e4218cb21b2d782db2e992123.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Terrain/Cliffs/Textures/Sharp_Rocks/rock_0002_normal_opengl_1k.png"
-dest_files=["res://.godot/imported/rock_0002_normal_opengl_1k.png-0129be5e4218cb21b2d782db2e992123.s3tc.ctex"]
+dest_files=["res://.godot/imported/rock_0002_normal_opengl_1k.png-0129be5e4218cb21b2d782db2e992123.s3tc.ctex", "res://.godot/imported/rock_0002_normal_opengl_1k.png-0129be5e4218cb21b2d782db2e992123.etc2.ctex"]
 
 [params]
 
