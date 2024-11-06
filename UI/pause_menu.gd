@@ -42,6 +42,7 @@ var skin_progress_bar_current: int = 0
 @export var empathy_impact: float = .3
 @export var time_impact: float = 0.0506
 @export var abduction_impact: float = 1.345
+@export var skin_progression_factor: int = 20
 
 #region Continue Button Declaration
 @onready var button_continue: Button = %Button_Continue
@@ -222,9 +223,8 @@ func score_number_update(is_last): # Called first by an animation
 	
 	
 func update_progress_target():
-	var next_skin_level: int = (Globals.skin_max_progress/Globals.skin_max_level) * Globals.skin_level
-	print("Global level: ",Globals.skin_level)
-	#skin_progress_target = snapped(next_skin_level,step)
+	var next_skin_level: int = Globals.skin_level * skin_progression_factor
+	#print("Global level: ",Globals.skin_level)
 	skin_progress_target = next_skin_level
 	game_over_progress_skins.max_value = skin_progress_target
 	#print("Max value updated to: ",game_over_progress_skins.max_value)
