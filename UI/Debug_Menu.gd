@@ -51,6 +51,7 @@ func _ready():
 	%Button_20.pressed.connect(on_interact_20)
 	%Button_12.pressed.connect(on_interact_12)
 	%Button_21.pressed.connect(on_interact_21)
+	%Button_Score.pressed.connect(on_score_text_button_pressed)
 	
 	label_levelCurrent.text = str("Current Level: ",Globals.level_current)
 
@@ -184,5 +185,9 @@ func on_interact_21():
 	interact.debugl = 2
 	interact.debugr = 1
 	Messenger.arm_health_update.emit()
+	
+func on_score_text_button_pressed():
+	var text: String = %Text_Score.text
+	Messenger.abduction.emit(int(text))
 	
 	

@@ -275,6 +275,19 @@ custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_l0uo1")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
+layout_mode = 2
+
+[node name="Text_Score" type="LineEdit" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button_Score" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "  Go  "
+
 [node name="Button_scoreUp" type="Button" parent="MarginContainer/VBox_levelMenu/HBox_levelButtons/VBox_5"]
 unique_name_in_owner = true
 visible = false

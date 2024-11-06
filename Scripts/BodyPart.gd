@@ -19,6 +19,8 @@ const LIMB_MORPH_SPEED : float = 1.25
 
 @onready var bodypart_name : String = name.split("_")[1]
 
+@onready var skeleton_hurt : Node3D = player.get_node("Alien_V3/Alien/Armature_hurt/")
+
 @onready var mesh_hurt : MeshInstance3D = player.get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1])
 @onready var mesh : MeshInstance3D = player.get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1])
 
@@ -483,6 +485,7 @@ func do_eating():
 	Messenger.eating_finished.emit()
 
 func on_game_prebegin():
+	skeleton_hurt.visible = true
 	if is_part == BodyPart.is_parts.LEG_L or is_part == BodyPart.is_parts.LEG_R:
 		#print(collision_area_lower)
 		current_health = 0.0
