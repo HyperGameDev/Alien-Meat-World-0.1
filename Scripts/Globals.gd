@@ -129,6 +129,43 @@ var skin_max_progress: int = 2000
 var skin_level: int = 1
 var skin_max_level: int = 38
 
+var skins := []
+var skins_paths := [
+	"res://Player/textures/skins/alien_skin_01.tres",
+	"res://Player/textures/skins/alien_skin_02.tres",
+	"res://Player/textures/skins/alien_skin_03.tres",
+	"res://Player/textures/skins/alien_skin_04.tres",
+	"res://Player/textures/skins/alien_skin_05.tres",
+	"res://Player/textures/skins/alien_skin_06.tres",
+	"res://Player/textures/skins/alien_skin_07.tres",
+	"res://Player/textures/skins/alien_skin_08.tres",
+	"res://Player/textures/skins/alien_skin_09.tres",
+	"res://Player/textures/skins/alien_skin_10.tres",
+	"res://Player/textures/skins/alien_skin_11.tres",
+	"res://Player/textures/skins/alien_skin_12.tres",
+	"res://Player/textures/skins/alien_skin_13.tres",
+	"res://Player/textures/skins/alien_skin_14.tres",
+	"res://Player/textures/skins/alien_skin_15.tres",
+	"res://Player/textures/skins/alien_skin_16.tres",
+	"res://Player/textures/skins/alien_skin_17.tres",
+	"res://Player/textures/skins/alien_skin_18.tres",
+	"res://Player/textures/skins/alien_skin_19.tres",
+	"res://Player/textures/skins/alien_skin_20.tres",
+	"res://Player/textures/skins/alien_skin_21.tres",
+	"res://Player/textures/skins/alien_skin_22.tres",
+	"res://Player/textures/skins/alien_skin_23.tres",
+	"res://Player/textures/skins/alien_skin_24.tres",
+	"res://Player/textures/skins/alien_skin_25.tres",
+	"res://Player/textures/skins/alien_skin_26.tres",
+	"res://Player/textures/skins/alien_skin_27.tres",
+	"res://Player/textures/skins/alien_skin_28.tres",
+	"res://Player/textures/skins/alien_skin_29.tres",
+	"res://Player/textures/skins/alien_skin_30.tres"
+	]
+
+var skins_1 := []
+var skins_2 := []
+
 enum collision {DO_NOT_SET = 0,
 				GROUND = 1,
 				NPC = 2,
@@ -233,13 +270,17 @@ func _ready():
 	
 	powerups_available = powerups.keys()
 	
-	load_humans(human_tops_paths,human_tops)
+	skins_1 = skins.slice(0,15)
+	skins_2 = skins.slice(15,29)
+	
+	load_materials(human_tops_paths,human_tops)
+	load_materials(skins_paths,skins)
 	
 func _process(delta: float) -> void:
 	if is_playing:
 		time += delta
 
-func load_humans(paths_array,destination_array):
+func load_materials(paths_array,destination_array):
 	for path in paths_array:
 		var loaded_material: StandardMaterial3D = load(path) as StandardMaterial3D
 		destination_array.append(loaded_material)
@@ -257,6 +298,7 @@ func on_level_update(level):
 	
 func on_skin_level_update(increase_level_amount):
 	skin_level += increase_level_amount
+	
 	
 func on_retry(is_restart):
 	Game_States.is_paused = false

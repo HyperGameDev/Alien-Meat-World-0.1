@@ -182,7 +182,7 @@ func on_game_over():
 	game_over_progress_skins.value = skin_progress_old
 	skin_progress_current = skin_progress_old + score_update
 	Globals.skin_progress = skin_progress_current
-	print("Update: ",score_update)
+	#print("Update: ",score_update)
 	
 	
 #region Time setup
@@ -204,14 +204,14 @@ func on_game_over():
 func run_progress_tween():
 	if skin_progress_current < skin_progress_target:
 		score_number_update(true)
-		print("Current prog (",skin_progress_current,") was less than the target (",skin_progress_target,")")
+		#print("Current prog (",skin_progress_current,") was less than the target (",skin_progress_target,")")
 	else:				
 		score_number_update(false)
-		print("Current prog (",skin_progress_current,") was greater than the target (",skin_progress_target,")")
+		#print("Current prog (",skin_progress_current,") was greater than the target (",skin_progress_target,")")
 	
 
 func score_number_update(is_last): # Called first by an animation
-	print("Tween updated to go to ",skin_progress_target)
+	#print("Tween updated to go to ",skin_progress_target)
 	var tween_number = create_tween()
 	
 	if is_last:
@@ -234,17 +234,17 @@ func update_progress_target():
 	
 func on_progress_changed(progress):
 	if progress >= game_over_progress_skins.max_value:
-		print("Max bar value reached!")
+		#print("Max bar value reached!")
 		#print("Progress (",progress,") updated max to: ",game_over_progress_skins.max_value)
 		if Globals.skin_progress >= skin_progress_target:
-			print("Current progress (",skin_progress_current,") was greater than/equal to target!")
+			#print("Current progress (",skin_progress_current,") was greater than/equal to target!")
 			game_over_progress_skins.value = 0
 			Globals.skin_progress = skin_progress_current - skin_progress_target
 			skin_progress_current = Globals.skin_progress
 			Messenger.skin_level_update.emit(1)
 			#print("Full progress: ",skin_progress_bar_current,"\nFull target: ",skin_progress_target,"\nGlobal Skin Progress: ",Globals.skin_progress,"\nskin_progress_current: ",skin_progress_current)
 			update_progress_target()
-			print("Progress updated target to: ",skin_progress_target)
+			#print("Progress updated target to: ",skin_progress_target)
 			run_progress_tween()
 		
 

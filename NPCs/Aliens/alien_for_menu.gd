@@ -9,6 +9,7 @@ static var is_hoverable: bool = false
 
 @onready var hud: CanvasLayer = get_tree().get_root().get_node("Main Scene/HUD")
 
+@onready var mesh: MeshInstance3D = $Alien
 @onready var area: Area3D = %Area3D
 @onready var animation_menu_alien: AnimationTree = $Alien/AnimationTree
 @onready var animation_exclaim: AnimationPlayer = $Alien/Alien_Exclaim/AnimationPlayer 
@@ -22,6 +23,7 @@ var was_chosen : bool = false
 func _ready() -> void:
 	orb.visible = false
 	area.add_to_group("Menu Alien")
+	mesh.get_surface_override_material(0).disable_receive_shadows = true
 	
 	if is_visible:
 		visible = true
@@ -41,6 +43,8 @@ func _ready() -> void:
 	Messenger.game_postmenu.connect(on_game_postmenu)
 	Messenger.game_begin.connect(on_game_begin)
 	Messenger.attack_target.connect(am_i_hovered)
+	
+	
 
 
 func am_i_hovered(target):

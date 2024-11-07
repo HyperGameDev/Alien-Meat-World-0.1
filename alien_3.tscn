@@ -11,7 +11,7 @@
 [ext_resource type="Animation" uid="uid://6vd48e8d4d1w" path="res://Player/Animations/Reach.res" id="5_s4vjh"]
 [ext_resource type="Animation" uid="uid://d3o7gqh2ct2rd" path="res://Player/Animations/Reach_2.res" id="6_d45f7"]
 [ext_resource type="PackedScene" uid="uid://c1xnvbm1223wp" path="res://Player/body_shield.tscn" id="6_gq8ww"]
-[ext_resource type="Material" uid="uid://ceyvghpuqtg0c" path="res://Player/textures/alien_skin_01.tres" id="11_cui7w"]
+[ext_resource type="Material" uid="uid://ceyvghpuqtg0c" path="res://Player/textures/skins/alien_skin_01.tres" id="11_cui7w"]
 [ext_resource type="Material" uid="uid://dibqoi0skl53w" path="res://Player/textures/alien_heart-inner_01.tres" id="13_sarqy"]
 [ext_resource type="Material" uid="uid://d1dtjsbfwmi1a" path="res://Player/textures/alien_heart-outer_01.tres" id="14_h5uap"]
 [ext_resource type="Material" uid="uid://c7geoa58ckfal" path="res://Player/textures/alien_mouth_01.tres" id="15_ml75u"]

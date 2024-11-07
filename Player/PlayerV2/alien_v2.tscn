@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://dibqoi0skl53w" path="res://Player/textures/alien_heart-inner_01.tres" id="3_dukvf"]
 [ext_resource type="Material" uid="uid://d1dtjsbfwmi1a" path="res://Player/textures/alien_heart-outer_01.tres" id="4_6y14j"]
 [ext_resource type="PackedScene" uid="uid://46il21sceud8" path="res://Player/PlayerV2/alien_quadruped_cow.tscn" id="4_xyqpj"]
-[ext_resource type="Material" uid="uid://ceyvghpuqtg0c" path="res://Player/textures/alien_skin_01.tres" id="5_xu34x"]
+[ext_resource type="Material" uid="uid://ceyvghpuqtg0c" path="res://Player/textures/skins/alien_skin_01.tres" id="5_xu34x"]
 [ext_resource type="Material" uid="uid://c7geoa58ckfal" path="res://Player/textures/alien_mouth_01.tres" id="6_87ycr"]
 [ext_resource type="Material" uid="uid://ctrq3rqbk526b" path="res://Player/textures/alien_teeth_01.tres" id="7_ii2r7"]
 

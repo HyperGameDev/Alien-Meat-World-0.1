@@ -1,7 +1,10 @@
 extends Node3D
 
-@onready var animation: AnimationPlayer = $AnimationPlayer
 
+@onready var player: CharacterBody3D = %Player
+
+
+@onready var animation: AnimationPlayer = $AnimationPlayer
 
 @onready var cutscenes: Node3D = %Cutscenes
 
