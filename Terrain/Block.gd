@@ -48,12 +48,18 @@ func _ready():
 					if node is Alien_For_Menu:
 						if node.unhoverable == false:
 							if !skins_1_left.is_empty():
-								choose_and_apply_skin(skins_1_left,node)
+								var skin_chosen: String
+								skin_chosen = choose_random_skin(skins_1_left)
+								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
+								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
 								
 								
 						else: # Node is unhoverable:
 							if !skins_1_right.is_empty():
-								choose_and_apply_skin(skins_1_right,node)
+								var skin_chosen: String
+								skin_chosen = choose_random_skin(skins_1_right)
+								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
+								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
 						
 				#print(Globals.skins_1.pick_random())
 			2:
@@ -93,12 +99,9 @@ func choose_random_key_from_dict(dictionary):
 	var random_index = randi() % keys.size()
 	return keys[random_index]
 	
-func choose_and_apply_skin(source_dictionary,skin_target):
-	var skin_chosen: String
-	skin_chosen = choose_random_skin(source_dictionary)
+func choose_and_apply_materials(skin_chosen,mat_target,mat_key,mat_number):
+	var mat_to_apply: StandardMaterial3D
+	mat_to_apply = Globals.skins[skin_chosen][mat_key]
 	
-	var skin_to_apply: StandardMaterial3D
-	skin_to_apply = Globals.skins[skin_chosen]["skin_material"]
-	
-	skin_target.mesh.set_surface_override_material(0, skin_to_apply)
-	skin_target.mesh.get_surface_override_material(0).disable_receive_shadows = true
+	mat_target.mesh.set_surface_override_material(mat_number, mat_to_apply)
+	mat_target.mesh.get_surface_override_material(mat_number).disable_receive_shadows = true

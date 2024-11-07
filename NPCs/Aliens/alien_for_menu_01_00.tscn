@@ -3,14 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://sinmj7kc41ys" path="res://Player/PlayerV2/Alien_head-body_v2_lowpoly.blend" id="1_br7x4"]
 [ext_resource type="Script" path="res://NPCs/Aliens/alien_for_menu.gd" id="2_thfq0"]
 [ext_resource type="Material" uid="uid://c7geoa58ckfal" path="res://Player/textures/alien_mouth_01.tres" id="3_5l7rc"]
-[ext_resource type="Material" uid="uid://ba3vefww0115k" path="res://Player/textures/skins/alien_skin_09.tres" id="3_sth0p"]
+[ext_resource type="Material" uid="uid://ceyvghpuqtg0c" path="res://Player/textures/skins/alien_skin_01.tres" id="3_wkiyl"]
 [ext_resource type="Material" uid="uid://ctrq3rqbk526b" path="res://Player/textures/alien_teeth_01.tres" id="4_yigq1"]
+[ext_resource type="Material" uid="uid://dcb60r2v0gpsn" path="res://Player/textures/skins/alien_eyes_01.tres" id="5_sjyit"]
 [ext_resource type="Material" uid="uid://c76v4xp5gpcuv" path="res://UI/Orbs/orb_texture_01_alien-planet.tres" id="6_8xb0u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ye5re"]
 size = Vector3(0.75, 1, 0.675)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vge44"]
 
 [sub_resource type="Animation" id="Animation_3mqgr"]
 length = 0.001
@@ -312,9 +311,9 @@ shape = SubResource("BoxShape3D_ye5re")
 [node name="Alien" parent="." index="1"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 lod_bias = 10.0
-surface_material_override/0 = ExtResource("3_sth0p")
+surface_material_override/0 = ExtResource("3_wkiyl")
 surface_material_override/1 = ExtResource("3_5l7rc")
-surface_material_override/2 = SubResource("StandardMaterial3D_vge44")
+surface_material_override/2 = ExtResource("5_sjyit")
 surface_material_override/3 = ExtResource("4_yigq1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Alien" index="0"]

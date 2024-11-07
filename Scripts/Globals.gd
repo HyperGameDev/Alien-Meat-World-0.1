@@ -133,120 +133,200 @@ var skins := {
 	Skin_01 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_02 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_03 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_04 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_05 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_06 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_07 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_08 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_09 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_10 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_11 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_12 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_13 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_14 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_15 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_16 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_17 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_18 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_19 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
 	Skin_20 = {
 		skin_material = null,
 		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null
 		},
@@ -274,7 +354,28 @@ var skins_skin_paths := [
 	"res://Player/textures/skins/alien_skin_19.tres",
 	"res://Player/textures/skins/alien_skin_20.tres"
 	]
-
+var skins_eyes_paths := [
+	"res://Player/textures/skins/alien_eyes_01.tres",
+	"res://Player/textures/skins/alien_eyes_02.tres",
+	"res://Player/textures/skins/alien_eyes_03.tres",
+	"res://Player/textures/skins/alien_eyes_04.tres",
+	"res://Player/textures/skins/alien_eyes_05.tres",
+	"res://Player/textures/skins/alien_eyes_06.tres",
+	"res://Player/textures/skins/alien_eyes_07.tres",
+	"res://Player/textures/skins/alien_eyes_08.tres",
+	"res://Player/textures/skins/alien_eyes_09.tres",
+	"res://Player/textures/skins/alien_eyes_10.tres",
+	"res://Player/textures/skins/alien_eyes_11.tres",
+	"res://Player/textures/skins/alien_eyes_12.tres",
+	"res://Player/textures/skins/alien_eyes_13.tres",
+	"res://Player/textures/skins/alien_eyes_14.tres",
+	"res://Player/textures/skins/alien_eyes_15.tres",
+	"res://Player/textures/skins/alien_eyes_16.tres",
+	"res://Player/textures/skins/alien_eyes_17.tres",
+	"res://Player/textures/skins/alien_eyes_18.tres",
+	"res://Player/textures/skins/alien_eyes_19.tres",
+	"res://Player/textures/skins/alien_eyes_20.tres"
+]
 var skins_1 := {}
 var skins_2 := {}
 
@@ -384,8 +485,10 @@ func _ready():
 	
 	
 	load_materials(human_tops_paths,human_tops)
+	
+	# CONSIDER consolidating this by making the paths in a single dictionary and all iterated through using one function only... Not necessary functionally but might make the game load quicker if desired.
 	load_skins(skins,"skin_material",skins_skin_paths)
-	#load_skins(skins,"eyes_material",skins_eyes_paths)
+	load_skins(skins,"eyes_material",skins_eyes_paths)
 	
 	split_dictionary(skins)
 	
