@@ -36,36 +36,29 @@ func _ready():
 		else:
 			visible = false
 			
-		var skins_1 = Globals.skins_1.duplicate()
-		var skins_2 = Globals.skins_2.duplicate()
+		var skins_1_left = Globals.skins_1.duplicate(true)
+		var skins_2_left = Globals.skins_2.duplicate(true)
 		
-		var skins_1_2 = Globals.skins_1.duplicate()
-		var skins_2_2 = Globals.skins_2.duplicate()
+		var skins_1_right = Globals.skins_1.duplicate(true)
+		var skins_2_right = Globals.skins_2.duplicate(true)
 		
 		match menu_skin_array_to_use:
 			1:
 				for node in get_children():
 					if node is Alien_For_Menu:
 						if node.unhoverable == false:
-							if !skins_1.is_empty():
-								var skin_to_apply: StandardMaterial3D
-								skin_to_apply = skins_1.pick_random()
-								skins_1.erase(skin_to_apply)
-								node.mesh.set_surface_override_material(0, skin_to_apply)
-								node.mesh.get_surface_override_material(0).disable_receive_shadows = true
+							if !skins_1_left.is_empty():
+								choose_and_apply_skin(skins_1_left,node)
 								
 								
 						else: # Node is unhoverable:
-							if !skins_1_2.is_empty():
-								var skin_to_apply: StandardMaterial3D
-								skin_to_apply = skins_1_2.pick_random()
-								skins_1_2.erase(skin_to_apply)
-								node.mesh.set_surface_override_material(0, skin_to_apply)
-								node.mesh.get_surface_override_material(0).disable_receive_shadows = true
+							if !skins_1_right.is_empty():
+								choose_and_apply_skin(skins_1_right,node)
 						
 				#print(Globals.skins_1.pick_random())
 			2:
-				var skin_to_apply: StandardMaterial3D = Globals.skins_2.pick_random()
+				#var skin_to_apply: StandardMaterial3D = Globals.skins_2.pick_random()
+				pass
 			_:
 				pass
 			
@@ -88,3 +81,24 @@ func on_game_begin():
 		if has_node("grass_plane_01-01_00"):
 			$"grass_plane_01-01_00".visible = true
 			material_override = grass_material
+			
+func choose_random_skin(skins_dictionary):
+	if skins_dictionary.size() > 0:
+		var skin_to_choose = choose_random_key_from_dict(skins_dictionary)
+		skins_dictionary.erase(skin_to_choose)
+		return skin_to_choose
+
+func choose_random_key_from_dict(dictionary):
+	var keys = dictionary.keys()
+	var random_index = randi() % keys.size()
+	return keys[random_index]
+	
+func choose_and_apply_skin(source_dictionary,skin_target):
+	var skin_chosen: String
+	skin_chosen = choose_random_skin(source_dictionary)
+	
+	var skin_to_apply: StandardMaterial3D
+	skin_to_apply = Globals.skins[skin_chosen]["skin_material"]
+	
+	skin_target.mesh.set_surface_override_material(0, skin_to_apply)
+	skin_target.mesh.get_surface_override_material(0).disable_receive_shadows = true

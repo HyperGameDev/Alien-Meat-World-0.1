@@ -129,8 +129,130 @@ var skin_max_progress: int = 2000
 var skin_level: int = 1
 var skin_max_level: int = 38
 
-var skins := []
-var skins_paths := [
+var skins := {
+	Skin_01 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_02 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_03 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_04 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_05 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_06 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_07 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_08 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_09 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_10 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_11 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_12 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_13 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_14 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_15 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_16 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_17 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_18 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_19 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_20 = {
+		skin_material = null,
+		eyes_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	}
+	
+var skins_skin_paths := [
 	"res://Player/textures/skins/alien_skin_01.tres",
 	"res://Player/textures/skins/alien_skin_02.tres",
 	"res://Player/textures/skins/alien_skin_03.tres",
@@ -150,21 +272,11 @@ var skins_paths := [
 	"res://Player/textures/skins/alien_skin_17.tres",
 	"res://Player/textures/skins/alien_skin_18.tres",
 	"res://Player/textures/skins/alien_skin_19.tres",
-	"res://Player/textures/skins/alien_skin_20.tres",
-	"res://Player/textures/skins/alien_skin_21.tres",
-	"res://Player/textures/skins/alien_skin_22.tres",
-	"res://Player/textures/skins/alien_skin_23.tres",
-	"res://Player/textures/skins/alien_skin_24.tres",
-	"res://Player/textures/skins/alien_skin_25.tres",
-	"res://Player/textures/skins/alien_skin_26.tres",
-	"res://Player/textures/skins/alien_skin_27.tres",
-	"res://Player/textures/skins/alien_skin_28.tres",
-	"res://Player/textures/skins/alien_skin_29.tres",
-	"res://Player/textures/skins/alien_skin_30.tres"
+	"res://Player/textures/skins/alien_skin_20.tres"
 	]
 
-var skins_1 := []
-var skins_2 := []
+var skins_1 := {}
+var skins_2 := {}
 
 enum collision {DO_NOT_SET = 0,
 				GROUND = 1,
@@ -272,14 +384,30 @@ func _ready():
 	
 	
 	load_materials(human_tops_paths,human_tops)
-	load_materials(skins_paths,skins)
+	load_skins(skins,"skin_material",skins_skin_paths)
+	#load_skins(skins,"eyes_material",skins_eyes_paths)
 	
-	skins_1 = skins.slice(0,15)
-	skins_2 = skins.slice(15,29)
+	split_dictionary(skins)
 	
 func _process(delta: float) -> void:
 	if is_playing:
 		time += delta
+
+		
+func load_skins(target_dictionary,target_key,paths_array):
+	var i = 0
+	for entry in target_dictionary.keys():
+		if i < len(paths_array):
+			target_dictionary[entry][target_key] = load(paths_array[i]) as StandardMaterial3D
+			i += 1
+			
+func split_dictionary(dictionary):
+	var paths = dictionary.keys()
+	for i in range(len(paths)):
+		if i < len(paths) / 2:
+			skins_1[paths[i]] = dictionary[paths[i]]
+		else:
+			skins_2[paths[i]] = dictionary[paths[i]]
 
 func load_materials(paths_array,destination_array):
 	for path in paths_array:
