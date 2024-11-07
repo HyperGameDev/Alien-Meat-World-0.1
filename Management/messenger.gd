@@ -147,6 +147,9 @@ signal something_attacked
 @warning_ignore("unused_signal")
 signal something_hovered
 
+@warning_ignore(("unused_signal"))
+signal menu_alien_seen
+
 @warning_ignore("unused_signal")
 signal abductee_hovered
 

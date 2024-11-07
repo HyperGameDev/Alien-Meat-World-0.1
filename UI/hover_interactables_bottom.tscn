@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://daj6eq1r8okws"]
+
+[ext_resource type="PackedScene" uid="uid://e6gydh42shjn" path="res://NPCs/npc_interactable.tscn" id="1_6yj37"]
+[ext_resource type="Script" path="res://UI/bottom_hover.gd" id="1_che2g"]
+
+[node name="Bottom_Indicator" type="Node3D"]
+script = ExtResource("1_che2g")
+
+[node name="Mesh_Interactable" parent="." instance=ExtResource("1_6yj37")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.018, 0, 0)
+top_level = true

@@ -270,11 +270,12 @@ func _ready():
 	
 	powerups_available = powerups.keys()
 	
-	skins_1 = skins.slice(0,15)
-	skins_2 = skins.slice(15,29)
 	
 	load_materials(human_tops_paths,human_tops)
 	load_materials(skins_paths,skins)
+	
+	skins_1 = skins.slice(0,15)
+	skins_2 = skins.slice(15,29)
 	
 func _process(delta: float) -> void:
 	if is_playing:

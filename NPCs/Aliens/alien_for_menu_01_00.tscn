@@ -339,7 +339,7 @@ libraries = {
 }
 
 [node name="Marker3D" type="Marker3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, -0.434004)
 
 [node name="Orb" type="MeshInstance3D" parent="." index="3"]
 unique_name_in_owner = true

@@ -52,6 +52,8 @@ func _ready():
 								skin_to_apply = skins_1.pick_random()
 								skins_1.erase(skin_to_apply)
 								node.mesh.set_surface_override_material(0, skin_to_apply)
+								node.mesh.get_surface_override_material(0).disable_receive_shadows = true
+								
 								
 						else: # Node is unhoverable:
 							if !skins_1_2.is_empty():
@@ -59,6 +61,7 @@ func _ready():
 								skin_to_apply = skins_1_2.pick_random()
 								skins_1_2.erase(skin_to_apply)
 								node.mesh.set_surface_override_material(0, skin_to_apply)
+								node.mesh.get_surface_override_material(0).disable_receive_shadows = true
 						
 				#print(Globals.skins_1.pick_random())
 			2:

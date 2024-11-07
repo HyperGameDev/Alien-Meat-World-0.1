@@ -9,6 +9,7 @@ static var is_hoverable: bool = false
 
 @onready var hud: CanvasLayer = get_tree().get_root().get_node("Main Scene/HUD")
 
+
 @onready var mesh: MeshInstance3D = $Alien
 @onready var area: Area3D = %Area3D
 @onready var animation_menu_alien: AnimationTree = $Alien/AnimationTree
@@ -18,12 +19,14 @@ static var is_hoverable: bool = false
 @onready var orb: MeshInstance3D = %Orb
 
 var was_chosen : bool = false
+var is_hovered : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	orb.visible = false
 	area.add_to_group("Menu Alien")
 	mesh.get_surface_override_material(0).disable_receive_shadows = true
+
 	
 	if is_visible:
 		visible = true
@@ -46,11 +49,11 @@ func _ready() -> void:
 	
 	
 
-
 func am_i_hovered(target):
 	if target == area:
 		if has_node("Marker3D"):
 			Messenger.something_hovered.emit(area)
+			Messenger.menu_alien_seen.emit(area)
 			if Input.is_action_just_pressed("Grab"):
 				was_chosen = true
 
@@ -99,7 +102,7 @@ func animation_teleport_finished():
 	if was_chosen:
 		#print("Should be hidden")
 		visible = false
-	
+
 	
 func on_game_begin():
 	visible = false
