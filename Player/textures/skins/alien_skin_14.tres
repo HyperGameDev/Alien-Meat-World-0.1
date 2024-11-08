@@ -1,10 +1,34 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cdir0memfdw7s"]
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://cdir0memfdw7s"]
 
+[ext_resource type="Gradient" uid="uid://cf5m4c0uvk6ak" path="res://rainbow_gradient.tres" id="1_5kqmm"]
 [ext_resource type="Material" uid="uid://d120p0j7v2cji" path="res://Player/textures/alien_skin_thick-by-thotee_01.tres" id="1_8i7am"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_f7uh2"]
+noise_type = 2
+frequency = 0.0034
+fractal_type = 3
+fractal_octaves = 2
+fractal_lacunarity = 2.015
+fractal_gain = 0.225
+fractal_weighted_strength = 1.0
+fractal_ping_pong_strength = 4.5
+cellular_distance_function = 3
+cellular_jitter = -0.085
+cellular_return_type = 5
+domain_warp_enabled = true
+domain_warp_type = 2
+domain_warp_fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5hqqs"]
+width = 247
+height = 1222
+color_ramp = ExtResource("1_5kqmm")
+noise = SubResource("FastNoiseLite_f7uh2")
 
 [resource]
 next_pass = ExtResource("1_8i7am")
-albedo_color = Color(0.298039, 0.741176, 0.352941, 1)
-metallic_specular = 0.0
+albedo_texture = SubResource("NoiseTexture2D_5hqqs")
+metallic_specular = 0.78
 rim_tint = 1.0
 clearcoat_roughness = 1.0
+uv1_triplanar_sharpness = 1.90372

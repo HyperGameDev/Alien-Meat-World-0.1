@@ -10,6 +10,7 @@ albedo_color = Color(0, 0, 0, 1)
 transform = Transform3D(1, 0, 8.72665e-05, 0, 1, 0, -8.72665e-05, 0, 1, 0, 0, -7)
 surface_material_override/0 = SubResource("StandardMaterial3D_5kgoc")
 is_type = 3
+menu_skin_array_to_use = 2
 
 [node name="grass_plane_01-01_00" parent="." index="4"]
 visible = false

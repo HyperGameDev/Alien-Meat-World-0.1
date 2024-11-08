@@ -60,11 +60,23 @@ func _ready():
 								skin_chosen = choose_random_skin(skins_1_right)
 								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
 								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
-						
-				#print(Globals.skins_1.pick_random())
 			2:
-				#var skin_to_apply: StandardMaterial3D = Globals.skins_2.pick_random()
-				pass
+				for node in get_children():
+					if node is Alien_For_Menu:
+						if node.unhoverable == false:
+							if !skins_2_left.is_empty():
+								var skin_chosen: String
+								skin_chosen = choose_random_skin(skins_2_left)
+								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
+								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
+								
+								
+						else: # Node is unhoverable:
+							if !skins_2_right.is_empty():
+								var skin_chosen: String
+								skin_chosen = choose_random_skin(skins_2_right)
+								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
+								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
 			_:
 				pass
 			

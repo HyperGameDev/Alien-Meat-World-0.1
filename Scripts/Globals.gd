@@ -330,6 +330,26 @@ var skins := {
 		has_head_piece = false,
 		head_piece = null
 		},
+	Skin_21 = {
+		skin_material = null,
+		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
+		has_head_piece = false,
+		head_piece = null
+		},
+	Skin_22 = {
+		skin_material = null,
+		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
+		has_head_piece = false,
+		head_piece = null
+		}
 	}
 	
 var skins_skin_paths := [
@@ -352,7 +372,9 @@ var skins_skin_paths := [
 	"res://Player/textures/skins/alien_skin_17.tres",
 	"res://Player/textures/skins/alien_skin_18.tres",
 	"res://Player/textures/skins/alien_skin_19.tres",
-	"res://Player/textures/skins/alien_skin_20.tres"
+	"res://Player/textures/skins/alien_skin_20.tres",
+	"res://Player/textures/skins/alien_skin_21.tres",
+	"res://Player/textures/skins/alien_skin_22.tres"
 	]
 var skins_eyes_paths := [
 	"res://Player/textures/skins/alien_eyes_01.tres",
@@ -374,7 +396,9 @@ var skins_eyes_paths := [
 	"res://Player/textures/skins/alien_eyes_17.tres",
 	"res://Player/textures/skins/alien_eyes_18.tres",
 	"res://Player/textures/skins/alien_eyes_19.tres",
-	"res://Player/textures/skins/alien_eyes_20.tres"
+	"res://Player/textures/skins/alien_eyes_20.tres",
+	"res://Player/textures/skins/alien_eyes_21.tres",
+	"res://Player/textures/skins/alien_eyes_22.tres"
 ]
 var skins_1 := {}
 var skins_2 := {}

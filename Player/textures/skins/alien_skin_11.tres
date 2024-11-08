@@ -4,7 +4,8 @@
 
 [resource]
 next_pass = ExtResource("1_lbdu4")
-albedo_color = Color(0.298039, 0.741176, 0.352941, 1)
+albedo_color = Color(0.79, 0.79, 0.79, 1)
 metallic_specular = 0.0
+roughness = 0.0
 rim_tint = 1.0
 clearcoat_roughness = 1.0
