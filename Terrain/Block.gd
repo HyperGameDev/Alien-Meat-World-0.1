@@ -6,6 +6,8 @@ class_name Block
 static var menu_is_visible: bool = false
 var is_level: int = -1
 
+@onready var alien_headpieces: Node3D = get_tree().get_current_scene().get_node("Player/Alien_V3/Alien/Armature/Skeleton3D/Alien_Head/Alien_Headpieces")
+
 #@onready var terrain_shader = self.get_surface_override_material(0)
 @onready var marker_right = %Marker_boundaryRight
 @onready var marker_left = %Marker_boundaryLeft
@@ -53,6 +55,9 @@ func _ready():
 								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
 								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
 								
+								if Globals.skins[skin_chosen]["has_head_piece"]:
+									apply_headpiece(skin_chosen,node)
+								
 								
 						else: # Node is unhoverable:
 							if !skins_1_right.is_empty():
@@ -60,6 +65,9 @@ func _ready():
 								skin_chosen = choose_random_skin(skins_1_right)
 								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
 								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
+								
+								if Globals.skins[skin_chosen]["has_head_piece"]:
+									apply_headpiece(skin_chosen,node)
 			2:
 				for node in get_children():
 					if node is Alien_For_Menu:
@@ -68,7 +76,13 @@ func _ready():
 								var skin_chosen: String
 								skin_chosen = choose_random_skin(skins_2_left)
 								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
+								
+								if Globals.skins[skin_chosen]["has_head_piece"]:
+									apply_headpiece(skin_chosen,node)
 								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
+								
+								if Globals.skins[skin_chosen]["has_head_piece"]:
+									apply_headpiece(skin_chosen,node)
 								
 								
 						else: # Node is unhoverable:
@@ -117,3 +131,8 @@ func choose_and_apply_materials(skin_chosen,mat_target,mat_key,mat_number):
 	
 	mat_target.mesh.set_surface_override_material(mat_number, mat_to_apply)
 	mat_target.mesh.get_surface_override_material(mat_number).disable_receive_shadows = true
+
+func apply_headpiece(skin_chosen,alien):
+	var alien_headpieces: Node3D = alien.get_node("Alien/Alien_Headpieces")
+	alien_headpieces.get_node(Globals.skins[skin_chosen]["head_piece"]).visible = true
+	

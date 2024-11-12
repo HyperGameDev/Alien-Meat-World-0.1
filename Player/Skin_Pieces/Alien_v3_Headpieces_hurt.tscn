@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfgjc1bm6mqq1"]
+[gd_scene load_steps=3 format=3 uid="uid://dfgjc1bm6mqq1"]
 
 [ext_resource type="PackedScene" uid="uid://bhpdert5trw7p" path="res://Player/Skin_Pieces/marshmallow_hurt.tscn" id="1_kgrbk"]
+[ext_resource type="PackedScene" uid="uid://cn7h8h08hxo3x" path="res://Player/Skin_Pieces/devil_horns_hurt.tscn" id="2_55bus"]
 
 [node name="Alien_Headpieces_hurt" type="Node3D"]
 
 [node name="marshmallow_hurt" parent="." instance=ExtResource("1_kgrbk")]
+
+[node name="devil_horns_hurt" parent="." instance=ExtResource("2_55bus")]

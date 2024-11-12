@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cu6g2i3jshy23"]
+[gd_scene load_steps=30 format=3 uid="uid://cu6g2i3jshy23"]
 
 [ext_resource type="PackedScene" uid="uid://sinmj7kc41ys" path="res://Player/PlayerV2/Alien_head-body_v2_lowpoly.blend" id="1_br7x4"]
 [ext_resource type="Script" path="res://NPCs/Aliens/alien_for_menu.gd" id="2_thfq0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://ctrq3rqbk526b" path="res://Player/textures/alien_teeth_01.tres" id="4_yigq1"]
 [ext_resource type="Material" uid="uid://dcb60r2v0gpsn" path="res://Player/textures/skins/alien_eyes_01.tres" id="5_sjyit"]
 [ext_resource type="Material" uid="uid://c76v4xp5gpcuv" path="res://UI/Orbs/orb_texture_01_alien-planet.tres" id="6_8xb0u"]
+[ext_resource type="PackedScene" uid="uid://doyk6q2r6tyyh" path="res://Player/Skin_Pieces/Alien_v3_Headpieces.tscn" id="7_ad4er"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ye5re"]
 size = Vector3(0.75, 1, 0.675)
@@ -115,7 +116,7 @@ animation = &"bounce"
 animation = &"stop_moving"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_no2jd"]
-graph_offset = Vector2(-53, 63)
+graph_offset = Vector2(-146.545, 131.229)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_pvcw2")
 nodes/Animation/position = Vector2(300, 360)
 nodes/TimeSeek/node = SubResource("AnimationNodeTimeSeek_kji5o")
@@ -327,9 +328,9 @@ root_node = NodePath("../..")
 tree_root = SubResource("AnimationNodeBlendTree_no2jd")
 anim_player = NodePath("../AnimationPlayer")
 parameters/TimeSeek/seek_request = -1.0
-parameters/Transition/current_state = "stopping"
+parameters/Transition/current_state = "bouncing"
 parameters/Transition/transition_request = ""
-parameters/Transition/current_index = 1
+parameters/Transition/current_index = 0
 
 [node name="Alien_Exclaim" parent="Alien" index="2"]
 unique_name_in_owner = true
@@ -339,6 +340,15 @@ transform = Transform3D(0.335, 0, 0, 0, 0.335, 0, 0, 0, 0.335, 6.55671e-09, 1.54
 libraries = {
 "": SubResource("AnimationLibrary_otltl")
 }
+
+[node name="Alien_Headpieces" parent="Alien" index="3" instance=ExtResource("7_ad4er")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.32)
+
+[node name="marshmallow" parent="Alien/Alien_Headpieces" index="0"]
+visible = false
+
+[node name="devil_horns" parent="Alien/Alien_Headpieces" index="1"]
+visible = false
 
 [node name="Marker3D" type="Marker3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, -0.434004)
@@ -354,3 +364,5 @@ surface_material_override/0 = ExtResource("6_8xb0u")
 libraries = {
 "": SubResource("AnimationLibrary_ogiek")
 }
+
+[editable path="Alien/Alien_Headpieces"]

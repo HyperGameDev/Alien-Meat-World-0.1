@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn7h8h08hxo3x"]
+
+[ext_resource type="PackedScene" uid="uid://4t4lklfdlfmh" path="res://Player/Skin_Pieces/devil_horns_hurt.blend" id="1_o6hn7"]
+[ext_resource type="Material" uid="uid://cnibw6ktd8fc" path="res://Player/textures/skins/alien_skin_12.tres" id="2_oy2x0"]
+
+[node name="devil_horns_hurt" instance=ExtResource("1_o6hn7")]
+
+[node name="Devil_hurt" parent="." index="0"]
+lod_bias = 128.0
+surface_material_override/0 = ExtResource("2_oy2x0")

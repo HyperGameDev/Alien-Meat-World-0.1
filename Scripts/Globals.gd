@@ -236,8 +236,8 @@ var skins := {
 		teeth_material = null,
 		heart_outer_material = null,
 		heart_inner_material = null,
-		has_head_piece = false,
-		head_piece = null,
+		has_head_piece = true,
+		head_piece = "marshmallow",
 		has_mullet = false
 		},
 	Skin_11 = {
@@ -258,8 +258,8 @@ var skins := {
 		teeth_material = null,
 		heart_outer_material = null,
 		heart_inner_material = null,
-		has_head_piece = false,
-		head_piece = null,
+		has_head_piece = true,
+		head_piece = "devil_horns",
 		has_mullet = false
 		},
 	Skin_13 = {
@@ -270,7 +270,7 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null,
+		head_piece = "chocolate",
 		has_mullet = false
 		},
 	Skin_14 = {
@@ -303,7 +303,7 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null,
+		head_piece = "leopard_ears",
 		has_mullet = false
 		},
 	Skin_17 = {
@@ -314,7 +314,7 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null,
+		head_piece = "leopard_ears_pink",
 		has_mullet = false
 		},
 	Skin_18 = {
@@ -325,7 +325,7 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null,
+		head_piece = "army_helmet",
 		has_mullet = false
 		},
 	Skin_19 = {
@@ -336,7 +336,7 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null,
+		head_piece = "cow ears",
 		has_mullet = false
 		},
 	Skin_20 = {
@@ -369,7 +369,7 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null,
+		head_piece = "fire_particles",
 		has_mullet = false
 		},
 	Skin_23 = {
@@ -380,7 +380,7 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null,
+		head_piece = "ice_spikes",
 		has_mullet = false
 		},
 	Skin_24 = {
@@ -402,7 +402,7 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null,
+		head_piece = "star_crown",
 		has_mullet = false
 		},
 	Skin_26 = {
