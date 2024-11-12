@@ -269,7 +269,7 @@ var skins := {
 		teeth_material = null,
 		heart_outer_material = null,
 		heart_inner_material = null,
-		has_head_piece = false,
+		has_head_piece = true,
 		head_piece = "chocolate",
 		has_mullet = false
 		},
@@ -379,7 +379,7 @@ var skins := {
 		teeth_material = null,
 		heart_outer_material = null,
 		heart_inner_material = null,
-		has_head_piece = false,
+		has_head_piece = true,
 		head_piece = "ice_spikes",
 		has_mullet = false
 		},

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqh7m6wcn8y1p"]
+
+[ext_resource type="PackedScene" uid="uid://qti342dmyp4u" path="res://Player/Skin_Pieces/chocolate.blend" id="1_fty1k"]
+[ext_resource type="Material" uid="uid://brqvky076t2c7" path="res://Player/textures/skins/alien_eyes_13.tres" id="2_urugd"]
+
+[node name="chocolate" instance=ExtResource("1_fty1k")]
+
+[node name="Chocolate" parent="." index="0"]
+lod_bias = 128.0
+surface_material_override/0 = ExtResource("2_urugd")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://chbjppaocip5t"]
+
+[ext_resource type="PackedScene" uid="uid://1htyajqpfmn4" path="res://Player/Skin_Pieces/chocolate_hurt.blend" id="1_32070"]
+[ext_resource type="Material" uid="uid://brqvky076t2c7" path="res://Player/textures/skins/alien_eyes_13.tres" id="2_2tard"]
+
+[node name="chocolate_hurt" instance=ExtResource("1_32070")]
+
+[node name="Chocolate_hurt" parent="." index="0"]
+lod_bias = 128.0
+surface_material_override/0 = ExtResource("2_2tard")

@@ -9,6 +9,8 @@ static var is_hoverable: bool = false
 
 @onready var hud: CanvasLayer = get_tree().get_root().get_node("Main Scene/HUD")
 
+@onready var alien_headpieces: Node3D = $Alien/Alien_Headpieces
+
 
 @onready var mesh: MeshInstance3D = $Alien
 @onready var area: Area3D = %Area3D
@@ -23,6 +25,8 @@ var is_hovered : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	for headpiece in alien_headpieces.get_children():
+		headpiece.visible = false
 	orb.visible = false
 	area.add_to_group("Menu Alien")
 	mesh.get_surface_override_material(0).disable_receive_shadows = true

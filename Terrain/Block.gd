@@ -91,6 +91,9 @@ func _ready():
 								skin_chosen = choose_random_skin(skins_2_right)
 								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
 								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
+								
+								if Globals.skins[skin_chosen]["has_head_piece"]:
+									apply_headpiece(skin_chosen,node)
 			_:
 				pass
 			
