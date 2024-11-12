@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://doyk6q2r6tyyh"]
+
+[ext_resource type="PackedScene" uid="uid://bvqsyg8o5uoy8" path="res://Player/Skin_Pieces/marshmallow.tscn" id="1_r80gn"]
+
+[node name="Alien_Headpieces" type="Node3D"]
+
+[node name="marshmallow" parent="." instance=ExtResource("1_r80gn")]

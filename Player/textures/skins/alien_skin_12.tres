@@ -1,10 +1,10 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://rgbrlhgabfi7"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cnibw6ktd8fc"]
 
-[ext_resource type="Material" uid="uid://d120p0j7v2cji" path="res://Player/textures/alien_skin_thick-by-thotee_01.tres" id="1_wnlwa"]
+[ext_resource type="Material" uid="uid://d120p0j7v2cji" path="res://Player/textures/alien_skin_thick-by-thotee_01.tres" id="1_fucw7"]
 
 [resource]
-next_pass = ExtResource("1_wnlwa")
-albedo_color = Color(0.4, 0.4, 0.4, 1)
+next_pass = ExtResource("1_fucw7")
+albedo_color = Color(1, 0.25, 0.25, 1)
 metallic_specular = 0.0
 rim_tint = 1.0
 clearcoat_roughness = 1.0

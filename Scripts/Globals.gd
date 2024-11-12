@@ -138,7 +138,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_02 = {
 		skin_material = null,
@@ -148,7 +149,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_03 = {
 		skin_material = null,
@@ -158,7 +160,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_04 = {
 		skin_material = null,
@@ -168,7 +171,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_05 = {
 		skin_material = null,
@@ -178,7 +182,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_06 = {
 		skin_material = null,
@@ -188,7 +193,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_07 = {
 		skin_material = null,
@@ -198,7 +204,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_08 = {
 		skin_material = null,
@@ -208,7 +215,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_09 = {
 		skin_material = null,
@@ -218,7 +226,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_10 = {
 		skin_material = null,
@@ -228,7 +237,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_11 = {
 		skin_material = null,
@@ -238,7 +248,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_12 = {
 		skin_material = null,
@@ -248,7 +259,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_13 = {
 		skin_material = null,
@@ -258,7 +270,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_14 = {
 		skin_material = null,
@@ -268,7 +281,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_15 = {
 		skin_material = null,
@@ -278,7 +292,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_16 = {
 		skin_material = null,
@@ -288,7 +303,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_17 = {
 		skin_material = null,
@@ -298,7 +314,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_18 = {
 		skin_material = null,
@@ -308,7 +325,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_19 = {
 		skin_material = null,
@@ -318,7 +336,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_20 = {
 		skin_material = null,
@@ -328,7 +347,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_21 = {
 		skin_material = null,
@@ -338,7 +358,8 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
 		},
 	Skin_22 = {
 		skin_material = null,
@@ -348,7 +369,52 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = false,
-		head_piece = null
+		head_piece = null,
+		has_mullet = false
+		},
+	Skin_23 = {
+		skin_material = null,
+		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
+		has_head_piece = false,
+		head_piece = null,
+		has_mullet = false
+		},
+	Skin_24 = {
+		skin_material = null,
+		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
+		has_head_piece = false,
+		head_piece = null,
+		has_mullet = false
+		},
+	Skin_25 = {
+		skin_material = null,
+		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
+		has_head_piece = false,
+		head_piece = null,
+		has_mullet = false
+		},
+	Skin_26 = {
+		skin_material = null,
+		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
+		has_head_piece = false,
+		head_piece = null,
+		has_mullet = false
 		}
 	}
 	
@@ -374,7 +440,11 @@ var skins_skin_paths := [
 	"res://Player/textures/skins/alien_skin_19.tres",
 	"res://Player/textures/skins/alien_skin_20.tres",
 	"res://Player/textures/skins/alien_skin_21.tres",
-	"res://Player/textures/skins/alien_skin_22.tres"
+	"res://Player/textures/skins/alien_skin_22.tres",
+	"res://Player/textures/skins/alien_skin_23.tres",
+	"res://Player/textures/skins/alien_skin_24.tres",
+	"res://Player/textures/skins/alien_skin_25.tres",
+	"res://Player/textures/skins/alien_skin_26.tres"
 	]
 var skins_eyes_paths := [
 	"res://Player/textures/skins/alien_eyes_01.tres",
@@ -398,7 +468,11 @@ var skins_eyes_paths := [
 	"res://Player/textures/skins/alien_eyes_19.tres",
 	"res://Player/textures/skins/alien_eyes_20.tres",
 	"res://Player/textures/skins/alien_eyes_21.tres",
-	"res://Player/textures/skins/alien_eyes_22.tres"
+	"res://Player/textures/skins/alien_eyes_22.tres",
+	"res://Player/textures/skins/alien_eyes_23.tres",
+	"res://Player/textures/skins/alien_eyes_24.tres",
+	"res://Player/textures/skins/alien_eyes_25.tres",
+	"res://Player/textures/skins/alien_eyes_26.tres"
 ]
 var skins_1 := {}
 var skins_2 := {}

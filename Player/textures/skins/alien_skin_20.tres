@@ -1,29 +1,27 @@
-[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://cf241ysoa2si7"]
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://b4catouom16ri"]
 
-[sub_resource type="Gradient" id="Gradient_5aml3"]
-offsets = PackedFloat32Array(0.0690909, 0.454545, 0.698182)
-colors = PackedColorArray(0, 0.0975034, 0.240115, 1, 0, 0.490196, 1, 1, 1, 1, 1, 1)
+[ext_resource type="Material" uid="uid://d120p0j7v2cji" path="res://Player/textures/alien_skin_thick-by-thotee_01.tres" id="1_uyfyp"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_dohvv"]
-noise_type = 3
-frequency = 0.0023
-fractal_lacunarity = 2.595
-fractal_gain = 0.58
-cellular_distance_function = 3
-cellular_jitter = 0.805
-cellular_return_type = 6
-domain_warp_enabled = true
-domain_warp_fractal_lacunarity = 0.0
+[sub_resource type="Gradient" id="Gradient_lbccy"]
+offsets = PackedFloat32Array(0.705455, 0.974545)
+colors = PackedColorArray(0.73, 0.1533, 0.287863, 1, 1, 1, 1, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4qrbu"]
-width = 1000
-height = 1000
-seamless = true
-color_ramp = SubResource("Gradient_5aml3")
-noise = SubResource("FastNoiseLite_dohvv")
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ru64t"]
+noise_type = 2
+frequency = 0.0775
+fractal_gain = 0.875
+fractal_weighted_strength = 1.0
+cellular_distance_function = 2
+cellular_jitter = 0.0
+domain_warp_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ludkw"]
+color_ramp = SubResource("Gradient_lbccy")
+noise = SubResource("FastNoiseLite_ru64t")
 
 [resource]
-albedo_texture = SubResource("NoiseTexture2D_4qrbu")
+next_pass = ExtResource("1_uyfyp")
+albedo_texture = SubResource("NoiseTexture2D_ludkw")
 metallic_specular = 0.0
 rim_tint = 1.0
 clearcoat_roughness = 1.0

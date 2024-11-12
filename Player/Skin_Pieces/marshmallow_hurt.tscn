@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhpdert5trw7p"]
+
+[ext_resource type="PackedScene" uid="uid://2xogpebpeedy" path="res://Player/Skin_Pieces/marshmallow_hurt.blend" id="1_o33yb"]
+[ext_resource type="Material" uid="uid://c1ktmnxs01mx5" path="res://Player/textures/skins/alien_skin_10.tres" id="2_xmcbr"]
+
+[node name="marshmallow_hurt" instance=ExtResource("1_o33yb")]
+
+[node name="Marshmallow_hurt" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_xmcbr")

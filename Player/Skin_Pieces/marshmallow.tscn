@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvqsyg8o5uoy8"]
+
+[ext_resource type="PackedScene" uid="uid://bmv25pgojitny" path="res://Player/Skin_Pieces/marshmallow.blend" id="1_lu8nq"]
+[ext_resource type="Material" uid="uid://c1ktmnxs01mx5" path="res://Player/textures/skins/alien_skin_10.tres" id="2_ptdem"]
+
+[node name="marshmallow" instance=ExtResource("1_lu8nq")]
+
+[node name="Marshmallow" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_ptdem")
