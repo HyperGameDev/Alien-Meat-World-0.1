@@ -23,12 +23,17 @@ const LIMB_MORPH_SPEED : float = 1.25
 
 @onready var mesh_hurt : MeshInstance3D = player.get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1])
 @onready var mesh : MeshInstance3D = player.get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1])
+@onready var mesh_heart : MeshInstance3D = player.get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_Body_Heart")
+@onready var mesh_heart_hurt : MeshInstance3D = player.get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_Body_Heart")
 
 @onready var leg_l : Area3D = $"../../../Alien_V3/DetectionAreas/Area_LegL"
 @onready var leg_r : Area3D = $"../../../Alien_V3/DetectionAreas/Area_LegR"
 
 @onready var dmg_label : Label3D = player.get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_" + name.split("_")[1] + "/Dmg_Label")
 @onready var dmg_label_hurt : Label3D = player.get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1] + "/Dmg_Label")
+
+@onready var headpieces : Node3D = player.get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_Head/Alien_Headpieces")
+@onready var headpieces_hurt : Node3D = player.get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D/Alien-hurt_Head/Alien_Headpieces_hurt")
 
 
 @onready var score_dunk : Area3D = %ScoreDunk
@@ -120,6 +125,7 @@ func _ready():
 	Messenger.amount_damaged.connect(_damage_amount)
 	Messenger.instant_death.connect(fall_death)
 	Messenger.player_head_hover.connect(on_player_head_hover)
+	Messenger.skin_clicked.connect(on_skin_clicked)
 	
 	Messenger.game_prebegin.connect(on_game_prebegin)
 	
@@ -483,6 +489,31 @@ func do_eating():
 	
 	await animation_blood_human.animation_finished
 	Messenger.eating_finished.emit()
+
+
+func on_skin_clicked(skin_string):
+	var skin_material: StandardMaterial3D = Globals.skins[skin_string]["skin_material"]
+	var eyes_material: StandardMaterial3D = Globals.skins[skin_string]["eyes_material"]
+	
+	mesh.set_surface_override_material(0, skin_material)
+	mesh_hurt.set_surface_override_material(0, skin_material)
+	
+	if Globals.skins[skin_string]["has_head_piece"]:
+		headpieces.get_node(Globals.skins[skin_string]["head_piece"]).visible = true
+		headpieces_hurt.get_node(Globals.skins[skin_string]["head_piece"]).visible = true
+	else:
+		for headpiece in headpieces.get_children():
+			headpiece.visible = false
+		for headpiece_hurt in headpieces_hurt.get_children():
+			headpiece_hurt.visible = false
+	
+	if BodyPart.is_parts.BODY:
+		mesh_heart.set_surface_override_material(0, skin_material)
+		mesh_heart_hurt.set_surface_override_material(0, skin_material)
+	
+	if BodyPart.is_parts.HEAD:
+		mesh.set_surface_override_material(2, eyes_material)
+		mesh_hurt.set_surface_override_material(0, eyes_material)
 
 func on_game_prebegin():
 	skeleton_hurt.visible = true

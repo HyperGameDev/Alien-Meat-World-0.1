@@ -1,10 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctn2gmw3rddx6"]
+[gd_scene load_steps=2 format=3 uid="uid://ctn2gmw3rddx6"]
 
 [ext_resource type="PackedScene" uid="uid://bevplmdrn6ftp" path="res://Player/Skin_Pieces/ice_spikes_hurt.blend" id="1_v8aql"]
-[ext_resource type="Material" uid="uid://cvm414du24pe4" path="res://Player/Skin_Pieces/ice_spikes.tres" id="2_a6tu8"]
 
 [node name="ice_spikes_hurt" instance=ExtResource("1_v8aql")]
-
-[node name="Ice_Spikes_hurt" parent="." index="0"]
-lod_bias = 128.0
-surface_material_override/0 = ExtResource("2_a6tu8")

@@ -52,6 +52,8 @@ func _ready():
 							if !skins_1_left.is_empty():
 								var skin_chosen: String
 								skin_chosen = choose_random_skin(skins_1_left)
+								
+								assign_skin_to_alien(node,skin_chosen)
 								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
 								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
 								
@@ -63,6 +65,8 @@ func _ready():
 							if !skins_1_right.is_empty():
 								var skin_chosen: String
 								skin_chosen = choose_random_skin(skins_1_right)
+								
+								assign_skin_to_alien(node,skin_chosen)
 								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
 								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
 								
@@ -75,6 +79,8 @@ func _ready():
 							if !skins_2_left.is_empty():
 								var skin_chosen: String
 								skin_chosen = choose_random_skin(skins_2_left)
+								
+								assign_skin_to_alien(node,skin_chosen)
 								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
 								
 								if Globals.skins[skin_chosen]["has_head_piece"]:
@@ -89,6 +95,8 @@ func _ready():
 							if !skins_2_right.is_empty():
 								var skin_chosen: String
 								skin_chosen = choose_random_skin(skins_2_right)
+								
+								assign_skin_to_alien(node,skin_chosen)
 								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
 								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
 								
@@ -127,6 +135,9 @@ func choose_random_key_from_dict(dictionary):
 	var keys = dictionary.keys()
 	var random_index = randi() % keys.size()
 	return keys[random_index]
+	
+func assign_skin_to_alien(menu_alien,skin_clicked):
+	menu_alien.skin = skin_clicked
 	
 func choose_and_apply_materials(skin_chosen,mat_target,mat_key,mat_number):
 	var mat_to_apply: StandardMaterial3D

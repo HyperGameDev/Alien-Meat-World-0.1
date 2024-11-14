@@ -23,6 +23,8 @@ static var is_hoverable: bool = false
 var was_chosen : bool = false
 var is_hovered : bool = false
 
+var skin : String = "Skin_01"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for headpiece in alien_headpieces.get_children():
@@ -72,14 +74,14 @@ func on_game_menu():
 func on_game_postmenu():
 	is_hoverable = false
 	area.set_collision_layer_value(15,false)
-	if !was_chosen:
-		animation_menu_alien.set("parameters/Transition/transition_request", "stopping")
-	else:
+	if was_chosen:
 		exclamation.visible = false
+		Messenger.skin_clicked.emit(skin)
+	else:
+		animation_menu_alien.set("parameters/Transition/transition_request", "stopping")
 		
-	
-	# TODO Make this an animation that runs a function at the end
 	animation_exclaim.play("exclaim_begin")
+		
 
 		
 func animation_exclaim_halfway():
