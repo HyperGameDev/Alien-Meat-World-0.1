@@ -10,6 +10,8 @@ signal game_intro # Cutscene
 @warning_ignore("unused_signal")
 signal game_menu # Main Menu
 @warning_ignore("unused_signal")
+signal game_confirm # Confirming skin/alien choice
+@warning_ignore("unused_signal")
 signal game_postmenu # Teleporting to earth
 @warning_ignore("unused_signal")
 signal game_prebegin

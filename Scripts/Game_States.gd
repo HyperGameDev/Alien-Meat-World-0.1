@@ -30,6 +30,9 @@ func on_swap_game_state(game_state):
 		Globals.is_game_states.MENU:
 			on_game_state_menu()
 			
+		Globals.is_game_states.CONFIRM:
+			on_game_state_confirm()
+			
 		Globals.is_game_states.POSTMENU:
 			on_game_state_postmenu()
 			
@@ -112,6 +115,10 @@ func on_game_state_menu():
 
 	cam_target.rot_x_offset = deg_to_rad(main_menu.menu_cam_rot_x)
 	cam_target.rotation.x += cam_target.rot_x_offset
+
+func on_game_state_confirm():
+	Messenger.movement_stop.emit(false)
+	Messenger.game_confirm.emit()
 	
 func on_game_state_postmenu():
 	main_menu.animation.play("menu_exit")

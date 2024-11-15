@@ -11,6 +11,7 @@ static var is_hoverable: bool = false
 
 @onready var alien_headpieces: Node3D = $Alien/Alien_Headpieces
 
+@onready var alien_shadowed: StandardMaterial3D = preload("res://NPCs/Aliens/shadowed_alien.tres") as StandardMaterial3D
 
 @onready var mesh: MeshInstance3D = $Alien
 @onready var area: Area3D = %Area3D
@@ -57,12 +58,16 @@ func _ready() -> void:
 
 func am_i_hovered(target):
 	if target == area:
+		if Globals.is_game_state == Globals.is_game_states.CONFIRM:
+			mesh.material_overlay = null
 		if has_node("Marker3D"):
 			Messenger.something_hovered.emit(area)
 			Messenger.menu_alien_seen.emit(area)
 			if Input.is_action_just_pressed("Grab"):
 				was_chosen = true
-
+	else:
+		if Globals.is_game_state == Globals.is_game_states.CONFIRM and !was_chosen:
+			mesh.material_overlay = alien_shadowed
 
 func on_game_menu():
 	is_visible = true

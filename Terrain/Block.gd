@@ -8,6 +8,8 @@ var is_level: int = -1
 
 @onready var alien_headpieces: Node3D = get_tree().get_current_scene().get_node("Player/Alien_V3/Alien/Armature/Skeleton3D/Alien_Head/Alien_Headpieces")
 
+@onready var alien_shadowed: StandardMaterial3D = preload("res://NPCs/Aliens/shadowed_alien.tres") as StandardMaterial3D
+
 #@onready var terrain_shader = self.get_surface_override_material(0)
 @onready var marker_right = %Marker_boundaryRight
 @onready var marker_left = %Marker_boundaryLeft
@@ -21,6 +23,7 @@ enum is_types {SAFE,OBSTACLE,POINTS,MENU}
 func _ready():
 	Messenger.game_menu.connect(on_game_menu)
 	Messenger.game_begin.connect(on_game_begin)
+	Messenger.game_confirm.connect(on_game_confirm)
 	
 	if has_node("Ground"):
 		ground.set_collision_layer_value(1, true)
@@ -125,6 +128,15 @@ func on_game_menu():
 	if is_type == is_types.MENU:
 		visible = true
 		menu_is_visible = true
+	
+func on_game_confirm():
+	for node in get_children():
+		if node is Alien_For_Menu:
+			if node.was_chosen == false:
+				node.animation_menu_alien.set("parameters/Transition/transition_request", "stopping")
+				node.get_node("Alien").material_overlay = alien_shadowed
+				
+
 
 func on_game_begin():
 	if is_type == is_types.MENU:

@@ -5,6 +5,7 @@ extends Sprite3D
 
 @onready var interact_animation: AnimationPlayer = get_tree().get_current_scene().get_node("UI_Interaction/AnimationPlayer")
 
+
 var arrow_position : Vector3 = Vector3(0,0,0)
 var arrow_target = null
 
@@ -37,7 +38,7 @@ func show_arrow(target):
 			arrow_target = target
 			arrow_position = target.get_node("Marker3D").global_position
 		else:
-			print("seeing that")
+			#print("seeing that")
 			force_hide_arrow()
 		# End section that used to be booleaned by arrow_shown
 		
