@@ -139,7 +139,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = true
 		},
 	Skin_02 = {
 		skin_material = null,
@@ -150,7 +151,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_03 = {
 		skin_material = null,
@@ -161,7 +163,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_04 = {
 		skin_material = null,
@@ -172,7 +175,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_05 = {
 		skin_material = null,
@@ -183,7 +187,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_06 = {
 		skin_material = null,
@@ -194,7 +199,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_07 = {
 		skin_material = null,
@@ -205,7 +211,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_08 = {
 		skin_material = null,
@@ -216,7 +223,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_09 = {
 		skin_material = null,
@@ -227,7 +235,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_10 = {
 		skin_material = null,
@@ -238,7 +247,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = true,
 		head_piece = "marshmallow",
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_11 = {
 		skin_material = null,
@@ -249,7 +259,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_12 = {
 		skin_material = null,
@@ -260,7 +271,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = true,
 		head_piece = "devil_horns",
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_13 = {
 		skin_material = null,
@@ -271,7 +283,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = true,
 		head_piece = "chocolate",
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_14 = {
 		skin_material = null,
@@ -282,7 +295,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_15 = {
 		skin_material = null,
@@ -293,7 +307,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_16 = {
 		skin_material = null,
@@ -304,7 +319,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = "leopard_ears",
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_17 = {
 		skin_material = null,
@@ -315,7 +331,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = "leopard_ears_pink",
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_18 = {
 		skin_material = null,
@@ -326,7 +343,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = "army_helmet",
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_19 = {
 		skin_material = null,
@@ -337,7 +355,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = "cow ears",
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_20 = {
 		skin_material = null,
@@ -348,7 +367,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_21 = {
 		skin_material = null,
@@ -359,7 +379,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_22 = {
 		skin_material = null,
@@ -370,7 +391,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = "fire_particles",
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_23 = {
 		skin_material = null,
@@ -381,7 +403,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = true,
 		head_piece = "ice_spikes",
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_24 = {
 		skin_material = null,
@@ -392,7 +415,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_25 = {
 		skin_material = null,
@@ -403,7 +427,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = "star_crown",
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		},
 	Skin_26 = {
 		skin_material = null,
@@ -414,7 +439,8 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false
+		has_mullet = false,
+		is_unlocked = false
 		}
 	}
 	
@@ -568,6 +594,12 @@ var meat_objects := {
 	Abductee.is_types.TREE1: load("res://Objects/Foliage/Tree_01/tree_01_02_grabbable.tscn")
 }
 
+var save_path: String = "user://data.json"
+var save_data: Dictionary = {
+	skin_level = 1
+}
+
+
 func _ready():
 	Messenger.swap_game_state.connect(on_swap_game_state)
 	Messenger.abduction.connect(on_abduction)
@@ -577,6 +609,12 @@ func _ready():
 	Messenger.game_play.connect(on_game_play)
 	Messenger.game_over.connect(on_game_over)
 	Messenger.skin_level_update.connect(on_skin_level_update)
+	
+	if FileAccess.file_exists(save_path):
+		load_save_data()
+	else:
+		do_save_data()
+		
 	on_level_update(level_current)
 	
 	powerups_available = powerups.keys()
@@ -594,6 +632,19 @@ func _process(delta: float) -> void:
 	if is_playing:
 		time += delta
 
+func do_save_data():
+	var data_to_save = JSON.stringify(save_data, "\t")
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	file.store_string(data_to_save)
+	#print("Saved! \n",save_data)
+	
+func load_save_data():
+	var file = FileAccess.open(save_path, FileAccess.READ)
+	if file:
+		var content: Dictionary = JSON.parse_string(file.get_as_text())
+		skin_level = content["skin_level"]
+		update_unlocked_skins()
+		#print("Loaded: \n",content)
 		
 func load_skins(target_dictionary,target_key,paths_array):
 	var i = 0
@@ -603,7 +654,7 @@ func load_skins(target_dictionary,target_key,paths_array):
 			i += 1
 			
 func split_dictionary(dictionary):
-	var paths = dictionary.keys()
+	var paths: Array = dictionary.keys()
 	for i in range(len(paths)):
 		if i < len(paths) / 2:
 			skins_1[paths[i]] = dictionary[paths[i]]
@@ -628,6 +679,15 @@ func on_level_update(level):
 	
 func on_skin_level_update(increase_level_amount):
 	skin_level += increase_level_amount
+	save_data["skin_level"] = skin_level
+	do_save_data()
+	
+
+func update_unlocked_skins():
+	var keys: Array = skins.keys()
+	for key in range(len(keys)):
+		if key < skin_level:
+			skins[keys[key]]["is_unlocked"] = true
 	
 	
 func on_retry(is_restart):
@@ -651,6 +711,7 @@ func on_restart():
 	get_tree().call_deferred("reload_current_scene")
 	#get_tree().call_deferred("change_scene_to_file","res://main_scene.tscn")
 	Messenger.swap_game_state.emit(Globals.is_game_states.PREINTRO)
+	load_save_data()
 	
 func on_abduction(score_value):
 	score += score_value

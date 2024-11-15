@@ -37,74 +37,80 @@ func _ready():
 			visible = true
 		else:
 			visible = false
+
 			
-		var skins_1_left = Globals.skins_1.duplicate(true)
-		var skins_2_left = Globals.skins_2.duplicate(true)
-		
-		var skins_1_right = Globals.skins_1.duplicate(true)
-		var skins_2_right = Globals.skins_2.duplicate(true)
-		
-		match menu_skin_array_to_use:
-			1:
-				for node in get_children():
-					if node is Alien_For_Menu:
-						if node.unhoverable == false:
-							if !skins_1_left.is_empty():
-								var skin_chosen: String
-								skin_chosen = choose_random_skin(skins_1_left)
-								
-								assign_skin_to_alien(node,skin_chosen)
-								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
-								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
-								
-								if Globals.skins[skin_chosen]["has_head_piece"]:
-									apply_headpiece(skin_chosen,node)
-								
-								
-						else: # Node is unhoverable:
-							if !skins_1_right.is_empty():
-								var skin_chosen: String
-								skin_chosen = choose_random_skin(skins_1_right)
-								
-								assign_skin_to_alien(node,skin_chosen)
-								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
-								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
-								
-								if Globals.skins[skin_chosen]["has_head_piece"]:
-									apply_headpiece(skin_chosen,node)
-			2:
-				for node in get_children():
-					if node is Alien_For_Menu:
-						if node.unhoverable == false:
-							if !skins_2_left.is_empty():
-								var skin_chosen: String
-								skin_chosen = choose_random_skin(skins_2_left)
-								
-								assign_skin_to_alien(node,skin_chosen)
-								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
-								
-								if Globals.skins[skin_chosen]["has_head_piece"]:
-									apply_headpiece(skin_chosen,node)
-								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
-								
-								if Globals.skins[skin_chosen]["has_head_piece"]:
-									apply_headpiece(skin_chosen,node)
-								
-								
-						else: # Node is unhoverable:
-							if !skins_2_right.is_empty():
-								var skin_chosen: String
-								skin_chosen = choose_random_skin(skins_2_right)
-								
-								assign_skin_to_alien(node,skin_chosen)
-								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
-								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
-								
-								if Globals.skins[skin_chosen]["has_head_piece"]:
-									apply_headpiece(skin_chosen,node)
-			_:
-				pass
 			
+func show_available_skins():
+	var skins_1_left = Globals.skins_1.duplicate(true)
+	var skins_2_left = Globals.skins_2.duplicate(true)
+	
+	var skins_1_right = Globals.skins_1.duplicate(true)
+	var skins_2_right = Globals.skins_2.duplicate(true)
+	
+	match menu_skin_array_to_use:
+		1:
+			for node in get_children():
+				if node is Alien_For_Menu:
+					if node.unhoverable == false:
+						if !skins_1_left.is_empty():
+							var skin_chosen: String
+							skin_chosen = choose_random_skin(skins_1_left)
+							
+							if Globals.skins[skin_chosen]["is_unlocked"]:
+								assign_skin_to_alien(node,skin_chosen)
+								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
+								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
+								
+								if Globals.skins[skin_chosen]["has_head_piece"]:
+									apply_headpiece(skin_chosen,node)
+							
+							
+					else: # Node is unhoverable:
+						if !skins_1_right.is_empty():
+							var skin_chosen: String
+							skin_chosen = choose_random_skin(skins_1_right)
+							
+							if Globals.skins[skin_chosen]["is_unlocked"]:
+								assign_skin_to_alien(node,skin_chosen)
+								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
+								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
+								
+								if Globals.skins[skin_chosen]["has_head_piece"]:
+									apply_headpiece(skin_chosen,node)
+		2:
+			for node in get_children():
+				if node is Alien_For_Menu:
+					if node.unhoverable == false:
+						if !skins_2_left.is_empty():
+							var skin_chosen: String
+							skin_chosen = choose_random_skin(skins_2_left)
+							
+							if Globals.skins[skin_chosen]["is_unlocked"]:
+								assign_skin_to_alien(node,skin_chosen)
+								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
+								
+								if Globals.skins[skin_chosen]["has_head_piece"]:
+									apply_headpiece(skin_chosen,node)
+								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
+								
+								if Globals.skins[skin_chosen]["has_head_piece"]:
+									apply_headpiece(skin_chosen,node)
+							
+							
+					else: # Node is unhoverable:
+						if !skins_2_right.is_empty():
+							var skin_chosen: String
+							skin_chosen = choose_random_skin(skins_2_right)
+							
+							if Globals.skins[skin_chosen]["is_unlocked"]:
+								assign_skin_to_alien(node,skin_chosen)
+								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
+								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
+								
+								if Globals.skins[skin_chosen]["has_head_piece"]:
+									apply_headpiece(skin_chosen,node)
+		_:
+			pass
 
 func reset_block_objects():
 	for object in get_children():
@@ -115,6 +121,7 @@ func reset_block_objects():
 				object.spawn_me()
 
 func on_game_menu():
+	show_available_skins()
 	if is_type == is_types.MENU:
 		visible = true
 		menu_is_visible = true
