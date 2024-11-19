@@ -72,6 +72,8 @@ var hilite_main_menu: bool = false
 
 # Ready Function
 func _ready() -> void:
+	increase_progress_number(Globals.save_data["skin_progress"])
+	#print("Progress bar loaded in a value of: ",game_over_progress_skins.value)
 	visible = false
 	
 	Messenger.game_over.connect(on_game_over)
@@ -179,9 +181,12 @@ func on_game_over():
 		progress_explanation.visible = false
 	
 	skin_progress_old = Globals.skin_progress
+	#print("Old progress is: ",skin_progress_old)
 	game_over_progress_skins.value = skin_progress_old
 	skin_progress_current = skin_progress_old + score_update
 	Globals.skin_progress = skin_progress_current
+	#print("Progress updated to: ",Globals.skin_progress)
+	Messenger.skin_level_update.emit(0,skin_progress_current)
 	#print("Update: ",score_update)
 	
 	
@@ -215,9 +220,9 @@ func score_number_update(is_last): # Called first by an animation
 	var tween_number = create_tween()
 	
 	if is_last:
-		tween_number.tween_method(increase_progress_number,int(game_over_progress_skins.value),skin_progress_current,1.0)
+		tween_number.tween_method(increase_progress_number,game_over_progress_skins.value,float(skin_progress_current),1.0)
 	else:
-		tween_number.tween_method(increase_progress_number,int(game_over_progress_skins.value),skin_progress_target,1.0)
+		tween_number.tween_method(increase_progress_number,game_over_progress_skins.value,float(skin_progress_target),1.0)
 	
 	#update_progress_bar()
 	
@@ -241,7 +246,7 @@ func on_progress_changed(progress):
 			game_over_progress_skins.value = 0
 			Globals.skin_progress = skin_progress_current - skin_progress_target
 			skin_progress_current = Globals.skin_progress
-			Messenger.skin_level_update.emit(1)
+			Messenger.skin_level_update.emit(1,skin_progress_current)
 			#print("Full progress: ",skin_progress_bar_current,"\nFull target: ",skin_progress_target,"\nGlobal Skin Progress: ",Globals.skin_progress,"\nskin_progress_current: ",skin_progress_current)
 			update_progress_target()
 			#print("Progress updated target to: ",skin_progress_target)
@@ -254,7 +259,7 @@ func return_skin_target() -> int:
 func increase_progress_number(number_progress):
 	#print("Old progress: ",skin_progress_old)
 	#print("Current progress: ",skin_progress_current)
-	game_over_progress_current.text = str(number_progress)
+	game_over_progress_current.text = str(int(number_progress))
 	game_over_progress_skins.value = number_progress
 	
 func increase_progress_bar(bar_progress):

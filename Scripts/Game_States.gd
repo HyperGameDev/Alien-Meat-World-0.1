@@ -174,4 +174,5 @@ func _process(delta: float) -> void:
 func on_game_state_over():
 	Messenger.game_over.emit()
 	Messenger.movement_stop.emit(true)
+	get_tree().paused = true
 	pause_menu.visible = true

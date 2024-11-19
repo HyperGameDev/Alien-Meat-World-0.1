@@ -6,7 +6,7 @@
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_8gude"]
 noise_type = 2
-frequency = 0.1073
+frequency = 0.1563
 fractal_octaves = 1
 cellular_distance_function = 1
 cellular_jitter = 0.0

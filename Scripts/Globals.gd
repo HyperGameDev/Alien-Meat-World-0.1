@@ -1,5 +1,6 @@
 extends Node
 
+@export var skins_unlocked: bool = true
 @export var level_current = 0
 var level_label : Array = [
 	"0-0",
@@ -21,6 +22,7 @@ var is_game_state: is_game_states
 enum is_game_states {PREINTRO,INTRO,MENU,CONFIRM,POSTMENU,PREBEGIN,BEGIN,PLAY,PAUSE,OVER}
 
 var is_playing: bool = false
+
 
 var human_tops_paths: Array = [
 	"res://NPCs/Humans/textures/human_clothes_grn_01.tres",
@@ -131,6 +133,7 @@ var skin_max_level: int = 38
 
 var skins := {
 	Skin_01 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -143,6 +146,7 @@ var skins := {
 		is_unlocked = true
 		},
 	Skin_02 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -155,6 +159,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_03 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -167,6 +172,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_04 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -179,6 +185,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_05 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -191,6 +198,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_06 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -203,6 +211,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_07 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -215,6 +224,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_08 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -227,6 +237,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_09 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -239,6 +250,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_10 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -251,6 +263,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_11 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -263,6 +276,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_12 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -275,6 +289,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_13 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -287,6 +302,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_14 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -299,6 +315,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_15 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -311,6 +328,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_16 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -323,6 +341,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_17 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -335,6 +354,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_18 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -347,6 +367,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_19 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -359,6 +380,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_20 = {
+		skin_name = "Polka Dot",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -371,6 +393,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_21 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -383,6 +406,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_22 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -395,6 +419,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_23 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -407,6 +432,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_24 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -419,6 +445,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_25 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -431,6 +458,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_26 = {
+		skin_name = "New Skin",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -596,7 +624,8 @@ var meat_objects := {
 
 var save_path: String = "user://data.json"
 var save_data: Dictionary = {
-	skin_level = 1
+	skin_level = 1,
+	skin_progress = 0
 }
 
 
@@ -610,6 +639,10 @@ func _ready():
 	Messenger.game_play.connect(on_game_play)
 	Messenger.game_over.connect(on_game_over)
 	Messenger.skin_level_update.connect(on_skin_level_update)
+	
+	if skins_unlocked:
+		for skin in skins:
+			skins[skin]["is_unlocked"] = true
 	
 	if FileAccess.file_exists(save_path):
 		load_save_data()
@@ -628,6 +661,7 @@ func _ready():
 	load_skins(skins,"eyes_material",skins_eyes_paths)
 	
 	split_dictionary(skins)
+
 	
 func _process(delta: float) -> void:
 	if is_playing:
@@ -644,6 +678,9 @@ func load_save_data():
 	if file:
 		var content: Dictionary = JSON.parse_string(file.get_as_text())
 		skin_level = content["skin_level"]
+		skin_progress = content["skin_progress"]
+		#print("Progress loaded as: ",content["skin_progress"])
+		#print("Level loaded as: ",content["skin_level"])
 		update_unlocked_skins()
 		#print("Loaded: \n",content)
 		
@@ -678,9 +715,13 @@ func on_level_update(level):
 	
 	current_menu_chunks = level_chunks_menu[level]
 	
-func on_skin_level_update(increase_level_amount):
+func on_skin_level_update(increase_level_amount,update_progress):
 	skin_level += increase_level_amount
+	skin_progress = update_progress
 	save_data["skin_level"] = skin_level
+	save_data["skin_progress"] = skin_progress
+	#print("Progress saved as: ",save_data["skin_progress"])
+	#print("Level saved as: ",save_data["skin_level"])
 	do_save_data()
 	
 
