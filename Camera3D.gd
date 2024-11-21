@@ -73,6 +73,7 @@ func _ready():
 	Messenger.powerup_menu_begin.connect(on_powerup_menu_begin)
 	Messenger.powerup_chosen.connect(on_powerup_chosen)
 	Messenger.game_menu.connect(on_game_menu)
+	Messenger.game_confirm.connect(on_game_confirm)
 	Messenger.game_postmenu.connect(on_game_postmenu)
 	Messenger.game_play.connect(on_game_play)
 	Messenger.game_pause.connect(on_game_pause)
@@ -273,8 +274,8 @@ func menu_alien_ray():
 		# Emits signal with parameter "true" or "false" if the hover_target is/isn't set to %Player
 		
 		if Input.is_action_just_pressed("Grab"):
-			Messenger.swap_game_state.emit(Globals.is_game_states.CONFIRM)
-			#Messenger.swap_game_state.emit(Globals.is_game_states.POSTMENU)
+			#Messenger.swap_game_state.emit(Globals.is_game_states.CONFIRM)
+			Messenger.swap_game_state.emit(Globals.is_game_states.POSTMENU)
 
 #
 #		return raycast_result.collider
@@ -364,6 +365,9 @@ func on_game_play():
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func on_game_pause():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+func on_game_confirm():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 func on_game_over():
