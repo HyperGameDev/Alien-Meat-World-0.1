@@ -65,9 +65,13 @@ func am_i_hovered(target):
 			Messenger.menu_alien_seen.emit(area)
 			if Input.is_action_just_pressed("Grab"):
 				was_chosen = true
+				animation_menu_alien.set("parameters/Transition/transition_request", "bouncing")
 	else:
 		if Globals.is_game_state == Globals.is_game_states.CONFIRM and !was_chosen:
 			mesh.material_overlay = alien_shadowed
+		if Input.is_action_just_pressed("Grab") and was_chosen:
+			was_chosen = false	
+			mesh.material_overlay = null
 
 func on_game_menu():
 	is_visible = true
