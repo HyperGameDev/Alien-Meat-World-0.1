@@ -7,6 +7,9 @@ base_font = ExtResource("1_ij3ky")
 spacing_glyph = 3
 
 [resource]
+Button/colors/font_color = Color(1, 0.713726, 0.670588, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/constants/outline_size = 10
 Label/colors/font_color = Color(0.768627, 0.54902, 0.517647, 1)
 Label/colors/font_outline_color = Color(1, 1, 1, 1)
 Label/colors/font_shadow_color = Color(0.439216, 0.129412, 0.129412, 1)
