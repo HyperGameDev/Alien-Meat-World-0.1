@@ -60,8 +60,6 @@ func on_anything_seen(target):
 		if !target["collider"] == area:
 			if Globals.is_game_state == Globals.is_game_states.CONFIRM and !was_chosen:
 				shadow()
-			if Input.is_action_just_pressed("Grab") and was_chosen:
-				unchoose_unshadow()
 	
 func am_i_hovered(target):
 	if target == area:
@@ -73,6 +71,9 @@ func am_i_hovered(target):
 			if Input.is_action_just_pressed("Grab"):
 				was_chosen = true
 				animation_menu_alien.set("parameters/Transition/transition_request", "bouncing")
+	else:
+		if Input.is_action_just_pressed("Grab") and was_chosen:
+			unchoose_unshadow()
 			
 func unchoose_unshadow():
 	was_chosen = false
@@ -158,7 +159,8 @@ func on_game_begin():
 
 func on_skin_confirm(confirmed):
 	if confirmed:
-		unshadow()
+		#unshadow()
+		pass
 	else:
 		unchoose_unshadow()
 		aliens_bounce()

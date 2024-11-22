@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://obu2viggjbep"]
+
+[ext_resource type="Theme" uid="uid://dxs5yobj1ycsh" path="res://UI/Menus/Game Over Menu/progress_stat_light.tres" id="1_r8a3m"]
+
+[node name="Label_Skin-name" type="Label"]
+custom_minimum_size = Vector2(400, 0)
+theme = ExtResource("1_r8a3m")
+theme_override_font_sizes/font_size = 54
+horizontal_alignment = 1
+autowrap_mode = 3
+uppercase = true

@@ -3,6 +3,17 @@ extends CanvasLayer
 var modulate_invisible: Color = Color(1.0,1.0,1.0,0.0)
 var modulate_visible: Color = Color(1.0,1.0,1.0,1.0)
 
+var unlocking_a_skin: bool = false
+var skin_label_added: bool = false
+var showed_unlocked_skins: bool = false
+@onready var skin_unlocks_vbox: VBoxContainer = %"VBox_Skin-unlocks"
+@onready var label_unlocked_title: Label = %"Label_Unlocked-title"
+@onready var game_over_container: MarginContainer = %"MarginContainer_game-over"
+@onready var skins_unlocked_container: MarginContainer = %MarginContainer_skins
+
+@onready var button_ok_skins: Button = %"Button_OK-skins"
+
+
 #region Game_Over Parent Nodes
 @onready var game_over_menu_bg: Panel = %"GameOver_menu-BG"
 @onready var game_over_progress_stats: MarginContainer = %"GameOver_progress-stats"
@@ -24,6 +35,7 @@ var modulate_visible: Color = Color(1.0,1.0,1.0,1.0)
 @onready var progress_explanation: Label = %Progress_explanation
 
 
+@onready var game_over_progress_skins_unlocked: ProgressBar = %"GameOver_progress-skins_unlocked"
 @onready var game_over_progress_skins: ProgressBar = %"GameOver_progress-skins"
 @onready var game_over_progress_last: HSlider = %"GameOver_progress-last"
 
@@ -73,11 +85,12 @@ var hilite_main_menu: bool = false
 # Ready Function
 func _ready() -> void:
 	increase_progress_number(Globals.save_data["skin_progress"])
-	#print("Progress bar loaded in a value of: ",game_over_progress_skins.value)
 	visible = false
 	
 	Messenger.game_over.connect(on_game_over)
 	game_over_progress_skins.value_changed.connect(on_progress_changed)
+	
+	button_ok_skins.pressed.connect(on_button_ok_skins)
 	
 
 #region Game_Over UI = Un-Visible
@@ -155,13 +168,6 @@ func on_game_over():
 	game_over_h_separator_3.visible = true
 #endregion
 
-#region Button Changes (On Game_Over)
-	button_continue.visible = false
-	button_settings.visible = false
-	button_retry.visible = true
-	button_main_menu.get_child(0).text = "Restart"
-#endregion
-
 	var level: String = Globals.level_label[Globals.level_current]
 	var abductions: int = Globals.score
 	var empathy: int = Globals.empathy
@@ -181,13 +187,25 @@ func on_game_over():
 		progress_explanation.visible = false
 	
 	skin_progress_old = Globals.skin_progress
-	#print("Old progress is: ",skin_progress_old)
-	game_over_progress_skins.value = skin_progress_old
+	game_over_progress_skins.value = skin_progress_old # Updates progressbar to where player left off
+	game_over_progress_skins_unlocked.value = skin_progress_old
 	skin_progress_current = skin_progress_old + score_update
 	Globals.skin_progress = skin_progress_current
-	#print("Progress updated to: ",Globals.skin_progress)
 	Messenger.skin_level_update.emit(0,skin_progress_current)
 	#print("Update: ",score_update)
+	if check_if_skin_unlocked():
+		unlocking_a_skin = true
+		button_retry.modulate.a = 0
+		button_main_menu.modulate.a = 0
+	else:
+		pass
+	
+#region Button Changes (On Game_Over)
+	button_continue.visible = false
+	button_settings.visible = false
+	button_retry.visible = true
+	button_main_menu.get_child(0).text = "Restart"
+#endregion
 	
 	
 #region Time setup
@@ -206,6 +224,32 @@ func on_game_over():
 	
 	animation_progress_stats.play("show_stats")
 	
+func check_if_skin_unlocked() -> bool:
+	if skin_progress_current > skin_progress_target:
+		return true
+	else:
+		return false
+		
+func update_unlocked_skins_message():
+	var keys: Array = Globals.skins.keys()
+	
+	for key in range(len(keys)):
+		if key == (Globals.skin_level - 1):
+			var skin_name = load("res://UI/Menus/label_skin_name.tscn").instantiate()
+			skin_unlocks_vbox.add_child(skin_name)
+			skin_name.text = Globals.skins[keys[key]]["skin_name"]
+			skin_label_added = true
+			
+func show_unlocked_skins_message():
+	skins_unlocked_container.visible = true
+	if skin_label_added:
+		label_unlocked_title.text = "SKINS UNLOCKED!"
+	game_over_container.modulate = Color(0.0,0.0,0.0,1.0)
+	
+	await get_tree().create_timer(2).timeout
+	showed_unlocked_skins = true
+	button_ok_skins.modulate.a = 1.0
+	
 func run_progress_tween():
 	if skin_progress_current < skin_progress_target:
 		score_number_update(true)
@@ -218,38 +262,36 @@ func run_progress_tween():
 func score_number_update(is_last): # Called first by an animation
 	#print("Tween updated to go to ",skin_progress_target)
 	var tween_number = create_tween()
+	var tween_number2 = create_tween()
 	
 	if is_last:
 		tween_number.tween_method(increase_progress_number,game_over_progress_skins.value,float(skin_progress_current),1.0)
+		tween_number2.tween_method(increase_progress_number,game_over_progress_skins_unlocked.value,float(skin_progress_current),1.0)
 	else:
 		tween_number.tween_method(increase_progress_number,game_over_progress_skins.value,float(skin_progress_target),1.0)
-	
-	#update_progress_bar()
+		tween_number2.tween_method(increase_progress_number,game_over_progress_skins_unlocked.value,float(skin_progress_target),1.0)
 	
 	
 func update_progress_target():
 	var next_skin_level: int = Globals.skin_level * skin_progression_factor
-	#print("Global level: ",Globals.skin_level)
 	skin_progress_target = next_skin_level
 	game_over_progress_skins.max_value = skin_progress_target
-	#print("Max value updated to: ",game_over_progress_skins.max_value)
+	game_over_progress_skins_unlocked.max_value = skin_progress_target
 	game_over_progress_target.text = str(skin_progress_target)
-	#print("Progress target: ",skin_progress_target)
 	
 	
 func on_progress_changed(progress):
 	if progress >= game_over_progress_skins.max_value:
-		#print("Max bar value reached!")
-		#print("Progress (",progress,") updated max to: ",game_over_progress_skins.max_value)
 		if Globals.skin_progress >= skin_progress_target:
-			#print("Current progress (",skin_progress_current,") was greater than/equal to target!")
+			print("value reset")
 			game_over_progress_skins.value = 0
+			game_over_progress_skins_unlocked.value = 0
 			Globals.skin_progress = skin_progress_current - skin_progress_target
 			skin_progress_current = Globals.skin_progress
 			Messenger.skin_level_update.emit(1,skin_progress_current)
-			#print("Full progress: ",skin_progress_bar_current,"\nFull target: ",skin_progress_target,"\nGlobal Skin Progress: ",Globals.skin_progress,"\nskin_progress_current: ",skin_progress_current)
 			update_progress_target()
-			#print("Progress updated target to: ",skin_progress_target)
+			update_unlocked_skins_message()
+			show_unlocked_skins_message()
 			run_progress_tween()
 		
 
@@ -261,9 +303,11 @@ func increase_progress_number(number_progress):
 	#print("Current progress: ",skin_progress_current)
 	game_over_progress_current.text = str(int(number_progress))
 	game_over_progress_skins.value = number_progress
+	game_over_progress_skins_unlocked.value = number_progress
 	
 func increase_progress_bar(bar_progress):
 	game_over_progress_skins.value = bar_progress
+	game_over_progress_skins_unlocked.value = bar_progress
 	
 # Button Functions
 #region Continue Button
@@ -311,7 +355,8 @@ func on_button_settings_unhover():
 	
 #region Main Menu Button
 func on_button_main_menu():
-	Messenger.restart.emit.call_deferred()
+	if !unlocking_a_skin:
+		Messenger.restart.emit.call_deferred()
 func on_button_main_menu_focus():
 	if !hilite_main_menu:
 		hilite_main_menu = true
@@ -332,7 +377,8 @@ func on_button_main_menu_unhover():
 	
 #region Retry Button
 func on_button_retry():
-	Messenger.retry.emit(false)
+	if !unlocking_a_skin:
+		Messenger.retry.emit(false)
 func on_button_retry_focus():
 	if !hilite_retry:
 		hilite_retry = true
@@ -350,3 +396,11 @@ func on_button_retry_unhover():
 		hilite_retry = false
 		animation_retry.play("unhilite")
 #endregion
+
+func on_button_ok_skins():
+	if showed_unlocked_skins:
+		skins_unlocked_container.visible = false
+		game_over_container.modulate = Color(1.0,1.0,1.0,1.0)
+		unlocking_a_skin = false
+		button_retry.modulate.a = 1
+		button_main_menu.modulate.a = 1

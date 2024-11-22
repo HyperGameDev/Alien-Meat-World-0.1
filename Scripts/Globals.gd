@@ -1,6 +1,6 @@
 extends Node
 
-@export var skins_unlocked: bool = true
+@export var skins_unlocked: bool = false
 @export var level_current = 0
 var level_label : Array = [
 	"0-0",
@@ -133,7 +133,7 @@ var skin_max_level: int = 38
 
 var skins := {
 	Skin_01 = {
-		skin_name = "New Skin",
+		skin_name = "Green Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -146,7 +146,7 @@ var skins := {
 		is_unlocked = true
 		},
 	Skin_02 = {
-		skin_name = "New Skin",
+		skin_name = "Grey Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -159,7 +159,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_03 = {
-		skin_name = "New Skin",
+		skin_name = "Orange Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -172,7 +172,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_04 = {
-		skin_name = "New Skin",
+		skin_name = "Blue Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -185,7 +185,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_05 = {
-		skin_name = "New Skin",
+		skin_name = "Yellow Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -198,7 +198,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_06 = {
-		skin_name = "New Skin",
+		skin_name = "Cyan Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -211,7 +211,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_07 = {
-		skin_name = "New Skin",
+		skin_name = "Purple Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -224,7 +224,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_08 = {
-		skin_name = "New Skin",
+		skin_name = "Albino Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -237,7 +237,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_09 = {
-		skin_name = "New Skin",
+		skin_name = "Tailypo Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -250,7 +250,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_10 = {
-		skin_name = "New Skin",
+		skin_name = "Marshmallow Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -263,7 +263,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_11 = {
-		skin_name = "New Skin",
+		skin_name = "Chrome Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -276,7 +276,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_12 = {
-		skin_name = "New Skin",
+		skin_name = "Demon Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -289,7 +289,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_13 = {
-		skin_name = "New Skin",
+		skin_name = "Chocolate Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -302,7 +302,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_14 = {
-		skin_name = "New Skin",
+		skin_name = "Sponge Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -315,7 +315,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_15 = {
-		skin_name = "New Skin",
+		skin_name = "Tartan Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -328,7 +328,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_16 = {
-		skin_name = "New Skin",
+		skin_name = "Leopard Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -341,7 +341,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_17 = {
-		skin_name = "New Skin",
+		skin_name = "Pink Leopard Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -354,7 +354,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_18 = {
-		skin_name = "New Skin",
+		skin_name = "Camo Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -367,7 +367,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_19 = {
-		skin_name = "New Skin",
+		skin_name = "Longhorn Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -380,7 +380,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_20 = {
-		skin_name = "Polka Dot",
+		skin_name = "Polka Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -393,7 +393,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_21 = {
-		skin_name = "New Skin",
+		skin_name = "Glitched Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -406,7 +406,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_22 = {
-		skin_name = "New Skin",
+		skin_name = "Lava Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -419,7 +419,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_23 = {
-		skin_name = "New Skin",
+		skin_name = "Icy Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -432,7 +432,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_24 = {
-		skin_name = "New Skin",
+		skin_name = "Marble Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -445,7 +445,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_25 = {
-		skin_name = "New Skin",
+		skin_name = "Starbreaker",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
@@ -458,7 +458,7 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_26 = {
-		skin_name = "New Skin",
+		skin_name = "Earth Alien",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
