@@ -19,7 +19,7 @@ var level_label : Array = [
 ]
 
 var is_game_state: is_game_states
-enum is_game_states {PREINTRO,INTRO,MENU,CONFIRM,POSTMENU,PREBEGIN,BEGIN,PLAY,PAUSE,OVER}
+enum is_game_states {PREINTRO,INTRO,PREMENU,MENU,CONFIRM,POSTMENU,PREBEGIN,BEGIN,PLAY,PAUSE,OVER}
 
 var is_playing: bool = false
 

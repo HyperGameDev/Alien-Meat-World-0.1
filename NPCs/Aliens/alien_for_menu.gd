@@ -45,35 +45,63 @@ func _ready() -> void:
 	else:
 		area.set_collision_layer_value(15,false)
 		
-	var ani_pos: float = randf_range(0.0,0.9)
-	animation_menu_alien.set("parameters/Transition/transition_request", "bouncing")
-	#animation_menu_alien.seek(ani_pos,true)
-	animation_menu_alien.set("parameters/TimeSeek/seek_request",ani_pos)
-	Messenger.game_menu.connect(on_game_menu)
+	aliens_bounce()
+	Messenger.game_intro.connect(on_game_intro)
+	Messenger.game_premenu.connect(on_game_premenu)
 	Messenger.game_postmenu.connect(on_game_postmenu)
 	Messenger.game_begin.connect(on_game_begin)
 	Messenger.attack_target.connect(am_i_hovered)
+	Messenger.skin_confirm.connect(on_skin_confirm)
+	Messenger.anything_seen.connect(on_anything_seen)
 	
 	
-
+func on_anything_seen(target):
+	if !target.is_empty():
+		if !target["collider"] == area:
+			if Globals.is_game_state == Globals.is_game_states.CONFIRM and !was_chosen:
+				shadow()
+			if Input.is_action_just_pressed("Grab") and was_chosen:
+				unchoose_unshadow()
+	
 func am_i_hovered(target):
 	if target == area:
 		if Globals.is_game_state == Globals.is_game_states.CONFIRM:
-			mesh.material_overlay = null
+			unshadow()
 		if has_node("Marker3D"):
 			Messenger.something_hovered.emit(area)
 			Messenger.menu_alien_seen.emit(area)
 			if Input.is_action_just_pressed("Grab"):
 				was_chosen = true
 				animation_menu_alien.set("parameters/Transition/transition_request", "bouncing")
-	else:
-		if Globals.is_game_state == Globals.is_game_states.CONFIRM and !was_chosen:
-			mesh.material_overlay = alien_shadowed
-		if Input.is_action_just_pressed("Grab") and was_chosen:
-			was_chosen = false	
-			mesh.material_overlay = null
+			
+func unchoose_unshadow():
+	was_chosen = false
+	unshadow()
+				
+func unshadow():
+	mesh.material_overlay = null
+	
+	for headpiece in alien_headpieces.get_children():
+		for node in headpiece.get_children():
+			if node is MeshInstance3D:
+				node.material_overlay = null
+		
+func shadow():
+	mesh.material_overlay = alien_shadowed
+	
+	for headpiece in alien_headpieces.get_children():
+		for node in headpiece.get_children():
+			if node is MeshInstance3D:
+				node.material_overlay = alien_shadowed
 
-func on_game_menu():
+func on_game_intro():
+	is_visible = false
+	visible = false
+	is_hoverable = false
+	if !unhoverable:
+		area.set_collision_layer_value(15,false)
+
+func on_game_premenu(): #prem
 	is_visible = true
 	visible = true
 	is_hoverable = true
@@ -117,8 +145,20 @@ func animation_teleport_finished():
 	if was_chosen:
 		#print("Should be hidden")
 		visible = false
-
+		
+func aliens_bounce():
+	var ani_pos: float = randf_range(0.0,0.9)
+	animation_menu_alien.set("parameters/Transition/transition_request", "bouncing")
+	#animation_menu_alien.seek(ani_pos,true)
+	animation_menu_alien.set("parameters/TimeSeek/seek_request",ani_pos)
 	
 func on_game_begin():
 	visible = false
 	is_visible = false
+
+func on_skin_confirm(confirmed):
+	if confirmed:
+		unshadow()
+	else:
+		unchoose_unshadow()
+		aliens_bounce()

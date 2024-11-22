@@ -270,6 +270,7 @@ func increase_progress_bar(bar_progress):
 func on_button_continue():
 	get_tree().paused = false
 func on_button_continue_focus():
+	print("continue hovered")
 	if !hilite_continue:
 		hilite_continue = true
 		animation_continue.play("hilite")

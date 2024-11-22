@@ -12,7 +12,7 @@ extends CanvasLayer
 func _ready() -> void:
 	blackout.visible = true
 	Messenger.game_intro.connect(on_game_intro)
-	Messenger.game_menu.connect(on_game_menu)
+	Messenger.game_premenu.connect(on_game_premenu)
 	Messenger.game_prebegin.connect(on_game_prebegin)
 	Messenger.game_begin.connect(on_game_begin)
 
@@ -20,7 +20,7 @@ func on_game_intro():
 	animation_message.play("message_flash")
 	container_message.visible = true
 	
-func on_game_menu():
+func on_game_premenu():
 	animation_message.stop()
 	container_message.visible = false
 	

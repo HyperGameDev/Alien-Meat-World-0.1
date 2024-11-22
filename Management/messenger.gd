@@ -8,6 +8,8 @@ signal swap_game_state
 @warning_ignore("unused_signal")
 signal game_intro # Cutscene
 @warning_ignore("unused_signal")
+signal game_premenu # Main Menu load-in fx & etc
+@warning_ignore("unused_signal")
 signal game_menu # Main Menu
 @warning_ignore("unused_signal")
 signal game_confirm # Confirming skin/alien choice
@@ -188,6 +190,8 @@ signal hitpoint_update
 signal skin_level_update
 @warning_ignore("unused_signal")
 signal skin_clicked
+@warning_ignore("unused_signal")
+signal skin_confirm
 
 @warning_ignore("unused_signal")
 signal level_update

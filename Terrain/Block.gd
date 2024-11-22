@@ -8,8 +8,6 @@ var is_level: int = -1
 
 @onready var alien_headpieces: Node3D = get_tree().get_current_scene().get_node("Player/Alien_V3/Alien/Armature/Skeleton3D/Alien_Head/Alien_Headpieces")
 
-@onready var alien_shadowed: StandardMaterial3D = preload("res://NPCs/Aliens/shadowed_alien.tres") as StandardMaterial3D
-
 #@onready var terrain_shader = self.get_surface_override_material(0)
 @onready var marker_right = %Marker_boundaryRight
 @onready var marker_left = %Marker_boundaryLeft
@@ -21,7 +19,8 @@ enum is_types {SAFE,OBSTACLE,POINTS,MENU}
 @export_range(1,2) var menu_skin_array_to_use: int = 1
 
 func _ready():
-	Messenger.game_menu.connect(on_game_menu)
+	#Messenger.game_intro
+	Messenger.game_premenu.connect(on_game_premenu)
 	Messenger.game_begin.connect(on_game_begin)
 	Messenger.game_confirm.connect(on_game_confirm)
 	
@@ -123,7 +122,7 @@ func reset_block_objects():
 			if object is Abductee:
 				object.spawn_me()
 
-func on_game_menu():
+func on_game_premenu():
 	show_available_skins()
 	if is_type == is_types.MENU:
 		visible = true
@@ -134,7 +133,7 @@ func on_game_confirm():
 		if node is Alien_For_Menu:
 			if node.was_chosen == false:
 				node.animation_menu_alien.set("parameters/Transition/transition_request", "stopping")
-				node.get_node("Alien").material_overlay = alien_shadowed
+				node.shadow()
 				
 
 
@@ -168,4 +167,4 @@ func choose_and_apply_materials(skin_chosen,mat_target,mat_key,mat_number):
 func apply_headpiece(skin_chosen,alien):
 	var alien_headpieces: Node3D = alien.get_node("Alien/Alien_Headpieces")
 	alien_headpieces.get_node(Globals.skins[skin_chosen]["head_piece"]).visible = true
-	
+		

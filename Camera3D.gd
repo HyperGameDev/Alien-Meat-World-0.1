@@ -72,8 +72,9 @@ func _ready():
 	Messenger.grab_ended.connect(on_grab_ended)
 	Messenger.powerup_menu_begin.connect(on_powerup_menu_begin)
 	Messenger.powerup_chosen.connect(on_powerup_chosen)
-	Messenger.game_menu.connect(on_game_menu)
+	Messenger.game_premenu.connect(on_game_premenu)
 	Messenger.game_confirm.connect(on_game_confirm)
+	Messenger.game_menu.connect(on_game_menu)
 	Messenger.game_postmenu.connect(on_game_postmenu)
 	Messenger.game_play.connect(on_game_play)
 	Messenger.game_pause.connect(on_game_pause)
@@ -274,8 +275,8 @@ func menu_alien_ray():
 		# Emits signal with parameter "true" or "false" if the hover_target is/isn't set to %Player
 		
 		if Input.is_action_just_pressed("Grab"):
-			#Messenger.swap_game_state.emit(Globals.is_game_states.CONFIRM)
-			Messenger.swap_game_state.emit(Globals.is_game_states.POSTMENU)
+			Messenger.swap_game_state.emit(Globals.is_game_states.CONFIRM)
+			#Messenger.swap_game_state.emit(Globals.is_game_states.POSTMENU)
 
 #
 #		return raycast_result.collider
@@ -349,11 +350,12 @@ func on_powerup_chosen(orb):
 	Messenger.add_powerup.emit(orb_chosen.powerup_key)
 	powerups_selectable = false
 
-func on_game_menu():
+func on_game_premenu():
 	menu_pickable = true
 
 func on_game_postmenu():
 	menu_pickable = false
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func on_eating_begun():
 	prevent_attacking = true
@@ -366,6 +368,9 @@ func on_game_play():
 
 func on_game_pause():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+func on_game_menu():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	
 func on_game_confirm():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

@@ -27,6 +27,9 @@ func on_swap_game_state(game_state):
 		Globals.is_game_states.INTRO:
 			on_game_state_intro()
 			
+		Globals.is_game_states.PREMENU:
+			on_game_state_premenu()
+			
 		Globals.is_game_states.MENU:
 			on_game_state_menu()
 			
@@ -93,19 +96,19 @@ func on_game_state_intro():
 	tween_fadein.tween_property(blackout, "self_modulate", Color(1.0,1.0,1.0,.0), 0.1)
 	
 	
-func on_game_state_menu():
+func on_game_state_premenu():
 	var tween_fadeout = get_tree().create_tween();
 	tween_fadeout.tween_property(blackout, "self_modulate", Color(1.0, 1.0, 1.0, 1.0), .6)
 	
 	await tween_fadeout.finished
 	
 	main_menu.visible = true
-	terrain_controller.terrain_velocity = 6.5
+	Messenger.swap_game_state.emit(Globals.is_game_states.MENU)
 	
 	var tween_fadein = get_tree().create_tween();
 	tween_fadein.tween_property(blackout, "self_modulate", Color(1.0,1.0,1.0,.0), 1.0)
 	
-	Messenger.game_menu.emit()
+	Messenger.game_premenu.emit()
 	Audio.audio_main_menu.playing = true
 	
 	camera.cam_y_offset = main_menu.menu_cam_pos_y
@@ -115,6 +118,12 @@ func on_game_state_menu():
 
 	cam_target.rot_x_offset = deg_to_rad(main_menu.menu_cam_rot_x)
 	cam_target.rotation.x += cam_target.rot_x_offset
+	
+	
+func on_game_state_menu():
+	terrain_controller.terrain_velocity = 6.5
+	Messenger.game_menu.emit()
+
 
 func on_game_state_confirm():
 	Messenger.movement_stop.emit(false)
