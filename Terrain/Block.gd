@@ -158,11 +158,13 @@ func assign_skin_to_alien(menu_alien,skin_clicked):
 	menu_alien.skin = skin_clicked
 	
 func choose_and_apply_materials(skin_chosen,mat_target,mat_key,mat_number):
-	var mat_to_apply: StandardMaterial3D
+	var mat_to_apply: Material
 	mat_to_apply = Globals.skins[skin_chosen][mat_key]
 	
 	mat_target.mesh.set_surface_override_material(mat_number, mat_to_apply)
-	mat_target.mesh.get_surface_override_material(mat_number).disable_receive_shadows = true
+	
+	if mat_to_apply is StandardMaterial3D:
+		mat_target.mesh.get_surface_override_material(mat_number).disable_receive_shadows = true
 
 func apply_headpiece(skin_chosen,alien):
 	var alien_headpieces: Node3D = alien.get_node("Alien/Alien_Headpieces")

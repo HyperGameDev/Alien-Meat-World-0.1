@@ -1,29 +1,123 @@
-[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://b5rrgbd3hes3k"]
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://cm8bpkodtwc04"]
 
-[ext_resource type="Material" uid="uid://d120p0j7v2cji" path="res://Player/textures/alien_skin_thick-by-thotee_01.tres" id="1_1wwwn"]
+[ext_resource type="Material" uid="uid://d120p0j7v2cji" path="res://Player/textures/alien_skin_thick-by-thotee_01.tres" id="1_ufpgq"]
 
-[sub_resource type="Gradient" id="Gradient_qgik3"]
-offsets = PackedFloat32Array(0.178182, 0.367273, 0.545455, 0.596364, 0.68, 0.756364, 0.949091)
-colors = PackedColorArray(1, 1, 1, 1, 0.12066, 0.24172, 0.929784, 1, 0.0886266, 0.655407, 5.77569e-07, 1, 0.432, 0.54, 0, 1, 0.0190798, 0.426094, 1.92523e-07, 1, 0.5, 0.3, 0.25, 1, 1, 1, 1, 1)
+[sub_resource type="Shader" id="Shader_bli6g"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_gr55s"]
-noise_type = 3
-seed = 5
-frequency = 0.0236
-fractal_lacunarity = 2.79
-fractal_gain = 0.435
-fractal_weighted_strength = 0.46
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pdcr0"]
-width = 1000
-height = 1000
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform sampler2D texture_emission : source_color, hint_default_black, filter_linear_mipmap, repeat_enable;
+uniform vec4 emission : source_color;
+uniform float emission_energy : hint_range(0.0, 100.0, 0.01);
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+// New uniform parameters for noise adjustments
+uniform float noise_factor1 : hint_range(0.0, 500.0) = 1.0;
+uniform float noise_factor3 : hint_range(0.0, 500.0) = 10000.0;
+uniform float noise_intensity : hint_range(0.0, 2.0, 0.01) = 1.0;
+
+uniform float time_multiplier : hint_range(0.001, 1.0) = 2.0;
+uniform float sin_offset : hint_range(0.0,1000.0) = 1;
+uniform float pulsation_speed : hint_range(0.0, 50.0) = 1.0; // Adjustable pulsation speed
+uniform float pulsation_amplitude : hint_range(0.0, 100.0) = 0.5; // Amplitude for pulsation adjustment
+uniform float pulsation_offset : hint_range(0.0, 100.0) = 0.5; // Offset for pulsation adjustment
+
+// Simple noise function with adjustable parameters
+float rand(vec2 co) {
+    return fract(sin(dot(co.xy, vec2(noise_factor1, 1.0))) * noise_factor3);
+}
+
+void vertex() {
+    UV = UV * uv1_scale.xy + uv1_offset.xy;
+}
+
+void fragment() {
+    vec2 base_uv = UV;
+
+    vec4 albedo_tex = texture(texture_albedo, base_uv);
+    ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+    float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
+    METALLIC = metallic_tex * metallic;
+    SPECULAR = specular;
+
+    vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+    float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
+    ROUGHNESS = roughness_tex * roughness;
+
+    // Emission: Enabled
+    vec3 emission_tex = texture(texture_emission, base_uv).rgb;
+    // Add flicker effect with noise and time
+    float noise = rand(vec2(TIME * time_multiplier, 0.0) * noise_intensity) + sin_offset;
+    float pulsating_emission_energy = emission_energy * (pulsation_offset + pulsation_amplitude * sin(TIME * pulsation_speed)) * noise;
+    // Emission Operator: Multiply
+    EMISSION = (emission.rgb * emission_tex) * pulsating_emission_energy;
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_s2np6"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.692913)
+colors = PackedColorArray(0.623819, 1, 0.593898, 1, 0, 0.39123, 1.92523e-07, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qmbvp"]
+noise_type = 2
+frequency = 0.046
+fractal_lacunarity = 1.175
+fractal_gain = -0.06
+cellular_jitter = 1.64
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qdcmw"]
+invert = true
+generate_mipmaps = false
 seamless = true
-color_ramp = SubResource("Gradient_qgik3")
-noise = SubResource("FastNoiseLite_gr55s")
+color_ramp = SubResource("Gradient_s2np6")
+noise = SubResource("FastNoiseLite_qmbvp")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5qp7w"]
+seamless = true
+color_ramp = SubResource("Gradient_s2np6")
+noise = SubResource("FastNoiseLite_qmbvp")
 
 [resource]
-next_pass = ExtResource("1_1wwwn")
-albedo_texture = SubResource("NoiseTexture2D_pdcr0")
-metallic_specular = 0.0
-rim_tint = 1.0
-clearcoat_roughness = 1.0
+render_priority = 0
+next_pass = ExtResource("1_ufpgq")
+shader = SubResource("Shader_bli6g")
+shader_parameter/albedo = Color(0.298039, 0.741176, 0.352941, 1)
+shader_parameter/point_size = 0.1
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0.503838, 0, 1)
+shader_parameter/emission_energy = 4.65
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = null
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/noise_factor1 = 0.02
+shader_parameter/noise_factor3 = 1.0
+shader_parameter/noise_intensity = 1.0
+shader_parameter/time_multiplier = 0.136
+shader_parameter/sin_offset = 1.0
+shader_parameter/pulsation_speed = 2.11
+shader_parameter/pulsation_amplitude = 1.0
+shader_parameter/pulsation_offset = 1.0
+shader_parameter/texture_albedo = SubResource("NoiseTexture2D_qdcmw")
+shader_parameter/texture_emission = SubResource("NoiseTexture2D_5qp7w")

@@ -1,6 +1,6 @@
 extends Node
 
-@export var skins_unlocked: bool = false
+@export var skins_unlocked: bool = true
 @export var level_current = 0
 var level_label : Array = [
 	"0-0",
@@ -458,6 +458,32 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_26 = {
+		skin_name = "Nuclear Alien",
+		skin_material = null,
+		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
+		has_head_piece = false,
+		head_piece = null,
+		has_mullet = false,
+		is_unlocked = false
+		},
+	Skin_27 = {
+		skin_name = "Black Hole",
+		skin_material = null,
+		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
+		has_head_piece = false,
+		head_piece = null,
+		has_mullet = false,
+		is_unlocked = false
+		},
+	Skin_28 = {
 		skin_name = "Earth Alien",
 		skin_material = null,
 		eyes_material = null,
@@ -498,7 +524,9 @@ var skins_skin_paths := [
 	"res://Player/textures/skins/alien_skin_23.tres",
 	"res://Player/textures/skins/alien_skin_24.tres",
 	"res://Player/textures/skins/alien_skin_25.tres",
-	"res://Player/textures/skins/alien_skin_26.tres"
+	"res://Player/textures/skins/alien_skin_26.tres",
+	"res://Player/textures/skins/alien_skin_27.tres",
+	"res://Player/textures/skins/alien_skin_28.tres"
 	]
 var skins_eyes_paths := [
 	"res://Player/textures/skins/alien_eyes_01.tres",
@@ -526,7 +554,9 @@ var skins_eyes_paths := [
 	"res://Player/textures/skins/alien_eyes_23.tres",
 	"res://Player/textures/skins/alien_eyes_24.tres",
 	"res://Player/textures/skins/alien_eyes_25.tres",
-	"res://Player/textures/skins/alien_eyes_26.tres"
+	"res://Player/textures/skins/alien_eyes_26.tres",
+	"res://Player/textures/skins/alien_eyes_27.tres",
+	"res://Player/textures/skins/alien_eyes_28.tres"
 ]
 var skins_1 := {}
 var skins_2 := {}
@@ -688,7 +718,7 @@ func load_skins(target_dictionary,target_key,paths_array):
 	var i = 0
 	for entry in target_dictionary.keys():
 		if i < len(paths_array):
-			target_dictionary[entry][target_key] = load(paths_array[i]) as StandardMaterial3D
+			target_dictionary[entry][target_key] = load(paths_array[i]) as Material
 			i += 1
 			
 func split_dictionary(dictionary):

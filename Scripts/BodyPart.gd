@@ -492,7 +492,7 @@ func do_eating():
 
 
 func on_skin_clicked(skin_string):
-	var skin_material: StandardMaterial3D = Globals.skins[skin_string]["skin_material"]
+	var skin_material: Material = Globals.skins[skin_string]["skin_material"]
 	var eyes_material: StandardMaterial3D = Globals.skins[skin_string]["eyes_material"]
 	
 	mesh.set_surface_override_material(0, skin_material)
@@ -507,13 +507,13 @@ func on_skin_clicked(skin_string):
 		for headpiece_hurt in headpieces_hurt.get_children():
 			headpiece_hurt.visible = false
 	
-	if BodyPart.is_parts.BODY:
+	if is_part == BodyPart.is_parts.BODY:
 		mesh_heart.set_surface_override_material(0, skin_material)
 		mesh_heart_hurt.set_surface_override_material(0, skin_material)
 	
-	if BodyPart.is_parts.HEAD:
+	if is_part == BodyPart.is_parts.HEAD:
 		mesh.set_surface_override_material(2, eyes_material)
-		mesh_hurt.set_surface_override_material(0, eyes_material)
+		mesh_hurt.set_surface_override_material(2, eyes_material)
 
 func on_game_prebegin():
 	skeleton_hurt.visible = true

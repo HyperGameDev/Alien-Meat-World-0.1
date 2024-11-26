@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bctr6jk5e6rq0" path="res://Player/textures/alien_skin_thick-hilite-02.tres" id="3_i2sv0"]
 
 [resource]
-render_priority = 1
+render_priority = 3
 next_pass = ExtResource("1_kg26b")
 shader = ExtResource("2_lqepf")
 shader_parameter/show_skin = false

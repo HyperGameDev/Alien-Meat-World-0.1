@@ -1,10 +1,99 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dc0c5shdbldlm"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dnq81cya03bx7"]
 
-[ext_resource type="Material" uid="uid://d120p0j7v2cji" path="res://Player/textures/alien_skin_thick-by-thotee_01.tres" id="1_as6ww"]
+[ext_resource type="Texture2D" uid="uid://btltigmw18jdl" path="res://Player/textures/images/skin_image_stars.png" id="1_5ku04"]
+[ext_resource type="Material" uid="uid://d120p0j7v2cji" path="res://Player/textures/alien_skin_thick-by-thotee_01.tres" id="1_tmtlk"]
+[ext_resource type="Texture2D" uid="uid://djm7g41dp7pc4" path="res://Player/textures/images/skin_image_stars_by.png" id="2_kjtjq"]
+
+[sub_resource type="Shader" id="Shader_fye7u"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform sampler2D texture_emission : source_color, hint_default_black, filter_linear_mipmap, repeat_enable;
+uniform vec4 emission : source_color;
+uniform float emission_energy : hint_range(0.0, 100.0, 0.01);
+
+// New uniform parameters for noise adjustments
+uniform float noise_factor1 : hint_range(0.0, 500.0) = 1.0;
+uniform float noise_factor3 : hint_range(0.0, 500.0) = 10000.0;
+uniform float noise_intensity : hint_range(0.0, 2.0, 0.01) = 1.0;
+
+uniform float time_multiplier : hint_range(.001,1.) = 2.0;
+uniform float pulsation_speed : hint_range(0.0, 50.0) = 1.0; // Adjustable pulsation speed
+uniform float pulsation_amplitude : hint_range(0.0, 1.0) = 0.5; // Amplitude for pulsation adjustment
+uniform float pulsation_offset : hint_range(0.0, 1.0) = 0.5; // Offset for pulsation adjustment
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+// Simple noise function with adjustable parameters
+float rand(vec2 co) {
+    return fract(sin(dot(co.xy, vec2(noise_factor1, 1.0))) * noise_factor3);
+}
+
+void vertex() {
+    UV = UV * uv1_scale.xy + uv1_offset.xy;
+}
+
+void fragment() {
+    vec2 base_uv = UV;
+
+    vec4 albedo_tex = texture(texture_albedo, base_uv);
+    ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+    float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
+    METALLIC = metallic_tex * metallic;
+    SPECULAR = specular;
+
+    vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+    float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
+    ROUGHNESS = roughness_tex * roughness;
+
+    // Emission: Enabled
+    vec3 emission_tex = texture(texture_emission, base_uv).rgb;
+    // Add flicker effect with noise and time
+    float noise = rand(vec2(TIME * time_multiplier, 0.0)) * noise_intensity;
+    float pulsating_emission_energy = emission_energy * (pulsation_offset + pulsation_amplitude * sin(TIME * pulsation_speed)) * noise;
+    // Emission Operator: Add
+    EMISSION = (emission.rgb + emission_tex) * pulsating_emission_energy;
+}
+"
 
 [resource]
-next_pass = ExtResource("1_as6ww")
-albedo_color = Color(0.298039, 0.741176, 0.352941, 1)
-metallic_specular = 0.0
-rim_tint = 1.0
-clearcoat_roughness = 1.0
+render_priority = 0
+next_pass = ExtResource("1_tmtlk")
+shader = SubResource("Shader_fye7u")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 10.96
+shader_parameter/noise_factor1 = 0.1
+shader_parameter/noise_factor3 = 11.054
+shader_parameter/noise_intensity = 0.65
+shader_parameter/time_multiplier = 0.3
+shader_parameter/pulsation_speed = 11.856
+shader_parameter/pulsation_amplitude = 0.693
+shader_parameter/pulsation_offset = 0.941
+shader_parameter/uv1_scale = Vector3(14.14, 14.14, 14.14)
+shader_parameter/uv1_offset = Vector3(6.29, -0.08, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("1_5ku04")
+shader_parameter/texture_emission = ExtResource("2_kjtjq")
