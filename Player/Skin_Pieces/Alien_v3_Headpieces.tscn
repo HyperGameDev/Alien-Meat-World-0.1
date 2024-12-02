@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://doyk6q2r6tyyh"]
+[gd_scene load_steps=6 format=3 uid="uid://doyk6q2r6tyyh"]
 
 [ext_resource type="PackedScene" uid="uid://dqh7m6wcn8y1p" path="res://Player/Skin_Pieces/chocolate.tscn" id="1_17kdh"]
 [ext_resource type="PackedScene" uid="uid://bklx0pkcw0rfp" path="res://Player/Skin_Pieces/ice_spikes.tscn" id="1_mpb5p"]
 [ext_resource type="PackedScene" uid="uid://bvqsyg8o5uoy8" path="res://Player/Skin_Pieces/marshmallow.tscn" id="1_r80gn"]
 [ext_resource type="PackedScene" uid="uid://bbw7igtt7wfso" path="res://Player/Skin_Pieces/devil_horns.tscn" id="2_emw8h"]
+[ext_resource type="PackedScene" uid="uid://cxv5w2j37ykuv" path="res://Player/Skin_Pieces/antenna.tscn" id="5_8xmb0"]
 
 [node name="Alien_Headpieces" type="Node3D"]
 
@@ -14,3 +15,5 @@
 [node name="marshmallow" parent="." instance=ExtResource("1_r80gn")]
 
 [node name="devil_horns" parent="." instance=ExtResource("2_emw8h")]
+
+[node name="antenna" parent="." instance=ExtResource("5_8xmb0")]

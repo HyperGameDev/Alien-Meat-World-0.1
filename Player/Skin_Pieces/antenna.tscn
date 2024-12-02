@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxv5w2j37ykuv"]
+
+[ext_resource type="PackedScene" uid="uid://bylrakftxs1c0" path="res://Player/Skin_Pieces/antenna.blend" id="1_0dgyr"]
+[ext_resource type="Material" uid="uid://blclyo1mlusab" path="res://Player/textures/skins/alien_skin_27.tres" id="2_f66v3"]
+
+[node name="antenna" instance=ExtResource("1_0dgyr")]
+
+[node name="Antenna" parent="." index="0"]
+lod_bias = 128.0
+surface_material_override/0 = ExtResource("2_f66v3")

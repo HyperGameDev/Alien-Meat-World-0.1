@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://baf2hechm348f"]
+
+[ext_resource type="PackedScene" uid="uid://cx0sxqhol2m0b" path="res://Player/Skin_Pieces/antenna_hurt.blend" id="1_2dgxh"]
+[ext_resource type="Material" uid="uid://blclyo1mlusab" path="res://Player/textures/skins/alien_skin_27.tres" id="2_ovulg"]
+[ext_resource type="PackedScene" uid="uid://cn7h8h08hxo3x" path="res://Player/Skin_Pieces/devil_horns_hurt.tscn" id="3_n2c7u"]
+
+[node name="antenna_hurt" instance=ExtResource("1_2dgxh")]
+
+[node name="Antenna" parent="." index="0"]
+lod_bias = 128.0
+surface_material_override/0 = ExtResource("2_ovulg")
+
+[node name="devil_horns_hurt" parent="." index="1" instance=ExtResource("3_n2c7u")]

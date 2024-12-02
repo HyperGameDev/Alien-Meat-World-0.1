@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfgjc1bm6mqq1"]
+[gd_scene load_steps=6 format=3 uid="uid://dfgjc1bm6mqq1"]
 
 [ext_resource type="PackedScene" uid="uid://bhpdert5trw7p" path="res://Player/Skin_Pieces/marshmallow_hurt.tscn" id="1_kgrbk"]
 [ext_resource type="PackedScene" uid="uid://cn7h8h08hxo3x" path="res://Player/Skin_Pieces/devil_horns_hurt.tscn" id="2_55bus"]
 [ext_resource type="PackedScene" uid="uid://chbjppaocip5t" path="res://Player/Skin_Pieces/chocolate_hurt.tscn" id="3_hiu6a"]
 [ext_resource type="PackedScene" uid="uid://ctn2gmw3rddx6" path="res://Player/Skin_Pieces/ice_spikes_hurt.tscn" id="4_l47q7"]
+[ext_resource type="PackedScene" uid="uid://baf2hechm348f" path="res://Player/Skin_Pieces/antenna_hurt.tscn" id="5_qkddx"]
 
 [node name="Alien_Headpieces_hurt" type="Node3D"]
 
@@ -14,3 +15,5 @@
 [node name="chocolate" parent="." instance=ExtResource("3_hiu6a")]
 
 [node name="ice_spikes" parent="." instance=ExtResource("4_l47q7")]
+
+[node name="antenna_hurt" parent="." instance=ExtResource("5_qkddx")]
