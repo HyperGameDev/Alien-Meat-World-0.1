@@ -16,4 +16,4 @@
 
 [node name="ice_spikes" parent="." instance=ExtResource("4_l47q7")]
 
-[node name="antenna_hurt" parent="." instance=ExtResource("5_qkddx")]
+[node name="antenna" parent="." instance=ExtResource("5_qkddx")]

@@ -471,15 +471,15 @@ var skins := {
 		is_unlocked = false
 		},
 	Skin_27 = {
-		skin_name = "Black Hole",
+		skin_name = "Glactick",
 		skin_material = null,
 		eyes_material = null,
 		mouth_material = null,
 		teeth_material = null,
 		heart_outer_material = null,
 		heart_inner_material = null,
-		has_head_piece = false,
-		head_piece = null,
+		has_head_piece = true,
+		head_piece = "antenna",
 		has_mullet = false,
 		is_unlocked = false
 		},
