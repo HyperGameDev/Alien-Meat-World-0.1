@@ -8,6 +8,7 @@ static var is_visible: bool = false
 static var is_hoverable: bool = false
 
 @onready var hud: CanvasLayer = get_tree().get_root().get_node("Main Scene/HUD")
+@onready var confirm_menu: CanvasLayer = get_tree().get_root().get_node("Main Scene/Confirm_Menu")
 
 @onready var alien_headpieces: Node3D = $Alien/Alien_Headpieces
 
@@ -69,6 +70,9 @@ func am_i_hovered(target):
 			Messenger.something_hovered.emit(area)
 			Messenger.menu_alien_seen.emit(area)
 			if Input.is_action_just_pressed("Grab"):
+				#confirm_menu.animation.set("parameters/Transition/transition_request", "growing")
+				#await get_tree().create_timer(.1).timeout
+				confirm_menu.animation.set("parameters/Transition/transition_request", "growing")
 				was_chosen = true
 				animation_menu_alien.set("parameters/Transition/transition_request", "bouncing")
 	else:

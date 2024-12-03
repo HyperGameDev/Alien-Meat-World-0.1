@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://5c4nsv3bbxgt"]
+
+[ext_resource type="PackedScene" uid="uid://2gqbitiucfdi" path="res://Player/Skin_Pieces/leopard_ears.blend" id="1_x7mbl"]
+[ext_resource type="Material" uid="uid://cjrs86hkvs5yd" path="res://Player/textures/skins/alien_headpiece_16.tres" id="2_x7lff"]
+
+[node name="leopard_ears" instance=ExtResource("1_x7mbl")]
+
+[node name="leopard_ears" parent="." index="0"]
+lod_bias = 128.0
+surface_material_override/0 = ExtResource("2_x7lff")

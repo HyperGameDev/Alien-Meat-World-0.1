@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c436kwwr2ty40"]
+
+[ext_resource type="PackedScene" uid="uid://cp7xba2ejkcv3" path="res://Player/Skin_Pieces/leopard_ears_hurt.blend" id="1_5unqx"]
+[ext_resource type="Material" uid="uid://doxrvmxuhlf6g" path="res://Player/textures/skins/alien_headpiece_17.tres" id="2_l5ydr"]
+
+[node name="leopard_ears_pink" instance=ExtResource("1_5unqx")]
+
+[node name="leopard_ears" parent="." index="0"]
+lod_bias = 128.0
+surface_material_override/0 = ExtResource("2_l5ydr")
