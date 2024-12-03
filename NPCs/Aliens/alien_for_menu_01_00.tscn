@@ -116,7 +116,7 @@ animation = &"bounce"
 animation = &"stop_moving"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_no2jd"]
-graph_offset = Vector2(50.3128, 203.935)
+graph_offset = Vector2(-154.687, 115.935)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_pvcw2")
 nodes/Animation/position = Vector2(300, 360)
 nodes/TimeSeek/node = SubResource("AnimationNodeTimeSeek_kji5o")
@@ -354,6 +354,15 @@ visible = false
 visible = false
 
 [node name="devil_horns" parent="Alien/Alien_Headpieces" index="3"]
+visible = false
+
+[node name="antenna" parent="Alien/Alien_Headpieces" index="4"]
+visible = false
+
+[node name="leopard_ears" parent="Alien/Alien_Headpieces" index="5"]
+visible = false
+
+[node name="leopard_ears_pink" parent="Alien/Alien_Headpieces" index="6"]
 visible = false
 
 [node name="Marker3D" type="Marker3D" parent="." index="2"]

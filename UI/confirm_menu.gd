@@ -2,9 +2,10 @@ extends CanvasLayer
 
 @onready var button_yes: Button = %Button_Yes
 @onready var button_no: Button = %Button_No
-@onready var animation: AnimationPlayer = $AnimationPlayer
+@onready var animation: AnimationTree = $AnimationTree
 
 func _ready() -> void:
+	visible = false
 	Messenger.game_menu.connect(on_game_menu)
 	Messenger.game_confirm.connect(on_game_confirm)
 	Messenger.game_postmenu.connect(on_game_postmenu)
@@ -19,20 +20,20 @@ func _ready() -> void:
 	button_no.pressed.connect(on_button_no_pressed)
 	
 func on_button_yes_hovered():
-	animation.pause()
+	animation.set("parameters/TimeScale/scale", 0)
 	button_yes.get_node("Animation").play("hilite")
 func on_button_yes_unhovered():
-	animation.play()
+	animation.set("parameters/TimeScale/scale", 1)
 	button_yes.get_node("Animation").play("unhilite")
 func on_button_yes_pressed():
 	Messenger.swap_game_state.emit(Globals.is_game_states.POSTMENU)
 	Messenger.skin_confirm.emit(true)
 	
 func on_button_no_hovered():
-	animation.pause()
+	animation.set("parameters/TimeScale/scale", 0)
 	button_no.get_node("Animation").play("hilite")
 func on_button_no_unhovered():
-	animation.play()
+	animation.set("parameters/TimeScale/scale", 1)
 	button_no.get_node("Animation").play("unhilite")
 func on_button_no_pressed():
 	Messenger.swap_game_state.emit(Globals.is_game_states.MENU)
@@ -46,3 +47,8 @@ func on_game_confirm():
 
 func on_game_postmenu():
 	visible = false
+	
+func animate_menu():
+	#print("ready menu tried to animate")
+	animation.set("parameters/grow/request", 1)
+	#print("ready menu animated its second animation")

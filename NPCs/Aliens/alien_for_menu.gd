@@ -70,9 +70,8 @@ func am_i_hovered(target):
 			Messenger.something_hovered.emit(area)
 			Messenger.menu_alien_seen.emit(area)
 			if Input.is_action_just_pressed("Grab"):
-				#confirm_menu.animation.set("parameters/Transition/transition_request", "growing")
-				#await get_tree().create_timer(.1).timeout
-				confirm_menu.animation.set("parameters/Transition/transition_request", "growing")
+				if !was_chosen:
+					confirm_menu.animate_menu()
 				was_chosen = true
 				animation_menu_alien.set("parameters/Transition/transition_request", "bouncing")
 	else:
