@@ -157,7 +157,7 @@ func on_body_exited(body):
 		
 func on_meat_in_dunk(dunked):
 	# Check dunked meat variables here? Eg:
-	if !dunked.empathy_ok:
+	if !dunked.is_enemy:
 		pass
 	dunked_meat = dunked
 	animation_scoreCount.stop()

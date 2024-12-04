@@ -150,7 +150,9 @@ func _process(delta: float) -> void:
 								var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
 								get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
 								
+								meat_new.is_enemy = meat_original.is_enemy
 								meat_new.clothing_top = meat_original.clothing_top
+								meat_new.clothing_bottom = meat_original.clothing_bottom
 								meat_new.human_variety(false)
 								meat_new.is_available = true
 								meat_new.is_clone = true

@@ -4,13 +4,14 @@ class_name Abductee
 
 var is_interactable: bool = false
 var clothing_top: StandardMaterial3D = null
+var clothing_bottom: StandardMaterial3D = null
 
 @export var is_type: is_types
 enum is_types {COW, HUMAN, TREE1}
 
 @export var indicator_color: Color = Color(.5, .5, 1.0, 1.0)
 
-@export var empathy_ok: bool = false
+@export var is_enemy: bool = false
 @export var abduction_offset: Vector3 = Vector3(0,.5,0)
 
 # If we decide on different meats having different values, use this (or another) value to add the meat to a different dunked group that can then be calculated differently by the score dunk.
@@ -208,15 +209,24 @@ func human_variety(should_randomize):
 	var human_arm_l: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_ArmL
 	var human_arm_r: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_ArmR
 	var human_body: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_Body
+	var human_leg_l: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_LegL
+	var human_leg_r: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_LegR
 	
 	if should_randomize:
-		clothing_top = Globals.human_tops.pick_random()
+		if is_enemy:
+			clothing_bottom = Globals.human_enemy_bottoms.pick_random()
+			clothing_top = Globals.human_enemy_tops.pick_random()
+		else:
+			clothing_bottom = Globals.human_bottoms.pick_random()
+			clothing_top = Globals.human_tops.pick_random()
 	
 	
 	human_arm_l.set_surface_override_material(0, clothing_top)
 	human_arm_r.set_surface_override_material(0, clothing_top)
 	human_body.set_surface_override_material(0, clothing_top)
 	human_body.set_surface_override_material(1, clothing_top)
+	human_leg_l.set_surface_override_material(0, clothing_bottom)
+	human_leg_r.set_surface_override_material(0, clothing_bottom)
 		
 func on_dunk_is_at_position(dunk_position):
 	if has_been_dunked:
@@ -249,7 +259,7 @@ func on_body_entered(collided_bodypart):
 	#collided_bodypart.mesh.hide()
 	#collided_bodypart.mesh
 	#print("Abductee Sees Player")
-	Messenger.abductee_detected.emit(collided_bodypart, empathy_ok)
+	Messenger.abductee_detected.emit(collided_bodypart, is_enemy)
 	
  
 func _on_mouse_entered(): ## For hover arrow indicator

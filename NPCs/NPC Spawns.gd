@@ -21,7 +21,7 @@ func on_spawn_npc(npc):
 	match npc:
 		"copter":
 			var copter = preload("res://NPCs/Helicopters/copter_001.tscn").instantiate()
-			get_tree().get_current_scene().add_child(copter)
+			get_tree().get_current_scene().get_node("SpawnPlace").add_child(copter)
 		_:
 			pass
 

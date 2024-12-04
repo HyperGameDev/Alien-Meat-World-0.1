@@ -18,7 +18,7 @@ static var copters_stopped : int = 0
 
 @export var is_attacking: bool = true
 
-var health_max : int = 2
+@export var health_max : int = 2
 var health_current : int = 2
 var damage_taken : int = 1
 
@@ -37,6 +37,8 @@ var is_dying : bool = false
 
 var projectile_interval_min : float = .1
 var projectile_interval_max : float = 4.0
+
+var new_meat_spawned: bool = false
 
 @onready var projectile_interval_timer : Timer = Timer.new()
 
@@ -140,7 +142,14 @@ func health_effects():
 #		$Animation_CopterDeath.play("falling")
 		var tween = get_tree().create_tween();
 		tween.tween_property(copter_mesh, "rotation:x", deg_to_rad(44), 1)
-		#$Animation_CopterMovement.stop()
+		
+		if !new_meat_spawned:
+			new_meat_spawned = true
+			var meat_new = preload("res://NPCs/Humans/human_02-01_00.tscn").instantiate()
+			get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
+			meat_new.is_enemy = true
+			meat_new.is_available = true
+			meat_new.global_position = global_position
 		
 
 func _on_mouse_entered(): ## For hover arrow indicator

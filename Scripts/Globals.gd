@@ -24,12 +24,26 @@ enum is_game_states {PREINTRO,INTRO,PREMENU,MENU,CONFIRM,POSTMENU,PREBEGIN,BEGIN
 var is_playing: bool = false
 
 
+var human_enemy_clothes_paths: Array = [
+	"res://NPCs/Humans/textures/human_clothes_camo_01.tres"
+]
+
 var human_tops_paths: Array = [
 	"res://NPCs/Humans/textures/human_clothes_grn_01.tres",
 	"res://NPCs/Humans/textures/human_clothes_wht_01.tres"
 ]
+var human_bottoms_paths: Array = [
+	"res://NPCs/Humans/textures/human_clothes_denim_01.tres"
+]
+
+var human_enemy_tops: Array = [
+]
+var human_enemy_bottoms: Array = [
+]
 
 var human_tops: Array = [
+]
+var human_bottoms: Array = [
 ]
 
 var powerups_available: Array = []
@@ -683,8 +697,11 @@ func _ready():
 	
 	powerups_available = powerups.keys()
 	
-	
+	 
 	load_materials(human_tops_paths,human_tops)
+	load_materials(human_bottoms_paths,human_bottoms)
+	load_materials(human_enemy_clothes_paths,human_enemy_tops)
+	load_materials(human_enemy_clothes_paths,human_enemy_bottoms)
 	
 	# CONSIDER consolidating this by making the paths in a single dictionary and all iterated through using one function only... Not necessary functionally but might make the game load quicker if desired.
 	load_skins(skins,"skin_material",skins_skin_paths)

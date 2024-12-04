@@ -2,16 +2,16 @@ extends Node3D
 
 class_name HitPoints
 
-@export var hitpoints_debug = false
-var is_dead = false
+@export var hitpoints_debug: bool = false
+var is_dead: bool = false
 var health_percent_lost: float = 0.0
 
 @export var hit_particle_lifetime: float = 2.0
 
 # Getting attacked
 var target
-var was_hit = false
-@onready var attacked_duration = get_tree().get_current_scene().get_node("Player").attack_duration
+var was_hit: bool = false
+@onready var attacked_duration: float = get_tree().get_current_scene().get_node("Player").attack_duration
 
 func _ready():			
 	if !has_node("Animation_Degrade"):
@@ -75,8 +75,11 @@ func on_something_hit(what_got_hit,is_delayed):
 
 func on_is_destroyed():
 	$Obstacle/HitPoints/Particles_Explode.set_emitting(true)
+	
 	await get_tree().create_timer(hit_particle_lifetime).timeout
+	print("copter deleted")
 	get_owner().queue_free()
+	print("copter not deleted lol")
 
 # Called by Sub Obstacle's "Animation_Degrade"
 func sub_obstacle_destroyed():

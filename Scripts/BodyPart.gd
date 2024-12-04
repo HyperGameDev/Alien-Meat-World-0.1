@@ -334,7 +334,7 @@ func fall_death(fall_death):
 
 
 func on_player_head_hover(is_hovered,is_head):
-	#if collided_bodypart == self and empathy_ok == false:
+	#if collided_bodypart == self and is_enemy == false:
 		#Messenger.empathy_consumed.emit()
 #		print("collided with bad Abductee")
 

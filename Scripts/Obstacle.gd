@@ -93,6 +93,9 @@ func on_update_top_level_hitpoints():
 func on_top_level_is_destroyed():
 	health_current = 0
 	update_hitpoints.emit()
+	
+	
+	
 
 func on_update_hitpoints():
 	if health_current <= 0: # Is Dead
