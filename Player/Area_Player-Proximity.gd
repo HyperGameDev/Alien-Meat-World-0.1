@@ -7,7 +7,6 @@ var is_part : int = -2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Messenger.copter_unit_stopped.connect(copter_area_size)
 
 	set_collision_mask_value(Globals.collision.NPC_INTERACT, true)
 

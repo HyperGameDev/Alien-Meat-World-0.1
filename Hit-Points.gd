@@ -77,9 +77,7 @@ func on_is_destroyed():
 	$Obstacle/HitPoints/Particles_Explode.set_emitting(true)
 	
 	await get_tree().create_timer(hit_particle_lifetime).timeout
-	print("copter deleted")
 	get_owner().queue_free()
-	print("copter not deleted lol")
 
 # Called by Sub Obstacle's "Animation_Degrade"
 func sub_obstacle_destroyed():

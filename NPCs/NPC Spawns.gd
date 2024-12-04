@@ -5,6 +5,7 @@ var spawn_interval_max = .002
 
 var copter_spawns = 0
 
+@onready var flying_enemies_queue: Node3D = get_tree().get_current_scene().get_node("Spawned/Spawned_FlyingEnemies")
 @onready var spawn_interval_timer : Timer = Timer.new()
 
 
@@ -20,14 +21,23 @@ func _ready():
 func on_spawn_npc(npc):
 	match npc:
 		"copter":
-			var copter = preload("res://NPCs/Helicopters/copter_001.tscn").instantiate()
-			get_tree().get_current_scene().get_node("SpawnPlace").add_child(copter)
+			if flying_enemy_ok():
+				var copter = preload("res://NPCs/Helicopters/copter_001.tscn").instantiate()
+				get_tree().get_current_scene().get_node("Spawned/Spawned_FlyingEnemies").add_child(copter)
+				
+				flying_enemy_spawned(copter)
 		_:
 			pass
+			
+func flying_enemy_ok():
+	return flying_enemies_queue.get_children().size() <= 4
+			
+func flying_enemy_spawned(enemy):
+	Messenger.flying_enemy_spawned.emit(enemy,flying_enemies_queue.get_children().find(enemy))
+	
 
 func spawn_copter_fleet():
 	#spawn_interval_timer.start(randi_range(spawn_interval_min,spawn_interval_max))
-	
 
 #	print(copter_spawns, " copters spawned")
 	if copter_spawns <= 5:

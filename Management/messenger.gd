@@ -132,7 +132,9 @@ signal interact_npc_end
 signal spawn_npc
 
 @warning_ignore("unused_signal")
-signal copter_unit_stopped
+signal flying_enemy_spawned
+@warning_ignore("unused_signal")
+signal flying_is_dying
 
 # Raycast results
 @warning_ignore("unused_signal")

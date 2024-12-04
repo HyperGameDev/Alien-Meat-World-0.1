@@ -5,7 +5,8 @@ class_name Copter
 signal update_hitpoints
 signal is_destroyed
 
-var interactable = false
+var interactable: bool = false
+var formation_queue_pos: int
 
 @onready var copter_mesh : Node3D = %Mesh_Collection
 @onready var terrain_controller : Node3D = get_tree().get_current_scene().get_node("%TerrainController_inScene")
@@ -13,13 +14,17 @@ var interactable = false
 #@onready var detect_left = %RayCast_Left
 #@onready var detect_right = %RayCast_Right
 
+@onready var flying_enemies_queue: Node3D = get_tree().get_current_scene().get_node("Spawned/Spawned_FlyingEnemies")
+@onready var flying_enemies_dying_queue: Node3D = get_tree().get_current_scene().get_node("Spawned/Spawned_FlyingEnemies-dying")
+@onready var flying_formation_z_pos: Array = Globals.flying_formation_z_pos
+
 static var copters_stopped : int = 0
 
 
-@export var is_attacking: bool = true
+@export var is_attacking: bool = false
 
 @export var health_max : int = 2
-var health_current : int = 2
+var health_current : int = health_max
 var damage_taken : int = 1
 
 var copter_pos: Vector3
@@ -44,7 +49,7 @@ var new_meat_spawned: bool = false
 
 
 @onready var copter_area : Area3D = self
-@onready var player_proximity : Area3D = get_tree().get_current_scene().get_node("Player/Alien_V3/DetectionAreas/Area_Player-Proximity")
+@onready var player_target : Marker3D = get_tree().get_current_scene().get_node("Player/Alien_V3/Alien/Armature/Skeleton3D/Alien_Head/Alien_Headpieces/Player_Attack_Target")
 
 @onready var player_head = get_tree().get_current_scene().get_node("Player/Alien_V3/DetectionAreas/Area_Head/CollisionA_AlienHead")
 
@@ -60,13 +65,13 @@ func _ready():
 	set_collision_layer_value(Globals.collision.NPC_INTERACT, true)
 	set_collision_mask_value(1, false)
 	
-	player_proximity.area_entered.connect(copter_stop)
-	
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 	
 	Messenger.interact_npc_begin.connect(on_interact_npc_begin)
 	Messenger.interact_npc_end.connect(on_interact_npc_end)
+	Messenger.flying_enemy_spawned.connect(on_flying_enemy_spawned)
+	Messenger.flying_is_dying.connect(on_flying_is_dying)
 	
 	
 	
@@ -87,12 +92,15 @@ func _ready():
 #	print("Trying to move copter ", "(", global_position.z, ") ", "to ", "Player at ", player_proximity.global_position.z)
 
 
-func _physics_process(delta):
-	look_at(player_proximity.global_position)
+func _physics_process(delta):	
+	look_at(player_target.global_position)
 	if is_moving and !is_dying:
-		var direction = (player_proximity.global_position - global_position).normalized()
+		var direction = (player_target.global_position - global_position).normalized()
 		velocity = direction * speed
 		global_position += velocity * delta 
+		
+		check_for_stop(false)
+		
 	if is_dying:
 		var ROTATION_SPEED = 7
 		var direction = Vector3(0,-.02,terrain_controller.terrain_velocity/50)
@@ -111,22 +119,31 @@ func _physics_process(delta):
 		#global_position += left * -1 
 		#print(left)
 		
-		
-#	if global_position.y >= 2.3:
-#		nav_agent.use_3d_avoidance = false
-#		print("A Copter Went Too High! 3D Avoidance is ", nav_agent.use_3d_avoidance)
 	
-func copter_stop(thing_in_player_perimeter):
-#	print("Player Proximity sees: ", thing_in_player_perimeter, "; it should see: ", copter_area)
-	if thing_in_player_perimeter == copter_area:
-		is_moving = false
-#		print(copter_area, " was actually seen!")
+func on_flying_enemy_spawned(enemy,queue_pos):
+	if enemy == self:
+		formation_queue_pos = queue_pos
+		#print(enemy.name," q pos = ",formation_queue_pos)
+	
+func on_flying_is_dying(dying_enemy):
+	if dying_enemy == self:
+		reparent(flying_enemies_dying_queue)
+	check_for_stop(true)
+	
+func check_for_stop(recheck_formation):
+	var z_pos_for_stopping: float = flying_formation_z_pos[formation_queue_pos]
+	if recheck_formation:
+		var current_formation_queue_pos = flying_enemies_queue.get_children().find(self)
+		if formation_queue_pos != current_formation_queue_pos:
+			formation_queue_pos = current_formation_queue_pos
+			#print(self.name," new q pos = ",formation_queue_pos)
+			is_moving = true
+			
 		
-		# CONSIDER moving copters_stopped calculation to the Area on the Player if this count is needed on a per-copter basis!
-		copters_stopped += 1
-		Messenger.copter_unit_stopped.emit(copters_stopped)
-#		print(copters_stopped)
-		#$Animation_CopterMovement.play("strafing")
+	else:
+		if global_position.z >= z_pos_for_stopping:
+			is_moving = false
+		
 		
 		
 func copter_nav(safe_velocity):
@@ -135,6 +152,7 @@ func copter_nav(safe_velocity):
 
 func health_effects():
 	if health_current <= 0: # Is Dead
+		Messenger.flying_is_dying.emit(self)
 		is_moving = false
 		is_dying = true
 		$CollisionShape3D.disabled = true
@@ -146,9 +164,11 @@ func health_effects():
 		if !new_meat_spawned:
 			new_meat_spawned = true
 			var meat_new = preload("res://NPCs/Humans/human_02-01_00.tscn").instantiate()
-			get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
+			get_tree().get_current_scene().get_node("Spawned/Spawned_HumanEnemies").add_child(meat_new)
 			meat_new.is_enemy = true
 			meat_new.is_available = true
+			meat_new.always_spawn = true
+			meat_new.add_to_group("Dropping")
 			meat_new.global_position = global_position
 		
 

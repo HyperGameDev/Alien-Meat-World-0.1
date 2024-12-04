@@ -47,6 +47,7 @@ var select_material := StandardMaterial3D.new()
 var is_available : bool = false
 var is_clone : bool = false
 var spawned : bool = false
+var always_spawn: bool = false
 
 var fell : bool = false
 
@@ -158,18 +159,7 @@ func _physics_process(_delta: float) -> void:
 		if !has_been_grabbed:
 			_has_been_grabbed()
 			has_been_grabbed = true
-			
-#		collision.disabled = true
-		#var grab_position : Vector2 = camera.unproject_position(hand_pos.position)
-		#print("Human Grabbed Pos: ",grab_position)
-		##var grab_position : Vector2 = get_viewport().get_mouse_position()
-		##print(cursorPosition_offset)
-		#var rayStartPoint : Vector3 = camera.project_ray_origin(grab_position)
-		#var rayDirection : Vector3 = camera.project_ray_normal(grab_position)
-		#var goTo = planeToMoveOn.intersects_ray(rayStartPoint, rayDirection)
-		
-		#self.linear_velocity = (goTo - self.global_position) * velocity
-		#self.linear_velocity = (grab_target.global_position - self.global_position) * velocity
+
 		self.global_position = grab_target.global_position
 		
 
@@ -190,7 +180,7 @@ func on_abductee_hovered(target): # Called when ABDUCTEE_INTERACT layer is seen 
 	if target == self:
 		if has_node("Marker3D"):
 			#print("Something hovered emitted! On ",self,"!")
-			Messenger.something_hovered.emit(self)			
+			Messenger.something_hovered.emit(self)
 				
 				
 func spawn_me():
@@ -198,7 +188,7 @@ func spawn_me():
 	if !is_in_group("Grabbed"):
 		if !is_in_group("Dunked"):
 			var boolean = pow(-1, randi() % 2)
-			if boolean > 0:
+			if boolean > 0 or always_spawn:
 				is_available = true
 				if is_type == is_types.HUMAN:
 					human_variety(true)

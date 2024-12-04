@@ -148,7 +148,7 @@ func _process(delta: float) -> void:
 								#print("Detects arms are grabbing")
 								meat_original.is_available = false
 								var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
-								get_tree().get_current_scene().get_node("SpawnPlace").add_child(meat_new)
+								get_tree().get_current_scene().get_node("Spawned/Spawned_Humans").add_child(meat_new)
 								
 								meat_new.is_enemy = meat_original.is_enemy
 								meat_new.clothing_top = meat_original.clothing_top

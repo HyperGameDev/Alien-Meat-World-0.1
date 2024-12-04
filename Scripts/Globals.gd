@@ -23,6 +23,13 @@ enum is_game_states {PREINTRO,INTRO,PREMENU,MENU,CONFIRM,POSTMENU,PREBEGIN,BEGIN
 
 var is_playing: bool = false
 
+var flying_formation_z_pos: Array =[
+	-11.,
+	-16.,
+	-21.,
+	-28.,
+	-33.
+]
 
 var human_enemy_clothes_paths: Array = [
 	"res://NPCs/Humans/textures/human_clothes_camo_01.tres"
