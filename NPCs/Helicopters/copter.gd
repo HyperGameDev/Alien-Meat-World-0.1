@@ -168,6 +168,7 @@ func health_effects():
 			meat_new.is_enemy = true
 			meat_new.is_available = true
 			meat_new.always_spawn = true
+			meat_new.parachuting(true)
 			meat_new.add_to_group("Dropping")
 			meat_new.global_position = global_position
 		

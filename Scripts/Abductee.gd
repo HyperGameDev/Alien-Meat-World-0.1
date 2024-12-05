@@ -29,6 +29,8 @@ enum is_types {COW, HUMAN, TREE1}
 #@onready var grab_target: Node3D = get_tree().get_current_scene().get_node("Player/Grab_Target/Grab_Target_offset")
 @onready var grab_target: Node3D = get_tree().get_current_scene().get_node("Player/Grab_Target")
 
+@export var parachute: MeshInstance3D
+
 @export var velocity : int = 60
 @export var grab_distance_offset : float = 14.0
 
@@ -48,6 +50,7 @@ var is_available : bool = false
 var is_clone : bool = false
 var spawned : bool = false
 var always_spawn: bool = false
+var is_parachuting: bool = false
 
 var fell : bool = false
 
@@ -167,6 +170,8 @@ func _physics_process(_delta: float) -> void:
 		if is_in_group("Dropping") and detect_surface.is_colliding():
 			remove_from_group("Dropping")
 			add_to_group("Dropped")
+			if is_parachuting:
+				parachuting(false)
 			if interact_zone.interact_area.get_overlapping_bodies().has(self):
 				is_interactable = true
 				interactable_indicator.visible = true
@@ -251,6 +256,13 @@ func on_body_entered(collided_bodypart):
 	#print("Abductee Sees Player")
 	Messenger.abductee_detected.emit(collided_bodypart, is_enemy)
 	
+func parachuting(make_parachuting):
+	if make_parachuting:
+		is_parachuting = true
+		parachute.visible = true
+	else:
+		is_parachuting = false
+		parachute.visible = false
  
 func _on_mouse_entered(): ## For hover arrow indicator
 	pass
