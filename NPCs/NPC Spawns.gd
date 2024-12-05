@@ -4,19 +4,23 @@ var spawn_interval_min = .001
 var spawn_interval_max = .002
 
 var copter_spawns = 0
-
-@onready var flying_enemies_queue: Node3D = get_tree().get_current_scene().get_node("Spawned/Spawned_FlyingEnemies")
+var flying_enemies_queue: Node3D
 @onready var spawn_interval_timer : Timer = Timer.new()
 
 
-# Called when the node enters the scene tree for the first time.
+# Called when the node enters the scene tree fqor the first time.
 func _ready():
 	#spawn_interval_timer.timeout.connect(spawn_copter_fleet)
 	Messenger.spawn_npc.connect(on_spawn_npc)
+	Messenger.game_preintro.connect(on_game_preintro)
 	
 	spawn_interval_timer.one_shot = true
 	add_child(spawn_interval_timer)
 	spawn_interval_timer.start(randi_range(spawn_interval_min,spawn_interval_max))
+	
+func on_game_preintro():
+	#print("preintro ran on npc spawn script")
+	flying_enemies_queue = get_tree().get_current_scene().get_node("Spawned/Spawned_FlyingEnemies")
 
 func on_spawn_npc(npc):
 	match npc:

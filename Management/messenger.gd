@@ -5,6 +5,9 @@ var debug_hp_Player = true
 @warning_ignore("unused_signal")
 signal swap_game_state
 
+
+@warning_ignore("unused_signal")
+signal game_preintro # Project load
 @warning_ignore("unused_signal")
 signal game_intro # Cutscene
 @warning_ignore("unused_signal")

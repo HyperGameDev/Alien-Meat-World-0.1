@@ -43,6 +43,8 @@ var score_minimum_met: bool = false
 
 
 func _ready():
+	empathy_label.text = "EMPATHY: "
+	empathy_score.text = str(Globals.empathy)
 	if !visible_for_editor:
 		visible = true
 	#region Hiding Elements Outside of Editor

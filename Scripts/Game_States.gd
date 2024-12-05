@@ -71,6 +71,7 @@ func on_game_state_preintro():
 		pause_menu = get_tree().current_scene.get_node("Pause_Menu")
 #endregion
 		
+		Messenger.game_preintro.emit()
 		await get_tree().create_timer(2).timeout
 		#region Fade in the game
 		var tween = get_tree().create_tween();
@@ -79,7 +80,7 @@ func on_game_state_preintro():
 		#endregion
 		Messenger.swap_game_state.emit(Globals.is_game_states.INTRO)
 	else:
-		print("Preintro does NOT see tree!!!")
+		#print("Preintro does NOT see tree!!!")
 		#get_tree().change_scene_to_file("res://main_scene.tscn")
 		get_tree().set_current_scene($"Main Scene")
 		on_game_state_preintro()
