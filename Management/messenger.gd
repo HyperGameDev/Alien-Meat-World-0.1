@@ -88,8 +88,11 @@ signal head_is_healed
 signal head_health
 
 @warning_ignore("unused_signal")
-signal empathy_consumed
+signal empathy_update
 
+#TODO: Decide if these should be removed since empathy health bar is gone
+@warning_ignore("unused_signal")
+signal empathy_consumed
 @warning_ignore("unused_signal")
 signal empathy_is_damaged
 @warning_ignore("unused_signal")
@@ -158,6 +161,9 @@ signal menu_alien_seen
 
 @warning_ignore("unused_signal")
 signal abductee_hovered
+@warning_ignore("unused_signal")
+signal abductee_destroyed
+
 
 # Actual grabbing
 @warning_ignore("unused_signal")

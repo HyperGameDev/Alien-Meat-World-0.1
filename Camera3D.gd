@@ -135,7 +135,6 @@ func _process(delta: float) -> void:
 					#print(meat_original," is assigned!")
 					if !meat_original.is_clone:
 						if meat_original.has_method("spawn_me") and !is_attempting_grab:
-							#print("meat is not spoiled")
 							
 							if !head_grab and arm_r.current_health == 0 and arm_l.current_health == 0: # Head is grabbing
 								head_grab = true

@@ -16,6 +16,7 @@ var cursor_pos : Vector2 = Vector2(0,0)
 
 @onready var animation: AnimationTree = get_node("Alien_V3/Alien/AnimationTree_Alien")
 @onready var animation_armature: AnimationPlayer = get_node("Alien_V3/Alien/Armature/AnimationPlayer")
+@onready var animation_heart: AnimationPlayer = get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_Heart/AnimationPlayer")
 
 
 #@onready var armature_hurt: Skeleton3D = get_node("Alien_V3/Alien/Armature_hurt/")
@@ -39,6 +40,11 @@ var cursor_pos : Vector2 = Vector2(0,0)
 
 @onready var collision_area_head: CollisionShape3D = get_node("Alien_V3/DetectionAreas/Area_Head/CollisionA_AlienHead")
 @onready var collision_area_hurt_head: CollisionShape3D = get_node("Alien_V3/DetectionAreas/Area_Head/CollisionA-hurt_AlienHead")
+
+@onready var mesh_heart: MeshInstance3D = get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_Heart")
+@onready var mesh_body: MeshInstance3D = get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_Body")
+@onready var mesh_body_heart: MeshInstance3D = get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_Body_Heart")
+
 
 @onready var mesh_orb: MeshInstance3D = get_node("Alien_V3/Alien/Orb_New-Game-Teleporter")
 @onready var animation_orb: AnimationPlayer = get_node("Alien_V3/Alien/Orb_New-Game-Teleporter/AnimationPlayer")
@@ -93,6 +99,10 @@ var follow_bone_pos : Vector3
 var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
+	#TODO: Remove this when empathy can be earned properly
+	if Globals.empathy == 2:
+		animation_heart.play("beating_healthy")
+	
 	Messenger.movement_start.connect(on_movement_start)
 	Messenger.movement_stop.connect(on_movement_stop)
 	Messenger.amount_slowed.connect(on_amount_slowed)
@@ -106,6 +116,7 @@ func _ready():
 	Messenger.eating_finished.connect(on_eating_finished)
 	Messenger.grab_begun.connect(on_grab_begun)
 	Messenger.grab_ended.connect(on_grab_ended)
+	Messenger.empathy_update.connect(on_empathy_update)
 
 
 #	print("Elbow L:", arm_l_rotation.x)
@@ -501,6 +512,21 @@ func abductee_hovered(abductee):
 #	print(abductee)
 	pass
 
+func on_empathy_update(amount_changed):
+	if amount_changed >= 0:
+		pass
+	else:
+		if Globals.empathy == 1:
+			animation_heart.play("shrink")
+			await animation_heart.animation_finished
+			animation_heart.play("beating_shrunk")
+		if Globals.empathy <= 0:
+			animation_heart.play("shrink_death")
+			await animation_heart.animation_finished
+			mesh_heart.visible = false
+			mesh_body_heart.visible = false
+			mesh_body.visible = true
+			
 
 func on_amount_slowed(slowdown_amount):
 	if slowdown_amount == Obstacle.slowdown_amounts.FULL:

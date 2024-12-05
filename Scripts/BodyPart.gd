@@ -334,12 +334,6 @@ func fall_death(fall_death):
 
 
 func on_player_head_hover(is_hovered,is_head):
-	#if collided_bodypart == self and is_enemy == false:
-		#Messenger.empathy_consumed.emit()
-#		print("collided with bad Abductee")
-
-
-		#dmg_label.text = str(current_health)]
 	if is_hovered or is_head:
 		var grabbed_abductees : Array = get_tree().get_nodes_in_group("Grabbed")
 		var grabbed_abductees_int: int = grabbed_abductees.size()
@@ -383,7 +377,7 @@ func on_player_head_hover(is_hovered,is_head):
 			if floorf(current_health) < max_health:
 				current_health += snappedf(1.0,0.5)
 				var heal_amount: String = "+1"
-				#print("Healed!")
+				print("Healed ",debug_which_part()," by ",heal_amount)
 
 				#if !powerup_hp:
 					#heal_amount = "+1"
@@ -476,6 +470,8 @@ func on_player_head_hover(is_hovered,is_head):
 				pass
 				
 			for abductee in grabbed_abductees:
+				if is_part == BodyPart.is_parts.HEAD:
+					Messenger.abductee_destroyed.emit(abductee.is_enemy)
 				abductee.queue_free()
 				score_dunk.dunk_ascent_timer_duration = 0.2
 				#print("Score dunking emitted grab_ended")
@@ -483,6 +479,24 @@ func on_player_head_hover(is_hovered,is_head):
 				
 		if is_head:
 			camera.head_grab = false
+			
+func debug_which_part():
+	match is_part:
+		0:
+			return "Head"
+		1:
+			return "LegR"
+		2:
+			return "LegL"
+		3:
+			return "ArmR"
+		4:
+			return "ArmL"
+		5:
+			return "Body"
+		_:
+			return "Unknown bodypart"
+			
 func do_eating():
 	animation_blood_human.play("feed")
 	Messenger.eating_begun.emit()
