@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhrjjudi642e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3rsm"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 35
+border_width_top = 35
+border_width_right = 35
+border_width_bottom = 35
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 125
+corner_radius_top_right = 125
+corner_radius_bottom_right = 125
+corner_radius_bottom_left = 125
+
+[sub_resource type="FontVariation" id="FontVariation_4lxyo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7ewr"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 35
+border_width_right = 35
+border_width_bottom = 35
+border_color = Color(0, 0, 0, 1)
+corner_radius_bottom_right = 1024
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b06lj"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 35
+border_width_right = 35
+border_width_bottom = 35
+border_color = Color(0, 0, 0, 1)
+corner_radius_bottom_left = 1024
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Container_Dialogue" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 150
+
+[node name="Panel_dialogueBG" type="Panel" parent="Container_Dialogue"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o3rsm")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Container_Dialogue"]
+layout_mode = 2
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_right = 65
+
+[node name="Label_Dialogue" type="Label" parent="Container_Dialogue/MarginContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_4lxyo")
+theme_override_font_sizes/font_size = 66
+text = "Hey! This is dialogue! Words are being said."
+autowrap_mode = 2
+
+[node name="Container_tailLeft" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 210
+theme_override_constants/margin_top = 439
+theme_override_constants/margin_right = 680
+
+[node name="Panel_dialogueTail" type="Panel" parent="Container_tailLeft"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q7ewr")
+
+[node name="Container_tailRight" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 669
+theme_override_constants/margin_top = 439
+theme_override_constants/margin_right = 205
+
+[node name="Panel_dialogueTail" type="Panel" parent="Container_tailRight"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b06lj")

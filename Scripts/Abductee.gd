@@ -54,6 +54,8 @@ var spawned : bool = false
 @export var always_spawn: bool = false
 var is_parachuting: bool = false
 
+@export var dialogue_box_on_right: bool = false
+
 var fell : bool = false
 
 @onready var hand_pos : Marker3D =  get_tree().get_current_scene().get_node("Player/Alien_V3/DetectionAreas/Area_ArmR/Marker_HandR")
@@ -107,6 +109,11 @@ func _ready():
 		var dialogue = preload("res://UI/Dialogue/dialogue_in_scene.tscn").instantiate()
 		add_child(dialogue)
 		dialogue.global_position = %Marker_Dialogue.global_position
+		if dialogue_box_on_right:
+			dialogue.is_right = true
+		else:
+			dialogue.is_right = false
+			
 	
 func _process(_delta: float) -> void:
 	if is_in_group("Grabbed"):

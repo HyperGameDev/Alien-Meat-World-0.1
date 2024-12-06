@@ -1,9 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://dshti01vsi34"]
+[gd_scene load_steps=4 format=3 uid="uid://dshti01vsi34"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_vpc4i"]
-size = Vector3(2, 1, 0.19)
+[ext_resource type="PackedScene" uid="uid://dhrjjudi642e" path="res://UI/Dialogue/dialogue_box.tscn" id="1_h33rc"]
+[ext_resource type="Script" path="res://UI/Dialogue/dialogue_in_scene.gd" id="1_mtr1i"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_adrxm"]
+viewport_path = NodePath("Sprite3D/SubViewport")
 
 [node name="Dialogue_inScene" type="Node3D"]
+transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, -0.235127, 0.117564, 0)
+script = ExtResource("1_mtr1i")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_vpc4i")
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.67, 3, 0)
+texture = SubResource("ViewportTexture_adrxm")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(1109, 624)
+
+[node name="CanvasLayer" parent="Sprite3D/SubViewport" instance=ExtResource("1_h33rc")]
