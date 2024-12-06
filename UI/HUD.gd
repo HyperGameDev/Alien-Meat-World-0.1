@@ -150,7 +150,10 @@ func score_minimum_text_update():
 	
 func on_abductee_destroyed(is_enemy,is_event):
 	if is_enemy:
+		print("HUD knows an enemy was destroyed")
+		print("HUD thinks: Empathy_Possible = ",Globals.empathy_possible, " and Abductee is_empathy_event = ",is_event)
 		if Globals.empathy_possible and is_event:
+			print("HUD knows enemy is ded and part of an event, and that empathy is possible,")
 			Globals.empathy += 1
 			Messenger.empathy_update.emit(+1)
 	else:

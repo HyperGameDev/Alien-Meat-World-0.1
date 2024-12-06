@@ -112,7 +112,7 @@ func on_screen_exited():
 		score_update = 0
 
 		for meat in get_tree().get_nodes_in_group("Dunked"):
-			Messenger.abductee_destroyed.emit(meat.is_enemy)
+			Messenger.abductee_destroyed.emit(meat.is_enemy,meat.is_empathy_event)
 			meat.queue_free()
 			
 		

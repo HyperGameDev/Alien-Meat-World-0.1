@@ -148,7 +148,9 @@ var time: float = 0.0
 
 static var EMPATHY: int = 0
 var empathy: int = 0
+static var EMPATHY_UNLOCKED: bool = false
 var empathy_unlocked: bool = false
+static var EMPATHY_POSSIBLE: bool = true
 var empathy_possible: bool = true
 @onready var empathy_event_interval_timer : Timer = Timer.new()
 
@@ -770,12 +772,12 @@ func on_level_update(level):
 	level_current = level
 	#print("Globals tried updating paths")
 	current_safe_chunks = level_chunks_safe[level]
-	
 	current_points_chunks = level_chunks_points[level]
-	
 	current_obstacle_chunks = level_chunks_obstacles[level]
-	
 	current_menu_chunks = level_chunks_menu[level]
+	
+	if level > 1:
+		empathy_possible = false
 	
 func on_skin_level_update(increase_level_amount,update_progress):
 	skin_level += increase_level_amount
@@ -802,6 +804,8 @@ func on_retry(is_restart):
 	score = 0
 	time = 0.0
 	empathy = EMPATHY
+	empathy_unlocked = EMPATHY_UNLOCKED
+	empathy_possible = EMPATHY_POSSIBLE
 	is_playing = false
 	if !is_restart:
 		Messenger.level_update.emit(1)

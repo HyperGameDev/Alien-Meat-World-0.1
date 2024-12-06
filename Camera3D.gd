@@ -149,6 +149,7 @@ func _process(delta: float) -> void:
 								var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
 								get_tree().get_current_scene().get_node("Spawned/Spawned_Humans").add_child(meat_new)
 								
+								meat_new.is_empathy_event = meat_original.is_empathy_event
 								meat_new.is_enemy = meat_original.is_enemy
 								meat_new.clothing_top = meat_original.clothing_top
 								meat_new.clothing_bottom = meat_original.clothing_bottom

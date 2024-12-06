@@ -357,7 +357,7 @@ func _append_to_far_edge(target_block: MeshInstance3D, appending_block: MeshInst
 	appending_block.position.z = target_block.position.z - target_block.mesh.size.y/2 - appending_block.mesh.size.y/2
 	
 	
-	if target_block.is_level == 1 and !Globals.empathy_unlocked and Globals.empathy < 2 and Globals.empathy > -1 and target_block.empathy_event_possible and !empathy_event_active and !target_block.has_empathy_event:
+	if target_block.is_level == 1 and !Globals.empathy_unlocked and Globals.empathy < 2 and Globals.empathy > -1 and target_block.empathy_event_possible and !empathy_event_active and !target_block.has_empathy_event and Globals.empathy_possible:
 		target_block.has_empathy_event = true
 		empathy_event_active = true
 		target_block.add_empathy_event()
