@@ -18,6 +18,11 @@ var is_level: int = -1
 enum is_types {SAFE,OBSTACLE,POINTS,MENU}
 @export_range(1,2) var menu_skin_array_to_use: int = 1
 
+@export var empathy_event_possible: bool = false
+var has_empathy_event: bool = false
+var empathy_event_node: Node3D
+
+
 func _ready():
 	#Messenger.game_intro
 	Messenger.game_premenu.connect(on_game_premenu)
@@ -32,7 +37,7 @@ func _ready():
 		
 	## Identifies the level number by finding the two level digits in the scene file path, after moving 30 characters in from the left; level digits are then 2 characters back from the right.
 	if !is_type == is_types.MENU:
-		is_level = scene_file_path.left(30).right(2).to_int() 
+		is_level = scene_file_path.left(30).right(2).to_int()
 	else: # If is a menu:
 		is_level = 100
 		if menu_is_visible:
@@ -41,6 +46,23 @@ func _ready():
 			visible = false
 
 			
+func add_empathy_event():
+	var marker_array: Array = []
+	
+	for node in get_children():
+		if node.is_in_group("Empathy Event Marker"):
+			marker_array.append(node)
+	
+	var marker_to_spawn_at: Marker3D = marker_array.pick_random()
+	var empathy_event = preload("res://NPCs/Humans/events/empathy_event.tscn").instantiate()
+	add_child(empathy_event)
+	empathy_event.global_position = marker_to_spawn_at.global_position
+	empathy_event_node = empathy_event
+	print("Empathy Event spawned!")
+	
+func remove_empathy_event():
+	empathy_event_node.queue_free()
+	print("Empathy Event Node freed")
 			
 func show_available_skins():
 	var skins_1_left = Globals.skins_1.duplicate(true)

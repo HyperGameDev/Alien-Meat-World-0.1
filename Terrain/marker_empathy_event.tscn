@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://djxngf6ix7jba"]
+
+[ext_resource type="Script" path="res://Terrain/marker_empathy_event.gd" id="1_2thtm"]
+
+[node name="Marker_empathyEvent" type="Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1, 0, 4.7)
+script = ExtResource("1_2thtm")

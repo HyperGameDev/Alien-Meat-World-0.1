@@ -137,11 +137,17 @@ var chunks_list_06: Array = []
 
 #endregion
 
+@export var empathy_event_interval: float = 6.
+var empathy_event_active: bool = false
+
+
 func _ready() -> void:
 	Messenger.level_update.connect(on_level_update)
 	Messenger.movement_start.connect(on_movement_start)
 	Messenger.movement_stop.connect(on_movement_stop)
 	Messenger.game_prebegin.connect(on_game_prebegin)
+	Globals.empathy_event_interval_timer.timeout.connect(on_empathy_event_interval_timeout)
+	
 	
 	chunks_path_safes = Globals.current_safe_chunks
 	chunks_path_obstacles = Globals.current_obstacle_chunks
@@ -154,6 +160,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 		_progress_terrain(delta,level_type)
+		#print("Empathy timer: ",empathy_event_interval_timer.wait_time)
 			
 	
 
@@ -275,6 +282,12 @@ func _progress_terrain(delta: float, level_type) -> void:
 			
 		# If not old level chunks, then:
 		else:
+			if first_terrain.has_empathy_event:
+				first_terrain.has_empathy_event = false
+				first_terrain.remove_empathy_event()
+				print("Empathy Event REMOVED")
+				Globals.empathy_event_interval_timer.start(empathy_event_interval)
+				
 			if first_terrain.is_type == Block.is_types.SAFE:
 
 				first_terrain.reparent(collector_safes)
@@ -343,9 +356,17 @@ func _progress_terrain(delta: float, level_type) -> void:
 func _append_to_far_edge(target_block: MeshInstance3D, appending_block: MeshInstance3D) -> void:
 	appending_block.position.z = target_block.position.z - target_block.mesh.size.y/2 - appending_block.mesh.size.y/2
 	
+	
+	if target_block.is_level == 1 and !Globals.empathy_unlocked and Globals.empathy < 2 and Globals.empathy > -1 and target_block.empathy_event_possible and !empathy_event_active and !target_block.has_empathy_event:
+		target_block.has_empathy_event = true
+		empathy_event_active = true
+		target_block.add_empathy_event()
+	
 	#print("Last added: ",target_block, " at ",target_block.position.z,"; chunk_to_add: ",chunk_to_add)
 	
-	
+func on_empathy_event_interval_timeout():
+	print("Empathy Event should happen again soon")
+	empathy_event_active = false
 		
 func on_level_update(level):
 	match level:

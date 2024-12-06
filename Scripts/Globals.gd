@@ -1,6 +1,6 @@
 extends Node
 
-@export var skins_unlocked: bool = true
+@export var skins_unlocked: bool = false
 @export var level_current = 0
 var level_label : Array = [
 	"0-0",
@@ -145,8 +145,13 @@ var powerups := {
 var obstacles_hilited := []
 var score: int = 0
 var time: float = 0.0
+
 static var EMPATHY: int = 0
-var empathy: int = 2
+var empathy: int = 0
+var empathy_unlocked: bool = false
+var empathy_possible: bool = true
+@onready var empathy_event_interval_timer : Timer = Timer.new()
+
 var skin_progress: int = 0
 var skin_max_progress: int = 2000
 var skin_level: int = 1
@@ -690,6 +695,9 @@ func _ready():
 	Messenger.game_play.connect(on_game_play)
 	Messenger.game_over.connect(on_game_over)
 	Messenger.skin_level_update.connect(on_skin_level_update)
+	
+	empathy_event_interval_timer.one_shot = true
+	add_child(empathy_event_interval_timer)
 	
 	if skins_unlocked:
 		for skin in skins:

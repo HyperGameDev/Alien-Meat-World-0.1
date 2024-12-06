@@ -11,6 +11,7 @@ enum is_types {COW, HUMAN, TREE1}
 
 @export var indicator_color: Color = Color(.5, .5, 1.0, 1.0)
 
+@export var is_empathy_event: bool = false
 @export var is_enemy: bool = false
 @export var abduction_offset: Vector3 = Vector3(0,.5,0)
 
@@ -28,6 +29,7 @@ enum is_types {COW, HUMAN, TREE1}
 @onready var collision : CollisionShape3D = $CollisionShape3D
 #@onready var grab_target: Node3D = get_tree().get_current_scene().get_node("Player/Grab_Target/Grab_Target_offset")
 @onready var grab_target: Node3D = get_tree().get_current_scene().get_node("Player/Grab_Target")
+
 
 @export var parachute: MeshInstance3D
 
@@ -49,7 +51,7 @@ var select_material := StandardMaterial3D.new()
 var is_available : bool = false
 var is_clone : bool = false
 var spawned : bool = false
-var always_spawn: bool = false
+@export var always_spawn: bool = false
 var is_parachuting: bool = false
 
 var fell : bool = false
@@ -100,6 +102,11 @@ func _ready():
 	
 	interactable_indicator.get_node("AnimationPlayer").play("interactable")
 	interactable_indicator.visible = false
+	
+	if is_empathy_event:
+		var dialogue = preload("res://UI/Dialogue/dialogue_in_scene.tscn").instantiate()
+		add_child(dialogue)
+		dialogue.global_position = %Marker_Dialogue.global_position
 	
 func _process(_delta: float) -> void:
 	if is_in_group("Grabbed"):

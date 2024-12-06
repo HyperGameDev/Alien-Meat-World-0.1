@@ -19,7 +19,6 @@ func _ready():
 	spawn_interval_timer.start(randi_range(spawn_interval_min,spawn_interval_max))
 	
 func on_game_preintro():
-	#print("preintro ran on npc spawn script")
 	flying_enemies_queue = get_tree().get_current_scene().get_node("Spawned/Spawned_FlyingEnemies")
 
 func on_spawn_npc(npc):

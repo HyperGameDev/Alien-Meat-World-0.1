@@ -65,6 +65,7 @@ func _ready():
 	on_level_update(Globals.level_current)
 	Messenger.powerup_chosen.connect(on_powerup_chosen)
 	Messenger.game_play.connect(on_game_play)
+	Messenger.empathy_update.connect(on_empathy_update)
 	
 func _process(delta):
 	label_score.text = str(score)
@@ -147,15 +148,19 @@ func score_minimum_play_animation():
 func score_minimum_text_update():
 	label_scoreMinimum.text = str(score_minimum)
 	
-func on_abductee_destroyed(is_enemy):
+func on_abductee_destroyed(is_enemy,is_event):
 	if is_enemy:
-		pass
+		if Globals.empathy_possible and is_event:
+			Globals.empathy += 1
+			Messenger.empathy_update.emit(+1)
 	else:
 		Globals.empathy -= 1
 		Messenger.empathy_update.emit(-1)
-		empathy_score.text = str(abs(Globals.empathy))
-		if Globals.empathy < 0:
-			empathy_label.text = "EVIL :"
+
+func on_empathy_update(amount):
+	empathy_score.text = str(abs(Globals.empathy))
+	if Globals.empathy < 0:
+		empathy_label.text = "EVIL :"
 	
 func on_level_update(level):
 	if level == 0:

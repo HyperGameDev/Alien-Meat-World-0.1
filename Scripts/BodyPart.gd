@@ -471,7 +471,7 @@ func on_player_head_hover(is_hovered,is_head):
 				
 			for abductee in grabbed_abductees:
 				if is_part == BodyPart.is_parts.HEAD:
-					Messenger.abductee_destroyed.emit(abductee.is_enemy)
+					Messenger.abductee_destroyed.emit(abductee.is_enemy,abductee.is_empathy_event)
 				abductee.queue_free()
 				score_dunk.dunk_ascent_timer_duration = 0.2
 				#print("Score dunking emitted grab_ended")

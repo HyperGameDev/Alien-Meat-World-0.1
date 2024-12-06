@@ -513,9 +513,18 @@ func abductee_hovered(abductee):
 	pass
 
 func on_empathy_update(amount_changed):
-	if amount_changed >= 0:
-		pass
-	else:
+	if amount_changed >= 0: #Empathy added
+		if Globals.empathy == 1:
+			mesh_body_heart.visible = true
+			mesh_body.visible = false
+			animation_heart.play("grow_1")
+			await animation_heart.animation_finished
+			animation_heart.play("beating_shrunk")
+		if Globals.empathy == 2:
+			animation_heart.play("grow_2")
+			await animation_heart.animation_finished
+			animation_heart.play("beating_healthy")
+	else: #Empathy lost
 		if Globals.empathy == 1:
 			animation_heart.play("shrink")
 			await animation_heart.animation_finished

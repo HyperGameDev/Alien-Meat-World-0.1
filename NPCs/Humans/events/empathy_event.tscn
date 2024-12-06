@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://4icx8ufhmv2x"]
+
+[ext_resource type="PackedScene" uid="uid://d0dc5ce516l3" path="res://NPCs/Humans/human_02-01_00.tscn" id="1_5ddee"]
+
+[node name="Empathy_Event" type="Node3D"]
+
+[node name="Human_02-01_00" parent="." instance=ExtResource("1_5ddee")]
+transform = Transform3D(-1, 0, 8.72761e-05, 0, 1, 0, -8.72761e-05, 0, -1, -0.0266275, 0, 1.08984)
+is_empathy_event = true
+always_spawn = true
+
+[node name="Human_02-01_01" parent="." instance=ExtResource("1_5ddee")]
+transform = Transform3D(1, 0, -8.73357e-05, 0, 1, 0, 8.73357e-05, 0, 1, -0.0264356, 0, -1.11026)
+is_empathy_event = true
+is_enemy = true
+always_spawn = true
