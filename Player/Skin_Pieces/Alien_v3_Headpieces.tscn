@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://doyk6q2r6tyyh"]
+[gd_scene load_steps=9 format=3 uid="uid://doyk6q2r6tyyh"]
 
 [ext_resource type="PackedScene" uid="uid://dqh7m6wcn8y1p" path="res://Player/Skin_Pieces/chocolate.tscn" id="1_17kdh"]
 [ext_resource type="PackedScene" uid="uid://bklx0pkcw0rfp" path="res://Player/Skin_Pieces/ice_spikes.tscn" id="1_mpb5p"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cxv5w2j37ykuv" path="res://Player/Skin_Pieces/antenna.tscn" id="5_8xmb0"]
 [ext_resource type="PackedScene" uid="uid://5c4nsv3bbxgt" path="res://Player/Skin_Pieces/leopard_ears.tscn" id="6_1vn56"]
 [ext_resource type="PackedScene" uid="uid://uwb7qic640sp" path="res://Player/Skin_Pieces/leopard_ears_pink.tscn" id="7_6loq1"]
+[ext_resource type="PackedScene" uid="uid://cun3gtlfperne" path="res://Player/Skin_Pieces/cow.tscn" id="8_20gc7"]
 
 [node name="Alien_Headpieces" type="Node3D"]
 
@@ -23,3 +24,5 @@
 [node name="leopard_ears" parent="." instance=ExtResource("6_1vn56")]
 
 [node name="leopard_ears_pink" parent="." instance=ExtResource("7_6loq1")]
+
+[node name="cow" parent="." instance=ExtResource("8_20gc7")]

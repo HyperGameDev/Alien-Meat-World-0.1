@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://0vjnh2t4d80i" path="res://Player/PlayerV3/Alien_v3.blend" id="1_3fjhf"]
 [ext_resource type="PackedScene" uid="uid://doyk6q2r6tyyh" path="res://Player/Skin_Pieces/Alien_v3_Headpieces.tscn" id="2_8vgat"]
-[ext_resource type="Material" uid="uid://ceyvghpuqtg0c" path="res://Player/textures/skins/alien_skin_01.tres" id="2_fot6n"]
+[ext_resource type="Material" uid="uid://cfsirpmtknekt" path="res://Player/textures/skins/alien_skin_19.tres" id="2_xf7cn"]
 [ext_resource type="PackedScene" uid="uid://dfgjc1bm6mqq1" path="res://Player/Skin_Pieces/Alien_v3_Headpieces_hurt.tscn" id="3_d2tva"]
 [ext_resource type="Material" uid="uid://c7geoa58ckfal" path="res://Player/textures/alien_mouth_01.tres" id="3_dgdvf"]
 [ext_resource type="Material" uid="uid://ctrq3rqbk526b" path="res://Player/textures/alien_teeth_01.tres" id="4_cvm8w"]
@@ -224,36 +224,6 @@ tracks/0/keys = {
 "values": [1.0, 0.62034]
 }
 
-[sub_resource type="Animation" id="Animation_w5iao"]
-resource_name = "shrink"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:blend_shapes/Shrink")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(5.09824, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_1m1o8"]
-resource_name = "shrink_dearh"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:blend_shapes/Shrink_death")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.833333),
-"transitions": PackedFloat32Array(2.07053, 1),
-"update": 0,
-"values": [0.0, 0.55]
-}
-
 [sub_resource type="Animation" id="Animation_vav0w"]
 resource_name = "grow_1"
 tracks/0/type = "value"
@@ -282,6 +252,36 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(3.24901, 1),
 "update": 0,
 "values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_w5iao"]
+resource_name = "shrink"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:blend_shapes/Shrink")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(5.09824, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_1m1o8"]
+resource_name = "shrink_dearh"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:blend_shapes/Shrink_death")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.833333),
+"transitions": PackedFloat32Array(2.07053, 1),
+"update": 0,
+"values": [0.0, 0.55]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ud83d"]
@@ -382,10 +382,10 @@ bones/6/rotation = Quaternion(-0.1936, -1.6964e-07, -4.57833e-08, 0.981081)
 bones/7/position = Vector3(0.0183, 0.137221, 0.078251)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(-0.0068455, 0.42393, -0.0455703)
-bones/8/rotation = Quaternion(-0.0734098, 0.658107, -0.563565, 0.493863)
+bones/8/rotation = Quaternion(0.0167915, 0.550752, -0.56141, 0.617421)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/position = Vector3(-9.35275e-09, 0.614494, 1.55965e-07)
-bones/9/rotation = Quaternion(0.426494, -0.498142, 0.0391725, 0.753939)
+bones/9/rotation = Quaternion(0.330157, -0.466224, -0.0045993, 0.820738)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/position = Vector3(2.93885e-08, 0.46262, 1.44586e-08)
 bones/10/rotation = Quaternion(0.00498419, 0.0137668, -0.00633614, 0.999873)
@@ -433,10 +433,10 @@ bones/24/position = Vector3(-0.0183, 0.137221, 0.0782509)
 bones/24/rotation = Quaternion(-0.543774, 0.435985, 0.448699, 0.559371)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/position = Vector3(0.00684553, 0.42393, -0.0455702)
-bones/25/rotation = Quaternion(-0.312574, -0.831711, 0.456478, 0.0467256)
+bones/25/rotation = Quaternion(-0.355783, -0.834142, 0.417462, -0.0578959)
 bones/25/scale = Vector3(1, 1, 1)
 bones/26/position = Vector3(-9.64237e-08, 0.614494, 5.51277e-08)
-bones/26/rotation = Quaternion(0.656863, 0.539743, -0.156552, 0.502693)
+bones/26/rotation = Quaternion(0.700268, 0.54195, -0.183744, 0.426794)
 bones/26/scale = Vector3(1, 1, 1)
 bones/27/position = Vector3(3.54394e-08, 0.46262, 2.18677e-08)
 bones/27/rotation = Quaternion(0.00498418, -0.0137668, 0.00633612, 0.999873)
@@ -489,12 +489,12 @@ bones/44/position = Vector3(4.20744e-09, -5.09553e-08, 3.73602e-08)
 bones/44/rotation = Quaternion(-0.245152, 0.76121, 0.285631, 0.528086)
 bones/44/scale = Vector3(1, 1, 1)
 bones/45/position = Vector3(0.200125, 0.0696598, 0.0264434)
-bones/45/rotation = Quaternion(0.956554, 0.0553191, -0.00426705, 0.286226)
+bones/45/rotation = Quaternion(0.995387, 0.0669918, -0.0167693, -0.0666055)
 bones/46/position = Vector3(-1.21954e-08, 0.536703, -2.25419e-08)
-bones/46/rotation = Quaternion(0.437879, 0.004443, 0.0167071, 0.898868)
+bones/46/rotation = Quaternion(0.357615, 0.00972993, 0.0177973, 0.933649)
 bones/46/scale = Vector3(1, 1, 1)
 bones/47/position = Vector3(-2.59286e-08, 0.456613, -7.46159e-10)
-bones/47/rotation = Quaternion(-0.741246, -0.0294086, 0.0651973, 0.667412)
+bones/47/rotation = Quaternion(-0.621042, -0.0254486, 0.0424346, 0.782214)
 bones/47/scale = Vector3(1, 1, 1)
 bones/48/position = Vector3(4.60094e-08, 0.129245, 9.37369e-09)
 bones/48/rotation = Quaternion(6.11763e-08, 0.961249, -0.275683, -4.16009e-07)
@@ -503,13 +503,13 @@ bones/49/position = Vector3(-0.0379999, 0.0199704, 0.0879904)
 bones/49/rotation = Quaternion(0.679705, 0.679706, -0.194937, 0.194937)
 bones/49/scale = Vector3(1, 1, 1)
 bones/50/position = Vector3(-0.200125, 0.0696598, 0.0264435)
-bones/50/rotation = Quaternion(0.738556, -0.0773897, -0.0423764, 0.668394)
+bones/50/rotation = Quaternion(0.76409, -0.0227078, 0.0139926, 0.644558)
 bones/50/scale = Vector3(1, 1, 1)
 bones/51/position = Vector3(3.77764e-08, 0.536703, -9.6398e-08)
-bones/51/rotation = Quaternion(0.898347, -0.0147686, -0.0199013, 0.438586)
+bones/51/rotation = Quaternion(0.613804, 0.0171307, -0.016586, 0.789098)
 bones/51/scale = Vector3(1, 1, 1)
 bones/52/position = Vector3(1.94582e-08, 0.456613, 2.52593e-08)
-bones/52/rotation = Quaternion(-0.243652, -0.0264688, -0.102259, 0.964094)
+bones/52/rotation = Quaternion(-0.485839, 0.0119835, -0.0419096, 0.872961)
 bones/52/scale = Vector3(1, 1, 1)
 bones/53/position = Vector3(4.50941e-08, 0.129246, -3.92254e-08)
 bones/53/rotation = Quaternion(1.92755e-07, 0.961249, -0.275683, 3.00083e-07)
@@ -521,7 +521,7 @@ bones/54/scale = Vector3(1, 1, 1)
 [node name="Alien_ArmL" parent="Armature/Skeleton3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00799999, 0)
 lod_bias = 128.0
-surface_material_override/0 = ExtResource("2_fot6n")
+surface_material_override/0 = ExtResource("2_xf7cn")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_ArmL" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.97934, 0, 0.17317, -7.45058e-09, 1.9869, 2.98023e-08, -0.17317, 0, 1.97934, -1.74479, 3.2436, -1.59007)
@@ -536,7 +536,7 @@ outline_size = 30
 
 [node name="Alien_ArmR" parent="Armature/Skeleton3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00799999, 0)
-surface_material_override/0 = ExtResource("2_fot6n")
+surface_material_override/0 = ExtResource("2_xf7cn")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_ArmR" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.98337, 0, 0.173522, 0, 1.99094, 0, -0.173522, 0, 1.98337, 0.552544, 3.16999, -1.7911)
@@ -550,13 +550,13 @@ outline_size = 30
 
 [node name="Alien_Body" parent="Armature/Skeleton3D" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00799999, 0)
-surface_material_override/0 = ExtResource("2_fot6n")
+surface_material_override/0 = ExtResource("2_xf7cn")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_Body" index="0"]
 
 [node name="Alien_Body_Heart" parent="Armature/Skeleton3D" index="3"]
 visible = false
-surface_material_override/0 = ExtResource("2_fot6n")
+surface_material_override/0 = ExtResource("2_xf7cn")
 
 [node name="Head_bone" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="4"]
 transform = Transform3D(-1, 8.52651e-14, -3.89414e-07, -4.26326e-14, 1, 3.27826e-07, 3.89414e-07, 2.68221e-07, -1, -8.04827e-09, 1.42934, 0.260495)
@@ -569,13 +569,13 @@ remote_path = NodePath("../../Alien_Head/Alien_Headpieces")
 
 [node name="Alien_Head" parent="Armature/Skeleton3D" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00751647, 0)
-surface_material_override/0 = ExtResource("2_fot6n")
+surface_material_override/0 = ExtResource("2_xf7cn")
 surface_material_override/1 = ExtResource("3_dgdvf")
 surface_material_override/2 = ExtResource("4_x0sny")
 surface_material_override/3 = ExtResource("4_cvm8w")
 
 [node name="Alien_Headpieces" parent="Armature/Skeleton3D/Alien_Head" index="0" instance=ExtResource("2_8vgat")]
-transform = Transform3D(1, 2.37657e-16, 2.84217e-13, 2.03288e-19, 1, -5.96046e-08, -4.26326e-13, -2.84217e-14, 1, 0, -0.00578269, 4.76837e-07)
+transform = Transform3D(1, 2.37657e-16, 2.84217e-13, 2.03288e-19, 1, -5.96046e-08, -4.26326e-13, -2.84217e-14, 1, 0, -0.0057827, 4.76837e-07)
 
 [node name="Player_Attack_Target" type="Marker3D" parent="Armature/Skeleton3D/Alien_Head/Alien_Headpieces" index="0"]
 transform = Transform3D(1, 8.07794e-27, 0, -1.61559e-27, 1, 0, -8.13152e-20, 0, 1, 0, 2.03508, 5.68434e-14)
@@ -625,7 +625,7 @@ libraries = {
 [node name="Alien_LegL" parent="Armature/Skeleton3D" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00164945, 0)
 material_overlay = ExtResource("7_ndkms")
-surface_material_override/0 = ExtResource("2_fot6n")
+surface_material_override/0 = ExtResource("2_xf7cn")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegL" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.92935, 0, 0.168797, 0, 1.93672, 0, -0.168797, 0, 1.92935, -0.418427, 1.07776, 0.483412)
@@ -640,7 +640,7 @@ outline_size = 30
 [node name="Alien_LegR" parent="Armature/Skeleton3D" index="8"]
 transform = Transform3D(0.977415, 0, 0, 0, 0.977415, 0, 0, 0, 0.977415, 0, -0.00197867, 0)
 material_overlay = ExtResource("7_ndkms")
-surface_material_override/0 = ExtResource("2_fot6n")
+surface_material_override/0 = ExtResource("2_xf7cn")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature/Skeleton3D/Alien_LegR" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(2.01953, 0, 0.176686, 0, 2.02725, 0, -0.176686, 0, 2.01953, 0.685815, 1.14879, 0.407689)
@@ -658,8 +658,7 @@ libraries = {
 }
 
 [node name="Armature_hurt" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0597539, 0)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0177355, 0)
 
 [node name="Skeleton3D" parent="Armature_hurt" index="0"]
 bones/0/position = Vector3(8.99322e-09, 1.04996, 0.286445)
@@ -682,10 +681,10 @@ bones/7/position = Vector3(0.0125999, 0.0859041, -0.00187777)
 bones/7/rotation = Quaternion(-0.523946, -0.459665, -0.472966, 0.538973)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(-0.00280348, 0.348658, -0.0225422)
-bones/8/rotation = Quaternion(-0.10111, 0.654936, -0.540822, 0.518023)
+bones/8/rotation = Quaternion(-0.00618632, 0.551562, -0.533438, 0.641237)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/position = Vector3(-1.14174e-08, 0.351961, 6.23801e-08)
-bones/9/rotation = Quaternion(0.416098, -0.503354, 0.0301906, 0.756694)
+bones/9/rotation = Quaternion(0.319901, -0.470195, -0.0145852, 0.822416)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/position = Vector3(3.87337e-08, 0.169128, 6.79036e-08)
 bones/10/rotation = Quaternion(0.0376794, 0.0140727, 0.00792512, 0.999159)
@@ -731,10 +730,10 @@ bones/24/position = Vector3(-0.0125999, 0.0859039, -0.00187776)
 bones/24/rotation = Quaternion(-0.523946, 0.459665, 0.472966, 0.538973)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/position = Vector3(0.00280352, 0.348658, -0.0225423)
-bones/25/rotation = Quaternion(-0.348157, -0.817965, 0.453024, 0.0670047)
+bones/25/rotation = Quaternion(-0.391571, -0.818492, 0.41858, -0.0391527)
 bones/25/scale = Vector3(1, 1, 1)
 bones/26/position = Vector3(-3.15957e-08, 0.351961, 1.11295e-08)
-bones/26/rotation = Quaternion(0.647038, 0.547949, -0.151126, 0.508187)
+bones/26/rotation = Quaternion(0.69076, 0.550723, -0.17937, 0.432875)
 bones/26/scale = Vector3(1, 1, 1)
 bones/27/position = Vector3(2.43584e-08, 0.169128, -5.45128e-08)
 bones/27/rotation = Quaternion(0.0376794, -0.0140727, -0.00792512, 0.999159)
@@ -789,13 +788,13 @@ bones/44/position = Vector3(-8.42438e-09, -2.04839e-08, 1.4122e-08)
 bones/44/rotation = Quaternion(-0.245152, 0.76121, 0.285631, 0.528086)
 bones/44/scale = Vector3(1, 1, 1)
 bones/45/position = Vector3(0.181513, -0.0592656, 0.00246798)
-bones/45/rotation = Quaternion(0.956554, 0.0553192, -0.00426646, 0.286226)
+bones/45/rotation = Quaternion(0.995387, 0.0669919, -0.0167688, -0.0666051)
 bones/45/scale = Vector3(1, 1, 0.999998)
 bones/46/position = Vector3(2.25529e-08, 0.268351, -3.22901e-08)
-bones/46/rotation = Quaternion(0.437879, 0.00444299, 0.0167071, 0.898868)
+bones/46/rotation = Quaternion(0.357616, 0.00972992, 0.0177973, 0.933649)
 bones/46/scale = Vector3(1, 1, 1)
 bones/47/position = Vector3(3.72321e-09, 0.228306, -3.83307e-08)
-bones/47/rotation = Quaternion(-0.741247, -0.0294087, 0.0651973, 0.667411)
+bones/47/rotation = Quaternion(-0.621042, -0.0254487, 0.0424346, 0.782214)
 bones/47/scale = Vector3(1, 1, 1)
 bones/48/position = Vector3(3.99951e-09, 0.0646228, 7.60919e-08)
 bones/48/rotation = Quaternion(9.16774e-08, 0.961249, -0.275682, -5.30727e-07)
@@ -803,13 +802,13 @@ bones/49/position = Vector3(-0.019, 0.00998512, 0.0439953)
 bones/49/rotation = Quaternion(0.679706, 0.679705, -0.194936, 0.194936)
 bones/49/scale = Vector3(1, 1, 1)
 bones/50/position = Vector3(-0.181513, -0.0592657, 0.00246792)
-bones/50/rotation = Quaternion(0.738556, -0.0773897, -0.0423763, 0.668394)
+bones/50/rotation = Quaternion(0.76409, -0.0227078, 0.0139926, 0.644558)
 bones/50/scale = Vector3(1, 1, 1)
 bones/51/position = Vector3(-5.20379e-09, 0.268351, 4.15648e-08)
-bones/51/rotation = Quaternion(0.898347, -0.0147685, -0.0199014, 0.438586)
+bones/51/rotation = Quaternion(0.613804, 0.0171308, -0.0165861, 0.789098)
 bones/51/scale = Vector3(1, 1, 1)
 bones/52/position = Vector3(3.01153e-08, 0.228307, -2.32591e-08)
-bones/52/rotation = Quaternion(-0.243652, -0.0264688, -0.102259, 0.964093)
+bones/52/rotation = Quaternion(-0.485839, 0.0119836, -0.0419095, 0.872961)
 bones/52/scale = Vector3(1, 1, 1)
 bones/53/position = Vector3(5.6983e-09, 0.0646227, -4.52696e-08)
 bones/53/rotation = Quaternion(-6.36034e-08, 0.961249, -0.275683, 4.19541e-07)
@@ -820,7 +819,7 @@ bones/54/scale = Vector3(1, 1, 1)
 
 [node name="Alien-hurt_ArmL" parent="Armature_hurt/Skeleton3D" index="0"]
 lod_bias = 128.0
-surface_material_override/0 = ExtResource("2_fot6n")
+surface_material_override/0 = ExtResource("2_xf7cn")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature_hurt/Skeleton3D/Alien-hurt_ArmL" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.97934, 0, 0.17317, -7.45058e-09, 1.9869, 2.98023e-08, -0.17317, 0, 1.97934, -1.74479, 3.2436, -1.59007)
@@ -835,7 +834,7 @@ outline_size = 30
 
 [node name="Alien-hurt_ArmR" parent="Armature_hurt/Skeleton3D" index="1"]
 lod_bias = 128.0
-surface_material_override/0 = ExtResource("2_fot6n")
+surface_material_override/0 = ExtResource("2_xf7cn")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature_hurt/Skeleton3D/Alien-hurt_ArmR" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.98337, 0, 0.173522, 0, 1.99094, 0, -0.173522, 0, 1.98337, 0.552544, 3.17795, -1.7911)
@@ -859,12 +858,12 @@ remote_path = NodePath("../../Alien-hurt_Head/Alien_Headpieces_hurt")
 [node name="Alien-hurt_Head" parent="Armature_hurt/Skeleton3D" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0181461, 0)
 lod_bias = 128.0
-surface_material_override/0 = ExtResource("2_fot6n")
+surface_material_override/0 = ExtResource("2_xf7cn")
 surface_material_override/1 = ExtResource("3_dgdvf")
 surface_material_override/3 = ExtResource("4_cvm8w")
 
 [node name="Alien_Headpieces_hurt" parent="Armature_hurt/Skeleton3D/Alien-hurt_Head" index="0" instance=ExtResource("3_d2tva")]
-transform = Transform3D(1, 2.84217e-14, 4.76837e-07, -1.14278e-14, 1, -5.21541e-08, -4.76837e-07, -1.86265e-08, 1, -1.04308e-07, -1.16155e-05, -0.0115053)
+transform = Transform3D(1, 2.84217e-14, 4.76837e-07, -1.14278e-14, 1, -5.21541e-08, -4.76837e-07, -1.86265e-08, 1, -1.04308e-07, -1.16322e-05, -0.0115053)
 
 [node name="marshmallow" parent="Armature_hurt/Skeleton3D/Alien-hurt_Head/Alien_Headpieces_hurt" index="0"]
 visible = false
@@ -900,7 +899,7 @@ outline_size = 30
 [node name="Alien-hurt_LegL" parent="Armature_hurt/Skeleton3D" index="4"]
 material_overlay = ExtResource("7_ndkms")
 lod_bias = 128.0
-surface_material_override/0 = ExtResource("2_fot6n")
+surface_material_override/0 = ExtResource("2_xf7cn")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature_hurt/Skeleton3D/Alien-hurt_LegL" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.97393, 0, 0.172697, 0, 1.98147, 0, -0.172697, 0, 1.97393, -0.428096, 1.11287, 0.494582)
@@ -915,7 +914,7 @@ outline_size = 30
 [node name="Alien-hurt_LegR" parent="Armature_hurt/Skeleton3D" index="5"]
 material_overlay = ExtResource("7_ndkms")
 lod_bias = 128.0
-surface_material_override/0 = ExtResource("2_fot6n")
+surface_material_override/0 = ExtResource("2_xf7cn")
 
 [node name="Dmg_Label" type="Label3D" parent="Armature_hurt/Skeleton3D/Alien-hurt_LegR" index="0" groups=["Dmg_Labels_Player"]]
 transform = Transform3D(1.97392, 0, 0.172696, 0, 1.98146, 0, -0.172696, 0, 1.97392, 0.670326, 1.11287, 0.398481)

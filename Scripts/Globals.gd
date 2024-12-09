@@ -1,6 +1,6 @@
 extends Node
 
-@export var skins_unlocked: bool = false
+@export var skins_unlocked: bool = true
 @export var level_current = 0
 var level_label : Array = [
 	"0-0",
@@ -402,8 +402,8 @@ var skins := {
 		teeth_material = null,
 		heart_outer_material = null,
 		heart_inner_material = null,
-		has_head_piece = false,
-		head_piece = "cow ears",
+		has_head_piece = true,
+		head_piece = "cow",
 		has_mullet = false,
 		is_unlocked = false
 		},
