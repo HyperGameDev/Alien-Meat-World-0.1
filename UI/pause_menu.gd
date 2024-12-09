@@ -28,6 +28,7 @@ var showed_unlocked_skins: bool = false
 @onready var game_over_level_stat: Label = %"GameOver_level-stat"
 @onready var game_over_abduct_stat: Label = %"GameOver_abduct-stat"
 @onready var game_over_empathy_stat: Label = %"GameOver_empathy-stat"
+@onready var empathy_name: Label = %Empathy_name
 @onready var game_over_time_stat: Label = %"GameOver_time-stat"
 
 @onready var game_over_progress_current: Label = %"GameOver_progress-current"
@@ -218,7 +219,11 @@ func on_game_over():
 	
 	game_over_level_stat.text = level
 	game_over_abduct_stat.text = str(abductions)
-	game_over_empathy_stat.text = str(empathy)	
+	
+	game_over_empathy_stat.text = str(abs(empathy))	
+	if empathy < 0:
+		empathy_name.text = "EVIL"
+		
 	game_over_time_stat.text = time
 	game_over_progress_current.text = str(skin_progress_old)
 	
