@@ -403,7 +403,7 @@ var skins := {
 		heart_outer_material = null,
 		heart_inner_material = null,
 		has_head_piece = true,
-		head_piece = "cow",
+		head_piece = "cow_horns",
 		has_mullet = false,
 		is_unlocked = false
 		},

@@ -221,13 +221,25 @@ func human_variety(should_randomize):
 	var human_leg_l: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_LegL
 	var human_leg_r: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_LegR
 	
+	var head_afro: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_Head_Afro
+	var head_long: MeshInstance3D = $"human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_Head_Long-Hair-1"
+	var head_army: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_Head_Army
+	
+	var head_array: Array = [head_long,head_afro]
+
+	
 	if should_randomize:
 		if is_enemy:
 			clothing_bottom = Globals.human_enemy_bottoms.pick_random()
 			clothing_top = Globals.human_enemy_tops.pick_random()
+			
+			#head_army.visible = true
+				
 		else:
 			clothing_bottom = Globals.human_bottoms.pick_random()
 			clothing_top = Globals.human_tops.pick_random()
+			
+			#head_array.pick_random().visible = true
 	
 	
 	human_arm_l.set_surface_override_material(0, clothing_top)

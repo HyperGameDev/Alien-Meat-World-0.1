@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3u3rdtwypdfv"]
+
+[ext_resource type="PackedScene" uid="uid://ckt1ks3mm2axj" path="res://Player/Skin_Pieces/cow_horns_hurt.blend" id="1_gherq"]
+[ext_resource type="Material" uid="uid://bf7pwnpbhr2ql" path="res://Player/textures/skins/alien_headpiece_19.tres" id="2_ouh6n"]
+[ext_resource type="Material" uid="uid://cfsirpmtknekt" path="res://Player/textures/skins/alien_skin_19.tres" id="3_v3cf3"]
+
+[node name="cow_horns" instance=ExtResource("1_gherq")]
+
+[node name="Longhorns" parent="." index="0"]
+lod_bias = 128.0
+surface_material_override/0 = ExtResource("2_ouh6n")
+surface_material_override/1 = ExtResource("3_v3cf3")
+
+[node name="Cow_ears" parent="." index="1"]
+lod_bias = 128.0
+surface_material_override/0 = ExtResource("3_v3cf3")
