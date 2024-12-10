@@ -389,8 +389,8 @@ var skins := {
 		teeth_material = null,
 		heart_outer_material = null,
 		heart_inner_material = null,
-		has_head_piece = false,
-		head_piece = "army_helmet",
+		has_head_piece = true,
+		head_piece = "camo_helmet",
 		has_mullet = false,
 		is_unlocked = false
 		},

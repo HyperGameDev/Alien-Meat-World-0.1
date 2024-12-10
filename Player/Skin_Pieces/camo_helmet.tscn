@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl3d3xvttctg8"]
+
+[ext_resource type="PackedScene" uid="uid://defn04iyd4m71" path="res://Player/Skin_Pieces/camo_helmet.blend" id="1_j5wh0"]
+[ext_resource type="Material" uid="uid://b2g1n4vcmykbl" path="res://Player/textures/skins/alien_skin_18.tres" id="2_1sa50"]
+[ext_resource type="Material" uid="uid://tvdtt02va6m3" path="res://Player/textures/skins/alien_headpiece_18-01.tres" id="3_migar"]
+[ext_resource type="Material" uid="uid://c7yrcbwx5wli7" path="res://Player/textures/skins/alien_headpiece_18-02.tres" id="4_37tf4"]
+
+[node name="camo_helmet" instance=ExtResource("1_j5wh0")]
+
+[node name="Helmet" parent="." index="0"]
+lod_bias = 128.0
+surface_material_override/0 = ExtResource("2_1sa50")
+
+[node name="Helmet_strap" parent="." index="1"]
+lod_bias = 128.0
+surface_material_override/0 = ExtResource("3_migar")
+surface_material_override/1 = ExtResource("4_37tf4")

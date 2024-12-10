@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfgjc1bm6mqq1"]
+[gd_scene load_steps=10 format=3 uid="uid://dfgjc1bm6mqq1"]
 
 [ext_resource type="PackedScene" uid="uid://bhpdert5trw7p" path="res://Player/Skin_Pieces/marshmallow_hurt.tscn" id="1_kgrbk"]
 [ext_resource type="PackedScene" uid="uid://cn7h8h08hxo3x" path="res://Player/Skin_Pieces/devil_horns_hurt.tscn" id="2_55bus"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b1stwo7htbb6h" path="res://Player/Skin_Pieces/leopard_ears_hurt.tscn" id="6_hdqsv"]
 [ext_resource type="PackedScene" uid="uid://c436kwwr2ty40" path="res://Player/Skin_Pieces/leopard_ears_pink_hurt.tscn" id="7_wbvev"]
 [ext_resource type="PackedScene" uid="uid://cv6hlbo4iy34s" path="res://Player/Skin_Pieces/cow_hurt.tscn" id="8_fmhoj"]
+[ext_resource type="PackedScene" uid="uid://i2ueohwcs8a1" path="res://Player/Skin_Pieces/camo_helmet_hurt.tscn" id="9_hit6d"]
 
 [node name="Alien_Headpieces_hurt" type="Node3D"]
 
@@ -26,3 +27,5 @@
 [node name="leopard_ears_pink" parent="." instance=ExtResource("7_wbvev")]
 
 [node name="cow" parent="." instance=ExtResource("8_fmhoj")]
+
+[node name="camo_helmet" parent="." instance=ExtResource("9_hit6d")]
