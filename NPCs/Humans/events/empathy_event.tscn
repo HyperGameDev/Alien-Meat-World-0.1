@@ -8,10 +8,10 @@
 transform = Transform3D(8.73198e-05, 0, 1, 0, 1, 0, -1, 0, 8.73198e-05, -1.12658, 0, -0.0103034)
 is_empathy_event = true
 always_spawn = true
-dialogue_box_on_right = true
 
 [node name="Human_02-01_01" parent="." instance=ExtResource("1_5ddee")]
 transform = Transform3D(-8.73794e-05, 0, -1, 0, 1, 0, 1, 0, -8.73794e-05, 1.07352, 0, -0.0101114)
 is_empathy_event = true
 is_enemy = true
+dialogue_box_on_right = true
 always_spawn = true

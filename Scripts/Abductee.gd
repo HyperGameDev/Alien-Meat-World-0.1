@@ -13,6 +13,8 @@ enum is_types {COW, HUMAN, TREE1}
 
 @export var is_empathy_event: bool = false
 @export var is_enemy: bool = false
+
+@export var dialogue_box_on_right: bool = false
 @export var abduction_offset: Vector3 = Vector3(0,.5,0)
 
 # If we decide on different meats having different values, use this (or another) value to add the meat to a different dunked group that can then be calculated differently by the score dunk.
@@ -54,7 +56,6 @@ var spawned : bool = false
 @export var always_spawn: bool = false
 var is_parachuting: bool = false
 
-@export var dialogue_box_on_right: bool = false
 
 var fell : bool = false
 
@@ -111,10 +112,17 @@ func _ready():
 		dialogue.global_position = %Marker_Dialogue.global_position
 		dialogue.global_rotation = %Marker_Dialogue.global_rotation
 		if dialogue_box_on_right:
+			var left_tail: MarginContainer = dialogue.get_node("%CanvasLayer").get_node("%Container_tailLeft")
+			var right_offset: float = %Marker_Dialogue.global_position.x + dialogue.dialogue_offset_pos
 			dialogue.is_right = true
+			dialogue.global_position.x = right_offset
+			left_tail.visible = true
 		else:
+			var right_tail: MarginContainer = dialogue.get_node("%CanvasLayer").get_node("%Container_tailRight")
+			var left_offset: float = %Marker_Dialogue.global_position.x - dialogue.dialogue_offset_pos
 			dialogue.is_right = false
-			
+			dialogue.global_position.x = left_offset
+			right_tail.visible = true
 	
 func _process(_delta: float) -> void:
 	if is_in_group("Grabbed"):
