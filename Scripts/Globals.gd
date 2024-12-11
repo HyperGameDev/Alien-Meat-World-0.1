@@ -1,6 +1,6 @@
 extends Node
 
-@export var skins_unlocked: bool = true
+@export var skins_unlocked: bool = false
 @export var level_current = 0
 var level_label : Array = [
 	"0-0",

@@ -109,6 +109,7 @@ func _ready():
 		var dialogue = preload("res://UI/Dialogue/dialogue_in_scene.tscn").instantiate()
 		add_child(dialogue)
 		dialogue.global_position = %Marker_Dialogue.global_position
+		dialogue.global_rotation = %Marker_Dialogue.global_rotation
 		if dialogue_box_on_right:
 			dialogue.is_right = true
 		else:
