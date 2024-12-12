@@ -68,11 +68,13 @@ layout_mode = 2
 theme_override_constants/margin_left = 66
 theme_override_constants/margin_right = 66
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Container_Dialogue/MarginContainer2"]
+[node name="VBox_dialogueLabels" type="VBoxContainer" parent="Container_Dialogue/MarginContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="Multi_Small" type="Label" parent="Container_Dialogue/MarginContainer2/VBoxContainer"]
+[node name="Multi_Small" type="Label" parent="Container_Dialogue/MarginContainer2/VBox_dialogueLabels"]
+visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -83,43 +85,41 @@ horizontal_alignment = 1
 autowrap_mode = 3
 uppercase = true
 
-[node name="Top_Large" type="Label" parent="Container_Dialogue/MarginContainer2/VBoxContainer"]
+[node name="Top_Large" type="Label" parent="Container_Dialogue/MarginContainer2/VBox_dialogueLabels"]
 visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_4lxyo")
 theme_override_font_sizes/font_size = 188
-text = "do it"
+text = "Leav A"
 horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true
 
-[node name="Top_Small" type="Label" parent="Container_Dialogue/MarginContainer2/VBoxContainer"]
-visible = false
+[node name="Top_Small" type="Label" parent="Container_Dialogue/MarginContainer2/VBox_dialogueLabels"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_li0ks")
 theme_override_font_sizes/font_size = 125
-text = "turn"
+text = "Leave a"
 horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true
 
-[node name="Bottom_Large" type="Label" parent="Container_Dialogue/MarginContainer2/VBoxContainer"]
-visible = false
+[node name="Bottom_Large" type="Label" parent="Container_Dialogue/MarginContainer2/VBox_dialogueLabels"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_4lxyo")
 theme_override_font_sizes/font_size = 188
-text = "now"
+text = "Like!"
 horizontal_alignment = 1
 autowrap_mode = 3
 uppercase = true
 
-[node name="Bottom_Small" type="Label" parent="Container_Dialogue/MarginContainer2/VBoxContainer"]
+[node name="Bottom_Small" type="Label" parent="Container_Dialogue/MarginContainer2/VBox_dialogueLabels"]
 visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2

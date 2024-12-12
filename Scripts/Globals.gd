@@ -158,252 +158,301 @@ var empathy_events := {
 	Scene_01 = {
 		right_is_enemy = true,
 		right_is_first = false,
-		innocent_dialogue = {	
+		innocent_dialogue = {    
 			Line_01 = {
 				dialogue_Top = "I did nothing wrong!",
 				dialogue_Bottom = "",
-				Multi_Small = true,
-				Top_Large = false,
-				Top_Small = false,
-				Bottom_Large = false,
-				Bottom_Small = false
-				},
+				labels = {
+					Multi_Small = true,
+					Top_Large = false,
+					Top_Small = false,
+					Bottom_Large = false,
+					Bottom_Small = false
+				}
+			},
 			Line_02 = {
 				dialogue_Top = "Somebody",
 				dialogue_Bottom = "Help",
-				Multi_Small = false,
-				Top_Large = false,
-				Top_Small = true,
-				Bottom_Large = true,
-				Bottom_Small = false
-				},
+				labels = {
+					Multi_Small = false,
+					Top_Large = false,
+					Top_Small = true,
+					Bottom_Large = true,
+					Bottom_Small = false
+				}
+			},
 			Line_03 = {
 				dialogue_Top = "But...",
 				dialogue_Bottom = "Why",
-				Multi_Small = false,
-				Top_Large = true,
-				Top_Small = false,
-				Bottom_Large = true,
-				Bottom_Small = false
+				labels = {
+					Multi_Small = false,
+					Top_Large = true,
+					Top_Small = false,
+					Bottom_Large = true,
+					Bottom_Small = false
 				}
+			}
 		},
 		enemy_dialogue = {
 			Line_01 = {
 				dialogue_Top = "Stop",
 				dialogue_Bottom = "Resisting!",
-				Multi_Small = false,
-				Top_Large = true,
-				Top_Small = false,
-				Bottom_Large = false,
-				Bottom_Small = true
-				},
+				labels = {
+					Multi_Small = false,
+					Top_Large = true,
+					Top_Small = false,
+					Bottom_Large = false,
+					Bottom_Small = true
+				}
+			},
 			Line_02 = {
 				dialogue_Top = "Lie on the ground",
 				dialogue_Bottom = "",
-				Multi_Small = true,
-				Top_Large = false,
-				Top_Small = false,
-				Bottom_Large = false,
-				Bottom_Small = false
-				},
+				labels = {
+					Multi_Small = true,
+					Top_Large = false,
+					Top_Small = false,
+					Bottom_Large = false,
+					Bottom_Small = false
+				}
+			},
 			Line_03 = {
 				dialogue_Top = "Our farm now",
 				dialogue_Bottom = "",
-				Multi_Small = true,
-				Top_Large = false,
-				Top_Small = false,
-				Bottom_Large = false,
-				Bottom_Small = false
+				labels = {
+					Multi_Small = true,
+					Top_Large = false,
+					Top_Small = false,
+					Bottom_Large = false,
+					Bottom_Small = false
 				}
+			}
 		}
 	},
 	Scene_02 = {
 		right_is_enemy = false,
 		right_is_first = true,
-		innocent_dialogue = {	
+		innocent_dialogue = {    
 			Line_01 = {
 				dialogue_Top = "Who are you people?",
 				dialogue_Bottom = "",
-				Multi_Small = true,
-				Top_Large = false,
-				Top_Small = false,
-				Bottom_Large = false,
-				Bottom_Small = false
-				},
+				labels = {
+					Multi_Small = true,
+					Top_Large = false,
+					Top_Small = false,
+					Bottom_Large = false,
+					Bottom_Small = false
+				}
+			},
 			Line_02 = {
 				dialogue_Top = "Says",
 				dialogue_Bottom = "Who?",
-				Multi_Small = false,
-				Top_Large = false,
-				Top_Small = true,
-				Bottom_Large = true,
-				Bottom_Small = false
-				},
+				labels = {
+					Multi_Small = false,
+					Top_Large = false,
+					Top_Small = true,
+					Bottom_Large = true,
+					Bottom_Small = false
+				}
+			},
 			Line_03 = {
 				dialogue_Top = "Fight",
 				dialogue_Bottom = "the power",
-				Multi_Small = false,
-				Top_Large = true,
-				Top_Small = false,
-				Bottom_Large = false,
-				Bottom_Small = true
+				labels = {
+					Multi_Small = false,
+					Top_Large = true,
+					Top_Small = false,
+					Bottom_Large = false,
+					Bottom_Small = true
 				}
+			}
 		},
 		enemy_dialogue = {
 			Line_01 = {
 				dialogue_Top = "Your new leaders",
 				dialogue_Bottom = "",
-				Multi_Small = true,
-				Top_Large = false,
-				Top_Small = false,
-				Bottom_Large = false,
-				Bottom_Small = false
-				},
+				labels = {
+					Multi_Small = true,
+					Top_Large = false,
+					Top_Small = false,
+					Bottom_Large = false,
+					Bottom_Small = false
+				}
+			},
 			Line_02 = {
 				dialogue_Top = "Earth",
 				dialogue_Bottom = "Order",
-				Multi_Small = false,
-				Top_Large = true,
-				Top_Small = false,
-				Bottom_Large = true,
-				Bottom_Small = false
-				},
+				labels = {
+					Multi_Small = false,
+					Top_Large = true,
+					Top_Small = false,
+					Bottom_Large = true,
+					Bottom_Small = false
+				}
+			},
 			Line_03 = {
 				dialogue_Top = "Eat lead weakling",
 				dialogue_Bottom = "",
-				Multi_Small = true,
-				Top_Large = false,
-				Top_Small = false,
-				Bottom_Large = false,
-				Bottom_Small = false
+				labels = {
+					Multi_Small = true,
+					Top_Large = false,
+					Top_Small = false,
+					Bottom_Large = false,
+					Bottom_Small = false
 				}
+			}
 		}
 	},
 	Scene_03 = {
 		right_is_enemy = true,
 		right_is_first = true,
-		innocent_dialogue = {	
+		innocent_dialogue = {    
 			Line_01 = {
 				dialogue_Top = "I'm scared",
 				dialogue_Bottom = "",
-				Multi_Small = true,
-				Top_Large = false,
-				Top_Small = false,
-				Bottom_Large = false,
-				Bottom_Small = false
-				},
+				labels = {
+					Multi_Small = true,
+					Top_Large = false,
+					Top_Small = false,
+					Bottom_Large = false,
+					Bottom_Small = false
+				}
+			},
 			Line_02 = {
 				dialogue_Top = "I have\na family",
 				dialogue_Bottom = "",
-				Multi_Small = true,
-				Top_Large = false,
-				Top_Small = false,
-				Bottom_Large = false,
-				Bottom_Small = false
-				},
+				labels = {
+					Multi_Small = true,
+					Top_Large = false,
+					Top_Small = false,
+					Bottom_Large = false,
+					Bottom_Small = false
+				}
+			},
 			Line_03 = {
 				dialogue_Top = "I'm too scared...",
 				dialogue_Bottom = "",
-				Multi_Small = true,
-				Top_Large = false,
-				Top_Small = false,
-				Bottom_Large = false,
-				Bottom_Small = false
+				labels = {
+					Multi_Small = true,
+					Top_Large = false,
+					Top_Small = false,
+					Bottom_Large = false,
+					Bottom_Small = false
 				}
+			}
 		},
 		enemy_dialogue = {
 			Line_01 = {
 				dialogue_Top = "Turn around",
 				dialogue_Bottom = "",
-				Multi_Small = true,
-				Top_Large = false,
-				Top_Small = false,
-				Bottom_Large = false,
-				Bottom_Small = false
-				},
+				labels = {
+					Multi_Small = true,
+					Top_Large = false,
+					Top_Small = false,
+					Bottom_Large = false,
+					Bottom_Small = false
+				}
+			},
 			Line_02 = {
 				dialogue_Top = "Do it",
 				dialogue_Bottom = "or die",
-				Multi_Small = false,
-				Top_Large = true,
-				Top_Small = false,
-				Bottom_Large = true,
-				Bottom_Small = false
-				},
+				labels = {
+					Multi_Small = false,
+					Top_Large = true,
+					Top_Small = false,
+					Bottom_Large = true,
+					Bottom_Small = false
+				}
+			},
 			Line_03 = {
 				dialogue_Top = "Do it",
 				dialogue_Bottom = "now",
-				Multi_Small = false,
-				Top_Large = true,
-				Top_Small = false,
-				Bottom_Large = true,
-				Bottom_Small = false
+				labels = {
+					Multi_Small = false,
+					Top_Large = true,
+					Top_Small = false,
+					Bottom_Large = true,
+					Bottom_Small = false
 				}
+			}
 		}
 	},
 	Scene_04 = {
 		right_is_enemy = false,
 		right_is_first = true,
-		innocent_dialogue = {	
+		innocent_dialogue = {    
 			Line_01 = {
 				dialogue_Top = "Please don't hurt me",
 				dialogue_Bottom = "",
-				Multi_Small = true,
-				Top_Large = false,
-				Top_Small = false,
-				Bottom_Large = false,
-				Bottom_Small = false
-				},
+				labels = {
+					Multi_Small = true,
+					Top_Large = false,
+					Top_Small = false,
+					Bottom_Large = false,
+					Bottom_Small = false
+				}
+			},
 			Line_02 = {
 				dialogue_Top = "I will comply",
 				dialogue_Bottom = "",
-				Multi_Small = true,
-				Top_Large = false,
-				Top_Small = false,
-				Bottom_Large = false,
-				Bottom_Small = false
-				},
+				labels = {
+					Multi_Small = true,
+					Top_Large = false,
+					Top_Small = false,
+					Bottom_Large = false,
+					Bottom_Small = false
+				}
+			},
 			Line_03 = {
 				dialogue_Top = "I will",
 				dialogue_Bottom = "comply!",
-				Multi_Small = false,
-				Top_Large = true,
-				Top_Small = false,
-				Bottom_Large = false,
-				Bottom_Small = true
+				labels = {
+					Multi_Small = false,
+					Top_Large = true,
+					Top_Small = false,
+					Bottom_Large = false,
+					Bottom_Small = true
 				}
+			}
 		},
 		enemy_dialogue = {
 			Line_01 = {
 				dialogue_Top = "Give up",
 				dialogue_Bottom = "now",
-				Multi_Small = false,
-				Top_Large = true,
-				Top_Small = false,
-				Bottom_Large = true,
-				Bottom_Small = false
-				},
+				labels = {
+					Multi_Small = false,
+					Top_Large = true,
+					Top_Small = false,
+					Bottom_Large = true,
+					Bottom_Small = false
+				}
+			},
 			Line_02 = {
 				dialogue_Top = "Comply",
 				dialogue_Bottom = "or die",
-				Multi_Small = false,
-				Top_Large = true,
-				Top_Small = false,
-				Bottom_Large = true,
-				Bottom_Small = false
-				},
+				labels = {
+					Multi_Small = false,
+					Top_Large = true,
+					Top_Small = false,
+					Bottom_Large = true,
+					Bottom_Small = false
+				}
+			},
 			Line_03 = {
 				dialogue_Top = "Say it",
 				dialogue_Bottom = "again",
-				Multi_Small = true,
-				Top_Large = false,
-				Top_Small = false,
-				Bottom_Large = false,
-				Bottom_Small = false
+				labels = {
+					Multi_Small = true,
+					Top_Large = false,
+					Top_Small = false,
+					Bottom_Large = false,
+					Bottom_Small = false
 				}
+			}
 		}
-	},
+	}
 }
+
 var skin_progress: int = 0
 var skin_max_progress: int = 2000
 var skin_level: int = 1

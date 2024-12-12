@@ -91,6 +91,9 @@ signal head_is_healed
 signal head_health
 
 @warning_ignore("unused_signal")
+signal empathy_event_ready
+
+@warning_ignore("unused_signal")
 signal empathy_update
 
 #TODO: Decide if these should be removed since empathy health bar is gone

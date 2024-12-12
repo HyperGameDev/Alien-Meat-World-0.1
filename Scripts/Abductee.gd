@@ -109,6 +109,7 @@ func _ready():
 	if is_empathy_event:
 		var dialogue = preload("res://UI/Dialogue/dialogue_in_scene.tscn").instantiate()
 		add_child(dialogue)
+		Messenger.empathy_event_ready.emit()
 		dialogue.global_position = %Marker_Dialogue.global_position
 		dialogue.global_rotation = %Marker_Dialogue.global_rotation
 		if dialogue_box_on_right:
