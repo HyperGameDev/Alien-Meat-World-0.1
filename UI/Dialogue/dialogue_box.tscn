@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhrjjudi642e"]
+[gd_scene load_steps=8 format=3 uid="uid://dhrjjudi642e"]
 
 [ext_resource type="FontFile" uid="uid://ckdic8pw8e5i2" path="res://UI/Fonts/Agrandir-WideBlackItalic.otf" id="1_ul0bl"]
 
@@ -17,6 +17,21 @@ corner_radius_bottom_left = 125
 [sub_resource type="FontVariation" id="FontVariation_4lxyo"]
 base_font = ExtResource("1_ul0bl")
 spacing_glyph = 7
+baseline_offset = 0.11
+
+[sub_resource type="FontVariation" id="FontVariation_li0ks"]
+base_font = ExtResource("1_ul0bl")
+spacing_glyph = 7
+spacing_top = 5
+spacing_bottom = -20
+baseline_offset = 0.11
+
+[sub_resource type="FontVariation" id="FontVariation_ih8ut"]
+base_font = ExtResource("1_ul0bl")
+spacing_glyph = 7
+spacing_top = -20
+spacing_bottom = 15
+baseline_offset = 0.11
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7ewr"]
 bg_color = Color(1, 1, 1, 1)
@@ -50,31 +65,68 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_o3rsm")
 
 [node name="MarginContainer2" type="MarginContainer" parent="Container_Dialogue"]
 layout_mode = 2
-theme_override_constants/margin_left = 90
-theme_override_constants/margin_right = 90
+theme_override_constants/margin_left = 66
+theme_override_constants/margin_right = 66
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Container_Dialogue/MarginContainer2"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label_Dialogue2" type="Label" parent="Container_Dialogue/MarginContainer2/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontVariation_4lxyo")
-theme_override_font_sizes/font_size = 188
-text = "Stop"
-horizontal_alignment = 1
-autowrap_mode = 2
-uppercase = true
-
-[node name="Label_Dialogue" type="Label" parent="Container_Dialogue/MarginContainer2/VBoxContainer"]
+[node name="Multi_Small" type="Label" parent="Container_Dialogue/MarginContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_4lxyo")
 theme_override_font_sizes/font_size = 125
-text = "Resisting!"
+text = "i'm too scared..."
+horizontal_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="Top_Large" type="Label" parent="Container_Dialogue/MarginContainer2/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_4lxyo")
+theme_override_font_sizes/font_size = 188
+text = "do it"
+horizontal_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="Top_Small" type="Label" parent="Container_Dialogue/MarginContainer2/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_li0ks")
+theme_override_font_sizes/font_size = 125
+text = "turn"
+horizontal_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="Bottom_Large" type="Label" parent="Container_Dialogue/MarginContainer2/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_4lxyo")
+theme_override_font_sizes/font_size = 188
+text = "now"
+horizontal_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="Bottom_Small" type="Label" parent="Container_Dialogue/MarginContainer2/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_ih8ut")
+theme_override_font_sizes/font_size = 125
+text = "comply!"
 horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true

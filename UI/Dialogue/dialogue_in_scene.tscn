@@ -24,3 +24,4 @@ size = Vector2i(1109, 624)
 
 [node name="CanvasLayer" parent="Sprite3D/SubViewport" instance=ExtResource("1_h33rc")]
 unique_name_in_owner = true
+visible = false
