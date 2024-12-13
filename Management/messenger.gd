@@ -91,7 +91,7 @@ signal head_is_healed
 signal head_health
 
 @warning_ignore("unused_signal")
-signal empathy_event_ready
+signal dialogue_box_ready
 
 @warning_ignore("unused_signal")
 signal empathy_update

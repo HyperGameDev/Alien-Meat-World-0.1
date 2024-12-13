@@ -182,31 +182,31 @@ var empathy_events := {
 				}
 			},
 			Line_03 = {
-				dialogue_Top = "But...",
-				dialogue_Bottom = "Why",
+				dialogue_Top = "I'm innocent",
+				dialogue_Bottom = "",
 				labels = {
-					Multi_Small = false,
-					Top_Large = true,
+					Multi_Small = true,
+					Top_Large = false,
 					Top_Small = false,
-					Bottom_Large = true,
+					Bottom_Large = false,
 					Bottom_Small = false
 				}
 			}
 		},
 		enemy_dialogue = {
 			Line_01 = {
-				dialogue_Top = "Stop",
-				dialogue_Bottom = "Resisting!",
+				dialogue_Top = "Stop Resisting!",
+				dialogue_Bottom = "",
 				labels = {
-					Multi_Small = false,
-					Top_Large = true,
+					Multi_Small = true,
+					Top_Large = false,
 					Top_Small = false,
 					Bottom_Large = false,
-					Bottom_Small = true
+					Bottom_Small = false
 				}
 			},
 			Line_02 = {
-				dialogue_Top = "Lie on the ground",
+				dialogue_Top = "Quit whining",
 				dialogue_Bottom = "",
 				labels = {
 					Multi_Small = true,
@@ -217,7 +217,7 @@ var empathy_events := {
 				}
 			},
 			Line_03 = {
-				dialogue_Top = "Our farm now",
+				dialogue_Top = "you belong to us",
 				dialogue_Bottom = "",
 				labels = {
 					Multi_Small = true,
@@ -245,31 +245,31 @@ var empathy_events := {
 				}
 			},
 			Line_02 = {
-				dialogue_Top = "Says",
-				dialogue_Bottom = "Who?",
+				dialogue_Top = "Don't hurt me",
+				dialogue_Bottom = "",
 				labels = {
-					Multi_Small = false,
+					Multi_Small = true,
 					Top_Large = false,
-					Top_Small = true,
-					Bottom_Large = true,
+					Top_Small = false,
+					Bottom_Large = false,
 					Bottom_Small = false
 				}
 			},
 			Line_03 = {
-				dialogue_Top = "Fight",
-				dialogue_Bottom = "the power",
+				dialogue_Top = "Fight the power",
+				dialogue_Bottom = "",
 				labels = {
-					Multi_Small = false,
-					Top_Large = true,
+					Multi_Small = true,
+					Top_Large = false,
 					Top_Small = false,
 					Bottom_Large = false,
-					Bottom_Small = true
+					Bottom_Small = false
 				}
 			}
 		},
 		enemy_dialogue = {
 			Line_01 = {
-				dialogue_Top = "Your new leaders",
+				dialogue_Top = "We're\nin charge now",
 				dialogue_Bottom = "",
 				labels = {
 					Multi_Small = true,
@@ -280,12 +280,12 @@ var empathy_events := {
 				}
 			},
 			Line_02 = {
-				dialogue_Top = "Earth",
-				dialogue_Bottom = "Order",
+				dialogue_Top = "You must",
+				dialogue_Bottom = "obey!",
 				labels = {
 					Multi_Small = false,
-					Top_Large = true,
-					Top_Small = false,
+					Top_Large = false,
+					Top_Small = true,
 					Bottom_Large = true,
 					Bottom_Small = false
 				}
@@ -308,18 +308,18 @@ var empathy_events := {
 		right_is_first = true,
 		innocent_dialogue = {    
 			Line_01 = {
-				dialogue_Top = "I'm scared",
-				dialogue_Bottom = "",
+				dialogue_Top = "Please",
+				dialogue_Bottom = "Help",
 				labels = {
-					Multi_Small = true,
+					Multi_Small = false,
 					Top_Large = false,
-					Top_Small = false,
-					Bottom_Large = false,
+					Top_Small = true,
+					Bottom_Large = true,
 					Bottom_Small = false
 				}
 			},
 			Line_02 = {
-				dialogue_Top = "I have\na family",
+				dialogue_Top = "I'm too scared",
 				dialogue_Bottom = "",
 				labels = {
 					Multi_Small = true,
@@ -330,7 +330,7 @@ var empathy_events := {
 				}
 			},
 			Line_03 = {
-				dialogue_Top = "I'm too scared...",
+				dialogue_Top = "I have\na family",
 				dialogue_Bottom = "",
 				labels = {
 					Multi_Small = true,
@@ -343,7 +343,7 @@ var empathy_events := {
 		},
 		enemy_dialogue = {
 			Line_01 = {
-				dialogue_Top = "Turn around",
+				dialogue_Top = "Get back here",
 				dialogue_Bottom = "",
 				labels = {
 					Multi_Small = true,
@@ -354,7 +354,7 @@ var empathy_events := {
 				}
 			},
 			Line_02 = {
-				dialogue_Top = "Do it",
+				dialogue_Top = "Obey",
 				dialogue_Bottom = "or die",
 				labels = {
 					Multi_Small = false,
@@ -365,8 +365,8 @@ var empathy_events := {
 				}
 			},
 			Line_03 = {
-				dialogue_Top = "Do it",
-				dialogue_Bottom = "now",
+				dialogue_Top = "Eat",
+				dialogue_Bottom = "Lead",
 				labels = {
 					Multi_Small = false,
 					Top_Large = true,
@@ -393,7 +393,7 @@ var empathy_events := {
 				}
 			},
 			Line_02 = {
-				dialogue_Top = "I will comply",
+				dialogue_Top = "I have nothing left",
 				dialogue_Bottom = "",
 				labels = {
 					Multi_Small = true,
@@ -404,14 +404,14 @@ var empathy_events := {
 				}
 			},
 			Line_03 = {
-				dialogue_Top = "I will",
-				dialogue_Bottom = "comply!",
+				dialogue_Top = "HELP",
+				dialogue_Bottom = "ME",
 				labels = {
 					Multi_Small = false,
 					Top_Large = true,
 					Top_Small = false,
-					Bottom_Large = false,
-					Bottom_Small = true
+					Bottom_Large = true,
+					Bottom_Small = false
 				}
 			}
 		},
@@ -432,15 +432,15 @@ var empathy_events := {
 				dialogue_Bottom = "or die",
 				labels = {
 					Multi_Small = false,
-					Top_Large = true,
-					Top_Small = false,
+					Top_Large = false,
+					Top_Small = true,
 					Bottom_Large = true,
 					Bottom_Small = false
 				}
 			},
 			Line_03 = {
-				dialogue_Top = "Say it",
-				dialogue_Bottom = "again",
+				dialogue_Top = "We own you now",
+				dialogue_Bottom = "",
 				labels = {
 					Multi_Small = true,
 					Top_Large = false,

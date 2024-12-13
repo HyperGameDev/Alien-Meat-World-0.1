@@ -74,13 +74,12 @@ layout_mode = 2
 alignment = 1
 
 [node name="Multi_Small" type="Label" parent="Container_Dialogue/MarginContainer2/VBox_dialogueLabels"]
-visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_4lxyo")
 theme_override_font_sizes/font_size = 125
-text = "i'm too scared..."
+text = "We own you now"
 horizontal_alignment = 1
 autowrap_mode = 3
 uppercase = true
@@ -92,29 +91,30 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_4lxyo")
 theme_override_font_sizes/font_size = 188
-text = "Leav A"
+text = "I"
 horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true
 
 [node name="Top_Small" type="Label" parent="Container_Dialogue/MarginContainer2/VBox_dialogueLabels"]
+visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_li0ks")
 theme_override_font_sizes/font_size = 125
-text = "Leave a"
+text = "you must"
 horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true
 
 [node name="Bottom_Large" type="Label" parent="Container_Dialogue/MarginContainer2/VBox_dialogueLabels"]
+visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_4lxyo")
 theme_override_font_sizes/font_size = 188
-text = "Like!"
 horizontal_alignment = 1
 autowrap_mode = 3
 uppercase = true
@@ -126,7 +126,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_ih8ut")
 theme_override_font_sizes/font_size = 125
-text = "comply!"
+text = "resisting!"
 horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true

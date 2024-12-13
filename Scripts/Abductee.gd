@@ -61,6 +61,7 @@ var fell : bool = false
 
 @onready var hand_pos : Marker3D =  get_tree().get_current_scene().get_node("Player/Alien_V3/DetectionAreas/Area_ArmR/Marker_HandR")
 
+
 func _ready():
 	if !has_node("RayCast_surfaceDetect"):
 		print("ERROR: Somewhere, a surface detecting child is missing!")
@@ -109,7 +110,6 @@ func _ready():
 	if is_empathy_event:
 		var dialogue = preload("res://UI/Dialogue/dialogue_in_scene.tscn").instantiate()
 		add_child(dialogue)
-		Messenger.empathy_event_ready.emit()
 		dialogue.global_position = %Marker_Dialogue.global_position
 		dialogue.global_rotation = %Marker_Dialogue.global_rotation
 		if dialogue_box_on_right:

@@ -56,9 +56,9 @@ func add_empathy_event():
 	var marker_to_spawn_at: Marker3D = marker_array.pick_random()
 	var empathy_event = preload("res://NPCs/Humans/events/empathy_event.tscn").instantiate()
 	add_child(empathy_event)
+	print("Empathy Event spawned!")
 	empathy_event.global_position = marker_to_spawn_at.global_position
 	empathy_event_node = empathy_event
-	print("Empathy Event spawned!")
 	
 func remove_empathy_event():
 	empathy_event_node.queue_free()
