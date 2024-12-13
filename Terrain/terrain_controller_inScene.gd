@@ -16,7 +16,7 @@ var Chunks_Menu: Array = []
 
 
 @export var terrain_velocity : float = 0.0
-const TERRAIN_VELOCITY: float = 11.0
+const TERRAIN_VELOCITY: float = 17.0
 
 ## The number of chunks to keep rendered to the viewport
 @export var num_terrain_chunks: int = 9

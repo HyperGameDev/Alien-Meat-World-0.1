@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhrjjudi642e"]
+[gd_scene load_steps=9 format=3 uid="uid://dhrjjudi642e"]
 
 [ext_resource type="FontFile" uid="uid://ckdic8pw8e5i2" path="res://UI/Fonts/Agrandir-WideBlackItalic.otf" id="1_ul0bl"]
 
@@ -8,6 +8,14 @@ border_width_left = 35
 border_width_top = 35
 border_width_right = 35
 border_width_bottom = 35
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 125
+corner_radius_top_right = 125
+corner_radius_bottom_right = 125
+corner_radius_bottom_left = 125
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4vq2"]
+bg_color = Color(1, 1, 1, 1)
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 125
 corner_radius_top_right = 125
@@ -49,7 +57,7 @@ border_width_bottom = 35
 border_color = Color(0, 0, 0, 1)
 corner_radius_bottom_left = 1024
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="Canvas_speechRegular" type="CanvasLayer"]
 
 [node name="Container_Dialogue" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -59,9 +67,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_bottom = 150
 
-[node name="Panel_dialogueBG" type="Panel" parent="Container_Dialogue"]
+[node name="Panel_speechRegular" type="Panel" parent="Container_Dialogue"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_o3rsm")
+
+[node name="Panel_speechSpiky" type="Panel" parent="Container_Dialogue"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q4vq2")
 
 [node name="MarginContainer2" type="MarginContainer" parent="Container_Dialogue"]
 layout_mode = 2
@@ -74,6 +89,8 @@ layout_mode = 2
 alignment = 1
 
 [node name="Multi_Small" type="Label" parent="Container_Dialogue/MarginContainer2/VBox_dialogueLabels"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -85,18 +102,19 @@ autowrap_mode = 3
 uppercase = true
 
 [node name="Top_Large" type="Label" parent="Container_Dialogue/MarginContainer2/VBox_dialogueLabels"]
-visible = false
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_4lxyo")
 theme_override_font_sizes/font_size = 188
-text = "I"
+text = "comply"
 horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true
 
 [node name="Top_Small" type="Label" parent="Container_Dialogue/MarginContainer2/VBox_dialogueLabels"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -109,17 +127,19 @@ autowrap_mode = 2
 uppercase = true
 
 [node name="Bottom_Large" type="Label" parent="Container_Dialogue/MarginContainer2/VBox_dialogueLabels"]
-visible = false
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_4lxyo")
 theme_override_font_sizes/font_size = 188
+text = "or die!"
 horizontal_alignment = 1
 autowrap_mode = 3
 uppercase = true
 
 [node name="Bottom_Small" type="Label" parent="Container_Dialogue/MarginContainer2/VBox_dialogueLabels"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2

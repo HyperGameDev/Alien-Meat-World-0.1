@@ -4,12 +4,17 @@ extends Node3D
 @onready var human_right: RigidBody3D = %Human_Right
 @onready var animation: AnimationPlayer = %AnimationPlayer
 
-@onready var dialogue_left: CanvasLayer = human_left.get_node("Dialogue_inScene").get_node("%CanvasLayer")
-@onready var dialogue_right: CanvasLayer = human_right.get_node("Dialogue_inScene").get_node("%CanvasLayer")
+@onready var dialogue_left: CanvasLayer = human_left.get_node("Dialogue_inScene").get_node("%Canvas_speechRegular")
+@onready var dialogue_right: CanvasLayer = human_right.get_node("Dialogue_inScene").get_node("%Canvas_speechRegular")
 
 @onready var left_dialogueLabels: VBoxContainer = dialogue_left.get_node("%VBox_dialogueLabels")
 @onready var right_dialogueLabels: VBoxContainer = dialogue_right.get_node("%VBox_dialogueLabels")
 
+@onready var dialogue_leftSpiky: CanvasLayer = human_left.get_node("Dialogue_inScene").get_node("%Canvas_speechSpiky")
+@onready var dialogue_rightSpiky: CanvasLayer = human_right.get_node("Dialogue_inScene").get_node("%Canvas_speechSpiky")
+
+@onready var left_dialogueLabelsSpiky: VBoxContainer = dialogue_leftSpiky.get_node("%VBox_dialogueLabels")
+@onready var right_dialogueLabelsSpiky: VBoxContainer = dialogue_rightSpiky.get_node("%VBox_dialogueLabels")
 
 var chosen_event: String
 
@@ -28,34 +33,68 @@ func _ready() -> void:
 		
 func update_dialogue(line,is_right):
 	print("Line: ",line," Scene: ",chosen_event)
-	dialogue_right.visible = is_right
-	dialogue_left.visible = not is_right
 	
 	var dialogue_labels: VBoxContainer
-	if is_right:
-		dialogue_labels = right_dialogueLabels
-	else:
-		dialogue_labels = left_dialogueLabels
-		
 	
 	var dialogue_type: String	
+	
+	var dialogue_left_leftTail: MarginContainer = dialogue_left.get_node("%Container_tailLeft")
+	var dialogue_left_rightTail: MarginContainer = dialogue_left.get_node("%Container_tailRight")
+	var dialogue_right_leftTail: MarginContainer = dialogue_right.get_node("%Container_tailLeft")
+	var dialogue_right_rightTail: MarginContainer = dialogue_right.get_node("%Container_tailRight")
+	
+	var dialogue_left_leftTailSpiky: Panel = dialogue_leftSpiky.get_node("%Panel_tailLeft")
+	var dialogue_left_rightTailSpiky: Panel = dialogue_leftSpiky.get_node("%Panel_tailRight")
+	var dialogue_right_leftTailSpiky: Panel = dialogue_rightSpiky.get_node("%Panel_tailLeft")
+	var dialogue_right_rightTailSpiky: Panel = dialogue_rightSpiky.get_node("%Panel_tailRight")
 		
 	if is_right:
 		if human_right.is_enemy:
 			dialogue_type = "enemy_dialogue"
+			dialogue_right_leftTailSpiky.visible = true
+			dialogue_labels = right_dialogueLabelsSpiky
+			dialogue_rightSpiky.visible = true
+			dialogue_leftSpiky.visible = false
+			dialogue_left.visible = false
+			
 		if !human_right.is_enemy:
 			dialogue_type = "innocent_dialogue"
+			dialogue_right_leftTail.visible = true
+			dialogue_labels = right_dialogueLabels
+			dialogue_right.visible = true
+			dialogue_left.visible = false
+			dialogue_leftSpiky.visible = false
+		
 		
 	if !is_right:
 		if human_left.is_enemy:
 			dialogue_type = "enemy_dialogue"
+			dialogue_left_rightTailSpiky.visible = true
+			dialogue_labels = left_dialogueLabelsSpiky
+			dialogue_leftSpiky.visible = true
+			dialogue_rightSpiky.visible = false
+			dialogue_right.visible = false
+			
 		if !human_left.is_enemy:
 			dialogue_type = "innocent_dialogue"
+			dialogue_left_rightTail.visible = true
+			dialogue_labels = left_dialogueLabels
+			dialogue_left.visible = true
+			dialogue_right.visible = false
+			dialogue_rightSpiky.visible = false
 	
 		
 	var labels_array: Array = empathy_events[chosen_event][dialogue_type][line]["labels"].keys()
 	
-	for label: Label in dialogue_labels.get_children():
+	var actual_labels_array: Array = []
+	
+	for node in dialogue_labels.get_children():
+		if node is Label:
+			actual_labels_array.append(node)
+		else:
+			actual_labels_array.append(node.get_child(0))
+			
+	for label: Label in actual_labels_array:
 		for label_name: String in labels_array:
 			if label.name == label_name:
 				label.visible = empathy_events[chosen_event][dialogue_type][line]["labels"][label_name]
@@ -64,7 +103,7 @@ func update_dialogue(line,is_right):
 	var dialogue_Bottom: String = empathy_events[chosen_event][dialogue_type][line]["dialogue_Bottom"]
 	
 	if empathy_events[chosen_event][dialogue_type][line]["labels"]["Multi_Small"]:
-		dialogue_labels.get_node("Multi_Small").text = dialogue_Top
+		dialogue_labels.get_node("%Multi_Small").text = dialogue_Top
 		print("Right: ",is_right," Multiline: ",dialogue_Top)
 	else:
 		var on_top: bool
@@ -76,14 +115,14 @@ func update_dialogue(line,is_right):
 			on_bottom = true
 		
 		if on_top:
-			dialogue_labels.get_node("Top_Large").text = dialogue_Top
-			dialogue_labels.get_node("Top_Small").text = dialogue_Top
+			dialogue_labels.get_node("%Top_Large").text = dialogue_Top
+			dialogue_labels.get_node("%Top_Small").text = dialogue_Top
 	
 			print("Right: ",is_right," Top: ",dialogue_Top)
 			
 		if on_bottom:
-			dialogue_labels.get_node("Bottom_Large").text = dialogue_Bottom
-			dialogue_labels.get_node("Bottom_Small").text = dialogue_Bottom
+			dialogue_labels.get_node("%Bottom_Large").text = dialogue_Bottom
+			dialogue_labels.get_node("%Bottom_Small").text = dialogue_Bottom
 			
 			print("Right: ",is_right," Bottom: ",dialogue_Bottom)
 		

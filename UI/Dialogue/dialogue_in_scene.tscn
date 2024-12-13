@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dshti01vsi34"]
+[gd_scene load_steps=6 format=3 uid="uid://dshti01vsi34"]
 
 [ext_resource type="PackedScene" uid="uid://dhrjjudi642e" path="res://UI/Dialogue/dialogue_box.tscn" id="1_h33rc"]
 [ext_resource type="Script" path="res://UI/Dialogue/dialogue_in_scene.gd" id="1_mtr1i"]
+[ext_resource type="PackedScene" uid="uid://dnhi80osxfl31" path="res://UI/Dialogue/dialogue_box_spiky.tscn" id="3_wyhey"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_adrxm"]
 viewport_path = NodePath("Sprite3D/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wygwe"]
+viewport_path = NodePath("Sprite3D2/SubViewport")
 
 [node name="Dialogue_inScene" type="Node3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.235127, 0.117564, 0)
@@ -14,6 +18,7 @@ script = ExtResource("1_mtr1i")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.67, 3, 0)
 cast_shadow = 0
 billboard = 2
+double_sided = false
 alpha_cut = 3
 texture = SubResource("ViewportTexture_adrxm")
 
@@ -22,5 +27,23 @@ disable_3d = true
 transparent_bg = true
 size = Vector2i(1109, 624)
 
-[node name="CanvasLayer" parent="Sprite3D/SubViewport" instance=ExtResource("1_h33rc")]
+[node name="Canvas_speechRegular" parent="Sprite3D/SubViewport" instance=ExtResource("1_h33rc")]
 unique_name_in_owner = true
+visible = false
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.205, 3.815, 0)
+cast_shadow = 0
+billboard = 2
+double_sided = false
+alpha_cut = 3
+texture = SubResource("ViewportTexture_wygwe")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D2"]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(1109, 624)
+
+[node name="Canvas_speechSpiky" parent="Sprite3D2/SubViewport" instance=ExtResource("3_wyhey")]
+unique_name_in_owner = true
+visible = false

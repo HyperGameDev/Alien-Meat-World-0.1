@@ -113,17 +113,14 @@ func _ready():
 		dialogue.global_position = %Marker_Dialogue.global_position
 		dialogue.global_rotation = %Marker_Dialogue.global_rotation
 		if dialogue_box_on_right:
-			var left_tail: MarginContainer = dialogue.get_node("%CanvasLayer").get_node("%Container_tailLeft")
+			
 			var right_offset: float = %Marker_Dialogue.global_position.x + dialogue.dialogue_offset_pos
 			dialogue.is_right = true
 			dialogue.global_position.x = right_offset
-			left_tail.visible = true
 		else:
-			var right_tail: MarginContainer = dialogue.get_node("%CanvasLayer").get_node("%Container_tailRight")
 			var left_offset: float = %Marker_Dialogue.global_position.x - dialogue.dialogue_offset_pos
 			dialogue.is_right = false
 			dialogue.global_position.x = left_offset
-			right_tail.visible = true
 	
 func _process(_delta: float) -> void:
 	if is_in_group("Grabbed"):

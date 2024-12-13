@@ -167,8 +167,8 @@ func _physics_process(delta):
 		var input_up = Input.is_action_pressed("Move Forward")
 		var input_down = Input.is_action_pressed("Move Sloward")
 	
-		#if input_up and terrain_slowdown == false:
-			#terrain_controller.terrain_velocity = move_toward(terrain_controller.terrain_velocity, 30, 1)
+		if input_up and terrain_slowdown == false:
+			terrain_controller.terrain_velocity = move_toward(terrain_controller.terrain_velocity, 37, 1)
 		if !input_up and !terrain_slowdown and !input_down:
 			Messenger.movement_start.emit(false)
 

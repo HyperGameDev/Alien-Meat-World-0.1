@@ -195,7 +195,7 @@ var empathy_events := {
 		},
 		enemy_dialogue = {
 			Line_01 = {
-				dialogue_Top = "Stop Resisting!",
+				dialogue_Top = "Stop\n Resisting!",
 				dialogue_Bottom = "",
 				labels = {
 					Multi_Small = true,
@@ -269,7 +269,7 @@ var empathy_events := {
 		},
 		enemy_dialogue = {
 			Line_01 = {
-				dialogue_Top = "We're\nin charge now",
+				dialogue_Top = "We are\n in charge now",
 				dialogue_Bottom = "",
 				labels = {
 					Multi_Small = true,
@@ -291,7 +291,7 @@ var empathy_events := {
 				}
 			},
 			Line_03 = {
-				dialogue_Top = "Eat lead weakling",
+				dialogue_Top = "Eat lead\n weakling",
 				dialogue_Bottom = "",
 				labels = {
 					Multi_Small = true,
