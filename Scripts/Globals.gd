@@ -156,7 +156,7 @@ var empathy_possible: bool = true
 
 var empathy_events := {
 	Scene_01 = {
-		right_is_enemy = true,
+		right_is_military = true,
 		right_is_first = false,
 		innocent_dialogue = {    
 			Line_01 = {
@@ -230,7 +230,7 @@ var empathy_events := {
 		}
 	},
 	Scene_02 = {
-		right_is_enemy = false,
+		right_is_military = false,
 		right_is_first = true,
 		innocent_dialogue = {    
 			Line_01 = {
@@ -304,7 +304,7 @@ var empathy_events := {
 		}
 	},
 	Scene_03 = {
-		right_is_enemy = true,
+		right_is_military = true,
 		right_is_first = true,
 		innocent_dialogue = {    
 			Line_01 = {
@@ -378,7 +378,7 @@ var empathy_events := {
 		}
 	},
 	Scene_04 = {
-		right_is_enemy = false,
+		right_is_military = false,
 		right_is_first = true,
 		innocent_dialogue = {    
 			Line_01 = {

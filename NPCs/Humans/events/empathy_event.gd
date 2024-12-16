@@ -24,10 +24,10 @@ func _ready() -> void:
 	var empathy_event: String =  empathy_events.keys().pick_random()
 	chosen_event = empathy_event
 	
-	if empathy_events[empathy_event]["right_is_enemy"]:
-		human_right.is_enemy = true
+	if empathy_events[empathy_event]["right_is_military"]:
+		human_right.is_military = true
 	else:
-		human_left.is_enemy = true
+		human_left.is_military = true
 		
 	animation.play(chosen_event)
 		
@@ -49,7 +49,7 @@ func update_dialogue(line,is_right):
 	var dialogue_right_rightTailSpiky: Panel = dialogue_rightSpiky.get_node("%Panel_tailRight")
 		
 	if is_right:
-		if human_right.is_enemy:
+		if human_right.is_military:
 			dialogue_type = "enemy_dialogue"
 			dialogue_right_leftTailSpiky.visible = true
 			dialogue_labels = right_dialogueLabelsSpiky
@@ -57,7 +57,7 @@ func update_dialogue(line,is_right):
 			dialogue_leftSpiky.visible = false
 			dialogue_left.visible = false
 			
-		if !human_right.is_enemy:
+		if !human_right.is_military:
 			dialogue_type = "innocent_dialogue"
 			dialogue_right_leftTail.visible = true
 			dialogue_labels = right_dialogueLabels
@@ -67,7 +67,7 @@ func update_dialogue(line,is_right):
 		
 		
 	if !is_right:
-		if human_left.is_enemy:
+		if human_left.is_military:
 			dialogue_type = "enemy_dialogue"
 			dialogue_left_rightTailSpiky.visible = true
 			dialogue_labels = left_dialogueLabelsSpiky
@@ -75,7 +75,7 @@ func update_dialogue(line,is_right):
 			dialogue_rightSpiky.visible = false
 			dialogue_right.visible = false
 			
-		if !human_left.is_enemy:
+		if !human_left.is_military:
 			dialogue_type = "innocent_dialogue"
 			dialogue_left_rightTail.visible = true
 			dialogue_labels = left_dialogueLabels

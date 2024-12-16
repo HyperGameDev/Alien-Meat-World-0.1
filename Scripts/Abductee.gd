@@ -13,6 +13,7 @@ enum is_types {COW, HUMAN, TREE1}
 
 @export var is_empathy_event: bool = false
 @export var is_enemy: bool = false
+@export var is_military: bool = false
 
 @export var dialogue_box_on_right: bool = false
 @export var abduction_offset: Vector3 = Vector3(0,.5,0)
@@ -85,8 +86,6 @@ func _ready():
 	
 	self.add_to_group("Abductee")
 	
-
-	body_entered.connect(on_body_entered)
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 	
@@ -125,7 +124,7 @@ func _ready():
 func _process(_delta: float) -> void:
 	if is_in_group("Grabbed"):
 		await get_tree().create_timer(.5).timeout
-		if Input.is_action_just_pressed("Grab"): # Dropping
+		if Input.is_action_just_pressed("Grab") or Globals.is_game_state == Globals.is_game_states.OVER: # Dropping
 			is_interactable = false
 			if is_in_group("Grabbed"):
 				add_to_group("Dropping")
@@ -236,7 +235,7 @@ func human_variety(should_randomize):
 
 	
 	if should_randomize:
-		if is_enemy:
+		if is_military:
 			clothing_bottom = Globals.human_enemy_bottoms.pick_random()
 			clothing_top = Globals.human_enemy_tops.pick_random()
 			
@@ -281,13 +280,6 @@ func on_meat_entered_dunk(dunked_body):
 func on_meat_left_dunk(dunked_body):
 	if dunked_body == self:
 		is_in_dunk = false
-	
-
-func on_body_entered(collided_bodypart):
-	#collided_bodypart.mesh.hide()
-	#collided_bodypart.mesh
-	#print("Abductee Sees Player")
-	Messenger.abductee_detected.emit(collided_bodypart, is_enemy)
 	
 func parachuting(make_parachuting):
 	if make_parachuting:

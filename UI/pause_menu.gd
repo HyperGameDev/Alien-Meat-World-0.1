@@ -89,7 +89,7 @@ func _ready() -> void:
 	visible = false
 	
 	Messenger.game_over.connect(on_game_over)
-	game_over_progress_skins.value_changed.connect(on_progress_changed)
+	game_over_progress_skins.value_changed.connect(on_progress_changed) 
 	
 	button_ok_skins.pressed.connect(on_button_ok_skins)
 	

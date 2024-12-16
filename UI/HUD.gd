@@ -148,8 +148,8 @@ func score_minimum_play_animation():
 func score_minimum_text_update():
 	label_scoreMinimum.text = str(score_minimum)
 	
-func on_abductee_destroyed(is_enemy,is_event):
-	if is_enemy:
+func on_abductee_destroyed(is_military,is_event):
+	if is_military:
 		print("HUD knows an enemy was destroyed")
 		print("HUD thinks: Empathy_Possible = ",Globals.empathy_possible, " and Abductee is_empathy_event = ",is_event)
 		if Globals.empathy_possible and is_event:

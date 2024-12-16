@@ -182,7 +182,10 @@ func _process(delta: float) -> void:
 		is_paused = false
 		
 func on_game_state_over():
+	Messenger.grab_ended.emit()
 	Messenger.game_over.emit()
 	Messenger.movement_stop.emit(true)
-	get_tree().paused = true
+	#get_tree().paused = true
+	
+	await get_tree().create_timer(2).timeout
 	pause_menu.visible = true

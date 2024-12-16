@@ -305,8 +305,6 @@ func on_area_damaged(collided_bodypart):
 			
 		# Restart game on Death
 		if floorf(current_health) <= 0.0:
-			await get_tree().create_timer(LIMB_MORPH_SPEED + .3).timeout
-			
 			Messenger.swap_game_state.emit(Globals.is_game_states.OVER)
 			
 
@@ -471,7 +469,7 @@ func on_player_head_hover(is_hovered,is_head):
 				
 			for abductee in grabbed_abductees:
 				if is_part == BodyPart.is_parts.HEAD:
-					Messenger.abductee_destroyed.emit(abductee.is_enemy,abductee.is_empathy_event)
+					Messenger.abductee_destroyed.emit(abductee.is_military,abductee.is_empathy_event)
 				abductee.queue_free()
 				score_dunk.dunk_ascent_timer_duration = 0.2
 				#print("Score dunking emitted grab_ended")

@@ -166,6 +166,7 @@ func health_effects():
 			var meat_new = preload("res://NPCs/Humans/human_02-01_00.tscn").instantiate()
 			get_tree().get_current_scene().get_node("Spawned/Spawned_HumanEnemies").add_child(meat_new)
 			meat_new.is_enemy = true
+			meat_new.is_military = true
 			meat_new.is_available = true
 			meat_new.always_spawn = true
 			meat_new.parachuting(true)

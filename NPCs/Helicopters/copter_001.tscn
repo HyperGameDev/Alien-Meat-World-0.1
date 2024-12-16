@@ -737,6 +737,7 @@ libraries = {
 }
 
 [node name="Animation_CopterMovement" type="AnimationPlayer" parent="."]
+process_mode = 3
 libraries = {
 "": SubResource("AnimationLibrary_33bqv")
 }
@@ -763,6 +764,7 @@ skeleton = NodePath("")
 
 [node name="Mesh_Collection" parent="." instance=ExtResource("3_rkce8")]
 unique_name_in_owner = true
+process_mode = 3
 transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0, 0, 0)
 script = ExtResource("6_kin5p")
 

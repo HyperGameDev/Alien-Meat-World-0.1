@@ -112,7 +112,7 @@ func on_screen_exited():
 		score_update = 0
 
 		for meat in get_tree().get_nodes_in_group("Dunked"):
-			Messenger.abductee_destroyed.emit(meat.is_enemy,meat.is_empathy_event)
+			Messenger.abductee_destroyed.emit(meat.is_military,meat.is_empathy_event)
 			meat.queue_free()
 			
 		
@@ -158,7 +158,7 @@ func on_body_exited(body):
 		
 func on_meat_in_dunk(dunked):
 	# Check dunked meat variables here? Eg:
-	if !dunked.is_enemy:
+	if !dunked.is_military:
 		pass
 	dunked_meat = dunked
 	animation_scoreCount.stop()

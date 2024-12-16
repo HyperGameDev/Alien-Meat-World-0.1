@@ -119,6 +119,9 @@ func _process(delta: float) -> void:
 	
 	if get_viewport() == null:
 		return
+		
+	if Globals.is_game_state == Globals.is_game_states.OVER:
+		return
 	
 	if !prevent_attacking:
 		var raycast_result = attack_ray() ## Shoots the ray
@@ -150,7 +153,7 @@ func _process(delta: float) -> void:
 								get_tree().get_current_scene().get_node("Spawned/Spawned_Humans").add_child(meat_new)
 								
 								meat_new.is_empathy_event = meat_original.is_empathy_event
-								meat_new.is_enemy = meat_original.is_enemy
+								meat_new.is_military = meat_original.is_military
 								meat_new.clothing_top = meat_original.clothing_top
 								meat_new.clothing_bottom = meat_original.clothing_bottom
 								meat_new.human_variety(false)
