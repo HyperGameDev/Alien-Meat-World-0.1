@@ -221,15 +221,15 @@ func spawn_me():
 				is_available = false
 
 func human_variety(should_randomize):
-	var human_arm_l: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_ArmL
-	var human_arm_r: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_ArmR
-	var human_body: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_Body
-	var human_leg_l: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_LegL
-	var human_leg_r: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_LegR
+	var human_arm_l: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_ArmL
+	var human_arm_r: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_ArmR
+	var human_body: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_Body
+	var human_leg_l: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_LegL
+	var human_leg_r: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_LegR
 	
-	var head_afro: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_Head_Afro
-	var head_long: MeshInstance3D = $"human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_Head_Long-Hair-1"
-	var head_army: MeshInstance3D = $human_02_GIANT_00/Biped_Human_grp/Biped_Human_rig/Skeleton3D/Human_Head_Army
+	var head_afro: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_Head_Afro
+	var head_long: MeshInstance3D = $"human_03_GIANT_00/Armature/Skeleton3D/Human_Head_Long-Hair-1"
+	var head_army: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_Head_Army
 	
 	var head_array: Array = [head_long,head_afro]
 
