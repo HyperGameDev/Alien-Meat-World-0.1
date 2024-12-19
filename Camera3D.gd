@@ -50,7 +50,6 @@ var hover_target = null
 var abduction_target = null
 
 var prevent_attacking : bool = false
-
 var powerups_selectable : bool = false
 
 var head_grab : bool = false
@@ -122,55 +121,55 @@ func _process(delta: float) -> void:
 		
 	if Globals.is_game_state == Globals.is_game_states.OVER:
 		return
-	
-	if !prevent_attacking:
-		var raycast_result = attack_ray() ## Shoots the ray
-		#if !raycast_result == null:
-			#if raycast_result.is_in_group("Abductee"):
-				#print(raycast_result," is seen!")
-		if Input.is_action_pressed("Grab"):
-			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
-			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_back").force_hide_arrow()
-			
-			if !raycast_result == null:
-				if raycast_result.is_in_group("Abductee"):
-					var meat_original = raycast_result
-					#print(meat_original," is assigned!")
-					if !meat_original.is_clone:
-						if meat_original.has_method("spawn_me") and !is_attempting_grab:
-							
-							if !head_grab and arm_r.current_health == 0 and arm_l.current_health == 0: # Head is grabbing
-								head_grab = true
-								Messenger.something_attacked.emit(meat_original)
-								await get_tree().create_timer(player.attack_duration).timeout
-								meat_original.is_available = false
-								Messenger.player_head_hover.emit(false,true)
-							else: # Arms are grabbing
-								
-								#print("Detects arms are grabbing")
-								meat_original.is_available = false
-								var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
-								get_tree().get_current_scene().get_node("Spawned/Spawned_Humans").add_child(meat_new)
-								
-								meat_new.is_empathy_event = meat_original.is_empathy_event
-								meat_new.is_military = meat_original.is_military
-								meat_new.clothing_top = meat_original.clothing_top
-								meat_new.clothing_bottom = meat_original.clothing_bottom
-								meat_new.human_variety(false)
-								meat_new.is_available = true
-								meat_new.is_clone = true
-								meat_new.add_to_group("Grabbed")
-								is_attempting_grab = true
-					else:
-						meat_original.add_to_group("Grabbed")
-	else:
-		if powerups_selectable:
-			#print("Powerup Ray is happening")
-			powerup_ray()
-		
 		
 	# Detects all things
 	general_ray()
+	
+	if prevent_attacking:
+		if powerups_selectable:
+			powerup_ray()
+		return
+			
+	var raycast_result = attack_ray() ## Shoots the ray
+	#if !raycast_result == null:
+		#if raycast_result.is_in_group("Abductee"):
+			#print(raycast_result," is seen!")
+	if Input.is_action_pressed("Grab"):
+		get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
+		get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_back").force_hide_arrow()
+		
+		if !raycast_result == null:
+			if raycast_result.is_in_group("Abductee"):
+				var meat_original = raycast_result
+				#print(meat_original," is assigned!")
+				if !meat_original.is_clone:
+					if meat_original.has_method("spawn_me") and !is_attempting_grab:
+						
+						if !head_grab and arm_r.current_health == 0 and arm_l.current_health == 0: # Head is grabbing
+							head_grab = true
+							Messenger.something_attacked.emit(meat_original)
+							await get_tree().create_timer(player.attack_duration).timeout
+							meat_original.is_available = false
+							Messenger.player_head_hover.emit(false,true)
+						else: # Arms are grabbing
+							
+							#print("Detects arms are grabbing")
+							meat_original.is_available = false
+							var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
+							get_tree().get_current_scene().get_node("Spawned/Spawned_Humans").add_child(meat_new)
+							
+							meat_new.is_empathy_event = meat_original.is_empathy_event
+							meat_new.is_military = meat_original.is_military
+							meat_new.clothing_top = meat_original.clothing_top
+							meat_new.clothing_bottom = meat_original.clothing_bottom
+							meat_new.human_variety(false)
+							meat_new.is_available = true
+							meat_new.is_clone = true
+							meat_new.add_to_group("Grabbed")
+							is_attempting_grab = true
+				else:
+					meat_original.add_to_group("Grabbed")
+		
 
 	# Player Hover implementation
 	player_hover_ray()
