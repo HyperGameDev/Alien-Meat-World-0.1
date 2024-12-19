@@ -2,6 +2,8 @@ extends RigidBody3D
 
 class_name Abductee
 
+# Don't add onreadys because of Herbivore
+
 var is_interactable: bool = false
 var clothing_top: StandardMaterial3D = null
 var clothing_bottom: StandardMaterial3D = null
@@ -14,6 +16,61 @@ enum is_types {COW, HUMAN, TREE1}
 @export var is_empathy_event: bool = false
 @export var is_enemy: bool = false
 @export var is_military: bool = false
+@export var is_armed: bool = false
+
+@export var has_weapon: has_weapons
+enum has_weapons {PISTOL,STUN,SEMI,AR,SHOTG,SHOTG2,SNIPER,RL}
+
+var weapons := {
+	PISTOL = {
+		has_2_meshes = false,
+		pose = "Gun_Pistol",
+		mesh = "Gun_Pistol",
+		mesh2 = ""
+	},
+	STUN = {
+		has_2_meshes = false,
+		pose = "Gun_Pistol",
+		mesh = "Gun_Stun",
+		mesh2 = ""
+	},
+	SEMI = {
+		has_2_meshes = false,
+		pose = "Gun_AR",
+		mesh = "Gun_Semi",
+		mesh2 = ""
+	},
+	AR = {
+		has_2_meshes = false,
+		pose = "Gun_AR",
+		mesh = "Gun_AR",
+		mesh2 = ""
+	},
+	SHOTG = {
+		has_2_meshes = false,
+		pose = "Gun_AR",
+		mesh = "Gun_ShotG",
+		mesh2 = ""
+	},
+	SHOTG2 = {
+		has_2_meshes = true,
+		pose = "Gun_ShotG_2",
+		mesh = "Gun_ShotG",
+		mesh2 = "Gun_ShotG_2"
+	},
+	SNIPER = {
+		has_2_meshes = false,
+		pose = "Gun_Snipe",
+		mesh = "Gun_Snipe",
+		mesh2 = ""
+	},
+	RL = {
+		has_2_meshes = true,
+		pose = "Gun_RL",
+		mesh = "Gun_Rocket",
+		mesh2 = "Gun_RL"
+	}
+}
 
 @export var dialogue_box_on_right: bool = false
 @export var abduction_offset: Vector3 = Vector3(0,.5,0)
@@ -96,6 +153,8 @@ func _ready():
 	Messenger.meat_left_dunk.connect(on_meat_left_dunk)
 	Messenger.dunk_is_at_position.connect(on_dunk_is_at_position)
 	
+	if is_armed:
+		assign_weapon()
 	
 	
 	# Setting up meat material changes based on cursor behavior
@@ -288,6 +347,31 @@ func parachuting(make_parachuting):
 	else:
 		is_parachuting = false
 		parachute.visible = false
+		
+func assign_weapon():
+	var current_weapon: String
+	for key in weapons.keys():
+		if key == weapons.keys()[has_weapon]:
+			current_weapon = key
+	
+	var has_2_meshes: bool = weapons[current_weapon]["has_2_meshes"]
+	
+	var weapon_mesh1_string: String = "human_03_GIANT_00/Armature/Skeleton3D/" + str(weapons[current_weapon]["mesh"])
+	
+	var weapon_mesh2_string: String = "human_03_GIANT_00/Armature/Skeleton3D/" + str(weapons[current_weapon]["mesh2"])
+	
+	var weapon_mesh1: MeshInstance3D = get_node(weapon_mesh1_string)
+	
+	weapon_mesh1.visible = true
+	if has_2_meshes:
+		var weapon_mesh2: MeshInstance3D = get_node(weapon_mesh2_string)
+		weapon_mesh2.visible = true
+	
+	var weapon_pose: String = "parameters/" + str(weapons[current_weapon]["pose"]) + "/blend_amount"
+	
+	var animation: AnimationTree = get_node("human_03_GIANT_00/AnimationTree")
+	animation.set(weapon_pose, 1.0)
+	
  
 func _on_mouse_entered(): ## For hover arrow indicator
 	pass
