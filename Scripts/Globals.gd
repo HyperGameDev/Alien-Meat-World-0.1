@@ -976,7 +976,7 @@ var current_obstacle_chunks : StringName
 var current_points_chunks : StringName
 var current_menu_chunks : StringName
 
-var meat_objects := {
+var abductee_objects := {
 	Abductee.is_types.COW: load("res://NPCs/Cows/Cow_01-03_00.tscn"),
 	Abductee.is_types.HUMAN: load("res://NPCs/Humans/human_02-01_00.tscn"),
 	Abductee.is_types.TREE1: load("res://Objects/Foliage/Tree_01/tree_01_02_grabbable.tscn")

@@ -121,6 +121,7 @@ var fell : bool = false
 
 
 func _ready():
+	visible = false
 	if !has_node("RayCast_surfaceDetect"):
 		print("ERROR: Somewhere, a surface detecting child is missing!")
 		breakpoint
@@ -182,7 +183,8 @@ func _ready():
 	
 func _process(_delta: float) -> void:
 	if is_in_group("Grabbed"):
-		await get_tree().create_timer(.5).timeout
+		# Helps prevent visual arm stretch timing issues, but leads to un-is_interactable abductees:
+		#await get_tree().create_timer(.5).timeout
 		if Input.is_action_just_pressed("Action") or Globals.is_game_state == Globals.is_game_states.OVER: # Dropping
 			is_interactable = false
 			if is_in_group("Grabbed"):
@@ -255,7 +257,7 @@ func _physics_process(_delta: float) -> void:
 				is_interactable = true
 				interactable_indicator.visible = true
 			if !detect_surface.get_collider() == self.get_parent():
-				self.reparent(detect_surface.get_collider())
+				self.reparent(detect_surface.get_collider().get_owner())
 				#print("it should be doing that")
 			
 	

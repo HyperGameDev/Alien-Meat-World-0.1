@@ -41,9 +41,6 @@ var attack_ray_pos: Vector3 = Vector3(0, 0, 0)
 
 var menu_pickable: bool = false
 
-# Raycast 1: Grab var
-var attack_target = null
-
 # Raycast 2: Hover-Player var
 var hover_target = null
 
@@ -133,44 +130,8 @@ func _process(delta: float) -> void:
 			powerup_ray()
 		return
 		
-	#action_button_pressed()
-			
-	var raycast_result = attack_ray() ## Shoots the ray
 	if Input.is_action_pressed("Action"):
-		get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
-		get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_back").force_hide_arrow()
-		
-		if !raycast_result == null:
-			if raycast_result.is_in_group("Abductee"):
-				var meat_original = raycast_result
-				#print(meat_original," is assigned!")
-				if !meat_original.is_clone:
-					if meat_original.has_method("spawn_me") and !is_attempting_grab:
-						
-						if !head_grab and arm_r.current_health == 0 and arm_l.current_health == 0: # Head is grabbing
-							head_grab = true
-							Messenger.something_attacked.emit(meat_original)
-							await get_tree().create_timer(player.attack_duration).timeout
-							meat_original.is_available = false
-							Messenger.player_head_hover.emit(false,true)
-						else: # Arms are grabbing
-							
-							#print("Detects arms are grabbing")
-							meat_original.is_available = false
-							var meat_new = Globals.meat_objects[meat_original.is_type].instantiate()
-							get_tree().get_current_scene().get_node("Spawned/Spawned_Humans").add_child(meat_new)
-							
-							meat_new.is_empathy_event = meat_original.is_empathy_event
-							meat_new.is_military = meat_original.is_military
-							meat_new.clothing_top = meat_original.clothing_top
-							meat_new.clothing_bottom = meat_original.clothing_bottom
-							meat_new.human_variety(false)
-							meat_new.is_available = true
-							meat_new.is_clone = true
-							meat_new.add_to_group("Grabbed")
-							is_attempting_grab = true
-				else:
-					meat_original.add_to_group("Grabbed")
+		action_button_pressed()
 		
 
 	# Player Hover implementation
@@ -190,7 +151,7 @@ func _process(delta: float) -> void:
 			menu_alien_ray()
 		
 	
-func _input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void: ## Cursor movement detection
 	if event is InputEventJoypadMotion:
 		if event is not InputEventMouseMotion:
 			#is_joypad = true
@@ -203,8 +164,14 @@ func _input(event: InputEvent) -> void:
 		mouse_pos = get_viewport().get_mouse_position()
 	
 		
+func action_button_pressed():
+	force_hide_arrows()
+	attack_ray()
 
-
+	
+func force_hide_arrows():
+	get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
+	get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_back").force_hide_arrow()
 
 func hover_ray(mask,has_mask): ## Raycast that receives a target via argument
 	if get_viewport() == null:
@@ -259,12 +226,53 @@ func attack_ray(): ## Detects obstacles, NPC's and Meat/Abductee; emits attack_t
 	var raycast_result = hover_ray(2 + 4 + 8 + 16384,true)
 	if !raycast_result.is_empty():
 		attack_ray_pos = raycast_result.position
-		attack_target = raycast_result.collider
+		var attack_target = raycast_result.collider
 		Messenger.attack_target.emit(attack_target)
-#		print("Raycast sees: ", attack_target)
-#		print("Pos: ", attack_target.position)
-#		return raycast_result.collider
-		return attack_target
+		
+		if attack_target.is_in_group("Abductee") and !is_attempting_grab:
+			abductee_grabbed(attack_target)
+		
+func abductee_grabbed(attack_target):
+	var grabbed_abductee = attack_target
+	if grabbed_abductee.is_clone:
+		grabbed_abductee.add_to_group("Grabbed")
+	else: # Abductee is NOT a clone
+		if !head_grab and arm_r.current_health == 0 and arm_l.current_health == 0: # Head is grabbing
+			abductee_grabbed_by_head(grabbed_abductee)
+		else:
+			is_attempting_grab = true
+			abductee_grabbed_by_arms(grabbed_abductee)
+
+func abductee_grabbed_by_head(grabbed_abductee):
+	head_grab = true
+	Messenger.something_attacked.emit(grabbed_abductee)
+	await get_tree().create_timer(player.attack_duration).timeout
+	grabbed_abductee.is_available = false
+	Messenger.player_head_hover.emit(false,true)
+	
+func abductee_grabbed_by_arms(og_grabbed_abductee):
+	og_grabbed_abductee.is_available = false
+	
+	var abductee_cloned = Globals.abductee_objects[og_grabbed_abductee.is_type].instantiate()
+	get_tree().get_current_scene().get_node("Spawned/Spawned_Humans").add_child(abductee_cloned)
+	abductee_cloned.add_to_group("Grabbed")
+	abductee_cloned.is_clone = true
+	abductee_cloned.is_available = true
+	
+	set_cloned_abductee_properties(abductee_cloned,og_grabbed_abductee)
+	abductee_cloned.human_variety(false) # Bool is "should_randomize"
+
+func set_cloned_abductee_properties(clone, og):
+	var properties = [
+		"is_empathy_event",
+		"is_military",
+		"clothing_top",
+		"clothing_bottom"
+	]
+	
+	for property in properties:
+		clone.set(property, og.get(property))
+
 		
 func menu_alien_ray():
 	if get_viewport() == null:
