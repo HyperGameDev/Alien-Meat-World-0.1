@@ -2,6 +2,9 @@ extends Node
 
 @export var skins_unlocked: bool = false
 @export var level_current = 0
+
+var run_begun : bool = false
+
 var level_label : Array = [
 	"0-0",
 	"1-1",
@@ -1096,6 +1099,7 @@ func update_unlocked_skins():
 	
 	
 func on_retry(is_restart):
+	run_begun = false
 	Game_States.is_paused = false
 	get_tree().paused = false
 	powerups_available = powerups.keys()

@@ -163,7 +163,11 @@ func on_game_state_begin():
 func on_game_state_play():
 	pause_menu.visible = false
 	Messenger.game_play.emit()
-	Messenger.movement_start.emit(false)
+	if !Globals.run_begun:
+		Globals.run_begun = true
+		Messenger.game_run_begun.emit()
+	if !camera.powerups_selectable:
+		Messenger.movement_start.emit(true)
 
 
 func _input(event: InputEvent):
@@ -172,6 +176,7 @@ func _input(event: InputEvent):
 		is_paused = true
 		
 func on_game_state_pause():
+	Messenger.movement_stop.emit(true)
 	Messenger.game_pause.emit()
 	get_tree().paused = true
 	pause_menu.visible = true

@@ -64,7 +64,7 @@ func _ready():
 	Messenger.abductee_destroyed.connect(on_abductee_destroyed)
 	on_level_update(Globals.level_current)
 	Messenger.powerup_chosen.connect(on_powerup_chosen)
-	Messenger.game_play.connect(on_game_play)
+	Messenger.game_run_begun.connect(on_game_run_begun)
 	Messenger.empathy_update.connect(on_empathy_update)
 	
 func _process(delta):
@@ -72,7 +72,7 @@ func _process(delta):
 	if score >= score_minimum and !score_minimum_met:
 		on_score_minimum_met()
 	
-func on_game_play():
+func on_game_run_begun():
 	score_minimum_text_update()
 	score_minimum_play_animation()
 	container_score.visible = true

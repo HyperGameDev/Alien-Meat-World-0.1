@@ -67,7 +67,7 @@ func on_powerup_menu_begin():
 	#"\n Orb 2: ", orb_2.powerup_key, "\n Orb 3: ", orb_3.powerup_key)
 	
 	#endregion
-
+	
 func descend_powerup_menu(travel_distance):
 	var tween = get_tree().create_tween();
 	tween.tween_property(self, "position:y", -travel_distance, ORB_MOVE_SPEED)

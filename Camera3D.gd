@@ -125,6 +125,9 @@ func _process(delta: float) -> void:
 	# Detects all things
 	general_ray()
 	
+	# Head-look-at point
+	cursor_ray()
+	
 	if prevent_attacking:
 		if powerups_selectable:
 			powerup_ray()
@@ -176,9 +179,6 @@ func _process(delta: float) -> void:
 	
 	# Score Dunk ray
 	score_dunk_ray()
-	
-	# Cursor Position implementation
-	cursor_ray()
 	
 	# Interactable Detection implementation
 	abduct_ray()

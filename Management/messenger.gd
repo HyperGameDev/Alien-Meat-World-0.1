@@ -29,6 +29,10 @@ signal game_pause
 @warning_ignore("unused_signal")
 signal game_over
 
+
+@warning_ignore("unused_signal")
+signal game_run_begun # Level 1 begun/retried
+
 @warning_ignore("unused_signal")
 signal restart
 @warning_ignore("unused_signal")
@@ -74,7 +78,7 @@ signal area_damaged
 signal area_undamaged
 
 @warning_ignore("unused_signal")
-signal movement_start
+signal movement_start# 1 argument, unlock_controls true/false
 @warning_ignore("unused_signal")
 signal movement_stop # 1 argument, lock_controls true/false
 
