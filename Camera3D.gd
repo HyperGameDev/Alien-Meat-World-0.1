@@ -132,12 +132,11 @@ func _process(delta: float) -> void:
 		if powerups_selectable:
 			powerup_ray()
 		return
+		
+	#action_button_pressed()
 			
 	var raycast_result = attack_ray() ## Shoots the ray
-	#if !raycast_result == null:
-		#if raycast_result.is_in_group("Abductee"):
-			#print(raycast_result," is seen!")
-	if Input.is_action_pressed("Grab"):
+	if Input.is_action_pressed("Action"):
 		get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
 		get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_back").force_hide_arrow()
 		
@@ -240,7 +239,7 @@ func main_menu_ray():
 	if !raycast_result.is_empty():
 		hover_target = raycast_result.collider
 		Messenger.button_hovered.emit(hover_target)
-		if Input.is_action_just_pressed("Grab"):
+		if Input.is_action_just_pressed("Action"):
 			Messenger.button_chosen.emit(hover_target)
 
 func abduct_ray():
@@ -278,7 +277,7 @@ func menu_alien_ray():
 		
 		# Emits signal with parameter "true" or "false" if the hover_target is/isn't set to %Player
 		
-		if Input.is_action_just_pressed("Grab"):
+		if Input.is_action_just_pressed("Action"):
 			Messenger.swap_game_state.emit(Globals.is_game_states.CONFIRM)
 			#Messenger.swap_game_state.emit(Globals.is_game_states.POSTMENU)
 
@@ -293,21 +292,21 @@ func powerup_ray():
 		if raycast_result["collider"].is_type == PowerUp_Orb.is_types.Orb_1:
 			#print("Orb 1 is hovered!")
 			Messenger.powerup_hovered.emit(1)
-			if Input.is_action_just_pressed("Grab"):
+			if Input.is_action_just_pressed("Action"):
 				Messenger.powerup_chosen.emit(1)
 				#print("Left orb chosen")
 		#endregion
 		#region Orb 2 Interaction
 		if raycast_result["collider"].is_type == PowerUp_Orb.is_types.Orb_2:
 			Messenger.powerup_hovered.emit(2)
-			if Input.is_action_just_pressed("Grab"):
+			if Input.is_action_just_pressed("Action"):
 				Messenger.powerup_chosen.emit(2)
 				print("Middle orb chosen")
 		#endregion
 		#region Orb 3 Interaction
 		if raycast_result["collider"].is_type == PowerUp_Orb.is_types.Orb_3:
 			Messenger.powerup_hovered.emit(3)
-			if Input.is_action_just_pressed("Grab"):
+			if Input.is_action_just_pressed("Action"):
 				Messenger.powerup_chosen.emit(3)
 				print("Right orb chosen")
 		#endregion

@@ -183,7 +183,7 @@ func _ready():
 func _process(_delta: float) -> void:
 	if is_in_group("Grabbed"):
 		await get_tree().create_timer(.5).timeout
-		if Input.is_action_just_pressed("Grab") or Globals.is_game_state == Globals.is_game_states.OVER: # Dropping
+		if Input.is_action_just_pressed("Action") or Globals.is_game_state == Globals.is_game_states.OVER: # Dropping
 			is_interactable = false
 			if is_in_group("Grabbed"):
 				add_to_group("Dropping")

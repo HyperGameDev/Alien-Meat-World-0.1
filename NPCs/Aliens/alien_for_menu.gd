@@ -69,13 +69,13 @@ func am_i_hovered(target):
 		if has_node("Marker3D"):
 			Messenger.something_hovered.emit(area)
 			Messenger.menu_alien_seen.emit(area)
-			if Input.is_action_just_pressed("Grab"):
+			if Input.is_action_just_pressed("Action"):
 				if !was_chosen:
 					confirm_menu.animate_menu()
 				was_chosen = true
 				animation_menu_alien.set("parameters/Transition/transition_request", "bouncing")
 	else:
-		if Input.is_action_just_pressed("Grab") and was_chosen:
+		if Input.is_action_just_pressed("Action") and was_chosen:
 			unchoose_unshadow()
 			
 func unchoose_unshadow():

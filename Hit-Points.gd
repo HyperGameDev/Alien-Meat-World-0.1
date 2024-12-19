@@ -39,7 +39,7 @@ func am_i_hovered(attack_target):
 	if attack_target == $"..":
 		if get_owner().has_node("Marker3D"):
 			Messenger.something_hovered.emit(attack_target)
-	if attack_target == $".." and Input.is_action_just_pressed("Grab"):	
+	if attack_target == $".." and Input.is_action_just_pressed("Action"):	
 		was_hit = true
 		Messenger.something_attacked.emit($"..")
 
