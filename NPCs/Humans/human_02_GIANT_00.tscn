@@ -62,6 +62,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0122838, 0)
 visible = false
 lod_bias = 128.0
 
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeBlendTree_cjfgb")
+anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.7
+parameters/Transition/current_state = "idle"
+parameters/Transition/transition_request = ""
+parameters/Transition/current_index = 0
+
 [node name="Skeleton3D" parent="Biped_Human_grp/Biped_Human_rig" index="0"]
 bones/2/position = Vector3(0, 0.0420968, 0.780475)
 bones/2/rotation = Quaternion(5.86965e-06, 0.707107, 0.707107, 5.86965e-06)
@@ -612,19 +620,19 @@ surface_material_override/1 = ExtResource("3_imlem")
 surface_material_override/2 = ExtResource("5_ggs77")
 surface_material_override/3 = ExtResource("6_1cau7")
 
-[node name="Human_Head_Long-Hair-1" parent="Biped_Human_grp/Biped_Human_rig/Skeleton3D" index="4"]
+[node name="Human_Head_Long-Hair-1" parent="Biped_Human_grp/Biped_Human_rig/Skeleton3D" index="5"]
 surface_material_override/0 = ExtResource("5_1owrm")
 surface_material_override/1 = ExtResource("3_imlem")
 surface_material_override/2 = ExtResource("5_pw3ja")
 surface_material_override/3 = ExtResource("6_1cau7")
 
-[node name="Human_LegL" parent="Biped_Human_grp/Biped_Human_rig/Skeleton3D" index="5"]
+[node name="Human_LegL" parent="Biped_Human_grp/Biped_Human_rig/Skeleton3D" index="6"]
 surface_material_override/0 = ExtResource("4_vt23a")
 surface_material_override/1 = ExtResource("3_imlem")
 surface_material_override/2 = ExtResource("5_pw3ja")
 surface_material_override/3 = ExtResource("6_dmklj")
 
-[node name="Human_LegR" parent="Biped_Human_grp/Biped_Human_rig/Skeleton3D" index="6"]
+[node name="Human_LegR" parent="Biped_Human_grp/Biped_Human_rig/Skeleton3D" index="7"]
 surface_material_override/0 = ExtResource("4_vt23a")
 surface_material_override/1 = ExtResource("3_imlem")
 surface_material_override/2 = ExtResource("5_pw3ja")
@@ -632,11 +640,3 @@ surface_material_override/3 = ExtResource("6_dmklj")
 
 [node name="cs_grp" parent="Biped_Human_grp" index="1"]
 visible = false
-
-[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
-tree_root = SubResource("AnimationNodeBlendTree_cjfgb")
-anim_player = NodePath("../AnimationPlayer")
-parameters/TimeScale/scale = 1.7
-parameters/Transition/current_state = "idle"
-parameters/Transition/transition_request = ""
-parameters/Transition/current_index = 0
