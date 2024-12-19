@@ -285,7 +285,7 @@ func _progress_terrain(delta: float, level_type) -> void:
 			if first_terrain.has_empathy_event:
 				first_terrain.has_empathy_event = false
 				first_terrain.remove_empathy_event()
-				print("Empathy Event REMOVED")
+				#print("Empathy Event REMOVED")
 				Globals.empathy_event_interval_timer.start(empathy_event_interval)
 				
 			if first_terrain.is_type == Block.is_types.SAFE:
@@ -365,7 +365,7 @@ func _append_to_far_edge(target_block: MeshInstance3D, appending_block: MeshInst
 	#print("Last added: ",target_block, " at ",target_block.position.z,"; chunk_to_add: ",chunk_to_add)
 	
 func on_empathy_event_interval_timeout():
-	print("Empathy Event should happen again soon")
+	#print("Empathy Event should happen again soon")
 	empathy_event_active = false
 		
 func on_level_update(level):

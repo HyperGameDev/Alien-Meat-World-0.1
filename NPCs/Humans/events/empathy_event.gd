@@ -32,7 +32,7 @@ func _ready() -> void:
 	animation.play(chosen_event)
 		
 func update_dialogue(line,is_right):
-	print("Line: ",line," Scene: ",chosen_event)
+	#print("Line: ",line," Scene: ",chosen_event)
 	
 	var dialogue_labels: VBoxContainer
 	
@@ -104,7 +104,7 @@ func update_dialogue(line,is_right):
 	
 	if empathy_events[chosen_event][dialogue_type][line]["labels"]["Multi_Small"]:
 		dialogue_labels.get_node("%Multi_Small").text = dialogue_Top
-		print("Right: ",is_right," Multiline: ",dialogue_Top)
+		#print("Right: ",is_right," Multiline: ",dialogue_Top)
 	else:
 		var on_top: bool
 		if empathy_events[chosen_event][dialogue_type][line]["labels"]["Top_Large"] or empathy_events[chosen_event][dialogue_type][line]["labels"]["Top_Small"]:
@@ -118,13 +118,13 @@ func update_dialogue(line,is_right):
 			dialogue_labels.get_node("%Top_Large").text = dialogue_Top
 			dialogue_labels.get_node("%Top_Small").text = dialogue_Top
 	
-			print("Right: ",is_right," Top: ",dialogue_Top)
+			#print("Right: ",is_right," Top: ",dialogue_Top)
 			
 		if on_bottom:
 			dialogue_labels.get_node("%Bottom_Large").text = dialogue_Bottom
 			dialogue_labels.get_node("%Bottom_Small").text = dialogue_Bottom
 			
-			print("Right: ",is_right," Bottom: ",dialogue_Bottom)
+			#print("Right: ",is_right," Bottom: ",dialogue_Bottom)
 		
 	
 		

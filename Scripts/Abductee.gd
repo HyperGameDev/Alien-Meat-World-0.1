@@ -286,11 +286,19 @@ func human_variety(should_randomize):
 	var human_leg_l: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_LegL
 	var human_leg_r: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_LegR
 	
+	var military_boot: StandardMaterial3D = load("res://NPCs/Humans/textures/human_shoes_brwn_01.tres") as StandardMaterial3D
+	
+	var head: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_Head
 	var head_afro: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_Head_Afro
 	var head_long: MeshInstance3D = $"human_03_GIANT_00/Armature/Skeleton3D/Human_Head_Long-Hair-1"
+	
+	var head_array: Array = [head,head_afro,head_long]
+	for head_mesh in head_array:
+		head_mesh.visible = false
+		
+	
 	var head_army: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_Head_Army
 	
-	var head_array: Array = [head_long,head_afro]
 
 	
 	if should_randomize:
@@ -298,21 +306,36 @@ func human_variety(should_randomize):
 			clothing_bottom = Globals.human_enemy_bottoms.pick_random()
 			clothing_top = Globals.human_enemy_tops.pick_random()
 			
-			#head_army.visible = true
+			head_army.visible = true
 				
 		else:
 			clothing_bottom = Globals.human_bottoms.pick_random()
 			clothing_top = Globals.human_tops.pick_random()
 			
-			#head_array.pick_random().visible = true
+			var random_head = head_array.pick_random()
+			random_head.visible = true
+			
+			#print(name," head is ",random_head.name)
 	
 	
 	human_arm_l.set_surface_override_material(0, clothing_top)
 	human_arm_r.set_surface_override_material(0, clothing_top)
+	human_arm_l.set_surface_override_material(1, clothing_top)
+	human_arm_r.set_surface_override_material(1, clothing_top)
+	
 	human_body.set_surface_override_material(0, clothing_top)
 	human_body.set_surface_override_material(1, clothing_top)
+	
 	human_leg_l.set_surface_override_material(0, clothing_bottom)
 	human_leg_r.set_surface_override_material(0, clothing_bottom)
+	human_leg_l.set_surface_override_material(1, clothing_bottom)
+	human_leg_r.set_surface_override_material(1, clothing_bottom)
+	if is_military:
+		
+		human_leg_l.set_surface_override_material(2, military_boot)
+		human_leg_r.set_surface_override_material(2, military_boot)
+		human_leg_l.set_surface_override_material(3, military_boot)
+		human_leg_r.set_surface_override_material(3, military_boot)
 		
 func on_dunk_is_at_position(dunk_position):
 	if has_been_dunked:
