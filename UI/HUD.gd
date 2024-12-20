@@ -149,6 +149,7 @@ func score_minimum_text_update():
 	label_scoreMinimum.text = str(score_minimum)
 	
 func on_abductee_destroyed(is_military,is_event):
+	print("Abductee destroyed")
 	if is_military:
 		print("HUD knows an enemy was destroyed")
 		print("HUD thinks: Empathy_Possible = ",Globals.empathy_possible, " and Abductee is_empathy_event = ",is_event)

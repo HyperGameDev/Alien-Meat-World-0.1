@@ -250,6 +250,7 @@ func abductee_grabbed_by_head(grabbed_abductee):
 	await get_tree().create_timer(player.attack_duration).timeout
 	grabbed_abductee.is_available = false
 	Messenger.player_head_hover.emit(false,true)
+	Messenger.abductee_destroyed.emit(grabbed_abductee.is_military,grabbed_abductee.is_empathy_event)
 	
 func abductee_grabbed_by_arms(og_grabbed_abductee):
 	og_grabbed_abductee.is_available = false
