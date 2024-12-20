@@ -102,7 +102,7 @@ func _physics_process(_delta):
 	#print("Cam Y: ", position.y, "; Offset Y: ", cam_y_offset)
 
 func on_grab_ended():
-	await get_tree().create_timer(.5).timeout
+	#await get_tree().create_timer(.5).timeout
 	#print("on_grab_ended awaited on Camera3D")
 	is_attempting_grab = false
 
@@ -229,10 +229,12 @@ func attack_ray(): ## Detects obstacles, NPC's and Meat/Abductee; emits attack_t
 		var attack_target = raycast_result.collider
 		Messenger.attack_target.emit(attack_target)
 		
+		
 		if attack_target.is_in_group("Abductee") and !is_attempting_grab:
 			abductee_grabbed(attack_target)
 		
 func abductee_grabbed(attack_target):
+	is_attempting_grab = true
 	var grabbed_abductee = attack_target
 	if grabbed_abductee.is_clone:
 		grabbed_abductee.add_to_group("Grabbed")
@@ -240,7 +242,6 @@ func abductee_grabbed(attack_target):
 		if !head_grab and arm_r.current_health == 0 and arm_l.current_health == 0: # Head is grabbing
 			abductee_grabbed_by_head(grabbed_abductee)
 		else:
-			is_attempting_grab = true
 			abductee_grabbed_by_arms(grabbed_abductee)
 
 func abductee_grabbed_by_head(grabbed_abductee):
@@ -260,18 +261,19 @@ func abductee_grabbed_by_arms(og_grabbed_abductee):
 	abductee_cloned.is_available = true
 	
 	set_cloned_abductee_properties(abductee_cloned,og_grabbed_abductee)
-	abductee_cloned.human_variety(false) # Bool is "should_randomize"
+	abductee_cloned.apply_human_appearance() # Bool is "should_randomize"
 
 func set_cloned_abductee_properties(clone, og):
-	var properties = [
+	var variables = [
 		"is_empathy_event",
 		"is_military",
 		"clothing_top",
-		"clothing_bottom"
+		"clothing_bottom",
+		"head_name"
 	]
 	
-	for property in properties:
-		clone.set(property, og.get(property))
+	for variable in variables:
+		clone.set(variable, og.get(variable))
 
 		
 func menu_alien_ray():

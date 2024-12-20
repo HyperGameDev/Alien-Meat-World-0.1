@@ -18,6 +18,15 @@ enum is_types {COW, HUMAN, TREE1}
 @export var is_military: bool = false
 @export var is_armed: bool = false
 
+var head_name: String
+var heads_innocent: Array = [
+	"Human_Head",
+	"Human_Head_Afro",
+	"Human_Head_Long-Hair-1"
+	]
+var head_military: String = "Human_Head_Army"
+var heads_all: Array = []
+
 @export var has_weapon: has_weapons
 enum has_weapons {PISTOL,STUN,SEMI,AR,SHOTG,SHOTG2,SNIPER,RL}
 
@@ -92,6 +101,15 @@ var weapons := {
 
 
 @export var parachute: MeshInstance3D
+@export var human_arm_l: MeshInstance3D
+@export var human_arm_r: MeshInstance3D
+@export var human_body: MeshInstance3D
+@export var human_leg_l: MeshInstance3D
+@export var human_leg_r: MeshInstance3D 
+
+@export var military_boot: StandardMaterial3D = load("res://NPCs/Humans/textures/human_shoes_brwn_01.tres") as StandardMaterial3D
+
+var head_string: String
 
 @export var velocity : int = 60
 @export var grab_distance_offset : float = 14.0
@@ -121,6 +139,7 @@ var fell : bool = false
 
 
 func _ready():
+	prepare_heads()
 	visible = false
 	if !has_node("RayCast_surfaceDetect"):
 		print("ERROR: Somewhere, a surface detecting child is missing!")
@@ -153,9 +172,6 @@ func _ready():
 	Messenger.meat_entered_dunk.connect(on_meat_entered_dunk)
 	Messenger.meat_left_dunk.connect(on_meat_left_dunk)
 	Messenger.dunk_is_at_position.connect(on_dunk_is_at_position)
-	
-	if is_armed:
-		assign_weapon()
 	
 	
 	# Setting up meat material changes based on cursor behavior
@@ -277,49 +293,38 @@ func spawn_me():
 			if boolean > 0 or always_spawn:
 				is_available = true
 				if is_type == is_types.HUMAN:
-					human_variety(true)
+					setup_human_appearance(true)
 			else:
 				is_available = false
 
-func human_variety(should_randomize):
-	var human_arm_l: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_ArmL
-	var human_arm_r: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_ArmR
-	var human_body: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_Body
-	var human_leg_l: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_LegL
-	var human_leg_r: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_LegR
-	
-	var military_boot: StandardMaterial3D = load("res://NPCs/Humans/textures/human_shoes_brwn_01.tres") as StandardMaterial3D
-	
-	var head: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_Head
-	var head_afro: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_Head_Afro
-	var head_long: MeshInstance3D = $"human_03_GIANT_00/Armature/Skeleton3D/Human_Head_Long-Hair-1"
-	
-	var head_array: Array = [head,head_afro,head_long]
-	for head_mesh in head_array:
-		head_mesh.visible = false
-		
-	
-	var head_army: MeshInstance3D = $human_03_GIANT_00/Armature/Skeleton3D/Human_Head_Army
-	
+func prepare_heads():
+	for head in heads_innocent:
+		heads_all.append(head)
+	heads_all.append(head_military)
 
-	
+func setup_human_appearance(should_randomize):
 	if should_randomize:
 		if is_military:
 			clothing_bottom = Globals.human_enemy_bottoms.pick_random()
 			clothing_top = Globals.human_enemy_tops.pick_random()
 			
-			head_army.visible = true
+			head_name = head_military
 				
-		else:
+		else: # Not military
 			clothing_bottom = Globals.human_bottoms.pick_random()
 			clothing_top = Globals.human_tops.pick_random()
 			
-			var random_head = head_array.pick_random()
-			random_head.visible = true
-			
-			#print(name," head is ",random_head.name)
+			var random_head = heads_innocent.pick_random()
+			head_name = random_head
 	
+	apply_human_appearance()
 	
+func apply_human_appearance():
+	if is_armed:
+		assign_weapon()
+		
+	assign_head()
+		
 	human_arm_l.set_surface_override_material(0, clothing_top)
 	human_arm_r.set_surface_override_material(0, clothing_top)
 	human_arm_l.set_surface_override_material(1, clothing_top)
@@ -332,12 +337,20 @@ func human_variety(should_randomize):
 	human_leg_r.set_surface_override_material(0, clothing_bottom)
 	human_leg_l.set_surface_override_material(1, clothing_bottom)
 	human_leg_r.set_surface_override_material(1, clothing_bottom)
+	
 	if is_military:
-		
 		human_leg_l.set_surface_override_material(2, military_boot)
 		human_leg_r.set_surface_override_material(2, military_boot)
 		human_leg_l.set_surface_override_material(3, military_boot)
 		human_leg_r.set_surface_override_material(3, military_boot)
+		
+func assign_head():
+	for head: String in heads_all:
+		get_node("human_03_GIANT_00/Armature/Skeleton3D/" + head).visible = false
+		
+	var current_head_string: String = "human_03_GIANT_00/Armature/Skeleton3D/" + head_name
+	
+	get_node(current_head_string).visible = true
 		
 func on_dunk_is_at_position(dunk_position):
 	if has_been_dunked:
