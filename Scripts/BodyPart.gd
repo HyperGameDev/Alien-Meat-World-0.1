@@ -468,7 +468,6 @@ func on_player_head_hover(is_hovered,is_head):
 				pass
 				
 			for abductee in grabbed_abductees:
-				print("iterating through grabbed_abductees: ",abductee)
 				if is_part == BodyPart.is_parts.HEAD:
 					print("Head destroyed abductee")
 					Messenger.abductee_destroyed.emit(abductee.is_military,abductee.is_empathy_event)

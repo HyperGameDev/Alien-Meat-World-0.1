@@ -26,8 +26,12 @@ func _ready() -> void:
 	
 	if empathy_events[empathy_event]["right_is_military"]:
 		human_right.is_military = true
+		human_right.is_armed = true
+		human_right.has_weapon = "PISTOL"
 	else:
 		human_left.is_military = true
+		human_left.is_armed = true
+		human_left.has_weapon = "PISTOL"
 		
 	animation.play(chosen_event)
 		

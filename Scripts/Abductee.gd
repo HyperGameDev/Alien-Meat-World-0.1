@@ -95,6 +95,7 @@ var weapons := {
 
 @onready var camera : Camera3D =  get_tree().get_current_scene().get_node("Camera3D")
 @onready var player : CharacterBody3D =  get_tree().get_current_scene().get_node("Player")
+@onready var player_target : Marker3D = get_tree().get_current_scene().get_node("Player/Alien_V3/Alien/Armature/Skeleton3D/Alien_Head/Alien_Headpieces/Player_Attack_Target")
 @onready var collision : CollisionShape3D = $CollisionShape3D
 #@onready var grab_target: Node3D = get_tree().get_current_scene().get_node("Player/Grab_Target/Grab_Target_offset")
 @onready var grab_target: Node3D = get_tree().get_current_scene().get_node("Player/Grab_Target")
@@ -195,10 +196,13 @@ func _ready():
 		else:
 			var left_offset: float = %Marker_Dialogue.global_position.x - dialogue.dialogue_offset_pos
 			dialogue.is_right = false
-			dialogue.global_position.x = left_offset
+			dialogue.global_position.x = left_offset	
 	
 func _process(_delta: float) -> void:
+	if is_enemy:
+		look_at_player()
 	if is_in_group("Grabbed"):
+		#look_at_player()
 		# Helps prevent visual arm stretch timing issues, but leads to un-is_interactable abductees:
 		#await get_tree().create_timer(.5).timeout
 		if Input.is_action_just_pressed("Action") or Globals.is_game_state == Globals.is_game_states.OVER: # Dropping
@@ -214,6 +218,14 @@ func _process(_delta: float) -> void:
 		Messenger.meat_in_dunk.emit(self)
 		has_been_dunked = true
 		
+func look_at_player():
+	#var player_head_x = player_head.global_position.x
+	#var player_head_y = player_head.global_position.y
+	#var player_head_z = player_head.global_position.z
+	#var player_head_pos: Vector3 = Vector3(player_head_x,player_head_y,player_head_z)
+
+	look_at(player_target.global_position)
+	
 
 func _physics_process(_delta: float) -> void:
 	interactable_indicator.global_position.x = global_position.x
@@ -332,6 +344,7 @@ func apply_human_appearance():
 	
 	human_body.set_surface_override_material(0, clothing_top)
 	human_body.set_surface_override_material(1, clothing_top)
+	human_body.set_surface_override_material(2, clothing_top)
 	
 	human_leg_l.set_surface_override_material(0, clothing_bottom)
 	human_leg_r.set_surface_override_material(0, clothing_bottom)

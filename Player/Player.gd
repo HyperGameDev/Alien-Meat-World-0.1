@@ -6,6 +6,8 @@ const JUMP_VELOCITY : int = 5
 const FALL_DEATH_DISTANCE : int = -50
 const BOUNDARY_DISTANCE : int = 30
 
+var head_pos : Vector3
+
 var from_grab : bool = false
 var cursor_pos : Vector2 = Vector2(0,0)
 @export var controls_locked : bool = true
@@ -128,9 +130,9 @@ func _ready():
 	
 	mesh_orb.visible = false
 	#armature_hurt.visible = true # So it can be hidden in editor
-
 	
 func _physics_process(delta):
+	
 	#if is_grabbing:
 		#arm_to_use(hit_object)
 	if is_holding:
