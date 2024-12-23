@@ -143,6 +143,9 @@ func _process(delta: float) -> void:
 	# Interactable Detection implementation
 	abduct_ray()
 	
+	# Attacking
+	attack_ray()
+	
 	if menu_pickable:
 		# Main Menu Button detection
 		main_menu_ray()
@@ -166,7 +169,6 @@ func _input(event: InputEvent) -> void: ## Cursor movement detection
 		
 func action_button_pressed():
 	force_hide_arrows()
-	attack_ray()
 
 	
 func force_hide_arrows():
@@ -284,7 +286,7 @@ func menu_alien_ray():
 		return
 		
 	var raycast_result = hover_ray(16384,true)
-#	print(raycast_result)
+	#print(raycast_result)
 	if !raycast_result.is_empty():
 		hover_target = raycast_result.collider
 		

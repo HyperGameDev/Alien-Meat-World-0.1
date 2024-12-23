@@ -7,7 +7,7 @@ class_name Abductee
 var is_interactable: bool = false
 var clothing_top: StandardMaterial3D = null
 var clothing_bottom: StandardMaterial3D = null
-
+	
 @export var is_type: is_types
 enum is_types {COW, HUMAN, TREE1}
 

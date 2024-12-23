@@ -1,6 +1,6 @@
 extends Node
 
-@export var skins_unlocked: bool = false
+@export var skins_unlocked: bool = true
 @export var level_current = 0
 
 var run_begun : bool = false
@@ -472,9 +472,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = true
-		},
+	},
 	Skin_02 = {
 		skin_name = "Grey Alien",
 		skin_material = null,
@@ -485,9 +485,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_03 = {
 		skin_name = "Orange Alien",
 		skin_material = null,
@@ -498,9 +498,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_04 = {
 		skin_name = "Blue Alien",
 		skin_material = null,
@@ -511,9 +511,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_05 = {
 		skin_name = "Yellow Alien",
 		skin_material = null,
@@ -524,9 +524,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_06 = {
 		skin_name = "Cyan Alien",
 		skin_material = null,
@@ -537,9 +537,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_07 = {
 		skin_name = "Purple Alien",
 		skin_material = null,
@@ -550,9 +550,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_08 = {
 		skin_name = "Albino Alien",
 		skin_material = null,
@@ -563,9 +563,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_09 = {
 		skin_name = "Tailypo Alien",
 		skin_material = null,
@@ -576,9 +576,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_10 = {
 		skin_name = "Marshmallow Alien",
 		skin_material = null,
@@ -589,9 +589,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = true,
 		head_piece = "marshmallow",
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_11 = {
 		skin_name = "Chrome Alien",
 		skin_material = null,
@@ -602,9 +602,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_12 = {
 		skin_name = "Demon Alien",
 		skin_material = null,
@@ -615,9 +615,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = true,
 		head_piece = "devil_horns",
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_13 = {
 		skin_name = "Chocolate Alien",
 		skin_material = null,
@@ -628,9 +628,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = true,
 		head_piece = "chocolate",
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_14 = {
 		skin_name = "Sponge Alien",
 		skin_material = null,
@@ -641,9 +641,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_15 = {
 		skin_name = "Tartan Alien",
 		skin_material = null,
@@ -654,9 +654,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_16 = {
 		skin_name = "Leopard Alien",
 		skin_material = null,
@@ -667,9 +667,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = true,
 		head_piece = "leopard_ears",
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_17 = {
 		skin_name = "Pink Leopard Alien",
 		skin_material = null,
@@ -680,9 +680,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = true,
 		head_piece = "leopard_ears_pink",
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_18 = {
 		skin_name = "Camo Alien",
 		skin_material = null,
@@ -693,9 +693,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = true,
 		head_piece = "camo_helmet",
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_19 = {
 		skin_name = "Longhorn Alien",
 		skin_material = null,
@@ -706,9 +706,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = true,
 		head_piece = "cow_horns",
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_20 = {
 		skin_name = "Polka Alien",
 		skin_material = null,
@@ -719,9 +719,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_21 = {
 		skin_name = "Glitched Alien",
 		skin_material = null,
@@ -732,9 +732,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_22 = {
 		skin_name = "Lava Alien",
 		skin_material = null,
@@ -745,9 +745,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = "fire_particles",
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_23 = {
 		skin_name = "Icy Alien",
 		skin_material = null,
@@ -758,9 +758,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = true,
 		head_piece = "ice_spikes",
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_24 = {
 		skin_name = "Marble Alien",
 		skin_material = null,
@@ -771,9 +771,9 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
-		},
+	},
 	Skin_25 = {
 		skin_name = "Starbreaker",
 		skin_material = null,
@@ -784,7 +784,7 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = "star_crown",
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
 		},
 	Skin_26 = {
@@ -797,7 +797,7 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
 		},
 	Skin_27 = {
@@ -810,7 +810,7 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = true,
 		head_piece = "antenna",
-		has_mullet = false,
+		hide_head = false,
 		is_unlocked = false
 		},
 	Skin_28 = {
@@ -823,7 +823,33 @@ var skins := {
 		heart_inner_material = null,
 		has_head_piece = false,
 		head_piece = null,
-		has_mullet = false,
+		hide_head = false,
+		is_unlocked = false
+		},
+	Skin_29 = {
+		skin_name = "Proud Alien",
+		skin_material = null,
+		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
+		has_head_piece = false,
+		head_piece = null,
+		hide_head = false,
+		is_unlocked = false
+		},
+	Skin_30 = {
+		skin_name = "Godot Robot",
+		skin_material = null,
+		eyes_material = null,
+		mouth_material = null,
+		teeth_material = null,
+		heart_outer_material = null,
+		heart_inner_material = null,
+		has_head_piece = true,
+		head_piece = "godot",
+		hide_head = true,
 		is_unlocked = false
 		}
 	}

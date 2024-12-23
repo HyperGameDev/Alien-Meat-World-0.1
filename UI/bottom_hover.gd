@@ -20,6 +20,7 @@ func _ready():
 	
 	
 func show_indicator(target):
+	print("Bottom indicator sees: ",target)
 	visible = true
 	indicator_target = target
 		

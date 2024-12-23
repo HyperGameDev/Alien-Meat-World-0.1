@@ -365,6 +365,12 @@ visible = false
 [node name="leopard_ears_pink" parent="Alien/Alien_Headpieces" index="6"]
 visible = false
 
+[node name="camo_helmet" parent="Alien/Alien_Headpieces" index="7"]
+visible = false
+
+[node name="cow_horns" parent="Alien/Alien_Headpieces" index="8"]
+visible = false
+
 [node name="Marker3D" type="Marker3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, -0.434004)
 

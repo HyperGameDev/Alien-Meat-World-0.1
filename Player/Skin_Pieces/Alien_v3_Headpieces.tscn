@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://doyk6q2r6tyyh"]
+[gd_scene load_steps=11 format=3 uid="uid://doyk6q2r6tyyh"]
 
 [ext_resource type="PackedScene" uid="uid://dqh7m6wcn8y1p" path="res://Player/Skin_Pieces/chocolate.tscn" id="1_17kdh"]
 [ext_resource type="PackedScene" uid="uid://bklx0pkcw0rfp" path="res://Player/Skin_Pieces/ice_spikes.tscn" id="1_mpb5p"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://uwb7qic640sp" path="res://Player/Skin_Pieces/leopard_ears_pink.tscn" id="7_6loq1"]
 [ext_resource type="PackedScene" uid="uid://cji1hj0336bmy" path="res://Player/Skin_Pieces/cow_horns.tscn" id="9_exxmj"]
 [ext_resource type="PackedScene" uid="uid://dl3d3xvttctg8" path="res://Player/Skin_Pieces/camo_helmet.tscn" id="9_ijxet"]
+[ext_resource type="PackedScene" uid="uid://dyvvacu20v5hu" path="res://Player/Skin_Pieces/godot.tscn" id="10_8ke4o"]
 
 [node name="Alien_Headpieces" type="Node3D"]
 
@@ -29,3 +30,5 @@
 [node name="camo_helmet" parent="." instance=ExtResource("9_ijxet")]
 
 [node name="cow_horns" parent="." instance=ExtResource("9_exxmj")]
+
+[node name="godot" parent="." instance=ExtResource("10_8ke4o")]

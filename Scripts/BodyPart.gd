@@ -35,6 +35,8 @@ const LIMB_MORPH_SPEED : float = 1.25
 @onready var headpieces : Node3D = player.get_node("Alien_V3/Alien/Armature/Skeleton3D/Alien_Head/Alien_Headpieces")
 @onready var headpieces_hurt : Node3D = player.get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D/Alien-hurt_Head/Alien_Headpieces_hurt")
 
+@onready var invisible_alien: StandardMaterial3D = preload("res://Player/textures/alien_invisible.tres")
+
 
 @onready var score_dunk : Area3D = %ScoreDunk
 @onready var animation_blood_human : AnimationPlayer = %"Particles_Blood-Human"/AnimationPlayer
@@ -54,10 +56,6 @@ const LIMB_MORPH_SPEED : float = 1.25
 #endregion
 
 var limb_dmg_flash_end : bool = false
-
-@onready var material_damaged_timer : Timer = Timer.new()
-@onready var material_reset_timer : Timer = Timer.new()
-@onready var limb_dmg_flash_length : Timer = $"Timer_limb-dmg-flash_length"
 
 const LIMB_DMG_FLASH_ON_LENGTH : float = 0.4
 const LIMB_DMG_FLASH_OFF_LENGTH : float = 0.2
@@ -171,17 +169,6 @@ func on_area_damaged(collided_bodypart):
 	if collided_bodypart == self:
 #		print(collided_bodypart.name.split("_")[1])
 #		print(limb_damage_amount)
-#		print(self) 
-#		print("Damage Dealt")
-#		print(name)
-#	
-	
-		# Define Mesh Flash Length
-		if !is_part == BodyPart.is_parts.BODY:
-			var limb_dmg_total_flash_length = 0
-			limb_dmg_total_flash_length += 4
-			limb_dmg_flash_length.start(limb_dmg_total_flash_length)
-			limb_dmg_flash_end = false
 		
 		# This code needs work, only applies to one limb if multiple are hit
 		if floorf(current_health) > 0.0 and amount_to_damage == Obstacle.damage_amounts.FULL:
@@ -307,15 +294,6 @@ func on_area_damaged(collided_bodypart):
 		if floorf(current_health) <= 0.0:
 			Messenger.swap_game_state.emit(Globals.is_game_states.OVER)
 			
-
-func on_material_damaged_timer_end():
-	if floorf(current_health) < max_health and limb_dmg_flash_end == false and amount_to_damage != Obstacle.damage_amounts.NONE:
-			mesh.material_override = damage_material
-			mesh_hurt.material_override = damage_material
-			material_reset_timer.start(LIMB_DMG_FLASH_OFF_LENGTH)
-			await material_reset_timer.timeout
-			mesh.material_override = default_material
-			mesh_hurt.material_override = default_material
 		
 func on_limb_dmg_flash_end():
 	limb_dmg_flash_end = true
@@ -527,6 +505,9 @@ func on_skin_clicked(skin_string):
 	if is_part == BodyPart.is_parts.HEAD:
 		mesh.set_surface_override_material(2, eyes_material)
 		mesh_hurt.set_surface_override_material(2, eyes_material)
+		if Globals.skins[skin_string]["hide_head"]:
+			mesh.material_override = invisible_alien
+			mesh_hurt.material_override = invisible_alien
 
 func on_game_prebegin():
 	skeleton_hurt.visible = true

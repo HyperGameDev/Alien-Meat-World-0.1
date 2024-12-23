@@ -7,12 +7,13 @@ static var menu_is_visible: bool = false
 var is_level: int = -1
 
 @onready var alien_headpieces: Node3D = get_tree().get_current_scene().get_node("Player/Alien_V3/Alien/Armature/Skeleton3D/Alien_Head/Alien_Headpieces")
+@onready var invisible_alien: StandardMaterial3D = preload("res://Player/textures/alien_invisible.tres")
 
 #@onready var terrain_shader = self.get_surface_override_material(0)
-@onready var marker_right = %Marker_boundaryRight
-@onready var marker_left = %Marker_boundaryLeft
-@onready var ground = $Ground
-@onready var grass_material = preload("res://Terrain/BASE_TERRAIN_BLOCKS/block_default-grass-shader.tres")
+@onready var marker_right: MeshInstance3D = %Marker_boundaryRight
+@onready var marker_left: MeshInstance3D = %Marker_boundaryLeft
+@onready var ground := $Ground
+@onready var grass_material : ShaderMaterial = preload("res://Terrain/BASE_TERRAIN_BLOCKS/block_default-grass-shader.tres")
 
 @export var is_type: is_types
 enum is_types {SAFE,OBSTACLE,POINTS,MENU}
@@ -112,9 +113,6 @@ func show_available_skins():
 							if Globals.skins[skin_chosen]["is_unlocked"]:
 								assign_skin_to_alien(node,skin_chosen)
 								choose_and_apply_materials(skin_chosen,node,"skin_material",0)
-								
-								if Globals.skins[skin_chosen]["has_head_piece"]:
-									apply_headpiece(skin_chosen,node)
 								choose_and_apply_materials(skin_chosen,node,"eyes_material",2)
 								
 								if Globals.skins[skin_chosen]["has_head_piece"]:
@@ -191,4 +189,6 @@ func choose_and_apply_materials(skin_chosen,mat_target,mat_key,mat_number):
 func apply_headpiece(skin_chosen,alien):
 	var alien_headpieces: Node3D = alien.get_node("Alien/Alien_Headpieces")
 	alien_headpieces.get_node(Globals.skins[skin_chosen]["head_piece"]).visible = true
-		
+	if Globals.skins[skin_chosen]["hide_head"]:
+		alien.mesh.material_override = invisible_alien
+		print(alien.name," is invisible!")
