@@ -882,7 +882,9 @@ var skins_skin_paths := [
 	"res://Player/textures/skins/alien_skin_25.tres",
 	"res://Player/textures/skins/alien_skin_26.tres",
 	"res://Player/textures/skins/alien_skin_27.tres",
-	"res://Player/textures/skins/alien_skin_28.tres"
+	"res://Player/textures/skins/alien_skin_28.tres",
+	"res://Player/textures/skins/alien_skin_29.tres",
+	"res://Player/textures/skins/alien_skin_30.tres"
 	]
 var skins_eyes_paths := [
 	"res://Player/textures/skins/alien_eyes_01.tres",
@@ -912,7 +914,9 @@ var skins_eyes_paths := [
 	"res://Player/textures/skins/alien_eyes_25.tres",
 	"res://Player/textures/skins/alien_eyes_26.tres",
 	"res://Player/textures/skins/alien_eyes_27.tres",
-	"res://Player/textures/skins/alien_eyes_28.tres"
+	"res://Player/textures/skins/alien_eyes_28.tres",
+	"res://Player/textures/skins/alien_eyes_29.tres",
+	"res://Player/textures/skins/alien_eyes_30.tres"
 ]
 var skins_1 := {}
 var skins_2 := {}

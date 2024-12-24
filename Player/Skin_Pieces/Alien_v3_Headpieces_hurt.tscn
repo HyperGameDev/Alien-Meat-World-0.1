@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c436kwwr2ty40" path="res://Player/Skin_Pieces/leopard_ears_pink_hurt.tscn" id="7_wbvev"]
 [ext_resource type="PackedScene" uid="uid://c3u3rdtwypdfv" path="res://Player/Skin_Pieces/cow_horns_hurt.tscn" id="9_focvn"]
 [ext_resource type="PackedScene" uid="uid://i2ueohwcs8a1" path="res://Player/Skin_Pieces/camo_helmet_hurt.tscn" id="9_hit6d"]
-[ext_resource type="PackedScene" uid="uid://dyvvacu20v5hu" path="res://Player/Skin_Pieces/godot.tscn" id="10_budvb"]
+[ext_resource type="PackedScene" uid="uid://dsv4cwm26bn7t" path="res://Player/Skin_Pieces/godot_hurt.tscn" id="10_2khig"]
 
 [node name="Alien_Headpieces_hurt" type="Node3D"]
 
@@ -31,4 +31,4 @@
 
 [node name="cow_horns" parent="." instance=ExtResource("9_focvn")]
 
-[node name="godot" parent="." instance=ExtResource("10_budvb")]
+[node name="godot" parent="." instance=ExtResource("10_2khig")]

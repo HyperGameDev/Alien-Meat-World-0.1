@@ -353,7 +353,7 @@ func on_player_head_hover(is_hovered,is_head):
 			if floorf(current_health) < max_health:
 				current_health += snappedf(1.0,0.5)
 				var heal_amount: String = "+1"
-				print("Healed ",debug_which_part()," by ",heal_amount)
+				#print("Healed ",debug_which_part()," by ",heal_amount)
 
 				#if !powerup_hp:
 					#heal_amount = "+1"
@@ -447,7 +447,7 @@ func on_player_head_hover(is_hovered,is_head):
 				
 			for abductee in grabbed_abductees:
 				if is_part == BodyPart.is_parts.HEAD:
-					print("Head destroyed abductee")
+					#print("Head destroyed abductee")
 					Messenger.abductee_destroyed.emit(abductee.is_military,abductee.is_empathy_event)
 				abductee.queue_free()
 				score_dunk.dunk_ascent_timer_duration = 0.2
@@ -505,9 +505,11 @@ func on_skin_clicked(skin_string):
 	if is_part == BodyPart.is_parts.HEAD:
 		mesh.set_surface_override_material(2, eyes_material)
 		mesh_hurt.set_surface_override_material(2, eyes_material)
-		if Globals.skins[skin_string]["hide_head"]:
-			mesh.material_override = invisible_alien
-			mesh_hurt.material_override = invisible_alien
+		
+		# Hides head if skin/headpiece needs it!
+		#if Globals.skins[skin_string]["hide_head"]:
+			#mesh.material_override = invisible_alien
+			#mesh_hurt.material_override = invisible_alien
 
 func on_game_prebegin():
 	skeleton_hurt.visible = true

@@ -189,6 +189,8 @@ func choose_and_apply_materials(skin_chosen,mat_target,mat_key,mat_number):
 func apply_headpiece(skin_chosen,alien):
 	var alien_headpieces: Node3D = alien.get_node("Alien/Alien_Headpieces")
 	alien_headpieces.get_node(Globals.skins[skin_chosen]["head_piece"]).visible = true
-	if Globals.skins[skin_chosen]["hide_head"]:
-		alien.mesh.material_override = invisible_alien
-		print(alien.name," is invisible!")
+	
+	# Hides head if skin/headpiece needs it!
+	#if Globals.skins[skin_chosen]["hide_head"]:
+		#alien.mesh.material_override = invisible_alien
+		#print(alien.name," is invisible!")
