@@ -101,10 +101,6 @@ var follow_bone_pos : Vector3
 var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
-	#TODO: Remove this when empathy can be earned properly
-	if Globals.empathy == 2:
-		animation_heart.play("beating_healthy")
-	
 	Messenger.movement_start.connect(on_movement_start)
 	Messenger.movement_stop.connect(on_movement_stop)
 	Messenger.amount_slowed.connect(on_amount_slowed)
@@ -232,86 +228,7 @@ func on_something_attacked(what_is_hit):
 	if !attack:
 		attack = true
 		arm_to_use(what_is_hit)
-		
-		if arm_r_attacking:
-			collision_area_armr_upper.set_deferred("disabled", true)
-			collision_area_armr_lower.set_deferred("disabled", true)
-			collision_area_hurt_armr_upper.set_deferred("disabled", true)
-			collision_area_hurt_armr_lower.set_deferred("disabled", true)
-			
-		if arm_l_attacking:
-			collision_area_arml_upper.set_deferred("disabled", true)
-			collision_area_arml_lower.set_deferred("disabled", true)
-			collision_area_hurt_arml_upper.set_deferred("disabled", true)
-			collision_area_hurt_arml_lower.set_deferred("disabled", true)
-		
-		if head_attacking:
-			collision_area_head.set_deferred("disabled", true)
-			collision_area_hurt_head.set_deferred("disabled", true)
-			
-		
-	#	if grab == true
-		hit_object = what_is_hit
-		#print("Grab Begun on ", hit_object.name)
-		
-		if arm_r_attacking:
-			animation.set("parameters/reach right/request", 1)
-		if arm_l_attacking:
-			animation.set("parameters/reach left/request", 1)
-		
-		get_tree().create_tween().tween_method(attack_action_tween,0.0,1.0,attack_duration)
-		
-	#	aim_bone_at_target(attacking_limb,hit_object, 0.0)
-		await get_tree().create_timer(attack_duration * 2).timeout
-		var area = what_is_hit
-		var is_delayed = true
-		Messenger.something_hit.emit(area,is_delayed)
-	#	print("Grab Ending from ", hit_object.name)
-	
-		if head_attacking:
-			head_attacking = false
-			
-		# Retract the arm
-		get_tree().create_tween().tween_method(attack_action_tween,1.0,0.0,attack_duration)
-		await get_tree().create_timer(attack_duration).timeout
-		
-		if arm_r_attacking:
-			animation.set("parameters/reach right/request", 3)
-		if arm_l_attacking:
-			animation.set("parameters/reach left/request", 3)
-		
-		match floorf(arm_r.current_health):
-			0.0:
-				pass
-			1.0:
-				collision_area_hurt_armr_upper.set_deferred("disabled", false)
-				collision_area_hurt_armr_lower.set_deferred("disabled", false)
-			2.0: 	
-				collision_area_armr_upper.set_deferred("disabled", false)
-				collision_area_armr_lower.set_deferred("disabled", false)
-					
-		match floorf(arm_l.current_health):
-			0.0:
-				pass
-			1.0:
-				collision_area_hurt_arml_upper.set_deferred("disabled", false)
-				collision_area_hurt_arml_lower.set_deferred("disabled", false)
-			2.0: 	
-				collision_area_arml_upper.set_deferred("disabled", false)
-				collision_area_arml_lower.set_deferred("disabled", false)
-				
-		match floorf(head.current_health):
-			0.0:
-				pass
-			1.0:
-				collision_area_hurt_head.set_deferred("disabled", false)
-			2.0: 	
-				collision_area_head.set_deferred("disabled", false)
-			
-
-				
-		
-		attack = false
+		use_the_arm(what_is_hit)
 	
 func arm_to_use(target):
 	#var target_x : float = target.global_position.x
@@ -371,12 +288,100 @@ func arm_to_use(target):
 					else:
 						attacking_limb = arm_r_index
 				
+func use_the_arm(target):
+	if arm_r_attacking:
+		collision_area_armr_upper.set_deferred("disabled", true)
+		collision_area_armr_lower.set_deferred("disabled", true)
+		collision_area_hurt_armr_upper.set_deferred("disabled", true)
+		collision_area_hurt_armr_lower.set_deferred("disabled", true)
+		
+		animation.set("parameters/reach right/request", 1)
+		
+	if arm_l_attacking:
+		collision_area_arml_upper.set_deferred("disabled", true)
+		collision_area_arml_lower.set_deferred("disabled", true)
+		collision_area_hurt_arml_upper.set_deferred("disabled", true)
+		collision_area_hurt_arml_lower.set_deferred("disabled", true)
+		
+		animation.set("parameters/reach left/request", 1)
+	
+	if head_attacking:
+		collision_area_head.set_deferred("disabled", true)
+		collision_area_hurt_head.set_deferred("disabled", true)
+		
+	hit_object = target
+	#print("Grab Begun on ", hit_object.name)
+	extend_arm()
+	
+#	aim_bone_at_target(attacking_limb,hit_object, 0.0)
+	await get_tree().create_timer(attack_duration * 2).timeout
+	var area = target
+	var is_delayed = true
+	Messenger.something_hit.emit(area,is_delayed)
+#	print("Grab Ending from ", hit_object.name)
+
+	if head_attacking:
+		head_attacking = false
+		
+	# Retract the arm
+	
+	retract_arm()
+	await get_tree().create_timer(attack_duration).timeout
+	
+	if arm_r_attacking:
+		animation.set("parameters/reach right/request", 3)
+	if arm_l_attacking:
+		animation.set("parameters/reach left/request", 3)
+	
+	match floorf(arm_r.current_health):
+		0.0:
+			pass
+		1.0:
+			collision_area_hurt_armr_upper.set_deferred("disabled", false)
+			collision_area_hurt_armr_lower.set_deferred("disabled", false)
+		2.0: 	
+			collision_area_armr_upper.set_deferred("disabled", false)
+			collision_area_armr_lower.set_deferred("disabled", false)
+				
+	match floorf(arm_l.current_health):
+		0.0:
+			pass
+		1.0:
+			collision_area_hurt_arml_upper.set_deferred("disabled", false)
+			collision_area_hurt_arml_lower.set_deferred("disabled", false)
+		2.0: 	
+			collision_area_arml_upper.set_deferred("disabled", false)
+			collision_area_arml_lower.set_deferred("disabled", false)
+			
+	match floorf(head.current_health):
+		0.0:
+			pass
+		1.0:
+			collision_area_hurt_head.set_deferred("disabled", false)
+		2.0: 	
+			collision_area_head.set_deferred("disabled", false)
+		
+
+			
+	
+	attack = false
+
 func grab_reach_begin(amount):
 	if hit_object != null:
 		aim_bone_at_target(attacking_limb,hit_object,amount)
 		#aim_bone_at_target(attacking_limb - 1,hit_object,amount)
 	else:
 		aim_bone_at_target(attacking_limb,null,amount)
+		
+func extend_arm():
+	print("Arm extending!")
+	print("is_grabbing: ",is_grabbing,", is_holding: ",is_holding)
+	get_tree().create_tween().tween_method(attack_action_tween,0.0,1.0,attack_duration)
+		
+func retract_arm():
+	print("Arm retracting!")
+	print("is_grabbing: ",is_grabbing,", is_holding: ",is_holding)
+	get_tree().create_tween().tween_method(attack_action_tween,1.0,0.0,attack_duration)
 	
 func attack_action_tween(amount):
 	if !skeleton.is_inside_tree():
@@ -387,11 +392,19 @@ func attack_action_tween(amount):
 			aim_bone_at_target(attacking_limb,hit_object,amount)
 			#if !is_grabbing:
 				#aim_bone_at_target(attacking_limb - 1,hit_object,amount)
-			if amount == 1.0 and is_grabbing:
-				is_holding = true
+			if is_grabbing:
+				if amount == 1.0:
+					is_holding = true
+					print("Arm fully extended!")
+					print("is_grabbing: ",is_grabbing,", is_holding: ",is_holding)
+			else:
+				if amount == 0.0:
+					is_holding = false
+					print("Arm fully retracted!")
+					print("is_grabbing: ",is_grabbing,", is_holding: ",is_holding)
 			 
 	else:
-			print("Object Null!")
+			print("Grab target Null!")
 			aim_bone_at_target(attacking_limb,null,amount)
 			aim_bone_at_target(attacking_limb - 1,null,amount)
 	
@@ -583,6 +596,8 @@ func on_game_play():
 	
 func on_grab_begun(target):
 	is_grabbing = true
+	print("Grab begun!")
+	print("is_grabbing: ",is_grabbing,", is_holding: ",is_holding)
 	arm_to_use(target)
 	hit_object = grab_target
 	
@@ -591,24 +606,28 @@ func on_grab_begun(target):
 	if arm_l_attacking:
 		animation.set("parameters/hold left/blend_amount", 1.0)
 		
-#region Pause head rotation
-	animation.process_priority = 0
-	animation.set("parameters/hungry/request", 1)
-#endregion
-	
-	get_tree().create_tween().tween_method(attack_action_tween,0.0,1.0,attack_duration)
+	if head_attacking:
+		animation.process_priority = 0 #Pause head rotation
+		animation.set("parameters/hungry/request", 1)
+	else:
+		animation.set("parameters/hungry/request", 1)
+	extend_arm()
 	
 func on_grab_ended():
+	print("Grab ended!")
+	print("is_grabbing: ",is_grabbing,", is_holding: ",is_holding)
+	var held_count: int = get_tree().get_nodes_in_group("Grabbed").size()
+	if held_count <= 0:
+		is_holding = false
+		print("NOTHING GRABBED, is_holding: ",is_holding)
 	if is_grabbing:
 		animation.set("parameters/hungry/request", 3)
 		await get_tree().create_timer(.2).timeout
 		is_grabbing = false
 		if !is_eating:
 			animation.process_priority = -1
-		else:
-			pass
-		get_tree().create_tween().tween_method(attack_action_tween,1.0,0.0,attack_duration)
-		is_holding = false
+			
+		retract_arm()
 		
 		if arm_r_attacking:
 			animation.set("parameters/hold right/blend_amount", 0.0)

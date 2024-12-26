@@ -21,7 +21,7 @@ var formation_queue_pos: int
 static var copters_stopped : int = 0
 
 
-@export var is_attacking: bool = true
+@export var is_attacking: bool = false
 
 @export var health_max : int = 2
 var health_current : int = health_max
@@ -170,6 +170,7 @@ func health_effects():
 			meat_new.is_available = true
 			meat_new.always_spawn = true
 			meat_new.parachuting(true)
+			meat_new.is_type = meat_new.is_types.HUMAN
 			meat_new.add_to_group("Dropping")
 			meat_new.global_position = global_position
 		

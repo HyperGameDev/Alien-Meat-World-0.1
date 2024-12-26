@@ -203,12 +203,13 @@ func _process(_delta: float) -> void:
 		has_been_dunked = true
 		
 func look_at_player():
-	#var player_head_x = player_head.global_position.x
-	#var player_head_y = player_head.global_position.y
-	#var player_head_z = player_head.global_position.z
-	#var player_head_pos: Vector3 = Vector3(player_head_x,player_head_y,player_head_z)
+	if !is_parachuting:
+		#var player_head_x = player_head.global_position.x
+		#var player_head_y = player_head.global_position.y
+		#var player_head_z = player_head.global_position.z
+		#var player_head_pos: Vector3 = Vector3(player_head_x,player_head_y,player_head_z)
 
-	look_at(player_target.global_position)
+		look_at(player_target.global_position)
 	
 
 func _physics_process(_delta: float) -> void:
@@ -258,6 +259,7 @@ func _physics_process(_delta: float) -> void:
 
 	else:
 		if is_in_group("Dropping") and detect_surface.is_colliding():
+			print(name," is colliding")
 			remove_from_group("Dropping")
 			add_to_group("Dropped")
 			if is_parachuting:
