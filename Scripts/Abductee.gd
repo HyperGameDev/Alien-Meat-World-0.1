@@ -115,10 +115,7 @@ var head_string: String
 @export var velocity : int = 60
 @export var grab_distance_offset : float = 14.0
 
-var planeToMoveOn : Plane
 var has_been_grabbed : bool = false
-#var grab_position : Vector2 = Vector2(0,0)
-var cursorPosition_on_grab : Vector2 = Vector2(0,0)
 
 var is_in_dunk : bool = false
 var has_been_dunked : bool = false
@@ -201,19 +198,6 @@ func _ready():
 func _process(_delta: float) -> void:
 	if is_enemy:
 		look_at_player()
-	if is_in_group("Grabbed"):
-		#look_at_player()
-		# Helps prevent visual arm stretch timing issues, but leads to un-is_interactable abductees:
-		#await get_tree().create_timer(.5).timeout
-		if Input.is_action_just_pressed("Action") or Globals.is_game_state == Globals.is_game_states.OVER: # Dropping
-			is_interactable = false
-			if is_in_group("Grabbed"):
-				add_to_group("Dropping")
-				remove_from_group("Grabbed")
-				has_been_grabbed = false
-				#print("Abductee dropping emitted grab_ended")
-				Messenger.grab_ended.emit()
-				linear_velocity = Vector3.ZERO
 	if is_in_dunk:
 		Messenger.meat_in_dunk.emit(self)
 		has_been_dunked = true
@@ -230,6 +214,12 @@ func look_at_player():
 func _physics_process(_delta: float) -> void:
 	interactable_indicator.global_position.x = global_position.x
 	interactable_indicator.global_position.z = global_position.z
+	
+	if is_in_group("Grabbed"):
+		if has_been_grabbed:
+			_be_held()
+		else:
+			_has_been_grabbed()
 	
 	if !spawned:
 		spawn_me()
@@ -265,15 +255,6 @@ func _physics_process(_delta: float) -> void:
 			#print("Dropped Meat Object deleted by Z")
 			queue_free()
 		
-			
-	if is_in_group("Grabbed"):
-		interactable_indicator.visible = false
-		if !has_been_grabbed:
-			_has_been_grabbed()
-			has_been_grabbed = true
-
-		self.global_position = grab_target.global_position
-		
 
 	else:
 		if is_in_group("Dropping") and detect_surface.is_colliding():
@@ -288,7 +269,20 @@ func _physics_process(_delta: float) -> void:
 				self.reparent(detect_surface.get_collider().get_owner())
 				#print("it should be doing that")
 			
-	
+
+func _be_held():
+	interactable_indicator.visible = false
+
+	self.global_position = grab_target.global_position
+	#look_at_player()
+	if Input.is_action_just_pressed("Action") or Globals.is_game_state == Globals.is_game_states.OVER: # Dropping
+		is_interactable = false
+		has_been_grabbed = false
+		add_to_group("Dropping")
+		remove_from_group("Grabbed")
+		Messenger.grab_ended.emit()
+		linear_velocity = Vector3.ZERO	
+
 func on_abductee_hovered(target): # Called when ABDUCTEE_INTERACT layer is seen by abduct_ray
 	#print("Something hovered emitted! On...?")
 	if target == self:
@@ -372,15 +366,8 @@ func on_dunk_is_at_position(dunk_position):
 		self.add_to_group("Dunked")
 	
 func _has_been_grabbed():
+	has_been_grabbed = true
 	Messenger.grab_begun.emit(self)
-	var plane_z_position: float = player.global_position.z
-	planeToMoveOn = Plane(Vector3(0,0,1), plane_z_position)
-	#cursorPosition_on_grab = get_viewport().get_mouse_position()
-	#print("Initial grab pos: ",cursorPosition_on_grab)
-	
-	
-
-	#self.reparent(get_tree().get_current_scene())
 
 
 func on_meat_entered_dunk(dunked_body):

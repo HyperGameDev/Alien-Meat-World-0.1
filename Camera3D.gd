@@ -33,11 +33,9 @@ const CAM_X_OFFSET: float = 0.0
 @export var interact_collision: Area3D
 
 
-# Temporary Grab Mechanic vars
-var is_grabbed = false
-var grab_offset: Vector3 = Vector3(0, 0, 0)
-var attack_ray_pos: Vector3 = Vector3(0, 0, 0)
+var is_grabbing = false
 @export var is_attempting_grab = false
+
 
 var menu_pickable: bool = false
 
@@ -65,6 +63,7 @@ func _ready():
 		
 	Messenger.eating_begun.connect(on_eating_begun)
 	Messenger.eating_finished.connect(on_eating_finished)
+	Messenger.grab_begun.connect(on_grab_begun)
 	Messenger.grab_ended.connect(on_grab_ended)
 	Messenger.powerup_menu_begin.connect(on_powerup_menu_begin)
 	Messenger.powerup_chosen.connect(on_powerup_chosen)
@@ -100,10 +99,12 @@ func _physics_process(_delta):
 	self.rotation = cam_target.rotation
 
 	#print("Cam Y: ", position.y, "; Offset Y: ", cam_y_offset)
+	
+func on_grab_begun(target):
+	is_grabbing = true	
 
 func on_grab_ended():
-	#await get_tree().create_timer(.5).timeout
-	#print("on_grab_ended awaited on Camera3D")
+	is_grabbing = false
 	is_attempting_grab = false
 
 func _process(delta: float) -> void:
@@ -144,7 +145,8 @@ func _process(delta: float) -> void:
 	abduct_ray()
 	
 	# Attacking
-	attack_ray()
+	if !is_grabbing:
+		attack_ray()
 	
 	if menu_pickable:
 		# Main Menu Button detection
@@ -227,7 +229,6 @@ func abduct_ray():
 func attack_ray(): ## Detects obstacles, NPC's and Meat/Abductee; emits attack_target to hitpoints, and returns attack_target to Meat/Abductee within this script
 	var raycast_result = hover_ray(2 + 4 + 8 + 16384,true)
 	if !raycast_result.is_empty():
-		attack_ray_pos = raycast_result.position
 		var attack_target = raycast_result.collider
 		Messenger.attack_target.emit(attack_target)
 		
