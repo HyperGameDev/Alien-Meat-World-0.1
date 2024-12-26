@@ -231,9 +231,9 @@ func attack_ray(): ## Detects obstacles, NPC's and Meat/Abductee; emits attack_t
 		var attack_target = raycast_result.collider
 		Messenger.attack_target.emit(attack_target)
 		
-		
-		if attack_target.is_in_group("Abductee") and !is_attempting_grab:
-			abductee_grabbed(attack_target)
+		if Input.is_action_just_pressed("Action"):
+			if attack_target.is_in_group("Abductee") and !is_attempting_grab:
+				abductee_grabbed(attack_target)
 		
 func abductee_grabbed(attack_target):
 	is_attempting_grab = true
