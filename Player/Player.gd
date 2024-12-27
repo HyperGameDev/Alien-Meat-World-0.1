@@ -76,8 +76,6 @@ var teleported : bool = false
 
 var look_pos : Vector3
 
-var is_holding : bool = false
-
 var attack : bool = false
 var hit_object : Node3D
 var arm_l_attacking : bool = false
@@ -393,11 +391,11 @@ func attack_action_tween(amount):
 			aim_bone_at_target(attacking_limb,hit_object,amount)
 			if is_hand_state == is_hand_states.HELD:
 				if amount == 1.0:
-					is_holding = true
+					pass
 					#print("Arm fully extended!")
 			else:
 				if amount == 0.0:
-					is_holding = false
+					pass
 					#print("Arm fully retracted!")
 			 
 	else:

@@ -349,7 +349,7 @@ func on_player_head_hover(is_hovered,is_head):
 				if !legs_either_1:
 					standup_mid = true
 			
-			print("Heal attempted; Player has ",current_health," health on ",debug_which_part())
+			print("Heal attempted; Player has ",current_health," health on ",debug_which_part()," ; was_head: ",is_head)
 			if floorf(current_health) < max_health:
 				current_health += snappedf(1.0,0.5)
 				var heal_amount: String = "+1"
