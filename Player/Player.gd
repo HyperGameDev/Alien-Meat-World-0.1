@@ -1,5 +1,9 @@
 extends CharacterBody3D
 
+
+@export var is_hand_state: is_hand_states
+enum is_hand_states {IDLE,ATTACKING,HELD}
+
 var horiz_speed : float = 0.0
 const HORIZ_SPEED : float = 4.0
 const JUMP_VELOCITY : int = 5
@@ -55,7 +59,6 @@ var orb_onscreen : bool = false
 @onready var terrain_controller : Node3D = %TerrainController_inScene
 var terrain_slowdown : bool = false
 
-var is_grabbing : bool = false
 var is_eating : bool = false
 
 
@@ -128,10 +131,7 @@ func _ready():
 	#armature_hurt.visible = true # So it can be hidden in editor
 	
 func _physics_process(delta):
-	
-	#if is_grabbing:
-		#arm_to_use(hit_object)
-	if is_holding:
+	if is_hand_state == is_hand_states.HELD:
 		grab_reach_begin(1.0)
 	if Globals.is_game_state == Globals.is_game_states.BEGIN and !teleported:
 		new_game_teleport()
@@ -223,12 +223,12 @@ func on_mouse_pos_3d(mouse):
 #	skeleton.set_bone_pose_rotation(arm_r, look_pos)
 #	skeleton.set_bone_pose_rotation(arm_l, look_pos)
 
-
 func on_something_attacked(what_is_hit):
 	if !attack:
 		attack = true
 		arm_to_use(what_is_hit)
-		use_the_arm(what_is_hit)
+		if is_hand_state == is_hand_states.IDLE:
+			use_the_arm(what_is_hit)
 	
 func arm_to_use(target):
 	#var target_x : float = target.global_position.x
@@ -258,14 +258,14 @@ func arm_to_use(target):
 			if arm_r_dead:
 				arm_l_attacking = true
 				arm_r_attacking = false
-				if is_grabbing:
+				if is_hand_state == is_hand_states.HELD:
 					attacking_limb = arm_l_index + extra_index
 				else:
 					attacking_limb = arm_l_index
 			if arm_l_dead:
 				arm_r_attacking = true
 				arm_l_attacking = false
-				if is_grabbing:
+				if is_hand_state == is_hand_states.HELD:
 					attacking_limb = arm_r_index + extra_index
 				else:
 					attacking_limb = arm_r_index
@@ -276,19 +276,21 @@ func arm_to_use(target):
 				if direction.x <= 0.0:
 					arm_l_attacking = true
 					arm_r_attacking = false
-					if is_grabbing:
+					if is_hand_state == is_hand_states.HELD:
 						attacking_limb = arm_l_index + extra_index
 					else:
 						attacking_limb = arm_l_index
 				else:
 					arm_r_attacking = true
 					arm_l_attacking = false
-					if is_grabbing:
+					if is_hand_state == is_hand_states.HELD:
 						attacking_limb = arm_r_index + extra_index
 					else:
 						attacking_limb = arm_r_index
 				
 func use_the_arm(target):
+	is_hand_state = is_hand_states.ATTACKING
+	
 	if arm_r_attacking:
 		collision_area_armr_upper.set_deferred("disabled", true)
 		collision_area_armr_lower.set_deferred("disabled", true)
@@ -365,6 +367,7 @@ func use_the_arm(target):
 			
 	
 	attack = false
+	is_hand_state = is_hand_states.IDLE # Post-attack idle hand
 
 func grab_reach_begin(amount):
 	if hit_object != null:
@@ -374,13 +377,11 @@ func grab_reach_begin(amount):
 		aim_bone_at_target(attacking_limb,null,amount)
 		
 func extend_arm():
-	print("Arm extending!")
-	print("is_grabbing: ",is_grabbing,", is_holding: ",is_holding)
+	#print("Arm extending!")
 	get_tree().create_tween().tween_method(attack_action_tween,0.0,1.0,attack_duration)
 		
 func retract_arm():
-	print("Arm retracting!")
-	print("is_grabbing: ",is_grabbing,", is_holding: ",is_holding)
+	#print("Arm retracting!")
 	get_tree().create_tween().tween_method(attack_action_tween,1.0,0.0,attack_duration)
 	
 func attack_action_tween(amount):
@@ -390,18 +391,14 @@ func attack_action_tween(amount):
 	if hit_object != null:
 			#print("Object isn't Null (", hit_object.name, ")")
 			aim_bone_at_target(attacking_limb,hit_object,amount)
-			#if !is_grabbing:
-				#aim_bone_at_target(attacking_limb - 1,hit_object,amount)
-			if is_grabbing:
+			if is_hand_state == is_hand_states.HELD:
 				if amount == 1.0:
 					is_holding = true
-					print("Arm fully extended!")
-					print("is_grabbing: ",is_grabbing,", is_holding: ",is_holding)
+					#print("Arm fully extended!")
 			else:
 				if amount == 0.0:
 					is_holding = false
-					print("Arm fully retracted!")
-					print("is_grabbing: ",is_grabbing,", is_holding: ",is_holding)
+					#print("Arm fully retracted!")
 			 
 	else:
 			print("Grab target Null!")
@@ -441,7 +438,7 @@ func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 #region Healthy Arm Code
 	var target_pos: Vector3 = Vector3(0,0,0)
 	
-	if is_grabbing:
+	if is_hand_state == is_hand_states.HELD:
 		# Defines the global position of the target as a local position relative to the skeleton.
 		target_pos = skeleton.to_local(grab_target.global_position)
 	else: # is attacking
@@ -470,7 +467,7 @@ func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 #region Hurt Arm Code
 	var target_pos_hurt: Vector3 = Vector3(0,0,0)
 	
-	if is_grabbing:
+	if is_hand_state == is_hand_states.HELD:
 		# Defines the global position of the target as a local position relative to the skeleton.
 		target_pos_hurt = skeleton_hurt.to_local(grab_target.global_position)
 	else: # is attacking
@@ -595,44 +592,46 @@ func on_game_play():
 	
 	
 func on_grab_begun(target):
-	is_grabbing = true
-	print("Grab begun!")
-	print("is_grabbing: ",is_grabbing,", is_holding: ",is_holding)
-	arm_to_use(target)
-	hit_object = grab_target
+	match is_hand_state:
+		is_hand_states.HELD:
+			print(target.name," not grabbed!")
+		is_hand_states.IDLE:
+			if target.is_in_group("Grabbed"):
+				print(target.name," is grabbed!") 
+				
+				is_hand_state = is_hand_states.HELD
+				
+				arm_to_use(target)
+				hit_object = grab_target
+			
+				if arm_r_attacking:
+					animation.set("parameters/hold right/blend_amount", 1.0)
+				if arm_l_attacking:
+					animation.set("parameters/hold left/blend_amount", 1.0)
+					
+				if head_attacking:
+					animation.process_priority = 0 #Pause head rotation
+					animation.set("parameters/hungry/request", 1)
+				else:
+					animation.set("parameters/hungry/request", 1)
+				extend_arm()
+		
+		
+			
+func on_grab_ended():	
+	animation.set("parameters/hungry/request", 3)
+	await get_tree().create_timer(.2).timeout
+	if !is_eating:
+		animation.process_priority = -1
+		
+	retract_arm()
 	
 	if arm_r_attacking:
-		animation.set("parameters/hold right/blend_amount", 1.0)
+		animation.set("parameters/hold right/blend_amount", 0.0)
 	if arm_l_attacking:
-		animation.set("parameters/hold left/blend_amount", 1.0)
-		
-	if head_attacking:
-		animation.process_priority = 0 #Pause head rotation
-		animation.set("parameters/hungry/request", 1)
-	else:
-		animation.set("parameters/hungry/request", 1)
-	extend_arm()
+		animation.set("parameters/hold left/blend_amount", 0.0)
 	
-func on_grab_ended():
-	print("Grab ended!")
-	print("is_grabbing: ",is_grabbing,", is_holding: ",is_holding)
-	var held_count: int = get_tree().get_nodes_in_group("Grabbed").size()
-	if held_count <= 0:
-		is_holding = false
-		print("NOTHING GRABBED, is_holding: ",is_holding)
-	if is_grabbing:
-		animation.set("parameters/hungry/request", 3)
-		await get_tree().create_timer(.2).timeout
-		is_grabbing = false
-		if !is_eating:
-			animation.process_priority = -1
-			
-		retract_arm()
-		
-		if arm_r_attacking:
-			animation.set("parameters/hold right/blend_amount", 0.0)
-		if arm_l_attacking:
-			animation.set("parameters/hold left/blend_amount", 0.0)
+	is_hand_state = is_hand_states.IDLE # Post-grab idle hand
 	
 func on_eating_begun():
 	is_eating = true

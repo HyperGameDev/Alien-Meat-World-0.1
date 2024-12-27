@@ -27,6 +27,7 @@ func _process(delta):
 		information3.visible = true
 		%Label_showFPS.text = "FPS: " + str(Engine.get_frames_per_second()).pad_zeros(3)
 		%Label_showState.text = "State: " + str(Globals.is_game_states.keys()[Globals.is_game_state])
+		%Label_showState2.text = "Player hand state: " + str(player.is_hand_states.keys()[player.is_hand_state])
 	else:
 		information.visible = false
 		information2.visible = false

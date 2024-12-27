@@ -4,6 +4,9 @@ class_name Abductee
 
 # Don't add onreadys because of Herbivore
 
+var last_hovered_abductee_was_me : bool = false
+var last_hovered_thing_not_abductee : bool = false
+
 var is_interactable: bool = false
 var clothing_top: StandardMaterial3D = null
 var clothing_bottom: StandardMaterial3D = null
@@ -165,7 +168,8 @@ func _ready():
 	mouse_exited.connect(_on_mouse_exited)
 	
 	Messenger.abductee_hovered.connect(on_abductee_hovered)
-	
+	Messenger.grab_begun.connect(on_grab_begun)
+	Messenger.grab_ended.connect(on_grab_ended)
 	
 	Messenger.meat_entered_dunk.connect(on_meat_entered_dunk)
 	Messenger.meat_left_dunk.connect(on_meat_left_dunk)
@@ -216,21 +220,27 @@ func _physics_process(_delta: float) -> void:
 	interactable_indicator.global_position.x = global_position.x
 	interactable_indicator.global_position.z = global_position.z
 	
-	if is_in_group("Grabbed"):
-		if has_been_grabbed:
-			_be_held()
-		else:
-			_has_been_grabbed()
-	
-	if !spawned:
-		spawn_me()
+	grabbed_check()
+	spawn_check()
+	availability_check()
+	y_axis_removal_check()
+	z_axis_removal_check()
+	dropping_to_dropped()
 		
+func grabbed_check():
+	if has_been_grabbed:
+		_be_held()
+		
+func spawn_check():
+	if !spawned:
+		spawn_me()	
 	else:
 		if is_interactable:
 			set_collision_layer_value(Globals.collision.ABDUCTEE, true)
 		else:
 			set_collision_layer_value(Globals.collision.ABDUCTEE, false)
-			
+				
+func availability_check():
 	if is_available:
 		set_collision_layer_value(Globals.collision.ABDUCTEE_INTERACT, true)
 		visible = true
@@ -238,9 +248,7 @@ func _physics_process(_delta: float) -> void:
 		set_collision_layer_value(Globals.collision.ABDUCTEE, false)
 		visible = false
 		
-	#if is_in_group("Dropped"):
-		#set_collision_mask_value(1, false)
-		
+func y_axis_removal_check():
 	if self.global_position.y <= -50:
 		if is_in_group("Dropped"):
 			pass
@@ -250,48 +258,39 @@ func _physics_process(_delta: float) -> void:
 				fell = true
 				#print("DEFAULT Meat Object deleted by Y")
 		queue_free()
-		
+
+func z_axis_removal_check():
 	if self.global_position.z > 4:
 		if is_in_group("Dropped"):
 			#print("Dropped Meat Object deleted by Z")
 			queue_free()
-		
-
-	else:
-		if is_in_group("Dropping") and detect_surface.is_colliding():
-			print(name," is colliding")
-			remove_from_group("Dropping")
-			add_to_group("Dropped")
-			if is_parachuting:
-				parachuting(false)
-			if interact_zone.interact_area.get_overlapping_bodies().has(self):
-				is_interactable = true
-				interactable_indicator.visible = true
-			if !detect_surface.get_collider() == self.get_parent():
-				self.reparent(detect_surface.get_collider().get_owner())
-				#print("it should be doing that")
 			
+func dropping_to_dropped():
+	if is_in_group("Dropping") and detect_surface.is_colliding():
+		#print(name," is colliding")
+		remove_from_group("Dropping")
+		add_to_group("Dropped")
+		if is_parachuting:
+			parachuting(false)
+		if interact_zone.interact_area.get_overlapping_bodies().has(self):
+			is_interactable = true
+			interactable_indicator.visible = true
+		if !detect_surface.get_collider() == self.get_parent():
+			self.reparent(detect_surface.get_collider().get_owner())
 
-func _be_held():
-	interactable_indicator.visible = false
-
-	self.global_position = grab_target.global_position
-	#look_at_player()
-	if Input.is_action_just_pressed("Action") or Globals.is_game_state == Globals.is_game_states.OVER: # Dropping
-		is_interactable = false
-		has_been_grabbed = false
-		add_to_group("Dropping")
-		remove_from_group("Grabbed")
-		Messenger.grab_ended.emit()
-		linear_velocity = Vector3.ZERO	
+func _drop_me():
+	is_interactable = false
+	has_been_grabbed = false
+	add_to_group("Dropping")
+	remove_from_group("Grabbed")
+	print(name, " removed from group Grabbed")
+	linear_velocity = Vector3.ZERO	
 
 func on_abductee_hovered(target): # Called when ABDUCTEE_INTERACT layer is seen by abduct_ray
-	#print("Something hovered emitted! On...?")
 	if target == self:
 		if has_node("Marker3D"):
 			#print("Something hovered emitted! On ",self,"!")
 			Messenger.something_hovered.emit(self)
-				
 				
 func spawn_me():
 	spawned = true
@@ -366,11 +365,21 @@ func on_dunk_is_at_position(dunk_position):
 		self.global_position = dunk_position - abduction_offset
 		collision.disabled = true
 		self.add_to_group("Dunked")
-	
-func _has_been_grabbed():
-	has_been_grabbed = true
-	Messenger.grab_begun.emit(self)
 
+func on_grab_begun(target):
+	if target == self:
+		has_been_grabbed = true
+		
+func _be_held():
+	interactable_indicator.visible = false
+
+	self.global_position = grab_target.global_position
+	#look_at_player()	
+	
+func on_grab_ended():
+	if is_in_group("Grabbed"):
+		print(name," thinks grab ended")
+		_drop_me()
 
 func on_meat_entered_dunk(dunked_body):
 	if dunked_body == self:

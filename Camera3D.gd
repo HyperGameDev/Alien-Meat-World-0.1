@@ -3,6 +3,8 @@ extends Camera3D
 @onready var window_size : Vector2 = get_window().size
 @onready var mouse_pos : Vector2 = get_viewport().get_mouse_position()
 
+var general_ray_result = null
+
 var sensitivity: float = 1000.0 
 var x_axis: float = 0.0
 var y_axis: float = 0.0
@@ -31,10 +33,6 @@ const CAM_X_OFFSET: float = 0.0
 @export var player_proximity: Area3D
 @export var powerup_proximity: Area3D
 @export var interact_collision: Area3D
-
-
-var is_grabbing = false
-@export var is_attempting_grab = false
 
 
 var menu_pickable: bool = false
@@ -101,11 +99,10 @@ func _physics_process(_delta):
 	#print("Cam Y: ", position.y, "; Offset Y: ", cam_y_offset)
 	
 func on_grab_begun(target):
-	is_grabbing = true	
+	pass
 
 func on_grab_ended():
-	is_grabbing = false
-	is_attempting_grab = false
+	pass
 
 func _process(delta: float) -> void:
 	if x_axis != 0.0 or y_axis != 0.0:
@@ -134,6 +131,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("Action"):
 		action_button_pressed()
 		
+	if Input.is_action_just_pressed("Action"):
+		action_button_just_pressed()
+		
 
 	# Player Hover implementation
 	player_hover_ray()
@@ -145,7 +145,7 @@ func _process(delta: float) -> void:
 	abduct_ray()
 	
 	# Attacking
-	if !is_grabbing:
+	if player.is_hand_state == player.is_hand_states.IDLE:
 		attack_ray()
 	
 	if menu_pickable:
@@ -171,7 +171,9 @@ func _input(event: InputEvent) -> void: ## Cursor movement detection
 		
 func action_button_pressed():
 	force_hide_arrows()
-
+	
+func action_button_just_pressed():
+	player_grab_check(general_ray_result)
 	
 func force_hide_arrows():
 	get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
@@ -202,8 +204,20 @@ func hover_ray(mask,has_mask): ## Raycast that receives a target via argument
 	return space.intersect_ray(ray_query)
 
 func general_ray():
-	var general_ray_result = hover_ray(0,false)
+	general_ray_result = hover_ray(0,false)
 	Messenger.anything_seen.emit(general_ray_result)
+	
+func player_grab_check(target):
+	if target == null:
+		return
+	if player.is_hand_state == player.is_hand_states.HELD:
+		if target["collider"].is_in_group("Abductee") and !target["collider"].is_in_group("Grabbed"):
+			pass
+			print(target["collider"].name, " is new abductee! Grab not ended.",)
+		else:
+			print(target["collider"].name, " click made camera emit Grab End!")
+			Messenger.grab_ended.emit()
+			
 
 func main_menu_ray():
 	var raycast_result = hover_ray(64,true)
@@ -233,14 +247,15 @@ func attack_ray(): ## Detects obstacles, NPC's and Meat/Abductee; emits attack_t
 		Messenger.attack_target.emit(attack_target)
 		
 		if Input.is_action_just_pressed("Action"):
-			if attack_target.is_in_group("Abductee") and !is_attempting_grab:
+			if attack_target.is_in_group("Abductee") and player.is_hand_state == player.is_hand_states.IDLE:
 				abductee_grabbed(attack_target)
 		
 func abductee_grabbed(attack_target):
-	is_attempting_grab = true
 	var grabbed_abductee = attack_target
 	if grabbed_abductee.is_clone:
 		grabbed_abductee.add_to_group("Grabbed")
+		print(grabbed_abductee.name, ", an old clone, added to group Grabbed")
+		Messenger.grab_begun.emit(grabbed_abductee)
 	else: # Abductee is NOT a clone
 		if !head_grab and arm_r.current_health == 0 and arm_l.current_health == 0: # Head is grabbing
 			abductee_grabbed_by_head(grabbed_abductee)
@@ -261,8 +276,10 @@ func abductee_grabbed_by_arms(og_grabbed_abductee):
 	var abductee_cloned = Globals.abductee_objects[og_grabbed_abductee.is_type].instantiate()
 	get_tree().get_current_scene().get_node("Spawned/Spawned_Humans").add_child(abductee_cloned)
 	abductee_cloned.add_to_group("Grabbed")
+	print(abductee_cloned.name, " a FRESH clone, added to group Grabbed")
 	abductee_cloned.is_clone = true
 	abductee_cloned.is_available = true
+	Messenger.grab_begun.emit(abductee_cloned)
 	
 	set_cloned_abductee_properties(abductee_cloned,og_grabbed_abductee)
 	abductee_cloned.apply_human_appearance() # Bool is "should_randomize"

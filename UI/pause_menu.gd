@@ -55,7 +55,7 @@ var skin_progress_bar_current: int = 0
 @export var empathy_impact: float = .3
 @export var time_impact: float = 0.0506
 @export var abduction_impact: float = 1.345
-@export var skin_progression_factor: int = 20
+@export var skin_progression_factor: int = 5
 
 #region Continue Button Declaration
 @onready var button_continue: Button = %Button_Continue
