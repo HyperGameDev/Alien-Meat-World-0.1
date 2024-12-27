@@ -3,10 +3,10 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Messenger.add_powerup.connect(on_add_powerup)
-	Messenger.remove_powerup.connect(on_add_powerup)
 	Messenger.upgrade_powerup.connect(on_upgrade_powerup)
 	
 func on_add_powerup(powerup):
+	debug_message_added(powerup)
 	match powerup:
 		"Drone":
 			Globals.powerups[powerup].powerupLevel = 1
@@ -15,14 +15,18 @@ func on_add_powerup(powerup):
 			drone.position = Vector3(-1,2,0)
 			
 		"Fantastic":
-			print("Powerups script: Fantastic powerup updgraded to 1")
 			Globals.powerups[powerup].powerupLevel = 1
 			Messenger.arm_health_update.emit()
+			
+		"Grab Glove":
+			pass
+			
 			
 		_:
 			pass
 			
-func on_upgrade_powerup(powerup):
+func on_upgrade_powerup(powerup: String):
+	debug_message_upgraded(powerup)
 	match powerup:
 		"Drone":
 			Globals.powerups[powerup].powerupLevel = 2
@@ -33,12 +37,16 @@ func on_upgrade_powerup(powerup):
 		"Fantastic":
 			Globals.powerups[powerup].powerupLevel = 2
 			Messenger.arm_health_update.emit()
+			
+		"Grab Glove":
+			Globals.powerups[powerup].powerupLevel = 2
+			
 		
 		_:
 			pass
 			
-func on_remove_powerup(powerup):
-	match powerup:
-		"Fantastic":
-			print("Powerups script: Fantastic powerup removed :(")
-			Globals.powerups[powerup].powerupLevel = 0
+func debug_message_added(powerup):
+	print("Powerups script: " + powerup + " powerup added!")
+	
+func debug_message_upgraded(powerup):
+	print("Powerups script: " + powerup + " powerup upgraded!")

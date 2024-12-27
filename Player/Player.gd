@@ -609,11 +609,9 @@ func on_grab_begun(target):
 				if arm_l_attacking:
 					animation.set("parameters/hold left/blend_amount", 1.0)
 					
-				if head_attacking:
-					animation.process_priority = 0 #Pause head rotation
-					animation.set("parameters/hungry/request", 1)
-				else:
-					animation.set("parameters/hungry/request", 1)
+				animation.process_priority = 0 #Pause head rotation
+				animation.set("parameters/hungry/request", 1)
+					
 				extend_arm()
 		
 		

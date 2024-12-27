@@ -571,7 +571,7 @@ func on_body_entered(body): ## Detects abductees
 		
 func on_body_exited(body): ## Detects abductees
 	if body.is_in_group("Abductee"):
-		print(body.name, " exited the interact zone.")
+		#print(body.name, " exited the interact zone.")
 		body.is_interactable = false
 		body.interactable_indicator.visible = false
 		if body.is_in_group("Grabbed"):

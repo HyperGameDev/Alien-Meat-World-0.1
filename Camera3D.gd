@@ -140,13 +140,19 @@ func _process(delta: float) -> void:
 	
 	# Score Dunk ray
 	score_dunk_ray()
-	
-	# Interactable Detection implementation
-	abduct_ray()
+
 	
 	# Attacking
-	if player.is_hand_state == player.is_hand_states.IDLE:
-		attack_ray()
+	match player.is_hand_state:
+		player.is_hand_states.IDLE:
+			attack_ray(false)
+			abduct_ray(false)
+		player.is_hand_states.HELD:
+			if has_grab_glove():
+				attack_ray(true)
+				abduct_ray(true)
+		_:
+			pass
 	
 	if menu_pickable:
 		# Main Menu Button detection
@@ -178,6 +184,12 @@ func action_button_just_pressed():
 func force_hide_arrows():
 	get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
 	get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_back").force_hide_arrow()
+	
+func has_grab_glove():
+	return Globals.powerups["Grab_Glove"].powerupLevel > 0 as bool
+	
+func grab_glove_level():
+	return Globals.powerups["Grab_Glove"].powerupLevel as int
 
 func hover_ray(mask,has_mask): ## Raycast that receives a target via argument
 	if get_viewport() == null:
@@ -227,40 +239,80 @@ func main_menu_ray():
 		if Input.is_action_just_pressed("Action"):
 			Messenger.button_chosen.emit(hover_target)
 
-func abduct_ray():
+func abduct_ray(do_grab_glove):
 	var raycast_result = hover_ray(8,true)
 	if !raycast_result.is_empty():
 		var grabbed_abductees: Array = get_tree().get_nodes_in_group("Grabbed")
-		#print("Interact Ray saw something: ",raycast_result)
-		abduction_target = raycast_result.collider
-		if abduction_target.is_available and grabbed_abductees.is_empty():
-			Messenger.abductee_hovered.emit(abduction_target)
 		
-		if !grabbed_abductees.is_empty():
-			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_front").force_hide_arrow()
-			get_tree().get_root().get_node("Hover_Interactables_Autoloaded/Arrow_Hover_back").force_hide_arrow()
+		if do_grab_glove:
+			var extra_abductee_target = raycast_result.collider
+			grab_glove_abduct_ray(extra_abductee_target,grabbed_abductees)
+					
+		else:
+			abduction_target = raycast_result.collider
+			if abduction_target.is_available and grabbed_abductees.is_empty():
+				Messenger.abductee_hovered.emit(abduction_target)
+			
+			if !grabbed_abductees.is_empty():
+				force_hide_arrows()
+				
+func grab_glove_abduct_ray(extra_abductee_target,grabbed_abductees):
+	print("Grab glove abduct ray attempted to run")
+	match grab_glove_level():
+		1:
+			if grabbed_abductees.size() < 2:
+				if extra_abductee_target.is_available:
+					Messenger.abductee_hovered.emit(abduction_target)
+					print("Abductee seen with grab glove Lv1")
+			else:
+				force_hide_arrows()
+		2:
+			if grabbed_abductees.size() < 4:
+				if extra_abductee_target.is_available:
+					Messenger.abductee_hovered.emit(abduction_target)
+					print("Abductee grabbed with grab glove Lv2")
+			else:
+				force_hide_arrows()
 
-func attack_ray(): ## Detects obstacles, NPC's and Meat/Abductee; emits attack_target to hitpoints, and returns attack_target to Meat/Abductee within this script
+func attack_ray(do_grab_glove: bool): ## Detects obstacles, NPC's and Meat/Abductee; emits attack_target to hitpoints, and returns attack_target to Meat/Abductee within this script
+	
 	var raycast_result = hover_ray(2 + 4 + 8 + 16384,true)
 	if !raycast_result.is_empty():
-		var attack_target = raycast_result.collider
-		Messenger.attack_target.emit(attack_target)
 		
-		if Input.is_action_just_pressed("Action"):
-			if attack_target.is_in_group("Abductee") and player.is_hand_state == player.is_hand_states.IDLE:
-				abductee_grabbed(attack_target)
-		
-func abductee_grabbed(attack_target):
-	var grabbed_abductee = attack_target
-	if grabbed_abductee.is_clone:
-		grabbed_abductee.add_to_group("Grabbed")
-		print(grabbed_abductee.name, ", an old clone, added to group Grabbed")
-		Messenger.grab_begun.emit(grabbed_abductee)
-	else: # Abductee is NOT a clone
-		if !head_grab and arm_r.current_health == 0 and arm_l.current_health == 0: # Head is grabbing
-			abductee_grabbed_by_head(grabbed_abductee)
+		if do_grab_glove:
+			var extra_abductee_target = raycast_result.collider
+			grab_glove_attack_ray(extra_abductee_target)
+			
 		else:
-			abductee_grabbed_by_arms(grabbed_abductee)
+			var attack_target = raycast_result.collider
+			Messenger.attack_target.emit(attack_target)
+			
+			
+			if attack_target.is_in_group("Abductee"):
+				if Input.is_action_just_pressed("Action"):
+					if player.is_hand_state == player.is_hand_states.IDLE:
+						abductee_grabbed(attack_target, false)
+						
+func grab_glove_attack_ray(extra_abductee_target):
+	if extra_abductee_target.is_in_group("Abductee"):
+		if Input.is_action_just_pressed("Action"):
+			abductee_grabbed(extra_abductee_target,true)
+			print("Abductee grabbed with grab glove")
+
+func abductee_grabbed(attack_target,grab_glove:bool):
+	if grab_glove:
+		pass
+	else:
+		var grabbed_abductee = attack_target
+		if grabbed_abductee.is_clone:
+			grabbed_abductee.add_to_group("Grabbed")
+			print(grabbed_abductee.name, ", an old clone, added to group Grabbed")
+			Messenger.grab_begun.emit(grabbed_abductee)
+		else: # Abductee is NOT a clone
+			if !head_grab and arm_r.current_health == 0 and arm_l.current_health == 0: # Head is grabbing
+				abductee_grabbed_by_head(grabbed_abductee)
+			else:
+				abductee_grabbed_by_arms(grabbed_abductee)
 
 func abductee_grabbed_by_head(grabbed_abductee):
 	head_grab = true
@@ -352,6 +404,7 @@ func player_hover_ray(): ## Player Hover detection
 		
 		# Emits signal with parameter 1 being "true" or "false" if the hover_target is/isn't set to %Player; parameter 2 determines if the player is attacking with its head or not.
 		Messenger.player_hover.emit(hover_target == %Player or hover_target == $"../Player/Alien_V3/DetectionAreas/Area_Head", false)
+		#print("Player hover target: ",hover_target.name)
 		Messenger.player_head_hover.emit(hover_target == $"../Player/Alien_V3/DetectionAreas/Area_Feed", false)
 #
 #		return raycast_result.collider

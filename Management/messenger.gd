@@ -63,8 +63,6 @@ signal powerup_hovered
 @warning_ignore("unused_signal")
 signal add_powerup
 @warning_ignore("unused_signal")
-signal remove_powerup
-@warning_ignore("unused_signal")
 signal upgrade_powerup
 
 @warning_ignore("unused_signal")

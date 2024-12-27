@@ -1,6 +1,8 @@
 extends CanvasLayer
 
 @export var hide_info = true
+@export var debug_powerup: String = "Grab Glove"
+
 var old_player = true
 var biped = true
 @onready var debug_menu = %Menu
@@ -50,15 +52,15 @@ func _input(event):
 		if event.is_action_pressed("Debug 6"): # Play the terrain movement
 			Messenger.movement_start.emit(false)
 		if event.is_action_pressed("Debug 7"):
-			Messenger.add_powerup.emit("Fantastic")
+			Messenger.add_powerup.emit(debug_powerup)
 			Messenger.arm_health_update.emit()
-			print("Fantastic powerup is Level 1! (via debug)")
+			print("Debug Script: The " + debug_powerup + " powerup was added!")
 		if event.is_action_pressed("Debug 8"):
-			if Globals.powerups["Drone"].powerupLevel == 1:
-				Messenger.upgrade_powerup.emit("Drone")
-				print("Drone powerup is Level 2! (via debug)")
+			if Globals.powerups[debug_powerup].powerupLevel == 1:
+				Messenger.upgrade_powerup.emit(debug_powerup)
+				print("Debug Script: The " + debug_powerup + "powerup was upgraded!")
 			else:
-				print("CANNOT upgrade Drone because there is no Drone yet!")
+				print("CANNOT upgrade requested powerup because it hasn't been acquired yet!")
 		if event.is_action_pressed("Debug 9"):
 			print("There are ",$"../Player/PowerUP_Menu-Proximity".powerup_overlaps.size()," overlaps in the array.")
 			print("Overlaps are: ",$"../Player/PowerUP_Menu-Proximity".powerup_overlaps)

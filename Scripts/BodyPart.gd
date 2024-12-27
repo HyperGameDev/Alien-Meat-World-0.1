@@ -4,7 +4,6 @@ class_name BodyPart
 
 const LIMB_MORPH_SPEED : float = 1.25
 
-@export var is_head: Area3D
 @export var player: CharacterBody3D
 @onready var camera: Camera3D = %Camera3D
 
@@ -279,7 +278,7 @@ func on_area_damaged(collided_bodypart):
 			
 			
 	# Damaged the Head?
-	if collided_bodypart == is_head and is_part == BodyPart.is_parts.HEAD and amount_to_damage != Obstacle.damage_amounts.NONE:
+	if collided_bodypart == self and is_part == BodyPart.is_parts.HEAD and amount_to_damage != Obstacle.damage_amounts.NONE:
 		if floorf(current_health) > 0.0:
 			pass
 		
@@ -311,10 +310,11 @@ func fall_death(fall_death):
 
 func on_player_head_hover(is_hovered,is_head):
 	if is_hovered or is_head:
+		#print("Player head hover detected by ",debug_which_part())
 		var grabbed_abductees : Array = get_tree().get_nodes_in_group("Grabbed")
 		var grabbed_abductees_int: int = grabbed_abductees.size()
 		if grabbed_abductees_int > 0 or is_head:
-			#print("Player hovered is ",is_hovered," with ",grabbed_abductees_int," abductee(s) hand!")
+			print("Player hovered is ",is_hovered," on the ",debug_which_part()," with ",grabbed_abductees_int," abductee(s) hand!")
 			
 			do_eating()
 			#print("do_eating emitted grab_ended")
@@ -349,11 +349,11 @@ func on_player_head_hover(is_hovered,is_head):
 				if !legs_either_1:
 					standup_mid = true
 			
-	
+			print("Heal attempted; Player has ",current_health," health on ",debug_which_part())
 			if floorf(current_health) < max_health:
 				current_health += snappedf(1.0,0.5)
 				var heal_amount: String = "+1"
-				#print("Healed ",debug_which_part()," by ",heal_amount)
+				print("Healed ",debug_which_part()," by ",heal_amount)
 
 				#if !powerup_hp:
 					#heal_amount = "+1"

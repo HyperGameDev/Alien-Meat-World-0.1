@@ -71,9 +71,9 @@ var powerups := {
 		powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_02.png",
 		powerupLevel = 0
 	},
-	Powerup3 = {
-		powerupName = "PowerUp No. Three",
-		powerupDescription = "It might be strong.",
+	Grab_Glove = {
+		powerupName = "Grab Glove",
+		powerupDescription = "Can carry two things at once.",
 		powerupIcon = "res://UI/Powerups/Icons/powerup_icons_temp/powerup_icon_temp_03.png",
 		powerupLevel = 0
 	},
