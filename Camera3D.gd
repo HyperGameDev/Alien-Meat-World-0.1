@@ -344,7 +344,7 @@ func set_cloned_abductee_properties(clone, og):
 		"clothing_bottom",
 		"head_name",
 		"is_armed",
-		"has_weapon"
+		"has_weapon",
 	]
 	
 	for variable in variables:

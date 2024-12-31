@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://ewy06ksnwbt"]
+
+[ext_resource type="PackedScene" uid="uid://qlgbylau055x" path="res://Objects/Buildings/Barns/Barn_02/barn_02-01_00.blend" id="1_lkmft"]
+
+[node name="barn_02-01_00" instance=ExtResource("1_lkmft")]
+
+[node name="Barn" parent="." index="0"]
+lod_bias = 128.0
+
+[node name="Door-Big_front-R" parent="." index="1"]
+lod_bias = 128.0
+
+[node name="Door-Big_front-L" parent="." index="2"]
+lod_bias = 128.0
+
+[node name="Door-Big_back-R" parent="." index="3"]
+lod_bias = 128.0
+
+[node name="Door-Big_back-L" parent="." index="4"]
+lod_bias = 128.0

@@ -1,4 +1,11 @@
-[gd_resource type="Environment" load_steps=3 format=3 uid="uid://ctltfiohrppec"]
+[gd_resource type="Environment" load_steps=5 format=3 uid="uid://ctltfiohrppec"]
+
+[sub_resource type="Gradient" id="Gradient_l8dod"]
+offsets = PackedFloat32Array(0, 0.161871, 0.874101)
+colors = PackedColorArray(0.670588, 0, 0, 1, 0.73159, 0.185185, 0.100218, 1, 1, 1, 0.541176, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fp11n"]
+gradient = SubResource("Gradient_l8dod")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fr5e4"]
 sky_top_color = Color(0, 0.533333, 0.835294, 1)
@@ -33,3 +40,7 @@ volumetric_fog_anisotropy = -0.53
 volumetric_fog_length = 138.71
 volumetric_fog_detail_spread = 1.97926
 volumetric_fog_temporal_reprojection_amount = 0.99
+adjustment_brightness = 1.35
+adjustment_contrast = 1.39
+adjustment_saturation = 4.54
+adjustment_color_correction = SubResource("GradientTexture2D_fp11n")
