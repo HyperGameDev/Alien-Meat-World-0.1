@@ -283,7 +283,7 @@ func _drop_me():
 	has_been_grabbed = false
 	add_to_group("Dropping")
 	remove_from_group("Grabbed")
-	print(name, " removed from group Grabbed")
+	#print(name, " removed from group Grabbed")
 	linear_velocity = Vector3.ZERO	
 
 func on_abductee_hovered(target): # Called when ABDUCTEE_INTERACT layer is seen by abduct_ray
@@ -378,7 +378,7 @@ func _be_held():
 	
 func on_grab_ended():
 	if is_in_group("Grabbed"):
-		print(name," thinks grab ended")
+		#print(name," thinks grab ended")
 		_drop_me()
 
 func on_meat_entered_dunk(dunked_body):

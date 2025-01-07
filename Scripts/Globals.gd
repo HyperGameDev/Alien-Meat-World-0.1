@@ -1126,7 +1126,7 @@ func on_bodypart_healed(part):
 		_:
 			pass
 	if heal_check_arml and heal_check_armr and heal_check_legl and heal_check_legr and heal_check_head and heal_check_body:
-		print("Globals: emitted grab_ended after checked all healed limbs!")
+		#print("Globals: emitted grab_ended after checked all healed limbs!")
 		Messenger.grab_ended.emit()
 		heal_check_arml = false
 		heal_check_armr = false

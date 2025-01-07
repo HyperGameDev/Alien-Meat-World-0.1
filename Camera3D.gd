@@ -225,9 +225,9 @@ func player_grab_check(target):
 	if player.is_hand_state == player.is_hand_states.HELD:
 		if target["collider"].is_in_group("Abductee") and !target["collider"].is_in_group("Grabbed"):
 			pass
-			print(target["collider"].name, " is new abductee! Grab not ended.",)
+			#print(target["collider"].name, " is new abductee! Grab not ended.",)
 		else:
-			print(target["collider"].name, " click made camera emit Grab End!")
+			#print(target["codllider"].name, " click made camera emit Grab End!")
 			Messenger.grab_ended.emit()
 			
 
@@ -291,7 +291,7 @@ func attack_ray(do_grab_glove: bool): ## Detects obstacles, NPC's and Meat/Abduc
 			if attack_target.is_in_group("Abductee"):
 				if Input.is_action_just_pressed("Action"):
 					if player.is_hand_state == player.is_hand_states.IDLE:
-						print("Camera: ",attack_target.name, " is targeted!")
+						#print("Camera: ",attack_target.name, " is targeted!")
 						abductee_grabbed(attack_target, false)
 						
 func grab_glove_attack_ray(extra_abductee_target):

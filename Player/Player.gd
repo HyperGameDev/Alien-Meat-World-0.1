@@ -595,7 +595,7 @@ func on_grab_begun(target):
 			print("Player: ",target.name," NOT grabbed!")
 		is_hand_states.IDLE:
 			if target.is_in_group("Grabbed"):
-				print("Player: ", target.name," is grabbed!") 
+				#print("Player: ", target.name," is grabbed!") 
 				
 				is_hand_state = is_hand_states.HELD
 				

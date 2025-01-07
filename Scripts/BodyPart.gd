@@ -65,6 +65,8 @@ var last_collided_area_current
 var last_collided_area_count : int = 0
 
 var amount_to_damage: float = 0.0
+var damage_amount: int = 0
+var heal_amount: int = 0
 
 var max_health : float = 2.0
 var current_health : float = 2.0
@@ -103,10 +105,6 @@ var dict_position_limbs_l:Dictionary = {
 #var is_damaged = false
 
 
-# Materials
-var default_material = StandardMaterial3D.new()
-var damage_material = StandardMaterial3D.new()
-
 func _ready():
 #	print("Areas' Layer: ", collision_layer, "; Areas' Mask: ", collision_mask)
 
@@ -119,25 +117,31 @@ func _ready():
 	Messenger.area_damaged.connect(on_area_damaged)
 	Messenger.amount_damaged.connect(_damage_amount)
 	Messenger.instant_death.connect(fall_death)
+	
+	connect_hpcount_animations()
 	Messenger.player_head_hover.connect(on_player_head_hover)
 	Messenger.skin_clicked.connect(on_skin_clicked)
 	
 	Messenger.game_prebegin.connect(on_game_prebegin)
 	
-# Material setup
-	default_material.set_albedo(Color(0.3, 0.74, .35))
-	damage_material.set_albedo(Color(0.5, .0, .0))
-	
-# Damage Flash timer setup
-	#if !is_part == BodyPart.is_parts.BODY:
-		#limb_dmg_flash_length.timeout.connect(on_limb_dmg_flash_end)
-#
-		#material_damaged_timer.timeout.connect(on_material_damaged_timer_end)
-		#add_child(material_damaged_timer)
-		#material_damaged_timer.start(LIMB_DMG_FLASH_ON_LENGTH)
-		#
-		#material_reset_timer.one_shot = true
-		#add_child(material_reset_timer)
+
+func connect_hpcount_animations():
+	match debug_which_part():
+		"ArmL":
+			animation_hpCount_ArmL.animation_finished.connect(on_hpcount_finished)
+			
+		"ArmR":
+			animation_hpCount_ArmR.animation_finished.connect(on_hpcount_finished)
+		
+		"LegL":
+			animation_hpCount_LegL.animation_finished.connect(on_hpcount_finished)
+				
+		"LegR":
+			animation_hpCount_LegR.animation_finished.connect(on_hpcount_finished)
+			
+		"Head":
+			animation_hpCount_Head.animation_finished.connect(on_hpcount_finished)
+			
 	
 func on_area_entered(area):
 	var is_delayed = false
@@ -172,9 +176,7 @@ func on_area_damaged(collided_bodypart):
 			current_health -= max_health
 		
 		if current_health > 0.0 and !amount_to_damage == Obstacle.damage_amounts.NONE:
-#			is_damaged = true
-			# Ensure limb is visible
-			mesh.show()
+			#print(debug_which_part(),": Damaged by -1 at ",current_health," health")
 			
 			if last_collided_area_count == 0:
 				last_collided_area_old = last_collided_area_current
@@ -186,94 +188,9 @@ func on_area_damaged(collided_bodypart):
 			# Apply damage
 			if last_collided_area_count < 2:
 				current_health -= snappedf(limb_damage_amount,0.5)
+				apply_damage()
 			else:
 				reset_last_collided_area_count()
-				
-			var damage_amount: String = "-1"
-				
-			# Update the DEBUG Damage Label
-			dmg_label.text = str(current_health)
-			dmg_label_hurt.text = str(current_health)
-			
-		
-			# Inform Messenger of damage, e.g. so UI_FX can flash the screen
-			Messenger.limb_is_damaged.emit()
-			
-			
-			if is_part == BodyPart.is_parts.ARM_R or is_part == BodyPart.is_parts.ARM_L:
-				Messenger.arm_health_update.emit()
-			
-			match floorf(current_health): 
-				0.0:
-					if is_part == BodyPart.is_parts.HEAD or is_part == BodyPart.is_parts.BODY:
-						if is_part == BodyPart.is_parts.HEAD:
-							dmg_label.text = str(current_health)
-							mesh.visible = false
-							mesh_hurt.visible = false
-							
-							collision_area_head.set_deferred("disabled", true)
-							collision_area_head_hurt.set_deferred("disabled", true)
-						
-					else:
-						dmg_label.text = str(current_health)
-						
-						mesh.visible = false
-						mesh_hurt.visible = false
-						
-						collision_area_lower_hurt.set_deferred("disabled", true)
-						collision_area_upper_hurt.set_deferred("disabled", true)
-						#print("Limb: ",self.name," adjusted its collisions!")
-						
-						if is_part == BodyPart.is_parts.LEG_R or is_part == BodyPart.is_parts.LEG_L:
-							collision_hurt.set_deferred("disabled", true)
-						
-				1.0:
-					if is_part == BodyPart.is_parts.HEAD or is_part == BodyPart.is_parts.BODY:
-						if is_part == BodyPart.is_parts.HEAD:
-							dmg_label.text = str(current_health)
-							mesh.visible = false
-							mesh_hurt.visible = true
-							
-							collision_area_head.set_deferred("disabled", true)
-							collision_area_head_hurt.set_deferred("disabled", false)
-						
-					else:
-						dmg_label.text = str(current_health)
-						
-						mesh.visible = false
-						mesh_hurt.visible = true
-						
-						collision_area_lower.set_deferred("disabled", true)
-						collision_area_upper.set_deferred("disabled", true)
-						collision_area_lower_hurt.set_deferred("disabled", false)
-						collision_area_upper_hurt.set_deferred("disabled", false)
-						#print("Limb: ",self.name," adjusted its collisions!")
-						
-						if is_part == BodyPart.is_parts.LEG_R or is_part == BodyPart.is_parts.LEG_L:
-							collision.set_deferred("disabled", true)
-							collision_hurt.set_deferred("disabled", false)
-							
-				_:
-					pass
-			
-				
-			match is_part:
-				BodyPart.is_parts.ARM_L:
-					hpCount_ArmL.text = damage_amount
-					animation_hpCount_ArmL.play("hp_down")
-				BodyPart.is_parts.ARM_R:
-					hpCount_ArmR.text = damage_amount
-					animation_hpCount_ArmR.play("hp_down")
-				BodyPart.is_parts.LEG_L:
-					hpCount_LegL.text = damage_amount
-					animation_hpCount_LegL.play("hp_down")
-				BodyPart.is_parts.LEG_R:
-					hpCount_LegR.text = damage_amount
-					animation_hpCount_LegR.play("hp_down")
-				BodyPart.is_parts.HEAD:
-					hpCount_Head.text = damage_amount
-					animation_hpCount_Head.play("hp_down")
-			
 			
 	# Damaged the Head?
 	if collided_bodypart == self and is_part == BodyPart.is_parts.HEAD and amount_to_damage != Obstacle.damage_amounts.NONE:
@@ -290,7 +207,109 @@ func on_area_damaged(collided_bodypart):
 		# Restart game on Death
 		if floorf(current_health) <= 0.0:
 			Messenger.swap_game_state.emit(Globals.is_game_states.OVER)
+	
+func apply_damage():
+	# Ensure limb is visible
+	mesh.show()
+	
+	damage_amount += 1
+	var damage_amount_str: String = "-" + str(damage_amount)
+		
+	# Update the DEBUG Damage Label
+	dmg_label.text = str(current_health)
+	dmg_label_hurt.text = str(current_health)
+	
+
+	# Inform Messenger of damage, e.g. so UI_FX can flash the screen
+	Messenger.limb_is_damaged.emit()
+	
+	
+	if is_part == BodyPart.is_parts.ARM_R or is_part == BodyPart.is_parts.ARM_L:
+		Messenger.arm_health_update.emit()
+	
+	match floorf(current_health): 
+		0.0:
+			if is_part == BodyPart.is_parts.HEAD or is_part == BodyPart.is_parts.BODY:
+				if is_part == BodyPart.is_parts.HEAD:
+					dmg_label.text = str(current_health)
+					mesh.visible = false
+					mesh_hurt.visible = false
+					
+					collision_area_head.set_deferred("disabled", true)
+					collision_area_head_hurt.set_deferred("disabled", true)
+				
+			else:
+				#print(debug_which_part(),": Neither body nor head damaged")
+				dmg_label.text = str(current_health)
+				
+				mesh.visible = false
+				mesh_hurt.visible = false
+				
+				collision_area_lower_hurt.set_deferred("disabled", true)
+				collision_area_upper_hurt.set_deferred("disabled", true)
+				#print("Limb: ",self.name," adjusted its collisions!")
+				
+				if is_part == BodyPart.is_parts.LEG_R or is_part == BodyPart.is_parts.LEG_L:
+					collision_hurt.set_deferred("disabled", true)
+				
+		1.0:
+			if is_part == BodyPart.is_parts.HEAD or is_part == BodyPart.is_parts.BODY:
+				if is_part == BodyPart.is_parts.HEAD:
+					dmg_label.text = str(current_health)
+					mesh.visible = false
+					mesh_hurt.visible = true
+					
+					collision_area_head.set_deferred("disabled", true)
+					collision_area_head_hurt.set_deferred("disabled", false)
+				
+			else:
+				dmg_label.text = str(current_health)
+				
+				mesh.visible = false
+				mesh_hurt.visible = true
+				
+				collision_area_lower.set_deferred("disabled", true)
+				collision_area_upper.set_deferred("disabled", true)
+				collision_area_lower_hurt.set_deferred("disabled", false)
+				collision_area_upper_hurt.set_deferred("disabled", false)
+				#print("Limb: ",self.name," adjusted its collisions!")
+				
+				if is_part == BodyPart.is_parts.LEG_R or is_part == BodyPart.is_parts.LEG_L:
+					collision.set_deferred("disabled", true)
+					collision_hurt.set_deferred("disabled", false)
+					
+		_:
+			pass
+	
+		
+	match is_part:
+		BodyPart.is_parts.ARM_L:
+			hpCount_ArmL.text = damage_amount_str
+			animation_hpCount_ArmL.play("hp_down")
+		BodyPart.is_parts.ARM_R:
+			hpCount_ArmR.text = damage_amount_str
+			animation_hpCount_ArmR.play("hp_down")
+		BodyPart.is_parts.LEG_L:
+			hpCount_LegL.text = damage_amount_str
+			animation_hpCount_LegL.play("hp_down")
+		BodyPart.is_parts.LEG_R:
+			hpCount_LegR.text = damage_amount_str
+			animation_hpCount_LegR.play("hp_down")
+		BodyPart.is_parts.HEAD:
+			hpCount_Head.text = damage_amount_str
+			animation_hpCount_Head.play("hp_down")
 			
+func on_hpcount_finished(anim_name):
+	if anim_name == "hp_down":
+		#print(debug_which_part(),": HP_Down reset damage of ",damage_amount)
+		damage_amount = 0
+		heal_amount = 0
+	if anim_name == "hp_up":
+		#print(debug_which_part(),": HP_Up reset heals of ",heal_amount)
+		heal_amount = 0
+		damage_amount = 0
+		
+	
 		
 func on_limb_dmg_flash_end():
 	limb_dmg_flash_end = true
@@ -308,8 +327,8 @@ func fall_death(fall_death):
 
 func on_player_head_hover(is_hovered,is_head):	
 	if is_hovered or is_head:
-		print(debug_which_part(),": Is Player head hovered? ",is_hovered)
-		print(debug_which_part(),": Is head grab? ",is_head)
+		#print(debug_which_part(),": Is Player head hovered? ",is_hovered)
+		#print(debug_which_part(),": Is head grab? ",is_head)
 		
 		var grabbed_abductees : Array = get_tree().get_nodes_in_group("Grabbed")
 		var grabbed_abductees_int: int = grabbed_abductees.size()
@@ -355,8 +374,9 @@ func on_player_head_hover(is_hovered,is_head):
 			
 			if floorf(current_health) < max_health:
 				current_health += snappedf(1.0,0.5)
-				var heal_amount: String = "+1"
-				print(debug_which_part(),": Is healed by ",heal_amount)
+				heal_amount += 1
+				var heal_amount_str: String = "+" + str(heal_amount)
+				#print(debug_which_part(),": Is healed by ",heal_amount," (heal_amount == ",heal_amount,")")
 
 				#if !powerup_hp:
 					#heal_amount = "+1"
@@ -429,19 +449,19 @@ func on_player_head_hover(is_hovered,is_head):
 						
 				match is_part:
 					BodyPart.is_parts.ARM_L:
-						hpCount_ArmL.text = heal_amount
+						hpCount_ArmL.text = heal_amount_str
 						animation_hpCount_ArmL.play("hp_up")
 					BodyPart.is_parts.ARM_R:
-						hpCount_ArmR.text = heal_amount
+						hpCount_ArmR.text = heal_amount_str
 						animation_hpCount_ArmR.play("hp_up")
 					BodyPart.is_parts.LEG_L:
-						hpCount_LegL.text = heal_amount
+						hpCount_LegL.text = heal_amount_str
 						animation_hpCount_LegL.play("hp_up")
 					BodyPart.is_parts.LEG_R:
-						hpCount_LegR.text = heal_amount
+						hpCount_LegR.text = heal_amount_str
 						animation_hpCount_LegR.play("hp_up")
 					BodyPart.is_parts.HEAD:
-						hpCount_Head.text = heal_amount
+						hpCount_Head.text = heal_amount_str
 						animation_hpCount_Head.play("hp_up")
 						
 						
