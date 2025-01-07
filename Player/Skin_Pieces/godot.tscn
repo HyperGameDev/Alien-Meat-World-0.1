@@ -1,14 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyvvacu20v5hu"]
+[gd_scene load_steps=2 format=3 uid="uid://dyvvacu20v5hu"]
 
 [ext_resource type="PackedScene" uid="uid://dqifr57rq47vr" path="res://Player/Skin_Pieces/godot.blend" id="1_aonj1"]
-[ext_resource type="Material" uid="uid://hanwxa04q54n" path="res://Player/textures/skins/alien_skin_30.tres" id="2_hiqu7"]
-[ext_resource type="Material" uid="uid://bm1ey358abh8t" path="res://Player/textures/skins/alien_skin_30-02.tres" id="3_8sx65"]
-[ext_resource type="Material" uid="uid://c0o418h4welt2" path="res://Player/textures/skins/alien_skin_30-01.tres" id="4_ul804"]
 
 [node name="godot" instance=ExtResource("1_aonj1")]
 
 [node name="Godot" parent="." index="0"]
 lod_bias = 128.0
-surface_material_override/0 = ExtResource("2_hiqu7")
-surface_material_override/1 = ExtResource("3_8sx65")
-surface_material_override/2 = ExtResource("4_ul804")
