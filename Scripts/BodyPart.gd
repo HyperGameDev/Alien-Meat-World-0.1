@@ -16,8 +16,6 @@ const LIMB_MORPH_SPEED : float = 1.25
 @export var collision_area_head: CollisionShape3D
 @export var collision_area_head_hurt: CollisionShape3D
 
-@onready var bodypart_name : String = name.split("_")[1]
-
 @onready var skeleton_hurt : Node3D = player.get_node("Alien_V3/Alien/Armature_hurt/")
 
 @onready var mesh_hurt : MeshInstance3D = player.get_node("Alien_V3/Alien/Armature_hurt/Skeleton3D/Alien-hurt_" + name.split("_")[1])
@@ -308,17 +306,21 @@ func fall_death(fall_death):
 		Messenger.swap_game_state.emit(Globals.is_game_states.OVER)
 
 
-func on_player_head_hover(is_hovered,is_head):
+func on_player_head_hover(is_hovered,is_head):	
 	if is_hovered or is_head:
-		#print("Player head hover detected by ",debug_which_part())
+		print(debug_which_part(),": Is Player head hovered? ",is_hovered)
+		print(debug_which_part(),": Is head grab? ",is_head)
+		
 		var grabbed_abductees : Array = get_tree().get_nodes_in_group("Grabbed")
 		var grabbed_abductees_int: int = grabbed_abductees.size()
+		
 		if grabbed_abductees_int > 0 or is_head:
-			print("Player hovered is ",is_hovered," on the ",debug_which_part()," with ",grabbed_abductees_int," abductee(s) hand!")
+			#if grabbed_abductees_int > 0:
+				#print(debug_which_part(),": sees ",grabbed_abductees_int," held abductees.")
+			#if is_head:
+				#print(debug_which_part(),": Is head grab? (2nd Check) ",is_head)
 			
 			do_eating()
-			#print("do_eating emitted grab_ended")
-			Messenger.grab_ended.emit()
 			
 			var standup_mid : bool = false
 			var standup_high : bool = false
@@ -349,11 +351,12 @@ func on_player_head_hover(is_hovered,is_head):
 				if !legs_either_1:
 					standup_mid = true
 			
-			print("Heal attempted; Player has ",current_health," health on ",debug_which_part()," ; was_head: ",is_head)
+			#print("Heal attempted; Player has ",current_health," health on ",debug_which_part()," ; was_head: ",is_head)
+			
 			if floorf(current_health) < max_health:
 				current_health += snappedf(1.0,0.5)
 				var heal_amount: String = "+1"
-				print("Healed ",debug_which_part()," by ",heal_amount)
+				print(debug_which_part(),": Is healed by ",heal_amount)
 
 				#if !powerup_hp:
 					#heal_amount = "+1"
@@ -451,11 +454,12 @@ func on_player_head_hover(is_hovered,is_head):
 					Messenger.abductee_destroyed.emit(abductee.is_military,abductee.is_empathy_event)
 				abductee.queue_free()
 				score_dunk.dunk_ascent_timer_duration = 0.2
-				#print("Score dunking emitted grab_ended")
-				Messenger.grab_ended.emit()
-				
+			
 		if is_head:
 			camera.head_grab = false
+		else:
+			if grabbed_abductees_int > 0:
+				Messenger.bodypart_healed.emit(debug_which_part())
 			
 func debug_which_part():
 	match is_part:
@@ -480,7 +484,6 @@ func do_eating():
 	
 	await animation_blood_human.animation_finished
 	Messenger.eating_finished.emit()
-
 
 func on_skin_clicked(skin_string):
 	var skin_material: Material = Globals.skins[skin_string]["skin_material"]

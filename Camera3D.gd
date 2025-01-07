@@ -291,13 +291,15 @@ func attack_ray(do_grab_glove: bool): ## Detects obstacles, NPC's and Meat/Abduc
 			if attack_target.is_in_group("Abductee"):
 				if Input.is_action_just_pressed("Action"):
 					if player.is_hand_state == player.is_hand_states.IDLE:
+						print("Camera: ",attack_target.name, " is targeted!")
 						abductee_grabbed(attack_target, false)
 						
 func grab_glove_attack_ray(extra_abductee_target):
 	if extra_abductee_target.is_in_group("Abductee"):
 		if Input.is_action_just_pressed("Action"):
+			
+			print("Camera: ",extra_abductee_target," is targeted with GRAB GLOVE!")
 			abductee_grabbed(extra_abductee_target,true)
-			print("Abductee grabbed with grab glove")
 
 func abductee_grabbed(attack_target,grab_glove:bool):
 	if grab_glove:
@@ -306,15 +308,14 @@ func abductee_grabbed(attack_target,grab_glove:bool):
 		var grabbed_abductee = attack_target
 		if grabbed_abductee.is_clone:
 			grabbed_abductee.add_to_group("Grabbed")
-			print(grabbed_abductee.name, ", an old clone, added to group Grabbed")
 			Messenger.grab_begun.emit(grabbed_abductee)
 		else: # Abductee is NOT a clone
 			if !head_grab and arm_r.current_health == 0 and arm_l.current_health == 0: # Head is grabbing
-				abductee_grabbed_by_head(grabbed_abductee)
+				og_abductee_grabbed_by_head(grabbed_abductee)
 			else:
-				abductee_grabbed_by_arms(grabbed_abductee)
+				og_abductee_grabbed_by_arms(grabbed_abductee)
 
-func abductee_grabbed_by_head(grabbed_abductee):
+func og_abductee_grabbed_by_head(grabbed_abductee):
 	head_grab = true
 	Messenger.something_attacked.emit(grabbed_abductee)
 	await get_tree().create_timer(player.attack_duration).timeout
@@ -322,13 +323,12 @@ func abductee_grabbed_by_head(grabbed_abductee):
 	Messenger.player_head_hover.emit(false,true)
 	Messenger.abductee_destroyed.emit(grabbed_abductee.is_military,grabbed_abductee.is_empathy_event)
 	
-func abductee_grabbed_by_arms(og_grabbed_abductee):
+func og_abductee_grabbed_by_arms(og_grabbed_abductee):
 	og_grabbed_abductee.is_available = false
 	
 	var abductee_cloned = Globals.abductee_objects[og_grabbed_abductee.is_type].instantiate()
 	get_tree().get_current_scene().get_node("Spawned/Spawned_Humans").add_child(abductee_cloned)
 	abductee_cloned.add_to_group("Grabbed")
-	print(abductee_cloned.name, " a FRESH clone, added to group Grabbed")
 	abductee_cloned.is_clone = true
 	abductee_cloned.is_available = true
 	Messenger.grab_begun.emit(abductee_cloned)

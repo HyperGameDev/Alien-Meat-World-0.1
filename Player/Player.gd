@@ -592,10 +592,10 @@ func on_game_play():
 func on_grab_begun(target):
 	match is_hand_state:
 		is_hand_states.HELD:
-			print(target.name," not grabbed!")
+			print("Player: ",target.name," NOT grabbed!")
 		is_hand_states.IDLE:
 			if target.is_in_group("Grabbed"):
-				print(target.name," is grabbed!") 
+				print("Player: ", target.name," is grabbed!") 
 				
 				is_hand_state = is_hand_states.HELD
 				
@@ -613,8 +613,8 @@ func on_grab_begun(target):
 				extend_arm()
 		
 		
-			
-func on_grab_ended():	
+				
+func on_grab_ended():
 	animation.set("parameters/hungry/request", 3)
 	await get_tree().create_timer(.2).timeout
 	if !is_eating:

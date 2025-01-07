@@ -1012,6 +1012,13 @@ var abductee_objects := {
 	Abductee.is_types.TREE1: load("res://Objects/Foliage/Tree_01/tree_01_02_grabbable.tscn")
 }
 
+var heal_check_arml: bool = false
+var heal_check_armr: bool = false
+var heal_check_legl: bool = false
+var heal_check_legr: bool = false
+var heal_check_head: bool = false
+var heal_check_body: bool = false
+
 var save_path: String = "user://data.json"
 var save_data: Dictionary = {
 	skin_level = 1,
@@ -1022,6 +1029,7 @@ var save_data: Dictionary = {
 func _ready():
 	print("Update file password!")
 	Messenger.swap_game_state.connect(on_swap_game_state)
+	Messenger.bodypart_healed.connect(on_bodypart_healed)
 	Messenger.abduction.connect(on_abduction)
 	Messenger.level_update.connect(on_level_update)
 	Messenger.restart.connect(on_restart)
@@ -1099,6 +1107,35 @@ func load_materials(paths_array,destination_array):
 	for path in paths_array:
 		var loaded_material: StandardMaterial3D = load(path) as StandardMaterial3D
 		destination_array.append(loaded_material)
+		
+		
+func on_bodypart_healed(part):
+	match part:
+		"ArmL":
+			heal_check_arml = true
+		"ArmR":
+			heal_check_armr = true
+		"LegL":
+			heal_check_legl = true
+		"LegR":
+			heal_check_legr = true
+		"Head":
+			heal_check_head = true
+		"Body":
+			heal_check_body = true
+		_:
+			pass
+	if heal_check_arml and heal_check_armr and heal_check_legl and heal_check_legr and heal_check_head and heal_check_body:
+		print("Globals: emitted grab_ended after checked all healed limbs!")
+		Messenger.grab_ended.emit()
+		heal_check_arml = false
+		heal_check_armr = false
+		heal_check_legl = false
+		heal_check_legr = false
+		heal_check_head = false
+		heal_check_body = false	
+			
+		
 
 func on_level_update(level):
 	level_current = level

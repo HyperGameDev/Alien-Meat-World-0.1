@@ -108,12 +108,9 @@ signal empathy_is_healed
 @warning_ignore("unused_signal")
 signal empathy_health
 
+
 @warning_ignore("unused_signal")
-signal limbs_is_damaged
-@warning_ignore("unused_signal")
-signal limbs_is_healed
-@warning_ignore("unused_signal")
-signal limbs_health
+signal bodypart_healed
 @warning_ignore("unused_signal")
 signal arm_health_update
 
