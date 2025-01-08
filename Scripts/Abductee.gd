@@ -98,12 +98,14 @@ var weapons := {
 
 @onready var camera : Camera3D =  get_tree().get_current_scene().get_node("Camera3D")
 @onready var player : CharacterBody3D =  get_tree().get_current_scene().get_node("Player")
-@onready var player_target : Marker3D = get_tree().get_current_scene().get_node("Player/Alien_V3/Alien/Armature/Skeleton3D/Alien_Head/Alien_Headpieces/Player_Attack_Target")
+@onready var player_target : Area3D = get_tree().get_current_scene().get_node("Player/Alien_V3/DetectionAreas/Area_Feed")
 @onready var collision : CollisionShape3D = $CollisionShape3D
 #@onready var grab_target: Node3D = get_tree().get_current_scene().get_node("Player/Grab_Target/Grab_Target_offset")
 @onready var grab_target: Node3D = get_tree().get_current_scene().get_node("Player/Grab_Target")
 
-
+var aim_bone_index: int = 3
+var has_skeleton: bool = false
+@export var skeleton: Skeleton3D
 @export var parachute: MeshInstance3D
 @export var human_arm_l: MeshInstance3D
 @export var human_arm_r: MeshInstance3D
@@ -208,8 +210,49 @@ func _process(_delta: float) -> void:
 		
 func look_at_player():
 	if !is_parachuting:
-		look_at(player_target.global_position)
-		rotate_object_local(Vector3(0,1,0), 3.14)
+		#look_at(player_target.global_position)
+		#rotate_object_local(Vector3(0,1,0), 3.14)
+		if has_skeleton:
+			aim_bone_at_target(aim_bone_index,player_target,1.0,false)
+		
+func aim_bone_at_target(bone_index:int, target:Node3D, amount:float, reset:bool):
+	
+	# Sets the local transform of the bone, local to its skeleton
+	var bone_transform = skeleton.get_bone_global_pose_no_override(bone_index)
+	
+	if reset:
+		skeleton.set_bone_global_pose_override(aim_bone_index,bone_transform,amount,false)
+		
+		return
+
+	
+#region Aiming Code
+	var target_pos: Vector3 = skeleton.to_local(target.global_position)
+		
+	var direction = (target_pos - bone_transform.origin).normalized()
+
+	
+	# Defining a "new transform"
+	var new_transform: Transform3D = bone_transform
+	
+	# Running transform look at
+	new_transform = transform_look_at(new_transform, direction)
+	
+#endregion
+
+	skeleton.set_bone_global_pose_override(bone_index,new_transform,amount,true)
+
+
+func transform_look_at(_transform: Transform3D, direction: Vector3) -> Transform3D:
+	var xform: Transform3D = _transform
+	xform.basis.z = direction
+	
+	xform.basis.x = xform.basis.y.cross(direction).normalized()
+	
+	xform.basis.y = xform.basis.z.cross(xform.basis.x).normalized()
+	
+	xform.basis = xform.basis.orthonormalized()
+	return xform
 	
 
 func _physics_process(_delta: float) -> void:
@@ -327,6 +370,7 @@ func apply_human_appearance():
 		assign_weapon()
 		
 	assign_head()
+	assign_skeleton()
 		
 	human_arm_l.set_surface_override_material(0, clothing_top)
 	human_arm_r.set_surface_override_material(0, clothing_top)
@@ -355,12 +399,18 @@ func assign_head():
 	var current_head_string: String = "human_03_GIANT_00/Armature/Skeleton3D/" + head_name
 	
 	get_node(current_head_string).visible = true
+	
+func assign_skeleton():
+	skeleton = get_node("human_03_GIANT_00/Armature/Skeleton3D/")
+	has_skeleton = true
 		
 func on_dunk_is_at_position(dunk_position):
 	if has_been_dunked:
 		self.global_position = dunk_position - abduction_offset
 		collision.disabled = true
+		aim_bone_at_target(aim_bone_index,player_target,1.0,true)
 		self.add_to_group("Dunked")
+		
 
 func on_grab_begun(target):
 	if target == self:
@@ -374,7 +424,9 @@ func _be_held():
 	
 func on_grab_ended():
 	if is_in_group("Grabbed"):
-		#print(name," thinks grab ended")
+		#print(name,": thinks grab ended")
+		if not is_enemy:	
+			aim_bone_at_target(aim_bone_index,player_target,1.0,true)
 		_drop_me()
 
 func on_meat_entered_dunk(dunked_body):
