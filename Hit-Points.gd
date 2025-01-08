@@ -41,7 +41,7 @@ func am_i_hovered(attack_target):
 			Messenger.something_hovered.emit(attack_target)
 	if attack_target == $".." and Input.is_action_just_pressed("Action"):	
 		was_hit = true
-		print(get_owner().name,": emitted something_attacked!")
+		#print(get_owner().name,": emitted something_attacked!")
 		Messenger.something_attacked.emit($"..")
 
 func on_something_hit(what_got_hit,is_delayed):

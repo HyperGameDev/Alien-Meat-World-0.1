@@ -176,7 +176,7 @@ func on_area_damaged(collided_bodypart,is_projectile):
 			current_health -= max_health
 		
 		if current_health > 0.0 and !amount_to_damage == Obstacle.damage_amounts.NONE:
-			print(debug_which_part(),": Damaged by -1 at ",current_health," health")
+			#print(debug_which_part(),": Damaged by -1 at ",current_health," health")
 			
 			if not is_projectile:
 				update_collision_buffer()

@@ -208,12 +208,8 @@ func _process(_delta: float) -> void:
 		
 func look_at_player():
 	if !is_parachuting:
-		#var player_head_x = player_head.global_position.x
-		#var player_head_y = player_head.global_position.y
-		#var player_head_z = player_head.global_position.z
-		#var player_head_pos: Vector3 = Vector3(player_head_x,player_head_y,player_head_z)
-
 		look_at(player_target.global_position)
+		rotate_object_local(Vector3(0,1,0), 3.14)
 	
 
 func _physics_process(_delta: float) -> void:
@@ -374,7 +370,7 @@ func _be_held():
 	interactable_indicator.visible = false
 
 	self.global_position = grab_target.global_position
-	#look_at_player()	
+	look_at_player()
 	
 func on_grab_ended():
 	if is_in_group("Grabbed"):
