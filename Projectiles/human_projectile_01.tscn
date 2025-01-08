@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhfterlptta63"]
+
+[ext_resource type="Script" path="res://Scripts/Projectile.gd" id="1_v5wof"]
+[ext_resource type="Material" uid="uid://crf5j3t1jddne" path="res://Projectiles/bullet_01.tres" id="2_w27a8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0si7f"]
+size = Vector3(0.2, 0.125, 0.43)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ubyxr"]
+size = Vector3(0.2, 0.125, 0.43)
+
+[node name="Human_Projectile_01" type="Node3D"]
+
+[node name="Projectile" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_v5wof")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Projectile"]
+mesh = SubResource("BoxMesh_0si7f")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("2_w27a8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Projectile"]
+shape = SubResource("BoxShape3D_ubyxr")

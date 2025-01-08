@@ -3,7 +3,10 @@ extends Node
 @export var skins_unlocked: bool = true
 @export var level_current = 0
 
+@export var bullets_allowed : bool = true
+
 var run_begun : bool = false
+var powerup_menu_active : bool = false
 
 var level_label : Array = [
 	"0-0",
@@ -25,6 +28,8 @@ var is_game_state: is_game_states
 enum is_game_states {PREINTRO,INTRO,PREMENU,MENU,CONFIRM,POSTMENU,PREBEGIN,BEGIN,PLAY,PAUSE,OVER}
 
 var is_playing: bool = false
+
+@export var behind_camera_pos: float = 6.3
 
 var flying_formation_z_pos: Array =[
 	-11.,
@@ -1030,6 +1035,8 @@ func _ready():
 	print("Update file password!")
 	Messenger.swap_game_state.connect(on_swap_game_state)
 	Messenger.bodypart_healed.connect(on_bodypart_healed)
+	Messenger.powerup_menu_begin.connect(on_powerup_menu_begin)
+	Messenger.powerup_chosen.connect(on_powerup_chosen)
 	Messenger.abduction.connect(on_abduction)
 	Messenger.level_update.connect(on_level_update)
 	Messenger.restart.connect(on_restart)
@@ -1177,6 +1184,7 @@ func on_retry(is_restart):
 	empathy_unlocked = EMPATHY_UNLOCKED
 	empathy_possible = EMPATHY_POSSIBLE
 	is_playing = false
+	bullets_allowed = true
 	if !is_restart:
 		print("//~~~~ RUN RETRIED ~~~~//")
 		Messenger.level_update.emit(1)
@@ -1197,6 +1205,15 @@ func on_abduction(score_value):
 	
 #func find_obstacles(to_check: Node) --> Block_Object
 
+func on_powerup_menu_begin():
+	powerup_menu_active = true
+	bullets_allowed = false
+	
+func on_powerup_chosen(orb):
+	powerup_menu_active = false
+	await get_tree().create_timer(1).timeout
+	bullets_allowed = true
+
 func on_swap_game_state(game_state):
 	is_game_state = game_state
 	#print("Is State #: ",is_game_state)
@@ -1205,4 +1222,5 @@ func on_game_play():
 	is_playing = true
 	
 func on_game_over():
+	bullets_allowed = false
 	is_playing = false

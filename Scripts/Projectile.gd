@@ -61,11 +61,15 @@ func _physics_process(delta: float) -> void:
 	
 	#global_transform.origin = global_transform.origin +(transform.basis.z * 70) * delta
 	
-	global_position += speed * direction
+	if Globals.bullets_allowed:
+		
+		global_position += speed * direction
 		
 	if shoot_at_player:
-		if global_position.z >= 100:
+		if global_position.z >= Globals.behind_camera_pos:
 			queue_free()
 	else:
 		if global_position.z <= -200:
 			queue_free()
+
+		

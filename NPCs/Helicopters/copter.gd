@@ -40,10 +40,11 @@ var velocity = Vector3.ZERO
 var is_moving : bool = true
 var is_dying : bool = false
 
-var projectile_interval_min : float = .1
-var projectile_interval_max : float = 4.0
 
 var new_meat_spawned: bool = false
+
+var projectile_interval_min : float = .1
+var projectile_interval_max : float = 4.0
 
 @onready var projectile_interval_timer : Timer = Timer.new()
 
@@ -166,6 +167,9 @@ func health_effects():
 			var meat_new = preload("res://NPCs/Humans/human_02-01_00.tscn").instantiate()
 			get_tree().get_current_scene().get_node("Spawned/Spawned_HumanEnemies").add_child(meat_new)
 			meat_new.is_enemy = true
+			meat_new.is_clone = true
+			meat_new.is_armed = true
+			meat_new.has_weapon = meat_new.has_weapons.PISTOL
 			meat_new.is_military = true
 			meat_new.is_available = true
 			meat_new.always_spawn = true
@@ -191,14 +195,15 @@ func on_interact_npc_end(area):
 	
 	
 func on_projectile_interval_timeout():
-	if !is_dying and is_attacking:
-		projectile_interval_timer.start(randf_range(projectile_interval_min,projectile_interval_max))
-		
-		var copter_bullet = preload("res://Projectiles/copter_projectile_01.tscn").instantiate()
-		get_tree().get_current_scene().add_child(copter_bullet)
-		
-		copter_bullet.global_position = copter_mesh.global_position
-		
-		copter_bullet.get_node("Projectile").speed = .5
-		
-		copter_bullet.get_node("Projectile").direction = (player_head.global_position - copter_bullet.global_position).normalized()
+	if !is_dying and !is_moving and is_attacking:
+		if Globals.bullets_allowed:
+			projectile_interval_timer.start(randf_range(projectile_interval_min,projectile_interval_max))
+			
+			var copter_bullet = preload("res://Projectiles/copter_projectile_01.tscn").instantiate()
+			get_tree().get_current_scene().add_child(copter_bullet)
+			
+			copter_bullet.global_position = copter_mesh.global_position
+			
+			copter_bullet.get_node("Projectile").speed = .5
+			
+			copter_bullet.get_node("Projectile").direction = (player_head.global_position - copter_bullet.global_position).normalized()
