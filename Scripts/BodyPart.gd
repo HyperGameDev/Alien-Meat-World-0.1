@@ -165,7 +165,7 @@ func reset_last_collided_area_count():
 	last_collided_area_count = 0
 	#print("Collision check timer ended!")
 	
-func on_area_damaged(collided_bodypart):
+func on_area_damaged(collided_bodypart,is_projectile):
 	# Check what limb I am
 	if collided_bodypart == self:
 #		print(collided_bodypart.name.split("_")[1])
@@ -176,18 +176,16 @@ func on_area_damaged(collided_bodypart):
 			current_health -= max_health
 		
 		if current_health > 0.0 and !amount_to_damage == Obstacle.damage_amounts.NONE:
-			#print(debug_which_part(),": Damaged by -1 at ",current_health," health")
+			print(debug_which_part(),": Damaged by -1 at ",current_health," health")
 			
-			if last_collided_area_count == 0:
-				last_collided_area_old = last_collided_area_current
-			if last_collided_area_current == last_collided_area_old:
-				last_collided_area_count += 1
-			else:
-				last_collided_area_count = 0
+			if not is_projectile:
+				update_collision_buffer()
 			
 			# Apply damage
 			if last_collided_area_count < 2:
-				current_health -= snappedf(limb_damage_amount,0.5)
+				var snapped_limb_dmg: float = snappedf(limb_damage_amount,0.5)
+				current_health -= snapped_limb_dmg
+				#print(debug_which_part(),": ",snapped_limb_dmg," subtracted, health is now ",current_health,"!")
 				apply_damage()
 			else:
 				reset_last_collided_area_count()
@@ -195,10 +193,11 @@ func on_area_damaged(collided_bodypart):
 	# Damaged the Head?
 	if collided_bodypart == self and is_part == BodyPart.is_parts.HEAD and amount_to_damage != Obstacle.damage_amounts.NONE:
 		if floorf(current_health) > 0.0:
+			#print(debug_which_part(),": has 1 HP left!")
 			pass
 		
 		if floorf(current_health) >= 0.0:
-#			is_damaged = true
+			#print(debug_which_part(),": has NO HP left! :(")
 
 			# Inform UI_FX to flash the screen, and HP Bar to subtract health
 			Messenger.head_is_damaged.emit()
@@ -207,6 +206,14 @@ func on_area_damaged(collided_bodypart):
 		# Restart game on Death
 		if floorf(current_health) <= 0.0:
 			Messenger.swap_game_state.emit(Globals.is_game_states.OVER)
+			
+func update_collision_buffer():
+	if last_collided_area_count == 0:
+		last_collided_area_old = last_collided_area_current
+	if last_collided_area_current == last_collided_area_old:
+		last_collided_area_count += 1
+	else:
+		last_collided_area_count = 0
 	
 func apply_damage():
 	# Ensure limb is visible

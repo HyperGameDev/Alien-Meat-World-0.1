@@ -111,7 +111,7 @@ func on_area_entered(collided_bodypart):
 	else:
 		Messenger.amount_damaged.emit(damage_amount)
 		
-	Messenger.area_damaged.emit(collided_bodypart)
+	Messenger.area_damaged.emit(collided_bodypart,false)
 	Messenger.amount_slowed.emit(slowdown_amount)
 	
 func on_area_exited(bodypart_unarea):

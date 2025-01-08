@@ -1178,12 +1178,13 @@ func on_retry(is_restart):
 	empathy_possible = EMPATHY_POSSIBLE
 	is_playing = false
 	if !is_restart:
+		print("//~~~~ RUN RETRIED ~~~~//")
 		Messenger.level_update.emit(1)
 		Messenger.swap_game_state.emit(Globals.is_game_states.PLAY)
 		
 	
 func on_restart():
-	#print("Restart attempted")
+	print("//~~~~ GAME RESTARTED ~~~~//")
 	Messenger.retry.emit(true)
 	Messenger.level_update.emit(0)
 	get_tree().call_deferred("reload_current_scene")

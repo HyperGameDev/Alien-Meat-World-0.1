@@ -71,7 +71,7 @@ signal player_hover
 signal player_head_hover
 
 @warning_ignore("unused_signal")
-signal area_damaged
+signal area_damaged #collided thing, is_projectile bool
 @warning_ignore("unused_signal")
 signal area_undamaged
 

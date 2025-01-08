@@ -399,9 +399,10 @@ func attack_action_tween(amount):
 					#print("Arm fully retracted!")
 			 
 	else:
+		if not Globals.is_game_state == Globals.is_game_states.OVER: # This will run otherwise on game over since game overing currently ends any grabs
 			print("Grab target Null!")
-			aim_bone_at_target(attacking_limb,null,amount)
-			aim_bone_at_target(attacking_limb - 1,null,amount)
+		aim_bone_at_target(attacking_limb,null,amount)
+		aim_bone_at_target(attacking_limb - 1,null,amount)
 	
 func aim_bone_at_target(bone_index:int, target:Node3D, amount:float):
 	

@@ -21,7 +21,7 @@ var formation_queue_pos: int
 static var copters_stopped : int = 0
 
 
-@export var is_attacking: bool = false
+@export var is_attacking: bool = true
 
 @export var health_max : int = 2
 var health_current : int = health_max

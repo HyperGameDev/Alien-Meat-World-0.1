@@ -40,12 +40,12 @@ func on_area_entered(area):
 	if !player_owned:
 		if area.is_part == BodyPart.is_parts.HEAD or area.is_part == BodyPart.is_parts.ARM_R or  area.is_part == BodyPart.is_parts.ARM_L or  area.is_part == BodyPart.is_parts.LEG_R or  area.is_part == BodyPart.is_parts.LEG_L:
 			Messenger.amount_damaged.emit(damage_amount)
-			Messenger.area_damaged.emit(area)
+			Messenger.area_damaged.emit(area,true)
 			queue_free()
 			
 		if area.is_part == BodyPart.is_parts.BODY:
 			Messenger.amount_damaged.emit(Projectile.damage_amounts.NONE)
-			Messenger.area_damaged.emit(area)
+			Messenger.area_damaged.emit(area,true)
 			queue_free()
 			
 	

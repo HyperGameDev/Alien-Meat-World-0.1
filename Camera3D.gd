@@ -318,6 +318,7 @@ func abductee_grabbed(attack_target,grab_glove:bool):
 func og_abductee_grabbed_by_head(grabbed_abductee):
 	head_grab = true
 	Messenger.something_attacked.emit(grabbed_abductee)
+	print("Camera via ",grabbed_abductee,": emitted something_attacked!")
 	await get_tree().create_timer(player.attack_duration).timeout
 	grabbed_abductee.is_available = false
 	Messenger.player_head_hover.emit(false,true)
