@@ -62,8 +62,8 @@ func _ready():
 	
 	update_hitpoints.connect(health_effects)
 	set_collision_layer_value(Globals.collision.GROUND, false)
-	set_collision_layer_value(Globals.collision.NPC, false)
-	set_collision_layer_value(Globals.collision.NPC_INTERACT, true)
+	set_collision_layer_value(Globals.collision.VEHICLE, false)
+	set_collision_layer_value(Globals.collision.VEHICLE_INTERACT, true)
 	set_collision_mask_value(1, false)
 	
 	mouse_entered.connect(_on_mouse_entered)
@@ -131,6 +131,7 @@ func on_flying_is_dying(dying_enemy):
 	
 func check_for_stop(recheck_formation):
 	var z_pos_for_stopping: float = flying_formation_z_pos[formation_queue_pos]
+	
 	if recheck_formation:
 		var current_formation_queue_pos = flying_enemies_queue.get_children().find(self)
 		if formation_queue_pos != current_formation_queue_pos:
@@ -185,11 +186,11 @@ func _on_mouse_exited(): ## For hover arrow indicator
 	
 func on_interact_npc_begin(area):
 	if area == self:
-		set_collision_layer_value(Globals.collision.NPC, true)
+		set_collision_layer_value(Globals.collision.VEHICLE, true)
 	
 func on_interact_npc_end(area):
 	if area == self:
-		set_collision_layer_value(Globals.collision.NPC, false)
+		set_collision_layer_value(Globals.collision.VEHICLE, false)
 	
 	
 func on_projectile_interval_timeout():

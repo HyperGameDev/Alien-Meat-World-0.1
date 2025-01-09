@@ -65,7 +65,7 @@ func _ready():
 	Messenger.interact_obstacle_end.connect(on_interact_obstacle_end)
 	
 	set_collision_layer_value(Globals.collision.GROUND, false)
-	set_collision_layer_value(Globals.collision.NPC, false)
+	set_collision_layer_value(Globals.collision.VEHICLE, false)
 	set_collision_layer_value(Globals.collision.OBSTACLE, false)
 	set_collision_layer_value(Globals.collision.ABDUCTEE, false)
 	set_collision_layer_value(Globals.collision.PROJECTILE, false)
@@ -73,7 +73,7 @@ func _ready():
 
 	
 	set_collision_mask_value(Globals.collision.GROUND, false)
-	set_collision_mask_value(Globals.collision.NPC, false)
+	set_collision_mask_value(Globals.collision.VEHICLE, false)
 	set_collision_mask_value(Globals.collision.OBSTACLE, false)
 	set_collision_mask_value(Globals.collision.ABDUCTEE, false)
 	set_collision_mask_value(Globals.collision.PROJECTILE, false)

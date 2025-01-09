@@ -113,7 +113,7 @@ func _ready() -> void:
 	interact_area.set_collision_mask_value(Globals.collision.GROUND,false)
 	interact_area.set_collision_mask_value(Globals.collision.ABDUCTEE_INTERACT,true)
 	interact_area.set_collision_mask_value(Globals.collision.OBSTACLE_INTERACT,true)
-	interact_area.set_collision_mask_value(Globals.collision.NPC_INTERACT,true)
+	interact_area.set_collision_mask_value(Globals.collision.VEHICLE_INTERACT,true)
 	interact_area.body_entered.connect(on_body_entered)
 	interact_area.body_exited.connect(on_body_exited)
 	interact_area.area_entered.connect(on_area_entered)

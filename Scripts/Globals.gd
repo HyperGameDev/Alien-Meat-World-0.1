@@ -928,7 +928,7 @@ var skins_2 := {}
 
 enum collision {DO_NOT_SET = 0,
 				GROUND = 1,
-				NPC = 2,
+				VEHICLE = 2,
 				OBSTACLE = 3,
 				ABDUCTEE = 4,
 				CURSOR_ZONE = 5,
@@ -937,7 +937,7 @@ enum collision {DO_NOT_SET = 0,
 				PROJECTILE = 8,
 				ABDUCTEE_INTERACT = 9,
 				OBSTACLE_INTERACT = 10,
-				NPC_INTERACT = 11,
+				VEHICLE_INTERACT = 11,
 				SCORE_DUNK = 12,
 				PLAYER = 16
 				}
