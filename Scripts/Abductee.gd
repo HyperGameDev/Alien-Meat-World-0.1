@@ -16,6 +16,7 @@ enum is_types {COW, HUMAN, TREE1}
 
 @export var indicator_color: Color = Color(.5, .5, 1.0, 1.0)
 
+@export var always_spawn: bool = false
 @export var is_empathy_event: bool = false
 @export var is_enemy: bool = false
 @export var is_military: bool = false
@@ -157,7 +158,6 @@ var select_material := StandardMaterial3D.new()
 var is_available : bool = false
 var is_clone : bool = false
 var spawned : bool = false
-@export var always_spawn: bool = false
 var is_parachuting: bool = false
 
 
@@ -361,8 +361,8 @@ func on_abductee_hovered(target): # Called when ABDUCTEE_INTERACT layer is seen 
 				
 func spawn_me():
 	spawned = true
-	if !is_in_group("Grabbed"):
-		if !is_in_group("Dunked"):
+	if not is_in_group("Grabbed"):
+		if not is_in_group("Dunked"):
 			var boolean = pow(-1, randi() % 2)
 			if boolean > 0 or always_spawn:
 				is_available = true
@@ -512,7 +512,8 @@ func assign_weapon():
 	
 	
 func on_projectile_interval_timeout():
-	if is_armed and !is_empathy_event and !has_been_dunked and !Globals.is_game_state == Globals.is_game_states.OVER and Globals.bullets_allowed:
+	if is_armed and !is_empathy_event and !has_been_dunked and is_available and !Globals.is_game_state == Globals.is_game_states.OVER and Globals.bullets_allowed:
+		print("human bang")
 		projectile_interval_timer.start(randf_range(projectile_interval_min,projectile_interval_max))
 		
 		var human_bullet = preload("res://Projectiles/human_projectile_01.tscn").instantiate()

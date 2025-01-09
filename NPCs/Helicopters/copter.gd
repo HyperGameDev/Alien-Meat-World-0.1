@@ -89,8 +89,6 @@ func _ready():
 	var copter_x_offset = Vector3(copter_x_pos, 0, 0)
 	copter_pos = Vector3(0,7,copter_spawn_z_pos)
 	global_position = copter_pos + copter_x_offset
-#
-#	print("Trying to move copter ", "(", global_position.z, ") ", "to ", "Player at ", player_proximity.global_position.z)
 
 
 func _physics_process(delta):	

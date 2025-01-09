@@ -33,6 +33,7 @@ const CAM_X_OFFSET: float = 0.0
 @export var player_proximity: Area3D
 @export var powerup_proximity: Area3D
 @export var interact_collision: Area3D
+@export var orb_shield: Area3D
 
 
 var menu_pickable: bool = false
@@ -49,7 +50,7 @@ var head_grab : bool = false
 
 
 func _ready():
-	if player_proximity == null or powerup_proximity == null or interact_collision == null:
+	if player_proximity == null or powerup_proximity == null or interact_collision == null or orb_shield == null:
 		print("ERROR: A raycast exclusion node is set to null!")
 		breakpoint
 		
@@ -200,7 +201,7 @@ func hover_ray(mask,has_mask): ## Raycast that receives a target via argument
 	var to = from + project_ray_normal(mouse_pos) * ray_length
 	var space = get_world_3d().direct_space_state
 	var ray_query = PhysicsRayQueryParameters3D.new()
-	ray_query.exclude = [player_proximity,powerup_proximity,interact_collision]
+	ray_query.exclude = [player_proximity,powerup_proximity,interact_collision,orb_shield]
 	ray_query.from = from
 	ray_query.to = to
 	
