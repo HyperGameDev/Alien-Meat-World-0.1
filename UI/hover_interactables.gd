@@ -20,7 +20,7 @@ func on_something_hovered(target): ## Begins the hover effect
 	if Globals.obstacles_hilited.is_empty():
 		hovered_old = hovered_current
 	if !target.is_in_group("Abductee") and !target.is_in_group("Menu Alien"):
-		if target.is_in_group("NPC"):
+		if target.is_in_group("Vehicle"):
 			for node in target.get_children():
 				hilite_fx_begin(node)
 				for subnode in node.get_children():

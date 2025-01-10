@@ -1,7 +1,8 @@
 extends Area3D
 
+# Exists so is not incorrectly thought of as a body part
 var is_part : int = -1
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	set_collision_layer_value(16,true)
+	set_collision_layer_value(Globals.collision.PLAYER,true)

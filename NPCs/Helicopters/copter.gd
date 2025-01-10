@@ -5,6 +5,10 @@ class_name Copter
 signal update_hitpoints
 signal is_destroyed
 
+
+@export var main_group: String = "Vehicle"
+
+@export var is_enemy: bool = true
 var interactable: bool = false
 var formation_queue_pos: int
 
@@ -19,9 +23,6 @@ var formation_queue_pos: int
 @onready var flying_formation_z_pos: Array = Globals.flying_formation_z_pos
 
 static var copters_stopped : int = 0
-
-
-@export var is_attacking: bool = true
 
 @export var health_max : int = 2
 var health_current : int = health_max
@@ -57,7 +58,7 @@ var projectile_interval_max : float = 4.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	add_to_group("NPC")
+	add_to_group(main_group)
 	update_hitpoints.emit()
 	
 	update_hitpoints.connect(health_effects)
@@ -192,10 +193,10 @@ func on_interact_npc_end(area):
 	if area == self:
 		set_collision_layer_value(Globals.collision.VEHICLE, false)
 	
+func attack_player():
+	on_projectile_interval_timeout()
 	
 func on_projectile_interval_timeout():
-	if !is_dying and !is_moving and is_attacking:
-		if Globals.bullets_allowed:
 			projectile_interval_timer.start(randf_range(projectile_interval_min,projectile_interval_max))
 			
 			var copter_bullet = preload("res://Projectiles/copter_projectile_01.tscn").instantiate()

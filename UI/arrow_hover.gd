@@ -28,7 +28,7 @@ func show_arrow(target):
 	#print("Sees something... ",arrow_target,"...")
 	if !target.is_in_group("Abductee"): # If not abductee
 		#print("Sees non-abductee ",arrow_target,"!")
-		if target.is_in_group("NPC"):
+		if target.is_in_group("Vehicle"):
 			arrow_position = target.get_node("Marker3D").global_position
 		else:
 			arrow_position = target.get_owner().get_node("Marker3D").global_position

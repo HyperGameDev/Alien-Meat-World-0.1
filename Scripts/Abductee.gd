@@ -4,6 +4,9 @@ class_name Abductee
 
 # Don't add onreadys because of Herbivore
 
+
+@export var main_group: String = "Abductee"
+
 var last_hovered_abductee_was_me : bool = false
 var last_hovered_thing_not_abductee : bool = false
 
@@ -34,81 +37,10 @@ var heads_all: Array = []
 @export var has_weapon: has_weapons
 enum has_weapons {PISTOL,STUN,SEMI,AR,SHOTG,SHOTG2,SNIPER,RL}
 
+
+var current_weapon: String
 var bullet_pos1: Marker3D
-var bullet_pos2: Marker3D
-
-var weapons := {
-	PISTOL = {
-		has_2_meshes = false,
-		pose = "Gun_Pistol",
-		bullet_pos = "Gun_L_Pistol",
-		bullet_pos2 = "",
-		mesh = "Gun_Pistol",
-		mesh2 = ""
-	},
-	STUN = {
-		has_2_meshes = false,
-		pose = "Gun_Pistol",
-		bullet_pos = "Gun_L_Stun",
-		bullet_pos2 = "",
-		mesh = "Gun_Stun",
-		mesh2 = ""
-	},
-	SEMI = {
-		has_2_meshes = false,
-		pose = "Gun_AR",
-		bullet_pos = "Gun_L_Semi",
-		bullet_pos2 = "",
-		mesh = "Gun_Semi",
-		mesh2 = ""
-	},
-	AR = {
-		has_2_meshes = false,
-		pose = "Gun_AR",
-		bullet_pos = "Gun_L_AR",
-		bullet_pos2 = "",
-		mesh = "Gun_AR",
-		mesh2 = ""
-	},
-	SHOTG = {
-		has_2_meshes = false,
-		pose = "Gun_AR",
-		bullet_pos = "Gun_L_ShotG",
-		bullet_pos2 = "",
-		mesh = "Gun_ShotG",
-		mesh2 = ""
-	},
-	SHOTG2 = {
-		has_2_meshes = true,
-		pose = "Gun_ShotG_2",
-		bullet_pos = "Gun_L_ShotG",
-		bullet_pos2 = "Gun_R_ShotG",
-		mesh = "Gun_ShotG",
-		mesh2 = "Gun_ShotG_2"
-	},
-	SNIPER = {
-		has_2_meshes = false,
-		pose = "Gun_Snipe",
-		bullet_pos = "Gun_L_Snipe",
-		bullet_pos2 = "",
-		mesh = "Gun_Snipe",
-		mesh2 = ""
-	},
-	RL = {
-		has_2_meshes = true,
-		pose = "Gun_RL",
-		bullet_pos = "Gun_L_RL",
-		bullet_pos2 = "",
-		mesh = "Gun_Rocket",
-		mesh2 = "Gun_RL"
-	}
-}
-
-var projectile_interval_min : float = .1
-var projectile_interval_max : float = 4.0
-
-@onready var projectile_interval_timer : Timer = Timer.new()
-
+var bullet_pos2: Marker3D = null
 
 @export var dialogue_box_on_right: bool = false
 @export var abduction_offset: Vector3 = Vector3(0,.5,0)
@@ -183,10 +115,7 @@ func _ready():
 	set_collision_mask_value(Globals.collision.GROUND, true)
 	set_collision_mask_value(Globals.collision.PLAYER, false)
 	
-	self.add_to_group("Abductee")
-	
-	mouse_entered.connect(_on_mouse_entered)
-	mouse_exited.connect(_on_mouse_exited)
+	add_to_group(main_group)
 	
 	Messenger.abductee_hovered.connect(on_abductee_hovered)
 	Messenger.grab_begun.connect(on_grab_begun)
@@ -203,14 +132,9 @@ func _ready():
 	select_material.set_albedo(Color(1.0, .0, .1))
 	
 	
-	projectile_interval_timer.timeout.connect(on_projectile_interval_timeout)
-	projectile_interval_timer.one_shot = true
-	add_child(projectile_interval_timer)
-	projectile_interval_timer.start(randf_range(projectile_interval_min,projectile_interval_max))
-	
-	
 	interactable_indicator.get_node("AnimationPlayer").play("interactable")
 	interactable_indicator.visible = false
+	
 	
 	if is_empathy_event:
 		var dialogue = preload("res://UI/Dialogue/dialogue_in_scene.tscn").instantiate()
@@ -227,6 +151,8 @@ func _ready():
 			dialogue.is_right = false
 			dialogue.global_position.x = left_offset	
 	
+	
+	
 func _process(_delta: float) -> void:
 	if is_enemy:
 		look_at_player()
@@ -234,10 +160,9 @@ func _process(_delta: float) -> void:
 		Messenger.meat_in_dunk.emit(self)
 		has_been_dunked = true
 		
+		
 func look_at_player():
 	if !is_parachuting:
-		#look_at(player_target.global_position)
-		#rotate_object_local(Vector3(0,1,0), 3.14)
 		aim_bone_at_target(aim_bone_index,player_target,1.0,false)
 		
 func aim_bone_at_target(bone_index:int, target:Node3D, amount:float, reset:bool):
@@ -253,8 +178,6 @@ func aim_bone_at_target(bone_index:int, target:Node3D, amount:float, reset:bool)
 		
 		return
 
-	
-#region Aiming Code
 	var target_pos: Vector3 = skeleton.to_local(target.global_position)
 		
 	var direction = (target_pos - bone_transform.origin).normalized()
@@ -266,8 +189,6 @@ func aim_bone_at_target(bone_index:int, target:Node3D, amount:float, reset:bool)
 	# Running transform look at
 	new_transform = transform_look_at(new_transform, direction)
 	
-#endregion
-
 	skeleton.set_bone_global_pose_override(bone_index,new_transform,amount,true)
 
 
@@ -294,6 +215,7 @@ func _physics_process(_delta: float) -> void:
 	z_axis_removal_check()
 	dropping_to_dropped()
 		
+		
 func grabbed_check():
 	if has_been_grabbed:
 		_be_held()
@@ -311,6 +233,7 @@ func availability_check():
 	if is_available:
 		set_collision_layer_value(Globals.collision.ABDUCTEE_INTERACT, true)
 		visible = true
+		
 	else:
 		set_collision_layer_value(Globals.collision.ABDUCTEE, false)
 		visible = false
@@ -475,20 +398,19 @@ func parachuting(make_parachuting):
 		parachute.visible = false
 		
 func assign_weapon():
-	var current_weapon: String
-	for key in weapons.keys():
-		if key == weapons.keys()[has_weapon]:
+	for key in ProjectileHandler.shooting_weapons.keys():
+		if key == ProjectileHandler.shooting_weapons.keys()[has_weapon]:
 			current_weapon = key
 	
-	var has_2_meshes: bool = weapons[current_weapon]["has_2_meshes"]
+	var has_2_meshes: bool = ProjectileHandler.shooting_weapons[current_weapon]["has_2_meshes"]
 	
-	var weapon_mesh1_string: String = "human_03_GIANT_00/Armature/Skeleton3D/" + str(weapons[current_weapon]["mesh"])
+	var weapon_mesh1_string: String = "human_03_GIANT_00/Armature/Skeleton3D/" + str(ProjectileHandler.shooting_weapons[current_weapon]["mesh"])
 	
-	var weapon_mesh2_string: String = "human_03_GIANT_00/Armature/Skeleton3D/" + str(weapons[current_weapon]["mesh2"])
+	var weapon_mesh2_string: String = "human_03_GIANT_00/Armature/Skeleton3D/" + str(ProjectileHandler.shooting_weapons[current_weapon]["mesh2"])
 	
-	var bullet_pos1_string: String = "Bullet_Positions/Gun_L/" + str(weapons[current_weapon]["bullet_pos"])
+	var bullet_pos1_string: String = "Bullet_Positions/Gun_L/" + str(ProjectileHandler.shooting_weapons[current_weapon]["bullet_pos"])
 	
-	var bullet_pos2_string: String = "Bullet_Positions/Gun_R/" + str(weapons[current_weapon]["bullet_pos2"])
+	var bullet_pos2_string: String = "Bullet_Positions/Gun_R/" + str(ProjectileHandler.shooting_weapons[current_weapon]["bullet_pos2"])
 	
 	
 	var weapon_mesh1: MeshInstance3D = get_node(weapon_mesh1_string)
@@ -503,36 +425,24 @@ func assign_weapon():
 		weapon_mesh2.visible = true
 		
 		bullet_pos2 = get_node(bullet_pos2_string)
+	else:
+		bullet_pos2 = null
 	
 	
-	var weapon_pose: String = "parameters/" + str(weapons[current_weapon]["pose"]) + "/blend_amount"
+	var weapon_pose: String = "parameters/" + str(ProjectileHandler.shooting_weapons[current_weapon]["pose"]) + "/blend_amount"
 	
 	var animation: AnimationTree = get_node("human_03_GIANT_00/AnimationTree")
 	animation.set(weapon_pose, 1.0)
 	
-	
-func on_projectile_interval_timeout():
-	if is_armed and !is_empathy_event and !has_been_dunked and is_available and !Globals.is_game_state == Globals.is_game_states.OVER and Globals.bullets_allowed:
-		print("human bang")
-		projectile_interval_timer.start(randf_range(projectile_interval_min,projectile_interval_max))
-		
-		var human_bullet = preload("res://Projectiles/human_projectile_01.tscn").instantiate()
-		
-		if is_clone:
-			get_tree().get_current_scene().add_child(human_bullet)
-		else:
-			get_owner().add_child(human_bullet)
-		
-		human_bullet.global_position = bullet_pos1.global_position
-		
-		human_bullet.get_node("Projectile").speed = .5
-		
-		human_bullet.get_node("Projectile").direction = (player_target.global_position - human_bullet.global_position).normalized()
 
+func attack():
+	var shooter: Node
+	if is_clone:
+		shooter = ProjectileHandler.main_scene
+	else:
+		shooter = self
+		
+	var shoot_target: Node
+	shoot_target = player_target
 	
- 
-func _on_mouse_entered(): ## For hover arrow indicator
-	pass
-	
-func _on_mouse_exited(): ## For hover arrow indicator
-	pass
+	ProjectileHandler.projectile_request.emit(main_group,self,shooter,current_weapon,bullet_pos1,bullet_pos2,shoot_target)

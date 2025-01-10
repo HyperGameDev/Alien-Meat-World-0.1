@@ -25,6 +25,7 @@ Hover_Interactables_Bottom_Autoloaded="*res://UI/hover_interactables_bottom.tscn
 Game_States="*res://Scripts/Game_States.gd"
 NpcSpawns="*res://NPCs/NPC Spawns.gd"
 Audio="*res://Music/audio.tscn"
+ProjectileHandler="*res://Projectiles/projectile_handler.gd"
 
 [debug]
 

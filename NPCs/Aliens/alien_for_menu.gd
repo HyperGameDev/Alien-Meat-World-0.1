@@ -2,6 +2,8 @@ extends Node3D
 
 class_name Alien_For_Menu
 
+@export var main_group: String = "Menu Alien"
+
 @export var unhoverable: bool = false
 
 static var is_visible: bool = false
@@ -32,7 +34,7 @@ func _ready() -> void:
 	for headpiece in alien_headpieces.get_children():
 		headpiece.visible = false
 	orb.visible = false
-	area.add_to_group("Menu Alien")
+	area.add_to_group(main_group)
 	mesh.get_surface_override_material(0).disable_receive_shadows = true
 
 	

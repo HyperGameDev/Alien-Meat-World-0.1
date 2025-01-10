@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1noi17fgblk0"]
 
-[ext_resource type="Script" path="res://Scripts/Projectile.gd" id="1_rxb5x"]
+[ext_resource type="Script" path="res://Projectiles/Projectile.gd" id="1_rxb5x"]
 [ext_resource type="Material" uid="uid://dud0jtjkh61f3" path="res://Projectiles/drone_bullet_01.tres" id="2_ykq58"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e4m6r"]
