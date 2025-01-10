@@ -82,7 +82,9 @@ func on_game_state_preintro():
 	else:
 		#print("Preintro does NOT see tree!!!")
 		#get_tree().change_scene_to_file("res://main_scene.tscn")
-		get_tree().set_current_scene($"Main Scene")
+		#get_tree().set_current_scene($"Main Scene")
+		get_tree().set_current_scene(get_tree().get_root().get_node("Main Scene"))
+
 		on_game_state_preintro()
 	
 

@@ -37,10 +37,12 @@ var heads_all: Array = []
 @export var has_weapon: has_weapons
 enum has_weapons {PISTOL,STUN,SEMI,AR,SHOTG,SHOTG2,SNIPER,RL}
 
-
 var current_weapon: String
 var bullet_pos1: Marker3D
-var bullet_pos2: Marker3D = null
+var bullet_pos2: Marker3D
+
+var shoot_points: Array = []
+
 
 @export var dialogue_box_on_right: bool = false
 @export var abduction_offset: Vector3 = Vector3(0,.5,0)
@@ -96,7 +98,6 @@ var is_parachuting: bool = false
 var fell : bool = false
 
 @onready var hand_pos : Marker3D =  get_tree().get_current_scene().get_node("Player/Alien_V3/DetectionAreas/Area_ArmR/Marker_HandR")
-
 
 func _ready():
 	prepare_heads()
@@ -398,6 +399,7 @@ func parachuting(make_parachuting):
 		parachute.visible = false
 		
 func assign_weapon():
+	#Ensures has_weapon is interpreted as a string, not an enum
 	for key in ProjectileHandler.shooting_weapons.keys():
 		if key == ProjectileHandler.shooting_weapons.keys()[has_weapon]:
 			current_weapon = key

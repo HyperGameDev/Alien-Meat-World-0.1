@@ -125,13 +125,14 @@ var shooting_weapons := {
 
 
 func _ready() -> void:
+	Messenger.game_prebegin.connect(on_game_prebegin)
 	projectile_request.connect(on_projectile_request)
 
+func on_game_prebegin(): # For updating variables after a Restart
+	main_scene = get_tree().get_root().get_node("Main Scene/Spawned/Spawned_MainScene-Bullets")
 
 func on_projectile_request(shooter_group, requesting_shooter, spawn_point_host, weapon, point_1_marker, point_2_marker, target):
-	print("Projectile Handler: Request to shoot received (From ",spawn_point_host,")")
 	if can_shoot(shooter_group, requesting_shooter):
-		print("Projectile Handler: ",requesting_shooter," approved to shoot!")
 		set_shoot_properties(shooter_group, requesting_shooter, spawn_point_host, weapon, point_1_marker, point_2_marker, target)
 	else:
 		print("Projectile Handler: ",requesting_shooter," DENIED to shoot!")
@@ -139,7 +140,6 @@ func on_projectile_request(shooter_group, requesting_shooter, spawn_point_host, 
 func can_shoot(shooter_group: String, requesting_shooter: Node) -> bool:
 	for group_name in shooter_data.keys():
 		if shooter_group == group_name:
-			print("Projectile Handler: Checking conditions for group '", group_name, "'.")
 			return check_conditions(shooter_data[group_name]["Conditions"], global_shooting_conditions, requesting_shooter)
 	print("Projectile Handler: Shooter group '", shooter_group, "' not found in shooter_data.")
 	return false
@@ -174,31 +174,30 @@ func set_shoot_properties(shooter_group, requesting_shooter, spawn_point_host, w
 		shooter = main_scene
 	else:
 		shooter = spawn_point_host
-	
-	print("Projectile Handler: Shoot point properties configured (For ",shooter,")")
 		
 	var bullet_scene: PackedScene = shooter_data[shooter_group]["Properties"]["bullet_owner"]
 
-	create_shoot_point(shooter,weapon,point_1_marker,point_2_marker,bullet_scene,target)
+	create_shoot_point(shooter,requesting_shooter,weapon,point_1_marker,point_2_marker,bullet_scene,target)
 	
 	
-func create_shoot_point(shooter, weapon, point_1_marker, point_2_marker, bullet_scene, target):
-	print("Projectile Handler: Shoot point creation attempted (On ",shooter,")")
-	setup_shoot_point(shooter, weapon, point_1_marker, bullet_scene, target)
+func create_shoot_point(shooter, requesting_shooter, weapon, point_1_marker, point_2_marker, bullet_scene, target):
+	setup_shoot_point(shooter, requesting_shooter, weapon, point_1_marker, bullet_scene, target)
 
 	if shooting_weapons[weapon]["has_2_meshes"]:
-		setup_shoot_point(shooter, weapon, point_2_marker, bullet_scene, target)
+		setup_shoot_point(shooter, requesting_shooter, weapon, point_2_marker, bullet_scene, target)
 		print("Projectile Handler: Second spawn point detected at ", point_2_marker)
 
 
-func setup_shoot_point(shooter, weapon, marker, bullet_scene, target):
+func setup_shoot_point(shooter, requesting_shooter: Node, weapon, marker, bullet_scene, target):
+
 	var shoot_point = preload("res://Projectiles/shoot_point.tscn").instantiate()
 	
 	shooter.add_child(shoot_point)
+	print("Projectile Handler: Shoot Point ",shoot_point," added to ",shooter," for use by ",requesting_shooter)
+	requesting_shooter.shoot_points.append(shoot_point)
 	
 	shoot_point.shooting_weapon = weapon
 	shoot_point.point_marker = marker
 	shoot_point.bullet_scene = bullet_scene
 	shoot_point.target = target
-
-	print("Projectile Handler: Shoot point spawned (On ",shooter,", with a target of ",target,".")
+	shoot_point.requesting_shooter = requesting_shooter

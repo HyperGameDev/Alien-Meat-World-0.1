@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://co744855ehr1n" path="res://UI/Arrow_3D_01/arrow_3d_01.tscn" id="2_dn3mx"]
 
 [node name="Shoot_Point" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_bdfc0")
 
 [node name="arrow_3d_01" parent="." instance=ExtResource("2_dn3mx")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 1.1)
+transform = Transform3D(0.36, -1.57361e-08, -6.87847e-16, 0, -1.57361e-08, 0.36, -1.57361e-08, -0.36, -1.57361e-08, 0, 0, 0)

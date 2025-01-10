@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func on_entered(entrant):
 	if entrant.is_enemy:
-		print("Player Prox: ",entrant.name," recognized as enemy.")
+		print("Player Prox: ",entrant," recognized as enemy.")
 		entrant.attack()
 		
  

@@ -141,6 +141,11 @@ func reset_block_objects():
 					object.reset_object()
 			if object is Abductee:
 				object.spawn_me()
+				while object.shoot_points.size() > 0:
+					var shoot_point = object.shoot_points.pop_back()
+					if is_instance_valid(shoot_point):
+						shoot_point.queue_free()
+				
 
 func on_game_premenu():
 	show_available_skins()

@@ -8,6 +8,23 @@ signal is_destroyed
 
 @export var main_group: String = "Vehicle"
 
+
+@export var has_weapon: has_weapons
+enum has_weapons {PISTOL,STUN,SEMI,AR,SHOTG,SHOTG2,SNIPER,RL}
+
+var attack_state: attack_states
+enum attack_states {
+	NEVER_TRIED_ATTACK,
+	TRY_ATTACK,
+	HAS_TRIED_ATTACK}
+
+var current_weapon: String
+
+var shoot_points: Array = []
+
+@export var bullet_pos1: Marker3D
+@export var bullet_pos2: Marker3D
+
 @export var is_enemy: bool = true
 var interactable: bool = false
 var formation_queue_pos: int
@@ -44,44 +61,29 @@ var is_dying : bool = false
 
 var new_meat_spawned: bool = false
 
-var projectile_interval_min : float = .1
-var projectile_interval_max : float = 4.0
-
-@onready var projectile_interval_timer : Timer = Timer.new()
-
 
 @onready var copter_area : Area3D = self
-@onready var player_target : Marker3D = get_tree().get_current_scene().get_node("Player/Alien_V3/Alien/Armature/Skeleton3D/Alien_Head/Alien_Headpieces/Player_Attack_Target")
+@onready var player_target : Area3D = get_tree().get_current_scene().get_node("Player/Alien_V3/DetectionAreas/Area_Feed")
 
 @onready var player_head = get_tree().get_current_scene().get_node("Player/Alien_V3/DetectionAreas/Area_Head/CollisionA_AlienHead")
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	add_to_group(main_group)
 	update_hitpoints.emit()
+	assign_weapon()
 	
 	update_hitpoints.connect(health_effects)
 	set_collision_layer_value(Globals.collision.GROUND, false)
 	set_collision_layer_value(Globals.collision.VEHICLE, false)
 	set_collision_layer_value(Globals.collision.VEHICLE_INTERACT, true)
-	set_collision_mask_value(1, false)
+	set_collision_mask_value(Globals.collision.GROUND, false)
 	
-	mouse_entered.connect(_on_mouse_entered)
-	mouse_exited.connect(_on_mouse_exited)
 	
 	Messenger.interact_npc_begin.connect(on_interact_npc_begin)
 	Messenger.interact_npc_end.connect(on_interact_npc_end)
 	Messenger.flying_enemy_spawned.connect(on_flying_enemy_spawned)
 	Messenger.flying_is_dying.connect(on_flying_is_dying)
-	
-	
-	
-	
-	projectile_interval_timer.timeout.connect(on_projectile_interval_timeout)
-	projectile_interval_timer.one_shot = true
-	add_child(projectile_interval_timer)
-	projectile_interval_timer.start(randf_range(projectile_interval_min,projectile_interval_max))
 
 	
 	$Animation_CopterBlades.play("propeller_speed-01")
@@ -92,8 +94,12 @@ func _ready():
 	global_position = copter_pos + copter_x_offset
 
 
-func _physics_process(delta):	
+func _physics_process(delta: float) -> void:
 	look_at(player_target.global_position)
+	
+	if !is_moving and !is_dying:
+		check_attack_state()
+	
 	if is_moving and !is_dying:
 		var direction = (player_target.global_position - global_position).normalized()
 		velocity = direction * speed
@@ -102,6 +108,12 @@ func _physics_process(delta):
 		check_for_stop(false)
 		
 	if is_dying:
+		while shoot_points.size() > 0:
+			var shoot_point = shoot_points.pop_back()
+			if is_instance_valid(shoot_point):
+				print("Copter ",self,": freed shoot_point ",shoot_point, " leaving ",shoot_points.size()," left in the array.")
+				shoot_point.queue_free()
+				
 		var ROTATION_SPEED = 7
 		var direction = Vector3(0,-.02,terrain_controller.terrain_velocity/50)
 		velocity = direction * speed
@@ -111,6 +123,7 @@ func _physics_process(delta):
 	if detect_copterDeath.is_colliding():
 		is_destroyed.emit()
 		copter_mesh.visible = false
+
 	
 		
 	# Part of an attempt at custom pathfinding. Should look into PhysicsDirectSpaceState3D class or something. Will need to interpolate movement	
@@ -118,6 +131,24 @@ func _physics_process(delta):
 		#var left = detect_left.get_target_position()
 		#global_position += left * -1 
 		#print(left)
+		
+func check_attack_state():
+	print("Copter ",self,": Checked its attack state (It was ",attack_state,")")
+	match attack_state:
+		attack_states.NEVER_TRIED_ATTACK:
+			pass
+			
+		attack_states.TRY_ATTACK:
+			attack_state = attack_states.HAS_TRIED_ATTACK
+			var shooter: Node3D = ProjectileHandler.main_scene
+			var shoot_target: Node3D = player_target
+			ProjectileHandler.projectile_request.emit(main_group,self,shooter,current_weapon,bullet_pos1,bullet_pos2,shoot_target)
+				
+		attack_states.HAS_TRIED_ATTACK:
+			pass
+			
+		_:
+			pass
 		
 	
 func on_flying_enemy_spawned(enemy,queue_pos):
@@ -177,13 +208,7 @@ func health_effects():
 			meat_new.is_type = meat_new.is_types.HUMAN
 			meat_new.add_to_group("Dropping")
 			meat_new.global_position = global_position
-		
 
-func _on_mouse_entered(): ## For hover arrow indicator
-	pass
-	
-func _on_mouse_exited(): ## For hover arrow indicator
-	pass
 	
 func on_interact_npc_begin(area):
 	if area == self:
@@ -193,17 +218,11 @@ func on_interact_npc_end(area):
 	if area == self:
 		set_collision_layer_value(Globals.collision.VEHICLE, false)
 	
-func attack_player():
-	on_projectile_interval_timeout()
+func assign_weapon():
+	for key in ProjectileHandler.shooting_weapons.keys():
+		if key == ProjectileHandler.shooting_weapons.keys()[has_weapon]:
+			current_weapon = key
 	
-func on_projectile_interval_timeout():
-			projectile_interval_timer.start(randf_range(projectile_interval_min,projectile_interval_max))
-			
-			var copter_bullet = preload("res://Projectiles/copter_projectile_01.tscn").instantiate()
-			get_tree().get_current_scene().add_child(copter_bullet)
-			
-			copter_bullet.global_position = copter_mesh.global_position
-			
-			copter_bullet.get_node("Projectile").speed = .5
-			
-			copter_bullet.get_node("Projectile").direction = (player_head.global_position - copter_bullet.global_position).normalized()
+func attack():
+	if attack_state == attack_states.NEVER_TRIED_ATTACK:
+		attack_state = attack_states.TRY_ATTACK

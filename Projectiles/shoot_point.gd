@@ -9,6 +9,7 @@ var bullet_scene: PackedScene
 var shooting_weapon: String
 var target: Node
 var point_marker: Marker3D
+var requesting_shooter: Node
 	
 func _ready() -> void:
 	projectile_interval_timer.timeout.connect(on_projectile_interval_timeout)
@@ -21,14 +22,18 @@ func _physics_process(delta: float) -> void:
 	global_position = point_marker.global_position
 	global_rotation = point_marker.global_rotation
 	
+	#print("Shoot Point: Marker Y is at ",point_marker.global_position.y)
+	
 	
 func on_projectile_interval_timeout():
-	print("Shoot Point: Bullet shot attempted from ",self.name," at ",self.global_position," towards ",target)
+	#print("Shoot Point: Bullet shot attempted from ",self.name," via ",point_marker," (pos ",point_marker.global_position,") at ",self.global_position," towards ",target)
 	projectile_interval_timer.start(randf_range(projectile_interval_min,projectile_interval_max))
 	
 	var bullet = bullet_scene.instantiate()
 	
-	add_child(bullet)
+	get_parent().add_child(bullet)
+	print("Shoot Point ",self," added a bullet requested by ",requesting_shooter)
+	bullet.global_position = point_marker.global_position
 	
 	bullet.get_node("Projectile").speed = ProjectileHandler.shooting_weapons[shooting_weapon]["speed"]
 	

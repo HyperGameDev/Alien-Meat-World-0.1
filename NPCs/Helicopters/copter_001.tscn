@@ -662,10 +662,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4uy6m")
 
-[node name="Copter_01_00" type="Area3D"]
+[node name="Copter_01_00" type="Area3D" node_paths=PackedStringArray("bullet_pos1")]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("2_l3hi8")
+has_weapon = 2
+bullet_pos1 = NodePath("Gun_1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 8.52435e-08, 0.221889, 0.975072, -1.93982e-08, 0.975072, -0.221889, 0.00413191, 0.510933, 0.235844)
@@ -802,6 +804,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62789, 0)
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62789, 0)
+
+[node name="Gun_1" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.195133, -0.800815)
 
 [editable path="HitPoints"]
 [editable path="HitPoints/Obstacle/HitPoints"]
