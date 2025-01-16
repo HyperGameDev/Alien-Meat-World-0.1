@@ -9,3 +9,4 @@ script = ExtResource("1_bdfc0")
 
 [node name="arrow_3d_01" parent="." instance=ExtResource("2_dn3mx")]
 transform = Transform3D(0.36, -1.57361e-08, -6.87847e-16, 0, -1.57361e-08, 0.36, -1.57361e-08, -0.36, -1.57361e-08, 0, 0, 0)
+visible = false

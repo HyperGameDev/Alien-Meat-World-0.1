@@ -204,19 +204,19 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.6
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 
 [node name="Armature" parent="human_03_GIANT_00" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0342603, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00562937, 0)
 
 [node name="Skeleton3D" parent="human_03_GIANT_00/Armature" index="0"]
-bones/8/rotation = Quaternion(-0.343824, 0.801483, -0.350691, 0.341212)
-bones/24/rotation = Quaternion(-0.552286, -0.26909, -0.193815, 0.764857)
-bones/26/rotation = Quaternion(-0.374555, -0.654895, 0.387775, 0.529577)
-bones/42/rotation = Quaternion(-0.614477, 0.092808, 0.148591, 0.769237)
-bones/47/rotation = Quaternion(0.977606, 0.09559, -0.0148812, 0.186892)
-bones/48/rotation = Quaternion(0.119529, 0.0139302, 0.0786452, 0.989613)
-bones/49/rotation = Quaternion(-0.682799, -0.011085, 0.0314973, 0.729843)
-bones/52/rotation = Quaternion(0.977219, -0.099111, 0.0154195, 0.187037)
-bones/53/rotation = Quaternion(0.119456, -0.0146398, -0.0826218, 0.989287)
-bones/54/rotation = Quaternion(-0.682247, 0.0208169, 0.0112862, 0.730739)
+bones/8/rotation = Quaternion(-0.297889, 0.834896, -0.312221, 0.341656)
+bones/24/rotation = Quaternion(-0.527816, -0.329741, -0.211265, 0.75369)
+bones/26/rotation = Quaternion(-0.332301, -0.672822, 0.380714, 0.540317)
+bones/42/rotation = Quaternion(-0.616744, 0.136798, 0.162838, 0.75789)
+bones/47/rotation = Quaternion(0.961004, 0.11627, -0.0110574, 0.250661)
+bones/48/rotation = Quaternion(0.272312, 0.0267521, 0.112096, 0.955283)
+bones/49/rotation = Quaternion(-0.742124, -0.00534462, 0.0415441, 0.668953)
+bones/52/rotation = Quaternion(0.960927, -0.116847, 0.0111458, 0.250681)
+bones/53/rotation = Quaternion(0.272294, -0.026868, -0.112747, 0.955208)
+bones/54/rotation = Quaternion(-0.743346, 0.0147799, 0.00986418, 0.668671)
 
 [node name="Human_ArmL" parent="human_03_GIANT_00/Armature/Skeleton3D" index="9"]
 surface_material_override/0 = ExtResource("4_kuh20")
@@ -258,7 +258,7 @@ material_override = SubResource("StandardMaterial3D_m3g3i")
 [node name="Bullet_Positions" type="Node3D" parent="."]
 
 [node name="Gun_L" type="BoneAttachment3D" parent="Bullet_Positions"]
-transform = Transform3D(-0.399572, -5.96046e-08, -0.0184979, 4.76837e-08, -0.4, -1.78814e-07, -0.018498, -2.563e-07, 0.399572, 0.240297, 0.355329, 0.145298)
+transform = Transform3D(-0.399572, 3.57628e-08, -0.018498, 2.38419e-08, -0.4, -1.37091e-07, -0.0184979, -2.44379e-07, 0.399572, 0.248079, 0.352934, 0.148571)
 bone_name = "gun.L"
 bone_idx = 24
 use_external_skeleton = true
@@ -286,7 +286,7 @@ transform = Transform3D(1, -7.81597e-14, -3.35276e-08, -2.22045e-14, 1, -2.84217
 transform = Transform3D(1, -8.17124e-14, -3.35276e-08, -3.55271e-14, 1, -5.68434e-14, 2.98023e-08, 1.13687e-13, 1, 0.72, -0.194, 0.592)
 
 [node name="Gun_R" type="BoneAttachment3D" parent="Bullet_Positions"]
-transform = Transform3D(-0.399572, 1.07288e-07, 0.0184979, -2.38419e-08, -0.4, -5.96046e-09, 0.018498, -1.78814e-08, 0.399572, -0.23951, 0.341582, 0.161183)
+transform = Transform3D(-0.399572, 5.96046e-08, 0.0184978, -2.38419e-08, -0.4, 4.17233e-08, 0.0184979, 3.57628e-08, 0.399572, -0.244357, 0.341225, 0.169322)
 bone_name = "gun.R"
 bone_idx = 42
 use_external_skeleton = true
