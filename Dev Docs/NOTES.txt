@@ -1,0 +1,131 @@
+Announce card at begin of GJ to JG
+
+Dearrow for Personal YT (precipire likes it)
+BIG GAME HUNGER PODCAST??? (Kieguy rec.)
+DailyDoseOfInternetCats shorts (Kieguy mentioned)
+
+
+
+
+
+
+
+Harvest EARTH! latest notes
+add mats to godot hurt
+refactor the helicopter spawns (previously freed bug on destroy)
+fix animationplayer feed blood splatter
+	to end emission sooner
+eaten enemy keeps shooting
+
+Resistance upgrade is a literal choice between levelling up an existing powerup, or upgrading the resistance forces. Resistance fights against Military but if you become evil, those upgrade are used against YOU. If there is no existing powerup to choose (or you don't want to level one up), the Resistance just becomes stronger. The sooner you are evil, the less upgrades the Resistance ever gets.
+
+Resistance upgrades = better weapons (ie can match military strength, to the point of cancelling-out military enemies altogether at the highest upgrade level)
+
+Weapon idea: Homing rocket. Has a special flashing red light on it somewhere. Looks more modern overall. Bullets follow the player. Parent bullets on shoot point to something that looks at the player position constantly
+
+Quincas Moreira - Trapped
+CXDY - Turbo
+Mike Relm - Wok Hard
+Unicorn Heads - Vital Whales (long)
+Anno Domini Beats - Drop
+Silent Partner - Sugar Zone (it's maybe)
+Silent Partner - Mob Battle
+Audio Hertz - Where the Trap is
+White Hex - Relapse
+Vibe Tracks - Zoom
+Chasms - Psychic Need
+Birocratic - Where To_
+
+
+Tween code
+Instatiation code
+	Spawn position templates
+		(either from the outside
+		or from a point)
+
+Add new global input(s)
+
+Global Messenger script avaialble as autoload
+
+quick instantiation code
+
+UI, restart button, timer
+
+reload code ready 2 go
+
+Coyote time (thanks to plague)
+
+player animated things like jump run etc
+
+INTERVAL TIMER
+
+
+
+
+
+
+
+
+
+
+
+4cbd5a - alien green
+
+SPEEDIFY?? Combining internet strengths? mentioned by candice!
+
+
+
+
+
+
+
+go bACK
+
+FIND THE 4.0 songs you yeeted
+
+9/23 mem stram
+
+
+
+CROSSHAIR THING
+from 
+ZombieBowTie
+
+
+
+
+
+Today I am
+Making a game in 1 hour using Godot
+
+Actually every week I come here and livestream myself doing this
+
+Which means if you come to one of these livestreams, you can join in
+
+Info and links are in the description box with rules and how to submit your game.
+
+I'll be checking out all your entries in a separate livestream, which will happen right after this one.
+
+But stick around to the end of this video to see how MY game turns out!
+
+I'm feeling [pretty confident today]
+
+Let's check in with the live chat though, and see if we can pick a topic for today's jam
+
+
+
+CHANGE THUMBNAIL (except jam)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+DOOO THIS
+
+and this
+\/\/\/\/
+tweet?
+
+
+Use PureRef to explain game via phone sketches
+
+Check Notion checklist
+
+https://socialstream.ninja/dock.html?session=JK6i6SaMSt&emoji&compact&hidesource&alignbottom&dropdown
