@@ -483,44 +483,20 @@ transform = Transform3D(2.44981e-08, 0, -1, 0, 1, 0, 1, 0, 2.44981e-08, 23.4999,
 [node name="Tree_03-02_03" parent="." index="149" instance=ExtResource("16_7wvjh")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 17.3999, 0, 1.60152)
 
-[node name="Human_02-01_00" parent="." index="151" instance=ExtResource("18_eu21e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.800646, 0, 7.39993)
+[node name="Human_02-01_05" parent="." index="151" instance=ExtResource("18_eu21e")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.90048, 0, -6.4)
 always_spawn = true
-
-[node name="Human_02-01_01" parent="." index="152" instance=ExtResource("18_eu21e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29936, 0, 7.30011)
-has_weapon = 0
-always_spawn = true
-
-[node name="Human_02-01_02" parent="." index="153" instance=ExtResource("18_eu21e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.89939, 0, 7.00025)
-has_weapon = 2
-always_spawn = true
-
-[node name="Human_02-01_03" parent="." index="154" instance=ExtResource("18_eu21e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19924, 0, 8.7001)
-has_weapon = 3
-always_spawn = true
-
-[node name="Human_02-01_04" parent="." index="155" instance=ExtResource("18_eu21e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00054, 0, 6.19983)
-has_weapon = 4
-always_spawn = true
-
-[node name="Human_02-01_05" parent="." index="156" instance=ExtResource("18_eu21e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000479966, 0, 5.5)
 has_weapon = 5
-always_spawn = true
 
-[node name="Human_02-01_06" parent="." index="157" instance=ExtResource("18_eu21e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.30041, 0, 4.69989)
+[node name="Human_02-01_06" parent="." index="152" instance=ExtResource("18_eu21e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80041, 0, 0.19989)
+always_spawn = true
 has_weapon = 6
-always_spawn = true
 
-[node name="Human_02-01_07" parent="." index="158" instance=ExtResource("18_eu21e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69956, 0, 5.00015)
-has_weapon = 7
+[node name="Human_02-01_07" parent="." index="153" instance=ExtResource("18_eu21e")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 1.69956, 0, 5.00015)
 always_spawn = true
+has_weapon = 7
 
 [editable path="electric-pole_01-01_00"]
 [editable path="electric-pole_01-01_00/Obstacle/HitPoints"]

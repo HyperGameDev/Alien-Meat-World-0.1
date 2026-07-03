@@ -14,9 +14,10 @@ band_db/1400_hz = -2.4
 band_db/4000_hz = 2.6
 
 [resource]
+bus/0/mute = true
 bus/1/name = &"Music"
 bus/1/solo = false
-bus/1/mute = false
+bus/1/mute = true
 bus/1/bypass_fx = false
 bus/1/volume_db = 0.0
 bus/1/send = &"Master"

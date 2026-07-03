@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @export var hide_info = true
 @export var debug_powerup: String = "Grab Glove"
+@export var keep_debug_keys: bool = true
 
 var old_player = true
 var biped = true
@@ -19,8 +20,8 @@ func _ready() -> void:
 	information2.visible = false
 	information3.visible = false
 	
-	if OS.is_debug_build():
-		AudioServer.output_device = "CABLE Input (VB-Audio Virtual Cable)"
+	#if OS.is_debug_build():
+		#AudioServer.output_device = "CABLE Input (VB-Audio Virtual Cable)"
 
 func _process(delta):
 	if !hide_info:
@@ -37,7 +38,7 @@ func _process(delta):
 
 func _input(event):
 	#region devControls
-	if OS.is_debug_build():
+	if OS.is_debug_build() or keep_debug_keys:
 		if event.is_action_pressed("Debug 1"):
 			Messenger.abduction.emit(1)
 		if event.is_action_pressed("Debug 2"):

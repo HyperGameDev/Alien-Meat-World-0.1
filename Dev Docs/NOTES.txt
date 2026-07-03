@@ -1,12 +1,237 @@
+Youtube exceeded cue works and Twitch unexceeded cue works, that's all i can see so far
+
+
+label on the overlay for bit-givers (clears after stream) -- check the badge? maybe log during session after it happens?
+
+==========**********==========**********==========*******
+add chat relay exception for twitch msgs longer than yt limit have it split the message in two and send over two messages
+==========**********==========**********==========*******
+
+viable way for mods to send msgs to both chats
+
+
+	see if hgd bot can be excluded from youtube crown/pointsstuff
+
+!backseating command
+
+
+try messages relayed to twitch from youtube being picked up by the onscreen overlay and reformatted as if they were from youtube so i dont have to rely on shakey youtube api
+
+make notwitch alerts access channel emotes
+
+<div class="custom-glj-iframe"><iframe allowfullscreen="" style="width:100%;aspect-ratio:16/9;border:none;" height="450" width="800" src="https://player.twitch.tv/?channel=hypergamedev_&parent=itch.io&autoplay=true&muted=false&time=0s"></iframe></div>
+
+add a bot response that clarifies how long cooldown of an attempted thing is if it's on cooldown ie !hydrate (and switch hydrate to steamerbot)
+
+stream credits automatically generated throughout for ending
+
+!uptime command
+
+dont brag you wish you could backseat
+
+setup fun way html could be used by chat (exhibit: twitch/yt + websocket + html) -- find a way to parse without websocket??! -- might need to BLOCK twitch html if websocket ends up being necessary OR build things around nonwebsocket for twitch 
+
+/shoutout KiraniPieBox
+https://store.steampowered.com/app/4072340/Capyvarias/
+https://www.youtube.com/@KiraniPiebox
+https://capyvarias.piebox.net/
+
+/shoutout EpicPhoton
+https://store.steampowered.com/app/4209010/Lakehopper/
+
+/shoutout LeGingerDev
+
+/shoutout Quixjote
+youtube.com/quixjote
+
+
+/shoutout booyagrandma
+https://store.steampowered.com/app/2341620/Alpine_Lake/
+https://www.youtube.com/@booyagrandmma
+
+/shoutout triplejumpgames
+https://store.steampowered.com/app/2803490/Atomcraft/
+https://www.youtube.com/@triplejumpgames
+
+Jane_1307 was autoplayed into 2026/01/29-30 stream from Real Civil Engineer@RealCivilEngineerGaming -- they were playing games like:
+https://store.steampowered.com/app/780210/Freeways/
+https://store.steampowered.com/app/1127500/Mini_Motorways/
+https://store.steampowered.com/app/287980/Mini_Metro/
+
+Variadicism is slowly making an awesome music thing
+
+
+everyone has emote wall oops and mod fx not working
+
+YOU GOT THIS! / Cheering redeem (loomtrader)
+
+Stream suggestion: a ticker that appears on the stream that has a note about "suggestions", and to direct people to the discord if they really want to suggest something. (Rosalani)
+you should have a animation pop up on the screen periodically of a like button and a prime (quom)
+
+
+REPLACE PINGCORD
+
+
+PERSONAL NOTE:
+If anyone wants to "self-host" (or rather rent a cloud VM), Linode has some good plans for Gitea/GitLab VM hosts $5/mo (Shared CPU plans).
+
+---- Use gift animation for gift sub/membership stuffs alerts! ---
+
+Replace yt desc discord links that go to not discord.gg/3G9XxQWUxq and make them go to that
+
+=====
+	
+Learn C as precursor to C++? (Persuaded by TravisVroman)
+===========
+
+NoBackseating Tag
+
+milanote affiliate sponsorship *nudge nudge*
+
+
+****************!honk command**************** req by fannyslam
+****************automate obs cpu affinity and priority****************
+
+bttv emotes for youtube too (and better twitch compatible ie on chat overlay)
+
+bitwarden on edge
+
+@AnjackTheMage
+​
+
+#2
+​A developer is never early or late, they commit exactly when the code is ready. And not one moment sooner.
+
+
+button to put message in chats internet return
+
+
+new hdmi placeholder for tv light?
+
+draw profile pix on mario paint rom
+
+clarify "location" on glj and share queue
+
+add that ai disclosure is necessry or else disqualification in glj
+
+
+have social stream overlays show when ads end and clarify that they're for twitch
+
+Do a mobile app building stream
+
+subs and replies to mesages still look wonky see _PROBLEM PAYLOAD.txt
+
+===-------REJECTED----------====
+!backseat command allows messages that guess or assert what the solution is, and after I solve it or give up, check the backseat messages
+also add a way for streamer to manually move messages to a backseat database
+--- call it spoiler not backseat lol
+===-------REJECTED----------====
+
+peruse _FEATURE IDEAS.txt in the chat folder to see what fancy things can be done with the yt payload
+
+Try godot 3 for C# learning + web export
+
+mods cant pin messages on twitch
+
+update showcase thumbnail with grannylikes
+
+add tip about not using control for web games in jam rules coz it does things in browser plus keys
+
+=====
+
+try setting up horiz + vert on yt.. probably should make sure cpu is good to go lol
+
+DREAAAMS for making procedural music <o<
+
+supporter drawing option vs song. wheel spin? offer menu? if they dont pick, do wheel? make it full redemption based with tipping? redemptions that are free and some that are paid?
+
+adv scene switcher, eg for turning off camera when stream stops lol 
+
+move the camera
+
+special "take a breath" breathing exercise music
+
+adapt a nutty widget to just show patreon alerts
+
+move cameraaaaa
+
+save your work redemption (first twitch then globalize it)
+ie 
+github commit redeem
+
+consider using a streamelements alertbox for both youtube and twitch (either separate or combined whatever it likes) that looks just like the current twitch alert setup
+	/ add a streamelements bot to youtube
+
+write a simple, reusable powershell/python/javascript script that takes in the music directory and outputs a list (BONUS idea, pushes the list to a github repo that's linked in panels/description/chat command)
+
+I think I did this--> silence streamelements commands/timers (ie rules update for lyzldy)
+
+add to twitch blocklist Cheap followers on streamboo .com (remove the space) @gnZNRSWw
+and/or
+TRY sery bot to kill thebots
+
+YT channel points + redeems (check out a raider's tool here: https://streamup.tips/product/currency-core)
+
+try giving frank a emote wall exception
+
+Add "Lyz featured:" above or before featured chat msgs for clarification lol
+
+
+add command for friday game queue explanation
+
+
+find out how to override default badwords on new chat stuff
+OR
+have replacement of bad words with an array of something elses like "banana" --
+eg jaunty, cowbell, flower
+
+collabdev chat add &hidemenu
+
+
+
+add to  tempest glj suggestion: https://youtu.be/_7X6Yeydgyg?feature=shared
+
+- Detect if web and/or mobile
+- Detect if landscape vs portrait
+- Dis/Enable certain features depending on above detections
+
+- Left vs Right vs Top vs Bottom input detections
+- Toggles to Dis/Enable those input possibilities
+
+- Swipe gesture detection as inputs
+- Toggles to Dis/Enable
+
+- Long press detection
+- Toggle to Dis/Enable
+
+
+animated live indicator on cat cam to indicate it's not a still image
+
+
+special crunch mode playlist
+
+
+vdo.ninja <<<<<<<<<<<<<
+See if the obs integration extension still works, if not find a different one
+https://github.com/Jip-Hop/jitsi-pop
+(https://obsproject.com/forum/threads/zoom-jitsi.119467/)
+
+Figure out the window size you might need if you're going to capture meet.jit.si popups manually
+
+Setup buttons to change size and position of window
+
+
+
+
+
+
+
+JAM TEMPLATE NEEDS _input EXAMPLE
+
+
 Announce card at begin of GJ to JG
 
-Dearrow for Personal YT (precipire likes it)
-BIG GAME HUNGER PODCAST??? (Kieguy rec.)
 DailyDoseOfInternetCats shorts (Kieguy mentioned)
-
-
-
-
 
 
 
@@ -23,6 +248,7 @@ Resistance upgrades = better weapons (ie can match military strength, to the poi
 
 Weapon idea: Homing rocket. Has a special flashing red light on it somewhere. Looks more modern overall. Bullets follow the player. Parent bullets on shoot point to something that looks at the player position constantly
 
+Anno Domini Beats - Warzone
 Quincas Moreira - Trapped
 CXDY - Turbo
 Mike Relm - Wok Hard
@@ -129,3 +355,13 @@ Use PureRef to explain game via phone sketches
 Check Notion checklist
 
 https://socialstream.ninja/dock.html?session=JK6i6SaMSt&emoji&compact&hidesource&alignbottom&dropdown
+
+
+
+
+
+
+--------------
+
+AI assistant we'll see
+I am a game developer using the latest version of Godot and Blender as my primary tools. Occasionally canva and Gimp. We are livestreaming together in front of an audience of novice and experienced game devs, who often like to listen in the background and want to learn by osmosis or get inspiration to work themselves, or even pick up some quick tips. Please observe my code, ways of using the engine, blender, etc, and describe what I'm doing especially when you think it's a neat tip that could help someone understand what's going on. Pay attention to what I've already described so you don't repeat stuff I've said, since I often already describe what I'm doing myself. Always wait for me to stop talking before you start. Only commentate on actions that just happened, dont hold on to something from too far back. Dont make suggestions or coach me or talk about bugs or errors or try to help me. You simply should observe when I'm doing something right and well and why I'm doing it and what's good about it (given the parameters before). Do not commentate on me reading chat messages or participate in any social components. You are a figure skating or tennis commentator, carefully watching but respectfully and quietly adding details in the background.
